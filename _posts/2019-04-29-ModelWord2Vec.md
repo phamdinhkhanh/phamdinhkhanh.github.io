@@ -1002,7 +1002,7 @@ SVG(model_to_dot(model, show_shapes=True, show_layer_names=False,
                  rankdir='TB').create(prog='dot', format='svg'))
 ```
 
-<img src = "/assets/images/20190429_word2vec/output_37_0.svg" width="300px" height="200px" style="display:block; margin-left:auto; margin-right:auto"/>
+<img src = "/assets/images/20190429_word2vec/output_37_0.svg" width="600px" height="600px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 Bước 3: Huấn luyện mô hình.
 
