@@ -143,17 +143,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <ul>
   <li>Documents (Văn bản): Là tợp hợp các câu trong cùng một đoạn văn có mối liên hệ với nhau. Văn bản có thể được coi như một bài báo, bài văn,….</li>
-  <li>Corpus (Bộ văn bản): Là một tợp hợp gồm nhiều văn bản thuộc các đề tài khác nhau, tạo thành một nguồn tài nguyên dạng văn bản. Một văn bản cũng có thể được coi là corpus của các câu trong văn bản. Các bộ văn bảnCác lớn thường có từ vài nghìn đến vài trăm nghìn văn bản trong nó. Một số bộ văn bản trong tiếng việt có thể được download từ nguồn wikipedia, <a href="https://github.com/vncorenlp/VnCoreNLP">VNCoreNLP</a>.</li>
+  <li>Corpus (Bộ văn bản): Là một tợp hợp gồm nhiều văn bản thuộc các đề tài khác nhau, tạo thành một nguồn tài nguyên dạng văn bản. Một văn bản cũng có thể được coi là corpus của các câu trong văn bản. Các bộ văn bản lớn thường có từ vài nghìn đến vài trăm nghìn văn bản trong nó. Một số bộ văn bản trong tiếng việt có thể được download từ nguồn <a href="https://wiki.dbpedia.org/datasets">Wikipedia</a>, <a href="https://github.com/vncorenlp/VnCoreNLP">VNCoreNLP</a>.</li>
   <li>Character (kí tự): Là tợp hợp gồm các chữ cái (nguyên âm và phụ âm) và dấu câu. Mỗi một ngôn ngữ sẽ có một bộ các kí tự khác nhau.</li>
-  <li>Word (từ vựng): Là các kết hợp của các kí tự tạo thành những từ biểu thị một nội dung, định nghĩa xác định, chẳng hạn <code class="highlighter-rouge">con người</code> có thể coi là một từ vựng. Từ vựng có thể bao gồm từ đơn có 1 âm tiết và từ ghép nhiều hơn 1 âm tiết. Khác với tiếng anh khi các từ chủ yếu là từ đơn. Tiếng việt có rất nhiều những từ ghép 2, 3 âm tiết. Do đó chúng ta cần phải có từ điển để thực hiện tách từ (tokenize) trong câu. Một số package thông dụng trong Tiếng Việt có sẵn chức năng tách từ được sử dụng phổ biến là <a href="https://github.com/undertheseanlp/underthesea">underthesea</a>, <a href="https://pypi.org/project/pyvi/">pyvi</a>, <a href="https://github.com/vncorenlp/VnCoreNLP">VNCoreNLP</a>, <a href="https://github.com/datquocnguyen/RDRsegmenter">RDRsegmenter</a>, <a href="https://github.com/coccoc/coccoc-tokenizer">coccoc-tokenizer</a>. Kết quả tokenize có thể khác nhau tuỳ thuộc vào cách định nghĩa từ ghép ở mỗi package. Khi xử lý ngôn ngữ tự nhiên cho một số lĩnh vực đặc biệt cần phải có từ điển chuyên ngành, vì vậy cần phải customize riêng biệt.</li>
+  <li>Word (từ vựng): Là các kết hợp của các kí tự tạo thành những từ biểu thị một nội dung, định nghĩa xác định, chẳng hạn <code class="highlighter-rouge">con người</code> có thể coi là một từ vựng. Từ vựng có thể bao gồm từ đơn có 1 âm tiết và từ ghép nhiều hơn 1 âm tiết. Khác với tiếng anh khi các từ chủ yếu là đơn âm. Tiếng việt có rất nhiều những từ ghép 2, 3 âm tiết. Do đó chúng ta cần phải có từ điển để thực hiện tách từ (tokenize) trong câu. Một số package thông dụng trong Tiếng Việt có sẵn chức năng này được sử dụng phổ biến là <a href="https://github.com/undertheseanlp/underthesea">underthesea</a>, <a href="https://pypi.org/project/pyvi/">pyvi</a>, <a href="https://github.com/vncorenlp/VnCoreNLP">VNCoreNLP</a>, <a href="https://github.com/datquocnguyen/RDRsegmenter">RDRsegmenter</a>, <a href="https://github.com/coccoc/coccoc-tokenizer">coccoc-tokenizer</a>. Kết quả tokenize có thể khác nhau tuỳ thuộc vào cách định nghĩa từ ghép ở mỗi package. Khi xử lý ngôn ngữ tự nhiên cho một số lĩnh vực đặc biệt cần phải có từ điển chuyên ngành, vì vậy cần phải customize riêng mà không nên sử dụng từ điển từ package.</li>
   <li>Dictionary (từ điển): Là tợp hợp các từ vựng xuất hiện trong văn bản.</li>
   <li>Volcabulary (từ vựng): Tợp hợp các từ được trích xuất trong văn bản. Tương tự như từ điển.</li>
 </ul>
 
-<p>Trước khi biểu diễn từ chúng ta cần xác định từ điển của corpus. Các từ là hữu hạn và được lặp lại trong quá trình biểu diễn các văn bản trong corpus. Do đó thông qua từ điển gồm tợp hợp tất cả các từ có thể xuất hiện ta sẽ mã hoá được các câu dưới dạng ma trận mà mỗi dòng của nó là một véc tớ one-hot của từ.</p>
+<p>Trước khi biểu diễn từ chúng ta cần xác định từ điển của văn bản. Số lượng từ là hữu hạn và được lặp lại trong các câu. Do đó thông qua từ điển gồm tợp hợp tất cả các từ có thể xuất hiện, ta có thể mã hoá được các câu dưới dạng ma trận mà mỗi dòng của nó là một véc tớ one-hot của từ.</p>
 
 <p><strong>Định nghĩa One-hot véc tơ của từ:</strong>
-Giả sử chúng ta có từ điển là tợp hợp gồm $n$ từ vựng <code class="highlighter-rouge">{anh, em, gia đình, bạn bè,...}</code>. Khi đó mỗi từ sẽ được đại diện bởi một giá trị chính là index của nó. Từ <code class="highlighter-rouge">anh</code> có index = 0, <code class="highlighter-rouge">gia đình</code> có index = 2. One-hot véc tơ của từ vựng thứ $i$, $i \leq (n-1)$ sẽ là véc tơ $\mathbf{e}<em>i = [0, …, 0, 1, 0, …, 0] \in \mathbb{R}^{n}$ sao cho các phần tử $e</em>{ij}$ của véc tơ thoả mãn:</p>
+Giả sử chúng ta có từ điển là tợp hợp gồm $n$ từ vựng <code class="highlighter-rouge">{anh, em, gia đình, bạn bè,...}</code>. Khi đó mỗi từ sẽ được đại diện bởi một giá trị chính là index của nó. Từ <code class="highlighter-rouge">anh</code> có index = 0, <code class="highlighter-rouge">gia đình</code> có index = 2. One-hot véc tơ của từ vựng thứ $i$, $i \leq (n-1)$ sẽ là véc tơ $\mathbf{e_i} = [0, …, 0, 1, 0, …, 0] \in \mathbb{R}^{n}$ sao cho các phần tử $e_{ij}$ của véc tơ thoả mãn:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{equation}
@@ -226,26 +226,34 @@ Inverse transform to categories from one-hot matrices:
 </code></pre></div></div>
 
 <h1 id="2-word-embedding">2. Word Embedding</h1>
-<p>Sau khi biểu diễn từ dưới dạng one-hot véc tơ, mô hình đã có thể học được từ dữ liệu số. Tuy nhiên dữ liệu này chưa đáp ứng được một số tính chất đó là:</p>
+<p>Sau khi biểu diễn từ dưới dạng one-hot véc tơ, mô hình đã có thể huấn luyện được từ dữ liệu được mã hóa. Tuy nhiên dữ liệu này chỉ đáp ứng được khả năng huấn luyện mà chưa phản ảnh được mối liên hệ về mặt ngữ nghĩa của các từ. Các hạn chế đó là:</p>
 
 <ol>
-  <li>Mối quan hệ tương quan giữa cặp 2 từ khác biệt bất kì luôn là không tương quan (tức bằng 0). Do đó khoảng cách cosine_similarity giữa các từ cùng nhóm và các từ khác là không có sự khác biệt. Trong khi để phân tích được ngữ nghĩa của từ chúng ta cần các véc tơ có khoảng cách của chúng là gần nhau khi từ thuộc cùng 1 nhóm.</li>
+  <li>Mối quan hệ tương quan giữa các cặp từ bất kì luôn là không tương quan (tức bằng 0). Do đó không có tác dụng trong việc tìm mối liên hệ về nghĩa.</li>
   <li>Kích thước của véc tơ sẽ phụ thuộc vào số lượng từ vựng có trong bộ văn bản dẫn đến chi phí tính toán rất lớn khi tập dữ liệu lớn.</li>
   <li>Khi bổ sung thêm các từ vựng mới số chiều của véc tơ có thể thay đổi theo dẫn đến sự không ổn định trong shape.</li>
 </ol>
 
-<p>Chính vì thế chúng ta cần phải thực hiện phép nhúng từ bằng các thuật toán nhúng từ (word embedding) sang các véc tơ sao cho:</p>
+<p>Do đó các thuật toán nhúng từ được tạo ra nhằm mục đích tìm ra các véc tơ đại diện cho mỗi từ sao cho:</p>
 
 <ol>
-  <li>Mỗi từ được biểu diễn bởi một véc tơ có số chiều xác định trước.</li>
+  <li>Một từ được biểu diễn bởi một véc tơ có số chiều xác định trước.</li>
   <li>Các từ thuộc cùng 1 nhóm thì có khoảng cách gần nhau trong không gian.</li>
 </ol>
 
-<p>Xoay quanh các phương pháp nhúng từ chúng ta có rất nhiều cách khác nhau. Nhưng chúng ta có thể có các thuật toán chính sau:</p>
+<p>Có nhiều phương pháp nhúng từ khác nhau có thể kể đến. Trong đó có 3 nhóm chính:</p>
 
-<ul>
-  <li>Word2Vec: Về bản chất đây chính là một phép auto encoder nhằm giảm chiều dữ liệu của ma trận đồng xuất hiện của các cặp từ input và output. Trong đó input là từ hiện tại và output là các từ liền kề xung quanh nó. Chẳng hạn chúng ta có 2 câu văn như sau:</li>
-</ul>
+<ol>
+  <li>Sử dụng thống kê tần xuất: tfidf</li>
+  <li>Các thuật toán giảm chiều dữ liệu: SVD, PCA, auto encoder, word2vec</li>
+  <li>Phương pháp sử dụng mạng nơ ron: word2vec, ELMo, BERT.</li>
+</ol>
+
+<p>Phương pháp tfidf có thể được tham khảo mục 2.1 bài viết sau <a href="https://phamdinhkhanh.github.io/2019/01/07/k-thu-t-feature-engineering.html">Kĩ thuật feature engineering</a>. Trong bài giới thiệu này sẽ tập trung vào các phương pháp thuộc nhóm giảm chiều dữ liệu.</p>
+
+<h2 id="21-phương-pháp-svd">2.1. Phương pháp SVD</h2>
+
+<p>SVD là phương pháp giảm chiều dữ liệu dựa trên một phép phân tích suy biến nhằm tìm ra một ma trận gần sát với ma trận ban đầu. Về phương pháp khai triển và ứng dụng của SVD bạn đọc có thể tham khảo <a href="https://www.kaggle.com/phamdinhkhanh/singular-value-decomposition">Singular value Decomposition</a>. Đối với word embedding theo SVD, ta sẽ áp dụng phân tích suy biến trên ma trận đồng xuất hiện của các cặp từ input và output. Trong đó input là từ hiện tại và output là các từ liền kề xung quanh nó. Chẳng hạn chúng ta có 2 câu văn như sau:</p>
 
 <p><code class="highlighter-rouge">Khoa học dữ liệu là một lĩnh vực đòi hỏi kiến thức về toán và lập trình. Tôi rất yêu thích khoa học dữ liệu.</code></p>
 
@@ -261,9 +269,7 @@ Inverse transform to categories from one-hot matrices:
   <p><strong>Hình 1:</strong> Ma trận đồng xuất hiện</p>
 </blockquote>
 
-<h2 id="21-phương-pháp-svd">2.1. Phương pháp SVD</h2>
-
-<p><a href="https://www.kaggle.com/phamdinhkhanh/singular-value-decomposition">SVD</a> là một phương pháp giảm chiều dữ liệu hiệu quả dựa trên phép phân tích suy biến. Chúng ta cũng có thể tìm ra biểu diễn của mỗi từ trong từ điển bằng một véc tơ các nhân tố ẩn dựa vào việc lựa chọn một số lượng các giá trị đặc trưng.</p>
+<p>Chúng ta cũng có thể tìm ra biểu diễn của mỗi từ trong từ điển bằng một véc tơ các nhân tố ẩn dựa vào việc lựa chọn một số lượng các giá trị đặc trưng.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="n">ln</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -319,7 +325,7 @@ Shape of V:  (15, 15)
 
 <p>Các ma trận $\mathbf{U, V}$ lần lượt là ma trận trực giao suy biến trái và phải. Ma trận $\mathbf{S}$ là ma trận đường chéo chính. Ta có:
 <script type="math/tex">\mathbf{U_{15x15}S_{15x15}V_{15x15} = X}</script>
-Đường chéo chính của ma trận $\mathbf{S_{15x15}}$ được sắp xếp theo thứ tự giảm dần. Cần lựa chọn bao nhiêu chiều dữ liệu để biểu diễn từ sẽ lấy bấy nhiêu dòng của ma trận đường chéo chính. Để véc tơ biểu diễn sát nhất chúng ta nên lấy các dòng tương ứng với các giá trị đặc trưng lớp nhất. Chẳng hạn muốn biểu diễn các từ dưới dạng véc tơ 6 chiều ta lấy tích $\mathbf{S_{6<em>15}V_{15</em>15}} = \mathbf{X_{6<em>15}}$. Khi đó các cột của ma trận đầu ra $\mathbf{X_{6</em>15}}$ sẽ là một véc tơ nhúng của từ tại vị trí tương ứng trong từ điển.</p>
+Đường chéo chính của ma trận $\mathbf{S_{15x15}}$ được sắp xếp theo thứ tự giảm dần. Cần lựa chọn bao nhiêu chiều dữ liệu để biểu diễn từ sẽ lấy bấy nhiêu dòng của ma trận đường chéo chính. Để véc tơ biểu diễn sát nhất chúng ta nên lấy các dòng tương ứng với các giá trị đặc trưng lớp nhất. Chẳng hạn muốn biểu diễn các từ dưới dạng véc tơ 6 chiều ta lấy tích $\mathbf{S_{6 \times 15}V_{15x15}} = \mathbf{X_{6 \times 15}}$. Khi đó các cột của ma trận đầu ra $\mathbf{X_{6 \times  15}}$ sẽ là một véc tơ nhúng của từ tại vị trí tương ứng trong từ điển.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">S_truncate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
@@ -406,7 +412,7 @@ Epoch 5/5
 &lt;keras.callbacks.History at 0x7ff579fdd518&gt;
 </code></pre></div></div>
 
-<p>Các hệ số kết nối hidden units với một unit ở output sẽ là véc tơ nhúng biểu diễn từ thông qua các nhân tố ẩn. Trích xuất layers cuối cùng:</p>
+<p>Mỗi một từ sẽ được biểu diễn bởi véc tơ nhúng có các thành phần là hệ số kết nối hidden units tới output unit tương ứng. Trích xuất layers cuối cùng ta sẽ thu được ma trận nhúng:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">embedding_matrix</span> <span class="o">=</span> <span class="n">model_auto</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">bias</span> <span class="o">=</span> <span class="n">model_auto</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
@@ -531,8 +537,8 @@ Giả sử chúng ta có một câu văn như sau: <code class="highlighter-roug
 
 <ul>
   <li>
-    <p>Mục tiêu: <script type="math/tex">\text{Context-c ("cốc")} \rightarrow \text{Target-t ("màu_xanh")}</script>
-Từ từ bối cảnh c ta muốn dự báo từ mục tiêu t</p>
+    <p>Mục tiêu: Từ từ bối cảnh c ta muốn dự báo từ mục tiêu t.
+<script type="math/tex">\text{Context-c ("cốc")} \rightarrow \text{Target-t ("màu_xanh")}</script></p>
   </li>
   <li>
     <p>Mô hình:</p>
@@ -545,25 +551,34 @@ Từ từ bối cảnh c ta muốn dự báo từ mục tiêu t</p>
   <p><strong>Hình 4</strong>: Kiến trúc mạng nơ ron trong mô hình skip-grams.</p>
 </blockquote>
 
-<p>Cũng giống như các cách tiếp cận thông thường khác, mô hình sẽ biểu diễn một từ bối cảnh dưới dạng one-hot véc tơ $\mathbf{o_c}$ làm đầu vào cho một mạng nơ ron có tầng ẩn gồm 300 units. Kết quả ở output layer là một hàm softmax tính xác xuất để các từ mục tiêu phân bố vào những từ trong vocabulary (10000 từ). Dựa trên quá trình feed forward và back propagation mô hình sẽ tìm ra tham số tối ưu để kết quả dự báo từ mục tiêu là chuẩn xác nhất. Khi đó quay trở lại tầng hidden layer ta sẽ thu được đầu ra tại tầng này là ma trận nhúng $\mathbf{E} \in \mathbb{R}^{n\times 300}$.</p>
+<p>Cũng giống như các cách tiếp cận thông thường khác, mô hình sẽ biểu diễn một từ bối cảnh dưới dạng one-hot véc tơ $\mathbf{o_c}$. Véc tơ này sẽ trở thành đầu vào cho một mạng nơ ron có tầng ẩn gồm 300 units. Kết quả ở output layer là một hàm softmax tính xác xuất để các từ mục tiêu phân bố vào những từ trong vocabulary (10000 từ). Dựa trên quá trình feed forward và back propagation mô hình sẽ tìm ra tham số tối ưu để kết quả dự báo từ mục tiêu là chuẩn xác nhất. Khi đó quay trở lại tầng hidden layer ta sẽ thu được đầu ra tại tầng này là ma trận nhúng $\mathbf{E} \in \mathbb{R}^{n\times 300}$.</p>
 
-<p><script type="math/tex">\mathbf{o_c} \rightarrow \mathbf{E} \rightarrow \mathbf{e_c} \rightarrow \text{softmax} \rightarrow \mathbf{\hat{y}}</script>
-$\mathbf{e_c}$ là véc tơ nhúng trích xuất từ ma trận nhúng $\mathbf{E}$ tương ứng với từ bối cảnh $\mathbf{c}$. $\mathbf{\hat{y}}$ là xác xuất được dự báo của từ mục tiêu.</p>
+<script type="math/tex; mode=display">\mathbf{o_c} \rightarrow \mathbf{E} \rightarrow \mathbf{e_c} \rightarrow \text{softmax} \rightarrow \mathbf{\hat{y}}</script>
+
+<p>$\mathbf{e_c}\in \mathbb{R}^{300}$ là véc tơ nhúng trích xuất từ ma trận $\mathbf{E}$ tương ứng với từ bối cảnh $\mathbf{c}$. $\mathbf{\hat{y}}$ là xác xuất được dự báo của từ mục tiêu.</p>
 
 <p>Khi áp dụng hàm softmax, xác xuất ở đầu ra có dạng:
 <script type="math/tex">\mathbf{P(t=v_{i}|c)} = \frac{e^{\mathbf{\theta_{i}}^{T}\mathbf{e_c}}}{\sum_{j=1}^{10000}e^{\mathbf{\theta_{j}}^{T}\mathbf{e_c}}}</script></p>
 
-<p>$\mathbf{\theta_{i}} \in \mathbb{R}^{300}$ là các véc tơ tham số thể hiện sự liên kết giữa các units ở hidden layer với output layer.</p>
+<p>trong đó $\mathbf{\theta_{i}} \in \mathbb{R}^{300}$ là các véc tơ tham số thể hiện sự liên kết giữa các units ở hidden layer với output layer.</p>
 
-<p>Kết quả dự báo mô hình mạng nơ ron càng chuẩn xác thì véc tơ nhúng sẽ càng thể hiện được mối liên hệ trên thực tế giữa từ bối cảnh và mục tiêu chuẩn xác. Do đó nó càng lượng hoá chính xác từ. Kết quả cuối cùng ta quan tâm chính là các dòng của ma trận $\mathbf{E}$. Chúng là các véc tơ nhúng $\mathbf{e_c}\in \mathbb{R}^{300}$ đại diện cho một từ bối cảnh $\mathbf{c}$.</p>
+<p>Kết quả dự báo mô hình mạng nơ ron càng chuẩn xác thì véc tơ nhúng sẽ càng thể hiện được mối liên hệ trên thực tế giữa từ bối cảnh và mục tiêu chuẩn xác. Kết quả cuối cùng ta quan tâm chính là các dòng của ma trận $\mathbf{E}$. Chúng là các véc tơ nhúng $\mathbf{e_c}$ đại diện cho một từ bối cảnh $\mathbf{c}$.</p>
 
-<p><strong>CBOW</strong>: Chúng ta nhận thấy rằng mô hình skip-grams sẽ rất tốn chi phí để tính toán vì mẫu số xác xuất là tổng của toàn bộ số mũ cơ số tự nhiên của vocalbulary. Để hạn chế chi phí tính toán mô hình CBOW (continueos backward model) ra đời chỉ tạo ra một xác xuất duy nhất thay vì 10000 xác xuất ở đầu ra. Xuất phát từ ý tưởng đó, mô hình sẽ xây dựng kiến trúc dự báo chỉ gồm 1 đầu ra duy nhất là từ ở vị trí trung tâm được dự báo từ đầu vào là các từ bối cảnh.</p>
+<p><strong>CBOW</strong>: Chúng ta nhận thấy rằng mô hình skip-grams sẽ rất tốn chi phí để tính toán vì mẫu số xác xuất là tổng của rất nhiều số mũ cơ số tự nhiên. Để hạn chế chi phí tính toán mô hình CBOW (continueos backward model) được áp dụng. Về cơ bản thì CBOW là một quá trình ngược lại của skip-grams. Khi đó input của skip-grams sẽ được sử dụng làm output trong CBOW và ngược lại.</p>
 
 <p><img src="https://cdn-images-1.medium.com/max/800/1*UVe8b6CWYykcxbBOR6uCfg.png" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <blockquote>
   <p><strong>Hình 5</strong>: Kiến trúc CBOW</p>
 </blockquote>
+
+<p>Kiến trúc mạng nơ ron của CBOW sẽ gồm 3 layers:</p>
+
+<ol>
+  <li>Input layers: Là các từ bối cảnh xung quanh từ mục tiêu.</li>
+  <li>Projection layer: Lấy trung bình véc tơ biểu diễn của toàn bộ các từ input để tạo ra một véc tơ đặc trưng.</li>
+  <li>Output layer: Là một dense layers áp dụng hàm softmax để dự báo xác xuất của từ mục tiêu.</li>
+</ol>
 
 <p>Bên dưới chúng ta cùng sử dụng mô hình word2vec theo phương pháp CBOW để nhúng các từ bối cảnh thành những véc tơ có 300 chiều bằng <code class="highlighter-rouge">keras</code>. Dữ liệu input là các câu trong kinh thánh được lấy từ <a href="http://www.gutenberg.org/ebooks/10">bible-kjv.txt</a>. Để xây dựng mô hình sẽ đi qua các bước sau đây:</p>
 
@@ -1355,7 +1370,7 @@ Epoch: 5 Loss: 12.227664299309254
 
 <p>Để tiết kiệm thời gian, tôi chỉ training với 100 skip-grams đầu tiên nên mô hình chưa phản ánh được chuẩn xác mối quan hệ của từ. Bạn đọc có thể tăng số lượng skip-grams để các từ có mối liên hệ gần sẽ được nhóm vào 1 nhóm trên biểu đồ TSNE.</p>
 
-<h2 id="13-sử-dụng-gensim-cho-mô-hình-word2vec">1.3. Sử dụng gensim cho mô hình word2vec</h2>
+<h2 id="24-sử-dụng-gensim-cho-mô-hình-word2vec">2.4. Sử dụng gensim cho mô hình word2vec</h2>
 
 <p>Cách training trên chỉ sử dụng để chúng ta hiểu rõ cơ chế hoạt động của 2 phương pháp <strong>skip-grams</strong> và <strong>CBOW</strong> trong mô hình word2vec. Trên thực tế mô hình có thể được training trên gensim với chỉ 1 vài dòng rất đơn giản như sau:</p>
 
@@ -1384,10 +1399,6 @@ Epoch: 5 Loss: 12.227664299309254
 </code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>embedding vector shape:  (150,)
-
-
-
-
 
 array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
         0.16904514,  0.13904604, -0.389859  , -0.27150822, -0.20627081,
