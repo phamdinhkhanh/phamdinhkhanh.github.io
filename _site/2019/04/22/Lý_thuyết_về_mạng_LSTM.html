@@ -95,6 +95,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Mô hình Word2Vec</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/k-thu-t-feature-engineering.html">Kĩ thuật feature engineering</a></li>
@@ -145,7 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p><strong>Hình 1: Mạng nơ ron truy hồi với vòng lặp</strong></p>
 </blockquote>
 
-<p>Hình trên biểu diễn kiến trúc của một mạng nơ ron truy hồi. Trong kiến trúc này mạng nơ ron sử dụng một đầu vào là một véc tơ $\mathbf{x_t}$ và trả ra đầu ra là một $h_t$. Đầu vào được đấu với một thân mạng nơ ron $A$ có tính chất truy hồi và từ thân này sẽ trả ra kết quả $h_t$.</p>
+<p>Hình trên biểu diễn kiến trúc của một mạng nơ ron truy hồi. Trong kiến trúc này mạng nơ ron sử dụng một đầu vào là một véc tơ $\mathbf{x_t}$ và trả ra đầu ra là một giá trị ẩn $h_t$. Đầu vào được đấu với một thân mạng nơ ron $A$ có tính chất truy hồi và thân này được đấu tới đầu ra $h_t$.</p>
 
 <p>Vòng lặp $A$ ở thân mạng nơ ron là điểm mấu chốt trong nguyên lý hoạt động của mạng nơ ron truy hồi. Đây là chuỗi sao chép nhiều lần của cùng một kiến trúc nhằm cho phép các thành phần có thể kết nối liền mạch với nhau theo mô hình chuỗi. Đầu ra của vòng lặp trước chính là đầu vào của vòng lặp sau. Nếu trải phẳng thân mạng nơ ron $A$ ta sẽ thu được một mô hình dạng:</p>
 
@@ -187,7 +189,7 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
   <p><strong>Hình 5: Diễn giải các kí hiệu trong đồ thị mạng nơ ron (áp dụng chung cho toàn bộ bài)</strong></p>
 </blockquote>
 
-<p>Trong sở đồ tính toán trên, mỗi một phép tính sẽ triển khai trên một véc tơ. Trong đó hình tròn màu hồng biểu diễn một toán tử đối với véc tơ như phép cộng véc tơ, phép nhân véc tơ <a href="https://en.wikipedia.org/wiki/Hadamard_product_(matrices)">hadamard hoặc element wise</a>. Màu vàng thể hiện hàm activation mà mạng nơ ron sử dụng để học trong tầng ẩn, thông thường là các hàm phi tuyến sigmoid và tanh. Kí hiệu 2 đường thẳng nhập vào thể hiện phép chập kết quả trong khi kí hiệu 2 đường thẳng rẽ nhánh thể hiện cho nội dung véc tơ trước đó được sao chép để đi tới một phần khác của mạng nơ ron.</p>
+<p>Trong sở đồ tính toán trên, mỗi một phép tính sẽ triển khai trên một véc tơ. Trong đó hình tròn màu hồng biểu diễn một toán tử đối với véc tơ như phép cộng véc tơ, phép nhân vô hướng các véc tơ. Màu vàng thể hiện hàm activation mà mạng nơ ron sử dụng để học trong tầng ẩn, thông thường là các hàm phi tuyến sigmoid và tanh. Kí hiệu 2 đường thẳng nhập vào thể hiện phép chập kết quả trong khi kí hiệu 2 đường thẳng rẽ nhánh thể hiện cho nội dung véc tơ trước đó được sao chép để đi tới một phần khác của mạng nơ ron.</p>
 
 <h1 id="4-ý-tưởng-đằng-sau-lstm">4. Ý tưởng đằng sau LSTM</h1>
 
@@ -198,7 +200,7 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
   <p><strong>Hình 6: Đường đi của ô trạng thái (cell state) trong mạng LSTM</strong></p>
 </blockquote>
 
-<p>Ô trạng thái là một dạng băng chuyền chạy thẳng xuyên suốt toàn bộ chuỗi với chỉ một vài tương tác tuyến tính nhỏ giúp cho thông tin có thể chuyền dọc theo đồ thị mạng nơ ron ổn định.</p>
+<p>Ô trạng thái là một dạng băng chuyền chạy thẳng xuyên suốt toàn bộ chuỗi với chỉ một vài tương tác tuyến tính nhỏ giúp cho thông tin có thể truyền dọc theo đồ thị mạng nơ ron ổn định.</p>
 
 <p>LSTM có khả năng xóa và thêm thông tin vào ô trạng thái và điều chỉnh các luồng thông tin này thông qua các cấu trúc gọi là cổng.</p>
 
@@ -215,38 +217,34 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
 
 <h1 id="5-thứ-tự-các-bước-của-lstm">5. Thứ tự các bước của LSTM</h1>
 
-<p>Bước đầu tiên trong LSTM sẽ quyết định xem thông tin nào chúng ta sẽ cho phép đi qua ô trạng thái (cell state). Nó được kiểm soát bởi hàm sigmoid trong một tầng gọi là cổng quên (<em>forget gate layer</em>). Đầu tiên nó nhận đầu vào là 2 giá trị $h_{t-1}$ và $x_t$ và trả về một giá trị nằm trong khoảng 0 và 1 cho mỗi giá trị của ô trạng thái $C_{t-1}$. Nếu giá trị bằng 1 thể hiện ‘giữ toàn bộ thông tin’ và bằng 0 thể hiện ‘bỏ qua toàn bộ chúng’.</p>
+<p>Bước đầu tiên trong LSTM sẽ quyết định xem thông tin nào chúng ta sẽ cho phép đi qua ô trạng thái (cell state). Nó được kiểm soát bởi hàm sigmoid trong một tầng gọi là tầng quên (<em>forget gate layer</em>). Đầu tiên nó nhận đầu vào là 2 giá trị $h_{t-1}$ và $\mathbf{x_t}$ và trả về một giá trị nằm trong khoảng 0 và 1 cho mỗi giá trị của ô trạng thái $C_{t-1}$. Nếu giá trị bằng 1 thể hiện ‘giữ toàn bộ thông tin’ và bằng 0 thể hiện ‘bỏ qua toàn bộ chúng’.</p>
 
-<p>Trở lại ví dụ về ngôn ngữ, chúng ta đang cố gắng dự báo từ tiếp theo dựa trên toàn bộ những từ trước đó. Trong những bài toán như vậy, ô trạng thái có thể bao gồm loại của chủ ngữ hiện tại, để cho đại từ chính xác có thể được sử dụng (anh ấy, cô ấy hay tôi, bạn). Khi chúng ta nhìn thấy một chủ ngữ mới, chúng ta muốn quên đi loại của một chủ ngữ cũ.</p>
+<p>Trở lại ví dụ về ngôn ngữ, chúng ta đang cố gắng dự báo từ tiếp theo dựa trên toàn bộ những từ trước đó. Trong những bài toán như vậy, ô trạng thái có thể bao gồm loại của chủ ngữ hiện tại, để cho đại từ ở câu tiếp theo được sử dụng chính xác. Chẳng hạn như chúng ta đang mô tả về một người bạn là con trai thì các đại từ nhân xưng ở tiếp theo phải là anh, thằng, hắn thay vì cô, con ấy (xin lỗi vì lấy ví dụ hơi thô). Tuy nhiên chủ ngữ không phải khi nào cũng cố định. Khi chúng ta nhìn thấy một chủ ngữ mới, chúng ta muốn quên đi loại của một chủ ngữ cũ. Do đó tầng quên cho phép cập nhật thông tin mới và lưu giữ giá trị của nó khi có thay đổi theo thời gian.</p>
 
 <p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-f.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
   <p><strong>Hình 8: Tầng cổng quên (<em>forget gate layer</em>)</strong></p>
 </blockquote>
 
-<p>Bước tiếp theo chúng ta sẽ quyết định loại thông tin nào sẽ được lưu trữ trong ô trạng thái. Chúng ta sẽ có 2 phần. Phần đầu tiên là một tầng ẩn của hàm sigmoid được gọi là tầng cổng vào (<em>input gate layer</em>) quyết định chúng ta sẽ cập nhật giá trị nào. Tiếp theo, tầng ẩn hàm tanh sẽ tạo ra một véc tơ của một giá trị trạng thái mới $\tilde{C}_t$ mà có thể được thêm vào trạng thái. Trong bước tiếp theo chúng ta sẽ kết hợp kết quả của tầng này để tạo thành một cập nhật cho trạng thái.</p>
+<p>Bước tiếp theo chúng ta sẽ quyết định loại thông tin nào sẽ được lưu trữ trong ô trạng thái. Bước này bao gồm 2 phần. Phần đầu tiên là một tầng ẩn của hàm sigmoid được gọi là tầng cổng vào (<em>input gate layer</em>) quyết định giá trị bao nhiêu sẽ được cập nhật. Tiếp theo, tầng ẩn hàm tanh sẽ tạo ra một véc tơ của một giá trị trạng thái mới $\tilde{C}_t$ mà có thể được thêm vào trạng thái. Tiếp theo kết hợp kết quả của 2 tầng này để tạo thành một cập nhật cho trạng thái.</p>
 
-<p>Trong ví dụ của mô hình ngôn ngữ của chúng ta, chúng ta muốn thêm loại của một chủ ngữ mới vào ô trạng thái để thay thế phần trạng thái cũ mà chúng ta muốn quên đi.</p>
+<p>Trong ví dụ của mô hình ngôn ngữ, chúng ta muốn thêm loại của một chủ ngữ mới vào ô trạng thái để thay thế phần trạng thái cũ muốn quên đi.</p>
 
 <p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-i.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
   <p><strong>Hình 9: Cập nhật giá trị cho ô trạng thái bằng cách kết hợp 2 kết quả từ tầng cổng vào và tẩng ẩn hàm tanh</strong></p>
 </blockquote>
 
-<p>Đây là thời điểm để cập nhật một ô trạng thái cũ, $C_{t-1}$ sang một trạng thái mới $C_t$. Những bước trước đó đã quyết định làm cái gì, chúng ta chỉ cần thực hiện nó.</p>
+<p>Đây là thời điểm để cập nhật một ô trạng thái cũ, $C_{t-1}$ sang một trạng thái mới $C_t$. Những bước trước đó đã quyết định làm cái gì, và tại bước này chỉ cần thực hiện nó.</p>
 
-<p>Chúng ta nhân trạng thái cũ với $f_t$, quên những thứ chúng ta quyết định để quên sớm hơn. Chúng ta thêm $i_t * \tilde{C}_t$. Đây là một giá trị đề cử mới được tính toán bằng bao nhiêu chúng ta quyết định để cập nhật mỗi giá trị trạng thái.</p>
-
-<p>Trong trường hợp của mô hình ngôn ngữ, đó là nơi chúng ta đã thực tế loại bỏ thông tin về các chủ đề của loại cũ và thêm thông tin mới khi chúng ta quyết định trong bước trước đó.</p>
+<p>Chúng ta nhân trạng thái cũ với $f_t$ tương ứng với việc quên những thứ quyết định được phép quên sớm. Phần tử đề cử $i_t * \tilde{C}_t$ là một giá trị mới được tính toán tương ứng với bao nhiêu được cập nhật vào mỗi giá trị trạng thái.</p>
 
 <p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-C.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
   <p><strong>Hình 10: Ô trạng thái mới</strong></p>
 </blockquote>
 
-<p>Cuối cùng chúng ta cần quyết định xem chúng ta sẽ có gì ở đầu ra. Kết quả ở đầu ra sẽ dựa trên ô trạng thái của chúng ta, nhưng sẽ là một phiên bản được lọc. Đầu tiên, chúng ta chạy qua một tầng sigmoid nơi quyết định phần nào của ô trạng thái sẽ ở đầu ra. Sau đó, chúng ta đưa ô trạng thái qua hàm tanh (để chuyển giá trị về khoảng -1 và 1) và nhân nó với đầu ra của một cổng sigmoid, do đó chúng ta chỉ trả ra những phần mà chúng ta quyết định.</p>
-
-<p>Đối với những mô hình ngôn ngữ, bởi vì nó chỉ nhìn vào chủ ngữ, nó có thể muốn thông tin đầu ra liên quan đến một động từ, trong trường hợp dự báo điều sẽ xảy ra tiếp theo. Chẳng hạn, Đó có thể trả về có hay không chủ ngữ là số ít hoặc số nhiều, để chúng ta biết dạng của động từ có thể được liên kết với những từ tiếp theo.</p>
+<p>Cuối cùng cần quyết định xem đầu ra sẽ trả về bao nhiêu. Kết quả ở đầu ra sẽ dựa trên ô trạng thái, nhưng sẽ là một phiên bản được lọc. Đầu tiên, chúng ta chạy qua một tầng sigmoid nơi quyết định phần nào của ô trạng thái sẽ ở đầu ra. Sau đó, ô trạng thái được đưa qua hàm tanh (để chuyển giá trị về khoảng -1 và 1) và nhân nó với đầu ra của một cổng sigmoid, do đó chỉ trả ra phần mà chúng ta quyết định.</p>
 
 <p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-o.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
@@ -264,14 +262,13 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
   <p><strong>Hình 12: Kết nối ống tiểu (<em>peehole</em>) liên kết trực tiếp ô trạng thái với các cổng</strong></p>
 </blockquote>
 
-<p>Một biến thể khác là sử dụng cặp đôi cổng vào và cổng ra. Thay vì quyết định riêng rẽ bỏ qua thông tin nào và thêm mới thông tin nào, chúng ta sẽ quyết định chúng đồng thời. Chúng ta chỉ quên chúng khi chúng ta sẽ nhập vào một vài thông tin mới. Chúng ta chỉ nhập vào một vài giá trị mới cho trạng thái khi chúng ta quên những thứ cũ hơn.</p>
-
-<p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-var-tied.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p>Một biến thể khác là sử dụng cặp đôi cổng vào và cổng ra. Thay vì quyết định riêng rẽ bỏ qua thông tin nào và thêm mới thông tin nào, chúng ta sẽ quyết định chúng đồng thời. Các thông tin chỉ bị quên khi chúng ta muốn cập nhập vào một vài thông tin mới. 
+<img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-var-tied.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
   <p><strong>Hình 13: Cấu trúc điều chỉnh thêm mới và bỏ qua thông tin đồng thời</strong></p>
 </blockquote>
 
-<p>Một dạng biến thể khá mạnh khác của LSTM là cổng truy hồi đơn vị <a href="https://arxiv.org/pdf/1406.1078v3.pdf">(<em>Gated Recurrent Unit - GRU</em>)</a> được giới thiệu bởi Cho, et al. (2014). Nó kết hợp cổng quên và cổng vào thành một cổng đơn gọi là cổng cập nhật (<em>update gate</em>). Nó cũng nhập các ô trạng thái và trạng thái ẩn và thực hiện một số thay đổi khác. Kết quả của mô hình đơn giản hơn nhiều so với mô hình LSTM chuẩn, và đã trở nên khá phổ biến.</p>
+<p>Một dạng biến thể khá mạnh khác của LSTM là cổng truy hồi đơn vị <a href="https://arxiv.org/pdf/1406.1078v3.pdf">(<em>Gated Recurrent Unit - GRU</em>)</a> được giới thiệu bởi Cho, et al. (2014). Nó kết hợp cổng quên và cổng vào thành một cổng đơn gọi là cập nhật (<em>update gate</em>). Nó cũng nhập các ô trạng thái và trạng thái ẩn và thực hiện một số thay đổi khác. Kết quả của mô hình đơn giản hơn nhiều so với mô hình LSTM chuẩn, và đã trở nên khá phổ biến.</p>
 
 <p><img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-var-GRU.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
@@ -286,14 +283,14 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
 
 <p>Trước đó, tôi đã đề cập đến những kết quả đáng chú ý mà mọi người đang đạt được với RNNs. Về cơ bản tất cả những điều này đều đạt được bằng cách sử dụng LSTM. Chúng thực sự làm việc tốt hơn rất nhiều cho hầu hết các nhiệm vụ!</p>
 
-<p>Được viết dưới dạng một hệ phương trình, LSTM trông khá là phức tạp và có phần đáng sợ. Thông qua các bước diễn giải tuần tự nguyên lý hoạt động của nó tôi hi vọng sẽ khiến chúng trở nên dễ tiếp cận hơn.</p>
+<p>Được viết dưới dạng một hệ phương trình, LSTM trông khá là phức tạp và có phần hàn lâm. Thông qua các bước diễn giải tuần tự nguyên lý hoạt động của nó tôi hi vọng sẽ khiến chúng trở nên dễ tiếp cận hơn.</p>
 
 <p>LSTM là một bước đột phá lớn mà ở đó chúng ta đã khắc phục được những hạn chế ở RNN đó là khả năng phụ thuộc dài hạn. Một số kĩ thuật học Attention gần đây được kết hợp với LSTM đã tạo ra những kết quả khá bất ngờ trong các tác vụ dịch máy cũng như phân loại nội dung, trích lọc thông tin,…. Các mô hình dịch máy của google đã ứng dụng kiểu kết hợp này trong các bài toán dịch thuật của mình và đã cải thiện được nội dung bản dịch một cách đáng kể.</p>
 
 <h1 id="8-thực-hành-mô-hình-sinh-từ-tự-động">8. Thực hành mô hình sinh từ tự động</h1>
 <h2 id="81-xây-dựng-mô-hình-trên-level-kí-tự">8.1 Xây dựng mô hình trên level kí tự</h2>
 
-<p>Bên dưới chúng ta sẽ áp dụng mô hình LSTM trong việc dự báo từ tiếp theo của một đoạn hoặc câu văn dựa vào bối cảnh của từ là những từ liền trước nó.</p>
+<p>Sau đây ta sẽ áp dụng mô hình LSTM trong việc dự báo từ tiếp theo của một đoạn hoặc câu văn dựa vào bối cảnh của từ là những từ liền trước nó.</p>
 
 <p>Dữ liệu được sử dụng là bộ truyện <a href="https://gist.githubusercontent.com/phillipj/4944029/raw/75ba2243dd5ec2875f629bf5d79f6c1e4b5a8b46/alice_in_wonderland.txt">alice ở xứ sở kỳ diệu</a> đã được nhà xuất bản publish nên không vi phạm bản quyền. Mô hình dự báo sẽ được xây dựng trên level kí tự. Bên dưới, chúng ta sẽ đọc dữ liệu và chuyển các kí tự về in thường để giảm thiểu kích thước bộ mã hóa mà vẫn đảm bảo được nội dung văn bản. Dữ liệu được lưu trong kernel là file <code class="highlighter-rouge">wonderland.txt</code>.</p>
 
@@ -308,7 +305,7 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
 <span class="n">raw_text</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Bên dưới chúng ta sẽ cùng tạo ra một dictionary gồm 59 kí tự được sử dụng trong bộ truyện. Key của các  kí tự là số thứ tự của chúng trong dictionary. Trong sơ đồ thiết kế mạng nơ ron chúng ta sẽ mã hóa một kí tự bằng một vector đơn vị sao cho phần từ 1 sẽ xuất hiện tại vị trí của key trong bộ từ điển và 0 là các phần tử còn lại.</p>
+<p>Một dictionary gồm 59 kí tự được sử dụng để mã hóa các kí tự trong bộ truyện. Key của các  kí tự là số thứ tự của chúng trong dictionary. Trong sơ đồ thiết kế mạng nơ ron một kí tự được mã hóa bằng một vector đơn vị sao cho phần từ 1 sẽ xuất hiện tại vị trí của key trong bộ từ điển và 0 là các phần tử còn lại.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chars</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">raw_text</span><span class="p">)))</span>
 <span class="n">char_to_int</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chars</span><span class="p">))</span>
@@ -320,7 +317,7 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
 {'\n': 0, ' ': 1, '!': 2, '"': 3, '#': 4, '$': 5, '%': 6, "'": 7, '(': 8, ')': 9, '*': 10, ',': 11, '-': 12, '.': 13, '/': 14, '0': 15, '1': 16, '2': 17, '3': 18, '4': 19, '5': 20, '6': 21, '7': 22, '8': 23, '9': 24, ':': 25, ';': 26, '?': 27, '@': 28, '[': 29, ']': 30, '_': 31, 'a': 32, 'b': 33, 'c': 34, 'd': 35, 'e': 36, 'f': 37, 'g': 38, 'h': 39, 'i': 40, 'j': 41, 'k': 42, 'l': 43, 'm': 44, 'n': 45, 'o': 46, 'p': 47, 'q': 48, 'r': 49, 's': 50, 't': 51, 'u': 52, 'v': 53, 'w': 54, 'x': 55, 'y': 56, 'z': 57, '\ufeff': 58}
 </code></pre></div></div>
 
-<p>Chúng ta nhận thấy rằng mục đích chỉ là dự báo từ tiếp theo do đó cần lọc bỏ những kí tự không quyết định đến nghĩa của 1 từ chẳng hạn như các dấu đặc biệt <code class="highlighter-rouge">#, $, *, @, /</code>. Như vậy, chúng ta sẽ cần một bước chuẩn hóa dữ liệu nhằm giảm thiểu nhiễu và số lượng các khả năng có thể ở đầu ra. Điều này sẽ giúp cải thiện chất lượng và độ chính xác trong dự báo của mô hình đáng kể. Việc chuẩn hóa sẽ bao gồm như sau:</p>
+<p>Chúng ta nhận thấy rằng mục đích chỉ là dự báo từ tiếp theo do đó cần lọc bỏ những kí tự không quyết định đến nghĩa của 1 từ chẳng hạn như các dấu đặc biệt <code class="highlighter-rouge">#, $, *, @, /</code>. Như vậy, sẽ cần một bước chuẩn hóa dữ liệu nhằm giảm thiểu nhiễu và số lượng các khả năng có thể ở đầu ra. Điều này sẽ giúp cải thiện chất lượng và độ chính xác trong dự báo của mô hình đáng kể. Việc chuẩn hóa sẽ bao gồm như sau:</p>
 <ol>
   <li>Chỉ giữ lại các kí tự chữ cái vì chúng có ảnh hưởng đến nội dung của 1 từ.</li>
   <li>Chỉ giữ lại các dấu câu là <code class="highlighter-rouge">., !, ?</code> vì chúng thể hiện các loại câu khác nhau và sẽ ảnh hưởng đến từ tiếp theo khi dự báo. Chẳng hạn nếu dấu câu là <code class="highlighter-rouge">?</code> thì khả năng cao từ tiếp theo sẽ là <code class="highlighter-rouge">yes</code> hoặc <code class="highlighter-rouge">no</code>. Dấu câu là <code class="highlighter-rouge">.</code> thì từ tiếp theo có thể là một đại từ nhân xưng <code class="highlighter-rouge">i, you, we, they, he, she, it</code>.</li>
@@ -356,7 +353,7 @@ int to character: {0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h
 Total Vocab:  33
 </code></pre></div></div>
 
-<p>Như vậy sau chuẩn hóa văn bản của chúng ta sẽ bao gồm 163693 từ và 33 kí tự. Tiếp theo chúng ta sẽ viết một hàm chuyển hóa một câu thành một vector chỉ số các kí tự.</p>
+<p>Như vậy sau chuẩn hóa văn bản của chúng ta sẽ bao gồm 163693 từ và 33 kí tự. Tiếp theo là một hàm chuyển hóa một câu thành một vector chỉ số các kí tự.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_encode_sen</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -390,7 +387,7 @@ Total Vocab:  33
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'alice is a wonderful story. unk'
 </code></pre></div></div>
 
-<p>Tiếp theo chúng ta sẽ tạo ra một window input với độ dài là 100 kí tự. Mục đích của chúng ta là dự báo kí tự tiếp theo từ 100 kí tự đầu vào. Mỗi một phiên dự báo chúng ta sẽ tịnh tiến window input lên 1 kí tự để thu được các kí tự dự báo liên tiếp nhau và từ đó ghép lại thành một câu hoàn chỉnh.</p>
+<p>Để đồng nhất độ dài đầu vào cho mô hình cần tạo ra các chuỗi kí tự (window input) với với độ dài là 100. Mục đích của chúng ta là dự báo kí tự tiếp theo từ 100 kí tự đầu vào. Mỗi một phiên dự báo window input sẽ được tịnh tiến lên 1 kí tự để thu được các kí tự dự báo liên tiếp nhau và từ đó ghép lại thành một câu hoàn chỉnh.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># prepare the dataset of input to output pairs encoded as integers
 </span><span class="n">seq_length</span> <span class="o">=</span> <span class="mi">100</span>
