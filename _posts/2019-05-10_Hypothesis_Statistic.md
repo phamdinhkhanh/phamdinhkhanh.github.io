@@ -1,57 +1,89 @@
-
+---
+layout: post
+author: phamdinhkhanh
+title: Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê
+---
 # Phần 1 - Thống kê
 
 ## 1.1. Các đại lượng thống kê
-1. **Đại lượng ngẫu nhiên**: Một đại lượng được coi là ngẫu nhiên nếu giá trị của nó là kết quả của một biến cố ngẫu nhiên. Chẳng hạn phép tung đồng xu đồng chất với 2 mặt xấp ngửa là một đại lượng ngẫu nhiên vì ta không hoàn toàn biết trước khả năng đồng xu rơi vào mặt xấp hoặc ngửa.
 
-  Có 2 loại đại lượng ngẫu nhiên:
+1.**Đại lượng ngẫu nhiên**: Một đại lượng được coi là ngẫu nhiên nếu giá trị của nó là kết quả của một biến cố ngẫu nhiên. Chẳng hạn phép tung đồng xu đồng chất với 2 mặt xấp ngửa là một đại lượng ngẫu nhiên vì ta không hoàn toàn biết trước khả năng đồng xu rơi vào mặt xấp hoặc ngửa. Có 2 loại đại lượng ngẫu nhiên:
+* Đại lượng ngẫu nhiên liên tục: Giá trị của nó có thể rơi vào bất kì một giá trị nào nằm trong một khoảng xác định. Chẳng hạn chiều cao, cân nặng của một người có thể coi là đại lượng liên tục.
+* Đại lượng ngẫu nhiên rời rạc: Giá trị của nó nằm trong một tập hợp hữu hạn các khả năng. Ví dụ như trường hợp tung đồng xu ta chỉ có thể nhận các giá trị là {0, 1} tương ứng với khả năng rơi vào mặt S(sấp) hặc mặt N (ngửa). 
 
-  * Đại lượng ngẫu nhiên liên tục: Giá trị của nó có thể rơi vào bất kì một giá trị nào nằm trong một khoảng xác định. Chẳng hạn chiều cao, cân nặng của một người có thể coi là đại lượng liên tục.
+2.**Kì vọng**: hay còn gọi là trung bình của một đại lượng ngẫu nhiên:
 
-  * Đại lượng ngẫu nhiên rời rạc: Giá trị của nó nằm trong một tập hợp hữu hạn các khả năng. Ví dụ như trường hợp tung đồng xu ta chỉ có thể nhận các giá trị là {0, 1} tương ứng với khả năng rơi vào mặt S(sấp) hặc mặt N (ngửa). 
-
-2. **Kì vọng**: hay còn gọi là trung bình của một đại lượng ngẫu nhiên $\text{x}$ được kí hiệu là $\text{E(x)}$  hoặc $\bar{\text{x}}$ thoả mãn:
-
-  * Nếu $\text{x}$ là đại lượng ngẫu nhiên rời rạc:
-Coi $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$
 $$\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)$$
-Trường hợp khả năng xảy ra của các $x_i$ là như nhau ta có $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$
-  * Nếu $\text{x}$ là một đại lượng ngẫu nhiên liên tục:
-$$\text{E(x) }= \bar{\text{x}} = \int xp(x) dx$$
-    Một số tính chất của kì vọng:
-    * $\text{E(ax)} = a\text{E(x)}$
-    * $\text{E(ax+by)} = a\text{E(x)} + b\text{E(y)}$
-    * Nếu $\text{x, y}$ là 2 biến ngẫu nhiên độc lập thì $\text{E(xy)} = \text{E(x)}\text{E(y)}$
 
-3. **Hiệp phương sai**: Là đại lượng đo lường mối quan hệ cùng chiều hoặc ngược chiều giữa 2 biến ngẫu nhiên. Đây là đại lượng được sử dụng nhiều trong kinh tế lượng và thống kê học để giải thích mối quan hệ tác động giữa các biến. Khi hiệp phương sai giữa 2 biến lớn hơn 0, chúng có quan hệ đồng biến và ngược lại. Hiệp phương sai chỉ được tính trên 2 chuỗi có cùng độ dài. Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng theo thứ tự tương ứng trong chuỗi.
+* Nếu $\text{x}$ là đại lượng ngẫu nhiên rời rạc.
+
+	$$\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)$$
+
+	Trong đó $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$. Trường hợp khả năng xảy ra của các $x_i$ là như nhau: $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$
+
+* Nếu $\text{x}$ là một đại lượng ngẫu nhiên liên tục:
+
+	$$\text{E(x) }= \bar{\text{x}} = \int xp(x) dx$$
+
+	Một số tính chất của kì vọng:
+	* $\text{E(ax)} = a\text{E(x)}$
+	* $\text{E(ax+by)} = a\text{E(x)} + b\text{E(y)}$
+	* Nếu $\text{x, y}$ là 2 biến ngẫu nhiên độc lập thì $\text{E(xy)} = \text{E(x)}\text{E(y)}$
+
+3.**Hiệp phương sai**: Là đại lượng đo lường mối quan hệ cùng chiều hoặc ngược chiều giữa 2 biến ngẫu nhiên. Đây là đại lượng được sử dụng nhiều trong kinh tế lượng và thống kê học để giải thích mối quan hệ tác động giữa các biến. Khi hiệp phương sai giữa 2 biến lớn hơn 0, chúng có quan hệ đồng biến và ngược lại. Hiệp phương sai chỉ được tính trên 2 chuỗi có cùng độ dài.
+
 $$\text{cov(x, y)} = \text{E}[(\text{x}-\bar{\text{x}})(\text{y}-\bar{\text{y}})] = \frac{\sum_{i=1}^{n} (x_i-\bar{\text{x}})(y_i-\bar{\text{y}})}{n}$$
-Hiệp phương sai có tính chất giao hoán: $\text{cov(x, y) = cov(y, x)}$.
-Khai triển công thức hiệp phương sai ta có:
+
+Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ và được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng theo thứ tự tương ứng trong chuỗi.
+
+Các tính chất của hiệp phương sai:
+* tính chất giao hoán: 
+$$\text{cov(x, y) = cov(y, x)}$$
+* tính chất tuyến tính:
+$$\text{cov(ax, by) = ab.cov(x, y)}$$
+* Khai triển công thức hiệp phương sai ta có:
 $$\begin{eqnarray}\text{cov(x, y)} & = & \text{E(xy)}-\mu_\text{x}\text{E(y)}-\mu_\text{y}\text{E(x)} + \mu_\text{x}\mu_\text{y}\end{eqnarray}$$
+
 Trong đó $\mu_\text{x}, \mu_\text{y}$ lần lượt là kì vọng của $\text{x, y}$. Chứng minh công thức trên không khó. Xin dành cho bạn đọc.
-4. **Phương sai**: là đại lượng đo lường tổng bình phương sai số của từng phần tử so với trung bình. Phương sai của một số thể hiện mức độ biến thiên của số đó xung quan giá trị trung bình. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại. Phương sai của đại lượng $\text{x}$ được kí hiệu là $\text{Var}(x)$ hoặc $\sigma_x^2$ trong trường hợp mẫu là tổng thể và $s_x^2$ trong trường hợp mẫu là tập con rút ra từ tổng thể. Công thức phương sai được tính như sau:
-  * Nếu x là đại lượng ngẫu nhiên rời rạc:
-$$\text{Var}(x) = \sum_{i=1}^{n} (x_i-\mu)^2 p(x_i) dx$$
-Trong đó $\text{E}(x) = \mu$. Khi các biến cố xảy ra với cùng xác xuất bằng $\frac{1}{n}$, phương sai chính là trung bình:
-$$\text{Var}(x) = \frac{\sum_{i=1}^{n} (x_i-\mu)^2}{n}$$
-  * Nếu x là đại lượng ngẫu nhiên liên tục:
-$$\text{Var}(x) = \int (x_i-\mu)^2 p(x_i) dx$$
-Ta có mối liên hệ giữa phương sai và kì vọng như sau:
-$$\begin{eqnarray}\text{Var}(x) & = & \text{E}((x-\mu)^2) \\
-& = & \text{E}((x^2-2\mu x+\mu^2)) \\
-& = & \text{E}(x^2)-2\mu \text{E}(x)+\text{E}(\mu^2) \\
-& = & \text{E}(x^2)-2\mu^2+\mu^2 \\
-& = & \text{E}(x^2)-\mu^2 \\
-& = & \text{E}(x^2)-\text{E}(x)^2 \\
-\end{eqnarray}$$
-Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ.
-5. **Độ lệch chuẩn**: Độ lệch chuẩn của một biến có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số biến so với trung bình.
+
+4.**Phương sai**: Là trường hợp đặc biệt của hiệp phương sai khi đo lường mối quan hệ giữa một biến với chính nó. Về công thức phương sai bằng tổng bình phương sai số của từng phần tử so với trung bình. Phương sai của một số thể hiện mức độ biến thiên của số đó xung quanh giá trị trung bình. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại. 
+Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2$. Công thức phương sai được tính như sau:
+
+* Nếu $x$ là đại lượng ngẫu nhiên rời rạc:
+
+	$$\text{Var}(x) = \sum_{i=1}^{n} (x_i-\mu)^2 p(x_i) dx$$
+
+	Trong đó $\text{E}(x) = \mu$. Khi các biến cố xảy ra với cùng xác xuất bằng $\frac{1}{n}$, phương sai chính là trung bình $\text{Var}(x) = \frac{\sum_{i=1}^{n} (x_i-\mu)^2}{n}$
+
+* Nếu $x$ là đại lượng ngẫu nhiên liên tục:
+
+	$$\text{Var}(x) = \int (x_i-\mu)^2 p(x_i) dx$$
+
+	Phương sai của một biến có thể được tính toán thông qua kì vọng của biến:
+
+	$$\begin{eqnarray}\text{Var}(x) & = & \text{E}((x-\mu)^2) \\
+	& = & \text{E}((x^2-2\mu x+\mu^2)) \\
+	& = & \text{E}(x^2)-2\mu \text{E}(x)+\text{E}(\mu^2) \\
+	& = & \text{E}(x^2)-2\mu^2+\mu^2 \\
+	& = & \text{E}(x^2)-\mu^2 \\
+	& = & \text{E}(x^2)-\text{E}(x)^2 \\
+	\end{eqnarray}$$
+
+	Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ.
+
+5.**Độ lệch chuẩn**: Độ lệch chuẩn của một biến có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số biến so với trung bình.
+
 $$\sigma_x = \sqrt{\text{Var}(x)}$$
+
 Trong trường hợp các biến rời rạc phân phối đều với xác xuất $\frac{1}{n}$:
+
 $$\sigma_x = \sqrt{\frac{\sum_{i=1}^{n}(x-\bar{x})^2}{n}}$$
 
-6. **Hệ số tương quan**: Là một chỉ số gần gũi với hiệp phương sai. Nó cũng nhằm đánh giá mối quan hệ tương quan cùng chiều hoặc ngược chiều giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai đó là bên cạnh đánh giá sự đồng biến, hệ số tương quan còn cho biết mối quan hệ tương quan tuyến tính mạnh hay yếu. Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Phương trình biểu diễn tương quan được tính như sau:
-$$\rho_{\text{xy}} = \frac{\text{cov(x,y)}}{\sigma_{\text{x}}\sigma_{\text{y}}}$$
+6.**Hệ số tương quan**: Là một chỉ số gần gũi với hiệp phương sai. Nó cũng nhằm đánh giá mối quan hệ tương quan cùng chiều hoặc ngược chiều giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai đó là bên cạnh đánh giá sự đồng biến, hệ số tương quan còn cho biết mối quan hệ tương quan tuyến tính mạnh hay yếu. 
+
+Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Phương trình biểu diễn tương quan được tính như sau:
+
+$$\rho_{\text{xy}} = \frac{\text{cov(x,y)}}{\sigma_{x}\sigma_{y}}$$
 
 ## 1.2. Qui luật số lớn
 
@@ -64,23 +96,23 @@ $\epsilon$ là tiến về 0 khi $n$ tiến về dương vô cùng.
 $$\lim_{n \rightarrow \infty} P(|\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)}| \geq \epsilon) = 0$$
 
 Để chứng minh định lý này ta cần sử dụng đến bất đẳng thức Markov: Xác xuất để một biến ngẫu nhiên $\text{X}$ không âm lớn hơn $a$ ($a > 0$) luôn nhỏ hơn kì vọng của biến ngẫu nhiên đó chia cho $a$.
-
 $$P(\text{X}\geq a) \leq \frac{\text{E(X)}}{a}$$
 
 **Chứng minh bất đẳng thức markov:**
 
-Ta có:
-$$\text{E(X)} = \int_{-\infty}^{\infty} xf(x)dx$$
-Mặt khác do $x$ không âm nên 
+Do $x$ không âm nên 
+
 $$\begin{eqnarray}\text{E(X)} &=& \int_{0}^{\infty} xf(x)dx \\
 &=& \int_{0}^{a} xf(x)dx + \int_{a}^{\infty} xf(x)dx \\
 &\geq& \int_{a}^{\infty} xf(x)dx \\
 &\geq& \int_{a}^{\infty} af(x)dx \\
 &=& a\int_{a}^{\infty}f(x)dx \\
 &=& a.P(\text{X} \geq a)\end{eqnarray}$$ 
+
 Từ đó suy ra $$P(\text{X}\geq a) \leq \frac{\text{E(X)}}{a}$$
 
-**Chứng mình qui luật số lớn:**
+**Chứng minh qui luật số lớn:**
+
 $$P(|\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)}| \geq \epsilon) = P((\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)})^2 \geq \epsilon^2)$$
 
 Đặt $\text{Z} = (Y_{n}-\text{E(X)})^2$. Áp dụng bất đẳng thức markov cho đại lượng không âm $\text{Z}$, ta có:
@@ -88,8 +120,11 @@ $$P(\text{Z} \geq \epsilon^2) \leq \frac{\text{E(Z)}}{\epsilon^2} \tag{1}$$
 Mặt khác khi $n$ tiến tới $\infty$:
 
 $$\text{E}(Y_n) = \text{E(X)}$$
+
 Ở đây ta coi $X_1, X_2, \dots, X_n$ là các biến độc lập. Khi đó:
+
 $$\text{Var}(Y_{n}) = \text{Var}(\frac{X_1 + X_2 + \dots + X_n}{n}) = \frac{n\text{Var(X)}}{n^2} = \frac{\text{Var(X)}}{n}$$
+
 Do đó:
 
 $$\begin{eqnarray}\lim_{n \rightarrow \infty}\text{E(Z)} & = & \lim_{n \rightarrow \infty}\text{E}(Y_{n}-\text{E(X)})^2 \\
@@ -99,10 +134,11 @@ $$\begin{eqnarray}\lim_{n \rightarrow \infty}\text{E(Z)} & = & \lim_{n \rightarr
 \end{eqnarray}$$
 
 Từ đó thế vào (1) ta suy ra:
+
 $$\begin{eqnarray}\lim_{n \rightarrow \infty} P(\text{Z} \geq \epsilon^2) &\leq& \lim_{n \rightarrow \infty}\frac{\text{E(Z)}}{\epsilon^2} \\
 &=& \lim_{n \rightarrow \infty} \frac{\text{Var(X)}}{n\epsilon^2} = 0\end{eqnarray}$$
-Mặt khác $P(\text{Z} \geq \epsilon^2) \geq 0$ nên suy ra 
-$$\lim_{n \rightarrow \infty}P(\text{Z} \geq \epsilon^2) = 0$$
+
+Mặt khác $P(\text{Z} \geq \epsilon^2) \geq 0$ nên suy ra $\lim_{n \rightarrow \infty}P(\text{Z} \geq \epsilon^2) = 0$.
 Suy ra điều phải chứng minh. Mấu chốt của chứng minh bất đẳng thức này là chúng ta phải phát hiện được tính chất $\text{Var}(Y_{n}) = \frac{\text{Var(X)}}{n}$ là một đại lượng tiến dần về 0 khi $n$ tiến tới vô cùng.
 
 ## 1.3. Định lý giới hạn trung tâm
@@ -112,8 +148,10 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 
 Nếu đặt $\text{Z}=\frac{\bar{\text{X}}-\mu}{\sigma\sqrt{n}}$ ta sẽ thu được một biến $\text{Z}$ tuân theo phân phối chuẩn hoá $\mathbf{N}(0, 1)$. Coi $\bar{\text{X}}$ là trung bình và $s_x^2$ là phương sai của $S_X$.
 
-Khoảng tin cậy $1-\alpha$ của biến $\text{X}$ có thể được ước lượng qua các trung bình và phương sai của $S_X$:
+Khoảng tin cậy $1-\alpha$ của trung bình tổng thể có thể được ước lượng qua các trung bình và phương sai của $S_X$:
+
 $$[\bar{\text{X}}-u_{\alpha/2}\frac{s_{x}}{\sqrt{n}}, \bar{\text{X}}+u_{\alpha/2}\frac{s_{x}}{\sqrt{n}}]$$
+
 
 # Phần 2 - Xác xuất
 
@@ -137,7 +175,7 @@ Trong trường hợp này thuật ngữ hàm mật độ xác xuất (*probabil
 
 Như chúng ta đã biết tích phân của một hàm số $f(x)$ chính là diện tích nằm giữa đường cong đồ thị $y = f(x)$ và trục hoành. Như vậy, phần diện tích nằm dưới hàm mật độ xác xuất $p(x)$ và trên trục hoành luôn có giá trị là 1. Chẳng hạn như đồ thị hàm mật độ xác xuất của phân phối chuẩn như hình bên dưới:
 
-![Đồ thị mật độ xác xuất của phân phối chuẩn](https://ds055uzetaobb.cloudfront.net/image_optimizer/1dbcc5a80e3fb541aa4678fcff58bb26ca717902.png)
+<img src="https://ds055uzetaobb.cloudfront.net/image_optimizer/1dbcc5a80e3fb541aa4678fcff58bb26ca717902.png" alt="normal distribution" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > Hàm mật độ xác xuất của phân phối chuẩn có phương trình $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^\frac{-(x-\mu)^2}{2\sigma^2}$ là đường cong có hình quả chuông đối xứng 2 bên. Giá trị hàm mật độ xác xuất tại những điểm lùi về phía 2 đuôi trái và phải nhỏ dẫn và giá trị hàm mật độ xác xuất tại vị trí trung tâm $x=\mu$ là lớn nhất. Phần diện tích màu hồng nằm dưới đường cong hàm mật độ xác xuất và trục hoành có giá trị bằng 1.
 
@@ -147,24 +185,33 @@ Trường hợp trên là đối với không gian xác xuất chỉ gồm 1 bi�
 
 Tổng các khả năng xảy ra của các biến cố trong không gian các biến cố đồng thời luôn bằng 1. Điều đó có nghĩa là:
 
-**Nếu x, y rời rạc:** $$\sum_{x, y} p(x, y) = 1$$
+**Nếu x, y rời rạc:** 
 
+$$\sum_{x, y} p(x, y) = 1$$
 
-**Nếu x, y liên tục:** $$\int {p(x, y)} dx dy = 1$$
+**Nếu x, y liên tục:** 
 
-**Nếu x rời rạc, y liên tục:** $$\sum_{x}\int p(x, y) dy = 1$$
+$$\int {p(x, y)} dx dy = 1$$
+
+**Nếu x rời rạc, y liên tục:** 
+
+$$\sum_{x}\int p(x, y) dy = 1$$
+
 
 ## 2.3. Phân phối xác xuất biên:
 
 Nếu chúng ta cố định một biến cố và tính tổng hoặc tích phân các xác xuất chung $p(x, y)$ theo biến cố còn lại thì ta sẽ thu được hàm phân phối xác xuất của theo một biến. Hàm phân phối xác xuất này được gọi là xác xuất biên (*marginal probability*) được tính như sau:
 
 **Biến rời rạc:**
+
 $$p(x) = \sum_{y} p(x, y)$$
+
 $$p(y) = \sum_{x} p(x, y)$$
 
 **Biến liên tục:**
 
 $$p(x) = \int_{y} p(x, y) dy$$
+
 $$p(y) = \int_{x} p(x, y) dx$$
 
 
@@ -190,10 +237,8 @@ Chúng ta có thể biểu diễn xác xuất có điều kiện của biến c�
 
 $$\begin{eqnarray} p(x|y) & = &\frac{p(x, y)}{p(y)} \\ & = & \frac{p(x, y)}{\sum_{x} p(x, y)}\\ & = & \frac{p(y|x)p(x)}{\sum_{x}p(y|x)p(x)}\end{eqnarray}$$
 
-Ví dụ: Gọi $x$ là biến cố khách hàng vỡ nợ, $y$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND. 
-
-Như vậy ta cần tính $p(x|y)$. Tuy nhiên trên thực tế ta rất khó để biết được một khách hàng mới có vỡ nợ hay không. Mặt khác thông tin mà ta biết là thu nhập của khách hàng nên dựa trên phân phối xác xuất có điều kiện của sự kiện vỡ nợ $y$ đối với từng nhóm thu nhập $x$ tức xác xuất $p(y|x)$ ta hoàn toàn tính được khả năng vỡ nợ của một khách hàng nếu thuộc nhóm dưới 10 triệu.
-
+Ví dụ: Gọi $x$ là biến cố khách hàng vỡ nợ, $y$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND ta làm như sau:
+Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.
 
 
 # Phần 3 - Kiểm định và phân phối thống kê
@@ -216,7 +261,7 @@ $$\begin{equation}
               \end{array} \right.
             \end{equation}$$
             
-<img src="https://www.probabilitycourse.com/images/chapter4/PDF-Uniform_b.png" alt="uniform distribution" width="300px" height="300px"/>
+<img src="https://www.probabilitycourse.com/images/chapter4/PDF-Uniform_b.png" alt="uniform distribution" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > Hình 2: Đồ thị hàm mật độ xác xuất của phân phối đều trên đoạn $[a, b]$. Khi $b-a < 1$ thì hàm mật độ xác xuất có thể lớn hơn 1.
 
@@ -224,7 +269,7 @@ $$\begin{equation}
 <br/>
 Một định nghĩa nữa rất quan trọng đo lường xác xuất của phân phối xảy ra tại một miền giá trị bất kì trong không gian xác xuất, đó là hàm phân phối xác xuất tích luỹ (*cdf - cumulative distribution function*). Giá trị của hàm phân phối xác xuất tích luỹ chính là tích phân của mật độ xác xuất hoặc tổng của hàm phân phối xác xuất. Do đó kí hiệu của nó thường là $F_X(x)$. Hàm *cdf* được biểu thị trên đồ thị như thế nào? Hẳn chúng ta còn nhớ khái niệm về tích phân đã từng học tại THPT, đây chính là phần diện tích nằm dưới đồ thị của hàm số và trục hoành. Do đó khi biểu diễn một hàm mật độ xác xuất ta có hàm phân phối xác xuất của nó sẽ là phần diện tích dưới phương trình hàm mật độ và trên trục hoành. Chẳng hạn trong phân phối chuẩn ta có hàm phân phối xác xuất tích luỹ của $\text{X}$ trong miền giá trị $\text{X} < 1$ chính là diện tích phần gạch chéo.
 
-<img src="http://work.thaslwanter.at/Stats/html/_images/PDF_CDF.png" alt="cummulative distribution function" width="400px" height="400px"/>
+<img src="http://work.thaslwanter.at/Stats/html/_images/PDF_CDF.png" alt="cummulative distribution function" width="600px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > Hình 3: Diện tích biểu diễn hàm phân phối xác xuất $F_X(1)$ (phần gạch chéo).
 
@@ -233,7 +278,7 @@ Một định nghĩa nữa rất quan trọng đo lường xác xuất của ph�
 
 Phân phối chuẩn là phân phối kinh điển nhất trong thống kê. Nó được tìm ra bởi nhà toán học Gaussian (ông vua của các nhà toán học) nên còn được gọi là phân phối Gaussian. Người ta từng ví rằng việc tìm ra qui luật phân phối chuẩn quan trọng giống như việc tìm ra 3 định luật của Newton trong vật lý cổ điển. Người Đức tự hào về phân phối chuẩn đến mức đã cho in hình quả chuông chuẩn trên tờ tiền của họ. 
 
-<img src="https://www.kleinbottle.com/images/10Deutschmarksbellcurve.jpg" width="300px" height="300px"/>
+<img src="https://www.kleinbottle.com/images/10Deutschmarksbellcurve.jpg" width="500px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > Hình 4: Hình ảnh phân phối chuẩn bên cạnh nhà toán học Gaussian trên đồng tiền Đức.
 
@@ -258,6 +303,7 @@ Giả sử ta có một giả thuyết rằng trung bình của $\text{X}$ là $
 * $H_1$-giả thuyết thay thế (alternative hypothesiss) là giả thuyết đối của giả thuyết $H_0$.
 
 Biểu diễn 2 giả thuyết này như sau:
+
 $$\begin{equation}
             \left\{
               \begin{array}{l l}
@@ -266,10 +312,21 @@ $$\begin{equation}
               \end{array} \right.
             \end{equation}$$
 
-Với mức ý nghĩa $(1-\alpha)$ thì miền chấp nhận giả thuyết $H_0$ chính là $\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|\mu - u_{\alpha/2}.\sigma \leq \text{X} \leq \mu + u_{\alpha/2}.\sigma\}$
+Với mức ý nghĩa $(1-\alpha)$ thì miền chấp nhận giả thuyết $H_0$ chính là
+
+$$\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|\mu - u_{\alpha/2}.\sigma \leq \text{X} \leq \mu + u_{\alpha/2}.\sigma\}$$
+
+Mức ý nghĩa ở đây có thể hiểu là khả năng chắc chắn để giả thuyết $H_0$ xảy ra. Nếu mức ý nghĩa là 95%, ta có thể khẳng định chắc rằng khả năng rơi vào miền $\mathcal{D}$ của $\text{X}$ là 95%.
+
+Trên thực tế xác xuất tính theo phân phối chuẩn 
+
+$$P(\mu - u_{\alpha/2}.\sigma \leq \text{X} \leq \mu + u_{\alpha/2}.\sigma) = 1-\alpha$$
+
+Lưu ý khi xác định chấp nhận hay bác bỏ một giả thuyết ta luôn phải đi kèm với điều kiện kết luận ở mức ý nghĩa bao nhiêu %.
 
 **Giả thuyết lớn hơn**
-Cặp giả thuyết lớn hơn sẽ khác với cặp giả thuyết dấu bằng ở chỗ trong phát biểu của nó giả thuyết $H_1$ là một dấu lớn nhỏ hơn. Biểu diễn cặp giả thuyết lớn hơn như sau:
+Cặp giả thuyết lớn hơn dùng để kiểm chứng một nhận định giá trị của một biến lớn hơn một hằng số nào đó. giả thuyết này sẽ khác với cặp giả thuyết dấu bằng ở chỗ trong phát biểu của nó giả thuyết $H_1$ là một dấu lớn nhỏ hơn thay vì dấu khác. Biểu diễn cặp giả thuyết lớn hơn như sau:
+
 $$\begin{equation}
             \left\{
               \begin{array}{l l}
@@ -277,10 +334,18 @@ $$\begin{equation}
                 H_1: \text{X} < \mu
               \end{array} \right.
             \end{equation}$$
-Miền chấp nhận giả thuyết $H_0$ của giả thuyết này là $\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|X \geq \mu - u_{\alpha}.\sigma\}$
+			
+Với mức ý nghĩa $(1-\alpha)$, miền chấp nhận giả thuyết $H_0$ là 
+
+$$\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|X \geq \mu - u_{\alpha}.\sigma\}$$
+
+Xác xuất 
+
+$$P(X \geq \mu - u_{\alpha}.\sigma) = 1-\alpha$$
 
 **Giả thuyết nhỏ hơn**
-Hoàn toàn tương tự như cặp giả thuyết lớn hơn ta có biểu diễn của cặp giả thuyết nhỏ hơn.
+Được sử dụng để kiểm chứng một nhận định giá trị của một biến nhỏ hơn một hằng số nào đó. Hoàn toàn tương tự như cặp giả thuyết lớn hơn ta có biểu diễn của cặp giả thuyết nhỏ hơn.
+
 $$\begin{equation}
             \left\{
               \begin{array}{l l}
@@ -288,7 +353,15 @@ $$\begin{equation}
                 H_1: \text{X} > \mu
               \end{array} \right.
             \end{equation}$$
-Miền chấp nhận giả thuyết $H_0$ của giả thuyết này là $\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|X \leq \mu - u_{\alpha}.\sigma\}$
+			
+Với mức ý nghĩa $(1-\alpha)$, miền chấp nhận giả thuyết $H_0$ của giả thuyết này là 
+
+$$\mathcal{D} = \{\text{X}\sim \mathbf{N}(\mu, \sigma^2)|X \leq \mu - u_{\alpha}.\sigma\}$$
+
+Xác xuất 
+
+$$P(X \leq \mu - u_{\alpha}.\sigma) = 1-\alpha$$
+
 
 ## 3.3. t-student.
 
@@ -310,7 +383,7 @@ Trong trường hợp chưa biết phương sai tổng thể:
 $$\text{Z} = \frac{\text{X}-\mu}{S\sqrt{n-1}} \sim \mathbf{T}(n-1)$$
 Do là một phân phối thay thế cho phân phối chuẩn hoá trong trường hợp chưa xác định phương sai tổng thể nên hình dạng của phân phối t-student cũng gần như phân phối chuẩn phối chuẩn hoá. Trên thực tế nếu $\text{Z}\sim \mathbf{T}(n-1)$ thì $\text{E(Z)} = 0$ và $\text{Var(Z)} = \frac{n}{n-2}$ (với $n > 2$, còn lại không xác định). Trong trường hợp bậc tự do vô cùng lớn, phân phối t-student hội tụ về phân phối chuẩn hoá.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Student_t_pdf.svg/650px-Student_t_pdf.svg.png" width="300px" height="300px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Student_t_pdf.svg/650px-Student_t_pdf.svg.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > Hình 5: Hình dạng của phân phối t-student với bậc tự do lần lượt là $1, 2, 5, +\infty$ 
 
@@ -320,9 +393,9 @@ Phân phối chi-square kí hiệu là $\chi^2$ là một phân phối có bậc
 
 Bên dưới là đồ thị của hàm mật độ xác xuất của phân phối chi-square.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Chi-square_pdf.svg/482px-Chi-square_pdf.svg.png"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Chi-square_pdf.svg/482px-Chi-square_pdf.svg.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-> Hình 5: Hàm mật độ xác xuất (*pdf*) của phân phối chi-square với bậc tự do từ 1 đến 9
+> Hình 6: Hàm mật độ xác xuất (*pdf*) của phân phối chi-square với bậc tự do từ 1 đến 9
 
 Ta nhận thấy chi-square là một phân phối lệch trái. Khi bậc tự do của nó càng nhỏ thì đồ thị lệch trái đồng thời phần đuôi phía bên phải càng mỏng và trái lại.
 
@@ -341,7 +414,7 @@ $$\chi^{2} = \sum_{i=1}^{n}\frac{(O_i-E_i)^2}{E_i}$$
 **Ví dụ**: Một súc sắc 6 mặt được ném 60 lần. Số lần xuất hiện các mặt 1, 2, 3, 4, 5 và 6 lần lượt là 5, 8, 9, 8, 10 và 20. Kiểm định giả thuyết rằng có sự khác biệt về khả năng nhận được các mặt theo kểm định Pearson chi-squared ở mức ý nghĩa 95%?
     <br/>
 Kì vọng là khả năng nhận được các các mặt của xác xuất là như nhau, do đó mỗi mặt được dự kiến xuất hiện là bằng nhau và bằng 60/6 = 10. Các kết quả được lập bảng như sau:
-<table class="wikitable" style="text-align:center;">
+<table class="wikitable" align="center" border="1">
 <tbody><tr>
 <th style="padding:0 1em;"><i>i</i>
 </th>
@@ -408,7 +481,7 @@ Kì vọng là khả năng nhận được các các mặt của xác xuất là
 <td>13.4
 </td></tr></tbody></table>
 Bậc của tự do chính là $n-1 = 5$. Gía trị tới hạn đuôi lớn hơn của phân phối chi-square tại mức tin cậy 95% được cho ở bảng bên dưới
-<table class="wikitable" style="text-align:center;font-size:90%;line-height:0.9;">
+<table class="wikitable" align="center" border="1">
 <tbody><tr>
 <th rowspan="2">Degrees<br> of<br>freedom
 </th>
@@ -430,13 +503,14 @@ Bậc của tự do chính là $n-1 = 5$. Gía trị tới hạn đuôi lớn h�
 <td><i>15.086</i></td>
 <td>20.515
 </td></tr></tbody></table>
+
 Gía trị kiểm định giả thuyết là 13.4 vượt qua giá trị tới hạn tại mức ý nghĩa 95%. Do đó bác bỏ giả thuyết dấu bằng $H_0$ và kết luận rằng xác xuất khả năng xảy ra các mặt của súc sắc là khác nhau tại mức ý nghĩa 95%.
 
 
 * Kiểm tra tính phụ thuộc giữa các biến phân loại dựa trên bảng cross table.
 <br/>
 Ví dụ: Để dễ minh họa tôi xin lấy ví dụng từ wikipedia. Chúng ta có số liệu về 100 học sinh được lựa chọn ngẫu nhiên theo 2 tiêu chí giới tính (Sex) và tay thuận (Handedness) được rút ra từ một tổng thể rất lớn một cách ngẫu nhiên. Bảng thông kê cross table cho thấy như dưới:
-<table style="margin-left:auto;margin-right:auto;text-align:center;">
+<table style="margin-left:auto;margin-right:auto;text-align:center;" border="1">
 <tbody><tr>
 <th style="background:linear-gradient(to top right,#eaecf0 49.5%,#aaa 49.5%,#aaa 50.5%,#eaecf0 50.5%);line-height:1;">
     <div style="margin-left:2em;text-align:right;">Handed-<br>ness</div>
@@ -474,6 +548,7 @@ Ví dụ: Để dễ minh họa tôi xin lấy ví dụng từ wikipedia. Chúng
 <br/>
 Thường được áp dụng trong tìm khoảng tin cậy trong phân tích chuỗi thời gian. Thu thập số liệu biến thiên tỷ suất lợi nhuận của các mã chứng khoán trong vòng 36 tháng ta sẽ thu được một chuỗi các độ lệch chuẩn $\sigma_1^2, \sigma_2^2,...,\sigma_{36}^2$. Tìm khoảng tin cậy 95% độ giao động của chuỗi chứng khoán trong tháng tiếp theo.
 
+
 ## 3.5. Phân phối Fisher
 
 Phân phối Fisher rất thường xuyên xuất hiện trong kinh tế lượng vì ứng dụng trong việc tìm sự khác biệt giữa 2 phương trình hồi qui, và phân tích phương sai ANOVA. Bởi vì được nghĩ ra bởi nhà thống kê học nổi tiếng Fisher người được coi là đặt nền móng cho ngành thống kê hiện đại nên tên của phân phối được đặt theo tên ông. Phân phối Fisher được xây dựng dựa trên một phép chia của 2 đại lượng ngẫu nhiên tuân theo qui luật phân phối có bậc tự do. Do đó một phân phối Fisher đặc trưng bởi 2 bậc tự do, một của tử số và một của mẫu số.
@@ -487,15 +562,31 @@ Một số tính chất của phân phối Fisher:
 * Nếu $\text{X} \sim \mathbf{F}(d_1, d_2)$ thì $\text{X}^{-1} \sim \mathbf{F}(d_2, d_1)$
 
 Ví dụ về ứng dụng của kiểm định Fisher về ý nghĩa của các hệ số ước lượng trong phương trình hồi qui như sau:
+
 Một tập hợp gồm $p$ biến độc lập $\text{X}_1, \dots, \text{X}_p$ và biến phụ thuộc $\text{Y}$. Hồi qui toàn bộ $p$ biến giải thích ta thu được phương trình hồi qui:
+
 $$a_0 + a_1\text{X}_1 + \dots + a_p\text{X}_n + \epsilon= \text{Y}$$
+
 với $a_i$ là các hệ số tự do, $\epsilon$ là thành phân đại diện cho sai số ngẫu nhiên.
-Phương trình hồi qui trên có tổng bình phương sai số (RSS - residual sum square) là $\text{RSS}_1 = \sum_{i=1}^{n} \epsilon_{i}^2$ với $n$ là số quan sát.
-Kiểm tra hệ số p-value của ước lượng cho thấy các biến từ $\text{X}_{q}, \text{X}_{q+1}, \dots, \text{X}_{p}$ ,với  $q<p$ không có ý nghĩa thống kê (p-value > 0.05). Loại các biến này ra khỏi phương trình hồi qui ta thu được phương trình hồi qui thứ 2.
+
+Phương trình hồi qui trên có tổng bình phương sai số (RSS - residual sum square) là 
+
+$$\text{RSS}_1 = \sum_{i=1}^{n} \epsilon_{i}^2$$ 
+
+với $n$ là số quan sát.
+
+Kiểm tra hệ số p-value của ước lượng cho thấy các biến từ $X_{q}, X_{q+1}, \dots, X_{p}, q<p$ không có ý nghĩa thống kê (p-value > 0.05). Loại các biến này ra khỏi phương trình hồi qui ta thu được phương trình hồi qui thứ 2.
+
 $$a_0 + a_1\text{X}_1 + \dots + a_q\text{X}_q + u= \text{Y}$$
-Phương trình này có tổng bình phương sai số là $\text{RSS}_2 = \sum_{i=1}^{n} u_{i}^2$. Kiểm định giả thuyết rằng các hệ số $a_{q}, a_{q+1}, \dots, a_{p}$ không có ý nghĩa thống kê.
+
+Phương trình này có tổng bình phương sai số là 
+
+$$\text{RSS}_2 = \sum_{i=1}^{n} u_{i}^2$$
+
+Kiểm định giả thuyết rằng các hệ số $a_{q}, a_{q+1}, \dots, a_{p}$ không có ý nghĩa thống kê.
 
 Khi đó chúng ta có cặp giải thuyết kiểm định:
+
 $$\begin{equation}
             \left\{
               \begin{array}{l l}
@@ -503,12 +594,18 @@ $$\begin{equation}
                 H_1: \sum_{i=q}^{p} a_i^2 > 0 
               \end{array} \right.
             \end{equation}$$
-Việc chấp nhận giả thuyết $H_0$ tương đương với việc chấp nhận rằng 2 phương trình hồi qui như nhau nên tổng bình phương sai số $\text{RSS}_1 = \text{RSS}_2$. Do đó ta qui bài toán về kiểm định $\text{RSS}_1 = \text{RSS}_2$. Ta nhận thấy $\text{RSS}_1$ và $\text{RSS}_2$ đều là những phân phối chi-square nên thương của chúng sẽ có dạng một phân phối fisher. Ý tưởng là chúng ta cần tạo ra một phân phối fisher có thể dùng để tính toán giá trị tới hạn và đối chiếu với giá trị kiểm định. Đó chính là:
+
+Việc chấp nhận giả thuyết $H_0$ tương đương với việc chấp nhận rằng 2 phương trình hồi qui như nhau. 
+Do đó ta qui bài toán về kiểm định $\text{RSS}_1 = \text{RSS}_2$. Ta nhận thấy $\text{RSS}_1$ và $\text{RSS}_2$ đều là những phân phối chi-square nên thương của chúng sẽ có dạng một phân phối fisher. Ý tưởng là chúng ta cần tạo ra một phân phối fisher có thể dùng để tính toán giá trị tới hạn và đối chiếu với giá trị kiểm định. Đó chính là:
+
 $$\text{F} = \frac{(\text{RSS}_1 - \text{RSS}_2)/(p-q)}{\text{RSS}_2/(n-p)}$$
+
 có phân phối $\mathbf{F}(p-q, n-p)$.
 
 Để bác bỏ $H_0$ với mức tin cậy 95% ta cần $\text{F} > F_{0.05}(p-q, n-p)$ và trái lại. Chúng ta có thể biểu diễn miền bác bỏ giả thuyết $H_0$ là phần diện tích ở phía đuôi bên phải như hình bên dưới:
 
-<img src="http://oak.snr.missouri.edu/nr3110/images/Fdist-fig.jpeg" height="300px" width="300px"/>
+<img src="http://oak.snr.missouri.edu/nr3110/images/Fdist-fig.jpeg" height="300px" width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-> Hình 6: Miền bác bỏ giả thuyết $H_0$ với mức độ tin cậy 95% của kiểm định fisher.
+> Hình 7: Miền bác bỏ giả thuyết $H_0$ với mức độ tin cậy 95% của kiểm định fisher.
+
+
