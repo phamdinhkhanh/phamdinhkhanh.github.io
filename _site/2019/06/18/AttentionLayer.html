@@ -162,7 +162,7 @@ Các kĩ thuật RNN đã trải qua rất nhiều những tiến bộ với nhi
 
 <p><img src="https://cdn-images-1.medium.com/max/1000/0*VrRTrruwf2BtW4t5." width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 <blockquote>
-  <p><strong>Hình 2</strong>:Mô hình seq2seq khi chưa có attention layer</p>
+  <p><strong>Hình 2</strong>:Mô hình seq2seq khi đã có attention layer</p>
 </blockquote>
 
 <p>Như trong hình 2, Từ ‘I’ trong tiếng anh tương ứng với ‘Je’ trong tiếng Pháp. Do đó attention layer điều chỉnh một trọng số $\alpha$ lớn hơn ở context vector so với các từ khác.</p>
@@ -170,6 +170,7 @@ Các kĩ thuật RNN đã trải qua rất nhiều những tiến bộ với nhi
 <p>Màu xanh đại diện cho encoder và màu đỏ đại diện cho decoder. Các thẻ màu xanh chính là các hidden state $h_t$ được trả ra ở mỗi unit (trong keras, khi khởi tạo RNN chúng ta sử dụng tham số return_sequences = True để trả ra các hidden state, trái lại chỉ trả ra hidden state ở unit cuối cùng). 
 Chúng ta thấy context vector sẽ lấy toàn bộ đầu ra của input để tính toán phân phối xác xuất cho mỗi từ đơn của decoder mà chúng ta muốn khởi tạo. Bằng một cơ chế tối ưu hóa, mô hình có khả năng thu được thông tin của toàn bộ câu input thay vì chỉ một từ input so với model ở hình 1 khi không có attention layer.
 Cơ chế xây dựng attention layer là một qui trình khá đơn giản. Chúng ta sẽ trải qua các bước:</p>
+
 <ol>
   <li>Cố định vị trí của từ output. Đầu tiên chúng ta tính điểm cho mỗi hidden state ở encoder tương ứng với output state trong encoder.</li>
 </ol>
@@ -184,6 +185,7 @@ Cơ chế xây dựng attention layer là một qui trình khá đơn giản. Ch
 <script type="math/tex; mode=display">\alpha_{ts} = \frac{exp(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}exp(score(h_t, \bar{h_{s'}}))}</script>
 
 <p>$\alpha_{ts}$ là phân phối attention (attention weight) của các từ trong input tới các từ ở vị trí $t$ trong output hoặc target.</p>
+
 <ol>
   <li>Kết hợp vector phân phối xác xuất $\alpha_{ts}$ với các vector hidden state để thu được context vector.</li>
 </ol>

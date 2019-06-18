@@ -19,13 +19,14 @@ Mô hình seq2seq là mô hình chuỗi nên có thứ tự về thời gian. Tr
 > **Hình 1**:Mô hình seq2seq khi chưa có attention layer
 
 <img src='https://cdn-images-1.medium.com/max/1000/0*VrRTrruwf2BtW4t5.' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
-> **Hình 2**:Mô hình seq2seq khi chưa có attention layer
+> **Hình 2**:Mô hình seq2seq khi đã có attention layer
 
 Như trong hình 2, Từ 'I' trong tiếng anh tương ứng với 'Je' trong tiếng Pháp. Do đó attention layer điều chỉnh một trọng số $\alpha$ lớn hơn ở context vector so với các từ khác.
 
 Màu xanh đại diện cho encoder và màu đỏ đại diện cho decoder. Các thẻ màu xanh chính là các hidden state $h_t$ được trả ra ở mỗi unit (trong keras, khi khởi tạo RNN chúng ta sử dụng tham số return_sequences = True để trả ra các hidden state, trái lại chỉ trả ra hidden state ở unit cuối cùng). 
 Chúng ta thấy context vector sẽ lấy toàn bộ đầu ra của input để tính toán phân phối xác xuất cho mỗi từ đơn của decoder mà chúng ta muốn khởi tạo. Bằng một cơ chế tối ưu hóa, mô hình có khả năng thu được thông tin của toàn bộ câu input thay vì chỉ một từ input so với model ở hình 1 khi không có attention layer.
 Cơ chế xây dựng attention layer là một qui trình khá đơn giản. Chúng ta sẽ trải qua các bước:
+
 1. Cố định vị trí của từ output. Đầu tiên chúng ta tính điểm cho mỗi hidden state ở encoder tương ứng với output state trong encoder.
 
 $$score(h_t, \bar{h_s})$$
@@ -36,6 +37,7 @@ $$score(h_t, \bar{h_s})$$
 $$\alpha_{ts} = \frac{exp(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}exp(score(h_t, \bar{h_{s'}}))}$$
 
 $\alpha_{ts}$ là phân phối attention (attention weight) của các từ trong input tới các từ ở vị trí $t$ trong output hoặc target.
+
 3. Kết hợp vector phân phối xác xuất $\alpha_{ts}$ với các vector hidden state để thu được context vector.
 
 $$c_t = \sum_{s'=1}^{S} \alpha_{ts}\bar{h_{s'}}$$
