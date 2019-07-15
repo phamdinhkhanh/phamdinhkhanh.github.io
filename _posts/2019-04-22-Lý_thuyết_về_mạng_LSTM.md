@@ -39,8 +39,7 @@ Một mạng RNN tiêu chuẩn sẽ có kiến trúc rất đơn giản chẳng 
 
 LSTM cũng có một chuỗi dạng như thế nhưng phần kiến trúc lặp lại có cấu trúc khác biệt hơn. Thay vì chỉ có một tầng đơn, chúng có tới 4 tầng ẩn (3 sigmoid và 1 tanh) tương tác với nhau theo một cấu trúc đặc biệt.
 
-<img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png" width="600px">
-/>
+<img src="http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png" width="600px" style="display:block; margin-left:auto; margin-right:auto"/>
 >**Hình 4: Sự lặp lại kiến trúc module trong mạng LSTM chứa 4 tầng ẩn (3 sigmoid và 1 tanh) tương tác**
 
 Các kí hiệu có thể diễn giải như sau:
