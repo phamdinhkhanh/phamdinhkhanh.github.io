@@ -22,7 +22,7 @@ Trong ví dụ này chúng ta áp dụng torchtext trong xử lý dữ liệu đ
 
 Hình bên dưới sẽ diễn tả quá trình mà torchtext hoạt động.
 
-<img src="https://i0.wp.com/mlexplained.com/wp-content/uploads/2018/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2018-02-07-10.32.59.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="https://i0.wp.com/mlexplained.com/wp-content/uploads/2018/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2018-02-07-10.32.59.png" width="650px" height="500px" style="display:block; margin-left:auto; margin-right:auto">
 **Hình 1**: Qúa trình preprocessing data trên torchtext
 
 Ta có thể hình dung torchtext như một preprocessing tool giúp chuyển hóa dữ liệu từ dạng thô nhất từ bất kì các nguồn nào: `txt, csv, json, tsv` để convert chúng sang Dataset.
@@ -53,23 +53,22 @@ Trong tác vụ phân loại mục đích của comment, chúng ta có 6 nhãn (
 
 Tiếp theo TEXT sẽ là đoạn mô tả của sản phẩm. Do chúng là câu văn nên chúng ta phải mã hóa chúng về dạng list, do đó sequential = True. Hàm tokenize cho biết chúng ta tách câu sang token như thế nào. Khi áp dụng hàm x.split('') có nghĩa rằng câu được chia thành các từ đơn. `lower = True` để chuyển chữ hoa thành chữ thường.
 
-
+Thực hiện đoạn code dưới để mount folder của google drive vào project.
 ```
 from google.colab import drive
 import os
 drive.mount('/content/gdrive')
-path = os.path.join('gdrive/My Drive/data/ADRCorrectSpelling/vietnamse_tone_prediction/vietnamse_tone_prediction')
+path = os.path.join('gdrive/My Drive/your_folder_path')
 os.chdir(path)
 ```
 
-    Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&scope=email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdocs.test%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.photos.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fpeopleapi.readonly&response_type=code
+    Go to this URL in a browser: 
     
     Enter your authorization code:
     ··········
     Mounted at /content/gdrive
     
-
-
+Đọc dữ liệu:
 ```
 import pandas as pd
 
