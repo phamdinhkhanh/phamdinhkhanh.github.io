@@ -95,6 +95,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Hướng dẫn pytorch - Bài 2 - Xây dựng mô hình sequence to sequence trên pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Xây dựng Pipeline Machine learning model trên SparkSQL</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Attention is all you need</a></li>
@@ -103,9 +109,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Mô hình Word2Vec</a></li>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/k-thu-t-feature-engineering.html">Kĩ thuật feature engineering</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Kĩ thuật feature engineering</a></li>
 					
 				</nav>
 			</div>
@@ -147,6 +153,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div>
 <ul>
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP</a></h2>
+		<br />
+		<p>
+		<h1 id="1-giới-thiệu-về-torchtext">1. Giới thiệu về Torchtext</h1>
+
+
+		</p>
+		<a href="/2019/08/25/PyTorch_Torchtext_Tutorial.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>25 Aug 2019</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Hướng dẫn pytorch - Bài 2 - Xây dựng mô hình sequence to sequence trên pytorch</a></h2>
+		<br />
+		<p>
+		<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
+<p>Cùng với sự phát triển của deep learning nói chung. Ngày nay lớp các mô hình seq2seq càng tỏ ra hiệu quả trong nhiều tác vụ khác nhau như dịch máy, sửa lỗi chính tả, image captioning, recommendation, dự báo chuỗi thời gian,…. Nhờ sự phát triển của các kiến trúc mạng RNN hiện đại kèm theo các kĩ thuật learning hiệu quả như sử dụng thêm kiến trúc <code class="highlighter-rouge">attention layer</code>, các phương pháp cải thiện accuracy như ` teach_forcing, beam search` mà mô hình dịch máy ngày càng đạt độ chính xác cao. Các tài liệu về các phương pháp trên đã có nhiều tuy nhiên đa phần là lý thuyết và khá khó cho người mới bắt đầu tiếp cận. Bài viết này nhằm mục đích tạo ra một bản diễn giải kèm thực hành về các bước xây dựng mô hình seq2seq ứng dụng trong sửa lỗi chính tả. Để hiểu được các nội dung trong bài yêu cầu bạn đọc có kiến thức nền tảng về <a href="https://phamdinhkhanh.github.io/2019/08/10/PytorchTurtorial1.html">pytorch</a>, nắm vững lý thuyết về mạng <a href="https://phamdinhkhanh.github.io/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">LSTM</a>. Ngoài ra bạn đọc cần có sẵn máy tính cài <a href="https://pytorch.org/">pytorch</a> hoặc các VM hỗ trợ pytorch. Để tiện cho thực hành tôi khuyến nghị bạn đọc sử dụng <a href="https://colab.research.google.com">google colab</a> miễn phí và cài sẵn các deep learning framework cơ bản như tensorflow, pytorch, keras,….</p>
+
+
+		</p>
+		<a href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>19 Aug 2019</strong></span>
+	  </div>
+	
+  
+	  <div>
+		<hr />
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/08/10/PytorchTurtorial1.html">Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình</a></h2>
+		<br />
+		<p>
+		<h1 id="1-pytorch-là-gì">1. Pytorch là gì?</h1>
+
+
+		</p>
+		<a href="/2019/08/10/PytorchTurtorial1.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<span class="post-date" style="float: right; "><strong>10 Aug 2019</strong></span>
+	  </div>
+	
   
 	  <div>
 		<hr />
@@ -208,28 +257,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 	  <div>
 		<hr />
-		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">Lý thuyết về mạng LSTM part 2</a></h2>
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Lý thuyết về mạng LSTM part 2</a></h2>
 		<br />
 		<p>
 		<h1 id="1-mạng-nơ-ron-truy-hồi-rnn---recurrent-neural-network">1. Mạng nơ ron truy hồi (RNN - Recurrent Neural Network)</h1>
 
 
 		</p>
-		<a href="/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<a href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html" sylte="color: #204081;">Xem tiếp » </a> 
 		<span class="post-date" style="float: right; "><strong>22 Apr 2019</strong></span>
 	  </div>
 	
   
 	  <div>
 		<hr />
-		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/01/07/k-thu-t-feature-engineering.html">Kĩ thuật feature engineering</a></h2>
+		<h2><a class="post-link" style="text-align: left; color: #204081; font-weight: bold" href="/2019/01/07/Ky_thuat_feature_engineering.html">Kĩ thuật feature engineering</a></h2>
 		<br />
 		<p>
 		<h1 id="1-giới-thiệu-về-feature-engineering">1. Giới thiệu về feature engineering</h1>
 
 
 		</p>
-		<a href="/2019/01/07/k-thu-t-feature-engineering.html" sylte="color: #204081;">Xem tiếp » </a> 
+		<a href="/2019/01/07/Ky_thuat_feature_engineering.html" sylte="color: #204081;">Xem tiếp » </a> 
 		<span class="post-date" style="float: right; "><strong>07 Jan 2019</strong></span>
 	  </div>
 	

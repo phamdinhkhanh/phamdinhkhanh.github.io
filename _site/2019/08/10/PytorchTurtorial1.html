@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+   
+
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+	
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Hướng dẫn pytorch - Bài 2 - Xây dựng mô hình sequence to sequence trên pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Xây dựng Pipeline Machine learning model trên SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div>
+					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình</p></h2> 
+<strong>10 Aug 2019 - phamdinhkhanh</strong>
+
+<h1 id="1-pytorch-là-gì">1. Pytorch là gì?</h1>
+
+<p>Trong số những framework hỗ trợ deeplearning thì pytorch là một trong những framework được ưa chuộng nhiều nhất (cùng với tensorflow và keras), có lượng người dùng đông đảo, cộng đồng lớn mạnh. Vào năm 2019 framework này đã vươn lên vị trí thứ 2 về số lượng người dùng trong những framework hỗ trợ deeplearning (chỉ sau tensorflow). Đây là package sử dụng các thư viện của CUDA và C/C++ hỗ trợ các tính toán trên GPU nhằm gia tăng tốc độ xử lý của mô hình. 2 mục tiêu chủ đạo của package này hướng tới là:</p>
+
+<ul>
+  <li>Thay thế kiến trúc của numpy để tính toán được trên GPU.</li>
+  <li>Deep learning platform cung cấp các xử lý tốc độ và linh hoạt.</li>
+</ul>
+
+<p>Trước khi đọc bài viết này, bạn đọc có thể ôn lại bài hướng dẫn về <a href="https://www.kaggle.com/phamdinhkhanh/tensorflow-turtorial">tensorflow deeplearning framework</a> để tự rút ra được những so sánh về các đặc điểm chung và các ưu nhược điểm của 2 framework này.</p>
+
+<p>Để sử dụng pytorch trên GPU bắt buộc các bạn phải cài CUDA và tất nhiên phải có GPU. Hướng dẫn cài đặt pytorch có thể xem tại <a href="https://pytorch.org/get-started/locally/">pytorch install</a>. Trên google colab thì thư viện này và tensorflow đã được tích hợp sẵn cho người dùng.</p>
+
+<p>Bên dưới chúng ta cùng tìm hiểu:</p>
+
+<ul>
+  <li>Định dạng tensor trên pytorch.</li>
+  <li>Các toán tử trên torch tensor.</li>
+  <li>Xây dựng một mô hình mạng nơ ron trên pytorch.</li>
+</ul>
+
+<p>Bài viết này được mình tổng hợp và lược dịch từ bài viết <a href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">Deeplearning with Pytorch: A 60 Minute Blitz</a> có sự hiệu chỉnh và bổ sung về nội dung dựa trên kiến thức của mình.</p>
+
+<h2 id="11-tensor">1.1. Tensor</h2>
+
+<p>Là dữ liệu nhiều chiều tương tự như ma trận trong numpy nhưng được thêm các tính chất để có thể hoạt động trên GPU nhằm gia tăng tốc độ tính toán. Các định dạng dữ liệu tensor của pytorch khá giống với <a href="https://www.kaggle.com/phamdinhkhanh/tensorflow-turtorial">tensorflow</a>. Tuy nhiên trong quá trình khởi tạo chúng trên pytorch chúng ta không cần phải truyền code vào trong 1 session để tạo tensor như tensorflow. Qua các ví dụ bên dưới chúng ta sẽ cùng làm quen với các dạng tensor chính của pytorch.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo một ma trận rỗng
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[1.9225e-36, 0.0000e+00, 3.3631e-44],
+        [0.0000e+00,        nan, 0.0000e+00],
+        [1.1578e+27, 1.1362e+30, 7.1547e+22],
+        [4.5828e+30, 1.2121e+04, 7.1846e+22],
+        [9.2198e-39, 0.0000e+00, 0.0000e+00]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo một ma trận ngẫu nhiên
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[0.1862, 0.5766, 0.7265],
+        [0.5885, 0.8067, 0.5271],
+        [0.3040, 0.2556, 0.9610],
+        [0.6661, 0.6096, 0.5479],
+        [0.3799, 0.8784, 0.8257]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo ma trận 0 với data type là long
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">long</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo ma trận từ list
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[5.0000, 3.5000]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo ma trận có các thuộc tính tương tự như của một ma trận sẵn có. Chẳng hạn như shape. Trừ khi thuộc tính mới được đưa vào override thuộc tính cũ.
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">new_ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">float</span><span class="p">)</span> <span class="c1">#override dtype
+# Ma trận mới được khởi tạo ngẫu nhiên có shape tương tự như ma trận cũ, dtype được override.
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+tensor([[ 1.0536, -0.0921, -0.7262],
+        [ 0.7677, -0.2225,  0.0847],
+        [ 0.4700,  0.6618,  0.3220],
+        [-1.3720, -0.9271,  0.3299],
+        [ 0.4915, -0.5932, -1.8757]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get size
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torch.Size([5, 3])
+</code></pre></div></div>
+
+<p>Trên thực tế torch.Size() là tuple nên sẽ hỗ trợ các operation dạng tuple.</p>
+
+<h2 id="12-operations">1.2. Operations</h2>
+
+<p>Có rất nhiều các operation trên pytorch như: cộng, trừ, nhân, chia, reshape,  khởi tạo ngẫu nhiên. Chúng ta sẽ lần lượt tìm hiểu:</p>
+
+<ul>
+  <li><strong>Khởi tạo ngẫu nhiên</strong></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[ 0.7770, -1.0313, -0.5739],
+        [ 2.2917,  0.4533,  1.9091],
+        [-0.1328,  0.2833, -0.9506]])
+tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]])
+tensor([[ 1.7770, -0.0313,  0.4261],
+        [ 3.2917,  1.4533,  2.9091],
+        [ 0.8672,  1.2833,  0.0494]])
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Phép cộng</strong></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[ 1.7770, -0.0313,  0.4261],
+        [ 3.2917,  1.4533,  2.9091],
+        [ 0.8672,  1.2833,  0.0494]])
+</code></pre></div></div>
+
+<p>hoặc cũng có thể đưa kết quả vào một giá trị khởi tạo rỗng.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">z</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[ 1.7770, -0.0313,  0.4261],
+        [ 3.2917,  1.4533,  2.9091],
+        [ 0.8672,  1.2833,  0.0494]])
+</code></pre></div></div>
+
+<p>Cách khác: Triển khai tính toán inplace. Tức tính toán và lưu kết quả ngay trên đối tượng được áp dụng.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]])
+tensor([[ 1.7770, -0.0313,  0.4261],
+        [ 3.2917,  1.4533,  2.9091],
+        [ 0.8672,  1.2833,  0.0494]])
+</code></pre></div></div>
+
+<p>Note: Các biến đổi inplace trên tensor sẽ có suffix là <code class="highlighter-rouge">_</code> . Chẳng hạn: <code class="highlighter-rouge">x.copy_(y), x.t_()</code> sẽ thay đổi trên chính giá trị của x.</p>
+
+<ul>
+  <li><strong>Truy cập index</strong></li>
+</ul>
+
+<p>Có thể sử dụng các tính chất của numpy 1 cách dễ dàng. Chẳng hạn như indexing.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Truy cập cột thứ 2 của x
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([-1.0313,  0.4533,  0.2833])
+</code></pre></div></div>
+
+<ul>
+  <li><strong>reshape tensor</strong></li>
+</ul>
+
+<p>Để resize/reshape tensor ta sử dụng hàm view</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="c1"># Giá trị -1 cho biết kích thước của chiều này được tính theo các chiều còn lại
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])
+</code></pre></div></div>
+
+<p>Chúng ta có thể chuyển tensor x có 1 phần tử sang 1 numeric python bằng hàm <code class="highlighter-rouge">item()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.5
+</code></pre></div></div>
+
+<h2 id="13-các-kết-nối-với-numpy">1.3. Các kết nối với numpy</h2>
+
+<p>Chuyển đổi Torch tensor sang numpy array khá dễ dàng.</p>
+
+<p>Torch tensor và numpy array sẽ sử dụng chung các địa chỉ ô nhớ khi torch tensor hoạt động trên CPU, do đó khi thay đổi giá trị này sẽ thay đổi giá trị kia. Gần giống như phép gán trong pandas nếu không sử dụng <code class="highlighter-rouge">copy()</code>. Bên dưới ta sẽ thử nghiệm khởi tạo $a$ trên pytorch và $b$ là giá trị numpy của tensor torch $a$. Thay đổi $a$ và kiểm tra giá trị của $b$ có bị thay đổi tương ứng không?</p>
+
+<h3 id="131-chuyển-đổi-torch-tensor-sang-numpy-array">1.3.1. Chuyển đổi torch tensor sang numpy array</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([1., 1., 1., 1., 1.])
+&lt;class 'torch.Tensor'&gt;
+&lt;class 'numpy.ndarray'&gt;
+</code></pre></div></div>
+
+<p>Khi thay đổi a sẽ thay đổi phần tử của b như thế nào?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Thêm 1 phần tử 1 vào a
+</span><span class="n">a</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([2., 2., 2., 2., 2.])
+[2. 2. 2. 2. 2.]
+</code></pre></div></div>
+
+<p>Khi $a$ thay đổi thì giá trị numpy của nó là $b$ cũng thay đổi tương ứng và có các phần tử bên trong bằng $a$.</p>
+
+<h3 id="132-chuyển-đổi-numpy-array-sang-torch-tensor">1.3.2. chuyển đổi numpy array sang torch tensor</h3>
+
+<p>Để chuyển 1 numpy array sang pytorch ta sử dụng hàm <code class="highlighter-rouge">from_numpy()</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1. 1. 1. 1. 1.]
+tensor([1., 1., 1., 1., 1.], dtype=torch.float64)
+&lt;class 'numpy.ndarray'&gt;
+&lt;class 'torch.Tensor'&gt;
+</code></pre></div></div>
+
+<p>Tất cả các tensor CPU ngoại trừ CharTensor hỗ trợ chuyển đổi về numpy và ngược lại.</p>
+
+<h2 id="2-cuda-tensor">2. CUDA tensor</h2>
+
+<p>là định dạng tensor nhưng được đưa lên device (có thể là cpu, cuda, mkldnn, opengl, …). Hỗ trợ các tính toán nhanh hơn nhờ kiến trúc CUDA.
+Để đưa 1 tensor lên một thiết bị bất kì ta sử dụng hàm <code class="highlighter-rouge">to()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># kiểm tra xem có tồn tại CUDA trên máy không. Lưu ý nếu đang sử dụng google colab, bạn phải bật GPU tại Runtime&gt;change runtime type để enable CUDA.
+</span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+  <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span><span class="p">)</span> <span class="c1"># Khởi tạo một cuda device object
+</span>  <span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">)</span> <span class="c1"># Trực tiếp khởi tạo một tensor trên GPU
+</span>  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1"># Truyền giá trị tensor vào thiết bị. Có thể truyền vào tên thiết bị: .to("cuda")
+</span>  <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s">"cpu"</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">))</span> <span class="c1"># Trong hàm .to() ta có thể thay định dạng dữ liệu.
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([2.5000], device='cuda:0')
+tensor([2.5000], dtype=torch.float64)
+</code></pre></div></div>
+
+<h2 id="21-autograd-tự-động-tính-đạo-hàm">2.1. Autograd: Tự động tính đạo hàm</h2>
+
+<p>Trung tâm của toàn bộ các mạng nơ ron hoạt động trên pytorch là <code class="highlighter-rouge">autograd</code> package. Hãy tìm hiểu về autograd trước khi thực sự xây dựng một mạng nơ ron trên pytorch.</p>
+
+<p><strong>Chức năng của autograd</strong>: Tự động tính toán đạo hàm trên toàn bộ các toán tử của tensors. Nó là một framework được định nghĩa trong quá trình chạy, có nghĩa rằng quá trình lan truyền ngược được xác định khi mà code được chạy, và do đó mỗi vòng lặp có thể có kết quả thay đổi tham số theo lan truyền ngược khác nhau.</p>
+
+<p><strong>Theo dõi lịch sử của tensor torch</strong>: torch.tensor là package khởi tạo các tensor torch. Mỗi một tensor torch sẽ có 1 thuộc tính là <code class="highlighter-rouge">.requires_grad</code>, nếu bạn set thuộc tính này về True, các toán tử triển khai trên tensor sẽ được theo dõi. Khi kết thúc quá trình lan truyền thuận (hoặc quá trình tính toán output) bạn có thể gọi <code class="highlighter-rouge">.backward()</code> và mọi tính toán gradient sẽ được tự động thực hiện dựa trên lịch sử đã được lưu lại. Các gradient cho tensor này sẽ được tích lũy và xem tại thuộc tính <code class="highlighter-rouge">.grad</code>.</p>
+
+<p>Để dừng theo dõi một tensor chúng ta gọi vào hàm <code class="highlighter-rouge">.detach()</code>. Khi đó các hoạt động trên tensor sẽ không còn được lưu vết nữa.</p>
+
+<p>Ngoài ra để ngăn tensor lưu lại lịch sử (và sử dụng memory), chúng ta cũng có thể bao quanh code block triển khai tensor với hàm <code class="highlighter-rouge">with torch.no_grad():</code> nó rất hữu ích trong trường hợp đánh giá model bởi vì khi thuộc tính <code class="highlighter-rouge">requires_grad = True</code> thì model sẽ có thể được cập nhật tham số. Nhưng quá trình đánh giá model sẽ không cần cập nhật tham số nên chúng ta không cần áp dụng gradient lên chúng. Đơn giản là set <code class="highlighter-rouge">requires_grad = False</code>.</p>
+
+<p>Bạn đọc tạm chấp nhận lý thuyết nêu trên, phần thực hành bên dưới sẽ giúp giải thích sáng tỏ.</p>
+
+<p>Ngoài ra class Function cũng rất quan trọng trong thực hiện autograd.</p>
+
+<p><strong>Lưu trữ đồ thị tính toán</strong>:</p>
+
+<p>2 class <code class="highlighter-rouge">Tensor</code> và <code class="highlighter-rouge">Function</code> cùng tương tác và xây dựng một đồ thị chu trình mà đồ thị này mã hóa lại toàn bộ lịch sử tính toán. Mỗi một tensor đều có 1 thuộc tính <code class="highlighter-rouge">grad_fn</code> trích dẫn đến một <code class="highlighter-rouge">Function</code> đã tạo ra <code class="highlighter-rouge">Tensor</code> (trừ trường hợp tensor được tạo ra bởi user được set thuộc tính <code class="highlighter-rouge">grad_fn</code> là <code class="highlighter-rouge">None</code>).</p>
+
+<p>Nếu muốn tính toán đạo hàm chúng ta gọi vào hàm <code class="highlighter-rouge">.backward()</code> của <code class="highlighter-rouge">Tensor</code>. Nếu <code class="highlighter-rouge">Tensor</code> là một scalar sẽ không cần xác định bất kì đối số <code class="highlighter-rouge">gradient</code> nào cho <code class="highlighter-rouge">.backward()</code>. Tuy nhiên khi <code class="highlighter-rouge">Tensor</code> có nhiều  hơn 1 phẩn tử cần xác định đối số <code class="highlighter-rouge">gradient</code> là một tensor có cùng kích thước. Đối số này sẽ qui định tốc độ thay đổi theo <code class="highlighter-rouge">gradient</code> tại mỗi chiều là bao nhiêu.</p>
+
+<p><strong>Ví dụ về lưu trữ đồ thị tính toán</strong>:</p>
+
+<p>Bên dưới ta sẽ khởi tạo một tensor torch có khả năng theo dõi thay đổi theo 2 cách:</p>
+
+<ul>
+  <li>Cách 1: set <code class="highlighter-rouge">requires_grad = True</code>.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">requires_grad</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[1., 1.],
+        [1., 1.]], requires_grad=True)
+tensor([[3., 3.],
+        [3., 3.]], grad_fn=&lt;AddBackward0&gt;)
+</code></pre></div></div>
+
+<p>Do tại $x$ ta đã theo dõi thay đổi bằng các set tham số <code class="highlighter-rouge">requires_grad = True</code> nên các tính toán được thực hiện trên $x$ sẽ được theo dõi lại ở thuộc tính <code class="highlighter-rouge">grad_fn</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">grad_fn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;AddBackward0 object at 0x7f211d04fc18&gt;
+</code></pre></div></div>
+
+<p>Giá trị của <code class="highlighter-rouge">grad_fn</code> cho thấy ta đã thực hiện một phép cộng để thu được $y$. Thực hiện tiếp 1 biến đổi nữa sử dụng $y$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">z</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[27., 27.],
+        [27., 27.]], grad_fn=&lt;MulBackward0&gt;)
+tensor(27., grad_fn=&lt;MeanBackward0&gt;)
+</code></pre></div></div>
+
+<ul>
+  <li>Cách 2: Sử dụng inplace function.</li>
+</ul>
+
+<p>Hoặc chúng ta có thể thiết lập requires_grad theo cách inplace. Mặc định của <code class="highlighter-rouge">requires_grad</code> khi khởi tạo 1 tensor torch là False tức là sẽ không ghi lại lịch sử thay đổi.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">grad_fn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]])
+False
+True
+tensor(9., grad_fn=&lt;SumBackward0&gt;)
+&lt;SumBackward0 object at 0x7f216932d4a8&gt;
+</code></pre></div></div>
+
+<h3 id="212-gradients">2.1.2. Gradients</h3>
+
+<p>Bây h ta sẽ thực hiện một lan truyền ngược (backprop) thông qua hàm <code class="highlighter-rouge">out.backward()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Kết quả của gradient <code class="highlighter-rouge">d(out)/dx</code> sẽ được lưu trong phần tử <code class="highlighter-rouge">x.grad</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[4.5000, 4.5000],
+        [4.5000, 4.5000]])
+</code></pre></div></div>
+
+<p>Chúng ta nhận được ma trận chỉ gồm các phần tử là 4.5. Đây chính là đạo hàm của mỗi phần tử của $x$ theo $y$.
+<script type="math/tex">\frac{dy}{dx}= \frac{d(\frac{3(x+2)^2}{4})}{dx}=\frac{3(x+2)}{2}</script></p>
+
+<p>Tại $x=1$ ta suy ra $\frac{dy}{dx} = 4.5$</p>
+
+<p>Hàm <code class="highlighter-rouge">torch.autograd</code> sẽ là hàm chức năng tính tích giữa vector và ma trận jacobian. Hàm số cho ta biết mức độ thay đổi của các chiều khi đi theo phương gradient.</p>
+
+<ul>
+  <li>Định nghĩa về ma trận jacobian: giả sử $\mathbf{f}$ là một hàm số ánh xạ từ vector $\mathbf{x} = (x_1, x_2,…, x_n)$ lên vector hàm số $\mathbf{y} = (y_1, y_2,…,y_m)$ : $\mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$. Khi đó ma trận Jacobian của hàm số $\mathbf{f}$ chính là ma trận đạo hàm bậc nhất của vector hàm số $y$ theo các chiều của vector $\mathbf{x}$.</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\mathbf{J} = \nabla_{\mathbf{x}}\mathbf{y} = \begin{bmatrix}
+\frac{\nabla y_1}{\nabla x_1} & \frac{\nabla y_1}{\nabla x_2} & \dots & \frac{\nabla y_1}{\nabla x_n} \\
+\frac{\nabla y_2}{\nabla x_1} & \frac{\nabla y_2}{\nabla x_2} & \dots & \frac{\nabla y_2}{\nabla x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\nabla y_m}{\nabla x_1} & \frac{\nabla y_m}{\nabla x_2} & \dots & \frac{\nabla y_m}{\nabla x_n}
+\end{bmatrix} %]]></script>
+
+<p>Cụ thể hơn chúng ta có thể tham khảo ở link sau: <a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Ma trận jacobian - wiki</a></p>
+
+<p>Cho một vector $\mathbf{v} = (v_1, v_2, …, v_m)^T$ bất kì. Nếu $\mathbf{v}$ là ma trận gradient của hàm loss function $l = g(y)$  thì $\mathbf{v} = (\frac{\nabla l}{\nabla y_1}, \frac{\nabla l}{\nabla y_2}, … , \frac{\nabla l}{\nabla y_m})^{T}$, do đó theo công thức chain rule thì tích vector-jacobian sẽ là gradient của hàm $l$ tương ứng với vector $\mathbf{x}$:
+<script type="math/tex">\nabla_{\mathbf{x}}l = \nabla_{\mathbf{x}}g(\mathbf{y}) = \nabla_{\mathbf{x}}\mathbf{y}^T\nabla_{\mathbf{y}} g(\mathbf{y}) = \mathbf{J}^T \mathbf{v}</script></p>
+
+<p>Đây chính là giá trị của tích vector-jacobian được tính toán dựa trên hàm số <code class="highlighter-rouge">torch.autograd</code>. Công thức này giúp ta dễ dàng truyền các gradient bên ngoài vào <code class="highlighter-rouge">backward()</code> để tùy biến gradient của mô hình theo gradient truyền vào. Cụ thể hơn xem ví dụ bên dưới:</p>
+
+<p>Bây h chúng ta cùng xét ví dụ về tích vector-jacobian.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">requires_grad</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">yhat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">requires_grad</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="n">yhat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor(0.4746, grad_fn=&lt;MeanBackward0&gt;)
+</code></pre></div></div>
+
+<p>Trong TH này $\mathbf{y}$ sẽ không còn là 1 scalar. Hàm <code class="highlighter-rouge">torch.autograd</code> sẽ không tính toán ma trận jacobian trực tiếp mà thay vào đó sẽ tính tích vector-jacobian theo vector $\mathbf{v}$ truyền vào đối số <code class="highlighter-rouge">.backward()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Khởi tạo một vector gradient tự do v
+</span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">float</span><span class="p">)</span>
+<span class="c1"># Tính ma trận Jacobian (đạo hàm của y theo v)
+</span><span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="c1"># Tính tích vector-jacobian chính là đạo hàm của 
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([-1.5380,  0.7883, -0.2852])
+</code></pre></div></div>
+
+<p>Để dừng autograd theo dõi các thay đổi lịch sử trên tensor, chúng ta có thể thiết lập <code class="highlighter-rouge">.requires_grad = True</code> hoặc đặt các biến đổi tensor trong block code <code class="highlighter-rouge">torch.no_grad()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="k">print</span><span class="p">((</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">((</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+True
+False
+</code></pre></div></div>
+
+<h1 id="3-xây-dựng-mạng-neural-network">3. Xây dựng mạng neural network</h1>
+<h2 id="31-kiến-trúc-mạng-cnn">3.1. Kiến trúc mạng CNN</h2>
+
+<p>Các mạng neural sẽ được xây dựng dựa trên package torch.nn. Dựa trên <code class="highlighter-rouge">autograd</code> model sẽ xác định đạo hàm bậc 1 theo các chiều dữ liệu. Một nn.Module sẽ bao gồm các layers và một phương thức <code class="highlighter-rouge">forward(input)</code> để trả ra kết quả <code class="highlighter-rouge">output</code>.</p>
+
+<p>Xây dựng mạng neural network sẽ trả qua các bước sau:</p>
+
+<ul>
+  <li>Xây dựng kiến trúc mạng nơ ron.</li>
+  <li>Phân chia dữ liệu train, test.</li>
+  <li>Xác định phương pháp optimization để cập nhật gradient descent và hàm loss function.</li>
+  <li>Huấn luyện model.</li>
+  <li>Hậu kiểm model.</li>
+</ul>
+
+<p>Về convolution layer xem tại: <a href="https://www.kaggle.com/phamdinhkhanh/convolutional-neural-network-p1">Convolution layer</a></p>
+
+<p>Tiếp theo chúng ta sẽ xây dựng kiến trúc mạng Lenet để phân biệt hình ảnh các đồ vật và loài vật. Sơ đồ kích thước các layers của mạng như bên dưới:</p>
+
+<p><img src="https://pytorch.org/tutorials/_images/mnist.png" width="800px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+
+<blockquote>
+  <p><strong>Hình 1</strong> Kiến trúc mạng Lenet sử dụng các convolutional neural network.</p>
+</blockquote>
+
+<p>Để xây dựng mạng neural chúng ta sẽ kế thừa object <code class="highlighter-rouge">nn.Module</code>. Object này sẽ cho phép thực hiện quá trình lan truyền thuận và lan truyền ngược thông qua 2 hàm <code class="highlighter-rouge">forward()</code> và <code class="highlighter-rouge">backward()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="c1"># 1 input image channel, 6 output channels, 3x3 square convolution
+</span>    <span class="c1"># kernel 
+</span>    <span class="c1"># conv2d (input chanels, output chanels, kernel size)
+</span>    <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># an affine operation: y = Wx + b
+</span>    <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>  <span class="c1"># 6*6 from image dimension
+</span>    <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="c1"># Max pooling over a (2, 2) window
+</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># If the size is a square you can only specify a single number
+</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_flat_features</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+  <span class="k">def</span> <span class="nf">num_flat_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># all dimensions except the batch dimension
+</span>    <span class="n">num_features</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">size</span><span class="p">:</span>
+        <span class="n">num_features</span> <span class="o">*=</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">num_features</span>
+
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Net(
+  (conv1): Conv2d(1, 6, kernel_size=(3, 3), stride=(1, 1))
+  (conv2): Conv2d(6, 16, kernel_size=(3, 3), stride=(1, 1))
+  (fc1): Linear(in_features=576, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre></div></div>
+
+<p>Chúng ta phải xác định trước <code class="highlighter-rouge">forward</code> function để trả ra kết quả của model ở đầu ra. Dựa trên <code class="highlighter-rouge">forward</code> function, hàm <code class="highlighter-rouge">backward</code> function (là nơi mà gradients tại mỗi layers được tính toán) sẽ được tự động xác định khi bạn sử dụng <code class="highlighter-rouge">autograd</code>. Chúng ta cũng có thể sử dụng bất kì một phép biến đổi toán tử Tensor nào trên hàm forward function.</p>
+
+<p>Các tham số huấn luyện (tham số mà có thể thay đổi được trong huấn luyện) của mô hình được trả về bằng hàm <code class="highlighter-rouge">net.parameters()</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>  <span class="c1"># conv1's .weight
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+torch.Size([6, 1, 3, 3])
+</code></pre></div></div>
+
+<p>Chúng ta thử nghiệm khởi tạo một đầu vào ngẫu nhiên 32x32. Chú ý rằng: Kì vọng đầu vào của mạng lenet là 32x32. Để sử dụng mạng này trên MNIST dataset chúng ta sẽ phải resize kích thước ảnh về 32x32.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[ 0.0451, -0.0784, -0.0997, -0.0572, -0.0218, -0.1198, -0.0557, -0.1128,
+          0.1927, -0.0887]], grad_fn=&lt;AddmmBackward&gt;)
+</code></pre></div></div>
+
+<p>Khi đó kết quả đầu ra thu được là một tensor có 10 phần tử, mỗi phần tử tương ứng với điểm số được phân bố cho class mà nó thuộc về. Bên dưới chúng ta chuyển toàn bộ các gradients trong bộ nhớ đệm về 0 bằng hàm <code class="highlighter-rouge">.zero_grad()</code> và lan truyền ngược với gradients ngẫu nhiên.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">net</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Lưu ý</strong>: 
+<code class="highlighter-rouge">torch.nn</code> chỉ hỗ trợ các mini-batches. Toàn bộ <code class="highlighter-rouge">torch.nn</code> packages chỉ hỗ trợ đầu vào là mini-batch của mẫu (tức là luôn có 1 chiều trong shape qui định <code class="highlighter-rouge">batch size</code>), và không tiếp nhận 1 mẫu đơn lẻ.</p>
+
+<p>Chẳng hạn, <code class="highlighter-rouge">nn.Conv2d</code> sẽ nhận đầu vào là 4D Tensor của <code class="highlighter-rouge">nSamples x nChannels x Height x Width</code>. Trong đó chiều đầu tiên là kích thước mẫu (<code class="highlighter-rouge">batch size</code>).</p>
+
+<p>Nếu bạn có một mẫu đơn lẻ, chỉ cần sử dụng <code class="highlighter-rouge">input.unsqueeze(0)</code> để thêm vào một chiều <code class="highlighter-rouge">batch size</code> giả mạo.</p>
+
+<p>Tổng kết:</p>
+<ul>
+  <li>torch.Tensor: là một mảng nhiều chiều hỗ trợ các biến đổi autograd như <code class="highlighter-rouge">backward()</code>. Và cũng lưu trữ các gradients của tensor.</li>
+  <li>nn.Module: Neural network module. Thuận tiện trong đóng gói các tham số với sự hỗ trợ để đẩy chúng lên GPU, export và loading tham số,….</li>
+  <li>nn.Parameter: Là một dạng tensor lưu trữ tham số huấn luyện và được phân bố như một thuộc tính của Module.</li>
+  <li>autograd.Function: Kế thừa quá trình lan truyền thuận và lan truyền ngược của một biến đổi autograd. Mọi triển khai <code class="highlighter-rouge">Tensor</code> tạo ra ít nhất <code class="highlighter-rouge">Function</code> node kết nối đến function được tạo bởi tensor và mã hóa lịch sử của chúng.</li>
+</ul>
+
+<h2 id="31-hàm-loss">3.1. Hàm loss</h2>
+
+<p>Một hàm loss sẽ nhận 1 cặp (output, target) và tính toán giá trị khoảng cách giữa output và giá trị target.</p>
+
+<p>Có một số dạng loss function khác nhau mà chúng ta có thể tham khảo được hỗ trợ trong nn package: <a href="https://pytorch.org/docs/stable/nn.html">Loss function trong nn</a>.  Dạng đơn giản nhất là <code class="highlighter-rouge">nn.MSELoss</code> (trung bình bình phương sai số) tính toán trung bình bình phương sai số giữa giá trị output và giá trị target.</p>
+
+<p>Chúng ta có thể xem ví dụ như bên dưới:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># a dummy target, for example
+</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># make it same shape as output
+</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor(1.1689, grad_fn=&lt;MseLossBackward&gt;)
+</code></pre></div></div>
+
+<p>Tiến trình backward của hàm loss function sẽ sử dụng thuộc tính <code class="highlighter-rouge">.grad_fn</code> của nó để lần tìm trên đồ thị tính toán quá trình biến đổi tensor như bên dưới:</p>
+
+<p><code class="highlighter-rouge">input -&gt; conv2d -&gt; relu -&gt; maxpool2d -&gt; conv2d -&gt; relu -&gt; maxpool2d
+      -&gt; view -&gt; linear -&gt; relu -&gt; linear -&gt; relu -&gt; linear
+      -&gt; MSELoss
+      -&gt; loss</code></p>
+
+<p>Khi ta gọi vào hàm <code class="highlighter-rouge">loss.backward()</code>, toàn bộ graph sẽ tính toán đạo hàm của loss function, các tensors trong graph có thuộc tính <code class="highlighter-rouge">requires_grad = True</code> thì  sẽ có tensor <code class="highlighter-rouge">.grad</code> được cập nhật gradient theo trình tự lũy tiến.</p>
+
+<p>Để minh họa chúng ta có thể sử dụng một vài bước backward:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">grad_fn</span><span class="p">)</span> <span class="c1"># MSELoss
+</span><span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">grad_fn</span><span class="o">.</span><span class="n">next_functions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Linear
+</span><span class="k">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">grad_fn</span><span class="o">.</span><span class="n">next_functions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">next_functions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Relu
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;MseLossBackward object at 0x7f32a2e7ef28&gt;
+&lt;AddmmBackward object at 0x7f32a2e7e518&gt;
+&lt;AccumulateGrad object at 0x7f32a2e7ef28&gt;
+</code></pre></div></div>
+
+<h2 id="32-lan-truyền-ngược-backpropagation">3.2. Lan truyền ngược (backpropagation)</h2>
+
+<p>Để lan truyền ngược chúng ta sử dụng hàm <code class="highlighter-rouge">loss.backward()</code>. Nhưng trước đó chúng ta cần xóa nhưng gradients đang có và các gradient khác sẽ tích lũy vào gradient hiện có.</p>
+
+<p>Bên dưới chúng ta sẽ cùng gọi vào hàm <code class="highlighter-rouge">loss.backward()</code>, và chúng ta phải nhìn vào hệ số chệch của conv1 gradient trước và sau khi backward.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">net</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> <span class="c1"># chuyển về 0 toàn bộ các gradient trong bộ nhớ đệm của toàn bộ các parameters.
+</span><span class="k">print</span><span class="p">(</span><span class="s">'conv1.bias.grad before backward'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'conv1.bias.grad after backward'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conv1.bias.grad before backward
+tensor([0., 0., 0., 0., 0., 0.])
+conv1.bias.grad after backward
+tensor([-0.0063, -0.0041,  0.0004,  0.0066,  0.0064,  0.0063])
+</code></pre></div></div>
+
+<h2 id="33-cập-nhật-trọng-số">3.3. Cập nhật trọng số.</h2>
+
+<p>Công thức đơn giản để cập nhật trọng số là:</p>
+
+<p><code class="highlighter-rouge">weight = weight - learning_rate * gradient</code></p>
+
+<p>Chúng ta có thể triển khai bằng sử dụng python code đơn giản như sau:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sub_</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">learning_rate</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Trong đó <code class="highlighter-rouge">_sub()</code> là một hàm inplace của phép trừ.</p>
+
+<p>Tuy nhiên khi sử dụng mạng neural networks, bạn muốn sử dụng đa dạng các phương pháp cập nhật gradient descent khác nhau như SGD, Nesterov-SGD, Adam, RMSProp,…. Do đó sử dụng package torch.optim chúng ta có thể thực hiện được toàn bộ nhữn phương pháp gradient descent này một cách đơn giản.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="n">optim</span>
+
+<span class="c1"># Create your optimizer
+</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># in your training loop
+</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> <span class="c1"># zero gradients buffers
+</span><span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1">#Does update
+</span></code></pre></div></div>
+
+<p>Hàm <code class="highlighter-rouge">criterion()</code> được sử dụng để tính loss function. <code class="highlighter-rouge">loss.backward()</code> sẽ thực hiện quá trình lan truyền ngược và <code class="highlighter-rouge">optimizer.step()</code> được dùng để cập nhật gradients theo phương pháp optimization.</p>
+
+<h2 id="34-huấn-luyện-một-mô-hình-phân-lớp">3.4. Huấn luyện một mô hình phân lớp</h2>
+
+<p>Phần này được tham khảo từ code của bài viết gốc: <a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">Hướng dẫn phân loại ảnh pytorch</a></p>
+
+<p>Như vậy chúng ta đã hình dung cơ bản được cách nào để xây dựng một mạng neural và làm thế nào để tính toán loss function và cập nhật trọng số.</p>
+
+<p>Nhưng bước quan trọng nhất của mô hình đó là chuyển hóa dữ liệu từ raw data sang numpy array của python để model có thể đọc hiểu được.</p>
+
+<p>Các định dạng dữ liệu thông thường bạn làm việc sẽ là hình ảnh, âm thanh, đoạn text, đoạn video. Bạn có thể sử dụng các packages của python để đọc những dữ liệu này dưới dạng numpy và sau đó convert những array này sang torch tensor.</p>
+
+<ul>
+  <li>Đối với hình ảnh, packages có thể sử dụng là pillow, opencv.</li>
+  <li>Đối với âm thanh chúng ta có thể sử dụng scipy hoặc librosa.</li>
+  <li>Đối với định dạng text NLTK và Spacy có thể hữu ích.</li>
+</ul>
+
+<p>Để sử dụng chuyên biệt cho đọc và xử lý ảnh trên pytorch chúng ta có thể sử dụng một packages là <code class="highlighter-rouge">torchvision</code>. Package này có thể load được các bộ ảnh lớn như CIFAR10, MNIST, … và biến đổi dữ liệu ảnh thông qua các module torchvision.datasets, torchvision.utils.data.DataLoader hay visualization.</p>
+
+<h2 id="35-huấn-luyện-một-model-phân-loại-ảnh">3.5. Huấn luyện một model phân loại ảnh</h2>
+
+<p>Chúng ta sẽ đi qua các step sau đây:</p>
+<ul>
+  <li>Load hình ảnh và chuẩn hóa tập dữ liệu hình ảnh CIFAR10 sử dụng torchvision.</li>
+  <li>Xác định kiến trúc mạng neural.</li>
+  <li>Xác định hàm loss function.</li>
+  <li>Huấn luyện model trên tập training.</li>
+  <li>Đánh giá model trên tập testing.</li>
+</ul>
+
+<h3 id="351-loading-và-chuẩn-hóa-cifar10">3.5.1. Loading và chuẩn hóa CIFAR10</h3>
+
+<p>Sử dụng torchvision chúng ta có thể dễ dàng load các hình ảnh trong CIFAR10. Đầu ra của torchvision dataset là các hình ảnh PILImage nằm trong khoảng [0, 1]. Chúng ta sẽ biến đổi chúng thành các Tensors chuẩn hóa về khoảng [-1, 1].</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="n">transforms</span>
+
+<span class="c1"># Xây dựng một chuẩn hóa đầu vào cho ảnh
+</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+  <span class="p">[</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+  <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))]</span>
+<span class="p">)</span>
+
+<span class="c1"># Khởi tạo dữ trainset qui định dữ liệu training
+</span><span class="n">trainset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">'./CIFAR10'</span><span class="p">,</span> <span class="n">train</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> 
+                                       <span class="n">download</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">)</span>
+
+<span class="c1"># Khởi tạo trainloader qui định cách truyền dữ liệu vào model theo batch. 
+</span><span class="n">trainloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">trainset</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> 
+                                         <span class="n">shuffle</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Tương tự nhưng đối với test
+</span><span class="n">testset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="s">'./CIFAR10'</span><span class="p">,</span> <span class="n">train</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> 
+                                      <span class="n">download</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="p">)</span>
+
+<span class="n">testloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">testset</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+                                              <span class="n">shuffle</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Nhãn cho các class
+</span><span class="n">classes</span> <span class="o">=</span> <span class="p">(</span><span class="s">'plane'</span><span class="p">,</span> <span class="s">'car'</span><span class="p">,</span> <span class="s">'bird'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">,</span>
+           <span class="s">'deer'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">,</span> <span class="s">'frog'</span><span class="p">,</span> <span class="s">'horse'</span><span class="p">,</span> <span class="s">'ship'</span><span class="p">,</span> <span class="s">'truck'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0it [00:00, ?it/s]
+
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./CIFAR10/cifar-10-python.tar.gz
+
+
+ 98%|█████████▊| 167616512/170498071 [00:11&lt;00:00, 17124241.10it/s]
+
+Files already downloaded and verified
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">trainset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">trainset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'torch.Tensor'&gt;
+torch.Size([3, 32, 32])
+</code></pre></div></div>
+
+<p>Các object trainset và testset là dữ liệu mà chúng ta sử dụng để huấn luyện model (chính là list các tensor đại diện cho các bức ảnh). Những object còn lại bao gồm trainLoader và testLoader qui định dữ liệu chúng ta lấy từ đâu và cách thức chúng ta truyền dữ liệu vào mô hình theo batch với kích thước bao nhiêu, có thực hiện shuffle các batch sau khi hết một epoch hay không?</p>
+
+<p>Hiển thị một số hình ảnh bằng matplotlib</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># functions to show an image
+</span>
+
+<span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>     <span class="c1"># unnormalize
+</span>    <span class="n">npimg</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">npimg</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># get some random training images
+</span><span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">trainloader</span><span class="p">)</span>
+<span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataiter</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+
+<span class="c1"># show images
+</span><span class="n">imshow</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_grid</span><span class="p">(</span><span class="n">images</span><span class="p">))</span>
+<span class="c1"># print labels
+</span><span class="k">print</span><span class="p">(</span><span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'</span><span class="si">%5</span><span class="s">s'</span> <span class="o">%</span> <span class="n">classes</span><span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p><img src="/assets/images/20190810_pytorch_buoi1/pytorch_0.png" />&lt;/img&gt;
+    truck plane   cat truck</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">trainloader</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'torch.utils.data.dataloader.DataLoader'&gt;
+torch.Size([4, 3, 32, 32])
+</code></pre></div></div>
+
+<h3 id="352-xác-định-một-mạng-neural-network">3.5.2. Xác định một mạng neural network</h3>
+
+<p>Khởi tạo một mạng neural network thông qua class net như bên dưới. Hàm tạo <code class="highlighter-rouge">__init__()</code> sẽ chứa những layers của class và hàm <code class="highlighter-rouge">forward()</code> được sử dụng để ráp nối các layer và trả về một module hoàn chỉnh.</p>
+
+<p>Để hiểu về các layer trong pytorch chúng ta tham khảo tại <a href="https://pytorch.org/docs/stable/nn.html?highlight=nn%20linear#torch.nn.Linear">pytorch layer</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+
+
+<span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="c1"># Conv2d: input nodes, output nodes, kernel size
+</span>    <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">84</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="36-xác-định-hàm-optimizer-và-hàm-loss-function">3.6. Xác định hàm optimizer và hàm loss function</h2>
+
+<p>Hàm loss function được sử dụng là cross-entropy thông qua class <code class="highlighter-rouge">nn.CrossEntropyLoss()</code> và phương pháp optimizer là stochastic gradient descent của module <code class="highlighter-rouge">torch.optim</code>. Chi tiết về hàm loss function và phương pháp optimize đã quá quen thuộc, các bạn có thể lên google search một vài bài báo để hiểu rõ.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="n">optim</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">momentum</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="37-huấn-luyện-model">3.7. Huấn luyện model</h3>
+
+<p>Chúng ta sẽ khởi tạo một vòng loop bao gồm 2 epochs trong đó mỗi một epochs sẽ truyền toàn bộ các data iterator như đầu vào của mạng nơ ron. Bên trong mỗi epoch chúng ta xác định:</p>
+
+<ul>
+  <li>output của mô hình.</li>
+  <li>hàm loss function.</li>
+  <li>phương pháp optimize.</li>
+  <li>thực hiện quá trình feed forward.</li>
+</ul>
+
+<p>Mọi thứ diễn ra khá đơn giản theo như code bên dưới</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="c1"># loop over the dataset multiple times
+</span>  <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trainloader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># get the inputs, data is a list of [inputs, labels]
+</span>    <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+    
+    <span class="c1"># zero the parameter gradients
+</span>    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="c1"># forward + backward + optimize
+</span>    <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+    <span class="c1"># print statistics
+</span>    <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2000</span> <span class="o">==</span> <span class="mi">1999</span><span class="p">:</span> <span class="c1"># print every 2000 mini-batches
+</span>      <span class="k">print</span><span class="p">(</span><span class="s">'[</span><span class="si">%</span><span class="s">d, </span><span class="si">%5</span><span class="s">d] loss: </span><span class="si">%.3</span><span class="s">f'</span> <span class="o">%</span>
+           <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">running_loss</span><span class="o">/</span><span class="mi">2000</span><span class="p">))</span>
+      <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+      
+<span class="k">print</span><span class="p">(</span><span class="s">'Finished Training'</span><span class="p">)</span>
+      
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1,  2000] loss: 2.305
+[1,  4000] loss: 2.300
+[1,  6000] loss: 2.296
+[1,  8000] loss: 2.283
+[1, 10000] loss: 2.223
+[1, 12000] loss: 2.094
+[2,  2000] loss: 2.002
+[2,  4000] loss: 1.930
+[2,  6000] loss: 1.876
+[2,  8000] loss: 1.821
+[2, 10000] loss: 1.774
+[2, 12000] loss: 1.755
+Finished Training
+</code></pre></div></div>
+
+<h3 id="38-kiểm-tra-network-trên-tập-data-test">3.8. Kiểm tra network trên tập data test</h3>
+
+<p>Như vậy chúng ta đã hoàn thành 2 lượt huấn luyện dữ liệu trên toàn bộ tập training dataset. Sau đây chúng ta cần kiểm tra xem kết quả mô hình sau huấn luyện như thế nào trên dữ liệu test dataset.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hiển thị một vài dữ liệu
+# Sử dụng hàm iter để biến testloader thành 1 iterator, từ đó có thể lấy các giá trị tiếp theo.
+</span><span class="n">dataiter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">testloader</span><span class="p">)</span>
+<span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataiter</span><span class="o">.</span><span class="nb">next</span><span class="p">()</span>
+
+<span class="c1"># print image
+</span><span class="n">imshow</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_grid</span><span class="p">(</span><span class="n">images</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'GroundTruth: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'</span><span class="si">%5</span><span class="s">s'</span> <span class="o">%</span> <span class="n">classes</span><span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))))</span>
+</code></pre></div></div>
+
+<p><img src="/assets/images/20190810_pytorch_buoi1/pytorch_1.png" />&lt;/img&gt;
+    GroundTruth:   cat  ship  ship plane</p>
+
+<p>Khác với tensorflow khi dự báo chúng ta cần phải sử dụng hàm predict. Để dự báo nhãn cho tập data test chúng ta chỉ cần truyền raw data vào object <code class="highlighter-rouge">net</code>.  Mô hình sẽ tự động thực hiện một quá trình lan truyền thuận và tính ra phân phối xác xuất ở đầu ra.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">outputs</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'torch.Tensor'&gt;
+torch.Size([4, 10])
+</code></pre></div></div>
+
+<p>Lấy ra nhãn dự báo dựa vào xác xuất lớn nhất của phân phối xác xuất đầu ra.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span><span class="p">,</span>  <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Predicted: '</span><span class="p">,</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'</span><span class="si">%5</span><span class="s">s'</span> <span class="o">%</span> <span class="n">classes</span><span class="p">[</span><span class="n">predicted</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+                              <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Predicted:    cat  ship  ship  ship
+</code></pre></div></div>
+
+<p>Dự báo trên 4 quan sát đầu tiên cho thấy đúng 3 sai 1. Kiểm tra trên toàn bộ các quan sát.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">images</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'torch.Tensor'&gt;
+&lt;class 'torch.Tensor'&gt;
+torch.Size([4])
+torch.Size([4, 3, 32, 32])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">testloader</span><span class="p">:</span>
+        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy of the network on the 10000 test images: </span><span class="si">%</span><span class="s">d </span><span class="si">%%</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy of the network on the 10000 test images: 37 %
+</code></pre></div></div>
+
+<p>Kiểm tra mức độ chính xác trên từng class một.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">class_correct</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="mf">0.</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">class_total</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="mf">0.</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">testloader</span><span class="p">:</span>
+        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">class_correct</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">class_total</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Accuracy of </span><span class="si">%5</span><span class="s">s : </span><span class="si">%2</span><span class="s">d </span><span class="si">%%</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">class_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">class_total</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy of plane : 46 %
+Accuracy of   car : 42 %
+Accuracy of  bird : 31 %
+Accuracy of   cat : 16 %
+Accuracy of  deer : 14 %
+Accuracy of   dog : 20 %
+Accuracy of  frog : 56 %
+Accuracy of horse : 53 %
+Accuracy of  ship : 39 %
+Accuracy of truck : 49 %
+</code></pre></div></div>
+
+<h2 id="39-huấn-luyện-model-trên-gpu">3.9. Huấn luyện model trên GPU</h2>
+
+<p>Đầu tiên xác định cuda device nếu chúng thực sự tồn tại.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda:0"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cuda:0
+</code></pre></div></div>
+
+<p>Để đưa model lên device chúng ta sẽ convert chúng thành parameters và lưu trữ chúng lên buffer của CUDA.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">net</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Net(
+  (conv1): Conv2d(3, 6, kernel_size=(5, 5), stride=(1, 1))
+  (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=400, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre></div></div>
+
+<p>Hãy nhớ rằng bạn phải gửi inputs và targets tại mỗi bước huấn luyện lên GPU:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torch.Size([4, 3, 32, 32])
+torch.Size([4])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="4-tài-liệu-tham-khảo">4. Tài liệu tham khảo</h1>
+
+<ol>
+  <li><a href="https://pytorch.org/docs/stable/nn.html">Pytorch layer</a></li>
+  <li><a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">Xây dựng mạng convolutional neural network trên pytorch</a></li>
+  <li><a href="https://pytorch.org/docs/stable/data.html">Dataset pytorch</a></li>
+  <li><a href="https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html">Xử lý trên GPU - pytorch</a></li>
+</ol>
+
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/HocExcelSQLR/">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

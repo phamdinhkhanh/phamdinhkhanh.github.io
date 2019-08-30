@@ -15,28 +15,26 @@ Như chúng ta đã biết, qui trình xây dựng một mô hình trong NLP s�
 * Padding dữ liệu bằng phần tử 0 để list các index về chung 1 độ dài.
 * Xác định batch để truyền dữ liệu vào model.
 
-Quá trình này đòi hỏi phải thực hiện tiền xử lý dữ liệu nhanh gọn và dễ dàng. Chính vì thế torchtext là thư viện hỗ trợ quá trình tiền xử lý dữ liệu trở nên đơn giản hơn. Đặc biệt là các chức năng tạo batch và loading data lên GPU rất nhanh và tiện ích.
-Trong ví dụ này chúng ta áp dụng torchtext trong xử lý dữ liệu để huấn luyện model phân loại văn bản. Dữ liệu được lấy tại [practical torchtext data](https://github.com/keitakurita/practical-torchtext/blob/master/data) có nội dung về phân loại thái độ của comment. Dữ liệu này gồm 8 trường trong đó Id để xác định comment, comment_text là nội dung comment, 6 trường còn lại là mục đích của comment theo các loại (toxic: comment độc hại, severe toxic: cực kì độc hại, obscene: tục tĩu, threat: đe dọa, insult: lăng mạ, identity hate: ghét)
+Quá trình này đòi hỏi phải thực hiện tiền xử lý dữ liệu nhanh gọn và dễ dàng. Chính vì thế torchtext ra đời như là thư viện hỗ trợ quá trình tiền xử lý dữ liệu trở nên đơn giản hơn. Đặc biệt là các chức năng tạo batch và loading data lên GPU rất nhanh và tiện ích.
+
+Trong ví dụ này chúng ta áp dụng torchtext để xử lý dữ liệu huấn luyện model phân loại văn bản. Dữ liệu được lấy tại [practical torchtext data](https://github.com/keitakurita/practical-torchtext/blob/master/data) có nội dung về phân loại thái độ của comment. Dữ liệu này gồm 8 trường trong đó Id để xác định comment, comment_text là nội dung comment, 6 trường còn lại là mục đích của comment theo các loại (toxic: comment độc hại, severe toxic: cực kì độc hại, obscene: tục tĩu, threat: đe dọa, insult: lăng mạ, identity hate: ghét)
 
 # 2. Khái quát
 
 Hình bên dưới sẽ diễn tả quá trình mà torchtext hoạt động.
 
-<img src="https://i0.wp.com/mlexplained.com/wp-content/uploads/2018/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2018-02-07-10.32.59.png" width="650px" height="500px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="https://i0.wp.com/mlexplained.com/wp-content/uploads/2018/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2018-02-07-10.32.59.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+
 **Hình 1**: Qúa trình preprocessing data trên torchtext
 
 Ta có thể hình dung torchtext như một preprocessing tool giúp chuyển hóa dữ liệu từ dạng thô nhất từ bất kì các nguồn nào: `txt, csv, json, tsv` để convert chúng sang Dataset.
 
-Dataset đơn giản là một khối dữ liệu với nhiều trường được đọc trên RAM để truyển vào model xử lý.
-
-Torchtext sẽ truyền những dataset này vào mỗi một vòng lặp (iterator). Trong một vòng lặp chúng ta sẽ thực hiện các biến đổi dữ liệu như: mã hóa số, padding data, tạo batch, và truyền dữ liệu lên GPU. Tóm lại torchtext sẽ thực hiện tất cả các công việc về dữ liệu để đưa chúng vào mạng nơ ron.
-
+Dataset đơn giản là một khối dữ liệu với nhiều trường được load lên RAM để truyển vào model xử lý. Torchtext sẽ truyền những dataset này vào mỗi một vòng lặp (iterator). Trong một vòng lặp chúng ta sẽ thực hiện các biến đổi dữ liệu như: mã hóa số, padding data, tạo batch, và truyền dữ liệu lên GPU. Tóm lại torchtext sẽ thực hiện tất cả các biến đổi về dữ liệu để đưa chúng vào mạng nơ ron.
 Trong ví dụ bên dưới chúng ta cùng xem các quá trình dữ liệu hoạt động như thế nào.
 
 # 3. Khai báo trường.
 
 Khai báo trường nhằm mục đích nói cho dữ liệu biết chúng ta có những trường gì và được tạo ra từ dữ liệu như thế nào. Để khai báo trường chúng ta sử dụng class Field của torchtext. Xem ví dụ sau:
-
 
 ```
 from torchtext.data import Field
@@ -53,7 +51,8 @@ Trong tác vụ phân loại mục đích của comment, chúng ta có 6 nhãn (
 
 Tiếp theo TEXT sẽ là đoạn mô tả của sản phẩm. Do chúng là câu văn nên chúng ta phải mã hóa chúng về dạng list, do đó sequential = True. Hàm tokenize cho biết chúng ta tách câu sang token như thế nào. Khi áp dụng hàm x.split('') có nghĩa rằng câu được chia thành các từ đơn. `lower = True` để chuyển chữ hoa thành chữ thường.
 
-Thực hiện đoạn code dưới để mount folder của google drive vào project.
+Bên dưới ta sẽ đọc dữ liệu:
+Mount folder trên google colab
 ```
 from google.colab import drive
 import os
@@ -61,14 +60,7 @@ drive.mount('/content/gdrive')
 path = os.path.join('gdrive/My Drive/your_folder_path')
 os.chdir(path)
 ```
-
-    Go to this URL in a browser: 
-    
-    Enter your authorization code:
-    ··········
-    Mounted at /content/gdrive
-    
-Đọc dữ liệu:
+Đọc dữ liệu
 ```
 import pandas as pd
 
@@ -78,28 +70,25 @@ data.head()
 ```
 
     data.shape:  (25, 7)
-    
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+.t01 {
+  width: 100%;    
+  background-color: #ffffff;
+}
 </style>
-<table border="1" class="dataframe">
+    
+<table border="1" class="t01" style="width:100%">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="width:100%">
       <th></th>
       <th>comment_text</th>
       <th>toxic</th>
@@ -173,8 +162,6 @@ data.head()
     </tr>
   </tbody>
 </table>
-</div>
-
 
 
 Thêm vào đó để trong xử lý ngôn ngữ chúng ta có thể áp dụng một số keyword đặc biệt. Khi đó class `Field` sẽ có một số tham số khai báo cho keyword như:
@@ -192,31 +179,34 @@ Có thể nói class Field chính là phần quan trọng nhất của torchtext
 
 Bên cạnh class Field, pytorch cũng hỗ trợ một vài dạng Field đặc biệt khác phù hợp với từng nhu cầu sử dụng khác nhau:
 
-<table class="wikitable" align="center" border="1">
-<tbody><tr>
-<td>Dạng Field</td>
-<td>Mô tả</td>
-<td>Trường hợp sử dụng</td>
-<tr>
-<td>Field</td>
-<td>Là dạng field thông thường nhất áp dụng trong tiền xử lý dữ liệu</td>
-<td>Sử dụng cho cả field dạng non-text dạng text trong TH chúng ta không cần map integers ngược lại các từ</td>
-</tr>
-<tr>
-<td>ReversibleField</td>
-<td>Mở rộng của Field cho phép map ngược lại từ index sang từ</td>
-<td>Sử dụng cho text field khi ta muốn map ngược lại từ index sang từ</td>
-<tr>
-<td>NestedField</td>
-<td>Một trường biển đổi các văn bản sang tợp hợp nhỏ các Fields</td>
-<td>Mô hình dựa trên character level</td>
-</tr>
-<tr>
-<td>LabelField</td>
-<td>Là một field thông thường trả về label cho trường</td>
-<td>Sử dụng cho các trường Labels trong phân loại văn bản</td>
-</tr>
-</tbody>
+<table border="1" class="t01" style="width:100%">
+	<tbody>
+		<tr>
+			<th>Dạng Field</th>
+			<th>Mô tả</th>
+			<th>Trường hợp sử dụng</th>
+		</tr>
+		<tr>
+			<td>Field</td>
+			<td>Là dạng field thông thường nhất áp dụng trong tiền xử lý dữ liệu</td>
+			<td>Sử dụng cho cả field dạng non-text dạng text trong TH chúng ta không cần map integers ngược lại các từ</td>
+		</tr>
+		<tr>
+			<td>ReversibleField</td>
+			<td>Mở rộng của Field cho phép map ngược lại từ index sang từ</td>
+			<td>Sử dụng cho text field khi ta muốn map ngược lại từ index sang từ</td>
+		</tr>
+		<tr>
+			<td>NestedField</td>
+			<td>Một trường biển đổi các văn bản sang tợp hợp nhỏ các Fields</td>
+			<td>Mô hình dựa trên character level</td>
+		</tr>
+		<tr>
+			<td>LabelField</td>
+			<td>Là một field thông thường trả về label cho trường</td>
+			<td>Sử dụng cho các trường Labels trong phân loại văn bản</td>
+		</tr>
+	</tbody>
 </table>
 
 # 3. Tạo tập dataset
@@ -289,31 +279,34 @@ sau khi chạy hàm trên, torchtext sẽ duyệt qua toàn bộ các phần t�
 
 Bên dưới là danh sách loại Dataset khác nhau và định dạng dữ liệu mà chúng chấp nhận
 
-<table class="wikitable" align="center" border="1">
-<tbody><tr>
-<td>Loại Dataset</td>
-<td>Mô tả</td>
-<td>Trường hợp sử dụng</td>
-</tr>
-<tr>
-<td>TabularDataset</td>
-<td>Lấy đường dẫn địa chỉ của các file csv/tsv và json files hoặc các python dictionaries</td>
-<td>Cho bất kì trường hợp nào cần label các text</td>
-</tr>
-<tr>
-<td>LanguageModelingDataset</td>
-<td>Lấy đường dẫn địa chỉ của các file này như là input</td>
-<td>Mô hình ngôn ngữ</td>
-</tr>
-<tr>
-<td>TranslationDataset</td>
-<td>Lấy đường dẫn có phần mở rộng của các file cho từng loại ngôn ngữ. Chẳng hạn nếu ngôn ngữ là tiếng anh thì file sẽ là 'hoge.en', French: 'hoge.fr', path='hoge', exts=('en','fr')</td>
-<td>Mô hình dịch</td>
-<td>SequenceTaggingDataset</td>
-<td>Lấy đường dẫn tới 1 file với câu đầu vào và đầu ra tách biệt bởi các tabs</td>
-<td>tagging câu</td>
-</tr>
-</tbody>
+<table class="t01" align="center" border="1">
+	<tbody>
+		<tr>
+			<th>Loại Dataset</th>
+			<th>Mô tả</th>
+			<th>Trường hợp sử dụng</th>
+		</tr>
+		<tr>
+			<td>TabularDataset</td>
+			<td>Lấy đường dẫn địa chỉ của các file csv/tsv và json files hoặc các python dictionaries</td>
+			<td>Cho bất kì trường hợp nào cần label các text</td>
+		</tr>
+		<tr>
+			<td>LanguageModelingDataset</td>
+			<td>Lấy đường dẫn địa chỉ của các file này như là input</td>
+			<td>Mô hình ngôn ngữ</td>
+		</tr>
+		<tr>
+			<td>TranslationDataset</td>
+			<td>Lấy đường dẫn có phần mở rộng của các file cho từng loại ngôn ngữ. Chẳng hạn nếu ngôn ngữ là tiếng anh thì file sẽ là 'hoge.en', French: 'hoge.fr', path='hoge', exts=('en','fr')</td>
+			<td>Mô hình dịch</td>
+		</tr>
+		<tr>
+			<td>SequenceTaggingDataset</td>
+			<td>Lấy đường dẫn tới 1 file với câu đầu vào và đầu ra tách biệt bởi các tabs</td>
+			<td>tagging câu</td>
+		</tr>
+	</tbody>
 </table>
 
 # 4. Xây dựng các iterator
@@ -372,28 +365,30 @@ Tham số `sort_within_batch` được thiết lập là True sẽ sắp xếp d
 Đối với dữ liệu testing, chúng ta không muốn trộn dữ liệu vì sẽ đưa ra các dự đoán khi kết thúc huấn luyên. Đây là lý do tại sao chúng ta sử dụng một `Iterator` tiêu chuẩn thay vì `BucketIterator`.
 
 Dưới đây, một danh sách các Iterators mà Torchtext hiện đang hỗ trợ:
-<table class="wikitable" align="center" border="1">
-<tbody><tr>
-<td>Tên Iterators</td>
-<td>Mô tả</td>
-<td>Trường hợp sử dụng</td>
-</tr>
-<tr>
-<td>Iterator</td>
-<td>Chạy vòng lặp qua toàn bộ dataset theo thứ tự của dataset</td>
-<td>Dữ liệu test, hoặc các dữ liệu không cần xáo trộn thứ tự</td>
-</tr>
-<tr>
-<td>BucketIterator</td>
-<td>dồn dữ liệu về cùng 1 độ dài câu bằng nhau</td>
-<td>Phân loại văn bản, tagging chuỗi,....</td>
-</tr>
-<tr>
-<td>BPTTIterator</td>
-<td>Được xây dựng cho các mô hình ngôn ngữ mà việc khởi tạo câu input bị trì hoãn theo từng timestep. Và đồng thời nó cũng biến đổi độ dài của BPTT (backpropagation through time). <a href="http://mlexplained.com/2018/02/15/language-modeling-tutorial-in-torchtext-practical-torchtext-part-2/">Xem thêm</a></td>
-<td>Mô hình ngôn ngữ</td>
-</tr>
-</body></table>
+<table class="t01" align="center" border="1">
+	<tbody>
+		<tr>
+			<th>Tên Iterators</th>
+			<th>Mô tả</th>
+			<th>Trường hợp sử dụng</th>
+		</tr>
+		<tr>
+			<td>Iterator</td>
+			<td>Chạy vòng lặp qua toàn bộ dataset theo thứ tự của dataset</td>
+			<td>Dữ liệu test, hoặc các dữ liệu không cần xáo trộn thứ tự</td>
+		</tr>
+		<tr>
+			<td>BucketIterator</td>
+			<td>dồn dữ liệu về cùng 1 độ dài câu bằng nhau</td>
+			<td>Phân loại văn bản, tagging chuỗi,....</td>
+		</tr>
+		<tr>
+			<td>BPTTIterator</td>
+			<td>Được xây dựng cho các mô hình ngôn ngữ mà việc khởi tạo câu input bị trì hoãn theo từng timestep. Và đồng thời nó cũng biến đổi độ dài của BPTT (backpropagation through time). <a href="http://mlexplained.com/2018/02/15/language-modeling-tutorial-in-torchtext-practical-torchtext-part-2/">Xem thêm</a></td>
+			<td>Mô hình ngôn ngữ</td>
+		</tr>
+	</tbody>
+</table>
  
 # 5. Đóng gói iterator
 
@@ -431,13 +426,9 @@ test_dl = BatchWrapper(test_iter, "comment_text", None)
 
 Những gì đã thực hiện ở đoạn code trên đó là chuyển hóa batch thành tuple của input và output
 
-
 ```
 next(train_dl.__iter__())
 ```
-
-
-
 
     (tensor([[ 63, 220, 368,  ..., 348,  81, 329],
              [552,  46,  61,  ..., 210, 674, 209],
@@ -491,7 +482,6 @@ Trong module LSTM chúng ta cần xác định 3 tham số chính đó là:
 
 Để hiểu rõ hơn về kiến trúc của mạng LSTM và đầu ra của mạng LSTM lại có kích thước như trên các bạn có thể tham khảo [giới thiệu về mạng LSTM](https://phamdinhkhanh.github.io/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html).
 
-
 ```
 import torch.nn as nn
 import torch.nn.functional as F
@@ -530,7 +520,6 @@ model = model.to(device)
 ```
 
 Bây h ta sẽ tạo một vòng lặp huấn luyện. Chúng ta có thể duyệt qua những Iterator được đóng gói và data sẽ được tự động truyền vào sau khi được đưa lên GPU và tham số hóa.
-
 
 ```
 import tqdm
@@ -577,16 +566,19 @@ for epoch in range(1, epochs + 1):
 
 ```
     Epoch: 1, Training Loss: -17331.3613, Validation Loss: -12972.5557
-	...
+    Epoch: 2, Training Loss: -26293.1348, Validation Loss: -18848.7305
+    Epoch: 3, Training Loss: -38160.9180, Validation Loss: -26296.4727
+    Epoch: 4, Training Loss: -53191.8555, Validation Loss: -35586.1328
+    Epoch: 5, Training Loss: -71929.5703, Validation Loss: -47033.2656
+    Epoch: 6, Training Loss: -95008.3203, Validation Loss: -60955.9102
+    Epoch: 7, Training Loss: -123066.7891, Validation Loss: -77651.4453
+    Epoch: 8, Training Loss: -156701.6562, Validation Loss: -97493.2812
     Epoch: 9, Training Loss: -196662.9688, Validation Loss: -120866.4688
     Epoch: 10, Training Loss: -243723.7969, Validation Loss: -148217.6719
     
 
     
-    
-
 Tiếp theo chúng ta sẽ đánh giá mô hình
-
 
 ```
 import numpy as np
@@ -601,11 +593,7 @@ for x, y in tqdm.tqdm(test_dl):
     test_preds = np.hstack(test_preds)
 ```
 
-    100%|██████████| 1/1 [00:00<00:00, 21.53it/s]
-    
-
 Kết quả dự báo
-
 
 ```
 import pandas as pd
@@ -616,24 +604,7 @@ for i, col in enumerate(["toxic", "severe_toxic", "obscene", "threat", "insult",
 df
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="t01">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -703,319 +674,17 @@ df
       <td>1.0</td>
       <td>1.0</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>0001ea8717f6de06</td>
-      <td>Thank you for understanding. I think very high...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>00024115d4cbde0f</td>
-      <td>Please do not add nonsense to Wikipedia. Such ...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>000247e83dcc1211</td>
-      <td>:Dear god this site is horrible.</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>00025358d4737918</td>
-      <td>" \n Only a fool can believe in such numbers. ...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>00026d1092fe71cc</td>
-      <td>== Double Redirects == \n\n When fixing double...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>0002eadc3b301559</td>
-      <td>I think its crap that the link to roggenbier i...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>0002f87b16116a7f</td>
-      <td>"::: Somebody will invariably try to add Relig...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>0003806b11932181</td>
-      <td>, 25 February 2010 (UTC) \n\n :::Looking it ov...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>0003e1cccfd5a40a</td>
-      <td>" \n\n It says it right there that it IS a typ...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>00059ace3e3e9a53</td>
-      <td>" \n\n == Before adding a new product to the l...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>000634272d0d44eb</td>
-      <td>==Current Position== \n Anyone have confirmati...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>000663aff0fffc80</td>
-      <td>this other one from 1897</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>000689dd34e20979</td>
-      <td>== Reason for banning throwing == \n\n This ar...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>000834769115370c</td>
-      <td>:: Wallamoose was changing the cited material ...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>000844b52dee5f3f</td>
-      <td>|blocked]] from editing Wikipedia.   |</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>00084da5d4ead7aa</td>
-      <td>==Indefinitely blocked== \n I have indefinitel...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>00091c35fa9d0465</td>
-      <td>== Arabs are committing genocide in Iraq, but ...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>000968ce11f5ee34</td>
-      <td>Please stop. If you continue to vandalize Wiki...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>0009734200a85047</td>
-      <td>== Energy  == \n\n I have edited the introduct...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>00097b6214686db5</td>
-      <td>:yeah, thanks for reviving the tradition of pi...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>0009aef4bd9e1697</td>
-      <td>MLM Software,NBFC software,Non Banking Financi...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>000a02d807ae0254</td>
-      <td>@RedSlash, cut it short. If you have sources s...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>000a6c6d4e89b9bc</td>
-      <td>==================== \n Deception is the way o...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>000bafe2080bba82</td>
-      <td>. \n\n           Jews are not a race because y...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>000bf0a9894b2807</td>
-      <td>:::If Ollie or others think that one list of t...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>000c50dceb1eed2b</td>
-      <td>" \n *Support Per Jimbo and WP:google ""Climat...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>000c9b92318552d1</td>
-      <td>Professors to the Manhatten Project.</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>000ce41d86f2b886</td>
-      <td>:::::I have added more wikilinks to my section...</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-    </tr>
   </tbody>
 </table>
-</div>
 
 
+Như vậy qua bài hướng dẫn này chúng ta đã nắm được những kiến thức cơ bản về torchtext bao gồm:
+* Cách thức biến đổi dữ liệu thông qua các Field.
+* Khởi tạo một Dataset khai báo các trường thông tin, nguồn dữ liệu, tập train, tập test kèm theo cách thức biến đổi ở mỗi trường thông tin.
+* Xây dựng một vocabulary map các keyword với index đối với các Field được tạo thành từ text để từ đó chuyển hóa câu văn sang list indexes phục vụ training.
+* Khởi tạo 1 iterator quản lý quá trình truyền dữ liệu batch vào mô hình hồi qui.
+* Xây dựng 1 baseline model LSTM nhằm phân loại các cảm xúc của comments.
+Khi xây dựng mô hình NLP sẽ có rất nhiều các tình huống chúng ta cần sử dụng torchtext để xử lý dữ liệu. Khi đó hi vọng bài hướng dẫn này sẽ phát huy tác dụng.
 
 # 7. Tài liệu tham khảo
 

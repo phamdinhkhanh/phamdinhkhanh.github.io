@@ -95,6 +95,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Hướng dẫn pytorch - Bài 2 - Xây dựng mô hình sequence to sequence trên pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Xây dựng Pipeline Machine learning model trên SparkSQL</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Attention is all you need</a></li>
@@ -103,9 +109,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Mô hình Word2Vec</a></li>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Lý thuyết về mạng LSTM part 2</a></li>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/k-thu-t-feature-engineering.html">Kĩ thuật feature engineering</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Kĩ thuật feature engineering</a></li>
 					
 				</nav>
 			</div>
@@ -244,7 +250,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
 </code></pre></div></div>
 
-<p>Hiện tại trên cluster đang chưa có bảng nào. Để thêm một bảng vào cluster chúng ta có thể đọc từ my_spark.read.csv()</p>
+<p>Hiện tại trên cluster đang chưa có bảng nào. Để thêm một bảng vào cluster chúng ta có thể đọc từ my_spark.read.csv()
+Dữ liệu file csv các bạn có thể download từ link sau <a href="https://www.kaggle.com/miquar/explore-flights-csv-airports-csv-airlines-csv/data">flights.csv</a></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">'flights.csv'</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 <span class="c1"># show fligths top 5
