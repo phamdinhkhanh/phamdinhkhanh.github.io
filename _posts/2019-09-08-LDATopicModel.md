@@ -11,7 +11,6 @@ title: Latent Dirichlet Allocation - Mô hình phân loại topic
 Trong cuộc sống sẽ rất cần đến các bài toán phân loại topics. Chẳng hạn như người đọc báo có thể dễ dàng lựa chọn thể loại báo ưa thích thông qua topics mà nó được gán. Người mua sách có thể lựa chọn được những sách liên quan đến chủ đề mà mình quan tâm thông qua topics. Hoặc người đưa tin có thể tóm tắt nội dung của các mẩu tin thông qua topics. Tóm lại tác vụ phân loại topics giúp chúng ta đọc hiểu, lựa chọn và tìm kiếm những thông tin có nội dung xác định nhanh và chính xác hơn. Trong lớp những bài toán phân loại topics thì thuật toán LDA là một trong những lớp mô hình được ưa chuộng vì hiệu quả tính toán nhanh, đưa ra kết quả chính xác dựa trên lớp mô hình sinh (generative model). Kết quả của LDA trả ra bao gồm phân phối theo văn bản và phân phối theo mỗi từ. Trong đó phân phối theo văn bản là một tợp hợp phân phối hỗi hợp của một số lượng cố định các topics và mỗi từ sẽ biểu diễn mức độ đóng góp vào văn bản thông qua biểu diễn của nó theo topics. Để hiểu hơn về LDA là mô hình như thế nào và lịch sử hình thành phát triển của nó ra sao chúng ta cùng tìm hiểu quan bài viết này.
 
 ## 1.2. Các dạng mô hình tìm chủ đề.
-
 Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Một tợp hợp các từ (words hoặc terms) được lựa chọn trước hay còn gọi là bag of word sao cho những từ này không phải là stop words và với mỗi một văn bản (document) ta sẽ đo lường tần suất xuất hiện của chúng. Những tần suất này sau đó sẽ được so sánh với tần suất văn bản xuất hiện từ trong toàn bộ bộ văn bản (corpus). Từ đó ta tính được chỉ số tf-idf của từng từ trong tập bag of word. 
 
 <img src="https://cdn-images-1.medium.com/max/720/1*jNnpbGPxkjehlvTCXq9B8g.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
@@ -118,8 +117,7 @@ $k$ là số lần xuất hiện của sự kiện.
 
 ## 2.3. Phân phối beta
 Beta distribution là một phân phối liên tục xác định dựa trên biến ngẫu nhiên $p \in [0, 1]$ nhằm mô tả sự biến động của tham số $p$ trong phân phối bernoulli. Phân phối beta được đặc tả bởi 2 tham số $\alpha, \beta$ không âm theo phương trình hàm mật độ xác xuất:
-$$f(p; \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{\beta-1}
-$$
+$$f(p; \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{\beta-1}$$
 
 Trong đó hàm $\Gamma(.)$ được gọi là `gamma function` có mối liên hệ với giai thừa trong điều kiện tham số của nó là số nguyên.
 

@@ -95,7 +95,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<nav>
 					<div class="header">Latest</div>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDAModelStandfordThesis.html">Latent Dirichlet Allocation - Mô hình phân loại topic</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Latent Dirichlet Allocation - Mô hình phân loại topic</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP</a></li>
 					
@@ -159,7 +159,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Trong cuộc sống sẽ rất cần đến các bài toán phân loại topics. Chẳng hạn như người đọc báo có thể dễ dàng lựa chọn thể loại báo ưa thích thông qua topics mà nó được gán. Người mua sách có thể lựa chọn được những sách liên quan đến chủ đề mà mình quan tâm thông qua topics. Hoặc người đưa tin có thể tóm tắt nội dung của các mẩu tin thông qua topics. Tóm lại tác vụ phân loại topics giúp chúng ta đọc hiểu, lựa chọn và tìm kiếm những thông tin có nội dung xác định nhanh và chính xác hơn. Trong lớp những bài toán phân loại topics thì thuật toán LDA là một trong những lớp mô hình được ưa chuộng vì hiệu quả tính toán nhanh, đưa ra kết quả chính xác dựa trên lớp mô hình sinh (generative model). Kết quả của LDA trả ra bao gồm phân phối theo văn bản và phân phối theo mỗi từ. Trong đó phân phối theo văn bản là một tợp hợp phân phối hỗi hợp của một số lượng cố định các topics và mỗi từ sẽ biểu diễn mức độ đóng góp vào văn bản thông qua biểu diễn của nó theo topics. Để hiểu hơn về LDA là mô hình như thế nào và lịch sử hình thành phát triển của nó ra sao chúng ta cùng tìm hiểu quan bài viết này.</p>
 
 <h2 id="12-các-dạng-mô-hình-tìm-chủ-đề">1.2. Các dạng mô hình tìm chủ đề.</h2>
-
 <p>Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Một tợp hợp các từ (words hoặc terms) được lựa chọn trước hay còn gọi là bag of word sao cho những từ này không phải là stop words và với mỗi một văn bản (document) ta sẽ đo lường tần suất xuất hiện của chúng. Những tần suất này sau đó sẽ được so sánh với tần suất văn bản xuất hiện từ trong toàn bộ bộ văn bản (corpus). Từ đó ta tính được chỉ số tf-idf của từng từ trong tập bag of word.</p>
 
 <p><img src="https://cdn-images-1.medium.com/max/720/1*jNnpbGPxkjehlvTCXq9B8g.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
