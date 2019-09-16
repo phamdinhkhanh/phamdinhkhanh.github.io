@@ -5,7 +5,6 @@
 <p>Trong cuộc sống sẽ rất cần đến các bài toán phân loại topics. Chẳng hạn như người đọc báo có thể dễ dàng lựa chọn thể loại báo ưa thích thông qua topics mà nó được gán. Người mua sách có thể lựa chọn được những sách liên quan đến chủ đề mà mình quan tâm thông qua topics. Hoặc người đưa tin có thể tóm tắt nội dung của các mẩu tin thông qua topics. Tóm lại tác vụ phân loại topics giúp chúng ta đọc hiểu, lựa chọn và tìm kiếm những thông tin có nội dung xác định nhanh và chính xác hơn. Trong lớp những bài toán phân loại topics thì thuật toán LDA là một trong những lớp mô hình được ưa chuộng vì hiệu quả tính toán nhanh, đưa ra kết quả chính xác dựa trên lớp mô hình sinh (generative model). Kết quả của LDA trả ra bao gồm phân phối theo văn bản và phân phối theo mỗi từ. Trong đó phân phối theo văn bản là một tợp hợp phân phối hỗi hợp của một số lượng cố định các topics và mỗi từ sẽ biểu diễn mức độ đóng góp vào văn bản thông qua biểu diễn của nó theo topics. Để hiểu hơn về LDA là mô hình như thế nào và lịch sử hình thành phát triển của nó ra sao chúng ta cùng tìm hiểu quan bài viết này.</p>
 
 <h2 id="12-các-dạng-mô-hình-tìm-chủ-đề">1.2. Các dạng mô hình tìm chủ đề.</h2>
-
 <p>Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Một tợp hợp các từ (words hoặc terms) được lựa chọn trước hay còn gọi là bag of word sao cho những từ này không phải là stop words và với mỗi một văn bản (document) ta sẽ đo lường tần suất xuất hiện của chúng. Những tần suất này sau đó sẽ được so sánh với tần suất văn bản xuất hiện từ trong toàn bộ bộ văn bản (corpus). Từ đó ta tính được chỉ số tf-idf của từng từ trong tập bag of word.</p>
 
 <p><img src="https://cdn-images-1.medium.com/max/720/1*jNnpbGPxkjehlvTCXq9B8g.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
@@ -29,7 +28,7 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 <script type="math/tex; mode=display">\mathbf{A}_{mn} = \mathbf{U}_{mt}\mathbf{\Sigma}_{tt}\mathbf{V}_{nt}^\mathbf{T}</script>
 
-<p><img src="https://cdn-images-1.medium.com/max/720/1*DOvWt8JH8_fXETb2hiO_LA.png" width="600px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/720/1*DOvWt8JH8_fXETb2hiO_LA.png" width="800px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p><strong>Hình 2:</strong> Phép phân tích suy biến.</p>
 
@@ -53,7 +52,9 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 <p>Thay vì sử dụng ma trận, mô hình probabilistic latent sementic analysis (pLSA) sẽ sử dụng phương pháp xác xuất. Đồ thị mô hình có dạng như sau:</p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Plsi_1.svg/450px-Plsi_1.svg.png" width="600px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Plsi_1.svg/450px-Plsi_1.svg.png" width="300px" height="150px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+
+<p><strong>Hình 3:</strong> Đồ thị sinh xác suất của mô hình pLSA.</p>
 
 <p>Xét các quan sát dưới dạng đồng xuất hiện của các cặp $(w, d)$ của document-term, pLSA sẽ mô hình hóa xác suất đồng xuất hiện của mỗi cặp $(w, d)$ như một hỗn hợp của phân phối multinormial độc lập có điều kiện:</p>
 
@@ -61,58 +62,22 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 <ul>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Như vậy xác suất đồng xuất hiện của một cặp document-term sẽ được xác định thông qua phân phối xác suất của topic theo các văn bản $p(c</td>
-          <td>d)$ và phân phối xác suất của các từ theo topic $p(w</td>
-          <td>c)$.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Như vậy xác suất đồng xuất hiện của một cặp document-term sẽ được xác định thông qua phân phối xác suất của topic theo các văn bản $p(c|d)$ và phân phối xác suất của các từ theo topic $p(w|c)$.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>$p(d), p(c</td>
-          <td>d), p(w</td>
-          <td>c)$ là các tham số của mô hình. $p(d)$ có thể được xác định trực tiếp từ bộ văn bản, $p(c</td>
-          <td>d)$ và $p(w</td>
-          <td>c)$ là các phân phối multinomial được training từ mô hình thông qua phương pháp <strong>tối đa hóa kì vọng - EM</strong> (<a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">expectation maximization</a>). Không quá đi sâu vào phương pháp tối đa hóa kì vọng, một cách khái quát EM giúp tìm ra tham số hợp lý nhất cho mô hình dựa trên các nhân tố ẩn (ở đây là các topics ẩn) dựa trên tối ưu hóa hàm hợp lý tối đa.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>$p(d), p(c|d), p(w|c)$ là các tham số của mô hình. $p(d)$ có thể được xác định trực tiếp từ bộ văn bản, $p(c|d)$ và $p(w|c)$ là các phân phối multinomial được training từ mô hình thông qua phương pháp <strong>tối đa hóa kì vọng - EM</strong> (<a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">expectation maximization</a>). Không quá đi sâu vào phương pháp tối đa hóa kì vọng, một cách khái quát EM giúp tìm ra tham số hợp lý nhất cho mô hình dựa trên các nhân tố ẩn (ở đây là các topics ẩn) dựa trên tối ưu hóa hàm hợp lý tối đa.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Bên cạnh đó xác suất đồng xuất hiện $p(w, d)$ cũng có thể được biểu diễn thông qua phân phối xác xuất của từ theo topic ($p(w</td>
-          <td>c)$) và của văn bản theo topic ($p(d</td>
-          <td>c)$). Trường hợp này sẽ tương tự như mô hình LSA. Khi đó $p(d</td>
-          <td>c)$ sẽ tương ứng với ma trận suy biến trái $\mathbf{U}$, $p(w</td>
-          <td>c)$ tương ứng với ma trận suy biến phải $\mathbf{V}$, $p(c)$ chính là ma trận đường chéo chính $\mathbf{\Sigma}$.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Bên cạnh đó xác suất đồng xuất hiện $p(w, d)$ cũng có thể được biểu diễn thông qua phân phối xác xuất của từ theo topic ($p(w|c)$) và của văn bản theo topic ($p(d|c)$). Trường hợp này sẽ tương tự như mô hình LSA. Khi đó $p(d|c)$ sẽ tương ứng với ma trận suy biến trái $\mathbf{U}$, $p(w|c)$ tương ứng với ma trận suy biến phải $\mathbf{V}$, $p(c)$ chính là ma trận đường chéo chính $\mathbf{\Sigma}$.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Chúng ta có thể hình dung quá trình hồi qui pLSA như một quá trình sinh dựa trên một đồ thị. Bước đầu tiên của mô hình có thể xuất phát với topic hoặc văn bản. Nếu chúng ta bắt đầu với văn bản đầu tiên chúng ta tạo ra các phân phối của văn bản $p(d)$, sau đó sinh ra phân phối topic ngẫu nhiên $p(z</td>
-          <td>d)$, và tiếp theo tạo ra phân phối của các từ $p(w</td>
-          <td>z)$ dựa trên topic. Nếu bắt đầu bằng topic thì chúng ta sẽ sinh ra các topic ngẫu nhiên, tiếp theo là 2 quá trình đồng thời tạo ra văn bản và từ dựa trên topic. Cụ thể của quá trình này như bên dưới:</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Chúng ta có thể hình dung quá trình hồi qui pLSA như một quá trình sinh dựa trên một đồ thị. Bước đầu tiên của mô hình có thể xuất phát với topic hoặc văn bản. Nếu chúng ta bắt đầu với văn bản đầu tiên chúng ta tạo ra các phân phối của văn bản $p(d)$, sau đó sinh ra phân phối topic ngẫu nhiên $p(z|d)$, và tiếp theo tạo ra phân phối của các từ $p(w|z)$ dựa trên topic. Nếu bắt đầu bằng topic thì chúng ta sẽ sinh ra các topic ngẫu nhiên, tiếp theo là 2 quá trình đồng thời tạo ra văn bản và từ dựa trên topic. Cụ thể của quá trình này như bên dưới:</p>
   </li>
 </ul>
 
 <p><img src="https://cdn-images-1.medium.com/max/720/1*V-_VXpEXXOT-SaE-Vll3KQ.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 3:</strong> Qúa trình sinh của model pLSA</p>
+<p><strong>Hình 4:</strong> Qúa trình sinh của model pLSA</p>
 
 <p>Mặc dù dựa trên mô hình sinh xác xuất đồ thị nên có tính linh hoạt cao hơn so với LSA nhưng mô hình pLSA vẫn có những hạn chế đó là:</p>
 
@@ -128,26 +93,12 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 <h2 id="21-phân-phối-tiên-nghiệm-và-hậu-nghiệm">2.1. Phân phối tiên nghiệm và hậu nghiệm</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Phân phối hậu nghiệm là họ các phân phối mà tham số của nó đã biết trước dựa trên kinh nghiệm. Chẳng hạn như theo một cách nào đó chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$. Dựa trên các hiểu biết chung về suy luận phân phối (liên tục) cho một tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$, theo định lý Bayes, phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x</td>
-      <td>\theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Phân phối hậu nghiệm là họ các phân phối mà tham số của nó đã biết trước dựa trên kinh nghiệm. Chẳng hạn như theo một cách nào đó chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$. Dựa trên các hiểu biết chung về suy luận phân phối (liên tục) cho một tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$, theo định lý Bayes, phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x|\theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 {\displaystyle {\begin{aligned}p(\theta|x)&={\frac {p(x|\theta )\,p(\theta )}{p(x)}}\\&={\frac {p(x|\theta )\,p(\theta )}{\int p(x|\theta ')\,p(\theta ')\,d\theta '}}\end{aligned}}} %]]></script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm (posterior distribution) $p(\theta</td>
-      <td>x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm (prior distribution) $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (<strong>conjugate prior</strong>) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó. Tức là nếu hàm hợp lý tối đa là một gaussian, lựa chọn một hàm tiên nghiệm với tham số trung bình sẽ đảm bảo hàm hậu nghiệm cũng sẽ phân phối gaussian.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm (posterior distribution) $p(\theta|x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm (prior distribution) $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (<strong>conjugate prior</strong>) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó. Tức là nếu hàm hợp lý tối đa là một gaussian, lựa chọn một hàm tiên nghiệm với tham số trung bình sẽ đảm bảo hàm hậu nghiệm cũng sẽ phân phối gaussian.</p>
 
 <h2 id="22-phân-phối-poisson">2.2. Phân phối poisson.</h2>
 <p>Phân phối poisson là một phân phối rời rạc. 
@@ -229,7 +180,7 @@ f_p(x) := \mathbf{P}(X_1 = x_1, X_2 = x_2, \dots, X_k = X_k)={\begin{cases}\frac
 
 <p><img src="https://miro.medium.com/max/1009/1*QQTk2TGyzhakGh0lZ9P03w.jpeg" width="500px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 4:</strong> Sơ đồ kết nối văn bản với từ vựng.</p>
+<p><strong>Hình 5:</strong> Sơ đồ kết nối văn bản với từ vựng.</p>
 
 <p>Thông qua việc thống kê tần suất xuất hiện của các từ quan trọng trong một văn bản ta nhận thấy rằng có một số văn bản sẽ có một tợp hợp các từ gần như nhau. Do đó chúng sẽ liên quan với nhau về một chủ đề nào đó. Nhưng để làm như vậy chúng ta cần có <code class="highlighter-rouge">num_words*num_documents = 500*1000 = 500000</code> threads cho nó. Số lượng này tạo ra một chi phí tính toán rất lớn. Chính vì thế một cách đơn giản và tốn kém ít chi phí hơn đó là tìm cách giảm số lượng các kết nối giữa documents và words bằng cách tạo ra những topics trung gian nhóm các từ liên quan vào chung 1 nhóm và kết nối thông qua các nhóm này.</p>
 
@@ -241,7 +192,7 @@ f_p(x) := \mathbf{P}(X_1 = x_1, X_2 = x_2, \dots, X_k = X_k)={\begin{cases}\frac
 
 <p><img src="https://miro.medium.com/max/1014/1*2uj6t3gNv76SpHrWf5-z-A.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 5:</strong> Sơ đồ kết nối văn bản tới các từ thông qua trung gian là các topics ẩn. Trong đó chúng ta giả định có 3 topics ẩn là (“Animals”, “Sports”, “Tech”). Trên thực tế chúng ta sẽ không có 3 topics này mà thay vào đó một phân phối của các từ chẳng hạn <code class="highlighter-rouge">(0.3*Cats,0.4*Dogs,0.2*Loyal, 0.1*Evil)</code> sẽ biểu diễn cho topic “Animals”. Mỗi topics sẽ là một biểu diễn phân phối của các từ mà nó thuộc về.</p>
+<p><strong>Hình 6:</strong> Sơ đồ kết nối văn bản tới các từ thông qua trung gian là các topics ẩn. Trong đó chúng ta giả định có 3 topics ẩn là (“Animals”, “Sports”, “Tech”). Trên thực tế chúng ta sẽ không có 3 topics này mà thay vào đó một phân phối của các từ chẳng hạn <code class="highlighter-rouge">(0.3*Cats,0.4*Dogs,0.2*Loyal, 0.1*Evil)</code> sẽ biểu diễn cho topic “Animals”. Mỗi topics sẽ là một biểu diễn phân phối của các từ mà nó thuộc về.</p>
 
 <h2 id="33-lý-thuyết-về-model-lda">3.3. Lý thuyết về model LDA</h2>
 
@@ -296,9 +247,9 @@ f_p(x) := \mathbf{P}(X_1 = x_1, X_2 = x_2, \dots, X_k = X_k)={\begin{cases}\frac
 
 <p><strong>Qúa trình sinh</strong></p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Smoothed_LDA.png/377px-Smoothed_LDA.png" width="600px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Smoothed_LDA.png/377px-Smoothed_LDA.png" width="300px" height="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 6:</strong> Đồ thị của qúa trình sinh trong LDA. Những hình chữ nhật thể hiện quá trình lặp lại. Như vậy ta có thể thấy có 2 quá trình lặp lại liên tục trong LDA là quá trình lựa chọn topic và quá trình lựa chọn từ. Các tham số được khởi tạo tiến trình ban đầu là $\alpha$ và $\beta$. Từ đó tính toán được phân phối hỗn hợp của topic $\theta$ và phân phối của từ theo topic $\mathbf{w}$</p>
+<p><strong>Hình 7:</strong> Đồ thị của qúa trình sinh trong LDA. Những hình chữ nhật thể hiện quá trình lặp lại. Như vậy ta có thể thấy có 2 quá trình lặp lại liên tục trong LDA là quá trình lựa chọn topic và quá trình lựa chọn từ. Các tham số được khởi tạo tiến trình ban đầu là $\alpha$ và $\beta$. Từ đó tính toán được phân phối hỗn hợp của topic $\theta$ và phân phối của từ theo topic $\mathbf{w}$</p>
 
 <p>Để suy luận ra các topic trong corpus, chúng ta sẽ tạo ra một quá trình sinh tưởng tượng mà khi đó các văn bản được tạo ra theo một cơ chế có thể suy luận và đảo ngược tiến trình đó. Tiến trình sinh như sau:</p>
 
@@ -308,25 +259,19 @@ f_p(x) := \mathbf{P}(X_1 = x_1, X_2 = x_2, \dots, X_k = X_k)={\begin{cases}\frac
   <li>Với mỗi một văn bản lựa chọn độ dài văn bản $N \sim \text{Poisson}(\xi)$.</li>
   <li>Lựa chọn ma trận $\mathbf{\theta} \sim \text{Dir}(\alpha)$. Sao cho tham số $\theta_i$ chính là phân phối topic của văn bản thứ $i$. Tham số $\alpha$ thường là một véc tơ thưa $k$ chiều với đa số các thành phần bằng 0. Mỗi chiều của $\alpha$ đặc trưng cho 1 topic.</li>
   <li>Lựa chọn $\mathbf{\phi} \sim \text{Dir}(\beta)$ đại diện cho phân phối của từ theo topic. Tương tự như $\alpha$, $\beta$ cũng là một véc tơ thưa $k$ chiều mà mỗi chiều của nó đặc trưng cho 1 topic. Các tham số của phân phối được lựa chọn là véc tơ thưa nhằm mục đích để mỗi một topic chỉ được giải thích bởi một nhóm nhỏ các từ thuộc về topic đó.</li>
-  <li>Đối với mỗi một từ $w_{ij}$ thuộc văn bản thứ $i$ và vị trí thứ $j$ trong văn bản:</li>
+  <li>
+    <p>Đối với mỗi một từ $w_{ij}$ thuộc văn bản thứ $i$ và vị trí thứ $j$ trong văn bản:</p>
+
+    <p>(a) Lựa chọn một phân phối topic $z_{i,j} \sim \text{Multinomial}(\theta_i)$. Trong đó $z_{i,j}$ là một số nguyên nằm trong khoảng $[1, K]$ xác định topic của toàn bộ các từ trong các văn bản.</p>
+
+    <p>(b) Lựa chọn một từ $w_{i,j} \sim \text{Multinomial}(\phi_{i,j})$. Trong đó $w_{i, j}$ là các số nguyên trong khoảng $[1, V]$ xác định từ $w$ thứ $j$ trong văn bản $\mathbf{w}_i$.</p>
+  </li>
 </ol>
-
-<p>(a) Lựa chọn một phân phối topic $z_{i,j} \sim \text{Multinomial}(\theta_i)$. Trong đó $z_{i,j}$ là một số nguyên nằm trong khoảng $[1, K]$ xác định topic của toàn bộ các từ trong các văn bản.</p>
-
-<p>(b) Lựa chọn một từ $w_{i,j} \sim \text{Multinomial}(\phi_{i,j})$. Trong đó $w_{i, j}$ là các số nguyên trong khoảng $[1, V]$ xác định từ $w$ thứ $j$ trong văn bản $\mathbf{w}_i$.</p>
 
 <p>Lưu ý rằng multinormial ở đây là những multinomial với 1 phép thử duy nhất nên nó tương đương với phân phối categorical.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Việc đầu tiên là chúng ta giả định số lượng topics ẩn là đã biết và bằng $k$, và do đó $k$ cũng sẽ qui định số chiều của phân phối Dirichlet. Thứ 2, chúng xác suất của từ được tham số hóa bằng một ma trận $\beta \in \mathbb{R}^{K \times V}$ với mỗi phần tử $\beta_{ij}$ đặc trưng cho phân phối xác suất của từ thứ $j$ cho chủ đề i hay $\beta_{ij} = p(w_{j}=1</td>
-      <td>z_{i}=1)$. Sau đó chúng ta sẽ cố định các tham số này.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Khi đó ta sẽ tính được hàm mật độ xác suất của các topics đối với mỗi văn bản khi đã biết tham số $\alpha$ theo phân phối dirichlet:</p>
+<p>Việc đầu tiên là chúng ta giả định số lượng topics ẩn là đã biết và bằng $k$, và do đó $k$ cũng sẽ qui định số chiều của phân phối Dirichlet. Thứ 2, chúng ta xác định xác suất của từ được tham số hóa bằng một ma trận $\beta \in \mathbb{R}^{K \times V}$ với mỗi phần tử $\beta_{ij}$ đặc trưng cho phân phối xác suất của từ thứ $j$ cho chủ đề i hay $\beta_{ij} = p(w_{j}=1 | z_{i}=1)$. Sau đó chúng ta sẽ cố định các tham số này. 
+Khi đó ta sẽ tính được hàm mật độ xác suất của các topics đối với mỗi văn bản khi đã biết tham số $\alpha$ theo phân phối dirichlet:</p>
 
 <script type="math/tex; mode=display">f(\theta; \alpha) = \frac{\Gamma(\sum_{i=1}^{K}\alpha_i)}{\prod_{i=1}^{K}\Gamma(\alpha_i)} \prod_{i=1}^{K}{\theta_i^{\alpha_i-1}}</script>
 
@@ -334,24 +279,13 @@ f_p(x) := \mathbf{P}(X_1 = x_1, X_2 = x_2, \dots, X_k = X_k)={\begin{cases}\frac
 
 <script type="math/tex; mode=display">p(\theta, \mathbf{z}, \mathbf{w}|\alpha, \beta) = p(\theta|\alpha)\prod_{i=1}^N p(z_n|\theta)p(w_n|z_n,\beta)</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Thành phần $p(\theta</td>
-      <td>\alpha)$ chính là phân phối xác suất hỗn hợp topic tương ứng với văn bản khi đã biết trước tham số phân phối Dirichlet $\alpha$. Vế còn lại $\prod_{i=1}^N p(z_n</td>
-      <td>\theta)p(w_n</td>
-      <td>z_n,\beta)$ chính là phân phối xác suất khi đã biết trước phân phối hỗn hợp topic $\theta$ và tham số phân phối Dirichlet $\beta$. Công thức này khá khó hiểu đối với những bạn chưa làm quen với lý thuyết về tính toán xác suất dựa trên <a href="https://en.wikipedia.org/wiki/Markov_chain">chuỗi markov</a>. Nhưng hãy tạm chấp nhận nó nếu quá khó hiểu.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Nếu lấy xác suất biên của một văn bản bằng cách tích phân theo $\theta$ và lấy tổng toàn bộ các $z$ ta sẽ được:</p>
+<p>Thành phần $p(\theta | \alpha)$ chính là phân phối xác suất hỗn hợp topic tương ứng với văn bản khi đã biết trước tham số phân phối Dirichlet $\alpha$. Vế còn lại $\prod_{i=1}^N p(z_n | \theta)p(w_n | z_n,\beta)$ chính là phân phối xác suất khi đã biết trước phân phối hỗn hợp topic $\theta$ và tham số phân phối Dirichlet $\beta$. Công thức này khá khó hiểu đối với những bạn chưa làm quen với lý thuyết về tính toán xác suất dựa trên <a href="https://en.wikipedia.org/wiki/Markov_chain">chuỗi markov</a>. Nhưng hãy tạm chấp nhận nó nếu quá khó hiểu.
+Nếu lấy xác suất biên của một văn bản bằng cách tích phân theo $\theta$ và lấy tổng toàn bộ các $z$ ta sẽ được:</p>
 
 <script type="math/tex; mode=display">p(\mathbf{w}|\alpha, \beta) = \int p(\theta|\alpha)\prod_{i=1}^N \sum_{z_n} p(z_n|\theta)p(w_n|z_n,\beta) d\theta</script>
 
-<p>Nếu bạn đọc đã quên xác suất biên xin nhắc lại: xác suất biên theo một chiều chính là xác suất được tính dựa trên tổng (nếu rời rạc) hoặc tích phân (nếu liên tục) các phân phối xác suất chung nếu thay đổi các chiều còn lại. Để nắm vững kiến thức về xác suất biên bạn đọc có thể đọc <a href="https://machinelearningcoban.com/2017/07/09/prob/">bài ôn tập xác suất</a> được tổng hợp rất chuẩn mực và chi tiết tại blog machine learning cơ bản.</p>
-
-<p>Và cuối cùng chúng ta sẽ tính được xác suất của toàn bộ văn bản dựa trên xác suất biên từ mỗi văn bản.</p>
+<p>Nếu bạn đọc đã quên xác suất biên xin nhắc lại: xác suất biên theo một chiều chính là xác suất được tính dựa trên tổng (nếu rời rạc) hoặc tích phân (nếu liên tục) các phân phối xác suất chung nếu thay đổi các chiều còn lại. Để nắm vững kiến thức về xác suất biên bạn đọc có thể đọc <a href="https://machinelearningcoban.com/2017/07/09/prob/">bài ôn tập xác suất</a> được tổng hợp rất chuẩn mực và chi tiết tại blog machine learning cơ bản.
+Và cuối cùng chúng ta sẽ tính được xác suất của toàn bộ văn bản dựa trên xác suất biên từ mỗi văn bản.</p>
 
 <script type="math/tex; mode=display">p(\mathcal{D}|\alpha, \beta) = \prod_{d=1}^{M} \int p(\theta_d|\alpha)\prod_{i=1}^N \sum_{z_n} p(z_n|\theta)p(w_n|z_n,\beta) d\theta_d</script>
 
@@ -395,21 +329,23 @@ df.head()
  'talk.politics.guns' 'talk.religion.misc' 'sci.crypt']
 </code></pre></div></div>
 
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<p><br /></p>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+.t01 {
+  width: 100%;    
+  background-color: #ffffff;
+}
 </style>
-<table border="1" class="dataframe">
+
+<table border="1" class="t01">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -451,8 +387,7 @@ df.head()
     </tr>
   </tbody>
 </table>
-</div>
-
+<p><br /></p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Visualization số lượng các topics
 
 df[['target_names', 'content']].groupby(['target_names']).count().plot(kind='bar')
@@ -461,7 +396,7 @@ df[['target_names', 'content']].groupby(['target_names']).count().plot(kind='bar
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc62e220c50&gt;
 </code></pre></div></div>
 
-<p><img src="../assets/images/20190908_LDAModel/count_topics.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p><img src="/assets/images/20190908_LDAModel/count_topics.png" width="400px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Như vậy có 20 nhóm, mỗi nhóm có số lượng các posts trong khoảng từ 400-600. phân về các chủ đề như: auto, mobile, medicine,….</p>
 
@@ -796,7 +731,7 @@ vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
 vis
 </code></pre></div></div>
 
-<p><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/03/pyLDAvis-1024x644.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<p><img src="https://www.machinelearningplus.com/wp-content/uploads/2018/03/pyLDAvis-1024x644.png" width="600px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <h2 id="48-tìm-ra-topics-chính-của-document">4.8. Tìm ra topics chính của document.</h2>
 <p>Như ta đã biết các topics trong LDA là những topics ẩn, vậy chúng ta có cách nào để xác định một cách tương đôi topic chính của các văn bản này không? Câu trả lời là có dựa trên phân phối của topics theo các từ ta có thể tìm ra được từ nào là quan trọng nhất đối với mỗi topic và có khả năng topic sẽ liên quan đến từ này nhiều nhất nên gán cho topic ẩn một nghĩa tương đối chính là từ.</p>
@@ -835,22 +770,8 @@ df_dominant_topic.columns = ['Document_No', 'Dominant_Topic', 'Topic_Perc_Contri
 # Show
 df_dominant_topic.head(10)
 </code></pre></div></div>
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<p><br /></p>
+<table border="1" class="t01">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -944,9 +865,8 @@ df_dominant_topic.head(10)
     </tr>
   </tbody>
 </table>
-</div>
-
-<p>Topic model là một trong những lớp mô hình có nhiều ứng dụng để giải quyết các vấn đề trong cuộc sống. Thông qua bài viết này bạn đọc đã nắm được:</p>
+<p><br />
+Topic model là một trong những lớp mô hình có nhiều ứng dụng để giải quyết các vấn đề trong cuộc sống. Thông qua bài viết này bạn đọc đã nắm được:</p>
 
 <ul>
   <li>Các dạng mô hình topic: LSA, pLSA và LDA.</li>
@@ -970,5 +890,8 @@ df_dominant_topic.head(10)
   </li>
   <li>
     <p><a href="https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/">Gensim topic model - machinelearningplus blog</a></p>
+  </li>
+  <li>
+    <p><a href="https://radimrehurek.com/gensim/models/ldamodel.html">Gensim LDA model</a></p>
   </li>
 </ol>
