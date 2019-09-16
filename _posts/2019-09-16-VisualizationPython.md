@@ -142,14 +142,6 @@ plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 ```
 
-
-
-
-    Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-
-
-
-
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_3_1.png">
 
 
@@ -174,12 +166,6 @@ plt.title('Gía chứng khoán APPLE')
 ```
 
 
-
-
-    Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-
-
-
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_5_1.png">
 
 
@@ -191,12 +177,6 @@ plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 ```
-
-
-
-
-    Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-
 
 
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_6_1.png">
@@ -212,13 +192,6 @@ plt.title('Gía chứng khoán APPLE')
 ```
 
 
-
-
-    Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-
-
-
-
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_7_1.png">
 
 
@@ -229,14 +202,6 @@ plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 ```
-
-
-
-
-    Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-
-
-
 
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_8_1.png">
 
@@ -257,13 +222,6 @@ plt.plot(df['Close'].tail(100), linestyle = '-', marker = 'o')
 ```
 
 
-
-
-    [<matplotlib.lines.Line2D at 0x7fde758c5c88>]
-
-
-
-
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_10_1.png">
 
 
@@ -271,12 +229,6 @@ plt.plot(df['Close'].tail(100), linestyle = '-', marker = 'o')
 ```
 plt.plot(df['Close'].tail(100), linestyle = '--', marker = 's', color = 'red')
 ```
-
-
-
-
-    [<matplotlib.lines.Line2D at 0x7fed4e92d470>]
-
 
 
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_11_1.png">
@@ -451,14 +403,6 @@ plt.pie(x = np.array([10, 20, 50]), # giá trị của các nhóm
 plt.title('Biểu đồ tròn tỷ lệ % của các nhóm')
 ```
 
-
-
-
-    Text(0.5, 1.0, 'Biểu đồ tròn tỷ lệ % của các nhóm')
-
-
-
-
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_26_1.png">
 
 
@@ -481,14 +425,6 @@ plt.title('Biểu đồ Boxplot')
 plt.xlabel('Classes')
 plt.ylabel('Gía trị của x, y, z')
 ```
-
-
-
-
-    Text(0, 0.5, 'Gía trị của x, y, z')
-
-
-
 
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_28_1.png">
 
@@ -640,14 +576,6 @@ Biểu đồ tròn
 df.iloc[-1, :].plot.pie(autopct = '%.2f%%')
 plt.title('Biểu đồ tròn')
 ```
-
-
-
-
-    Text(0.5, 1.0, 'Biểu đồ tròn')
-
-
-
 
 <img src="/assets/images/20190916_VisualizationPython/VisualizationPython_38_1.png">
 
@@ -840,7 +768,7 @@ im, cbar = heatmap(df_cor, row_labels = inds, col_labels = inds)
 ```
 
 
-<img src="/assets/images/20190916_VisualizationPython/VisualizationPython_47_1.png">
+<img src="/assets/images/20190916_VisualizationPython/VisualizationPython_47_0.png">
 
 
 Chúng ta sẽ thêm titles giá trị các biến nằm trong `df_cor` vào các ô giá trị tương ứng thông qua hàm số `annotate_heatmap()`
