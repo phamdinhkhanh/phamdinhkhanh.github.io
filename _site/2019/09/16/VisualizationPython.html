@@ -95,6 +95,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Các thuật toán trong Object Detection</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Visualization trong python</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Latent Dirichlet Allocation - Mô hình phân loại topic</a></li>
@@ -285,9 +287,6 @@ plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-</code></pre></div></div>
-
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_3_1.png" /></p>
 
 <p><strong>Thay đổi định dạng line</strong></p>
@@ -310,9 +309,6 @@ plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-</code></pre></div></div>
-
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_5_1.png" /></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Đường nét đứt có gạch nối
@@ -320,9 +316,6 @@ plt.plot(df['Close'].tail(100), linestyle = '-.')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Gía chứng khoán APPLE')
 </code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_6_1.png" /></p>
@@ -334,18 +327,12 @@ plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Gía chứng khoán APPLE')
-</code></pre></div></div>
-
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_7_1.png" /></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '-')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Gía chứng khoán APPLE')
 </code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_8_1.png" /></p>
@@ -365,15 +352,9 @@ plt.title('Gía chứng khoán APPLE')
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '-', marker = 'o')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x7fde758c5c88&gt;]
-</code></pre></div></div>
-
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_10_1.png" /></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '--', marker = 's', color = 'red')
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x7fed4e92d470&gt;]
 </code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_11_1.png" /></p>
@@ -514,9 +495,6 @@ plt.pie(x = np.array([10, 20, 50]), # giá trị của các nhóm
 plt.title('Biểu đồ tròn tỷ lệ % của các nhóm')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Biểu đồ tròn tỷ lệ % của các nhóm')
-</code></pre></div></div>
-
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_26_1.png" /></p>
 
 <h2 id="14-biểu-đồ-boxplot">1.4. Biểu đồ boxplot</h2>
@@ -535,9 +513,6 @@ plt.boxplot([x, y, z],
 plt.title('Biểu đồ Boxplot')
 plt.xlabel('Classes')
 plt.ylabel('Gía trị của x, y, z')
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Gía trị của x, y, z')
 </code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_28_1.png" /></p>
@@ -668,9 +643,6 @@ df.tail()
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.iloc[-1, :].plot.pie(autopct = '%.2f%%')
 plt.title('Biểu đồ tròn')
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Biểu đồ tròn')
 </code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_38_1.png" /></p>
@@ -849,7 +821,7 @@ fig, ax = plt.subplots()
 im, cbar = heatmap(df_cor, row_labels = inds, col_labels = inds)
 </code></pre></div></div>
 
-<p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_47_1.png" /></p>
+<p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_47_0.png" /></p>
 
 <p>Chúng ta sẽ thêm titles giá trị các biến nằm trong <code class="highlighter-rouge">df_cor</code> vào các ô giá trị tương ứng thông qua hàm số <code class="highlighter-rouge">annotate_heatmap()</code></p>
 
@@ -922,7 +894,7 @@ fig.tight_layout()
 plt.show()
 </code></pre></div></div>
 
-<p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_50_1.png" /></p>
+<p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_50_0.png" /></p>
 
 <p>Hoặc ta có thể visualize biểu đồ heatmap thông qua package <code class="highlighter-rouge">seaborn</code>.</p>
 

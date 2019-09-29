@@ -847,7 +847,7 @@ plt.show()
 ```
 
 
-<img src="/assets/images/20190916_VisualizationPython/VisualizationPython_50_1.png">
+<img src="/assets/images/20190916_VisualizationPython/VisualizationPython_50_0.png">
 
 
 Hoặc ta có thể visualize biểu đồ heatmap thông qua package `seaborn`.
