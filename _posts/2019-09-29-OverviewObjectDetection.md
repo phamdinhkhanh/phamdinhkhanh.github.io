@@ -4,33 +4,32 @@ author: phamdinhkhanh
 title: Bài 12 - Các thuật toán Object Detection
 ---
 
-# 1. Object dectection là gì?
+# 1. Object detection là gì?
 
 Trước khi đi vào tìm hiểu object detection là gì, bạn đọc cần nắm vững một số khái niệm về mô hình phân loại ảnh (image classification), kiến trúc Convolutional neural network [Pham Dinh Khanh](https://www.kaggle.com/phamdinhkhanh/convolutional-neural-network-p1), quá trình hình thành và phát triển mạng CNN đến nay [Blog dlapplication](https://dlapplications.github.io/2018-07-06-CNN/).
 
-Sau khi đã đọc các bài hướng dẫn trên hãy quay lại bài viết này, bạn đọc sẽ nhận ra computer vision không quá khó. Chúng ta cũng bắt đầu:
+Sau khi đã đọc các bài hướng dẫn trên hãy quay lại bài viết này, bạn đọc sẽ hiểu những gì mà tôi trình bày sau đây dễ dàng hơn. Chúng ta cùng bắt đầu:
 
-Sẽ rất khó khăn cho người mới bắt đầu phân biệt các nhiệm vụ khác nhau của computer vision. Chẳng hạn như phân loại hình ảnh (image classification) là gì? Sự khác biệt giữa định vị vật thể (object localization) và phát hiện đối tượng (object detection) là gì có thể gây nhầm lẫn, đặc biệt là khi cả ba nhiệm vụ đều liên quan đến nhau. Hiều một cách đơn giản:
+Sẽ khá khó cho người mới bắt đầu để phân biệt các nhiệm vụ khác nhau của computer vision. Chẳng hạn như phân loại hình ảnh (image classification) là gì? Định vị vật thể (object localization) là gì? Sự khác biệt giữa định vị vật thể (object localization) và phát hiện đối tượng (object detection) là gì? Đây là những khái niệm có thể gây nhầm lẫn, đặc biệt là khi cả ba nhiệm vụ đều liên quan đến nhau. Hiều một cách đơn giản:
 
-* Phân loại hình ảnh (image classification): liên quan đến việc gán nhãn lớp cho hình ảnh.
+* Phân loại hình ảnh (image classification): liên quan đến việc gán nhãn cho hình ảnh.
 * Định vị vật thể (object localization): liên quan đến việc vẽ một hộp giới hạn (bounding box) xung quanh một hoặc nhiều đối tượng trong hình ảnh nhằm khoanh vùng đối tượng.
-* Phát hiện đối tượng (object detection): Khó khăn hơn và là sự kết hợp của cả hai nhiệm vụ trên: Vẽ một bounding box xung quanh từng đối tượng quan tâm trong ảnh và gán cho chúng một nhãn. Kết hợp cùng nhau, tất cả các vấn đề này được gọi là object detection.
+* Phát hiện đối tượng (object detection): Là nhiệm vụ khó khăn hơn và là sự kết hợp của cả hai nhiệm vụ trên: Vẽ một bounding box xung quanh từng đối tượng quan tâm trong ảnh và gán cho chúng một nhãn. Kết hợp cùng nhau, tất cả các vấn đề này được gọi là object recognition hoặc object detection.
 
-Bài viết này sẽ giới thiệu một cách khái quát các về vấn đề object detection và các mô hình học sâu state-of-art được thiết kế để giải quyết nó.
+Bài viết này sẽ giới thiệu một cách khái quát các về vấn đề object detection và các mô hình deep learning state-of-art được thiết kế để giải quyết nó.
 
 Sau khi đọc bài này, bạn đọc sẽ biết:
-* Nhận dạng đối tượng là gì?
-* Các nhóm mạng R-CNN (Region-Based Convolutional Neural Networks) giải quyết các nhiệm vụ định vị vật thể và nhận diện vật thể.
-* Các nhóm mạng YOLO (You Only Look Once), là một nhóm kỹ thuật thứ hai để nhận dạng đối tượng được thiết kế để nhận diện vật thể real time.
-
-
+* Phân biệt được các tác vụ cơ bản trong computer vision: Image classification, object localization, object detection, object segmentation, image captioning.
+* Lịch sử hình thành, phát triển và đặc điểm cấu trúc của các thuật toán object detection bao gồm 2 nhóm chính:
+	* Họ các mô hình R-CNN (Region-Based Convolutional Neural Networks) giải quyết các nhiệm vụ định vị vật thể và nhận diện vật thể.
+	* Họ các mô hình YOLO (You Only Look Once), là một nhóm kỹ thuật thứ hai để nhận dạng đối tượng được thiết kế để nhận diện vật thể real time.
 
 # 2. Như thế nào là nhận dạng đối tượng?
 
 Nhận dạng đối tượng là một thuật ngữ chung để mô tả một tập hợp các nhiệm vụ thị giác máy tính có liên quan liên quan đến việc xác định các đối tượng trong ảnh kỹ thuật số.
 
 Phân loại hình ảnh liên quan đến việc dự đoán lớp của một đối tượng trong một hình ảnh. Định vị vật thể đề cập đến việc xác định vị trí của một hoặc nhiều đối tượng trong một hình ảnh và vẽ bounding box xung quanh chúng. Phát hiện đối tượng kết hợp hai nhiệm vụ trên và thực hiện cho một hoặc nhiều đối tượng trong hình ảnh.
-Như vậy, chúng ta có thể phân biệt giữa ba nhiệm vụ thị giác máy tính này như sau:
+Chúng ta có thể phân biệt giữa ba nhiệm vụ thị giác máy tính cơ bản trên thông qua input và output của chúng như sau:
 * **Phân loại hình ảnh**: Dự đoán nhãn của một đối tượng trong một hình ảnh.
   * Input: Một hình ảnh với một đối tượng, chẳng hạn như một bức ảnh.
   * Output: Nhãn lớp (ví dụ: một hoặc nhiều số nguyên được ánh xạ tới nhãn lớp).
@@ -41,7 +40,7 @@ Như vậy, chúng ta có thể phân biệt giữa ba nhiệm vụ thị giác 
   * Input: Một hình ảnh có một hoặc nhiều đối tượng, chẳng hạn như một bức ảnh.
   * Output: Một hoặc nhiều bounding box và nhãn cho mỗi bounding box.
   
-Một định nghĩa khác cũng rất quan trọng trong computer vision là phân đoạn đối tượng (object segmentation), trong đó các đối tượng được nhận dạng bằng cách làm nổi bật các pixel cụ thể của đối tượng thay vì bounding box.
+Một số định nghĩa khác cũng rất quan trọng trong computer vision là phân đoạn đối tượng (object segmentation), trong đó các đối tượng được nhận dạng bằng cách làm nổi bật các pixel cụ thể của đối tượng thay vì bounding box. Và image captioning kết hợp giữa các kiến trúc mạng CNN và LSTM để đưa ra các lý giải về hành động hoặc nội dung của một bức ảnh.
 
 Bên dưới là sơ đồ tổng hợp các tác vụ của computer vision.
 
@@ -49,6 +48,7 @@ Bên dưới là sơ đồ tổng hợp các tác vụ của computer vision.
 
 > **Hình 1**: Sơ đồ các mối liên hệ giữa các tác vụ trong computer vision.
 
+Chúng ta cũng có thể hiểu object recognition tương tự như object detection theo một cách tương đối nào đó.
 Gần đây thì Object Recognition đã trở thành một phần của của cuộc thi [ILSVRC](http://image-net.org/challenges/LSVRC/), một trong những cuộc thi nhận diện ảnh lớn nhất hành tinh.
 
 Điểm khác biệt nữa trong các mô hình image classification so với Object Recognition đó là mô hình image classification có hàm loss function chỉ dựa trên sai số giữa nhãn dự báo và nhãn thực tế trong khi object detection đánh giá dựa trên sai số giữa nhãn dự báo và sai số khung hình dự báo so với thực tế.
