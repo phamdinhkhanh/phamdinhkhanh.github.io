@@ -16,7 +16,7 @@ Sẽ khá khó cho người mới bắt đầu để phân biệt các nhiệm v
 * Định vị vật thể (object localization): liên quan đến việc vẽ một hộp giới hạn (bounding box) xung quanh một hoặc nhiều đối tượng trong hình ảnh nhằm khoanh vùng đối tượng.
 * Phát hiện đối tượng (object detection): Là nhiệm vụ khó khăn hơn và là sự kết hợp của cả hai nhiệm vụ trên: Vẽ một bounding box xung quanh từng đối tượng quan tâm trong ảnh và gán cho chúng một nhãn. Kết hợp cùng nhau, tất cả các vấn đề này được gọi là object recognition hoặc object detection.
 
-Bài viết này sẽ giới thiệu một cách khái quát các về vấn đề object detection và các mô hình deep learning state-of-art được thiết kế để giải quyết nó.
+Bài viết này sẽ giới thiệu một cách khái quát các vấn đề của object detection và các mô hình deep learning state-of-art được thiết kế để giải quyết nó.
 
 Sau khi đọc bài này, bạn đọc sẽ biết:
 * Phân biệt được các tác vụ cơ bản trong computer vision: Image classification, object localization, object detection, object segmentation, image captioning.
