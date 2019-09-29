@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Xây dựng Pipeline Machine learning model trên SparkSQL
+title: Bài 5 - Model Pipeline - SparkSQL
 ---
 
 # 1. Giới thiệu về SparkSQL

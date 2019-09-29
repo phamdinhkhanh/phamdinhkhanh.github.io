@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Các thuật toán trong Object Detection
+title: Bài 12 - Các thuật toán Object Detection
 ---
 
 # 1. Object dectection là gì?

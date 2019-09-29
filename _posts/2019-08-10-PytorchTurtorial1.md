@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Hướng dẫn pytorch - Bài 1 - Biến đổi tensor torch và xây dựng mô hình
+title: Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch
 ---
 
 # 1. Pytorch là gì?

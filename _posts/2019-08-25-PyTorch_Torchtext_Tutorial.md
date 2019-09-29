@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Hướng dẫn pytorch - Bài 3 - Sử dụng torchtext trong biến đổi và huấn luyện mô hình NLP
+title: Bài 9 - Pytorch - Buổi 3 - torchtext module NLP
 ---
 
 # 1. Giới thiệu về Torchtext 

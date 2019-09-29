@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Visualization trong python
+title: Bài 11 - Visualization trong python
 ---
 
 # 1. Giới thiệu về biểu đồ

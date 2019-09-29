@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Latent Dirichlet Allocation - Mô hình phân loại topic
+title: Bài 10 - Thuật toán LDA - Xác định Topic
 ---
 
 # 1. Bài toán phân loại topic

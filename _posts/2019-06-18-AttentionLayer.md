@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Attention is all you need
+title: Bài 4 -  Attention is all you need
 ---
 
 # 1. Quá trình encoder và decoder

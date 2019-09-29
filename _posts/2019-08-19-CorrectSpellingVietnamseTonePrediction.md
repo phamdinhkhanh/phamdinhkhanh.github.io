@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Hướng dẫn pytorch - Bài 2 - Xây dựng mô hình sequence to sequence trên pytorch
+title: Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling
 ---
     
 # 1. Giới thiệu chung

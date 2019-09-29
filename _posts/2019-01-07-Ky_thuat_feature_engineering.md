@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Kĩ thuật feature engineering
+title: Bài 1 - Kĩ thuật feature engineering
 ---
 
 # 1. Giới thiệu về feature engineering

@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Mô hình Word2Vec
+title: Bài 3 - Mô hình Word2Vec
 ---
 
 # 1. Giới thiệu Word Representation.

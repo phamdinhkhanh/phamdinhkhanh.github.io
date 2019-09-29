@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Lý thuyết về mạng LSTM part 2
+title: Bài 2 - Lý thuyết về mạng LSTM part 2
 ---
 
 # 1. Mạng nơ ron truy hồi (RNN - Recurrent Neural Network)
