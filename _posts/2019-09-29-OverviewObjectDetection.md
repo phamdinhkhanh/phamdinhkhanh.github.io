@@ -238,12 +238,12 @@ Tất nhiên các phần trình bày bên trên mới chỉ là tổng hợp kh�
 3. [YOLO: Real-Time Object Detection, Homepage](https://pjreddie.com/darknet/yolo/).
 
 **Các tài liệu tham khảo khác**
-
-1. [Convolutional Neural Network - Course 4 - Andrew Ng](
+1. [A Gentle Introduction to Object Recognition With Deep Learning - Jason Brownlee](https://machinelearningmastery.com/object-recognition-with-deep-learning/)
+2. [Convolutional Neural Network - Course 4 - Andrew Ng](
 https://www.youtube.com/watch?v=ArPaAX_PhIs&list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF)
-2. [A Brief History of CNNs in Image Segmentation: From R-CNN to Mask R-CNN, 2017](https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4).
-3. [Object Detection for Dummies Part 3: R-CNN Family, 2017.](https://lilianweng.github.io/lil-log/2017/12/31/object-recognition-for-dummies-part-3.html)
-4. [Object Detection Part 4: Fast Detection Models, 2018.](https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html)
+3. [A Brief History of CNNs in Image Segmentation: From R-CNN to Mask R-CNN, 2017](https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4).
+4. [Object Detection for Dummies Part 3: R-CNN Family, 2017.](https://lilianweng.github.io/lil-log/2017/12/31/object-recognition-for-dummies-part-3.html)
+5. [Object Detection Part 4: Fast Detection Models, 2018.](https://lilianweng.github.io/lil-log/2018/12/27/object-detection-part-4.html)
 
 
 
