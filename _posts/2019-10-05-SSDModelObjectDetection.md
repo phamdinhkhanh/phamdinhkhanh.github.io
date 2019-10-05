@@ -1306,7 +1306,8 @@ ________________________________________________________________________________
 2 phần xử lý trên chính là những xử lý mấu chốt của thuật toán mà chúng ta cần nắm được. Phần khởi tạo các data_generator và huấn luyện mô hình khá đơn giản các bạn có thể tham khảo code gốc tại [SSD_keras - git repository](https://github.com/pierluigiferrari/ssd_keras), rất chi tiết.
 Khi đưa vào 1 hình ảnh, thuật toán sẽ trả về kết quả bao gồm các khung hình bao quan vật thể kèm theo nhãn và xác suất của lớp mà vật thể bao trong khung hình có thể thuộc về nhất. Thuật toán có thể dự báo nhiều vật thể có kích thước to nhỏ khác nhau.
 
-![](https://imgur.com/5Z3K7Rn.png)
+<img src="https://imgur.com/5Z3K7Rn.png" width="500px" height="400px" style="display:block; margin-left:auto; margin-right:auto">
+
 
 # 4. Tổng kết
 
