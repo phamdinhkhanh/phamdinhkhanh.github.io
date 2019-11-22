@@ -97,6 +97,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
@@ -168,17 +170,44 @@ body {
 
 <h2 id="i-mô-hình-rfm-recency---frequency---monetary-model">I. Mô hình RFM (Recency - Frequency - Monetary model)</h2>
 
-<p>Theo nguyên lý pareto thì 20% khách hàng sẽ mang lại 80% doanh số. Do đó doanh nghiệp cần xác định được những khách hàng quan trọng hay còn gọi là tập khách hàng VIP để sử dụng chiến lược chăm sóc đặc biệt. Việc phân chia khách hàng thành các nhóm khác nhau dựa trên giá trị mang lại cho doanh nghiệp sẽ giúp cho kinh doanh hiệu quả hơn, chương trình marketing target đến đúng tập khách hàng hơn, doanh nghiệp hiểu hành vi khách hàng hơn để từ đó điều chỉnh lại chiến lược kinh doanh và sản phẩm của mình tốt hơn. Và rất nhiều các lợi ích khác nữa từ việc am tường khách hàng và phân khúc khách hàng hợp lý.</p>
+<p>Theo nguyên lý pareto 20% khách hàng sẽ mang lại 80% doanh số. Do đó doanh nghiệp cần xác định được những khách hàng quan trọng nhất để chăm sóc đặc biệt. Những tập khách hàng này được gọi là VIP, Priority hoặc khách hàng cao cấp, tùy từng doanh nghiệp có cách gọi khác nhau. Việc phân chia khách hàng thành các nhóm khác nhau dựa trên nhu cầu mua sắm sẽ giúp doanh nghiệp kinh doanh hiệu quả hơn, marketing target đến đúng tập khách hàng hơn, và khách hàng được phục vụ tốt hơn. Để minh chứng cho nhận định trên, tôi sẽ lấy ra một vài ví dụ đơn giản:</p>
 
-<p>Chính vì thế các tập đoàn lớn từ tài chính ngân hàng, công nghệ thông tin, du lịch, dịch vụ, vận tải,… đều có những phương pháp phân chia tập khách hàng của mình và phát triển mô hình kinh doanh, bộ máy vận hành của mình theo hướng support các phân khúc khách hàng đó.</p>
+<ul>
+  <li>
+    <p>Giả sử doanh nghiệp của bạn kinh doanh rất nhiều các mặt hàng từ cái bút bi đến xe hơi. Bạn không thể nói rằng doanh nghiệp mình đã chăm sóc tốt khách hàng nếu như doanh nghiệp đó đối xử với những khách hàng mua một chiếc xe hơi ngang bằng với khách hàng mua một chiếc bút bi.</p>
+  </li>
+  <li>
+    <p>Bạn cũng không thể suggest một chiếc tivi 50 triệu cho một người lương khoảng 5 triệu trong khi hàng tháng anh ta phải trả tiền nhà trọ 2 triệu và tiền ăn 2 triệu. Trong trường hợp lý tưởng (không ốm đau đột xuất, không hiếu hỉ, du lịch cơ quan, bạn bè), mỗi tháng anh ta tiết kiệm được 1 triệu và cần tới 4 năm tiết kiệm để mua được chiếc tivi đó. Bạn chỉ nên suggest chiếc nào rẻ rẻ thôi, 5 triệu chẳng hạn.</p>
+  </li>
+  <li>
+    <p>Và trái lại với một khách hàng thu nhập vài trăm triệu/tháng và cũng muốn mua tivi. Bạn cũng không nên suggest 1 chiếc tivi 5 triệu nếu không muốn khách hàng nổi giận vì tội sỉ nhục khách hàng. Thà ông nói cái tivi 5 triệu là 20 triệu tôi còn vui, ông nghĩ gì mà lại đi bán một chiếc tivi 5 triệu cho tôi? đại khái thế.</p>
+  </li>
+  <li>
+    <p>Bạn cũng không nên suggest một người mua iphone một chiếc tai nghe samsung hay một đứa trẻ rượi bia và thuốc lá.</p>
+  </li>
+</ul>
 
-<p>Có rất nhiều các phương pháp phân chia phân khúc khách hàng khác nhau. Có thể dựa trên giá trị sử dụng các sản phẩm, dịch vụ mà khách hàng sử dụng của công ty, dựa trên loại hình sản phẩm khách hàng sử dụng hoặc dựa trên đối tượng khách hàng là cá nhân hay doanh nghiệp.</p>
+<p>Qua các ví dụ cụ thể trên chúng ta có thể thấy:</p>
 
-<p>Tạo phân khúc khách hàng rất linh hoạt và đa dạng và phụ thuộc vào định hướng kinh doanh của mỗi công ty. Tuy nhiên có thể chắc chắn một điều phát triển kinh doanh theo phân khúc khách hàng luôn mang lại lợi ích lớn hơn cho doanh nghiệp vì mỗi một khách hàng có một hành vi tiêu dùng, sở thích, thị hiếu khác nhau. Phân khúc khách hàng là nhằm mục đích nhóm những khách hàng có cùng thị hiếu, hành vi để phục vụ họ tốt hơn.</p>
+<ul>
+  <li>Chính sách chăm sóc khách hàng cần phải thay đổi để phù hợp với phân khúc.</li>
+  <li>Chăm sóc khách hàng cần phải phù hợp với thu nhập.</li>
+  <li>Chăm sóc khách hàng đồng thời cũng phải phù hợp với nhu cầu, thị hiếu của khách hàng.</li>
+</ul>
+
+<p>Như vậy việc phân khúc khách hàng mang lại rất nhiều các lợi ích cho doanh nghiệp.</p>
+
+<p>Chính vì thế các tập công ty, tập đoàn lớn trong lĩnh vực tài chính-ngân hàng, công nghệ thông tin, du lịch, dịch vụ, vận tải,… đều có những phương án phân chia tập khách hàng của riêng họ và đồng thời phát triển mô hình kinh doanh, bộ máy vận hành của mình định hướng theo các tập khách hàng đó.</p>
+
+<p>Chẳng hạn như tại ngân hàng có thể tìm cách chia khách hàng thành Mass Affluent (khách hàng đại chúng), Affluent (khách hàng khả giả), Priority (khách hàng cao cấp). Một số phòng ban chiến lược được thành lập chỉ để chăm sóc cho một nhóm khách hàng cao cấp hơn như bộ phận chăm sóc khác hàng priority. Tại những bộ phận này, nhân viên tư vấn đòi hỏi phải có kĩ năng cao hơn, ngoại hình ưa nhìn hơn, bàn ghế phục vụ tất nhiên cũng sang trọng hơn. Hoặc phân khúc khách hàng theo thành loại hình bundle (bán thêm sản phẩm), not-bundle (khách hàng mua sản phẩm lần đầu). Trong chứng khoán có thể chia tập khách hàng theo khách hàng thứ cấp, khách hàng thông thường và khách hàng VIP dựa trên giá trị NAV (net asset value) của khách hàng.</p>
+
+<p>Và còn rất nhiều các phương pháp phân chia phân khúc khách hàng khác nữa dựa trên giá trị sử dụng các sản phẩm, dịch vụ, dựa trên loại hình sản phẩm hoặc dựa trên đối tượng khách hàng là cá nhân hay doanh nghiệp.</p>
+
+<p>Có nhiều cách phân chia phân khúc khách hàng khác nhau mà doanh nghiệp có thể áp dụng. Việc phát triển kinh doanh theo phân khúc khách hàng luôn mang lại lợi ích cho doanh nghiệp vì các khách hàng có hành vi tương đồng được gom lại để phát triển các sản phẩm, dịch vụ đi kèm phù hợp với nhu cầu của họ.</p>
 
 <p>Okie, đến đây bạn đã hiểu được lợi ích của phân chia phân khúc khách hàng. Tiếp theo là sử dụng phương pháp nào để phân chia phân khúc? Đó là lý do tôi viết bài hướng dẫn này.</p>
 
-<p>Phương pháp mà tôi giới thiệu trong bài viết này có tên là RFM, một trong những phương pháp điển hình được sử dụng trong phân khúc khách hàng.  Định nghĩa của phương pháp có thể tìm tại wikipedia như sau:</p>
+<p>Phương pháp mà tôi giới thiệu trong bài viết này có tên là RFM, một trong những phương pháp điển hình được sử dụng trong phân khúc khách hàng. Định nghĩa của phương pháp có thể tìm tại wikipedia như sau:</p>
 
 <p>“RFM is a method used for analyzing customer value. It is commonly used in database marketing and direct marketing and has received particular attention in retail and professional services industries. RFM stands for the three dimensions: Recency – How recently did the customer purchase?”</p>
 
@@ -204,57 +233,58 @@ body {
 
 <h3 id="tại-sao-cần-chuẩn-hóa-dữ-liệu-đầu-vào">Tại sao cần chuẩn hóa dữ liệu đầu vào?</h3>
 
-<p>Hãy tưởng tượng đơn vị của Recency là số ngày, của Frequency là số lần và của Monetary là số tiền. Điều khó khăn của mô hình học không giám sát đó là làm cách nào có thể phân cụm chính xác những điểm dữ liệu có tọa độ là những biến khác nhau về độ lớn, khoảng biến thiên và đơn vị. Thông thường Monetary sẽ rất lớn so với Recency và Frequency nên trong không gian euclidean, yếu tố khoảng cách giữa các điểm đại diện cho 1 khách hàng sẽ ít bị tác động bởi Recency và Frequency hơn so với Monetary. Nếu không chuẩn hóa dữ liệu sẽ dẫn tới sự khác biệt giữa các nhóm sẽ bị ảnh hưởng phần lớn bởi Monetary và ít bị ảnh hưởng bởi 2 biến còn lại.</p>
+<p>Hãy tưởng tượng đơn vị của Recency là số ngày, của Frequency là số lần và của Monetary là số tiền. Khó khăn của mô hình học không giám sátlà làm thế nào phân cụm chính xác những điểm dữ liệu được tạo thành từ những biến khác nhau về độ đo. Thông thường Monetary sẽ rất lớn so với Recency và Frequency nên trong không gian euclidean, yếu tố khoảng cách giữa các điểm đại diện cho 1 khách hàng sẽ ít bị tác động bởi Recency và Frequency hơn so với Monetary. Nếu không chuẩn hóa dữ liệu sẽ dẫn tới khoảng cách phần lớn bị ảnh hưởng bởi Monetary và ít bị ảnh hưởng bởi 2 biến còn lại.</p>
 
 <h3 id="tác-dụng-của-chuẩn-hóa-dữ-liệu">Tác dụng của chuẩn hóa dữ liệu</h3>
 
 <ul>
   <li>
-    <p><strong>Chuẩn hóa dữ liệu giúp đồng nhất đơn vị</strong>: Các nhân tố Recency, Frequency, Monetary sẽ không còn khác biệt về đơn vị. Giá trị của nhân tố này sẽ có cùng một miền biến thiên, phương sai hoặc trung bình. Do đó vai trò của các biến trong việc xác định cụm là bình đẳng.</p>
+    <p><strong>Chuẩn hóa dữ liệu giúp đồng nhất đơn vị</strong>: Các nhân tố Recency, Frequency, Monetary sẽ không còn khác biệt về đơn vị. Giá trị của nhân tố này sẽ được đưa về cùng một miền biến thiên, phương sai và trung bình. Do đó vai trò của các biến trong việc xác định cụm là bình đẳng.</p>
   </li>
   <li>
-    <p><strong>Các cụm sẽ tách biệt nhau hơn</strong>: Trước khi chuẩn hóa dữ liệu, các cụm sẽ rất gần nhau do khác biệt khoảng cách được xác định bởi các chiều Recency, Frequency là rất nhỏ. Sau khi chuẩn hóa dữ liệu, đơn vị là đồng nhất nên ranh giới giữa các cụm sẽ tách biệt hơn.</p>
+    <p><strong>Các cụm sẽ tách biệt nhau hơn</strong>: Trước khi chuẩn hóa dữ liệu, nếu xét theo các trục Recency, Frequency thì các cụm sẽ rất gần nhau do giá trị Recency, Frequency là rất nhỏ. Sau khi chuẩn hóa dữ liệu, đơn vị là đồng nhất nên ranh giới giữa các cụm sẽ trở nên tách biệt.</p>
   </li>
   <li>
-    <p><strong>Hạn chế các điểm dữ liệu outliers</strong>: <strong>Outliers</strong> hay còn gọi là điểm dị biệt, là một trong những nguyên nhân khiến thuật toán phân cụm bị <strong>bias</strong> (chệch). Dữ liệu outliers sẽ thường quá lớn hoặc quá nhỏ, điều này khiến khoảng cách giữa các điểm trở nên phân tán. Trong quá trình huấn luyện để thuật toán hội tụ về <strong>centroids</strong> (lõi) của các <strong>clusters</strong> (cụm), do tác động của outliers nên các centroids sẽ thường bị lệch khỏi các vị trí lõi của cụm. Thuật toán cũng cần nhiều thời gian để hội tụ hơn. Việc này gây lãng phí về chi phí tính toán và chi phí thời gian. Do đó chúng ta cần chuẩn hóa dữ liệu để loại bỏ các outliers.</p>
+    <p><strong>Hạn chế các điểm dữ liệu outliers</strong>: <strong>Outliers</strong> hay còn gọi là điểm dị biệt, là một trong những nguyên nhân khiến thuật toán phân cụm bị <strong>bias</strong> (chệch). Dữ liệu outliers sẽ thường quá lớn hoặc quá nhỏ, điều này khiến khoảng cách giữa các điểm trở nên phân tán. Trong quá trình huấn luyện để thuật toán hội tụ về <strong>centroids</strong> (lõi) của từng <strong>clusters</strong> (cụm), do tác động của các outliers nên các centroids sẽ thường bị lệch cách xa các vị trí hội tụ lõi. Thuật toán cũng cần nhiều thời gian để hội tụ hơn. Việc này gây lãng phí về chi phí tính toán và chi phí thời gian. Do đó chúng ta cần chuẩn hóa dữ liệu để loại bỏ các outliers.</p>
   </li>
 </ul>
 
 <h3 id="phương-pháp-chuẩn-hóa-dữ-liệu">Phương pháp chuẩn hóa dữ liệu</h3>
 
-<p>Có rất nhiều phương pháp khác nhau để chuẩn hóa dữ liệu cho các biến Recency, Frequency, Monetary. Một trong những phương pháp được sử dụng phổ biến nhất là chia độ lớn của các biến theo rank. Chẳng hạn Recency, Frequency, Monetary sẽ được chia thành 5 ranks hoặc 10 ranks tùy theo mục tiêu và định nghĩa từ trước về thang đo. Trong trường hợp bạn muốn chấm điểm khách hàng của mình chi tiết hơn, lựa chọn 10 ranks sẽ phù hợp hơn. Trái lại, bạn không muốn xem quá chi tiết về thể hiện của các khoảng ranks thì lựa chọn rank 5 sẽ hợp lý hơn. Ngoài ra, các biến cũng nên được đồng nhất về số lượng ranks để đồng nhất mức độ tác động lên điểm số của khách hàng. Không nên chọn Recency, Frequency, Monetary mỗi biến một mức độ rank.</p>
+<p>Có rất nhiều phương pháp khác nhau để chuẩn hóa dữ liệu cho các biến Recency, Frequency, Monetary. Một trong những phương pháp được sử dụng phổ biến nhất là chia độ lớn của các biến theo rank. Chẳng hạn Recency, Frequency, Monetary sẽ được chia thành 5 ranks hoặc 10 ranks tùy theo mục tiêu và định nghĩa từ trước về thang đo. Trong trường hợp bạn muốn chấm điểm khách hàng của mình chi tiết hơn, lựa chọn 10 ranks sẽ phù hợp hơn. Trái lại, bạn muốn các nhóm khái quát hơn thì lựa chọn rank 5 sẽ hợp lý hơn. Ngoài ra, các biến cũng nên cùng khoảng rank (cùng là 5 hoặc 10) để đồng nhất mức độ tác động lên rank tổng hợp của khách hàng. Không nên chọn Recency, Frequency, Monetary mỗi biến một khoảng rank.</p>
 
 <h3 id="tính-rank-cho-một-khách-hàng">Tính rank cho một khách hàng</h3>
 
 <p>Rank của một khách hàng sẽ được tính bằng trung bình cộng của 3 giá trị rank của Recency, Frequency và Monetary. Gía trị này càng cao thì khách hàng của chúng ta càng có giá trị đối với công ty.</p>
 
-<p>Để mapping được giá trị của một biến cụ thể sang rank, rất đơn giản chúng ta sẽ sử dụng hàm <code class="highlighter-rouge">pandas.qcut()</code> với giá trị khai báo là số lượng ranks. Chẳng hạn cần tạo ranks 10 thì truyền vào <code class="highlighter-rouge">pandas.qcut(10)</code>. Hàm <code class="highlighter-rouge">qcut()</code> sẽ tự động tìm ra các khoảng giá trị sao cho số lượng các quan sát được chia đều vào mỗi khoảng. Bạn cũng có thể lựa chọn để giá trị là một số nguyên thể hiện giá trị của rank thông qua đặt biến labels = False hoặc giữ nguyên labels là các khoảng với labels = True. Cụ thể xem hướng dẫn về hàm <a href="https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.qcut.html">pandas.qcut()</a>.</p>
+<p>Để mapping được giá trị của một biến cụ thể sang rank, rất đơn giản chúng ta sẽ sử dụng hàm <code class="highlighter-rouge">pandas.qcut()</code> với giá trị khai báo là số lượng ranks cần chia. Chẳng hạn cần tạo ranks 10 thì truyền vào <code class="highlighter-rouge">pandas.qcut(10)</code>. Hàm <code class="highlighter-rouge">qcut()</code> sẽ tự động tìm ra các khoảng giá trị sao cho số lượng các quan sát được chia đều vào mỗi khoảng. Bạn có thể lựa chọn giá trị mapping là một số nguyên bất kì ứng với mỗi rank thông qua thiết lập tham số labels = False hoặc giữ nguyên labels là các khoảng khi labels = True. Cụ thể xem hướng dẫn về hàm <a href="https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.qcut.html">pandas.qcut()</a>.</p>
 
-<p>Lưu ý một số trường hợp bạn sử dụng hàm này và gặp lỗi <code class="highlighter-rouge">bins edge trùng nhau</code>. Tức điểm đầu và điểm cuối của các khoảng bằng nhau. Đừng lo lắng, trong tình huống này phải phân tích nguyên nhân lỗi bằng kiến thức thống kê và google search cách khắc phục. Nếu bạn tuyệt vọng vì không thể solve vấn đề thì có thể hỏi tôi, cũng là một giải pháp.</p>
+<p>Lưu ý một số trường hợp bạn sử dụng hàm <code class="highlighter-rouge">pandas.qcut()</code> và gặp lỗi <code class="highlighter-rouge">bins edge duplicate</code>. Tức điểm đầu và điểm cuối của các khoảng bằng nhau. Có thể solve vấn đề như hướng dẫn <a href="https://stackoverflow.com/questions/20158597/how-to-qcut-with-non-unique-bin-edges">stackoverflow - qcut non unique bin edges</a>.</p>
 
-<p>Từ giá trị rank của mỗi biến, có nhiều cách để xác định rank của một khách hàng:</p>
+<h3 id="thực-hiện-customer-segmentation">Thực hiện customer segmentation</h3>
+
+<p>Phân khúc khách hàng có thể được thực hiện thông qua nhiều phương pháp khác nhau.</p>
 
 <ol>
-  <li>Đơn giản nhất là tính trung bình ta thu được giá trị rank cho mỗi khách hàng. Dựa trên rank được tính ra cho mỗi khách hàng ta có thể giữ nguyên mỗi rank là một nhóm hoặc tạo thành các nhóm dựa trên độ lớn. chẳng hạn như:</li>
+  <li>Tính trung bình rank các biến:
+Một cách khá đơn giản là tính trung bình ranks của các biến ta thu được giá trị rank tổng hợp ứng với mỗi khách hàng. Ta có thể giữ nguyên mỗi rank tổng hợp là một nhóm hoặc gộp nhiều rank thành một nhóm theo khoảng giá trị như bên dưới:</li>
 </ol>
 
 <ul>
   <li>Khách hàng VIP: rank từ 8-10.</li>
-  <li>Khách hàng thông thường: rank từ 5-7.</li>
-  <li>Khách hàng bình thường: rank &lt; 5.</li>
+  <li>Khách hàng đại chúng: rank từ 5-7.</li>
+  <li>Khách hàng thứ cấp: rank &lt; 5.</li>
 </ul>
 
 <ol>
-  <li>Sử dụng thuật toán K-mean clustering để phân cụm các khách hàng dựa vào input là 3 biến giá trị ranks của Recency, Frequency, Monetary. Theo cách này ta sẽ xác định được ngay số lượng nhóm cuối cùng mà không phải tạo khoảng của rank như cách 1. Tuy nhiên việc xác định số lượng là bao nhiêu nhóm sẽ phải nhìn vào biểu đồ sai số MRSE để tìm ra điểm elbow.</li>
+  <li>Sử dụng thuật toán K-mean clustering để phân cụm các khách hàng dựa vào input là 3 biến giá trị ranks của Recency, Frequency, Monetary. Theo cách này ta sẽ tự động phân cụm toàn bộ khách hàng về 3 nhóm mà không cần phải tạo khoảng rank. Tuy nhiên hạn chế là các clustering không có một định nghĩa rõ ràng (VIP, đại chúng, thứ cấp). Chúng ta có thể cần thêm một bước đặt tên cho các nhóm này dựa trên phân tích centroid để tìm ra đặc tính của từng nhóm. Ngoài ra việc xác định số lượng nhóm để phân cụm cũng là một vấn đề của thuật toán. Khi đó ta sẽ cần quan sát biểu đồ sai số MRSE để tìm ra điểm elbow. Kĩ thuật này tôi sẽ không trình bày quá chi tiết trong bài viết, bạn đọc có thể search rất nhiều tài liệu trên mạng để tìm hiểu thêm.</li>
 </ol>
 
 <h3 id="đổi-dấu-để-đảm-bảo-tính-đồng-biến-với-rank-khách-hàng">Đổi dấu để đảm bảo tính đồng biến với rank khách hàng</h3>
 
-<p>Chúng ta phải xác định trước rằng rank của khách hàng càng cao thì khách hàng càng VIP. Một số trường hợp bạn có thể làm ngược lại, rank thấp thì khách hàng càng chất lượng. Nhưng với việc coi rank như là một điểm scorecard thì tôi sẽ không lựa chọn như vậy. Các mô hình scorecard đều có rank tỷ lệ thuận với giá trị của khách hàng.</p>
+<p>Ta biết rằng rank của khách hàng càng cao thì khách hàng đó càng VIP. Một số trường hợp biến đầu vào có thể ngược chiều với rank, chính vì vậy ta sẽ phải điều chỉnh lại dấu các biến sao cho chúng đồng biến với rank để phản ánh đúng rank càng cao thì khách hàng càng VIP. Nhận thấy rằng biến Recency có quan hệ ngược chiều vì khách hàng càng lâu mua hàng (tương ứng với Recency lớn) thì xếp hạng khách hàng càng thấp. Do đó ta sẽ cần phải đổi dấu sang âm để rank của biến tỷ lệ thuận với rank của khách hàng.</p>
 
-<p>Trường hợp này ta sẽ phải điều chỉnh lại các biến sao cho đồng biến với giá trị của rank để phản ánh đúng rank càng cao thì khách hàng càng VIP. Nhận thấy rằng biến Recency có quan hệ ngược chiều vì khách hàng càng lâu mua hàng (tương ứng với Recency lớn) thì xếp hạng khách hàng càng thấp. Do đó ta sẽ cần phải đổi dấu sang âm để rank của biến tỷ lệ thuận với rank của khách hàng.</p>
-
-<p>Nếu không để ý tới yếu tố đồng biến thì có thể bạn sẽ tạo ra những mô hình kém chất lượng. Khi đó hậu quả cũng siêu to khổng lồ lắm.</p>
+<p>Nếu không để ý tới yếu tố đồng biến thì có thể bạn sẽ tạo ra những mô hình kém chất lượng. Khi đó hậu quả cũng siêu to khổng lồ lắm. Sẽ có vài câu chuyện cười như sau: Tập khách hàng VIP là những khách thu nhập 5-6 triệu/tháng và được suggest tivi 50 triệu, trong khi khách hàng thu nhập vài trăm triệu/tháng rơi vào tập thứ cấp nên được suggest tivi 5 triệu.</p>
 
 <h2 id="ii-thực-hành-xây-dựng-mô-hình-rfm">II. Thực hành xây dựng mô hình RFM</h2>
 
@@ -410,30 +440,28 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 
 <h2 id="3-các-biến-thể-khác-của-rfm">3. Các biến thể khác của RFM</h2>
 
-<p>Ngoài ra RFM còn có các biến thể khác dựa trên sự thay đổi thêm bớt các biến trong 2 biến Recency, Frequency và Monetary. Bên dưới là một trong những phương pháp đó:</p>
+<p>Ngoài ra RFM còn có các biến thể khác dựa trên sự thay đổi thêm bớt các biến trong 3 biến Recency, Frequency và Monetary. Bên dưới là một trong những phương pháp đó:</p>
 
 <ul>
   <li>
-    <p>RFD - Recency, Frequency, Duration (thời gian) là phiên bản sửa đổi của phân tích RFM có thể được sử dụng để phân tích hành vi của người dùng đối với các sản phẩm kinh doanh theo hướng người xem/người đọc/người lướt web.</p>
+    <p>RFD - Recency, Frequency, Duration (thời gian) là phiên bản đã được modified của phân tích RFM. Nhưng thay vì phân tích giá trị khách hàng, RFD được sử dụng để phân tích hành vi khách hàng theo các nhóm người xem/người đọc/người lướt web.</p>
   </li>
   <li>
-    <p>RFE - Recency, Frequency, Engagement(mức độ cam kết) là phiên bản rộng hơn của phân tích RFD, trong đó cam kết có thể được xác định bao gồm thời lượng truy cập, số trang trên mỗi lượt truy cập hoặc các chiều dữ liệu khác tương tự. Nó có thể được sử dụng để phân tích hành vi người dùng đối với người xem/độc giả/người lướt web theo định hướng của sản phẩm kinh doanh.</p>
+    <p>RFE - Recency, Frequency, Engagement(mức độ cam kết) là phiên bản mở rộng của phân tích RFD nhằm xác định mức độ gắn bó của khách hàng đối với một nền tảng web, app. Trường Engagement (mức độ cam kết) được xác định thông qua thời lượng truy cập, số trang trên mỗi lượt truy cập và các chiều dữ liệu khác tương tự. Mô hình RFE có thể được sử dụng để phân tích hành vi khách hàng theo các nhóm người xem/người đọc/người lướt web.</p>
   </li>
   <li>
-    <p>RFM-I - Recency, Frequency, Monetary Value – Interactions (Giá trị tiền tệ - Tương tác) là một phiên bản của sửa đổi của RFM để tính toán mức độ truy cập và tần suất tương tác marketing tới khách hàng.</p>
+    <p>RFM-I - Recency, Frequency, Monetary Value – Interactions (Giá trị tiền tệ - Tương tác) là một phiên bản khác của RFM để đánh giá chi phí tương tác marketing trong tiếp cận khách hàng.</p>
   </li>
   <li>
-    <p>RFMTC - Recency, Frequency, Monetary Value, Time (Thời gian), Churn rate (Tỷ lệ rời bỏ) là một mô hình RFM tăng cường được đề xuất bởi I-Cheng và cộng sự(2009). Mô hình sử dụng chuỗi Bernoulli trong lý thuyết xác suất và tạo ra các công thức tính xác suất khách hàng mua tại chiến dịch marketing hoặc quảng cáo tiếp theo.</p>
+    <p>RFMTC - Recency, Frequency, Monetary Value, Time (Thời gian), Churn rate (Tỷ lệ rời bỏ) là một mô hình RFM mở rộng được đề xuất bởi I-Cheng và cộng sự(2009). Mô hình sử dụng chuỗi Bernoulli trong lý thuyết xác suất nhằm dự báo xác suất mua hàng tại những chiến dịch marketing tiếp theo.</p>
   </li>
 </ul>
 
 <h2 id="4-tổng-kết">4. Tổng kết</h2>
 
-<p>Như vậy thông qua bài viết này chúng ta đã nắm được một phương pháp phân khúc khách hàng theo mức độ quan trọng của họ đối với công ty. Thông qua việc phân khúc khách hàng chúng ta có thể biết được trạng thái của công ty đang như thế nào? Cần điều chỉnh những chính sách ra sao để phát triển theo hướng gia tăng tỷ trọng khách hàng VIP. Giữ chân khách hàng quay lại mua sắm thường xuyên hơn và nâng cao giá trị đơn hàng trên mỗi lượt mua sắm.</p>
+<p>Như vậy thông qua bài viết này chúng ta đã nắm được phương pháp RFM, một phương pháp khá quan trọng và phổ biến trong phân khúc khách hàng dựa trên giá trị mang lại cho công ty. Thông qua phân khúc khách hàng, Chúng ta có thể phát triển các chiến lượt kinh doanh và bộ máy tổ chức doanh nghiệp phù hợp với mục tiêu phục vụ trên từng phân khúc. Đồng thời theo dõi chuyển dịch cơ cấu khách hàng trên từng phân khúc qua thời gian cũng giúp đánh giá được mức độ phát triển tập khách hàng của công ty ra sao? Công ty cần tung ra những điều chỉnh, chiến lược như thế nào để phát triển theo hướng gia tăng tỷ trọng khách hàng VIP, giữ chân khách hàng quay lại mua sắm thường xuyên hơn và nâng cao giá trị đơn hàng trên mỗi lượt mua sắm.</p>
 
-<p>Qua việc theo dõi theo qua thời gian sự dịch chuyển tập khách hàng và các thông số về kinh doanh trên mỗi tập khách hàng BOD cũng sẽ có được nhưng đánh giá tổng quát về tốc độ phát triển của công ty.</p>
-
-<p>Ở đây tôi vẫn chưa sử dụng thuật toán K-mean clustering để phân cụm khách hàng. Sử dụng thuật toán này cũng không khó. Trong bài viết khác về phân khúc khách hàng tôi ứng dụng thuật toán này sau.</p>
+<p>Ở đây tôi vẫn chưa sử dụng thuật toán K-mean clustering để phân cụm khách hàng. Sử dụng thuật toán này không quá khó và xin dành cho bạn đọc.</p>
 
 <h2 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h2>
 
