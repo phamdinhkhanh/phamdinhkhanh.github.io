@@ -195,7 +195,7 @@ def _tokenize_matrix(docs, max_words=1000, max_len=150):
   tok = Tokenizer(num_words=max_words)
   tok.fit_on_texts(docs)
   X_tok =  tok.texts_to_sequences(docs)
-  X = sequence.pad_sequences(sequences, maxlen=max_len)
+  X = sequence.pad_sequences(X_tok, maxlen=max_len)
   return X_tok, X, tok
 
 X_tok, X, tok = _tokenize_matrix(docs=dataset['Content_Clean'], max_words=1000, max_len=150)
@@ -240,7 +240,7 @@ def RNN_Dense(maxword=1000, embedding_size=100, max_len=150, n_unit_lstm=64, n_u
     model = Model(inputs=inputs,outputs=layer)
     return model
 
-lstm_dense=RNN()
+lstm_dense=RNN_Dense()
 lstm_dense.summary()
 lstm_dense.compile(loss='binary_crossentropy', optimizer=Adam(), metrics=['accuracy'])
 ```
