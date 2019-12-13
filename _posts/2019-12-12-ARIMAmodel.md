@@ -394,8 +394,8 @@ Do đó chuỗi $y_t$ sẽ dừng khi $\phi \leq 1$. Như vậy kiểm định n
 
 $$\begin{equation} 
 \begin{cases} 
-H_0: \phi = 1, \Rightarrow \text{stationary} \\
-H1: |\phi| < 1, \Rightarrow \text{non-stationary} 
+H_0: \phi = 1, \Rightarrow \text{non-stationary} \\
+H1: |\phi| < 1, \Rightarrow \text{stationary} 
 \end{cases} 
 \end{equation}$$
 
