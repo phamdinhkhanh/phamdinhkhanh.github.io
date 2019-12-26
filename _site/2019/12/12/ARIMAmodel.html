@@ -571,13 +571,12 @@ Dấu bằng thứ 2 xảy ra là do $\text{E}(\epsilon_t)=0,\forall t\in N$ M�
 
 <p>Do đó chuỗi $y_t$ sẽ dừng khi $\phi \leq 1$. Như vậy kiểm định nghiệm đơn vị sẽ dựa trên cặp giả thuyết:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{equation} 
+<script type="math/tex; mode=display">\begin{equation} 
 \begin{cases} 
 H_0: \phi = 1, \Rightarrow \text{stationary} \\
-H1: |\phi| < 1, \Rightarrow \text{non-stationary} 
+H1: |\phi| > 1, \Rightarrow \text{non-stationary} 
 \end{cases} 
-\end{equation} %]]></script>
+\end{equation}</script>
 
 <p>Chúng ta gọi đó là kiểm định nghiệm đơn vị (unit root test) bởi vì phương trình đặc trưng của nó $\theta(y)=1−\theta L=0$ có nghiệm đơn vị. Giá trị ngưỡng kiểm định:
 <script type="math/tex">DF = \frac{\hat\phi - 1}{SE(\hat\phi)}</script>
@@ -600,7 +599,7 @@ Critical Values:
 	10%: -2.573
 </code></pre></div></div>
 
-<p>Gía trị p-value &lt; 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất có tính chất dừng.</p>
+<p>Gía trị p-value &lt; 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất không có tính chất dừng.</p>
 
 <h1 id="4-xây-dựng-mô-hình">4. Xây dựng mô hình</h1>
 
@@ -643,7 +642,7 @@ Gía trị ước lượng của mô hình đối với $x_t$ chính là:</p>
 
 <p>Trong đó $corr()$ là hàm tính hệ số tương quan.
 Đó là tất cả về PACF. Khá dễ hiểu phải không nào?
-PACF sẽ có tác dụng tìm ra hệ số bậc tự do $q$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.</p>
+PACF sẽ có tác dụng tìm ra hệ số bậc tự do $p$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt

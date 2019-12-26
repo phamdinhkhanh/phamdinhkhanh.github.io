@@ -395,7 +395,7 @@ Do đó chuỗi $y_t$ sẽ dừng khi $\phi \leq 1$. Như vậy kiểm định n
 $$\begin{equation} 
 \begin{cases} 
 H_0: \phi = 1, \Rightarrow \text{stationary} \\
-H1: |\phi| < 1, \Rightarrow \text{non-stationary} 
+H1: |\phi| > 1, \Rightarrow \text{non-stationary} 
 \end{cases} 
 \end{equation}$$
 
@@ -421,7 +421,7 @@ for key, value in result[4].items():
     	10%: -2.573
     
 
-Gía trị p-value < 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất có tính chất dừng.
+Gía trị p-value < 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất không có tính chất dừng.
 
 # 4. Xây dựng mô hình
 
@@ -465,7 +465,7 @@ $$\phi_{k} = corr(x_t-P_{t,k}(x_t), x_{t-k}-P_{t,k}(x_{t-k}))$$
 
 Trong đó $corr()$ là hàm tính hệ số tương quan.
 Đó là tất cả về PACF. Khá dễ hiểu phải không nào?
-PACF sẽ có tác dụng tìm ra hệ số bậc tự do $q$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.
+PACF sẽ có tác dụng tìm ra hệ số bậc tự do $p$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.
 
 ```
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
