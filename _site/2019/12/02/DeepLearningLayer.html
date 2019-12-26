@@ -97,6 +97,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation sử dụng mạng Neural</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
@@ -367,7 +369,7 @@ def _tokenize_matrix(docs, max_words=1000, max_len=150):
   tok = Tokenizer(num_words=max_words)
   tok.fit_on_texts(docs)
   X_tok =  tok.texts_to_sequences(docs)
-  X = sequence.pad_sequences(sequences, maxlen=max_len)
+  X = sequence.pad_sequences(X_tok, maxlen=max_len)
   return X_tok, X, tok
 
 X_tok, X, tok = _tokenize_matrix(docs=dataset['Content_Clean'], max_words=1000, max_len=150)
@@ -410,7 +412,7 @@ y = le.fit_transform(dataset['Label'])
     <span class="k">model</span> <span class="p">=</span> <span class="k">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">=</span><span class="n">inputs</span><span class="p">,</span><span class="n">outputs</span><span class="p">=</span><span class="n">layer</span><span class="p">)</span>
     <span class="n">return</span> <span class="k">model</span>
 
-<span class="n">lstm_dense</span><span class="p">=</span><span class="n">RNN</span><span class="p">()</span>
+<span class="n">lstm_dense</span><span class="p">=</span><span class="n">RNN_Dense</span><span class="p">()</span>
 <span class="n">lstm_dense</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 <span class="n">lstm_dense</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
 </code></pre></div></div>

@@ -97,6 +97,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation sử dụng mạng Neural</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
@@ -173,45 +175,52 @@ body {
 <strong>22 Nov 2019 - phamdinhkhanh</strong>
 
 <h1 id="1-giới-thiệu-về-thuật-toán-hog">1. Giới thiệu về thuật toán HOG</h1>
+<h2 id="11-giới-thiệu-chung">1.1. Giới thiệu chung</h2>
+<p>Có rất nhiều các phương pháp khác nhau trong computer vision. Khi phân loại ảnh, chúng ta có thể áp dụng họ các mô hình CNN (Inception Net, mobile Net, Resnet, Dense Net, Alexnet, Unet,…) và khi phát hiện vật thể là các mô hình YOLO, SSD, Faster RCNN, Fast RCNN, Mask RCNN.</p>
 
-<p>HOG (histogram of oriented gradient) là một thuật toán tạo ra các bộ mô tả đặc trưng (feature descriptor) được sử dụng phổ biến trong computer vision nhằm mục đích <strong>phát hiện vật thể</strong> (object detection). Thuật toán hoạt động dựa trên nguyên lý thống kê phân phối histogram của độ lớn gradient (gradient magnitute) theo các nhóm bins của phương gradient (gradient orientation). Các véc tơ HOG cục bộ được tạo thành trong quá trình lấy đạo hàm thông qua phép tích chập một kernel filter với các vùng cục bộ (local portion) của hình ảnh. Để xác định các vùng cụ bộ, một lưới ô vuông được tạo thành, chia hình ảnh thành các ô vuông bằng nhau. Véc tơ HOG sau khi được tính toán trên một vùng cục bộ sẽ sử dụng một chuẩn hóa cục bộ (local normalization) để bất biết với các phép scale cường độ sáng của ảnh và đồng thời giúp cải thiện độ chính xác của việc phát hiện vật thể.</p>
+<p>Các thuật toán kể trên đều là những mô hình deep learning. Vậy trước khi deep learning bùng nổ, thuật toán nào thường được sử dụng trong xử lý ảnh? Bài hôm nay chúng ta sẽ tìm hểu về thuật toán tuy cổ điển nhưng cũng rất hiệu quả trong xử lý ảnh, đó chính là HOG (histogram of oriented gradient).</p>
 
-<p>Trên đây là toàn bộ lý giải vắn tắt về nguyên lý hoạt động của HOG. Có thể sẽ hơi khó hiểu với bạn đọc lúc đầu nhưng đừng lo lắng. Chúng ta sẽ sáng tỏ sau khi đọc tiếp các chương sau. Vậy HOG có những ứng dụng cụ thể như thế nào? Một số tác vụ áp dụng có thể kể đến đã áp dụng HOG và mang lại độ chuẩn xác cao có thể kể đến là:</p>
+<p>Thuật toán này sẽ tạo ra các bộ mô tả đặc trưng (feature descriptor) nhằm mục đích <strong>phát hiện vật thể</strong> (object detection). Từ một bức ảnh, ta sẽ lấy ra 2 ma trận quan trọng giúp lưu thông tin ảnh đó là độ lớn gradient (gradient magnitute) và phương của gradient (gradient orientation). Bằng cách kết hợp 2 thông tin này vào một biểu đồ phân phối histogram, trong đó độ lớn gradient được đếm theo các nhóm bins của phương gradient. Cuối cùng ta sẽ thu được véc tơ đặc trưng HOG đại diện cho histogram. Sơ khai là vậy, trên thực tế thuật toán còn hoạt động phức tạp hơn khi véc tơ HOG sẽ được tính trên từng vùng cụ bộ như mạng CNN và sau đó là phép chuẩn hóa cụ bộ để đồng nhất độ đo. Cuối cùng véc tơ HOG tổng hợp từ các véc tơ trên vùng cục bộ.</p>
+
+<p>Trên đây là toàn bộ lý giải vắn tắt về nguyên lý hoạt động của HOG. Có thể sẽ hơi khó hiểu với bạn đọc lúc đầu nhưng đừng lo lắng. Chúng ta sẽ sáng tỏ sau khi đọc chương 2 lý giải chi tiết về thuật toán HOG.</p>
+
+<h2 id="12-ứng-dụng-của-hog">1.2. Ứng dụng của HOG</h2>
+<p>Vậy HOG có những ứng dụng cụ thể như thế nào? Một số tác vụ đã áp dụng HOG và mang lại độ chuẩn xác cao có thể kể đến là:</p>
 
 <ul>
-  <li><strong>Nhận diện người (human detection)</strong>: Trước kỉ nguyên bùng nổ của deep learning. Để nhận diện người trong một hình ảnh, chúng ta thường sử dụng thuật toán HOG. Lần đầu tiên ứng dụng này được giới thiệu trong bài báo <a href="https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf">Histograms of Oriented Gradients for Human Detection</a> của Dalal và Trigg. HOG có thể phát hiện được một hoặc nhiều người đi bộ trên cùng một hình ảnh.</li>
-</ul>
-
-<p><img src="/assets/images/20191122_HOG/pic1.jpg" width="300px" hieght="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
-
-<p>Trong phần thực hành chúng ta sẽ xây dựng một thuật toán HOG ứng dụng để phát hiện người đi bộ trong các bức ảnh.</p>
-
-<ul>
-  <li><strong>Nhận diện khuôn mặt (face detection)</strong>:, chúng ta thường nghĩ ngay đến thuật toán Haar Cascde Classifier. Bên cạnh đó HOG cũng là một thuật toán rất hiệu quả được áp dụng trong bài toán này. Bởi nó có khả năng biểu diễn các đường nét chính của khuôn mặt dựa trên phương và độ lớn gradient thông qua các véc tơ trên mỗi cell như hình mô tả bên dưới:</li>
+  <li>
+    <p><strong>Nhận diện người (human detection)</strong>: Lần đầu tiên ứng dụng này được giới thiệu trong bài báo <a href="https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf">Histograms of Oriented Gradients for Human Detection</a> của Dalal và Trigg. HOG có thể phát hiện được một hoặc nhiều người đi bộ trên cùng một hình ảnh. 
+<img src="/assets/images/20191122_HOG/pic1.jpg" width="300px" hieght="200px" style="display:block; margin-left:auto; margin-right:auto" />
+Trong phần thực hành chúng ta sẽ luyện tập xây dựng mô hình human detection dựa trên HOG.</p>
+  </li>
+  <li>
+    <p><strong>Nhận diện khuôn mặt (face detection)</strong>: Thường chúng ta sẽ nghĩ ngay đến thuật toán Haar Cascde Classifier. Tuy nhiên HOG cũng là một thuật toán rất hiệu quả được áp dụng trong bài toán này. Bởi nó có khả năng biểu diễn các đường nét chính của khuôn mặt dựa trên phương và độ lớn gradient thông qua các véc tơ trên mỗi cell như hình mô tả bên dưới:</p>
+  </li>
 </ul>
 
 <p><img src="/assets/images/20191122_HOG/pic2.png" width="300px" hieght="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <ul>
   <li>
-    <p><strong>Nhận diện các vật thể khác</strong>: Ngoài ra còn rất nhiều các trường hợp nhận diện vật thể trên ảnh tĩnh chẳng hạn như phương tiện, tín hiệu giao thông, động vật.</p>
+    <p><strong>Nhận diện các vật thể khác</strong>: Ngoài ra còn rất nhiều các trường hợp nhận diện vật thể trên ảnh tĩnh như phương tiện, tín hiệu giao thông, động vật hoặc thậm chỉ là ảnh động từ video.</p>
   </li>
   <li>
-    <p><strong>Tạo feature cho các bài toán phân loại ảnh</strong>: Trong nhiều bài toán phân loại ảnh được thực hiện trên một bộ dữ liệu kích thước nhỏ thì sử dụng các mạng học sâu chưa chắc đã mang lại hiệu quả và dễ dẫn tới overfiting do dữ liệu ít thường không đủ để huấn luyện cho máy tính nhận tốt các đặc trưng chưng. Khi đó sử dụng HOG như một bộ tạo đặc trưng sẽ mang lại kết quả tốt hơn. Như vậy không hẳn lúc nào mạng học sâu cũng mang lại kết quả khả quan mà đôi khi những phương pháp cổ điển vẫn rất hữu hiệu.</p>
+    <p><strong>Tạo feature cho các bài toán phân loại ảnh</strong>: Nhiều bài toán phân loại ảnh được xây dựng trên một bộ dữ liệu kích thước nhỏ thì sử dụng các mạng học sâu chưa chắc đã mang lại hiệu quả và dễ dẫn tới overfiting. Nguyên nhân vì dữ liệu ít thường không đủ để huấn luyện cho máy tính nhận tốt các đặc trưng của vật thể. Khi đó sử dụng HOG để tạo đặc trưng sẽ mang lại kết quả tốt hơn. Cụ thể tôi cũng sẽ thực hiện một ví dụ ở cuối.</p>
   </li>
 </ul>
 
-<p>Tiếp theo chúng ta sẽ đi tìm hiểu chi tiết thuật toán HOG. Để thuận tiện mình sẽ lý giải trước các thuật ngữ được sử dụng:</p>
+<h2 id="13-thuật-ngữ">1.3. Thuật ngữ</h2>
+<p>Trước khi tìm hiểu thuật toán HOG, tôi sẽ lý giải trước các thuật ngữ được sử dụng:</p>
 
 <ul>
   <li>
-    <p><strong>Feature Descriptor</strong>: Bộ mô tả đặc trưng, là kết quả của một phép biến đổi input thông qua một phương pháp biến đổi nào đó như HOG, SUFT để nhằm tạo ra các features.</p>
+    <p><strong>Feature Descriptor</strong>: Bộ mô tả đặc trưng, là một phép biến đổi dữ liệu thành các đặc trưng giúp ích cho phân loại hoặc nhận diện vật thể. Các phương pháp có thể kể đến như HOG, SUFT, SHIFT.</p>
   </li>
   <li>
     <p><strong>Histogram</strong>: Là biểu đồ histogram biểu diễn phân phối của các cường độ màu sắc theo khoảng giá trị. Nếu chưa biết biểu đồ histogram là gì bạn đọc có thể xem lại <a href="https://phamdinhkhanh.github.io/2019/09/16/VisualizationPython.html">bài 11 - visualization trong python</a></p>
   </li>
   <li>
-    <p><strong>Gradient</strong>: Là đạo hàm của cường độ màu sắc giúp phát hiện hướng di chuyển của các vật thể trong hình ảnh.</p>
+    <p><strong>Gradient</strong>: Là đạo hàm của véc tơ cường độ màu sắc giúp phát hiện hướng di chuyển của các vật thể trong hình ảnh.</p>
   </li>
   <li>
     <p><strong>Local cell</strong>: Ô cục bộ. Trong thuật toán HOG, một hình ảnh được chia thành nhiều cells bởi một lưới ô vuông. Mỗi cell được gọi là một ô cục bộ.</p>
@@ -220,7 +229,7 @@ body {
     <p><strong>Local portion</strong>: Vùng cục bộ. Là một vùng trước trích suất ra từ ô vuông trên hình ảnh. Trong phần trình bày về thuật toán thì vùng cục bộ còn được gọi là block.</p>
   </li>
   <li>
-    <p><strong>Local normalization</strong>: Phép chuẩn hóa được thực hiện trên một vùng cục bộ. Thường là chia cho norm chuẩn bậc 2 hoặc norm chuẩn bậc 1. Mục đích của việc chuẩn hóa là để đồng nhất độ sáng của toàn bộ các vùng cục bộ. Ta sẽ làm rõ hơn trong phần trình bày thuật toán.</p>
+    <p><strong>Local normalization</strong>: Phép chuẩn hóa được thực hiện trên một vùng cục bộ. Thường là chia cho norm chuẩn bậc 2 hoặc norm chuẩn bậc 1. Mục đích của việc chuẩn hóa là để đồng nhất các giá trị cường độ màu sắc về chung một phân phối. Ta sẽ làm rõ hơn trong phần trình bày thuật toán.</p>
   </li>
   <li>
     <p><strong>gradient direction</strong>: Phương gradient. Là độ lớn góc giữa véc tơ gradient $x$ và $y$ giúp xác định phương thay đổi cường độ màu sắc hay chính là phương đổ bóng của hình ảnh. Giả sử $G_x, G_y$ lần lượt là giá trị gradient theo lần lượt phương $x$ và $y$ của hình ảnh. Khi đó phương gradient được tính như sau:</p>
@@ -237,7 +246,7 @@ body {
 
 <h1 id="2-lý-thuyết-về-hog">2. Lý thuyết về HOG</h1>
 
-<p>Điểm mấu chốt trong nguyên lý hoạt động của HOG đó là hình dạng của một vật thể cục bộ có thể được mô tả thông qua hai ma trận đó là ma trận độ lớn gradient (gradient magnitude) và ma trận phương gradient (gradient direction). Vậy 2 ma trận gradient trên được tạo ra như thế nào? Đầu tiên hình ảnh được chia thành 1 lưới ô vuông và trên đó chúng ta xác định rất nhiều các vùng cục bộ liền kề hoặc chồng lấn lên nhau. Các vùng này tương tự như những vùng hình ảnh cục bộ mà chúng ta tính tích chập trong thuật toán CNN. Một vùng cục bộ bao gồm nhiều ô cục bộ (trong thuật toán HOG là 4) có kích thước là 8x8 pixels. Một biểu đồ histogram của độ lớn gradient được tính toán trên mỗi ô cục bộ mà chúng ta sẽ tìm hiểu ở phần 2.1 cách thức tính. Bộ mô tả HOG (HOG descriptor) được tạo thành bằng cách nối liền (concatenate) 4 véc tơ histogram ứng với mỗi ô thành một véc tơ tổng hợp. Để cải thiện độ chính xác, mỗi giá trị của véc tơ histogram trên vùng cục bộ sẽ được chuẩn hóa theo norm chuẩn bậc 2 hoặc bậc 1 (cụ thể hơn sẽ giải thích mục 2.1 bên dưới). Phép chuẩn hóa này nhằm tạo ra sự bất biến tốt hơn đối với những thay đổi trong chiếu sáng và đổ bóng.</p>
+<p>Điểm mấu chốt trong nguyên lý hoạt động của HOG đó là hình dạng của một vật thể cục bộ có thể được mô tả thông qua hai ma trận đó là ma trận độ lớn gradient (gradient magnitude) và ma trận phương gradient (gradient direction). Vậy 2 ma trận gradient trên được tạo ra như thế nào? Đầu tiên hình ảnh được chia thành 1 lưới ô vuông và trên đó chúng ta xác định rất nhiều các vùng cục bộ liền kề hoặc chồng lấn lên nhau. Các vùng này tương tự như những vùng hình ảnh cục bộ mà chúng ta tính tích chập trong thuật toán CNN. Một vùng cục bộ bao gồm nhiều ô cục bộ (trong thuật toán HOG là 4) có kích thước là 8x8 pixels. Sau đó, một biểu đồ histogram thống kê độ lớn gradient được tính toán trên mỗi ô cục bộ mà chúng ta sẽ tìm hiểu ở phần 2.1 cách thức tính. Bộ mô tả HOG (HOG descriptor) được tạo thành bằng cách nối liền (concatenate) 4 véc tơ histogram ứng với mỗi ô thành một véc tơ tổng hợp. Để cải thiện độ chính xác, mỗi giá trị của véc tơ histogram trên vùng cục bộ sẽ được chuẩn hóa theo norm chuẩn bậc 2 hoặc bậc 1 (cụ thể hơn sẽ giải thích mục 2.1 bên dưới). Phép chuẩn hóa này nhằm tạo ra sự bất biến tốt hơn đối với những thay đổi trong chiếu sáng và đổ bóng.</p>
 
 <p>Bộ mô tả HOG có một vài lợi thế chính so với các bộ mô tả khác. Vì nó hoạt động trên các ô cục bộ, nó bất biến đối với các phép biến đổi hình học, thay đổi độ sáng. Hơn nữa, như Dalal và Triggs đã phát hiện ra, khi sử dụng phép chuẩn hóa trên vùng cục bộ sẽ cho phép chuyển động cơ thể của người đi bộ được loại bỏ miễn là họ duy trì được tư thế đứng thẳng. Do đó, bộ mô tả HOG đặc biệt phù hợp để phát hiện con người trong hình ảnh.</p>
 
