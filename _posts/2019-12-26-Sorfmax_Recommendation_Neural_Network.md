@@ -1,10 +1,10 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Bài 20 - Recommendation sử dụng mạng Neural
+title: Bài 20 - Recommendation Neural Network
 ---
 
-## 1. Phân tích ưu nhược điểm các phương pháp recommendation
+## 1. Ưu điểm của Recommendation Neural Network
 
 Ở bài trước chúng ta đã tìm hiểu về 2 thuật toán cơ bản trong recommendation đó là [collaborative và content-based filtering](https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html). Ý tưởng chung của các thuật toán này đều là tìm cách ước lượng các giá trị rating của những user-item chưa được rate bởi người dùng sao cho sai số so với giá trị thực tế là nhỏ nhất.
 
