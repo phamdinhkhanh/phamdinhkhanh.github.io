@@ -6,7 +6,7 @@ title: Bài 20 - Recommendation Neural Network
 
 ## 1. Ưu điểm của Recommendation Neural Network
 
-Ở bài trước chúng ta đã tìm hiểu về 2 thuật toán cơ bản trong recommendation đó là [collaborative và content-based filtering](https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html). Ý tưởng chung của các thuật toán này đều là tìm cách ước lượng các giá trị rating của những user-item chưa được rate bởi người dùng sao cho sai số so với giá trị thực tế là nhỏ nhất.
+Ở bài trước chúng ta đã tìm hiểu về 2 thuật toán cơ bản trong recommendation đó là [collaborative và content-based filtering](https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html). Ý tưởng chung của các thuật toán này đều là tìm cách ước lượng các giá trị rating của những cặp user-item chưa được rate bởi người dùng sao cho sai số so với giá trị thực tế là nhỏ nhất.
 
 Tuy nhiên những phương pháp này đều có một hạn chế đó là:
 
@@ -20,13 +20,11 @@ Tuy nhiên những phương pháp này đều có một hạn chế đó là:
 
 * Ước lượng được điểm số mà một khách hàng sẽ vote cho một sản phẩm để khuyến nghị những sản phẩm mà khách hàng yêu thích nhất.
  
-Phương pháp neural network tận dụng được đồng thời đầu vào là véc tơ các trường thông tin sản phẩm và véc tơ các trường thông tin khách hàng nên tính cá nhân hóa cao, khắc phục được các hạn chế về tính cá nhân hóa thấp của những phương pháp truyền thống. Bên cạnh đó, việc sử dụng các trường thông tin mang tính đặc thù cao giúp cho các khuyến nghị sản phẩm có yếu tố phân cụm cao. Chẳng hạn như đối với một hệ thống recommendation video của youtube,thông thường các kết quả video sẽ bị phân cụm theo ngôn ngữ của người dùng. Nếu khách hàng là người Việt Nam thường những video được khuyến nghị sẽ là video tiếng Việt. 
-
-Ngoài ra, một trong những ưu điểm của mô hình recommendation mạng neural đó là chúng ta có thể sử dụng không giới hạn bất kì thông tin nào liên quan đến khách hàng và sản phẩm.
+Phương pháp neural network tận dụng được đồng thời đầu vào bao gồm các trường thông tin sản phẩm và các trường thông tin khách hàng nên tính cá nhân hóa cao hơn những phương pháp truyền thống. Bên cạnh đó, việc sử dụng đa dạng các trường thông tin cá nhân hóa giúp cho các khuyến nghị sản phẩm trở nên chính xác hơn. Chẳng hạn như hệ thống recommendation video của youtube có khả năng khuyến nghị video cho người dùng theo ngôn ngữ của họ.
 
 Trong khi đó đối với mô hình collaborative-filtering ta chỉ sử dụng thông tin duy nhất là ma trận rating sản phẩm. Còn trong mô hình content-based chỉ tận dụng được chỉ một trong hai nhóm thông tin về khách hàng hoặc về sản phẩm.
 
-Những thông tin này rất hữu ích trong cá nhân hóa khuyến nghị cho người dùng. Đặc biệt là những trường thông tin cho thấy sự khác biệt về sở thích như giới tính, độ tuổi, ngành nghề, quốc tịch,.... Một số ví dụ rất cụ thể để ta dễ hình dung:
+Những thông tin về người dùng rất hữu ích trong nhận biết hành vi và sở thích của họ. Đặc biệt là các trường giới tính, độ tuổi, ngành nghề, quốc tịch,... sẽ cá nhân hóa người dùng rất cao. Minh chứng cho điều đó, tôi lấy ví dụ:
 
 * Tùy theo quốc tịch mà người dùng sẽ có những thị hiếu khác nhau như người Việt Nam thích ăn thịt chó nhưng người phương Tây thì tuyệt đối không.
 
@@ -34,23 +32,29 @@ Những thông tin này rất hữu ích trong cá nhân hóa khuyến nghị ch
 
 * Ta không thể khuyến nghị đồ chơi trẻ em cho người lớn và trái lại thuốc lá cho trẻ em. Hoặc với nam thì không nên recommend túi xách, váy (trừ khi họ mua cho bạn gái, vợ, người thân) hoặc nữ là áo sơ mi nam.
 
-Trên thực tế cũng cho thấy số lượng trường dữ liệu đối với khách hàng hoặc đối với sản phẩm ở một số hệ thống là rất lớn. Có thể lên tới vài trăm hoặc thậm chí vài nghìn chiều. Do đó mô hình recommendation mạng neural network sẽ tận dụng được số lượng rất lớn các trường thông tin này, cả từ phía người dùng lẫn sản phẩm. Do đó tính cá nhân hóa của các kết quả khuyến nghị là cực kì cao. 
+Trên thực tế, số lượng trường dữ liệu đối với khách hàng hoặc đối với sản phẩm ở một số hệ thống là rất lớn. Có thể lên tới vài trăm hoặc thậm chí vài nghìn chiều. Nếu sử dụng những mô hình truyền thống của collaborative filtering và content-based sẽ gặp hạn chế lớn là không tận dụng được toàn bộ các thông tin này.
 
-Ngoài ra mô hình mạng neural network có ưu điểm đó là không giới hạn dữ liệu đầu vào là các biến numeric hoặc category. Thông tin từ các bức ảnh, hoặc các đoạn văn bản mô tả thuộc tính sản phẩm đôi khi cũng rất có ích trong khuyến nghị sản phẩm. Chúng có thể được dễ dàng đưa vào mô hình thông qua các phương pháp nhúng. Và thường thì những thuật toán sử dụng thêm những dữ liệu này lại có kết quả tốt hơn.
+Ngoài ra mô hình mạng neural network có ưu điểm đó là không chỉ tiếp nhận đầu vào là các biến numeric hoặc category. Ngoài ra, các kiểu dữ liệu đặc biệt như các bức ảnh, các đoạn văn bản mô tả thuộc tính sản phẩm cũng sẽ được đưa vào mô hình. Và chúng cực kì có ích trong khuyến nghị sản phẩm. Bằng các phương pháp nhúng hình ảnh và văn bản, chúng có thể được dễ dàng đưa chúng vào mô hình như các đặc trưng của sản phẩm. Các nghiên cứu về recommendation cho thấy những thuật toán sử dụng thêm những dữ liệu hình ảnh, mô tả sản phẩm lại có kết quả tốt hơn.
 
-Chính vì những ưu điểm kể trên mà mô hình recommendation mạng neural network mang lại hiệu quả cao hơn so với các phương pháp cũ. Tiếp theo hãy cùng tìm hiểu về kiến trúc mô hình và nguyên lý hoạt động của một hệ thống recommendation qua mạng neural network như thế nào nhé.
+Chính vì những ưu điểm sử dụng đa dạng hóa dữ liệu, cả về phía người dùng và sản phẩm mà mô hình recommendation mạng neural network được ưa chuộng sử dụng hơn là các phương pháp cũ. Tiếp theo hãy cùng tìm hiểu về kiến trúc mô hình và nguyên lý hoạt động của một hệ thống recommendation qua mạng neural network như thế nào nhé.
 
 # 2. Kiến trúc recommendation neural network
 
-Kiến trúc của recommendation neural network là một mạng neural khá đơn giản với input đầu vào của mô hình là các thông tin về khách hàng như lịch sử truy vấn, hành vi giao dịch, các biến demographic bao gồm giới tính, độ tuổi, nghề nghiệp, quốc gia,.... Đầu ra của mô hình là một véc tơ phân phối điểm số hoặc khả năng tương tác của khách hàng đối với các sản phẩm. Tùy vào các bài toán khác nhau mà việc tiền xử lý đầu ra và xác định bài toán dự báo cho đầu ra cũng là một vấn đề rất đa dạng và linh hoạt mà chúng ta sẽ tìm hiểu ở phần thực hành.
+Kiến trúc của recommendation neural network là một mạng neural khá đơn giản với input đầu vào của mô hình là: 
 
-Bên dưới là kiến trúc của một mô hình recommendation neural network:
+* Các thông tin về khách hàng như lịch sử truy vấn, hành vi giao dịch, các biến demographic bao gồm giới tính, độ tuổi, nghề nghiệp, quốc gia,...
+* Các thông tin về sản phẩm: Mô tả sản phẩm, hình ảnh, thể loại, mô tả sản phẩm,....
+
+Đầu ra của mô hình là một véc tơ phân phối xác suất đánh giá khả năng tương tác của khách hàng đối với các sản phẩm. Một số trường hợp khác là phân phối điểm rating của sản phẩm mà khách hàng đã rate. Tùy vào cách xác định mục tiêu là dự báo xác suất hay dự báo điểm số mà chúng ta sẽ xác định output, hàm mục tiêu cho bài toán recommendation.
+
+Kiến trúc của mô hình recommendation neural network là một mạng neural network đơn giản gồm input layer, hidden layer và output layer.
+Cụ thể, bên dưới là kiến trúc của một mô hình recommendation neural network:
 
 <img src="/assets/images/20191226_SoftMaxRecom/mlp.jpg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > **Hình 1:** Mô hình neural network recommendation. Ở mô hình này chúng ta sẽ có Input layer là những thông tin của khách hàng, thông tin sản phẩm, lịch sử giao dịch hoặc truy vấn. Những đầu vào này có thể được coi như là thông tin truy vấn (query). Một hidden layer trung gian để giảm chiều dữ liệu và chuyển đổi tính phi tuyến và output layer là một véc tơ phân phối xác suất về khả năng ưa thích hoặc một véc tơ embedding điểm rating của khách hàng.
 
-Như vậy về bản chất mô hình này chính là một mạng MLP thông thường giúp dự báo sản phẩm khách hàng sẽ yêu thích dựa trên các dữ liệu lịch sử hành vi của khách hàng. Kiến trúc này khá đơn giản phải không? Đầu vào của mạng nơ ron là các véc tơ véc tơ $\mathbf{x}_i \in \mathbb{R}^{d\times 1}$ đại diện cho véc tơ concatenate các đặc trưng về sản phẩm và các đặc trưng của khách hàng dựa trên những gì khách hàng đã giao dịch, véc tơ này có kích thước $d$ chiều. Khi đó thông qua một phép chiếu tuyến tính (linear projection) bằng cách nhân với ma trận hệ số $\mathbf{W}^{(1)} \in \mathbb{R}^{d \times h}$ ta sẽ giảm chiều dữ liệu của véc tơ input về véc tơ $\mathbf{z} \in \mathbb{R}^{h \times 1}$, với $h$ là số units của hidden layer.
+Như vậy về bản chất mô hình này chính là một mạng MLP thông thường giúp dự báo sản phẩm khách hàng có khả năng tương tác dựa trên các dữ liệu lịch sử hành vi của khách hàng. Kiến trúc này khá đơn giản phải không? Đầu vào của mạng nơ ron là các véc tơ véc tơ $\mathbf{x}_i \in \mathbb{R}^{d\times 1}$ đại diện cho véc tơ concatenate các đặc trưng về sản phẩm và các đặc trưng của khách hàng dựa trên những gì khách hàng đã giao dịch, véc tơ này có kích thước $d$ chiều. Khi đó thông qua một phép chiếu tuyến tính (linear projection) bằng cách nhân với ma trận hệ số $\mathbf{W}^{(1)} \in \mathbb{R}^{d \times h}$ ta sẽ giảm chiều dữ liệu của véc tơ input về véc tơ $\mathbf{z} \in \mathbb{R}^{h \times 1}$, với $h$ là số units của hidden layer.
 
 $$\mathbf{z}_i = {\mathbf{W}^{(1)}}^\top\mathbf{x}_i, \mathbf{z}_i \in \mathbb{R}^{h \times 1}$$
 
@@ -515,7 +519,7 @@ def select_random(x):
   # Stack row indexes and column indexes
   # Khởi tạo list các ids gồm (index_row, index_col). 
   ids = tf.stack([to_int(rn), to_int(nnz * rnd)], axis=1)
-  # Trích suất các index ngẫu nhiên từ x theo ids. Mỗi dòng sẽ lấy 1 phần tử, có thể là mẫu negative hoặc positive.
+  # Trích suất các index ngẫu nhiên từ x theo ids. Mỗi dòng sẽ lấy 1 phần tử là index của movie mà khách hàng đã rate.
   return to_int(tf.gather_nd(x, ids))
 ```
 
