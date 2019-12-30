@@ -34,7 +34,7 @@ Những thông tin về người dùng rất hữu ích trong nhận biết hàn
 
 Trên thực tế, số lượng trường dữ liệu đối với khách hàng hoặc đối với sản phẩm ở một số hệ thống là rất lớn. Có thể lên tới vài trăm hoặc thậm chí vài nghìn chiều. Nếu sử dụng những mô hình truyền thống của collaborative filtering và content-based sẽ gặp hạn chế lớn là không tận dụng được toàn bộ các thông tin này.
 
-Ngoài ra mô hình mạng neural network có ưu điểm đó là không chỉ tiếp nhận đầu vào là các biến numeric hoặc category. Ngoài ra, các kiểu dữ liệu đặc biệt như các bức ảnh, các đoạn văn bản mô tả thuộc tính sản phẩm cũng sẽ được đưa vào mô hình. Và chúng cực kì có ích trong khuyến nghị sản phẩm. Bằng các phương pháp nhúng hình ảnh và văn bản, chúng có thể được dễ dàng đưa chúng vào mô hình như các đặc trưng của sản phẩm. Các nghiên cứu về recommendation cho thấy những thuật toán sử dụng thêm những dữ liệu hình ảnh, mô tả sản phẩm lại có kết quả tốt hơn.
+Ngoài ra mô hình mạng neural network có ưu điểm đó là không chỉ tiếp nhận đầu vào là các biến numeric hoặc category. Các kiểu dữ liệu đặc biệt như các bức ảnh, các đoạn văn bản mô tả thuộc tính sản phẩm cũng sẽ được đưa vào mô hình. Và chúng cực kì có ích trong khuyến nghị sản phẩm. Bằng các phương pháp nhúng hình ảnh và văn bản, chúng có thể được dễ dàng đưa chúng vào mô hình như các chiều thông tin của sản phẩm. Các nghiên cứu về recommendation cho thấy những thuật toán sử dụng thêm những dữ liệu hình ảnh, mô tả sản phẩm lại có kết quả tốt hơn. Các bạn có thể tham khảo thêm tại [Machine Learning for Recommender systems — Part 2 (Deep Recommendation, Sequence Prediction, AutoML and Reinforcement Learning in Recommendation) - Pavel Kordík](https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-2-deep-recommendation-sequence-prediction-automl-f134bc79d66b).
 
 Chính vì những ưu điểm sử dụng đa dạng hóa dữ liệu, cả về phía người dùng và sản phẩm mà mô hình recommendation mạng neural network được ưa chuộng sử dụng hơn là các phương pháp cũ. Tiếp theo hãy cùng tìm hiểu về kiến trúc mô hình và nguyên lý hoạt động của một hệ thống recommendation qua mạng neural network như thế nào nhé.
 
@@ -54,7 +54,7 @@ Cụ thể, bên dưới là kiến trúc của một mô hình recommendation n
 
 > **Hình 1:** Mô hình neural network recommendation. Ở mô hình này chúng ta sẽ có Input layer là những thông tin của khách hàng, thông tin sản phẩm, lịch sử giao dịch hoặc truy vấn. Những đầu vào này có thể được coi như là thông tin truy vấn (query). Một hidden layer trung gian để giảm chiều dữ liệu và chuyển đổi tính phi tuyến và output layer là một véc tơ phân phối xác suất về khả năng ưa thích hoặc một véc tơ embedding điểm rating của khách hàng.
 
-Như vậy về bản chất mô hình này chính là một mạng MLP thông thường giúp dự báo sản phẩm khách hàng có khả năng tương tác dựa trên các dữ liệu lịch sử hành vi của khách hàng. Kiến trúc này khá đơn giản phải không? Đầu vào của mạng nơ ron là các véc tơ véc tơ $\mathbf{x}_i \in \mathbb{R}^{d\times 1}$ đại diện cho véc tơ concatenate các đặc trưng về sản phẩm và các đặc trưng của khách hàng dựa trên những gì khách hàng đã giao dịch, véc tơ này có kích thước $d$ chiều. Khi đó thông qua một phép chiếu tuyến tính (linear projection) bằng cách nhân với ma trận hệ số $\mathbf{W}^{(1)} \in \mathbb{R}^{d \times h}$ ta sẽ giảm chiều dữ liệu của véc tơ input về véc tơ $\mathbf{z} \in \mathbb{R}^{h \times 1}$, với $h$ là số units của hidden layer.
+Như vậy về bản chất mô hình này chính là một mạng MLP thông thường giúp dự báo sản phẩm khách hàng có khả năng tương tác dựa trên các dữ liệu lịch sử hành vi của khách hàng. Kiến trúc này khá đơn giản phải không? Đầu vào của mạng nơ ron là các véc tơ véc tơ $\mathbf{x}_i \in \mathbb{R}^{d\times 1}$ đại diện cho véc tơ concatenate các đặc trưng về sản phẩm và các đặc trưng về khách hàng dựa trên những gì khách hàng đã giao dịch, véc tơ này có kích thước $d$ chiều. Khi đó thông qua một phép chiếu tuyến tính (linear projection) bằng cách nhân với ma trận hệ số $\mathbf{W}^{(1)} \in \mathbb{R}^{d \times h}$ ta sẽ giảm chiều dữ liệu của véc tơ input về véc tơ $\mathbf{z} \in \mathbb{R}^{h \times 1}$, với $h$ là số units của hidden layer.
 
 $$\mathbf{z}_i = {\mathbf{W}^{(1)}}^\top\mathbf{x}_i, \mathbf{z}_i \in \mathbb{R}^{h \times 1}$$
 
@@ -64,15 +64,15 @@ $$\mathbf{a}_i = f(\mathbf{z}_i) \in \mathbb{R}^{h \times 1}$$
 
 $f(\mathbf{x})$ chính là hàm relu hoặc softmax. Biến đổi trên có thể coi là một phép biến đổi không gian qua kernel hàm $f(\mathbf{x})$ để thay đổi mối quan hệ đầu vào và đầu ra từ tuyến tính sang phi tuyến. Khi đó ta có thể xem các giá trị $f(\mathbf{z}) \in \mathbb{R}^{h\times 1}$ như là một véc tơ user embedding đại diện cho hành vi, sở thích, thị hiếu của mỗi user.
 
-Để tính toán phân phối xác suất ở đầu ra ta sử dụng hàm softmax áp dụng lên các đầu vào là các $\mathbf{a}_i$. Như vậy giá trị xác suất của khách hàng thứ $i$ khi ưa thích sản phẩm thứ $j$ sẽ chính là:
+Để tính toán phân phối xác suất ở đầu ra ta sử dụng hàm softmax áp dụng lên các đầu vào $\mathbf{a}_i$. Như vậy giá trị xác suất của khách hàng thứ $i$ khi ưa thích sản phẩm thứ $j$ sẽ chính là:
 
 $$\hat{y}_{ij}=P(y_i=j|\mathbf{a}_i, j=\overline{1,o}) = \frac{\text{exp}(\mathbf{a}_i^T\mathbf{w}_j^{(2)})}{\sum_{k=1}^{o} \text{exp}(\mathbf{a}_i^T\mathbf{w}_k^{(2)})}$$
 
 Ở đây $\mathbf{w}_k^{(2)} \in \mathbb{R}^{h \times 1}$ là những véc tơ cột của ma trận hình chiếu (projection matrix) $\mathbf{W}^{(2)} \in \mathbb{R}^{h \times o}$ giúp biến đổi đầu ra của hidden layer sang output layer. $o$ chính là số lượng sản phẩm ở output có kích thước rất lớn. Mỗi một cột $\mathbf{w}_i \in \mathbb{R}^{h\times 1}$ của ma trận hình chiếu được xem như là biểu diễn của một véc tơ item embedding đại diện cho một sản phẩm.
 
-Sau khi huấn luyện mô hình ta thu được các véc tơ nhúng user embedding và item embedding của lần lượt khách hàng và sản phẩm. Điểm số yêu thích của một khách hàng đối với một sản phẩm có thể được đo lường thông qua cosine similarity hoặc dot product. Sẽ được trình bày cụ thể hơn ở phần thực hành.
+Sau khi huấn luyện mô hình ta thu được các véc tơ nhúng user embedding và item embedding của lần lượt khách hàng và sản phẩm. Điểm số yêu thích của một khách hàng đối với một sản phẩm có thể được đo lường thông qua `cosine similarity` hoặc `dot product`. Sẽ được trình bày cụ thể hơn ở phần thực hành mục 4.
 
-Hàm loss chính là cross entropy được sử dụng để đo lường sự khác biệt về phân phối xác suất của ground truth với kết quả dự báo có công thức như sau:
+Hàm loss chính là cross entropy được sử dụng để đo lường sự khác biệt của ground truth với phân phối xác suất được dự báo có công thức như sau:
 
 $$\mathcal{L}(\mathbf{X}; \mathbf{W}) = -\sum_{i=1}^{n}\sum_{k=1}^{o}y_{ik}.\text{log}(\hat{y}_{ik})$$
 
@@ -91,13 +91,13 @@ Hãy tưởng tượng trong mô hình word2vec theo phương pháp skip-gram. T
 <img src="/assets/images/20191226_SoftMaxRecom/skipgram.png" width="300px" height="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 > **Hình 2:** Sơ đồ kiến trúc mô hình word2vec skip-gram.
 
-Sau khi huấn luyện mô hình skip-gram ta sẽ thu được các véc tơ nhúng của từ thuộc không gian $d$ chiều. Khi đó kí hiệu véc tơ biểu diễn từ input là $e_I \in \mathbb{R}^{d}$ và các từ output là các véc tơ $e_{i}' \in \mathbb{R}^{d}$. Như chúng ta đã biết ở [Bài 3 - Mô hình Word2Vec](https://phamdinhkhanh.github.io/2019/04/29/ModelWord2Vec.html), output của mô hình skip-gram sẽ dự báo xác suất để 2 từ bất kì thuộc cùng một cặp. Khi đó đối với các cặp từ $(w_I, w_O)$ đại diện cho (input, output), xác suất có điều kiện của các trường hợp sau phải là lớn nhất:
+Sau khi huấn luyện mô hình skip-gram ta sẽ thu được các véc tơ nhúng của từ thuộc không gian $d$ chiều. Khi đó kí hiệu véc tơ biểu diễn từ input là $e_I \in \mathbb{R}^{d}$ và các từ output là các véc tơ $e_{i}' \in \mathbb{R}^{d}$. Như chúng ta đã biết ở [Bài 3 - Mô hình Word2Vec](https://phamdinhkhanh.github.io/2019/04/29/ModelWord2Vec.html), output của mô hình skip-gram sẽ dự báo xác suất để 2 từ bất kì thuộc cùng một cặp. Khi đó đối với các cặp từ $(w_I, w_O)$ đại diện cho (input, output), xác suất có điều kiện để chúng xuất hiện cùng nhau phải là lớn nhất:
 
 $$P(y=1|(w_I, w_O)) = \frac{\text{exp}(e_{I}^{T}e_{O}')}{\sum_{j=1}^{V} \text{exp}(e_{I}^{T}e_{j}')} \tag{1}$$
 
 Đây chính là một hàm softmax tính xác suất của từ $w_O$ trong trường hợp đầu vào là từ $w_I$. Với mẫu số chính là tổng lũy thừa cơ số tự nhiên $e$ của toàn bộ các từ xuất hiện trong bộ từ điển có kích thước là $V$.
 
-Hàm loss function dạng cross entropy sẽ có dạng:
+Để thuận lợi cho việc tính đạo hàm, lấy logarit 2 vế và đổi dấu ta thu được hàm loss function dạng cross entropy như sau:
 
 $$\mathcal{L}(w_I, w_O) = -\sum_{j=1}^{N}\sum_{i=1}^{V}[\log P(y_j=1|(w_I, w_O))]$$
 
@@ -125,47 +125,44 @@ $$
 
 Dòng thứ 2 suy ra dòng thứ 3 là do $\frac{\text{exp}(f(w_j))}{\sum_{j=1}^{V}\text{exp}(f(w_j))}$ 
 chính là hàm softmax tính xác suất để từ output là $w_i$. 
-Gía trị $\mathbf{E}_{p\sim P(w)}$ chính là kì vọng theo phân phối trọng số là $p\sim P(w)$. 
+
+Dòng thứ 3 suy ra dòng thứ 4 là do gía trị $\mathbf{E}_{p\sim P(w)}$ chính là kì vọng theo phân phối trọng số là $p\sim P(w)$. 
 
 Trong trường hợp bộ từ điển có kích thước rất lớn thì việc tính toán $\mathbf{E}_{p\sim P(w)}$ 
-cho toàn bộ các từ vựng là không khả thi và rất tốn chi phí tính toán. Khi đó, một phương pháp được 
+cho toàn bộ các từ vựng sẽ rất tốn chi phí tính toán. Khi đó, một phương pháp được 
 Mikolov và các cộng sự giới thiệu để làm giảm chi phí tính toán mẫu số đó là chỉ lựa chọn ra một tợp hợp
-$k$ hữu hạn các cặp mẫu âm tính (negative sample). Tức là các quan sát mà $(w_I, w_O)$ không ghép cặp với nhau. 
-Trường hợp ngược lại chúng là các mẫu dương tính (positive sample). 
+$k$ hữu hạn các cặp mẫu âm tính (negative sample) kết hợp với 1 mẫu dương tính (positive sample). Mẫu âm tính được hiểu là các quan sát mà $(w_I, w_O)$ không là một cặp đầu vào và đầu ra của nhau. Trường hợp ngược lại chúng là các mẫu dương tính (positive sample). 
 
-Các lượt cập nhật gradient descent trong quá trình huấn luyện mô hình ta sẽ lựa chọn ra $k+1$ mẫu, 
-với $k$ mẫu âm tính và 1 mẫu dương tính và chỉ phải tính $\mathbf{E}_{p\sim P(w)}$ cho $k+1$ mẫu. 
-Sẽ đơn giản và tiết kiệm chi phí tính toán hơn rất nhiều.
+Các lượt cập nhật gradient descent, trong công thức đạo hàm loss function thì chỉ phải tính $\mathbf{E}_{p\sim P(w)}$ cho $k+1$ mẫu thay vì tính phân phối xác suất cho toàn bộ $V$ mẫu. Sẽ đơn giản và tiết kiệm chi phí tính toán hơn rất nhiều.
 
-Thông thường giá trị $k = 25$ sẽ là hiệu quả khi mẫu có kích thước nhỏ và giá trị $k=5$ là hiệu quả với các mẫu kích thước lớn.
-
-Sau khi áp dụng kĩ thuật negative sampling thì kết quả được cải thiện đáng kể đồng thời tốc độ huấn luyện nhanh hơn gấp nhiều lần.
+Thông thường giá trị $k = 25$ sẽ là hiệu quả khi mẫu có kích thước nhỏ và giá trị $k=5$ là hiệu quả với các mẫu kích thước lớn theo bài báo [Negative Sampling - Distributed Representations of Words and Phrases
+and their Compositionality - Tomas Mikolov. etc](https://arxiv.org/pdf/1310.4546.pdf). Sau khi áp dụng kĩ thuật negative sampling thì kết quả được cải thiện đáng kể đồng thời tốc độ huấn luyện nhanh hơn gấp nhiều lần.
 
 # 3. Các khó khăn khi xây dựng mô hình
 Về cơ bản lý thuyết và kiến trúc của mô hình khá đơn giản. Tuy nhiên khi áp dụng vào thực tiễn sẽ có những vấn đề về dữ liệu, huấn luyện và dự báo mà chúng ta sẽ gặp phải. Đây là những trở ngại rất lớn để biến mô hình từ giai đoạn nghiên cứu phát triển đến ứng dụng. Bên dưới tôi sẽ lần lượt liệt kê ra những khó khăn theo các khía cạnh trên:
 
 ## 3.1. Dữ liệu
-Một mô hình sẽ không tốt nếu dữ liệu không được thu thập đầy đủ. Đẩy đủ ở đây nghĩa là không có quá nhiều dữ liệu bị missing, số lượng các trường được thu thập là đủ nhiều. Nhưng dữ liệu đầy đủ cũng chỉ là một yêu cầu trong số các tiêu chuẩn quan trọng. Xa hơn, chúng ta cần dữ liệu đó phải chính xác để phản ánh đúng thực tiễn. Tuy nhiên nhiều bộ dữ liệu sử dụng để huấn luyện recommendation thì thường không được như thế:
+Một mô hình sẽ không tốt nếu dữ liệu không được thu thập đầy đủ. Đẩy đủ ở đây nghĩa là không có quá nhiều dữ liệu bị missing, số lượng các trường được thu thập là bao quát các nhóm dữ liệu gồm người dùng, sản phẩm, lịch sử tương tác. Nhưng dữ liệu đầy đủ cũng chỉ là một yêu cầu trong số các yêu cầu quan trọng. Xa hơn, chúng ta cần dữ liệu đó phải chính xác để phản ánh đúng thực tiễn. Tuy nhiên nhiều bộ dữ liệu sử dụng để huấn luyện recommendation thì thường không được như thế:
 
 * Thực tế tại nhiều công ty, dữ liệu về người dùng chưa được thu thập chính xác và đầy đủ. Đặc biệt là khâu đăng kí tài khoản được thực hiện sơ sài nhằm tạo sự nhanh chóng, tiện lợi. Nhưng theo tôi thiệt hại cho cả khách hàng và doanh nghiệp lớn hơn nhiều. Vì thông tin không chuẩn xác và đầy đủ dẫn tới thuật toán hoạt động sai. Khách hàng sẽ không được recommend đúng sản phẩm mình cần. Doanh nghiệp tiếp cận không đúng đối tượng khách hàng.
 
 * Các trường dữ liệu người dùng được thu thập để đưa vào mô hình cần phải được chuẩn hóa và thực sự có ý nghĩa phân biệt hành vi, sở thích, thị hiếu khách hàng. Về cơ bản chúng ta nên nhóm các thông tin khách hàng thành các nhóm trường: 
   * Demographic: Biến nhân khẩu học là các trường xác định khách hàng như giới tính, độ tuổi, quê quán, nghề nghiệp, bằng cấp, thu nhập, thành phần gia đình,.... Tất nhiên để đảm bảo lấy được toàn bộ các thông tin nêu trên là rất khó. Tùy từng ngành nghề mà ta sẽ xác định đâu là thông tin cần để thu thập.
 
-  * Behavioral: Các biến liên quan đến hành vi mua sắm, chi tiêu, giao dịch, lướt web của khác hàng. Đây là những biến rất quan trọng vì nó thể hiện trực tiếp những gì khách hàng đã trải nghiệm. Để dữ liệu này được đầy đủ thì bạn cần phải có một hệ thống tracking app, web đủ mạnh. Google Tag Management, Google Firebase và Mixpanel có thể là những lựa chọn mà bạn nên cân nhắc. Trong trường hợp công ty của bạn có điều kiện tài chính có thể thuê một bên tư vấn về SEO để các thiết lập, cài đặt được chuẩn xác và được tư vấn sử dụng kết quả tracking.
+  * Behavioral: Các biến liên quan đến hành vi mua sắm, chi tiêu, giao dịch, lướt web của khách hàng. Đây là những biến rất quan trọng vì nó thể hiện trực tiếp những gì khách hàng đã trải nghiệm. Để dữ liệu này được đầy đủ thì bạn cần phải có một hệ thống tracking app, web đủ mạnh. Google Tag Management, Google Firebase và Mixpanel có thể là những lựa chọn mà bạn nên cân nhắc. Trong trường hợp công ty của bạn có điều kiện tài chính có thể thuê một bên tư vấn về SEO để thiết lập các cấu hình chuẩn xác và được tư vấn thiết kế báo cáo, phân tích kết quả tracking.
 
-* Nên sử dụng đa dạng các loại thông tin người dùng, sản phẩm. Các trường thông tin không chỉ giới hạn ở định dạng numeric hoặc category mà còn có thể là hình ảnh sản phẩm, nội dung mô tả sản phẩm, âm thanh, video. Những thông tin này có thể dễ dàng được nhúng dưới các véc tơ embedding thông qua các mô hình trong Computer Vision và NLP. Một số nghiên cứu cho thấy sử dụng hình ảnh hoặc nội dung để recommendation mang lại độ chính xác cao hơn so với các phương pháp truyền thống chỉ dựa vào rating của sản phẩm.
+* Nên sử dụng đa dạng các loại thông tin người dùng, sản phẩm. Các trường thông tin không chỉ giới hạn ở định dạng numeric hoặc category mà còn có thể là hình ảnh sản phẩm, nội dung mô tả sản phẩm, âm thanh, video. Những thông tin này có thể dễ dàng được nhúng dưới các véc tơ embedding thông qua các mô hình trong Computer Vision và NLP mà mang lại nhiều thông tin để khuyến nghị sản phẩm tới người dùng hiệu quả hơn.
 
 ## 3.2. Huấn luyện mô hình
-Huấn luyện mô hình là một phần rất quan trọng. Bên cạnh việc lựa chọn kiến trúc mô hình nào mang lại hiệu quả cao, do dữ liệu thay đổi realtime nên chúng ta cần phải liên tục huấn luyện mô hình để kịp thời cập nhật những xu hướng hoặc hành vi tiêu dùng mới nhất của khách hàng. Qúa trình học này gọi là online learning, một trong những vấn đề rất quan trọng của recommendation. Việc học online learing để khuyến nghị sản phẩm cho khách hàng là rất cần thiết, đặc biệt là khi nhu cầu của khách hàng chỉ phát sinh trong một giai đoạn rất ngắn và trên thị trường có hàng trăm hãng cạnh tranh. Hiện tại facebook và google là những hãng áp dụng rất tốt quá trình học online learning. Bạn có thể tự cảm nhận điều này thông qua việc tìm kiếm sản phẩm và được đưa tin quảng cáo tràn ngập về sản phẩm đó chỉ sau vài giây.
+Huấn luyện mô hình là một phần rất quan trọng. Bên cạnh việc lựa chọn kiến trúc mô hình nào mang lại hiệu quả cao, chúng ta cần phải liên tục huấn luyện mô hình. Dữ liệu thay đổi realtime nên việc liên tục huấn luyện mô hình sẽ kịp thời cập nhật những xu hướng hoặc hành vi tiêu dùng mới nhất của khách hàng. Qúa trình học này gọi là online learning, một trong những vấn đề rất quan trọng của recommendation. Việc học online learing để khuyến nghị sản phẩm cho khách hàng là rất cần thiết, đặc biệt là khi nhu cầu của khách hàng chỉ phát sinh trong một giai đoạn rất ngắn và trên thị trường có hàng trăm hãng cạnh tranh. Hiện tại facebook và google là những hãng áp dụng rất tốt quá trình học online learning. Bạn có thể tự cảm nhận điều này thông qua việc tìm kiếm sản phẩm và được đưa tin quảng cáo tràn ngập về sản phẩm đó chỉ sau vài giây.
 
-Để học được online learning đối với các nền tảng hàng triệu người dùng thì chúng ta phải có một tài nguyên vật lý đủ lớn có thể đáp ứng được quá trình học liên tục. Sau mỗi một lượt click, mua sắm, thanh toán thì mô hình cần được kích hoạt ngay. Do đó, quá trình huấn luyện phải tổng hợp các dữ liệu mới vào các batch để huấn luyện mô hình không bị concurrent.
+Để học được online learning đối với các nền tảng hàng triệu người dùng thì chúng ta phải có một tài nguyên vật lý đủ lớn có thể đáp ứng được quá trình học liên tục. Sau mỗi một lượt click, mua sắm, thêm hàng vào giỏ hoặc thanh toán thì mô hình cần được ghi nhận những thay đổi. Để hạn chế số lượt kích hoạt huấn luyện mô hình quá nhiều dễ dẫn tới concurrent, chúng ta cần tổng hợp các dữ liệu mới vào một batch để huấn luyện mô hình một lần cho mỗi batch. Các phương pháp huấn luyện của mô hình deep learning được hướng dẫn khá chi tiết tại [Bài 8: Gradient Descent- Blog machinelearningcoban](https://machinelearningcoban.com/2017/01/16/gradientdescent2/).
 
 Ngoài ra, chúng ta nên kết hợp nhiều lớp mô hình khác nhau trên cùng một hệ thống recommendation, mỗi mô hình sẽ được sử dụng chuyên biệt cho một nhiệm vụ khác nhau như: 
 
-* Khuyến nghị sản phẩm người dùng có thể quan tâm dựa trên lịch sử các sản phẩm đã mua.
-* Khuyến nghị sản phẩm cùng loại với sản phẩm người dùng đang tìm kiếm.
-* Dự báo sản phẩm có khả năng mua tiếp theo dựa trên sản phẩm khác hàng đã mua gần đây.
+* Khuyến nghị sản phẩm người dùng có thể quan tâm dựa trên lịch sử các sản phẩm đã mua: Sử dụng các mô hình deep learning neural network.
+* Khuyến nghị sản phẩm cùng loại với sản phẩm người dùng đang tìm kiếm: Có thể dùng các thuật toán similarity search về nội dung, hình ảnh hoặc đối chiếu similarity của các véc tơ embedding sản phẩm.
+* Dự báo sản phẩm có khả năng mua tiếp theo dựa trên sản phẩm khác hàng đã mua gần đây: Sử dụng các thuật toán RNN, LSTM, GRU, BiLSTM.
 
 Khi đó hệ thống recommendation sẽ giúp nâng cao trải nghiệm của khách hàng hơn nhiều so với chỉ có một mô hình recommendation duy nhất.
 
@@ -175,10 +172,9 @@ Khi đó hệ thống recommendation sẽ giúp nâng cao trải nghiệm của 
 
 Về độ chính xác thì cần phải chuẩn bị tốt khâu dữ liệu đầu vào và liên tục thử nghiệm những kiến trúc khác nhau. Đồng thời cũng cần thường xuyên nghiên cứu để cập nhật những phương pháp, xu hướng mới trong recommendation trên thế giới. Việc nghiên cứu đòi hỏi phải chuyên sâu và công phu về cả các khía cạnh lý thuyết, xây dựng mô hình, triển khai mô hình. Nếu có điều kiện, các doanh nghiệp nên xây dựng ngay từ đầu một đội ngũ R&D đủ mạnh và chuyên sâu nghiên cứu lớp mô hình này.
 
-Để nâng cao tốc độ xử lý cho một hệ thống recommendation thì chúng ta cần áp dụng các kĩ thuật xử lý phân tán và xử lý song song. Đó là những kiến trúc dạng master-slaves. Master có vai trò như là một người quản lý kết quả công việc và giao việc tới các máy con là những slaves. Ngoài ra khi một xử lý bị lỗi sẽ hỗ trợ auto-retry. Do đó hệ thống xử lý phân phân tán sẽ có khả năng chịu tải và chịu lỗi tốt. Bạn đọc có thể tham khảo một bài viết rất hay về thiết kế một hệ thống triệu view có tên là [Nghệ thuật xử lý background job - minh momen](https://viblo.asia/p/nghe-thuat-xu-ly-background-job-07LKXjqJlV4)
-.
+Để nâng cao tốc độ xử lý cho một hệ thống recommendation thì chúng ta cần áp dụng các kĩ thuật xử lý phân tán và xử lý song song. Đó là những kiến trúc dạng master-slaves. Master có vai trò như là một người quản lý kết quả công việc và giao việc tới các máy con là những slaves. Ngoài ra khi một xử lý bị lỗi sẽ hỗ trợ auto-retry. Do đó hệ thống xử lý phân tán sẽ có khả năng chịu tải và chịu lỗi tốt. Bạn đọc có thể tham khảo một bài viết rất hay về thiết kế một hệ thống triệu view có tên là [Nghệ thuật xử lý background job - minhmomen](https://viblo.asia/p/nghe-thuat-xu-ly-background-job-07LKXjqJlV4).
 
-Hi vọng là những khó khăn mà mình liệt kê trên không làm bạn nản chí. Không có gì là dễ dàng để có được một sản phẩm tốt. Chúng ta cần phải thấy trước các khó khăn, chuẩn bị các phương án có thể để giải quyết các vấn đề đó và sẵn sàng cải tiến, nâng cấp sản phẩm để ngày càng tốt hơn.
+Hi vọng là những khó khăn mà mình liệt kê trên không làm bạn nản chí. Không có gì là dễ dàng để có được một sản phẩm tốt. Chúng ta cần phải thấy trước các khó khăn, chuẩn bị các phương án có thể để giải quyết các vấn đề và sẵn sàng cải tiến, nâng cấp sản phẩm ngày càng tốt hơn.
 
 Tiếp theo sẽ là phần rất thú vị, đó là thực hành xây dựng một mô hình recommendation liên quan chính đến nội dung bài viết ngày hôm nay.
 
@@ -213,10 +209,9 @@ Dữ liệu được sử dụng trong thực hành là [MovieLen-100k](https://
 "Crime", "Documentary", "Drama", "Fantasy", "Film-Noir", "Horror", 
 "Musical", "Mystery", "Romance", "Sci-Fi", "Thriller", "War", "Western"]`
 
-Mục tiêu của chúng ta là xây dựng một mô hình mạng neural dự báo xác suất để một khách hàng sẽ yêu thích một bộ phim nào đó. Đầu vào của mô hình sẽ là những thông tin về khách hàng và lịch sử rating các bộ phim của họ và các trường thông tin liên quan đến bộ phim. Đầu ra là các giá trị rating đã được qui đổi sang các véc tơ dạng thứ bậc, sẽ được giải thích rõ hơn ở phần sau. 
-Cụ thể sơ đồ của mô hình như sau:
+Mục tiêu của chúng ta là xây dựng một mô hình mạng neural dự báo xác suất để một khách hàng sẽ tương tác với một bộ phim nào đó. Đầu vào của mô hình sẽ là những thông tin về khách hàng và lịch sử rating các bộ phim của họ và các trường thông tin liên quan đến bộ phim. Đầu ra là giá trị index của bộ phim mà khách hàng có tương tác, giá trị index này sẽ được chuyển sang one-hot và sẽ được giải thích rõ hơn ở mục 4 thực hành.
 
-**Các biến đầu vào của mô hình sẽ như thế nào?**
+**Cụ thể các biến đầu vào của mô hình sẽ như thế nào?**
 
 Biến input của mô hình sẽ bao gồm:
 
@@ -228,7 +223,7 @@ Biến input của mô hình sẽ bao gồm:
 
 # 4.2. Khảo sát dữ liệu.
 
-Bên dưới chúng ta sẽ cùng khảo sát dữ liệu theo vài chiều thông tin về người dùng, sản phẩm.
+Bên dưới chúng ta sẽ cùng khảo sát dữ liệu theo vài chiều thông tin về người dùng, sản phẩm. Đầu tiên là đọc dữ liệu `users, movies, ratings`
 
 ```
 import pandas as pd
@@ -293,7 +288,6 @@ movies = _read_movies()
 
 Phân phối điểm rating trung bình của mỗi bộ phim.
 
-
 ```
 import seaborn as sns
 
@@ -312,12 +306,11 @@ sns.distplot(avg_user_rate)
 
 Nhận xét:
 
-* Hầu hết các bộ phim có rating trung bình trong khoảng từ 3-4. Cũng có những bộ phim trung bình rate rất thấp và một số được rating khá cao.
+* Hầu hết các bộ phim có rating trung bình trong khoảng từ 3-4. Cũng có những bộ phim trung bình rate rất thấp (chỉ 1-2) và một số được rating khá cao (4-5).
 
 * Các khách hàng cũng phân biệt thành khách hàng khó tính và dễ tính. Đối với khách hàng khó tính, điểm trung bình rate chỉ nằm trong khoảng từ 2-3 và khách hàng dễ tính là 4-5.
 
 Số lượng người xem theo giới tính.
-
 
 ```
 users.groupby('sex').user_id.count().plot.bar()
@@ -344,12 +337,11 @@ users.groupby('occupation').user_id.count().plot.bar()
 
 Nhận xét:
 
-* Người xem là nữ chiếm nhiều hơn nam.
-* Độ tuổi phổ biến của người xem là từ 20-50 tuổi.
-* Ngành nghề `student, educator, administrator` là những ngành có tỷ lệ người xem đông nhất. Điều này cho thấy không hẳn cứ là quản lý thì sẽ không có thời gian xem phim. Trái lại họ sắp xếp công việc rất hợp lý nên vẫn có những thời gian giải trí, phim ảnh.
+* Người xem là nam chiếm nhiều hơn nữ.
+* Độ tuổi phổ biến của người xem là từ 20-30 tuổi.
+* Ngành nghề `student, educator, administrator` có tỷ lệ người xem đông nhất. Điều này cho thấy không hẳn cứ là quản lý thì sẽ không có thời gian xem phim. Trái lại họ sắp xếp công việc rất hợp lý nên vẫn có những thời gian giải trí, phim ảnh.
 
 Tiếp theo chúng ta sẽ khởi tạo một hàm phân chia dataframe để lựa chọn ngẫu nhiên số lượng người dùng theo một tỷ lệ cho trước.
-
 
 ```
 # Hàm chia data thành tập train/test
@@ -369,10 +361,9 @@ def split_train_test(df, split_rate=0.2):
 
 ## 4.2. Khởi tạo batch
 
-Ở bước này ta sẽ ta sẽ xây dựng một mạng neural MLP đơn giản nhằm dự báo khả năng một user đã rate một bộ phim hay chưa?
+Ở bước này ta sẽ ta sẽ xây dựng một mạng neural MLP đơn giản nhằm dự báo khả năng một user có tương tác (bằng cách rate) một bộ phim hay chưa?
 
-Mô hình sẽ nhận đầu vào $x$ biểu diễn list các bộ phim mà một user đã rating, thông tin users, thông tin movies. Chúng ta có thể lấy ra các movie_id mà user đã rate thông qua hàm groupby bảng `ratings` theo `user_id`.
-
+Mô hình sẽ nhận đầu vào $x$ biểu diễn list các bộ phim mà một user đã rate, thông tin users, thông tin movies. Chúng ta có thể lấy ra các movie_id mà user đã rate thông qua hàm groupby bảng `ratings` theo `user_id`.
 
 ```
 user_rates = ratings.groupby('user_id').movie_id.apply(list).reset_index()
@@ -416,7 +407,7 @@ user_rates.head()
 </table>
 <br/>
 
-Để thuận tiện cho quá trình huấn luyện ta sẽ tạo ra hàm `data_gen_batch()` giúp khởi tạo các batch phục vụ cho quá trình huấn luyện. Mỗi một batch sẽ lấy ra các thông tin bên dưới:
+Để thuận tiện cho quá trình huấn luyện ta sẽ tạo ra hàm `data_gen_batch()` giúp khởi tạo các batch đầu vào. Mỗi một batch sẽ lấy ra các thông tin bên dưới:
 
 **Nhóm thông tin về movies:**
 * movie_id: Một tensor string các movie_id mà một users đã rate.
@@ -531,7 +522,7 @@ Véc tơ này sau đó sẽ nhân với ma trận embedding của một bộ phi
 
 $$\hat{p}(x) = \text{softmax}(f(x)V^\top)$$
 
-Với một nhãn mục tiêu $y$, nếu chúng ta kí hiệu $p=1_y$ là véc tơ one-hot của quan sát mục tiêu mà giá trị bằng 1 tại vị trí index của bộ phim mà khách hàng có tương tác, các vị trí khác bằng 0. Khi đó loss function sẽ chính là hàm cross-entropy giữa phân phối $\hat{p}(x)$ với véc tơ one-hot $p$.
+Với một nhãn mục tiêu $y$, nếu chúng ta kí hiệu $p=1_y$ là véc tơ one-hot của quan sát mục tiêu mà giá trị bằng 1 tại vị trí index của bộ phim mà khách hàng có tương tác, các vị trí khác bằng 0. Khi đó loss function sẽ chính là hàm cross-entropy đo lường khác biệt phân phối $\hat{p}(x)$ với véc tơ one-hot $p$.
 
 Tiếp theo chúng ta sẽ xây dựng một hàm số có đầu vào là các embedding véc tơ của user $f(x)$, ma trận nhúng của các movies $V$ và biến mục tiêu là véc tơ one-hot $y$ để tính toán loss function.
 
@@ -561,7 +552,7 @@ def loss_cross_entropy(user_embeddings, movie_embeddings, labels):
 
 ## 4.4. Khởi tạo RecNeuralNet class
 
-Tiếp theo chúng ta sẽ khởi tạo một RecNeuralNet class có tác dụng huấn luyện mô hình theo phương pháp stochastic gradient descent. Hàm số sẽ nhận giá trị đầu vào là các biến input của mô hình, từ đó tính ra được hàm loss function (được đo lường qua hàm `loss_cross_entropy()` ở bước trên) và tìm cách tối thiểu hóa nó.
+RecNeuralNet là một class có tác dụng hỗ trợ huấn luyện mô hình theo phương pháp stochastic gradient descent. Hàm số sẽ nhận giá trị đầu vào là các biến input của mô hình, từ đó tính ra được hàm loss function (được đo lường qua hàm `loss_cross_entropy()` ở bước trên) và tìm cách tối thiểu hóa nó.
 
 Các biến constructor khởi tạo của RecNeuralNet class gồm có:
 * Ma trận embedding của user U: Là ma trận embedding của user mà mỗi dòng tương ứng với một véc tơ embedding user.
@@ -591,7 +582,7 @@ class RecNeuralNet(object):
   def __init__(self, embedding_vars, loss, metrics=None):
     """Khởi tạo RecNeuralNet.
     Args:
-      embedding_vars: Từ điển của các biến. Định dạng tf.Variable().
+      embedding_vars: Từ điển của các biến đầu vào. Định dạng tf.Variable().
       loss: Hàm loss function cần được tối ưu hóa. Định dạng float Tensor.
       metrics: Một list các dictionaries của các tensors. Các metrics trong mỗi dictionary sẽ được visualize trên các biểu đồ khác nhau 
       trong suốt quá trình huấn luyện.
@@ -680,9 +671,9 @@ Mô hình sẽ có input bao gồm các biến liên quan đến bộ phim mà k
 * genre: Thể loại tương ứng với list movie_id ở trên.
 * year: Năm sản xuất của các bộ phim tương ứng với list movie_id ở trên.
 
-Những biến đầu vào trên sẽ được concatenate lại thành một tensor input và tiếp theo chúng ta sẽ có một hidden layer có số units bằng `hidden_dims` để map véc tơ input sang véc tơ nhúng của user là `user_embedding`. Cuối cùng từ `user_embedding` ta sẽ đi qua một layer softmax để tính toán phân phối xác suất ở output.
+Những biến đầu vào trên sẽ được concatenate lại thành một tensor input và tiếp theo chúng ta sẽ có một hidden layer có số units bằng đối số `hidden_dims` trong hàm `init_softmax_model()` bên dưới để map véc tơ input sang véc tơ nhúng của user là `user_embedding`. Cuối cùng từ `user_embedding` ta sẽ đi qua một layer softmax để tính toán phân phối xác suất ở output.
 
-Mỗi một user có thể từng rating nhiều sản phẩm khác nhau. Tuy nhiên chúng ta sẽ chỉ lựa chọn ngẫu nhiên một nhãn mục tiêu là `movie_id` nằm trong số các bộ phim mà user đã rate. Điều này để đảm bảo chắc chắn rằng ground truth  $p$ là một véc tơ one-hot. Hàm `select_random()` sẽ có tác dụng giúp ta thực hiện việc này dễ dàng.
+Mỗi một user có thể từng rating nhiều sản phẩm khác nhau. Tuy nhiên chúng ta sẽ chỉ lựa chọn ngẫu nhiên một nhãn mục tiêu là `movie_id` nằm trong số các bộ phim mà user đã rate trong 1 quan sát huấn luyện. Điều này để đảm bảo chắc chắn rằng ground truth  $p$ là một véc tơ one-hot. Hàm `select_random()` sẽ có tác dụng giúp ta thực hiện việc này dễ dàng.
 
 Bạn đọc có thể dễ hình dung hơn những giải thích phía trên thông qua kiến trúc mô hình softmax recommendation neural network.
 
@@ -766,14 +757,14 @@ def init_softmax_model(rated_movies, embedding_cols, hidden_dims):
 
 ## 4.6. Huấn luyện model softmax
 
-Bây h chúng ta sẽ cùng huấn luyện mô hình softmax bằng cách thiết lập các tham số cho nó như:
+Bây h chúng ta sẽ cùng huấn luyện mô hình softmax bằng cách thiết lập các tham số cho mô hình như:
 
 * Tham số huấn luyện learning_rate.
 * Số lượt huấn luyện number of iterations.
 * Kích thước chiều embedding của cả user và story.
 * Số lượng hidden layer và kích thước units của mỗi layers.
 
-Lưu ý: Bởi vì đầu vào của chúng ta là những giá trị string value (movie_id, genre, year), chúng ta phải map chúng vào các id số nguyên. Chúng ta có thể thực hiện bằng cách sử dụng hàm[`tf.feature_column.categorical_column_with_vocabulary_list`](https://www.tensorflow.org/api_docs/python/tf/feature_column/categorical_column_with_vocabulary_list), nó sẽ khởi tạo ra một list các từ điển cho toàn bộ các giá trị của feature. Sau đó mỗi một id sẽ được map vào một embedding véc tơ bằng cách sử dụng [`tf.feature_column.embedding_column`](https://www.tensorflow.org/api_docs/python/tf/feature_column/embedding_column).
+Lưu ý: Bởi vì đầu vào của chúng ta là những giá trị category (movie_id, genre, year) nên phải map chúng vào các id số nguyên. Chúng ta có thể thực hiện bằng cách sử dụng hàm[`tf.feature_column.categorical_column_with_vocabulary_list`](https://www.tensorflow.org/api_docs/python/tf/feature_column/categorical_column_with_vocabulary_list), nó sẽ khởi tạo một list từ điển cho mỗi một feature. Sau đó mỗi một id sẽ được map vào một embedding véc tơ bằng cách sử dụng [`tf.feature_column.embedding_column`](https://www.tensorflow.org/api_docs/python/tf/feature_column/embedding_column).
 
 ```
 # Khởi tạo hàm số giúp embedding các category sang véc tơ embedding.
@@ -824,16 +815,16 @@ Ta nhận thấy giá trị của hàm loss function giảm dần qua các step 
 
 Hàm `_embedding_category_col()` sẽ lần lượt thực hiện các bước sau:
 
-* Khởi tạo một vocabulary cho một column dạng category bằng hàm `tf.feature_column.categorical_column_with_vocabulary_list()`. Khi đó mỗi một nhóm của category là một phần tử của vocabulary.
+* Khởi tạo một vocabulary (từ điển) cho một column dạng category bằng hàm `tf.feature_column.categorical_column_with_vocabulary_list()`. Khi đó vocabulary sẽ là một dictionary dạng `{'cate_value': index}`. Trong đó `cate_value` là giá trị của nhóm và index là số nguyên mapping tương ứng của nó.
 
-* Tiếp theo map một giá trị bất kì vào véc tơ one-hot có số chiều bằng với kích thước của `vocabulary`. Sau đó điều chỉnh lại độ dài của one-hot véc tơ bằng cách đi qua tiếp một layer dense có số units bằng `embedding_dim`. Tất cả quá trình này được thực hiện thông qua hàm: `tf.feature_column.embedding_column()`
+* Tiếp theo map mỗi một giá trị index vào véc tơ one-hot có số chiều bằng với kích thước của `vocabulary`. Để điều chỉnh lại độ dài output, chúng ta truyền one-hot véc tơ qua một layer dense có số units bằng `embedding_dim`. Đầu ra sẽ là một véc tơ embedding có số chiều là `embedding_dim`. Tất cả quá trình này được thực hiện thông qua hàm: `tf.feature_column.embedding_column()`
 
-Như vậy thông qua hàm `_embedding_category_col()` ta có thể map một trường đầu vào dạng category bất kì sang một không gian véc tơ với số chiều tùy ý.
+Như vậy thông qua hàm `_embedding_category_col()` ta có thể map một trường đầu vào dạng category sang một không gian véc tơ với số chiều `embedding_dim` tùy ý.
 
 # 5. Sử dụng mô hình để recommendation
 
 ## 5.1. Tìm kiếm sản phẩm tương đồng.
-Để đo lương mức độ tương đồng giữa các sản phẩm ta có thể tính toán các chỉ số cosine_similarity hoặc dot product giữa các véc tơ nhúng của chúng. Véc tơ embedding được trích xuất chính là ma trận layers cuối cùng của mạng neural network. Bên dưới lần lượt là các công thức dot product và cosine similarity giữa 2 véc tơ $\mathbf{v}_i$ và $\mathbf{v}_j$.
+Để đo lương mức độ tương đồng giữa 2 sản phẩm ta có thể tính toán các chỉ số `cosine similarity` hoặc `dot product` giữa các véc tơ nhúng của chúng. Véc tơ embedding được trích xuất từ chính các cột của ma trận hệ số của layer cuối cùng mạng neural network. Bên dưới lần lượt là các công thức dot product và cosine similarity giữa 2 véc tơ $\mathbf{v}_i$ và $\mathbf{v}_j$.
 
 * Dot product:
 
@@ -843,7 +834,7 @@ $$\langle \mathbf{v}_i, \mathbf{v}_j \rangle = \sum_{m=1}^{k} v_{im}v_{mj}$$
 
 $$\text{cosine_similarity}(\mathbf{v}_i, \mathbf{v}_j) = \frac{\langle\mathbf{v}_i, \mathbf{v}_j\rangle}{\|\mathbf{v}_i\|\|\mathbf{v}_j\|}$$
 
-Hàm `_compute_similarity()` sẽ có tác dụng tính ra các chỉ số tương quan giữa véc tơ nhúng item với ma trận nhúng gồm toàn bộ các items theo công thức `dot product` hoặc `cosine similarity`.
+Hàm `_compute_similarity()` sẽ có tác dụng tính ra chỉ số tương quan giữa một sản phẩm với toàn bộ các sản phẩm thông qua véc tơ nhúng đại diện cho sản phẩm đó (đối số `query_embedding`) với ma trận nhúng gồm toàn bộ các sản phẩm (đối số `item_embeddings`) theo công thức `dot product` hoặc `cosine similarity`.
 
 
 ```
@@ -867,8 +858,7 @@ def _compute_similarity(query_embedding, item_embeddings, measure=DOT):
   return scores
 ```
 
-Tiếp theo dựa trên hàm `_compute_similarity()`, ta có thể tìm ra được danh sách các sản phẩm tương đồng nhất với một sản phẩm bất kì.
-
+Tiếp theo dựa trên hàm `_compute_similarity()`, ta có thể xây dựng một hàm tìm kiếm những sản phẩm gồm thông tin về thể loại, tiêu đề, movie_id tương đồng nhất với một sản phẩm bất kì.
 
 ```
 def _movie_similarity(model, movie_id, measure=DOT, k=10):
@@ -890,8 +880,7 @@ def _movie_similarity(model, movie_id, measure=DOT, k=10):
   return df.sort_values([score_key], ascending=False).head(k)
 ```
 
-Bên dưới chúng ta sẽ cùng tìm ra top 10 các bộ phim liên quan nhất đến một bộ phim kinh dị đó là `Blood For Dracula (Andy Warhol's Dracula) (1974)` có `movie_id=666` là một bộ phim về ma cà rồng và thuộc thể loại phim kinh dị.
-
+Thử nghiệm chút nào. Hãy cùng tìm ra top 10 các bộ phim liên quan nhất đến bộ phim kinh dị `Blood For Dracula (Andy Warhol's Dracula) (1974)` có `movie_id=666`. Đây rõ ràng là một bộ phim về ma cà rồng đáng sợ.
 
 ```
 _movie_similarity(softmax_model, movie_id=666, measure=COSINE, k=20)
@@ -1054,12 +1043,11 @@ _movie_similarity(softmax_model, movie_id=666, measure=COSINE, k=20)
 
 <br/>
 
-Ta nhận thấy toàn bộ các bộ phim liên quan nhất đều thuộc về thể loại `Horror` hoặc `Thriller` và cùng thể loại với bộ phim kinh dị trên. Điều này cho thấy thuật toán đã giúp tìm ra các sản phẩm tương đồng khá chính xác.
+Ta nhận thấy toàn bộ các bộ phim liên quan nhất đều thuộc về thể loại `Horror` hoặc `Thriller` và cũng đáng sợ không kém. Điều này cho thấy thuật toán đã giúp tìm ra các sản phẩm tương đồng khá chính xác.
 
 ## 5.2. Phân cụm các sản phẩm
 
-Để nhận biết thuật toán recommendation có tính cá nhân hóa cao hay không, ta sẽ giảm chiều dữ liệu của những véc tơ nhúng xuống không gian 2 chiều và tìm cách biểu diễn chúng theo các nhóm thể loại phim. Nếu các điểm phân bố tập trung theo cụm tương ứng với từng thể loại thì chứng tỏ thuật toán giúp nhận biết khá tốt tính chất khác biệt giữa các bộ phim. Để giảm chiều dữ liệu từ 35 chiều xuống 2 chiều ta sử dụng thuật toán [TNSE](https://distill.pub/2016/misread-tsne/).
-
+Để nhận biết thuật toán recommendation có tính cá nhân hóa cao hay không, ta sẽ giảm chiều dữ liệu của những véc tơ nhúng xuống không gian 2 chiều và tìm cách biểu diễn chúng theo các nhóm thể loại phim. Nếu các points phân bố tập trung theo cụm tương ứng với từng thể loại thì chứng tỏ thuật toán giúp nhận biết khá tốt tính chất khác biệt giữa các bộ phim. Để giảm chiều dữ liệu từ 35 chiều xuống 2 chiều ta sử dụng thuật toán [TNSE](https://distill.pub/2016/misread-tsne/).
 
 ```
 from sklearn.manifold import TSNE
@@ -1085,9 +1073,7 @@ print('t-SNE done! Time elapsed: {} seconds'.format(time.time()-time_start))
     t-SNE done! Time elapsed: 5.158601522445679 seconds
     
 
-Khi đó dữ liệu của các bộ phim đã được giảm về còn 2 chiều tương ứng với `X2D`. Tiếp theo ta sẽ xác định nhãn thể loại cho từng bộ phim. Do nhãn là duy nhất nên đối với những bộ phim được gán nhiều thể loại thì ta sẽ lấy ra ngẫu nhiên 1 làm đại diện.
-
-
+Khi đó dữ liệu của các bộ phim đã được giảm về còn 2 chiều là biến `X2D`. Tiếp theo ta sẽ xác định nhãn thể loại cho từng bộ phim. Do nhãn là duy nhất nên đối với những bộ phim được gán nhiều thể loại thì ta sẽ lấy ra ngẫu nhiên 1 làm đại diện.
 
 ```
 # Lựa chọn ngẫu nhiên một thể loại phim trong trường hợp thể loại phim là 1 list
@@ -1100,7 +1086,7 @@ print('X2D.shape: {}'.format(X2D.shape))
     X2D.shape: (1682, 2)
     
 
-Vẽ biểu đồ scatter biểu diễn tọa độ giảm chiều của các bộ phim theo thể loại trong không gian 2 chiều
+Vẽ biểu đồ scatter biểu diễn tọa độ 2 chiều của các bộ phim theo các nhóm thể loại.
 
 Đầu tiên ta sẽ khởi tạo ngẫu nhiên các mã màu sắc bằng cách sử dụng bằng hàm `get_cmap()`
 ```
@@ -1114,7 +1100,7 @@ def get_cmap(n, name='hsv'):
 cmap = get_cmap(N)
 ```
 
-Sau đó vẽ đồ thị trong không gian 2 chiều theo các nhóm thể loại phim
+Sau đó vẽ đồ thị trong không gian 2 chiều
 ```
 # Hàm lọc các index thuộc về một thể loại phim genre
 def _filter_genre_id(y, genre):
@@ -1153,21 +1139,18 @@ plt.show()
 
 <img src="/assets/images/20191226_SoftMaxRecom/Sorfmax_Recommendation_Neural_Network_55_1.png" width="600px" height="350px" style="display:block; margin-left:auto; margin-right:auto"/>
 
+Ta nhận thấy đối với một số loại hình phim có số lượng quan sát nhỏ, thể loại phim đặc thù và kén khách thì phân bố của chúng khá tập trung như: `['Children', 'Animation', 'Action', 'Horror', 'Musical']`. Điều này cho thấy thuật toán có hiệu quả trong việc phân tích sự khác biệt giữa các thể loại phim đặc thù.
 
-Ta nhận thấy đối với một số loại hình phim có số lượng quan sát nhỏ, đặc biệt và kén khách thì phân bố của chúng khá tập trung như: `['Children', 'Animation', 'Action', 'Horror', 'Musical']`. Điều này cho thấy thuật toán khá có hiệu quả trong việc nhận diện các đặc trưng cá nhân hóa của các thể loại phim khác nhau.
-
-Một số điểm phân tán có thể là do rất nhiều các bộ phim thuộc về ít nhất từ 2 thể loại trở nên nên việc phân chúng vào ngẫu nhiên một nhóm sẽ có thể dẫn đến cùng một thể loại phim nhưng được phần mảnh thành nhiều cụm clusters tách biệt.
-
+Một số cụm của cùng một thể loại phim bị tách rời có thể là do rất nhiều các bộ phim thuộc về ít nhất từ 2 thể loại trở lên nên dẫn tới véc tơ nhúng của chúng chứa đặc trưng của vài loại hình phim. Tùy vào việc ta lựa chọn ngẫu nhiên nhãn thể loại của chúng mà biểu diễn của point tương ứng sẽ thuộc về một cụm tách biệt với các cụm khác trong cùng một thể loại phim.
 
 
 # 6. Tổng kết
 
-Trên đây tôi đã giới thiệu đến các bạn một trong những ứng dụng cơ bản nhất của recommendation sử dụng deep learning đó là xây dựng một mạng neural network dạng gồm toàn bộ các fully connected layer. Kiến trúc này có thể tận dụng được đồng thời rất nhiều các thông tin cả về phía user, sản phẩm và lịch sử tương tác giữa user, sản phẩm. Do đó thông tin chúng học được để biểu diễn các véc tơ user và items có tính cá nhân hóa cao. Khi sử dụng thuật toán để khuyến nghị tìm kiếm các sản phẩm tương đồng sẽ cho kết quả khá chuẩn xác.
+Trên đây tôi đã giới thiệu đến các bạn một trong những ứng dụng cơ bản nhất của recommendation sử dụng deep learning đó là xây dựng một mạng neural network đơn giản gồm toàn bộ các fully connected layer. Kiến trúc này có thể tận dụng được đồng thời rất nhiều các thông tin cả về phía user, sản phẩm và lịch sử tương tác giữa user và sản phẩm. Do đó thông tin chúng học được để biểu diễn các véc tơ user và items có tính cá nhân hóa cao. Khi sử dụng thuật toán để khuyến nghị tìm kiếm các sản phẩm tương đồng sẽ cho kết quả chuẩn xác hơn. Ngoài ra quá trình xây dựng và triển khai thuật toán sẽ gặp phải những khó khăn nhất định về dữ liệu, huấn luyện, dự báo mà ta cần phải khắc phục, đặc biệt là đối với những hệ thống lớn lên tới vài triệu người dùng.
 
-Ngoài phương pháp nêu trên chúng ta còn có thể sử dụng thêm rất nhiều các phương pháp khác trong deep learning. Các bạn có thể xem ở phần giới thiệu `các phương pháp recommendation` tại [Bài 15 - collaborative và content-based filtering](https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html). Có thể ở những bài sau tôi sẽ tiếp tục giới thiệu một số phương pháp deep learning khác nữa. 
+Ngoài phương pháp nêu trên chúng ta còn có thể sử dụng thêm rất nhiều các phương pháp khác trong deep learning. Các bạn có thể xem ở phần giới thiệu `các phương pháp recommendation` tại [Bài 15 - collaborative và content-based filtering](https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html). Có thể ở những bài sau tôi sẽ tiếp tục giới thiệu một số phương pháp deep learning khác nữa nếu có đủ thời gian viết lách. Hi vọng rằng các bạn có thể áp dụng bài viết này để tự xây dựng các thuật toán recommendation cho doanh nghiệp hoặc website của bạn.
 
 Bài viết có sử dụng rất nhiều các tài liệu tham khảo được liệt kê mục 7.
-
 
 # 7. Tài liệu tham khảo.
 1. [Negative Sampling - Distributed Representations of Words and Phrases
