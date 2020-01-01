@@ -27,23 +27,24 @@ Màu xanh đại diện cho encoder và màu đỏ đại diện cho decoder. C�
 Chúng ta thấy context vector chính là tổ hợp tuyến tính của các output theo trọng số attention. Ở vị trí thứ nhất của phase decoder thì context véc tơ sẽ phân bố trọng số attention cao hơn so với các vị trí còn lại. Điều đó thể hiện rằng véc tơ context tại mỗi time step sẽ ưu tiên bằng cách đánh trọng số cao hơn cho các từ ở cùng vị trí time step. Ưu điểm khi sử dụng attention đó là mô hình lấy được toàn bộ bối cảnh của câu thay vì chỉ một từ input so với model ở hình 1 khi không có attention layer.
 Cơ chế xây dựng attention layer là một qui trình khá đơn giản. Chúng ta sẽ trải qua các bước:
 1. Đầu tiên tại time step thứ $t$ ta tính ra list các điểm số, mỗi điểm tương ứng với một cặp vị trí input $t$ và các vị trí còn lại theo công thức bên dưới:
-
+<br/>
 $$score(h_t, \bar{h_s})$$
-Ở đây $h_t$ cố định tại time step $$t và là hidden state của từ mục tiêu thứ $t$ ở phase decoder, $\bar{h_s}$ là hidden state của từ thứ $s$ trong phase encoder. Công thức để tính score có thể là `dot product` hoặc `cosine similarity` tùy vào lựa chọn.
+<br/>
+Ở đây $h_t$ cố định tại time step $t$ và là hidden state của từ mục tiêu thứ $t$ ở phase decoder, $\bar{h_s}$ là hidden state của từ thứ $s$ trong phase encoder. Công thức để tính score có thể là `dot product` hoặc `cosine similarity` tùy vào lựa chọn.
 2. Các scores sau bước 1 chưa được chuẩn hóa. Để tạo thành một phân phối xác xuất chúng ta đi qua hàm softmax khi đó ta sẽ thu được các trọng số attention weight.
-<\br>
+
 $$\alpha_{ts} = \frac{exp(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}exp(score(h_t, \bar{h_{s'}}))}$$
-<\br>
+
 $\alpha_{ts}$ là phân phối attention (attention weight) của các từ trong input tới các từ ở vị trí $t$ trong output hoặc target.
 3. Kết hợp vector phân phối xác xuất $\alpha_{ts}$ với các vector hidden state để thu được context vector.
-<\br>
+
 $$c_t = \sum_{s'=1}^{S} \alpha_{ts}\bar{h_{s'}}$$
-<\br>
+
 4. Tính attention vector để decode ra từ tương ứng ở ngôn ngữ đích. Attention vector sẽ là kết hợp của context vector và các hidden state ở decoder. Theo cách này attention vector sẽ không chỉ được học từ chỉ hidden state ở unit cuối cùng như hình 1 mà còn được học từ toàn bộ các từ ở vị trí khác thông qua context vector. Công thức tính output cho hidden state cũng
 tương tự như tính đầu ra cho `input gate layer` trong mạng RNN:
-<\br>
+
 $$a_t = f(c_t, h_t) = tanh(\mathbf{W_c}[c_t, h_t])$$
-<\br>
+
 Kí hiệu $[c_t, h_t]$ là phép concatenate 2 vector $c_t, h_t$ theo chiều dài. Giả sử $c_t \in \mathbb{R}^{c}$, $h_t \in \mathbb{R}^{h}$ thì vector $[c_t, h_t] \in \mathbb{R}^{c+h}$.
 $\mathbf{W_c} \in \mathbb{R}^{a\times(c+h)}$ trong đó $a$ là độ dài của attention vector. Ma trận mà chúng ta cần huấn luyện chính là $\mathbf{W_c}$
 
