@@ -390,16 +390,28 @@ $$\begin{equation}
 \end{cases} 
 \end{equation}$$
 
-Do đó chuỗi $y_t$ sẽ dừng khi $\phi \leq 1$. Như vậy kiểm định nghiệm đơn vị sẽ dựa trên cặp giả thuyết:
+Như vậy tính chất dừng của chuỗi $y_t$ sẽ phụ thuộc vào phương trình đặc trưng $\theta(y)=1−\theta L=0$ có nghiệm đơn vị hay không. Nếu phương trình đặc trưng có nghiệm đơn vị (unit root), chuỗi $y_t$ sẽ không dừng. Trái lại ta có thể khẳng định $y_t$ là chuỗi dừng như đồ thị mô tả bên dưới.
+
+![](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/12/unit-root.png)
+> Đồ thị mô tả một khả năng của nghiệm đơn vị. Đường màu đỏ hiển thị sự sụt giảm của output và đường phục hồi nếu chuỗi thời gian có nghiệm đơn vị. Màu xanh hiển thị sự phục hồi nếu không có nghiệm đơn vị và chuỗi là chuỗi dừng có xu hướng (trend-stationary). (Nguồn [Unit Root: Simple Definition, Unit Root Tests](https://www.statisticshowto.datasciencecentral.com/unit-root/)).
+
+Nhắc lại lý thuyết về kiểm định. Một kiểm định thống kê sẽ bao gồm 2 cặp giả thuyết kiểm định đó là:
+
+* Gỉa thuyết null (null hypothesis), còn được gọi là `giả thuyết không có`, kí hiệu là $H_0$. Đây là giả thuyết bị nghi ngờ xảy ra và được sử dụng để kiểm chứng những tính chất liên quan đến mẫu mà chúng ta chưa biết rằng mẫu sở hữu trên thực tế. Lấy ví dụ, một giáo viên nói rằng các học sinh của trường thi đạt học đạt điểm toán trung bình là 7. Tuy nhiên đây mới chỉ là một giả thuyết cần kiểm chứng. Chúng ta có thể kiểm tra bằng cách thu thập 30 mẫu các học sinh của trường và kiểm chứng giả thuyết của cô giáo bằng cách kiểm định xem trung bình điểm thi toán của 30 học sinh trên có bằng 7 hay không?
+
+* Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H1$. Là `giả thuyết thay thế` hoặc `giả thuyết đối` có ý nghĩa trái ngược với khẳng định ở giả thuyết null. 
+
+Để kiếm tra phương trình đặc trưng của chuỗi có nghiệm đơn vị hay không chúng ta sử dụng kiểm định ADF. Giả thuyết null được đặt ra đó là phương trình đặc trưng có nghiệm đơn vị. Trong trường hợp p-value < 0.05 thì ta sẽ loại bỏ giả thuyết null, tức là có thể khẳng định rằng chuỗi không có nghiệm đơn vị.
 
 $$\begin{equation} 
 \begin{cases} 
-H_0: \phi = 1, \Rightarrow \text{stationary} \\
-H1: |\phi| > 1, \Rightarrow \text{non-stationary} 
+H_0: \phi = 1, \Rightarrow \text{unit root} \\
+H1: |\phi| < 1, \Rightarrow \text{non-unit root} 
 \end{cases} 
 \end{equation}$$
 
-Chúng ta gọi đó là kiểm định nghiệm đơn vị (unit root test) bởi vì phương trình đặc trưng của nó $\theta(y)=1−\theta L=0$ có nghiệm đơn vị. Giá trị ngưỡng kiểm định:
+
+Giá trị ngưỡng kiểm định:
 $$DF = \frac{\hat\phi - 1}{SE(\hat\phi)}$$
 Chúng ta sẽ so sánh giá trị ngưỡng kiểm định này với giá trị tới hạn của phân phối Dickey - Fuller để đưa ra kết luận về chấp nhận hoặc bác bỏ giả thuyết $H_0$. Trên python đã hỗ trợ kiểm định ADF thông qua package `statsmodels`. Ta sẽ kiểm định ADF cho chuỗi lợi suất.
 
@@ -421,7 +433,7 @@ for key, value in result[4].items():
     	10%: -2.573
     
 
-Gía trị p-value < 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất không có tính chất dừng.
+Gía trị p-value < 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Phương trình đặc trưng không có nghiệm đơn vị. Do đó chuỗi lợi suất có tính chất dừng.
 
 # 4. Xây dựng mô hình
 
