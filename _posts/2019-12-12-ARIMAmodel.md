@@ -392,7 +392,8 @@ $$\begin{equation}
 
 Như vậy tính chất dừng của chuỗi $y_t$ sẽ phụ thuộc vào phương trình đặc trưng $\theta(y)=1−\theta L=0$ có nghiệm đơn vị hay không. Nếu phương trình đặc trưng có nghiệm đơn vị (unit root), chuỗi $y_t$ sẽ không dừng. Trái lại ta có thể khẳng định $y_t$ là chuỗi dừng như đồ thị mô tả bên dưới.
 
-![](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/12/unit-root.png)
+<img src="https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/12/unit-root.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
+
 > Đồ thị mô tả một khả năng của nghiệm đơn vị. Đường màu đỏ hiển thị sự sụt giảm của output và đường phục hồi nếu chuỗi thời gian có nghiệm đơn vị. Màu xanh hiển thị sự phục hồi nếu không có nghiệm đơn vị và chuỗi là chuỗi dừng có xu hướng (trend-stationary). (Nguồn [Unit Root: Simple Definition, Unit Root Tests](https://www.statisticshowto.datasciencecentral.com/unit-root/)).
 
 Nhắc lại lý thuyết về kiểm định. Một kiểm định thống kê sẽ bao gồm 2 cặp giả thuyết kiểm định đó là:
@@ -401,7 +402,7 @@ Nhắc lại lý thuyết về kiểm định. Một kiểm định thống kê 
 
 * Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H1$. Là `giả thuyết thay thế` hoặc `giả thuyết đối` có ý nghĩa trái ngược với khẳng định ở giả thuyết null. 
 
-Để kiếm tra phương trình đặc trưng của chuỗi có nghiệm đơn vị hay không chúng ta sử dụng kiểm định ADF. Giả thuyết null được đặt ra đó là phương trình đặc trưng có nghiệm đơn vị. Trong trường hợp p-value < 0.05 thì ta sẽ loại bỏ giả thuyết null, tức là có thể khẳng định rằng chuỗi không có nghiệm đơn vị.
+Để kiếm tra phương trình đặc trưng của chuỗi có nghiệm đơn vị hay không chúng ta sử dụng kiểm định ADF. Giả thuyết null được đặt ra đó là phương trình đặc trưng có nghiệm đơn vị. Trong trường hợp p-value < 0.05 thì ta sẽ loại bỏ giả thuyết null, chấp nhận giả thuyết thay thế. Khi đó ta có thể khẳng định rằng chuỗi không có nghiệm đơn vị và có tính chất dừng.
 
 $$\begin{equation} 
 \begin{cases} 
