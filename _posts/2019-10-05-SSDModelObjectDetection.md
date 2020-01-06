@@ -27,7 +27,7 @@ Tóm gọn lại mô hình SSD sẽ là kết hợp của 2 bước:
 
 ## Một số định nghĩa
 * **scale**: Tỷ lệ chiều dài và chiều rộng so với khung hình gốc. VD: Nếu khung hình gốc có giá trị là $(w, h)$ thì sau scale khung hình mới có kích thước là $(sw, sh)$. Gía trị của $s$ thường nằm trong khoảng $s \in (0, 1]$. Scale sẽ kết hợp với aspect ratio để nhận được các khung hình có tỷ lệ cạnh $w/h$ khác nhau.
-* **aspect ratio**: Tỷ lệ hướng, được đo bằng tỷ lệ giữa $w/h$ nhằm xác định hình dạng tương đối của khung hình bao chứa vật thể. Chẳng hạn nếu vật thể là người thường có aspect ratio = $1:3$ hoặc xe cộ nhìn từ phía trước là $1:1$.
+* **aspect ratio**: Tỷ lệ cạnh, được đo bằng tỷ lệ giữa $w/h$ nhằm xác định hình dạng tương đối của khung hình bao chứa vật thể. Chẳng hạn nếu vật thể là người thường có aspect ratio = $1:3$ hoặc xe cộ nhìn từ phía trước là $1:1$.
 * **bounding box**: Khung hình bao chứa vật thể được xác định trong quá trình huấn luyện.
 * **ground truth box**: Khung hình được xác định trước từ bộ dữ liệu thông qua tọa độ $(c_x, c_y , w, h)$ giúp xác định vật thể.
 * **offsets**: Các tọa độ $(c_x, c_y , w, h)$ để xác định vật thể.
@@ -43,7 +43,7 @@ Tóm gọn lại mô hình SSD sẽ là kết hợp của 2 bước:
 
 **Hình 2**: Cách thức phân chia feature map để nhận diện các hình ảnh với những kích thước khác nhau.
 
-SSD chỉ cần duy nhất đầu vào là 1 bức ảnh và các ground truth boxes ám chỉ vị trí bounding box các vật thể trong suốt quá trình huấn luyện. Trong quá trình phát hiện vật thể, trên mỗi một feature map, chúng ta đánh giá các một tợp hợp nhỏ gồm những default boxes tương ứng với các tỷ lệ hướng khác nhau (aspect ratio) lên các features map có kích thước (scales) khác nhau (chẳng hạn kích thước 8x8 và 4x4 trong hình (b) và (c)). Đối với mỗi default box (các boxes nét đứt trong hình) ta cần dự báo một phân phối xác suất $\mathbf{c} = (c_1, c_2, ..., c_n)$ tương ứng với các class $C = \{C_1, C_2, ..., C_n\}$. Tại thời điểm huấn luyện, đầu tiên chúng ta cần match default boxes với ground truth boxes sao cho mức độ sai số được đo lường qua localization loss là nhỏ nhất (thường là hàm Smooth L1 - sẽ trình bày ở mục 2.2). Sau đó ta sẽ tìm cách tối thiểu hóa sai số của nhãn dự báo tương ứng với mỗi vật thể được phát hiện trong default boxes thông qua confidence loss (thường là hàm softmax - sẽ trình bày ở mục 2.2).
+SSD chỉ cần duy nhất đầu vào là 1 bức ảnh và các ground truth boxes ám chỉ vị trí bounding box các vật thể trong suốt quá trình huấn luyện. Trong quá trình phát hiện vật thể, trên mỗi một feature map, chúng ta đánh giá các một tợp hợp nhỏ gồm những default boxes tương ứng với các tỷ lệ cạnh khác nhau (aspect ratio) lên các features map có kích thước (scales) khác nhau (chẳng hạn kích thước 8x8 và 4x4 trong hình (b) và (c)). Đối với mỗi default box (các boxes nét đứt trong hình) ta cần dự báo một phân phối xác suất $\mathbf{c} = (c_1, c_2, ..., c_n)$ tương ứng với các class $C = \{C_1, C_2, ..., C_n\}$. Tại thời điểm huấn luyện, đầu tiên chúng ta cần match default boxes với ground truth boxes sao cho mức độ sai số được đo lường qua localization loss là nhỏ nhất (thường là hàm Smooth L1 - sẽ trình bày ở mục 2.2). Sau đó ta sẽ tìm cách tối thiểu hóa sai số của nhãn dự báo tương ứng với mỗi vật thể được phát hiện trong default boxes thông qua confidence loss (thường là hàm softmax - sẽ trình bày ở mục 2.2).
 
 Như vậy loss function của object detection sẽ khác với loss function của các tác vụ image classification ở chỗ có thêm localization loss về sai số vị trí của predicted boxes so với ground truth boxes.
 
@@ -84,7 +84,7 @@ SSD dựa trên một tiến trình lan truyền thuận của một kiến trú
 
 * **Dự báo thông qua mạng tích chập đối với object**: Mỗi một feature layer thêm vào ở Extra Features Layers sẽ tạo ra một tợp hợp cố định các output $y$ giúp nhận diện vật thể trong ảnh thông qua áp dụng các convolutional filters. Kích thước ở đầu ra (`with x height x chanel`) ở mỗi loại kích thước feature layer sẽ phụ thuộc vào kernal filters và được tính toán hoàn toàn tương tự như đối với mạng neural tích chập thông thường. Xem thêm mục 1. lý thuyết về mạng tích chập trong [Giới thiệu mạng neural tích chập](https://www.kaggle.com/phamdinhkhanh/convolutional-neural-network) để hiểu tích chập được tính như thế nào và output shape là bao nhiêu.
 
-* **Default box và tỷ lệ hướng (aspect ratio)**: Chúng ta cần liên kết một tợp hợp default bounding boxes với mỗi một cell trên feature map. Các default boxes sẽ phân bố lát gạch trên feature map theo thứ tự từ trên xuống dưới và từ trái qua phải để tính tích chập, do đó vị trí của mỗi default box tương ứng với cell mà nó liên kết là cố định tương ứng với một vùng ảnh trên bức ảnh gốc. Cụ thể như hình ảnh minh họa bên dưới:
+* **Default box và tỷ lệ cạnh (aspect ratio)**: Chúng ta cần liên kết một tợp hợp default bounding boxes với mỗi một cell trên feature map. Các default boxes sẽ phân bố lát gạch trên feature map theo thứ tự từ trên xuống dưới và từ trái qua phải để tính tích chập, do đó vị trí của mỗi default box tương ứng với cell mà nó liên kết là cố định tương ứng với một vùng ảnh trên bức ảnh gốc. Cụ thể như hình ảnh minh họa bên dưới:
 <img src="https://imgur.com/Wux9GvA.png" width="500px" height="400px" style="display:block; margin-left:auto; margin-right:auto">
 **Hình 4**: Vị trí của các default bounding box trên bức ảnh gốc khi áp dụng trên feature map có kích thước `4 x 4`. Như vậy grid cells sẽ có kích thước là `4 x 4` và trên mỗi cell ta sẽ xác định 4 defaults bounding boxes khác nhau như hình vẽ. Tâm của các bounding boxes này là trùng nhau và chính là tọa độ tâm của các cell mà nó liên kết.
 <br/>
@@ -93,7 +93,7 @@ SSD dựa trên một tiến trình lan truyền thuận của một kiến trú
   * Ví dụ đối với một feature map có kích thước `m x n` tương ứng với `p` channels (chẳng hạn như kích thước 8 x 8 hoặc 4 x 4), một kernel filter kích thước `3 x 3 x p` sẽ được áp dụng trên toàn bộ feature layer. 
   * Các giá trị trong kernel này chính là các tham số của mô hình và được tinh chỉnh trong quá trình training. 
   * Các kernel filter sẽ dự đoán đồng thời **Xác suất nhãn** và **kích thước offset** tương ứng với tọa độ của default box. 
-  * Với mỗi location (hoặc cell) nằm trên feature map ta sẽ liên kết nó với $k$ bounding boxes. Các boxes này có kích thước khác nhau và tỷ lệ hướng khác nhau.
+  * Với mỗi location (hoặc cell) nằm trên feature map ta sẽ liên kết nó với $k$ bounding boxes. Các boxes này có kích thước khác nhau và tỷ lệ cạnh khác nhau.
   * Với mỗi một bounding box, chúng ta tính được phân phối điểm của $C$ classes là $c = (c_1, c_2, ... ,c_C)$ và 4 offsets tương ứng với kích thước ban đầu của default bounding box.
   * Kết quả cuối cùng ta thu được $(C+4)\times mnk$ outputs.
   
@@ -174,7 +174,7 @@ Trong trường hợp negative match prediction tức vùng được dự báo l
 
 Hàm loss function cuối cùng được tính là tổng của 2 confidence loss và localization loss như (1).
 
-**Lựa chọn kích cỡ (scales) và tỷ lệ hướng (aspect ratio):** 
+**Lựa chọn kích cỡ (scales) và tỷ lệ cạnh (aspect ratio):** 
 
 Các default boundary box được lựa chọn thông qua aspect ratio và scales. SSD sẽ xác định một tỷ lệ scale tương ứng với mỗi một features map trong Extra Feature Layers. Bắt đầu từ bên trái, `Conv4_3` phát hiện các object tại các scale nhỏ nhất là $s_{min} = 0.2$ (đôi khi là 0.1) và sau đó gia tăng tuyến tính để layer cuối cùng ở phía bên phải có scale là $s_{max} = 0.9$ theo công thức:
 
@@ -199,7 +199,7 @@ Xin lỗi các bạn vì hơi lan man chút. Quay trở lại phần code mình 
 ## 3.1. Keras Layers
 ## 3.1.2. Anchor Box
 
-Phần tinh túy nhất của SSD có lẽ là việc xác định các layers output của anchor box (hoặc default bounding box) ở các feature map. anchor box layer sẽ nhận đầu vào ra một feature map có kích thước `(feature_width, feature_height, n_channels)` và các scales, aspect ratios, trả ra đầu ra là một tensor kích thước `(feature_width, feature_height, n_boxes, 4)`, trong đó chiều cuối cùng đại diện cho 4 offsets của bounding box như mô tả trong **Default box và tỷ lệ hướng (aspect ratio)** của mục 2.1.
+Phần tinh túy nhất của SSD có lẽ là việc xác định các layers output của anchor box (hoặc default bounding box) ở các feature map. anchor box layer sẽ nhận đầu vào ra một feature map có kích thước `(feature_width, feature_height, n_channels)` và các scales, aspect ratios, trả ra đầu ra là một tensor kích thước `(feature_width, feature_height, n_boxes, 4)`, trong đó chiều cuối cùng đại diện cho 4 offsets của bounding box như mô tả trong **Default box và tỷ lệ cạnh (aspect ratio)** của mục 2.1.
 
 Code biến đổi khá phức tạp. Tôi trong đó các phần biến đổi chính được thực hiện trong hàm `call()`.
 
