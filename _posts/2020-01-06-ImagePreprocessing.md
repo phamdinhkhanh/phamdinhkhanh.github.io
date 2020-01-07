@@ -6,13 +6,13 @@ title: Bài 21 - Tiền xử lý ảnh
 
 # 1. Vai trò của tiền xử lý ảnh
 
-Khi phát triển một thuật toán phân loại ảnh chúng ta có thể gặp phải một số trường hợp không mong đợi như: Kết quả huấn luyện có độ chính xác rất cao khi sai số của mô hình áp dụng trên cả tập huấn luyện (train dataset) và tập phát triển (dev dataset) đều thấp. Nhưng khi áp dụng vào thực tiễn kết quả lại khá thấp. Có rất nhiều các nguyên nhân dẫn tới điều này và một trong số đó là:
+Khi phát triển một thuật toán phân loại ảnh chúng ta có thể gặp phải một số trường hợp không mong đợi như: Kết quả huấn luyện có độ chính xác rất cao trên cả tập huấn luyện (train dataset) và tập phát triển (dev dataset). Nhưng khi áp dụng vào thực tiễn lại cho độ chính xác thấp. Có rất nhiều các nguyên nhân dẫn tới điều này và một trong số đó là:
 
-* Các bức ảnh được huấn luyện khác xa so với những bức ảnh được người dùng đưa lên về nhiều khía cạnh như: độ phân giải, cường độ ánh sáng của ảnh, chất lượng ảnh, độ to nhỏ của vật thể trong ảnh, chiều, hướng và tư thế của vật thể bên trong ảnh.
+* Các bức ảnh được huấn luyện khác xa so với những bức ảnh được người dùng upload về các khía cạnh: độ phân giải, cường độ màu sắc, chất lượng ảnh, độ to nhỏ của vật thể, chiều, hướng và tư thế của vật thể bên trong ảnh.
 
-* Có thể các bức ảnh được người dùng upload lên mặc dù cùng nhãn nhưng khác về tính chất so với các bức ảnh đã huấn luyện. Chẳng hạn một thuật toán về phân loại `dog and cat` nếu tập huấn luyện chỉ bao gồm những con mèo trưởng thành nhưng trên thực tế người dùng lại upload lên rất nhiều hình ảnh của mèo con khiến thuật toán nhầm lẫn.
+* Có thể các bức ảnh được người dùng upload lên mặc dù cùng nhãn nhưng khác về tính chất so với các bức ảnh đã huấn luyện. Ví dụ trong một thuật toán phân loại `dog and cat`, tập huấn luyện chỉ bao gồm những con mèo trưởng thành nhưng thực tế người dùng lại upload lên rất nhiều hình ảnh của mèo con có thể dẫn tới thuật toán bị nhầm lẫn.
 
-* Đối với một số tác vụ phân loại ảnh khó, đòi hỏi chuyên gia gán nhãn, rất dễ nhận biết sai lầm như phát hiện bệnh về nhãn cầu. Một số ít các ảnh trong tập huấn luyện có thể bị gán sai nhãn. Do đó ảnh hưởng đến chất lượng của thuật toán khi dự báo.
+* Đối với một số tác vụ phân loại ảnh khó, đòi hỏi chuyên gia gán nhãn, rất dễ mắc sai lầm như chuẩn đoán bệnh nhãn cầu. Một số ít các ảnh trong tập huấn luyện có thể bị gán sai nhãn. Do đó ảnh hưởng đến khả năng dự báo của thuật toán.
 
 * Bộ dữ liệu huấn luyện có kích thước quá nhỏ và không đại diện cho toàn bộ các class được huấn luyện.
 
@@ -21,13 +21,13 @@ Khi phát triển một thuật toán phân loại ảnh chúng ta có thể g�
 
 Và rất nhiều các nguyên nhân khác dẫn tới thuật toán hoạt động không được như kì vọng.
 
-Khi đối mặt với trường hợp trên chúng ta cần phải tìm ra nguyên nhân thực sự là gì để từ đó có phương án thích hợp khắc phục các lỗi mô hình. Từ đó cải thiện độ chính xác khi áp dụng vào thực tiễn.
+Khi đối mặt với trường hợp trên chúng ta cần phải tìm ra nguyên nhân thực sự là gì để từ đó đưa ra phương án thích hợp khắc phục các lỗi mô hình.
 
 Các kĩ thuật để giải quyết các trường hợp lỗi như vậy đã được tổng hợp rất kĩ trong cuốn [Khao khát học máy - Andrew Ng](https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation). Hiện tại sách đã được nhóm anh Tiệp và cộng đồng dịch ra Tiếng Việt khá đầy đủ. Bạn đọc có thể đọc từ chương 1 đến 16 để tìm hiểu cách thức xây dựng và phát triển những mô hình thông qua kinh nghiệm được tổng kết của tác giả.
 
 Trong cuốn sách tác giả nêu ra nhiều hướng giải quyết như: Thay đổi tập dữ liệu huấn luyện và tập dữ liệu phát triển, thống kê lỗi và tìm cách giải quyết các lỗi chính mang lại cải thiện lớn, xác định tập huấn luyện/phát triển và phép đo đơn trị thích hợp ngay từ đầu cho bài toán, áp dụng các phương pháp và kiến trúc mô hình khác nhau,... 
 
-Trong trường hợp dữ liệu không đủ lớn, dữ liệu gán nhãn với chi phí cao (như chuẩn đoán bệnh qua hình ảnh, phải tìm được bệnh nhân gặp đúng bệnh đó và bác sĩ chuyên khoa để chuẩn đoán), việc thay đổi tập dữ liệu là khá tốn chi phí. Có một phương pháp mà mình nghĩ rằng sẽ giúp gia tăng số lượng ảnh đầu vào. Đó chính là học tăng cường (data augumentation) sử dụng các biến đổi là `tiền xử lý hình ảnh` đầu vào. Đây là một phương pháp hiệu quả nhằm thay đổi tập dữ liệu huấn luyện và từ đó giúp cải thiện hiệu quả dự báo.
+Trong trường hợp dữ liệu không đủ lớn, dữ liệu gán nhãn với chi phí cao (như chuẩn đoán bệnh qua hình ảnh, phải tìm được bệnh nhân gặp đúng bệnh đó và bác sĩ chuyên khoa để chuẩn đoán), việc thay đổi tập dữ liệu là khá tốn chi phí. Có một phương pháp mà mình nghĩ rằng sẽ giúp gia tăng số lượng ảnh đầu vào. Đó chính là học tăng cường (data augumentation) sử dụng các biến đổi `tiền xử lý hình ảnh` đầu vào. Đây là một phương pháp hiệu quả nhằm thay đổi tập dữ liệu huấn luyện và từ đó giúp cải thiện hiệu quả dự báo.
 
 Vậy tiền xử lý dữ liệu ảnh là gì và có những phương pháp nào để thực hiện tiền xử lý ảnh, bài viết này sẽ giới thiệu tới các bạn một series các cách tiếp cận khác nhau của tiền xử lý ảnh trên cả 2 phương diện lý thuyết kết hợp thực hành. Các code sẽ được thực hiện trên `opencv`, một package khá tiện ích trong xử lý ảnh. Chúng ta bắt đầu nhé.
 
@@ -42,6 +42,7 @@ Vậy tiền xử lý dữ liệu ảnh là gì và có những phương pháp n
 
 Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y. Chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm `cv2.resize()`.
 
+Hàm `_downloadImage()` sẽ có tác dụng tải và convert ảnh sang numpy array từ đầu vào là link url của ảnh. Bạn đọc lưu ý, hàm này sẽ được sử dụng xuyên suốt bài hướng dẫn.
 
 ```
 import cv2
