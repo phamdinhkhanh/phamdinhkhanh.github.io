@@ -38,7 +38,7 @@ Vậy tiền xử lý dữ liệu ảnh là gì và có những phương pháp n
 
 Đây là tập hợp các phép biến đổi hình ảnh từ một hình dạng này sang một hình dạng khác thông qua việc làm thay đổi phương, chiều, góc, cạnh mà không làm thay đổi nội dung chính của bức ảnh.
 
-### 2.1.1. Scale ảnh
+### 2.1.1. Phóng đại ảnh (Scale ảnh)
 
 Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y. Chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm `cv2.resize()`.
 
@@ -78,7 +78,24 @@ plt.subplot(122),plt.imshow(imgScale),plt.title('Scale Image')
 Như vậy bức ảnh đã được resize về một kích thước gấp đôi cả về chiều `width` và `height` nhưng không làm nội dung ảnh thay đổi. Resize ảnh rất thường xuyên được sử dụng trong các mô hình deep learning phân loại ảnh vì mỗi một mô hình đều có một kích thước đầu vào tiêu chuẩn. Chẳng hạn như `Lenet` là kích thước `32x32x3` và `Alexnet` là `224x224x3`.
 
 ### 2.1.2. Dịch chuyển ảnh (Translation) 
-Dịch chuyển ảnh thường được thực hiện trong trường hợp bạn muốn di chuyển ảnh đến các vị trí khác nhau như các góc trái, phải, ở giữa, bên trên, bên dưới. Để dịch chuyển hình ảnh chúng ta phải xác định được $(t_x, t_y)$ là các giá trị di chuyển ảnh theo trục $x$ và $y$. Ma trận dịch chuyển $\mathbf{M}$ sẽ có dạng như bên dưới:
+
+**Định nghĩa về phép dịch chuyển:**
+
+Mỗi một phép dịch chuyển hình học sẽ được xác định bởi một ma trận dịch chuyển $\mathbf{M}$. Khi đó bất kì 1 điểm có tọa độ $(x, y)$ trên ảnh gốc thông qua phép biến đổi $T(x, y)$ sẽ có tọa độ trong không gian mới sau dịch chuyển như sau:
+
+$$T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} =  \begin{bmatrix} a_11 & a_12 \\
+a_21 & a_22\end{bmatrix}\begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_11 x + a_12 y \\
+a_21 x & a_22 y\end{bmatrix} = \begin{bmatrix} a_11\\
+a_21\end{bmatrix} x + \begin{bmatrix} a_12\\
+a_22\end{bmatrix} y = T(x) + T(y)$$
+
+Khi đó $T(x)$ và $T(y)$ có thể được coi như là các véc tơ dịch chuyển theo chiều $x, y$.
+
+Ngoài ra phép dịch chuyển còn bảo toàn khoảng cách. Tức là $T(\lambda x) = \lambda.T(x)$
+
+Dịch chuyển ảnh thường được thực hiện trong trường hợp bạn muốn dịch chuyển ảnh đến các vị trí khác nhau. Ví dụ tới các góc trái, phải, ở giữa, bên trên, bên dưới. Phép dịch chuyển sẽ giữ nguyên tính chất song song của các đoạn thẳng sau dịch chuyển đối với các trục X hoặc Y nếu trước dịch chuyển chúng cũng song song với một trong hai trục này. Để dịch chuyển hình ảnh chúng ta phải xác định được $(t_x, t_y)$ là các giá trị di chuyển ảnh theo trục $x$ và $y$. Ma trận dịch chuyển $\mathbf{M}$ sẽ có dạng như bên dưới:
 
 $$\mathbf{M} = \begin{bmatrix} 1 & 0 & t_x \\
 0 & 1 & t_y\end{bmatrix}$$
@@ -121,12 +138,13 @@ plt.subplot(155),plt.imshow(tran4),plt.title('Translate to Up Left')
 
 ### 2.1.2. Xoay ảnh (Rotation)
 
+Xoay ảnh được hiểu là ta quay một bức ảnh theo một góc xác định quanh một điểm nào đó. Phép xoay sẽ không đảm bảo tính chất song song với các trục X hoặc Y như phép dịch chuyển nhưng nó sẽ bảo toàn độ lớn góc. Nếu 3 điểm bất kì tại ảnh gốc tạo thành một tam giác thì khi biến đổi qua phép xoay ảnh, chúng sẽ tạo thành một tam giác đồng dạng với tam giác ban đầu.
 Phép xoay của một hình ảnh tương ứng với một góc $\theta$ đạt được bằng một ma trận dịch chuyển $\mathbf{M}$ như sau:
 
 $$\mathbf{M} = \begin{bmatrix} cos(\theta) & -sin(\theta) \\
 sin(\theta) & cos(\theta)\end{bmatrix}$$
 
-Ngoài ra OpenCV cung cấp một phép scaled rotation với khả năng điều chỉnh tâm của phép xoay để bạn có thể xoay theo bất kì vùng nào mà bạn ưa chuộng hơn. Phép dịch chuyển ma trận được đưa ra như sau:
+Ngoài ra OpenCV hỗ trợ một phép xoay phóng đại (scaled rotation) với khả năng vừa biến đổi ảnh theo phép xoay theo tâm xác định và điều chỉnh lại kích thước ảnh sau xoay. Như vậy bạn có thể xoay theo bất kì vùng nào mà bạn ưa chuộng hơn. Phép dịch chuyển ma trận được đưa ra như sau:
 
 $$\begin{bmatrix} \alpha & \beta & (1-\alpha)c_x-\beta c_y \\
 -\beta & \alpha & \beta c_x+(1-\alpha)c_y\end{bmatrix}$$
@@ -135,6 +153,8 @@ trong đó:
 
 $$\alpha = scale.cos(\theta) \\
 \beta = scale.sin(\theta)$$
+
+$(c_x, c_y)$ là tọa độ tâm của phép xoay và $scale$ là độ phóng đại.
 
 Để tìm ra ma trận transform có thể sử dụng hàm `cv2.getRotationMatrix2D()` của OpenCV. Trong hàm này chúng ta cần xác định tâm của phép xoay (đối số `center`), góc xoay (`angle`) và tham số phóng đại kích thước ảnh (`scale`).
 
@@ -170,13 +190,13 @@ plt.subplot(235),plt.imshow(tran8),plt.title('Rotate 20 at upper left corner')
 plt.subplot(236),plt.imshow(tran9),plt.title('Rotate 20 at bottom right corner')
 ```
 
-<img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_6_1.png" width="650px" height="200px"/>
+<img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_8_1.png" width="650px" height="200px"/>
 
 ### 2.1.3. Biến đổi Affine
 
-Trong biến đổi affine, toàn bộ các đường thẳng song song trong bức ảnh gốc sẽ trở thành song song ở ảnh đầu ra. Để tìm ma trận chuyển vị, chúng ta cần xác định ra 3 điểm từ ảnh đầu vào và tọa độ tương ứng của chúng trong hình ảnh đầu ra. Hàm `cv2.getAffineTransform` sẽ tạo ra được một ma trận `2x3` được truyền vào hàm `cv2.warpAffine`.
+Trong biến đổi affine, toàn bộ các đường thẳng song song trong bức ảnh gốc giữ nguyên tính chất song song ở ảnh đầu ra. Để tìm ma trận chuyển vị, chúng ta cần xác định ra 3 điểm từ ảnh đầu vào và tọa độ tương ứng của chúng trong hình ảnh đầu ra. Hàm `cv2.getAffineTransform` sẽ tạo ra được một ma trận `2x3` được truyền vào hàm `cv2.warpAffine`.
 
-Kiểm tra ví dụ bên dưới, chúng ta cũng nhìn vào các điểm mà tôi lựa chọn (được đánh dấu x, màu trắng).
+Kiểm tra ví dụ bên dưới, chúng ta cùng nhìn vào các điểm mà tôi lựa chọn (được đánh dấu x, màu trắng).
 
 ```
 rows,cols,ch = img.shape
@@ -201,7 +221,7 @@ for (x, y) in pts2:
 
 <img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_10_0.png" width="300px" height="200px"/>
 
-Như vậy sử dụng phép biến đổi Affine có thể giúp ta tạo thành nhiều biến thể, tư thế khác nhau cho cùng một vật thể. Thường được áp dụng trong Data Augumentation để làm giàu dữ liệu trong trường hợp số lượng ảnh không nhiều. Chẳng hạn với ảnh mặt người đang chụp nghiêng ta có thể xoay theo các chiều sao cho từ mặt nghiêng trở thành mặt chính diện hoặc như trong hình trên, hình ảnh messi đang chạy dáng nghiêng đã được chuyển sang chạy dáng thẳng đứng.
+Như vậy sử dụng phép biến đổi Affine có thể giúp ta tạo thành nhiều biến thể, tư thế khác nhau cho cùng một vật thể. Thường được áp dụng trong Data Augumentation để làm giàu dữ liệu trong trường hợp số lượng ảnh không nhiều. Chẳng hạn với ảnh mặt người đang chụp nghiêng ta có thể xoay theo các chiều sao cho từ mặt nghiêng trở thành mặt chính diện hoặc như trong hình trên, hình ảnh messi đang chạy dáng nghiêng đã được chuyển sang chạy dáng thẳng đứng và nghiêng với các độ lớn góc khác nhau.
 
 Một số nghiên cứu chỉ ra rằng khi áp dụng phương pháp Data Augumentation thì độ chính xác của thuật toán với số lượng ảnh huấn luyện nhỏ có thể không thua kém những thuật toán được huấn luyện trên nhiều dữ liệu hơn về độ chính xác.
 
@@ -1088,4 +1108,5 @@ Cuối cùng, không thể thiếu sau mỗi bài viết của khanh blog là nh
 7. [Tensorflow Keras image preprocessing](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image)
 8. [Improve OCR accuracy by image preprocessing](https://docparser.com/blog/improve-ocr-accuracy/)
 9. [Canny Edge Detector - wiki](https://en.wikipedia.org/wiki/Canny_edge_detector)
-10. [Khao khát học máy bản Tiếng Việt - Tác giả Andrew Ng - Tiep Vu và cộng sự dịch](https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation)
+10. [Linear and affine transformations - youtube](https://www.youtube.com/watch?v=4I2S5Xhf24o)
+11. [Khao khát học máy bản Tiếng Việt - Tác giả Andrew Ng - Tiep Vu và cộng sự dịch](https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation)
