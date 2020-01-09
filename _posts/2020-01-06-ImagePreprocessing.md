@@ -409,6 +409,7 @@ Bởi vì phát hiện edge dễ gây nhiễu trong ảnh nên bước đầu ti
 Trước khi đọc phần này, các bạn vẫn còn nhớ [mục 2.1.1 - tính toán gradient descent ở thuật toán HOG](https://phamdinhkhanh.github.io/2019/11/22/HOG.html) chứ? Ảnh được làm mịn sau đó được lọc qua bộ lọc Sobel theo cả 2 chiều dọc và ngang để thu được đạo hàm bậc 1 theo 2 phương x và y lần lượt là $G_x$ và $G_y$. Từ những hình ảnh này, chúng ta có thể tìm được độ dài cạnh gradient và phương cho mỗi pixel như bên dưới:
 
 $$|G| = \sqrt{G_x^2 + G_y^2}$$
+
 $$\theta = \arctan(\frac{G_y}{G_x})$$
 
 Phương gradient luôn luôn vuông góc với các cạnh. Nó được làm tròn thành một trong bốn góc biểu diễn trục dọc, ngang và 2 phương của đường chéo.
