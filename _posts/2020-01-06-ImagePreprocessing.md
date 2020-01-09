@@ -48,14 +48,14 @@ a_{21} & a_{22}\end{bmatrix}\begin{bmatrix} x \\
 y\end{bmatrix} = \begin{bmatrix} a_{11} x + a_{12} y \\
 a_{21} x + a_{22} y\end{bmatrix}$$
 
-Một hàm số $T$: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ được coi là một phép biến đổi tuyến tính nếu nó thỏa mãn 2 tính chất sau:
+Một hàm số $T: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ được coi là một phép biến đổi tuyến tính nếu nó thỏa mãn 2 tính chất sau:
 * Tính chất cộng tính: 
 $$T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v})$$
 * Tính chất nhân tính:
-$$T(\lambda \vec{x}) = \lambda T(vec{x})$$
+$$T(\lambda \vec{x}) = \lambda T(\vec{x})$$
 
 <img src="https://i.imgur.com/aPoGCQf.png" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
-> Hình 1: Tính chất cộng tính của phép biến đổi tuyến tính. Ta nhận thấy tính chất này hoàn toàn có thể được suy ra trực tiếp từ phép nhân ma trận $\mathbf{M}(\mathbf{A}+\mathbf{B}) = \mathbf{M}\mathbf{A}+\mathbf{M}\mathbf{B}$. Trong đó $\mathbf{M}$ là ma trận biến đổi và $\mathbf{A}, \mathbf{B}$ là các tọa độ điểm.
+> **Hình 1**: Tính chất cộng tính của phép biến đổi tuyến tính. Ta nhận thấy tính chất này hoàn toàn có thể được suy ra trực tiếp từ phép nhân ma trận $\mathbf{M}(\mathbf{A}+\mathbf{B}) = \mathbf{M}\mathbf{A}+\mathbf{M}\mathbf{B}$. Trong đó $\mathbf{M}$ là ma trận biến đổi và $\mathbf{A}, \mathbf{B}$ là các tọa độ điểm.
 
 Như vậy tổng kết lại, để xác định một phép biến đổi hình học ta sẽ cần phải xác định được ma trận dịch chuyển của nó là gì? Các dạng biển đổi sẽ được trình bày bên dưới sẽ được đặc trưng bởi các dạng ma trận dịch chuyển khác nhau.
 
