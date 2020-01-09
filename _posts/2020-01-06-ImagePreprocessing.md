@@ -36,11 +36,40 @@ Vậy tiền xử lý dữ liệu ảnh là gì và có những phương pháp n
 
 ## 2.1. Các biến đổi hình học.
 
-Đây là tập hợp các phép biến đổi hình ảnh từ một hình dạng này sang một hình dạng khác thông qua việc làm thay đổi phương, chiều, góc, cạnh mà không làm thay đổi nội dung chính của bức ảnh.
+Đây là tập hợp các phép biến đổi hình ảnh từ một hình dạng này sang một hình dạng khác thông qua việc làm thay đổi phương, chiều, góc, cạnh mà không làm thay đổi nội dung chính của bức ảnh. Về mặt lý thuyết toán học một phép biến đổi được định nghĩa như sau:
+
+**Định nghĩa:**
+
+Mỗi một phép biến đổi hình học sẽ được xác định bởi một ma trận dịch chuyển (`translation matrix`) $\mathbf{M}$. Khi đó bất kì 1 điểm có tọa độ $(x, y)$ trên ảnh gốc thông qua phép biến đổi $T$ sẽ có tọa độ trong không gian mới sau dịch chuyển là $T(x, y)$ theo công thức:
+
+$$T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} =  \begin{bmatrix} a_{11} & a_{12} \\
+a_{21} & a_{22}\end{bmatrix}\begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_{11} x + a_{12} y \\
+a_{21} x + a_{22} y\end{bmatrix}$$
+
+Một hàm số $T$: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ được coi là một phép biến đổi tuyến tính nếu nó thỏa mãn 2 tính chất sau:
+* Tính chất cộng tính: 
+$$T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v})$$
+* Tính chất nhân tính:
+$$T(\lambda \vec{x}) = \lambda T(vec{x})$$
+
+<img src="https://i.imgur.com/aPoGCQf.png" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
+> Hình 1: Tính chất cộng tính của phép biến đổi tuyến tính. Ta nhận thấy tính chất này hoàn toàn có thể được suy ra trực tiếp từ phép nhân ma trận $\mathbf{M}(\mathbf{A}+\mathbf{B}) = \mathbf{M}\mathbf{A}+\mathbf{M}\mathbf{B}$. Trong đó $\mathbf{M}$ là ma trận biến đổi và $\mathbf{A}, \mathbf{B}$ là các tọa độ điểm.
+
+Như vậy tổng kết lại, để xác định một phép biến đổi hình học ta sẽ cần phải xác định được ma trận dịch chuyển của nó là gì? Các dạng biển đổi sẽ được trình bày bên dưới sẽ được đặc trưng bởi các dạng ma trận dịch chuyển khác nhau.
 
 ### 2.1.1. Phóng đại ảnh (Scale ảnh)
 
-Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y. Chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm `cv2.resize()`.
+Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y.  Trong opencv, chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm `cv2.resize()`.
+
+Theo định nghĩa về phép biến đổi hình học thì một biến đổi phóng đại các chiều (x, y) theo hệ số (a_{1}, a_{2}) sẽ có ma trận dịch chuyển M là ma trận đường chéo. Tức là ma trận vuông có đường chéo chính là $[a_1, a_2]$ và các phần tử còn lại bằng 0. Khi đó phép dịch chuyển sẽ là:
+
+$$T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_1 & 0 \\
+0 & a_2\end{bmatrix} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_1 x \\
+a_2 y\end{bmatrix}$$
 
 Hàm `_downloadImage()` sẽ có tác dụng tải và convert ảnh sang numpy array từ đầu vào là link url của ảnh. Bạn đọc lưu ý, hàm này sẽ được sử dụng xuyên suốt bài hướng dẫn.
 
@@ -79,29 +108,22 @@ Như vậy bức ảnh đã được resize về một kích thước gấp đô
 
 ### 2.1.2. Dịch chuyển ảnh (Translation) 
 
-**Định nghĩa về phép dịch chuyển:**
-
-Mỗi một phép dịch chuyển hình học sẽ được xác định bởi một ma trận dịch chuyển $\mathbf{M}$. Khi đó bất kì 1 điểm có tọa độ $(x, y)$ trên ảnh gốc thông qua phép biến đổi $T(x, y)$ sẽ có tọa độ trong không gian mới sau dịch chuyển như sau:
-
-$$T(x, y) = \mathbf{M} \begin{bmatrix} x \\
-y\end{bmatrix} =  \begin{bmatrix} a_11 & a_12 \\
-a_21 & a_22\end{bmatrix}\begin{bmatrix} x \\
-y\end{bmatrix} = \begin{bmatrix} a_11 x + a_12 y \\
-a_21 x & a_22 y\end{bmatrix} = \begin{bmatrix} a_11\\
-a_21\end{bmatrix} x + \begin{bmatrix} a_12\\
-a_22\end{bmatrix} y = T(x) + T(y)$$
-
-Khi đó $T(x)$ và $T(y)$ có thể được coi như là các véc tơ dịch chuyển theo chiều $x, y$.
-
-Ngoài ra phép dịch chuyển còn bảo toàn khoảng cách. Tức là $T(\lambda x) = \lambda.T(x)$
-
 Dịch chuyển ảnh thường được thực hiện trong trường hợp bạn muốn dịch chuyển ảnh đến các vị trí khác nhau. Ví dụ tới các góc trái, phải, ở giữa, bên trên, bên dưới. Phép dịch chuyển sẽ giữ nguyên tính chất song song của các đoạn thẳng sau dịch chuyển đối với các trục X hoặc Y nếu trước dịch chuyển chúng cũng song song với một trong hai trục này. Để dịch chuyển hình ảnh chúng ta phải xác định được $(t_x, t_y)$ là các giá trị di chuyển ảnh theo trục $x$ và $y$. Ma trận dịch chuyển $\mathbf{M}$ sẽ có dạng như bên dưới:
 
 $$\mathbf{M} = \begin{bmatrix} 1 & 0 & t_x \\
 0 & 1 & t_y\end{bmatrix}$$
 
-Khi đó áp dụng hàm `cv2.warpAffine()` với đầu vào là ma trận dịch chuyển $\mathbf{M}$ ta thu được kết quả như bên dưới.
+Thật vậy. Giả sử mọi điểm ảnh đều nằm trên không gian 2 chiều. Khi đó ta coi chiều thứ 3 là một hằng số, chẳng hạn $z=1$. Khi đó phép biến đổi $(x, y)$ bất kì theo ma trận dịch chuyển $\mathbf{M}$ sẽ là:
 
+$$T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} 1 & 0 & t_x \\
+0 & 1 & t_y\end{bmatrix} \begin{bmatrix} x \\
+y \\ 1\end{bmatrix} = \begin{bmatrix} x + t_x \\
+y + t_y\end{bmatrix}$$
+
+Như vậy mỗi điểm tọa độ $(x, y)$ đã được dịch chuyển tới một tọa độ mới là $(x+t_x, y+t_y)$
+
+Trong opencv, Áp dụng hàm `cv2.warpAffine()` với đầu vào là ma trận dịch chuyển $\mathbf{M}$ và bức ảnh gốc ta thu được kết quả là ảnh sau dịch chuyển.
 
 ```
 rows, cols = img.shape[:2]
@@ -190,7 +212,7 @@ plt.subplot(235),plt.imshow(tran8),plt.title('Rotate 20 at upper left corner')
 plt.subplot(236),plt.imshow(tran9),plt.title('Rotate 20 at bottom right corner')
 ```
 
-<img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_8_1.png" width="650px" height="200px"/>
+<img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_8_1.png" width="650px" height="450px"/>
 
 ### 2.1.3. Biến đổi Affine
 
@@ -399,7 +421,7 @@ Triệt tiêu phi tối đa (Non-maximum Suppression) hiểu đơn giản là m�
 
 <img src="https://imgur.com/pIhXmC2.png" width="600px" height="250px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 1**: Phương pháp xác định edge của thuật toán canny. 
+**Hình 2**: Phương pháp xác định edge của thuật toán canny. 
 > Điểm A nằm trên cạnh (theo chiều dọc). Phương gradient là norm chuẩn của cạnh. Điểm B và C là điểm nằm trên phương gradient. Nếu điểm A được kiểm tra với điểm B và C để xem liệu nó có là một cực đại cục bộ. Nếu như vậy, nó được xem xét giữ lại cho bước tiếp theo, trái lại thì nó sẽ bị triệt tiêu (bằng cách thiết lập bằng 0).
 
 **4\. Ngưỡng độ trễ (Hysteresis Thresholding)**
@@ -408,7 +430,7 @@ Triệt tiêu phi tối đa (Non-maximum Suppression) hiểu đơn giản là m�
 
 <img src="https://imgur.com/NqLpQIU.jpg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 2:** Phương pháp triệt tiêu cạnh theo ngưỡng cường độ gradient.
+**Hình 3:** Phương pháp triệt tiêu cạnh theo ngưỡng cường độ gradient.
 > Trên hình vẽ là 2 cạnh A màu đỏ và B màu xanh. Cạnh A do có các điểm có cường độ gradient nằm trên _maxVal_ nên được xem là những cạnh đạt tiêu chuẩn. Mặc dù trên cạnh A có những điểm nằm trong ngưỡng từ _minVal_ tới _maxVal_. Cạnh B được xem là không đạt tiêu chuẩn vì toàn bộ các điểm nằm trên cạnh B đều nằm trong ngưỡng _minVal_ và _maxVal_. Như vậy cạnh A sẽ được giữ lại và cạnh B sẽ được xóa bỏ.
 
 Bước này chúng ta cũng loại bỏ các điểm pixels là nhiễu (thực chất là các cạnh nhưng quá ngắn) dựa trên giả định rằng các cạnh là những đường dài.
@@ -847,8 +869,6 @@ print('pixelpoints shape use cv2: {}'.format(pixelpoints.shape))
     pixelpoints shape use cv2: (1865, 1, 2)
     
 <img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_68_1.png" width="200px" height="200px"/>    
-![png](ImagePreprocessing_files/ImagePreprocessing_68_1.png)
-
 
 **7\. Trích xuất Min, Max value và vị trí của chúng**
 
