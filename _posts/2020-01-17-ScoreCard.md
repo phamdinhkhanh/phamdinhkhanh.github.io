@@ -9,12 +9,13 @@ title: Bài 22 - Scorecard model
 Scorecard model là một lớp mô hình được ứng dụng trong nhiều lĩnh vực như tài chính, kinh doanh, quản lý xã hội. Mô hình Scorecard có tác dụng lượng hóa một hồ sơ cá nhân hoặc tổ chức thành một điểm tín nhiệm dựa trên khả năng xảy ra của một sự kiện nào đó như vỡ nợ, vi phạm luật. Dựa trên điểm tín nhiệm, các tổ chức tài chính hoặc chính phủ có thể cung cấp các sản phẩm, dịch vụ tốt hơn nếu chủ thể có điểm tín nhiệm cao và thấp hơn đối với chủ thể có điểm tín nhiệm thấp.
 
 **Ứng dụng trong quản trị rủi ro ngân hàng:**
+
 Trong hoạt động tín dụng, mục tiêu của mô hình scorecard là đánh giá năng lực trả nợ của người giữ vị thế vay trong tương lai. 
 Đầu vào của mô hình Scorecard gồm các thông tin nằm trong hồ sơ cá nhân của khách hàng. Chúng được thu thập chủ yếu từ cục tín dụng hoặc data warehouse của ngân hàng. Các thông tin được chia thành các nhóm cơ bản:
 
 * Nhân khẩu học (demographic): Là những thông tin liên quan đến đặc điểm cá nhân như trình độ học vấn, thu nhập, giới tính, độ tuổi, nghề nghiệp, trạng thái hôn nhân, qui mô gia đình, số người phụ thuộc,....
 
-* Lịch sử tín dụng (credit history): Đây là những thông tin được quản lý tập trung tại cục tín dụng (bureau credit). Dữ liệu lịch sử vay của khách hàng được tổng hợp từ toàn bộ các ngân hàng hoạt động trên lãnh thổ của một quốc gia trong một data center. Như vậy ngân hàng có thể kiểm tra chéo thông tin tín dụng của khách hàng từ những ngân hàng khác.
+* Lịch sử tín dụng (credit history): Đây là những thông tin được quản lý tập trung tại cục tín dụng (bureau credit). Dữ liệu lịch sử vay của khách hàng được tổng hợp từ toàn bộ các ngân hàng hoạt động trên lãnh thổ của một quốc gia vào một data center. Như vậy ngân hàng có thể kiểm tra chéo thông tin tín dụng của khách hàng từ những ngân hàng khác.
 
 * Thông tin giao dịch: Lịch sử giao dịch trên các thẻ tín dụng hoặc thẻ ATM sẽ đánh giá một phần nào đó về năng lực tài chính của khách hàng. Do đó thông tin này rất hữu ích đối với dự báo khả năng trả nợ.
 
@@ -78,10 +79,7 @@ Chính vì những lợi thế đó, phương pháp mô hình đang dần thay t
 
 ### 2.2. Xây dựng mô hình credit scorecard
 
-Có nhiều thuật toán khác nhau được áp dụng để xây dựng mô hình credit scorecard. Trong bài này tôi sẽ chỉ giới thiệu phương pháp thông dụng nhất đó là hồi qui logistic. Về hồi qui logistic các bạn xem thêm tại [Logistic Regression - Machine learning cơ bản](https://machinelearningcoban.com/2017/01/27/logisticregression/), rất chi tiết và đầy đủ. Quá trình hồi qui sẽ tiếp nhận các features đầu vào đã được tiền xử lý theo phương pháp trọng số dấu hiệu (WOE - weight of evidence), cụ thể sẽ được giới thiệu bên dưới. Cuối cùng đầu ra của mô hình là xác suất vỡ nợ (default probability) của một hồ sơ vay vốn. Xác suất càng cao là dấu hiệu cho thấy khả năng xảy ra rủi ro càng lớn. Từ xác suất, thông qua các phép scale ta sẽ biến đổi sang điểm số tín nhiệm (credit score) đại diện cho mức tín nhiệm của họ. Điểm số này bằng tổng các điểm số tương ứng với mỗi một đặc trưng của người dùng được tạo ra từ WOE.
-
-
-
+Có nhiều thuật toán khác nhau được áp dụng để xây dựng mô hình credit scorecard. Trong bài này tôi sẽ chỉ giới thiệu phương pháp thông dụng nhất đó là hồi qui logistic. Về hồi qui logistic các bạn xem thêm tại [Logistic Regression - Machine learning cơ bản](https://machinelearningcoban.com/2017/01/27/logisticregression/), rất chi tiết và đầy đủ. Quá trình hồi qui sẽ tiếp nhận các features đầu vào đã được tiền xử lý theo phương pháp trọng số dấu hiệu (WOE - weight of evidence), cụ thể sẽ được giới thiệu bên dưới. Cuối cùng đầu ra của mô hình là xác suất vỡ nợ (default probability) của một hồ sơ vay vốn. Xác suất càng cao là dấu hiệu cho thấy khả năng xảy ra rủi ro càng lớn. Từ xác suất, thông qua các phép scale ta sẽ biến đổi sang điểm số tín nhiệm (credit score) đại diện cho mức độ uy tín của khách hàng. Điểm số này bằng tổng các điểm số tương ứng với mỗi một đặc trưng của người dùng được tạo ra từ WOE.
 
 #### 2.2.1. Weight of Evidence - WOE
 
@@ -135,9 +133,9 @@ Ta nhận thấy `IV` luôn nhận giá trị dương vì $\text{WOE}_{i}$ và $
 
 #### 2.2.2. Ưu và nhược điểm của phương pháp WOE
 
-Sở dĩ các mô hình scorecard lại ưa chuộng phương pháp `WOE` bởi vì đây là phương pháp biến đổi biến có nhiều ảnh hưởng tích cực tới quá trình xây dựng mô hình hồi qui logistic. Các lợi thế đó là:
+Sở dĩ các mô hình scorecard lại ưa chuộng `WOE` bởi vì đây là phương pháp biến đổi biến có nhiều ảnh hưởng tích cực tới quá trình hồi qui logistic. Các lợi thế đó là:
 
-* `WOE` giúp biến đổi các biến độc lập liên tục thành những biến có mối quan hệ đơn điệu (đồng biến hoặc nghịch biến) đối với biến phụ thuộc. Thật vậy, giả sử thống kê cho thấy đối với độ tuổi của khách hàng trong các khoảng `20-30, 30-40, 40-50, 50+` thì tỷ lệ `%GOOD/%BAD` là `[0.1, 0.5, 0.2, 0.3]`. Như vậy `AGE` sẽ không có mối quan hệ đồng biến với tỷ lệ `%GOOD/%BAD`, tức là nó không có mối quan hệ đồng biến với biến phụ thuộc. Trong khi nếu hồi qui giá trị gốc của `AGE` theo logistic thì mối quan hệ với biến phụ thuộc của `AGE` sẽ là đơn điệu,là đơn điệu tăng hay giảm phụ thuộc tùy vào dấu của hệ số hồi qui. Điều này là trái với thực tế. Do đó, phương pháp `WOE` giúp ta chia nhỏ các biến liên tục thành các khoảng biến mà giá trị của nó là đơn điệu với biến phụ thuộc dựa trên `WOE` tương ứng với mỗi khoảng. Do đó các hệ số trong phương trình hồi qui logistic sẽ giải thích được đúng thực tế mối quan hệ giữa biến độc lập với biến phụ thuộc.
+* `WOE` giúp biến đổi các biến độc lập liên tục thành những biến có mối quan hệ đơn điệu (đồng biến hoặc nghịch biến) đối với biến phụ thuộc. Thật vậy, giả sử thống kê cho thấy đối với độ tuổi của khách hàng trong các khoảng `20-30, 30-40, 40-50, 50+` thì tỷ lệ `%GOOD/%BAD` là `[0.1, 0.5, 0.2, 0.3]`. Như vậy `AGE` sẽ không có mối quan hệ đồng biến với tỷ lệ `%GOOD/%BAD`, tức là nó không có mối quan hệ đồng biến với biến phụ thuộc. Trong khi nếu hồi qui giá trị gốc của `AGE` theo logistic thì mối quan hệ với biến phụ thuộc của `AGE` sẽ là đơn điệu (đơn điệu tăng hay giảm phụ thuộc vào dấu của hệ số hồi qui). Điều này là trái với thực tế. Do đó, phương pháp `WOE` giúp ta chia nhỏ các biến liên tục thành các khoảng biến mà giá trị của nó là đơn điệu với biến phụ thuộc dựa trên `WOE` tương ứng với mỗi khoảng. Do đó các hệ số trong phương trình hồi qui logistic sẽ giải thích được đúng thực tế mối quan hệ giữa biến độc lập với biến phụ thuộc.
 
 * Phương pháp `WOE` giúp loại bỏ các outliers vì các biến có khoảng biến thiên lớn sẽ được group về các nhóm bins. Gía trị của các quan sát outliers sẽ không còn khác biệt so với các những quan sát khác thuộc cùng nhóm vì chúng cùng được gán giá trị bằng trọng số WOE.
 
@@ -783,15 +781,11 @@ _CreditScore(beta = 0.5, alpha = -1, woe = 0.15, n = 12)
     42.2677896003704
 
 
-
+Gán các giá trị $\beta$ và $\alpha$ vào dictionary.
 
 ```
 betas_dict = dict(zip(list(X_train.columns), logit_model.coef_[0]))
 alpha = logit_model.intercept_[0]
-```
-
-
-```
 betas_dict
 ```
 
@@ -812,7 +806,7 @@ betas_dict
      'YOJ_WOE': 0.8837887914052942}
 
 
-
+Tính `WOE` cho từng features.
 
 ```
 cols = []
