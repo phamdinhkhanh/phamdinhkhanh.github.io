@@ -86,11 +86,13 @@ Trước khi đi sâu vào lý thuyết của model LDA chúng ta sẽ cần n�
 
 ## 2.1. Phân phối tiên nghiệm và hậu nghiệm
 
-Phân phối hậu nghiệm là họ các phân phối mà tham số của nó đã biết trước dựa trên kinh nghiệm. Chẳng hạn như theo một cách nào đó chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$. Dựa trên các hiểu biết chung về suy luận phân phối (liên tục) cho một tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$, theo định lý Bayes, phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x\|\theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.
+Phân phối tiên nghiệm (prior distribution) đối với một tập hợp các tham số kí hiệu là $p(\theta)$. Phân phối tiên nghiệm có giá trị xác suất được xác định trước dựa trên kinh nghiệm mà không cần biết trước dữ liệu. Chẳng hạn như theo kinh nghiệm chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$.
+
+Phân phối hậu nghiệm (posterior distribution) là phân phối được xác định bằng các suy diễn phân phối cho một tập hợp tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$. Do đó nó được kí hiệu dưới dạng xác suất có điều kiện $p(\theta|X)$. Theo định lý Bayes, xác suất của phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x\|\theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.
 
 $${\displaystyle {\begin{aligned}p(\theta|x)&={\frac {p(x|\theta )\,p(\theta )}{p(x)}}\\&={\frac {p(x|\theta )\,p(\theta )}{\int p(x|\theta ')\,p(\theta ')\,d\theta '}}\end{aligned}}}$$
 
-Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm (posterior distribution) $p(\theta\|x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm (prior distribution) $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (**conjugate prior**) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó. Tức là nếu hàm hợp lý tối đa là một gaussian, lựa chọn một hàm tiên nghiệm với tham số trung bình sẽ đảm bảo hàm hậu nghiệm cũng sẽ phân phối gaussian.
+Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm $p(\theta\|x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (**conjugate prior**) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó.
 
 ## 2.2. Phân phối poisson.
 Phân phối poisson là một phân phối rời rạc. 
@@ -117,6 +119,7 @@ $k$ là số lần xuất hiện của sự kiện.
 
 ## 2.3. Phân phối beta
 Beta distribution là một phân phối liên tục xác định dựa trên biến ngẫu nhiên $p \in [0, 1]$ nhằm mô tả sự biến động của tham số $p$ trong phân phối bernoulli. Phân phối beta được đặc tả bởi 2 tham số $\alpha, \beta$ không âm theo phương trình hàm mật độ xác xuất:
+
 $$f(p; \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{\beta-1}$$
 
 Trong đó hàm $\Gamma(.)$ được gọi là `gamma function` có mối liên hệ với giai thừa trong điều kiện tham số của nó là số nguyên.
