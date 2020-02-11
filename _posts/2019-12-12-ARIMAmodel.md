@@ -550,7 +550,7 @@ Bảng trên chính là summary kết quả từ mô hình ARIMA.
 * Cột `coef` là giá trị hệ số ước lượng từ mô hình tương ứng với các biến ở cột bên tay trái. 
 * Cột `std err` là độ lệch chuẩn của hệ số ước lượng. Từ giá trị ước lượng và độ lệch chuẩn ta có thể tính toán ra được khoảng tin cậy. Cận trên và dưới của khoảng tin cậy là các cột `[0.025` và `0.975]`.
 * Cột `z` chính là giá trị ngưỡng tới hạn được suy ra từ phân phối chuẩn hóa. Gía trị ngưỡng tới hạn được tính bằng: $$z = \frac{\beta-\mu}{u_{\alpha/2}\sigma}$$ với $\beta$ là giá trị ước lượng, $\mu, \sigma$ là các giá trị trung bình, độ lệch chuẩn của hệ số ước lượng. $u_{\alpha/2}$ là mức phân vị 97.5% của phân phối chuẩn hóa. Do ở đây ta đang kiểm định các giá trị $\beta$ bằng 0 nên trung bình được giả định bằng 0. Tức là $\mu=0$. Nhìn chung là ta không cần quan tâm đến cột này lắm bởi cột `P>|z|` đã thực hiện chức năng thay thế nó trong việc kiểm định các hệ số ước lượng có ý nghĩa thống kê hay không.
-* Cột `P>|z|` là xác suất để giá trị $P(|X| > 0|X \sim N(0, \sigma^2))$. Đây chính là giá trị P-value của cặp giả thuyết dấu bằng. Gía trị của P-value < 0.05 sẽ cho thấy hệ số ước lượng lớn hơn 0 là có ý nghĩa thống kê.
+* Cột `P>|z|` là xác suất để giá trị $P(\mid X\mid > 0 \mid X \sim N(0, \sigma^2))$. Đây chính là giá trị P-value của cặp giả thuyết dấu bằng. Gía trị của P-value < 0.05 sẽ cho thấy hệ số ước lượng lớn hơn 0 là có ý nghĩa thống kê.
 
 Các chỉ số ở góc trên bên phải lần lượt là:
 

@@ -123,7 +123,7 @@ Tính chất của WOE: Giá trị `WOE` tại một bin càng lớn là dấu h
 
 $$\sum_{i=1}^{n}({\text{ %Good}_{i}-\text{ %Bad}_{i}).\text{WOE}_{i}}$$
 
-Ta nhận thấy `IV` luôn nhận giá trị dương vì $\text{WOE}_{i}$ và $(\text{ %Good}_{i}-\text{ %Bad}_{i})$ đồng biến. Gía trị `IV` sẽ cho ta biết mức độ chênh lệch của `%Good` và `%Bad` ở mỗi bin là nhiều hay ít. Nếu `IV` cao thì sự khác biệt trong phân phối giữa `%Good` và `%Bad` sẽ lớn và biến hữu ích hơn trong việc phân loại hồ sơ và trái lại `IV` nhỏ thì biến ít hữu ích trong việc phân loại hồ sơ. Một số tài liệu cũng đưa ra tiêu chuẩn phân loại sức mạnh của biến theo giá trị `IV` như bên dưới:
+Ta nhận thấy `IV` luôn nhận giá trị dương vì $\text{WOE}\_{i}$ và $(\text{ %Good}\_{i}-\text{ %Bad}\_{i})$ đồng biến. Gía trị `IV` sẽ cho ta biết mức độ chênh lệch của `%Good` và `%Bad` ở mỗi bin là nhiều hay ít. Nếu `IV` cao thì sự khác biệt trong phân phối giữa `%Good` và `%Bad` sẽ lớn và biến hữu ích hơn trong việc phân loại hồ sơ và trái lại `IV` nhỏ thì biến ít hữu ích trong việc phân loại hồ sơ. Một số tài liệu cũng đưa ra tiêu chuẩn phân loại sức mạnh của biến theo giá trị `IV` như bên dưới:
 
 * <= 0.02: Biến không có tác dụng trong việc phân loại hồ sơ `Good/Bad`
 * 0.02 - 0.1: yếu
