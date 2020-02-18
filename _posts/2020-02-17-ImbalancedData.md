@@ -6,17 +6,17 @@ title: Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)
 
 ## 1. Mất cân bằng dữ liệu (imbalanced dataset)
 
-Mất cân bằng dữ liệu là một trong những hiện tượng phổ biến của bài toán phân loại nhị phân (binary classification) như spam email, phát hiện gian lận, dự báo vỡ nợ, chuẩn đoán bệnh lý,.... Trong trường hợp tỷ lệ dữ liệu giữa 2 class là 50:50 thì được coi là cân bằng. Khi có sự khác biệt trong phân phối giữa 2 classes, chẳng hạn 60:40 thì dữ liệu có hiện tượng mất cân bằng. 
+Mất cân bằng dữ liệu là một trong những hiện tượng phổ biến của bài toán phân loại nhị phân (binary classification) như spam email, phát hiện gian lận, dự báo vỡ nợ, chuẩn đoán bệnh lý,.... Trong trường hợp tỷ lệ dữ liệu giữa 2 classes là 50:50 thì được coi là cân bằng. Khi có sự khác biệt trong phân phối giữa 2 classes, chẳng hạn 60:40 thì dữ liệu có hiện tượng mất cân bằng. 
 
 Hầu hết các bộ dữ liệu đều khó đạt được trạng thái cân bằng mà luôn có sự khác biệt về tỷ lệ giữa 2 classes. Đối với những trường hợp dữ liệu mất cân bằng nhẹ như tỷ lệ 60:40 thì sẽ không ảnh hưởng đáng kể tới khả năng dự báo của mô hình.
 
-Tuy nhiên nếu hiện tượng mất cân bằng nghiêm trọng xảy ra, chẳng hạn như tỷ lệ 90:10 sẽ thường dẫn tới ngộ nhận chất lượng mô hình. Khi đó thước đo đánh giá mô hình là độ chính xác (accuracy) có thể đạt được rất cao mà không cần tới mô hình. Ví dụ, một dự báo ngẫu nhiên đưa ra tất cả đều là nhóm đa số thì độ chính xác đã đạt được là 90%. Do đó không nên lựa chọn độ chính xác làm chỉ số đánh giá mô hình để tránh ngộ nhận về chất lượng.
+Tuy nhiên nếu hiện tượng **mất cân bằng nghiêm trọng** xảy ra, chẳng hạn như tỷ lệ 90:10 sẽ thường dẫn tới ngộ nhận chất lượng mô hình. Khi đó thước đo đánh giá mô hình là độ chính xác (accuracy) có thể đạt được rất cao mà không cần tới mô hình. Ví dụ, một dự báo ngẫu nhiên đưa ra tất cả đều là nhóm đa số thì độ chính xác đã đạt được là 90%. Do đó không nên lựa chọn độ chính xác làm chỉ số đánh giá mô hình để tránh lạc quan sai lầm về chất lượng.
 
-Trong trường hợp mẫu mất cân bằng ta cần phải thay đổi chỉ số đánh giá để đưa ra kết quả hợp lý hơn. Tôi sẽ trình bày các chỉ số thay thế cho độ chính xác ở phần 2 của bài viết này.
+Trong trường hợp mẫu mất cân bằng nghiêm trọng ta cần phải thay đổi chỉ số đánh giá để đưa ra kết quả hợp lý hơn. Tôi sẽ trình bày các chỉ số thay thế cho độ chính xác ở phần 4.1 của bài viết này.
 
-Ngoài ra, mất cân bằng dữ liệu thường dẫn tới dự báo kém chính xác trên nhóm thiểu số. Bởi đa phần kết quả dự báo ra thường thiên về 1 nhóm là nhóm đa số. Trong khi tầm quan trọng của việc dự báo được chính xác một mẫu thuộc nhóm thiểu số lớn hơn nhiều so với dự báo mẫu thuộc nhóm đa số. Do đó sẽ cần những sự điều chỉnh thích hợp để mô hình đạt được một độ chính xác cao trên nhóm thiểu số.
+Ngoài ra, mất cân bằng dữ liệu nghiêm trọng thường dẫn tới dự báo kém chính xác trên nhóm thiểu số. Bởi đa phần kết quả dự báo ra thường thiên về 1 nhóm là nhóm đa số và rất kém trên nhóm thiểu số. Trong khi tầm quan trọng của việc dự báo được chính xác một mẫu thuộc nhóm thiểu số lớn hơn nhiều so với dự báo mẫu thuộc nhóm đa số. Để cải thiện kết quả dự báo chúng ta cần những điều chỉnh thích hợp để mô hình đạt được một độ chính xác cao trên nhóm thiểu số.
 
-Những điều chỉnh cần thiết để cải thiện hiệu năng dự báo của mô hình trong trường hợp xảy ra mất cân bằng nghiêm trọng là gì? Có những phương pháp nào để đối phó với hiện tượng mất cân bằng mẫu nghiêm trọng? Bài viết này tôi sẽ cung cấp một góc nhìn toàn cảnh về các giải pháp chung để giải quyết vấn đề này.
+Những điều chỉnh cần thiết giúp cải thiện hiệu năng dự báo của mô hình trong trường hợp xảy ra mất cân bằng nghiêm trọng là gì? Có những phương pháp nào để đối phó với hiện tượng mất cân bằng mẫu nghiêm trọng? Bài viết này tôi sẽ cung cấp một góc nhìn toàn cảnh về các giải pháp chung để giải quyết vấn đề này.
 
 ## 2. Tập dữ liệu
 
@@ -24,7 +24,7 @@ Những điều chỉnh cần thiết để cải thiện hiệu năng dự báo
 
 **Thông tin về bộ dữ liệu:**
 
-Đây là bộ dữ liệu về thẻ hành vi gian lận trong 6 tháng đầu năm 2005 tại một ngân hàng thuộc Đài Loan. Bộ dữ liệu bao gồm 30000 các hợp đồng thuộc cả 2 nhóm là vỡ nợ và không vỡ nợ. Mẫu xảy ra hiện tượng mất cân bằng trầm trọng vì tỷ lệ `bình thường:vỡ nợ` là `23364:6636`. Chúng ta sẽ cùng xem những giải pháp đưa ra sẽ cải thiện kết quả của mô hình như thế nào.
+Đây là bộ dữ liệu về thẻ hành vi gian lận trong 6 tháng đầu năm 2005 tại một ngân hàng thuộc Đài Loan. Bộ dữ liệu bao gồm 30000 các hợp đồng thuộc cả 2 nhóm là vỡ nợ và không vỡ nợ. Mẫu xảy ra hiện tượng mất cân bằng nghiêm trọng vì tỷ lệ `bình thường:vỡ nợ` là `23364:6636`. Chúng ta sẽ cùng xem những giải pháp đưa ra sẽ cải thiện kết quả của mô hình như thế nào.
 
 
 **Thông tin trường:**
@@ -46,13 +46,14 @@ Trong bộ dữ liệu này chúng ta sẽ dự báo hành vi vỡ nợ của kh
 
 Tiếp theo để huấn luyện, lựa chọn và kiểm tra kết quả của mô hình chúng ta sẽ phân chia một cách ngẫu nhiên, không trùng lặp bộ dữ liệu thành các tập train/val/dev/test. Các bộ dữ liệu này có ý nghĩa và vai trò như sau:
 
-* tập train: Dựa trên các biến input và target của tập train, ta sẽ huấn luyện mô hình phân loại vỡ nợ. Mô hình thu được sẽ được đánh giá ở những tập dữ liệu độc lập khác.
-* tập val: Đây là tập dữ liệu có các trường tương tự như tập train nhưng không được đưa vào huấn luyện mô hình mà chỉ được sử dụng để đánh giá kết quả dự báo từ mô hình được huấn luyện từ tập train. Nếu mô hình có hiện tượng overfitting hoặc underfitting sẽ được phát hiện và tiến hành hiệu chỉnh.
-* tập dev: Đây là tập dữ liệu có các trường cũng tương tự như tập train và val nhưng được dùng để đánh giá việc lựa chọn các siêu tham số (hyper parameters) cho các mô hình huấn luyện.
-* tập test: Đây cũng là tập dữ liệu có các trường giống train, val, dev và được coi như những quan sát mới. Do đó được sử dụng để kiếm tra độ chính xác của mô hình khi áp dụng vào thực tiễn.
+* tập train: Dựa trên các biến input và target của tập train, ta sẽ huấn luyện mô hình phân loại vỡ nợ. Mô hình thu được sẽ được đánh giá ở những tập dữ liệu độc lập khác như tập val, dev, và tập test.
+* tập val: Đây là tập dữ liệu có các trường tương tự như tập train. Chúng ta chỉ sử dụng tập này để kiểm tra kết quả dự báo của mô hình mà không đưa vào huấn luyện mô hình. Thông qua đánh giá trên tập val, các hiện tượng `overfitting` hoặc `underfitting` nghiêm trọng sẽ được phát hiện và tiến hành hiệu chỉnh.
+* tập dev: Đây là tập dữ liệu có các trường cũng tương tự như tập train và val nhưng được dùng để đánh giá việc lựa chọn các siêu tham số (hyper parameters) cho các mô hình huấn luyện từ tập train.
+* tập test: Đây cũng là tập dữ liệu có các trường giống train, val, dev và được coi như những quan sát mới hoàn toàn. Tập test nên có phân phối giống nhất với dữ liệu thực tế mà người dùng sẽ tạo ra để đánh giá khả năng áp dụng mô hình vào thực tiễn.
 
-Các tập dữ liệu sẽ được lựa chọn ngẫu nhiên và không trùng lặp. Trong đó bộ dữ liệu train có tỷ lệ kích thước giữa `bình thường: vỡ nợ` là 10000:500, và val/dev/test đều là là 2000:100.
+Các tập dữ liệu sẽ được lựa chọn ngẫu nhiên và không trùng lặp. Trong đó tập train có tỷ lệ kích thước giữa `bình thường: vỡ nợ` là `10000:500`, và val/dev/test đều là là `2000:100` để đảm bảo rằng tỷ lệ giữa 2 classes trên các tập train/val/dev/test là cân bằng và mẫu xảy ra hiện tượng mất cân bằng nghiêm trọng.
 
+**Đọc dữ liệu:**
 
 ```
 import os
@@ -96,7 +97,7 @@ dataset.info()
     
 
 
-Phân chia train/val/dev/test
+**Phân chia train/val/dev/test:**
 
 
 ```
@@ -153,15 +154,15 @@ print('data test shape: ', data_test.shape)
 ## 4. Các phương pháp giải quyết dữ liệu mất cân bằng
 ### 4.1. Thay đổi metric:
 
-Như đã giải thích ở mục đầu tiên, khi hiện tượng mất cân bằng dữ liệu nghiêm trọng xảy ra thì việc sử dụng độ chính xác làm thước đo đánh giá hiệu quả mô hình thường không hiệu quả bởi hầu hết các mô hình đều đạt độ chính xác rất cao. Một mô hình ngẫu nhiên dự báo toàn bộ là nhãn thuộc nhóm đa số cũng sẽ mang lại kết quả gần bằng 100%. Khi đó ta có thể cân nhắc tới một số metrics thay thế, có khả năng tập trung đánh giá độ chính xác trên nhóm thiểu số, sẽ có ý nghĩa hơn đối với việc lựa chọn mô hình.
+Như đã giải thích ở mục đầu tiên, khi hiện tượng mất cân bằng dữ liệu nghiêm trọng xảy ra thì việc sử dụng độ chính xác làm thước đo đánh giá mô hình thường không hiệu quả bởi hầu hết chúng đều đạt độ chính xác rất cao. Một mô hình ngẫu nhiên dự báo toàn bộ là nhãn thuộc nhóm đa số cũng sẽ mang lại kết quả gần bằng `100%`. Khi đó ta có thể cân nhắc tới một số metrics thay thế như `precision, recall, f1-score, gini,...`. Các chỉ số này sẽ không quá lớn để dẫn tới ngộ nhận độ chính xác, đồng thời chúng tập trung hơn vào việc đánh giá độ chính xác trên nhóm thiểu số, nhóm mà chúng ta muốn dự báo chính xác hơn so với nhóm đa số.
 
-<img src="/assets/images/20200217_ImbalancedDataset/crossTable.png" width="300px" height="200px" style="display:block; margin-left:auto; margin-right:auto"/>
+<img src="/assets/images/20200217_ImbalancedDataset/crossTable.png" width="400px" height="200px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 1:** Bảng cross table mô tả kết quả thống kê chéo giữa nhãn dự báo và ground truth. Ở đây Positive tương ứng với nhãn `1` và Negative tương ứng với nhãn `0`.
+**Hình 1:** Bảng cross table mô tả kết quả thống kê chéo giữa nhãn dự báo và ground truth. Ở đây Positive tương ứng với nhãn `1` (vỡ nợ) và Negative tương ứng với nhãn `0` (thông thường).
 
 Từ bảng cross table ta dễ dàng hình dung được ý nghĩa của các chỉ số đó là:
 
-* Precision: Mức độ dự báo chính xác trong những trường hợp được dự báo là nhãn Positive.
+* Precision: Mức độ dự báo chính xác trong những trường hợp được dự báo là Positive.
 
 $$precision = \frac{TP}{TP+FP}$$
 
@@ -179,7 +180,9 @@ $$F1 = \frac{2}{\frac{1}{precision} + \frac{1}{recall}}$$
 
 * AUC: Biểu diễn mối quan hệ giữa độ nhạy (sensitivity) và độ đặc hiệu (specificity). Đánh giá khả năng phân loại good và bad được dự báo từ mô hình.
 
-Trong bài này tôi sẽ sử dụng chỉ số `auc` và `f1 score` là 2 thước đo chính đánh giá mô hình.
+Một mô hình có các chỉ số trên đều cao thì mô hình có chất lượng dự báo càng tốt.
+
+Trong bài này tôi sẽ sử dụng 2 chỉ số `auc` và `f1 score` là 2 thước đo chính đánh giá mô hình.
 
 ### 4.2. Xây dựng mô hình
 #### 4.2.1. Thuật toán Random forest:
@@ -191,33 +194,29 @@ Trước tiên để hiểu về thuật toán Random Forest ta cần hiểu kh�
 
 <img src="/assets/images/20200217_ImbalancedDataset/decisionTree.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 2:** Sơ đồ cây quyết đinh. Các node là những hình tròn trắng. Các mũi tên liên kết các node với nhau được gọi là nhánh. Một cây quyết định sẽ xuất phát bắt đầu từ root node, sau đó rẽ nhánh tới các split node và trả ra kết quả phân phối xác suất cho quan sát tại leaf node. Rotine là đường đi liên kết các node với nhau bằng các nhánh.
+**Hình 2:** Sơ đồ cây quyết đinh. Các node là những hình tròn trắng. Các mũi tên liên kết các node với nhau được gọi là nhánh. Một cây quyết định sẽ xuất phát bắt đầu từ root node, sau đó rẽ nhánh tới các split node và trả ra kết quả phân phối xác suất cho quan sát tại leaf node. Mối quan hệ giữa 2 node A và B bất kì có thể là parent-children (cha-con) nếu node A rẽ nhánh trực tiếp sang node B, sibling (anh chị em) nếu node A và B có chung node cha. Rotine là một phương án đường đi liên kết các node thuộc các cấp khác nhau bằng các nhánh.
 
-Decision tree sẽ xây dựng một cây quyết định ngẫu nhiên dựa trên các node (các hình tròn trắng trên hình) và nhánh (các mũi tên trên hình). Đại diện cho mỗi node là một câu hỏi mà giá trị trả về là YES hoặc NO. Các nhánh sẽ có tác dụng kết nối các nodes để tạo ra một kịch bản đường đi (routine).
+Thuật toán decision tree sẽ xây dựng một cây quyết định ngẫu nhiên dựa trên các node và nhánh. Node bắt đầu của cây quyết định là root node. Từ root node, mô hình sẽ xây dựng một câu hỏi lựa chọn. Tập các phương án có thể là toàn bộ các nhóm của biến category hoặc 2 lựa chọn YES/NO được sinh ra từ biến liên tục. Mỗi một nhánh sẽ tương ứng với một phương án `sunny` (nắng), `rainy` (mưa) hoặc `overcast` (u ám) của root node và kết nối đến một internal node. 
 
-Node bắt đầu của cây quyết định là root node. Từ root node, mô hình sẽ xây dựng một câu hỏi lựa chọn. Tập các phương án có thể là toàn bộ các nhóm của biến category hoặc phương án YES/NO được tạo ra từ biến liên tục. Chẳng hạn trong hình vẽ các phương án của câu hỏi từ root node đó là `sunny` (nắng), `rainy` (mưa), `overcast` (u ám). Dựa trên lựa chọn của chúng ta mà từ root node sẽ rẽ nhánh đến các node mới được gọi là split node hoặc internal node. Chẳng hạn nếu lựa chọn nhánh kịch bản `sunny` thì sẽ rẽ tới internal node tiếp theo là `humidity`.
+Tại các internal node, mô hình tiếp tục rẽ nhánh tới những internal node ở tầng thấp hơn tương ứng với các biến khác. Thứ tự các biến được lựa chọn là ngẫu nhiên. Quá trình rẽ nhánh được thực hiện tiếp tục cho đến khi mô hình đi đến node cuối cùng là leaf node. Tại node này không có nhánh nào được rẽ thêm và trả ra kết quả dự báo của cây quyết định. 
 
-Tại các internal node, mô hình tiếp tục rẽ nhánh tới những internal node ở tầng thấp hơn tương ứng với các biến khác. Thứ tự các biến được lựa chọn là ngẫu nhiên. Quá trình rẽ nhánh được thực hiện liên tục cho đến khi mô hình đi đến node cuối cùng là leaf node. Tại node này không có nhánh nào được rẽ thêm và trả ra kết quả dự báo của cây quyết định. 
-
-Tợp hợp các liên kết giữa các node được gọi là đường đi (routine). Nhãn của kết quả dự báo phụ thuộc vào phân phối xác suất các classes được tính toán theo đường đi từ root node đến leaf node.
+Nhãn của kết quả dự báo phụ thuộc vào phân phối xác suất các classes được tính toán theo đường đi từ root node đến leaf node.
 
 **Random Forest**
 
 <img src="/assets/images/20200217_ImbalancedDataset/randomForest.png" width="600px" height="500px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 3:** Kiến trúc mô hình random forest. Mô hình là một tập hợp của nhiều cây quyết định. Mỗi một cây quyết định sẽ trả ra một kết quả dự báo. Quyết định cuối cùng về nhãn của quan sát sẽ dựa trên nguyên tắc bầu cử đa số (Majority-Voting) trên toàn bộ các cây quyết định con. Ngoài ra mô hình cũng được chạy trên rất nhiều các sub-sample. Nếu một quan sát xuất hiện tại nhiều sub-sample thì sẽ thực hiện bầu cử đa số trên cả các cây quyết định của toàn bộ các sub-sample.
+**Hình 3:** Kiến trúc mô hình random forest. Mô hình là một tập hợp của nhiều cây quyết định. Mỗi một cây quyết định sẽ trả ra một kết quả dự báo. Quyết định cuối cùng về nhãn của quan sát sẽ dựa trên nguyên tắc bầu cử đa số (Majority-Voting) trên toàn bộ các cây quyết định con. Ngoài ra mô hình cũng được chạy trên rất nhiều các sub-sample. Nếu một quan sát xuất hiện tại nhiều sub-sample thì sẽ thực hiện bầu cử đa số trên tất cả các cây quyết định của toàn bộ các sub-sample.
 
-Random Forest là thuật toán thuộc lớp mô hình kết hợp (ensemble model). Kết quả của thuật toán dựa trên không chỉ từ một cây quyết định mà từ nhiều cây quyết định. Thuật toán sẽ xây dựng nhiều kịch bản cây quyết định khác nhau và mỗi một cây được sẽ được áp dụng trên nhiều mẫu dữ liệu con được lựa chọn ngẫu nhiên. Kết quả nhãn dự báo cho một quan sát được tổng hợp từ rất nhiều mô hình cây quyết định khác nhau và ta sẽ voting trên tập hợp các kết quả đó để quyết định nhãn cuối cùng.
-
-Kết quả từ mô hình Random Forest được kết hợp từ nhiều mô hình con nên có độ tin cậy cao hơn. Do đó thường có kết quả dự báo chính xác hơn so với những mô hình phân loại tuyến tính như logistic hoặc linear regression.
+Random Forest là thuật toán thuộc lớp mô hình kết hợp (ensemble model). Kết quả của thuật toán dựa trên bầu cư đa số từ nhiều cây quyết định. Do đó mô hình có độ tin cậy cao hơn và độ chính xác tốt hơn so với những mô hình phân loại tuyến tính đơn giản như logistic hoặc linear regression.
 
 Bên cạnh Random Forest thì Gradient Boosting và AdaBoost cũng là các mô hình thuộc lớp mô hình kết hợp thường được áp dụng và mang lại hiệu quả cao tại nhiều cuộc thi.
 
 **Tham số của Random Forest:**
 
-Sẽ có một vài kịch bản tham số được lựa chọn và dựa trên kiểm nghiệm từ tập dev, chúng ta quyết định lựa chọn bộ siêu tham số phù hợp nhất.
+Sẽ có 3 kịch bản siêu tham số được lựa chọn. Dựa trên kiểm nghiệm từ tập dev, chúng ta quyết định lựa chọn bộ siêu tham số phù hợp nhất.
 
-Có rất nhiều tham số trong một mô hình Random Forest, trong đó một số tham số chính được sử dụng để tunning mô hình là:
+Để tunning mô hình random forest chúng ta dựa trên một số tham số chính:
 
 * **n_estimators**: Số lượng các trees trên một cây quyết định.
 * **max_depth**: Độ sâu lớn nhất của một cây quyết định.
@@ -313,26 +312,26 @@ print('model 3 ROC score on dev dataset: ', model3_roc_score)
     model 3 ROC score on dev dataset:  0.768555
     
 
-Như vậy bằng kiểm tra trên tập dev set cho thấy mô hình 2 sẽ có kết quả tốt nhất. Do đó ta sẽ coi mô hình 2 như một model baseline và các siêu tham số của nó sẽ được giữ để khởi tạo các mô hình về sau.
+Như vậy bằng kiểm tra trên tập dev set cho thấy mô hình 2 sẽ có kết quả tốt nhất. Do đó ta sẽ coi mô hình 2 làm mô hình baseline và các siêu tham số của nó sẽ được giữ để khởi tạo các mô hình về sau.
 
 ### 4.3. Under sampling
 
 Under sampling là việc ta giảm số lượng các quan sát của nhóm đa số để nó trở nên cân bằng với số quan sát của nhóm thiểu số. Ưu điểm của under sampling là làm cân bằng mẫu một cách nhanh chóng, dễ dàng tiến hành thực hiện mà không cần đến thuật toán giả lập mẫu. 
 
-Tuy nhiên nhược điểm của nó là kích thước mẫu sẽ bị giảm một cách trầm trọng. Gỉa sử nhóm thiểu số của chúng ta có kích thước là 500, như vậy để tạo ra sự cân bằng mẫu giữa nhóm đa số và thiểu số sẽ cần giảm kích thước mẫu của nhóm đa số từ 10000 về 500. Tổng kích thước tập huấn luyện sau khi under sampling là 1000 và chiếm khoảng 1/10 so với kích thước tập huấn luyện ban đầu. Đây là tập huấn luyện rất nhỏ, không đại diện cho phân phối của toàn bộ tập dữ liệu và thường dễ dẫn tới hiện tượng overfitting.
+Tuy nhiên nhược điểm của nó là kích thước mẫu sẽ bị giảm đáng kể. Gỉa sử nhóm thiểu số có kích thước là 500, như vậy để tạo ra sự cân bằng mẫu giữa nhóm đa số và thiểu số sẽ cần giảm kích thước mẫu của nhóm đa số từ 10000 về 500. Tổng kích thước tập huấn luyện sau under sampling là 1000 và chiếm gần 1/10 kích thước tập huấn luyện ban đầu. Tập huấn luyện mới khá nhỏ, không đại diện cho phân phối của toàn bộ tập dữ liệu và thường dễ dẫn tới hiện tượng overfitting.
 
-Do đó trong một số phương án, chúng ta có thể không nhất thiết lựa chọn sao cho tỷ lệ mẫu giữa `nhóm đa số: nhóm thiểu số` là `50%:50%` mà có thể giảm dần xuống về `80%:20%`, `70%:30%` hoặc `60%:40%` và tìm ra phương án nào mang lại hiệu quả dự báo tốt nhất trên tập kiểm tra.
+Do đó trong một số phương án, chúng ta có thể không nhất thiết lựa chọn sao cho tỷ lệ mẫu giữa `nhóm đa số: nhóm thiểu số` là `50:50` mà có thể giảm dần xuống về `80:20`, `70:30` hoặc `60:40` và tìm ra phương án nào mang lại hiệu quả dự báo tốt nhất trên tập kiểm tra.
 
-Bên dưới ta sẽ xây dựng mô hình trên 2 tỷ lệ mẫu `80%:20%` và `70%:30%` và đánh giá mô hình trên tập test.
+Bên dưới ta sẽ xây dựng mô hình trên 2 tỷ lệ mẫu `80:20` và `70:30` và đánh giá mô hình trên tập test.
 
 
 ```
-# Phân chia mẫu ngẫu nhiên theo tỷ lệ 80%:20% bằng cách giữ lại 2000 mẫu ngẫu nhiên từ tập train
+# Phân chia mẫu ngẫu nhiên theo tỷ lệ 80:20 bằng cách giữ lại 2000 mẫu ngẫu nhiên từ tập train
 np.random.shuffle(id_train_neg)
 id_train_neg_80_20 = id_train_neg[:2000]
 id_train_80_20 = np.concatenate((id_train_neg_80_20, id_train_pos), axis = 0)
 
-# Phân chia mẫu ngẫu nhiên theo tỷ lệ 70%:30% bằng cách giữ lại 1166 mẫu ngẫu nhiên từ tập train
+# Phân chia mẫu ngẫu nhiên theo tỷ lệ 70:30 bằng cách giữ lại 1166 mẫu ngẫu nhiên từ tập train
 np.random.shuffle(id_train_neg)
 id_train_neg_70_30 = id_train_neg[:1166]
 
@@ -345,7 +344,7 @@ data_train_70_30 = dataset.iloc[id_train_70_30]
 
 
 ```
-# Huấn luyện mô hình trên mẫu tỷ lệ 80%:20%
+# Huấn luyện mô hình trên mẫu tỷ lệ 80:20
 model2_unsam_80_20 = RandomForestClassifier(n_estimators=500, 
                                             max_depth=10, 
                                             min_samples_split=400, 
@@ -361,7 +360,7 @@ model_f1_score = f1_score(data_test['default_payment_next_month'], model_pred_la
 print('model2_unsam_80_20 roc score on test: ', model_roc_score)
 print('model2_unsam_80_20 f1 score on test: ', model_f1_score)
 
-# Huấn luyện mô hình trên mẫu tỷ lệ 70%:30%
+# Huấn luyện mô hình trên mẫu tỷ lệ 70:30
 model2_unsam_70_30 = RandomForestClassifier(n_estimators=500, 
                                             max_depth=10, 
                                             min_samples_split=400, 
@@ -414,12 +413,9 @@ Chúng ta cùng tìm hiểu cụ thể các phương pháp này ở phần bên 
 
 #### 4.4.1. Naive random over-sampling
 
-Naive random Over sampling là phương pháp tái chọn mẫu dựa trên giả thuyết ngây ngô là dữ liệu của mẫu mới sẽ hoàn toàn giống dữ liệu sẵn có. Do đó ta sẽ chọn mẫu bằng cách lựa chọn ngẫu nhiên có lặp lại các quan sát thuộc nhóm thiểu số. 
+Naive random Over sampling là phương pháp tái chọn mẫu dựa trên giả thuyết ngây ngô là dữ liệu mẫu giả lập mới sẽ giống dữ liệu sẵn có. Do đó ta sẽ cân bằng mẫu bằng cách lựa chọn ngẫu nhiên có lặp lại các quan sát thuộc nhóm thiểu số. 
 
-Do lựa chọn dữ liệu có lặp lại nên các quan sát thu được sau naive random over-sampling chính là những quan sát thực tế và đánh giá dược đúng bản chất dữ liệu.
-
-Bên dưới ta sẽ lựa chọn Naive random over-sampling sao cho tỷ lệ mẫu thuộc nhóm thiểu số và nhóm đa số là bằng 1. Sau đó huấn luyện model trên tập mẫu đã được over sampling và kiểm tra kết quả trên tập test. So sánh với kết quả từ mô hình baseline để đánh giá phương pháp over sampling có giúp cải thiện hiệu năng dự báo hay không?
-
+Trong ví dụ này tôi sẽ lựa chọn Naive random over-sampling sao cho tỷ lệ mẫu giữa 2 nhóm là cân bằng. Giữ nguyên các mẫu thuộc nhóm đa số và tăng kích thước mẫu thuộc nhóm thiểu số sao cho bằng với nhóm đa số. Sau đó huấn luyện model trên tập mẫu đã được over sampling và kiểm tra kết quả trên tập test. So sánh với kết quả từ mô hình baseline để đánh giá mức độ cải thiện.
 
 ```
 from collections import Counter
@@ -501,12 +497,11 @@ print('random forest f1 score on test: ', model_f1_score)
     random forest f1 score on test:  0.245398773006135
     
 
-Như vậy ta thấy rằng khi sử dụng phương pháp random over sampling mẫu sẽ giúp cải thiện được đáng kể kết quả dự báo. Chỉ số `auc` tăng lên từ:
-`0.7820` trên tập test lên `0.7825` và chỉ số `f1 score` tăng từ `0.2454` lên `0.2565`.
+Như vậy ta thấy rằng khi sử dụng phương pháp random over sampling mẫu sẽ giúp cải thiện được đáng kể kết quả dự báo. Chỉ số `auc` tăng lên từ: `0.7820` lên `0.7825` trên tập test và chỉ số `f1 score` tăng từ `0.2454` lên `0.2565`.
 
 #### 4.4.2. SMOTE & ADASYN
 
-SMOTE (Synthetic Minority Over-sampling) và ADASYN (Adaptive synthetic sampling) là các phương pháp sinh mẫu nhằm gia tăng kích thước mẫu của nhóm thiểu số trong trường hợp xảy ra mất cân bằng mẫu. Quá trình gia tăng kích thước mẫu sẽ dựa trên một tổ hợp tuyến tính của các mẫu láng giềng gần nhất với các quan sát thuộc mẫu thiểu số để tạo ra kết quả khái quát nhất. Phương pháp để lựa chọn ra các láng giềng của một quan sát có thể dựa trên thuật toán `kNN` hoặc `SVM`.
+SMOTE (Synthetic Minority Over-sampling) và ADASYN (Adaptive synthetic sampling) là các phương pháp sinh mẫu nhằm gia tăng kích thước mẫu của nhóm thiểu số trong trường hợp xảy ra mất cân bằng mẫu. Để gia tăng kích thước mẫu, với mỗi một mẫu thuộc nhóm thiểu số ta sẽ lựa chọn ra $k$ mẫu láng giềng gần nhất với nó và sau đó thực hiện tổ hợp tuyến tính để tạo ra mẫu giả lập. Phương pháp để lựa chọn ra các láng giềng của một quan sát có thể dựa trên thuật toán `kNN` hoặc `SVM`.
 
 Chi tiết các thuật toán này tôi sẽ không trình bày tại đây. Các bạn có thể tham khảo tại [Synthetic Minority Over-sampling](https://arxiv.org/pdf/1106.1813.pdf) và [Adasyn adaptive synthetic](https://towardsdatascience.com/adasyn-adaptive-synthetic-sampling-method-for-imbalanced-data-602a3673ba16).
 
@@ -574,17 +569,15 @@ for i, sampler in enumerate((SMOTE(sampling_strategy = 1, random_state=0),
     random forest f1 score on test:  0.21940928270042193
     
 
-Như vậy ta thấy có 2 phương pháp SMOTE là `SVMSMOTE` và `BorderlineSMOTE` đã giúp tăng chỉ số `f1` score so với mô hình baseline. Trong đó phương pháp `SVMSMOTE` có mức độ cải thiện f1 score là gần 4% từ `0.2454` lên `0.2839`. Trong khi f1 score thay đổi không đáng kể. Đây là cải thiện rất tốt đối với một mô hình mà hầu hết kết quả của `f1` chỉ xoay quanh khoảng từ `0.24-0.25`. 
+Như vậy ta thấy 2 phương pháp SMOTE là `SVMSMOTE` và `BorderlineSMOTE` đã giúp tăng chỉ số `f1 score` so với mô hình baseline. Trong đó phương pháp `SVMSMOTE` có mức độ cải thiện f1 score là gần 4% từ `0.2454` lên `0.2839`. Trong khi f1 score thay đổi không đáng kể. Đây là cải thiện rất tốt đối với một mô hình mà hầu hết kết quả của `f1` chỉ xoay quanh khoảng từ `0.24-0.25`. 
 
-### 4.5. Thu thập thêm dữ liệu
+### 4.5. Thu thập thêm quan sát
 
-Thông thường với các mô hình mà số lượng quan sát trong mẫu thiểu quá nhỏ sẽ không đại diện cho toàn bộ các trường hợp của `vỡ nợ`. Để mô hình học được bao quát hơn các khả năng, chúng ta cần gia tăng kích thước mẫu thiểu bằng cách thu thập thêm các quan sát trên thực tế thuộc nhóm thiểu. 
+Thông thường với các mô hình mà số lượng quan sát trong nhóm thiểu số quá nhỏ sẽ không thể đại diện cho toàn bộ các nguyên nhân dẫn đến quan sát rơi vào nhóm thiểu số. Để mô hình học được bao quát hơn các khả năng, chúng ta cần gia tăng kích thước mẫu thiểu bằng cách thu thập thêm các quan sát thực tế thuộc nhóm thiểu số. 
 
-Ví dụ, giả sử ta lấy thêm 500 quan sát thuộc nhóm thiểu số vào tập train. Các quan sát này phải thỏa mãn điều kiện chưa từng xuất hiện ở các mẫu của tập test. Bởi vì về nguyên tắc, khi đánh giá mô hình, chúng ta không được lấy mẫu đã được huấn luyến để kiểm tra mô hình.
+Ví dụ, giả sử ta thu thập thêm 500 quan sát thuộc nhóm thiểu số vào tập train. Các quan sát này phải thỏa mãn điều kiện chưa từng xuất hiện ở các mẫu của tập test để tạo tính khách quan khi đánh giá mô hình. Trên nguyên tắc, mẫu đã được đưa vào huấn luyện mô hình sẽ không được sử dụng để kiểm tra mô hình.
 
-Như vậy ta sẽ có một tập dữ liệu mới gọi là `data_train_add` có 10000 mẫu thông thường và 1000 mẫu vỡ nợ. Cùng xây dựng mô hình và kiểm tra trên tập test.
-
-
+Như vậy ta sẽ có một tập dữ liệu mới là `data_train_add` trong code bên dưới bao gồm 10000 mẫu bình thường và 1000 mẫu vỡ nợ. Cùng xây dựng mô hình và kiểm tra trên tập test.
 
 ```
 # Tập train:
@@ -624,13 +617,13 @@ print('random forest f1 score on test: ', model_add_f1_score)
     random forest f1 score on test:  0.2629310344827586
     
 
-Như vậy ta nhận thấy thu thập thêm dữ liệu cho nhóm thiểu số cũng là một phương án cải thiện khả năng dự báo so với model baseline, chỉ số `auc` và `f1 score` đều tăng.
+Như vậy ta nhận thấy thu thập thêm dữ liệu cho nhóm thiểu số cũng là một phương án cải thiện khả năng dự báo so với mô hình baseline, chỉ số `auc` và `f1 score` đều tăng.
 
 ### 4.6. Thu thập thêm biến
 
-Mô hình có kết quả kém có thể là do dữ liệu đang thiếu những biến quan trọng có ảnh hưởng lớn tới hành vi của nhóm thiểu số. Chẳng hạn đối với bài toán dự báo khả năng vỡ nợ, chúng ta có thể thu thập thêm dữ liệu về lịch sử tín dụng của khách hàng trên toàn bộ hệ thống ngân hàng để kiểm tra xem liệu khách hàng có đang vay vốn tại các ngân hàng khác không và khách hàng đã từng phát sinh nợ quá hạn chưa?
+Mô hình có kết quả kém có thể là do đang thiếu những biến quan trọng có ảnh hưởng lớn tới xác định hành vi của nhóm thiểu số. Chẳng hạn đối với bài toán dự báo khả năng vỡ nợ, chúng ta có thể thu thập thêm dữ liệu về lịch sử nợ xấu trên toàn bộ hệ thống ngân hàng, mức thu nhập, đã có nhà chưa, đã có xe chưa, số người phụ thuộc,.... Đây là những biến sẽ cung cấp thêm những thông tin hữu ích để nhận diện tốt hơn những trường hợp có khả năng vỡ nợ.
 
-Có nhiều biến đầu vào quan trọng không dễ dàng nhận biết nếu data scientist không có hiểu biết về lĩnh vực đó. Do đó hiểu biết lĩnh vực (knownledge domain) rất quan trọng đối với mọi data scientist trước khi xây dựng mô hình. Để bổ sung thêm biến, chúng ta có thể xin ý kiến chuyên gia trong lĩnh vực mà ta đang phân loại. Các chuyên gia là người có kinh nghiệm lâu năm và có hiểu biết sâu sắc về đặc tính của các nhóm. Do đó họ sẽ đưa ra nhiều rules nhận diện và các biến quan trọng giúp ích cho phân loại.
+Hiểu biết lĩnh vực (knownledge domain) rất quan trọng đối với data scientist trước khi xây dựng mô hình. Có nhiều biến đầu vào quan trọng không dễ dàng nhận biết nếu data scientist không có hiểu biết về lĩnh vực đang phân loại. Để bổ sung thêm biến, thu thập ý kiến chuyên gia là một biện pháp quan trọng để tạo ra bộ dữ liệu chất lượng cho huấn luyện mô hình. Các chuyên gia là những người có kinh nghiệm và hiểu biết chuyên sâu về đặc tính của các nhóm. Do đó họ sẽ đưa ra nhiều rules nhận diện giúp ích cho phân loại.
 
 ### 4.7. Phạt mô hình
 
@@ -663,9 +656,9 @@ Ta thấy cả `auc` và `f1 score` đều cao hơn so với baseline model. Tro
 
 ### 4.8. Thử nghiệm nhiều phương pháp khác nhau.
 
-Quá trình thực nghiệm cho thấy mỗi một thuật toán sẽ có kết quả tốt đối với mỗi một bộ dữ liệu khác nhau. Có thuật toán cho kết quả tốt trên các bộ dữ liệu mất cân bằng nghiêm trọng nhưng kém hiệu quả trên các bộ dữ liệu không bị mất cân bằng. Do đó điều chúng ta không nên tin tưởng vào một thuật toán mà phải mở rộng và thử nghiệm mô hình trên nhiều thuật toán khác nhau.
+Quá trình thực nghiệm cho thấy có thuật toán cho kết quả tốt trên các bộ dữ liệu mất cân bằng nghiêm trọng nhưng kém hiệu quả trên các bộ dữ liệu không bị mất cân bằng và ngược lại. Do đó điều chúng ta không nên tin tưởng vào một thuật toán mà phải mở rộng và thử nghiệm mô hình trên nhiều thuật toán khác nhau.
 
-Bên dưới chúng ta cùng lần lượt hồi qui mô hình với các thuật toán và kiểm tra mức độ dự báo chính xác trên tập test.
+Hãy cùng thử nghiệm huấn luyện một loạt các thuật toán trên tập train và kiểm tra mức độ dự báo chính xác trên tập test.
 
 **Logistic Regression**
 
@@ -865,14 +858,14 @@ lgb_classifier = _train_and_test(lgb_classifier, algo = 'Light Gradient Boosting
     Light Gradient Boosting f1 score on test: 0.25654450261780104
     
 
-Ta thấy hầu hết các mô hình đều không hoạt động tốt trên dữ liệu imbalance. Một số mô hình dự báo trên tập test chỉ rơi vào 1 nhóm dẫn tới `f1` = 0 như mô hình kNN, MLP, Logistic.
+Ta thấy hầu hết các mô hình đều không mang lại kết quả tốt đối với bộ dữ liệu này. Một số mô hình như `kNN, MLP, Logistic` dự báo trên tập test chỉ rơi vào 1 nhóm dẫn tới `f1 score` = 0.
 
 Tuy nhiên, mô hình `Light Gradient Boosting` lại cho kết quả dự báo khá tốt khi cải thiện được cả 2 chỉ số `auc` và `f1` so với baseline model. Thực tế tôi từng xây dựng nhiều mô hình có hiện tượng mất cân bằng dữ liệu nghiêm trọng, và kết quả cho thấy `Light Gradient Boosting` là mô hình có hiệu quả cao trong nhiều bài toán của tôi.
 
 ## 5. Kết luận
 
-Như vậy tôi đã giới thiệu xong hầu hết các phương pháp đối phó với hiện tượng mất cân bằng dữ liệu.
-Trong quá trình xây dựng mô hình, đặc biệt là các mô hình phân loại nhị phân (2 classes) các bạn sẽ thường xuyên gặp lại hiện tượng này. Mất cân bằng dữ liệu sẽ dẫn tới mô hình dự báo kém chính xác và đa phần kết quả dự báo bị thiên hẳn về một nhãn. Trong trường hợp đó, các thước đo như accuracy cũng không phải là một metric tốt để đánh giá mô hình. Qua bài viết này các bạn sẽ có thêm những phương pháp hữu hiệu để đối phó với các tình huống mất cân bằng dữ liệu. Tùy vào từng bài toán và từng bộ dữ liệu mà data scientist có thể lựa chọn một hoặc kết hợp một vài phương pháp để cải thiện hiệu năng mô hình.
+Như vậy tôi đã giới thiệu xong một số các phương pháp chính đối phó với hiện tượng mất cân bằng dữ liệu.
+Trong quá trình xây dựng mô hình, đặc biệt là các mô hình phân loại nhị phân (2 classes) các bạn sẽ thường xuyên gặp lại hiện tượng này. Mất cân bằng dữ liệu sẽ dẫn tới mô hình dự báo kém chính xác và đa phần kết quả dự báo bị thiên về nhãn đa số. Trong trường hợp đó, các thước đo như accuracy cũng không phải là một metric tốt để đánh giá mô hình. Qua bài viết này các bạn sẽ có thêm những phương pháp hữu hiệu để đối phó với các tình huống mất cân bằng dữ liệu. Tùy vào từng bài toán và từng bộ dữ liệu mà data scientist có thể lựa chọn một hoặc kết hợp một vài phương pháp để cải thiện hiệu năng mô hình.
 
 ## 6. Tài liệu
 
