@@ -390,8 +390,7 @@ print(data_words[:1])
     
 
 ## 4.3. Tạo ra các bigram và trigram cho mô hình.
-
-Mô hình LDA sẽ sử dụng đầu vào là ma trận đồng xuất hiện của các từ. Để tính toán được tần suất đồng xuất hiện trên những ma trận này chúng ta sẽ tạo ra các bigram (2 từ) và trigram (3 từ) là cụm các từ liên tiếp nhau. Để xây dựng các bigram và trigram có thể sử dụng class Phrases của gensim
+Hiện tại các từ vựng đang gồm toàn bộ là những từ đơn. Để tăng độ chính xác cho mô hình ta sẽ cần gom cụm các từ đơn có tần xuất xuất hiện cùng nhau chung thành những collocations có độ dài gồm 2 hoặc 3 từ. Ta sẽ gọi chúng là các bigram hoặc trigram. Để xây dựng các bigram và trigram trong gensim ta sử dụng class Phrases:
 
 
 ```
@@ -577,7 +576,7 @@ Sau khi huấn luyện xong mô hình chúng ta có thể save vào folder để
 
 
 ```
-lda.save("your_folder/model_lda_100.model")
+lda_model.save("your_folder/model_lda_100.model")
 ```
 
 Và load lại model từ folder
