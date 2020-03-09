@@ -97,7 +97,17 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation sử dụng mạng Neural</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
 					
@@ -134,6 +144,8 @@ body {
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
 					
@@ -569,16 +581,36 @@ Dấu bằng thứ 2 xảy ra là do $\text{E}(\epsilon_t)=0,\forall t\in N$ M�
 \end{cases} 
 \end{equation} %]]></script>
 
-<p>Do đó chuỗi $y_t$ sẽ dừng khi $\phi \leq 1$. Như vậy kiểm định nghiệm đơn vị sẽ dựa trên cặp giả thuyết:</p>
+<p>Như vậy tính chất dừng của chuỗi $y_t$ sẽ phụ thuộc vào phương trình đặc trưng $\theta(y)=1−\theta L=0$ có nghiệm đơn vị hay không. Nếu phương trình đặc trưng có nghiệm đơn vị (unit root), chuỗi $y_t$ sẽ không dừng. Trái lại ta có thể khẳng định $y_t$ là chuỗi dừng như đồ thị mô tả bên dưới.</p>
 
-<script type="math/tex; mode=display">\begin{equation} 
+<p><img src="https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/12/unit-root.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+
+<blockquote>
+  <p>Đồ thị mô tả một khả năng của nghiệm đơn vị. Đường màu đỏ hiển thị sự sụt giảm của output và đường phục hồi nếu chuỗi thời gian có nghiệm đơn vị. Màu xanh hiển thị sự phục hồi nếu không có nghiệm đơn vị và chuỗi là chuỗi dừng có xu hướng (trend-stationary). (Nguồn <a href="https://www.statisticshowto.datasciencecentral.com/unit-root/">Unit Root: Simple Definition, Unit Root Tests</a>).</p>
+</blockquote>
+
+<p>Nhắc lại lý thuyết về kiểm định. Một kiểm định thống kê sẽ bao gồm 2 cặp giả thuyết kiểm định đó là:</p>
+
+<ul>
+  <li>
+    <p>Gỉa thuyết null (null hypothesis), còn được gọi là <code class="highlighter-rouge">giả thuyết không có</code>, kí hiệu là $H_0$. Đây là giả thuyết bị nghi ngờ xảy ra và được sử dụng để kiểm chứng những tính chất liên quan đến mẫu mà chúng ta chưa biết rằng mẫu sở hữu trên thực tế. Lấy ví dụ, một giáo viên nói rằng các học sinh của trường thi đạt học đạt điểm toán trung bình là 7. Tuy nhiên đây mới chỉ là một giả thuyết cần kiểm chứng. Chúng ta có thể kiểm tra bằng cách thu thập 30 mẫu các học sinh của trường và kiểm chứng giả thuyết của cô giáo bằng cách kiểm định xem trung bình điểm thi toán của 30 học sinh trên có bằng 7 hay không?</p>
+  </li>
+  <li>
+    <p>Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H1$. Là <code class="highlighter-rouge">giả thuyết thay thế</code> hoặc <code class="highlighter-rouge">giả thuyết đối</code> có ý nghĩa trái ngược với khẳng định ở giả thuyết null.</p>
+  </li>
+</ul>
+
+<p>Để kiếm tra phương trình đặc trưng của chuỗi có nghiệm đơn vị hay không chúng ta sử dụng kiểm định ADF. Giả thuyết null được đặt ra đó là phương trình đặc trưng có nghiệm đơn vị. Trong trường hợp p-value &lt; 0.05 thì ta sẽ loại bỏ giả thuyết null, chấp nhận giả thuyết thay thế. Khi đó ta có thể khẳng định rằng chuỗi không có nghiệm đơn vị và có tính chất dừng.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} 
 \begin{cases} 
-H_0: \phi = 1, \Rightarrow \text{stationary} \\
-H1: |\phi| > 1, \Rightarrow \text{non-stationary} 
+H_0: \phi = 1, \Rightarrow \text{unit root} \\
+H1: |\phi| < 1, \Rightarrow \text{non-unit root} 
 \end{cases} 
-\end{equation}</script>
+\end{equation} %]]></script>
 
-<p>Chúng ta gọi đó là kiểm định nghiệm đơn vị (unit root test) bởi vì phương trình đặc trưng của nó $\theta(y)=1−\theta L=0$ có nghiệm đơn vị. Giá trị ngưỡng kiểm định:
+<p>Giá trị ngưỡng kiểm định:
 <script type="math/tex">DF = \frac{\hat\phi - 1}{SE(\hat\phi)}</script>
 Chúng ta sẽ so sánh giá trị ngưỡng kiểm định này với giá trị tới hạn của phân phối Dickey - Fuller để đưa ra kết luận về chấp nhận hoặc bác bỏ giả thuyết $H_0$. Trên python đã hỗ trợ kiểm định ADF thông qua package <code class="highlighter-rouge">statsmodels</code>. Ta sẽ kiểm định ADF cho chuỗi lợi suất.</p>
 
@@ -599,7 +631,7 @@ Critical Values:
 	10%: -2.573
 </code></pre></div></div>
 
-<p>Gía trị p-value &lt; 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Hay nói cách khác chuỗi lợi suất không có tính chất dừng.</p>
+<p>Gía trị p-value &lt; 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Phương trình đặc trưng không có nghiệm đơn vị. Do đó chuỗi lợi suất có tính chất dừng.</p>
 
 <h1 id="4-xây-dựng-mô-hình">4. Xây dựng mô hình</h1>
 
@@ -715,18 +747,7 @@ MA.2           -0.2313           +0.9731j            1.0002            0.2871
   <li>Cột <code class="highlighter-rouge">coef</code> là giá trị hệ số ước lượng từ mô hình tương ứng với các biến ở cột bên tay trái.</li>
   <li>Cột <code class="highlighter-rouge">std err</code> là độ lệch chuẩn của hệ số ước lượng. Từ giá trị ước lượng và độ lệch chuẩn ta có thể tính toán ra được khoảng tin cậy. Cận trên và dưới của khoảng tin cậy là các cột <code class="highlighter-rouge">[0.025</code> và <code class="highlighter-rouge">0.975]</code>.</li>
   <li>Cột <code class="highlighter-rouge">z</code> chính là giá trị ngưỡng tới hạn được suy ra từ phân phối chuẩn hóa. Gía trị ngưỡng tới hạn được tính bằng: <script type="math/tex">z = \frac{\beta-\mu}{u_{\alpha/2}\sigma}</script> với $\beta$ là giá trị ước lượng, $\mu, \sigma$ là các giá trị trung bình, độ lệch chuẩn của hệ số ước lượng. $u_{\alpha/2}$ là mức phân vị 97.5% của phân phối chuẩn hóa. Do ở đây ta đang kiểm định các giá trị $\beta$ bằng 0 nên trung bình được giả định bằng 0. Tức là $\mu=0$. Nhìn chung là ta không cần quan tâm đến cột này lắm bởi cột <code class="highlighter-rouge">P&gt;|z|</code> đã thực hiện chức năng thay thế nó trong việc kiểm định các hệ số ước lượng có ý nghĩa thống kê hay không.</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Cột <code class="highlighter-rouge">P&gt;|z|</code> là xác suất để giá trị $P(</td>
-          <td>X</td>
-          <td>&gt; 0</td>
-          <td>X \sim N(0, \sigma^2))$. Đây chính là giá trị P-value của cặp giả thuyết dấu bằng. Gía trị của P-value &lt; 0.05 sẽ cho thấy hệ số ước lượng lớn hơn 0 là có ý nghĩa thống kê.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Cột <code class="highlighter-rouge">P&gt;|z|</code> là xác suất để giá trị $P(\mid X\mid &gt; 0 \mid X \sim N(0, \sigma^2))$. Đây chính là giá trị P-value của cặp giả thuyết dấu bằng. Gía trị của P-value &lt; 0.05 sẽ cho thấy hệ số ước lượng lớn hơn 0 là có ý nghĩa thống kê.</li>
 </ul>
 
 <p>Các chỉ số ở góc trên bên phải lần lượt là:</p>

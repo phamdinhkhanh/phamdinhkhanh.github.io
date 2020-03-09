@@ -97,6 +97,14 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
@@ -136,6 +144,8 @@ body {
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
 					
@@ -178,17 +188,17 @@ body {
 
 <h1 id="1-vai-trò-của-tiền-xử-lý-ảnh">1. Vai trò của tiền xử lý ảnh</h1>
 
-<p>Khi phát triển một thuật toán phân loại ảnh chúng ta có thể gặp phải một số trường hợp không mong đợi như: Kết quả huấn luyện có độ chính xác rất cao khi sai số của mô hình áp dụng trên cả tập huấn luyện (train dataset) và tập phát triển (dev dataset) đều thấp. Nhưng khi áp dụng vào thực tiễn kết quả lại khá thấp. Có rất nhiều các nguyên nhân dẫn tới điều này và một trong số đó là:</p>
+<p>Khi phát triển một thuật toán phân loại ảnh chúng ta có thể gặp phải một số trường hợp không mong đợi như: Kết quả huấn luyện có độ chính xác rất cao trên cả tập huấn luyện (train dataset) và tập phát triển (dev dataset). Nhưng khi áp dụng vào thực tiễn lại cho độ chính xác thấp. Có rất nhiều các nguyên nhân dẫn tới điều này và một trong số đó là:</p>
 
 <ul>
   <li>
-    <p>Các bức ảnh được huấn luyện khác xa so với những bức ảnh được người dùng đưa lên về nhiều khía cạnh như: độ phân giải, cường độ ánh sáng của ảnh, chất lượng ảnh, độ to nhỏ của vật thể trong ảnh, chiều, hướng và tư thế của vật thể bên trong ảnh.</p>
+    <p>Các bức ảnh được huấn luyện khác xa so với những bức ảnh được người dùng upload về các khía cạnh: độ phân giải, cường độ màu sắc, chất lượng ảnh, độ to nhỏ của vật thể, chiều, hướng và tư thế của vật thể bên trong ảnh.</p>
   </li>
   <li>
-    <p>Có thể các bức ảnh được người dùng upload lên mặc dù cùng nhãn nhưng khác về tính chất so với các bức ảnh đã huấn luyện. Chẳng hạn một thuật toán về phân loại <code class="highlighter-rouge">dog and cat</code> nếu tập huấn luyện chỉ bao gồm những con mèo trưởng thành nhưng trên thực tế người dùng lại upload lên rất nhiều hình ảnh của mèo con khiến thuật toán nhầm lẫn.</p>
+    <p>Có thể các bức ảnh được người dùng upload lên mặc dù cùng nhãn nhưng khác về tính chất so với các bức ảnh đã huấn luyện. Ví dụ trong một thuật toán phân loại <code class="highlighter-rouge">dog and cat</code>, tập huấn luyện chỉ bao gồm những con mèo trưởng thành nhưng thực tế người dùng lại upload lên rất nhiều hình ảnh của mèo con có thể dẫn tới thuật toán bị nhầm lẫn.</p>
   </li>
   <li>
-    <p>Đối với một số tác vụ phân loại ảnh khó, đòi hỏi chuyên gia gán nhãn, rất dễ nhận biết sai lầm như phát hiện bệnh về nhãn cầu. Một số ít các ảnh trong tập huấn luyện có thể bị gán sai nhãn. Do đó ảnh hưởng đến chất lượng của thuật toán khi dự báo.</p>
+    <p>Đối với một số tác vụ phân loại ảnh khó, đòi hỏi chuyên gia gán nhãn, rất dễ mắc sai lầm như chuẩn đoán bệnh nhãn cầu. Một số ít các ảnh trong tập huấn luyện có thể bị gán sai nhãn. Do đó ảnh hưởng đến khả năng dự báo của thuật toán.</p>
   </li>
   <li>
     <p>Bộ dữ liệu huấn luyện có kích thước quá nhỏ và không đại diện cho toàn bộ các class được huấn luyện.</p>
@@ -201,13 +211,13 @@ body {
 
 <p>Và rất nhiều các nguyên nhân khác dẫn tới thuật toán hoạt động không được như kì vọng.</p>
 
-<p>Khi đối mặt với trường hợp trên chúng ta cần phải tìm ra nguyên nhân thực sự là gì để từ đó có phương án thích hợp khắc phục các lỗi mô hình. Từ đó cải thiện độ chính xác khi áp dụng vào thực tiễn.</p>
+<p>Khi đối mặt với trường hợp trên chúng ta cần phải tìm ra nguyên nhân thực sự là gì để từ đó đưa ra phương án thích hợp khắc phục các lỗi mô hình.</p>
 
 <p>Các kĩ thuật để giải quyết các trường hợp lỗi như vậy đã được tổng hợp rất kĩ trong cuốn <a href="https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation">Khao khát học máy - Andrew Ng</a>. Hiện tại sách đã được nhóm anh Tiệp và cộng đồng dịch ra Tiếng Việt khá đầy đủ. Bạn đọc có thể đọc từ chương 1 đến 16 để tìm hiểu cách thức xây dựng và phát triển những mô hình thông qua kinh nghiệm được tổng kết của tác giả.</p>
 
 <p>Trong cuốn sách tác giả nêu ra nhiều hướng giải quyết như: Thay đổi tập dữ liệu huấn luyện và tập dữ liệu phát triển, thống kê lỗi và tìm cách giải quyết các lỗi chính mang lại cải thiện lớn, xác định tập huấn luyện/phát triển và phép đo đơn trị thích hợp ngay từ đầu cho bài toán, áp dụng các phương pháp và kiến trúc mô hình khác nhau,…</p>
 
-<p>Trong trường hợp dữ liệu không đủ lớn, dữ liệu gán nhãn với chi phí cao (như chuẩn đoán bệnh qua hình ảnh, phải tìm được bệnh nhân gặp đúng bệnh đó và bác sĩ chuyên khoa để chuẩn đoán), việc thay đổi tập dữ liệu là khá tốn chi phí. Có một phương pháp mà mình nghĩ rằng sẽ giúp gia tăng số lượng ảnh đầu vào. Đó chính là học tăng cường (data augumentation) sử dụng các biến đổi là <code class="highlighter-rouge">tiền xử lý hình ảnh</code> đầu vào. Đây là một phương pháp hiệu quả nhằm thay đổi tập dữ liệu huấn luyện và từ đó giúp cải thiện hiệu quả dự báo.</p>
+<p>Trong trường hợp dữ liệu không đủ lớn, dữ liệu gán nhãn với chi phí cao (như chuẩn đoán bệnh qua hình ảnh, phải tìm được bệnh nhân gặp đúng bệnh đó và bác sĩ chuyên khoa để chuẩn đoán), việc thay đổi tập dữ liệu là khá tốn chi phí. Có một phương pháp mà mình nghĩ rằng sẽ giúp gia tăng số lượng ảnh đầu vào. Đó chính là học tăng cường (data augumentation) sử dụng các biến đổi <code class="highlighter-rouge">tiền xử lý hình ảnh</code> đầu vào. Đây là một phương pháp hiệu quả nhằm thay đổi tập dữ liệu huấn luyện và từ đó giúp cải thiện hiệu quả dự báo.</p>
 
 <p>Vậy tiền xử lý dữ liệu ảnh là gì và có những phương pháp nào để thực hiện tiền xử lý ảnh, bài viết này sẽ giới thiệu tới các bạn một series các cách tiếp cận khác nhau của tiền xử lý ảnh trên cả 2 phương diện lý thuyết kết hợp thực hành. Các code sẽ được thực hiện trên <code class="highlighter-rouge">opencv</code>, một package khá tiện ích trong xử lý ảnh. Chúng ta bắt đầu nhé.</p>
 
@@ -215,11 +225,48 @@ body {
 
 <h2 id="21-các-biến-đổi-hình-học">2.1. Các biến đổi hình học.</h2>
 
-<p>Đây là tập hợp các phép biến đổi hình ảnh từ một hình dạng này sang một hình dạng khác thông qua việc làm thay đổi phương, chiều, góc, cạnh mà không làm thay đổi nội dung chính của bức ảnh.</p>
+<p>Đây là tập hợp các phép biến đổi hình ảnh từ một hình dạng này sang một hình dạng khác thông qua việc làm thay đổi phương, chiều, góc, cạnh mà không làm thay đổi nội dung chính của bức ảnh. Về mặt lý thuyết toán học một phép biến đổi được định nghĩa như sau:</p>
 
-<h3 id="211-scale-ảnh">2.1.1. Scale ảnh</h3>
+<p><strong>Định nghĩa:</strong></p>
 
-<p>Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y. Chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm <code class="highlighter-rouge">cv2.resize()</code>.</p>
+<p>Mỗi một phép biến đổi hình học sẽ được xác định bởi một ma trận dịch chuyển (<code class="highlighter-rouge">translation matrix</code>) $\mathbf{M}$. Khi đó bất kì 1 điểm có tọa độ $(x, y)$ trên ảnh gốc thông qua phép biến đổi $T$ sẽ có tọa độ trong không gian mới sau dịch chuyển là $T(x, y)$ theo công thức:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} =  \begin{bmatrix} a_{11} & a_{12} \\
+a_{21} & a_{22}\end{bmatrix}\begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_{11} x + a_{12} y \\
+a_{21} x + a_{22} y\end{bmatrix} %]]></script>
+
+<p>Một hàm số $T: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ được coi là một phép biến đổi tuyến tính nếu nó thỏa mãn 2 tính chất sau:</p>
+<ul>
+  <li>Tính chất cộng tính: 
+<script type="math/tex">T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v})</script></li>
+  <li>Tính chất nhân tính:
+<script type="math/tex">T(\lambda \vec{x}) = \lambda T(\vec{x})</script></li>
+</ul>
+
+<p><img src="https://i.imgur.com/aPoGCQf.png" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<blockquote>
+  <p><strong>Hình 1</strong>: Tính chất cộng tính của phép biến đổi tuyến tính. Ta nhận thấy tính chất này hoàn toàn có thể được suy ra trực tiếp từ phép nhân ma trận $\mathbf{M}(\mathbf{A}+\mathbf{B}) = \mathbf{M}\mathbf{A}+\mathbf{M}\mathbf{B}$. Trong đó $\mathbf{M}$ là ma trận biến đổi và $\mathbf{A}, \mathbf{B}$ là các tọa độ điểm.</p>
+</blockquote>
+
+<p>Như vậy tổng kết lại, để xác định một phép biến đổi hình học ta sẽ cần phải xác định được ma trận dịch chuyển của nó là gì? Các dạng biển đổi sẽ được trình bày bên dưới sẽ được đặc trưng bởi các dạng ma trận dịch chuyển khác nhau.</p>
+
+<h3 id="211-phóng-đại-ảnh-scale-ảnh">2.1.1. Phóng đại ảnh (Scale ảnh)</h3>
+
+<p>Scale ảnh là việc chúng ta thay đổi kích thước dài, rộng của ảnh mà không làm thay đổi tính chất song song của các đoạn thẳng trên ảnh gốc so với các trục tọa độ X và Y.  Trong opencv, chúng ta sẽ thay đổi kích thước của hình ảnh bằng hàm <code class="highlighter-rouge">cv2.resize()</code>.</p>
+
+<p>Theo định nghĩa về phép biến đổi hình học thì một biến đổi phóng đại các chiều (x, y) theo hệ số (a_{1}, a_{2}) sẽ có ma trận dịch chuyển M là ma trận đường chéo. Tức là ma trận vuông có đường chéo chính là $[a_1, a_2]$ và các phần tử còn lại bằng 0. Khi đó phép dịch chuyển sẽ là:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_1 & 0 \\
+0 & a_2\end{bmatrix} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} a_1 x \\
+a_2 y\end{bmatrix} %]]></script>
+
+<p>Hàm <code class="highlighter-rouge">_downloadImage()</code> sẽ có tác dụng tải và convert ảnh sang numpy array từ đầu vào là link url của ảnh. Bạn đọc lưu ý, hàm này sẽ được sử dụng xuyên suốt bài hướng dẫn.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
 import numpy as np
@@ -255,13 +302,25 @@ scale image shape: (1418, 1242, 3)
 <p>Như vậy bức ảnh đã được resize về một kích thước gấp đôi cả về chiều <code class="highlighter-rouge">width</code> và <code class="highlighter-rouge">height</code> nhưng không làm nội dung ảnh thay đổi. Resize ảnh rất thường xuyên được sử dụng trong các mô hình deep learning phân loại ảnh vì mỗi một mô hình đều có một kích thước đầu vào tiêu chuẩn. Chẳng hạn như <code class="highlighter-rouge">Lenet</code> là kích thước <code class="highlighter-rouge">32x32x3</code> và <code class="highlighter-rouge">Alexnet</code> là <code class="highlighter-rouge">224x224x3</code>.</p>
 
 <h3 id="212-dịch-chuyển-ảnh-translation">2.1.2. Dịch chuyển ảnh (Translation)</h3>
-<p>Dịch chuyển ảnh thường được thực hiện trong trường hợp bạn muốn di chuyển ảnh đến các vị trí khác nhau như các góc trái, phải, ở giữa, bên trên, bên dưới. Để dịch chuyển hình ảnh chúng ta phải xác định được $(t_x, t_y)$ là các giá trị di chuyển ảnh theo trục $x$ và $y$. Ma trận dịch chuyển $\mathbf{M}$ sẽ có dạng như bên dưới:</p>
+
+<p>Dịch chuyển ảnh thường được thực hiện trong trường hợp bạn muốn dịch chuyển ảnh đến các vị trí khác nhau. Ví dụ tới các góc trái, phải, ở giữa, bên trên, bên dưới. Phép dịch chuyển sẽ giữ nguyên tính chất song song của các đoạn thẳng sau dịch chuyển đối với các trục X hoặc Y nếu trước dịch chuyển chúng cũng song song với một trong hai trục này. Để dịch chuyển hình ảnh chúng ta phải xác định được $(t_x, t_y)$ là các giá trị di chuyển ảnh theo trục $x$ và $y$. Ma trận dịch chuyển $\mathbf{M}$ sẽ có dạng như bên dưới:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \mathbf{M} = \begin{bmatrix} 1 & 0 & t_x \\
 0 & 1 & t_y\end{bmatrix} %]]></script>
 
-<p>Khi đó áp dụng hàm <code class="highlighter-rouge">cv2.warpAffine()</code> với đầu vào là ma trận dịch chuyển $\mathbf{M}$ ta thu được kết quả như bên dưới.</p>
+<p>Thật vậy. Giả sử mọi điểm ảnh đều nằm trên không gian 2 chiều. Khi đó ta coi chiều thứ 3 là một hằng số, chẳng hạn $z=1$. Khi đó phép biến đổi $(x, y)$ bất kì theo ma trận dịch chuyển $\mathbf{M}$ sẽ là:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+T(x, y) = \mathbf{M} \begin{bmatrix} x \\
+y\end{bmatrix} = \begin{bmatrix} 1 & 0 & t_x \\
+0 & 1 & t_y\end{bmatrix} \begin{bmatrix} x \\
+y \\ 1\end{bmatrix} = \begin{bmatrix} x + t_x \\
+y + t_y\end{bmatrix} %]]></script>
+
+<p>Như vậy mỗi điểm tọa độ $(x, y)$ đã được dịch chuyển tới một tọa độ mới là $(x+t_x, y+t_y)$</p>
+
+<p>Trong opencv, Áp dụng hàm <code class="highlighter-rouge">cv2.warpAffine()</code> với đầu vào là ma trận dịch chuyển $\mathbf{M}$ và bức ảnh gốc ta thu được kết quả là ảnh sau dịch chuyển.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows, cols = img.shape[:2]
 # Dịch chuyển hình ảnh xuống góc dưới bên phải
@@ -297,13 +356,14 @@ plt.subplot(155),plt.imshow(tran4),plt.title('Translate to Up Left')
 
 <h3 id="212-xoay-ảnh-rotation">2.1.2. Xoay ảnh (Rotation)</h3>
 
-<p>Phép xoay của một hình ảnh tương ứng với một góc $\theta$ đạt được bằng một ma trận dịch chuyển $\mathbf{M}$ như sau:</p>
+<p>Xoay ảnh được hiểu là ta quay một bức ảnh theo một góc xác định quanh một điểm nào đó. Phép xoay sẽ không đảm bảo tính chất song song với các trục X hoặc Y như phép dịch chuyển nhưng nó sẽ bảo toàn độ lớn góc. Nếu 3 điểm bất kì tại ảnh gốc tạo thành một tam giác thì khi biến đổi qua phép xoay ảnh, chúng sẽ tạo thành một tam giác đồng dạng với tam giác ban đầu.
+Phép xoay của một hình ảnh tương ứng với một góc $\theta$ đạt được bằng một ma trận dịch chuyển $\mathbf{M}$ như sau:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \mathbf{M} = \begin{bmatrix} cos(\theta) & -sin(\theta) \\
 sin(\theta) & cos(\theta)\end{bmatrix} %]]></script>
 
-<p>Ngoài ra OpenCV cung cấp một phép scaled rotation với khả năng điều chỉnh tâm của phép xoay để bạn có thể xoay theo bất kì vùng nào mà bạn ưa chuộng hơn. Phép dịch chuyển ma trận được đưa ra như sau:</p>
+<p>Ngoài ra OpenCV hỗ trợ một phép xoay phóng đại (scaled rotation) với khả năng vừa biến đổi ảnh theo phép xoay theo tâm xác định và điều chỉnh lại kích thước ảnh sau xoay. Như vậy bạn có thể xoay theo bất kì vùng nào mà bạn ưa chuộng hơn. Phép dịch chuyển ma trận được đưa ra như sau:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{bmatrix} \alpha & \beta & (1-\alpha)c_x-\beta c_y \\
@@ -313,6 +373,8 @@ sin(\theta) & cos(\theta)\end{bmatrix} %]]></script>
 
 <script type="math/tex; mode=display">\alpha = scale.cos(\theta) \\
 \beta = scale.sin(\theta)</script>
+
+<p>$(c_x, c_y)$ là tọa độ tâm của phép xoay và $scale$ là độ phóng đại.</p>
 
 <p>Để tìm ra ma trận transform có thể sử dụng hàm <code class="highlighter-rouge">cv2.getRotationMatrix2D()</code> của OpenCV. Trong hàm này chúng ta cần xác định tâm của phép xoay (đối số <code class="highlighter-rouge">center</code>), góc xoay (<code class="highlighter-rouge">angle</code>) và tham số phóng đại kích thước ảnh (<code class="highlighter-rouge">scale</code>).</p>
 
@@ -347,13 +409,13 @@ plt.subplot(235),plt.imshow(tran8),plt.title('Rotate 20 at upper left corner')
 plt.subplot(236),plt.imshow(tran9),plt.title('Rotate 20 at bottom right corner')
 </code></pre></div></div>
 
-<p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_6_1.png" width="650px" height="200px" /></p>
+<p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_8_1.png" width="650px" height="450px" /></p>
 
 <h3 id="213-biến-đổi-affine">2.1.3. Biến đổi Affine</h3>
 
-<p>Trong biến đổi affine, toàn bộ các đường thẳng song song trong bức ảnh gốc sẽ trở thành song song ở ảnh đầu ra. Để tìm ma trận chuyển vị, chúng ta cần xác định ra 3 điểm từ ảnh đầu vào và tọa độ tương ứng của chúng trong hình ảnh đầu ra. Hàm <code class="highlighter-rouge">cv2.getAffineTransform</code> sẽ tạo ra được một ma trận <code class="highlighter-rouge">2x3</code> được truyền vào hàm <code class="highlighter-rouge">cv2.warpAffine</code>.</p>
+<p>Trong biến đổi affine, toàn bộ các đường thẳng song song trong bức ảnh gốc giữ nguyên tính chất song song ở ảnh đầu ra. Để tìm ma trận chuyển vị, chúng ta cần xác định ra 3 điểm từ ảnh đầu vào và tọa độ tương ứng của chúng trong hình ảnh đầu ra. Hàm <code class="highlighter-rouge">cv2.getAffineTransform</code> sẽ tạo ra được một ma trận <code class="highlighter-rouge">2x3</code> được truyền vào hàm <code class="highlighter-rouge">cv2.warpAffine</code>.</p>
 
-<p>Kiểm tra ví dụ bên dưới, chúng ta cũng nhìn vào các điểm mà tôi lựa chọn (được đánh dấu x, màu trắng).</p>
+<p>Kiểm tra ví dụ bên dưới, chúng ta cùng nhìn vào các điểm mà tôi lựa chọn (được đánh dấu x, màu trắng).</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows,cols,ch = img.shape
 
@@ -377,7 +439,7 @@ for (x, y) in pts2:
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_10_0.png" width="300px" height="200px" /></p>
 
-<p>Như vậy sử dụng phép biến đổi Affine có thể giúp ta tạo thành nhiều biến thể, tư thế khác nhau cho cùng một vật thể. Thường được áp dụng trong Data Augumentation để làm giàu dữ liệu trong trường hợp số lượng ảnh không nhiều. Chẳng hạn với ảnh mặt người đang chụp nghiêng ta có thể xoay theo các chiều sao cho từ mặt nghiêng trở thành mặt chính diện hoặc như trong hình trên, hình ảnh messi đang chạy dáng nghiêng đã được chuyển sang chạy dáng thẳng đứng.</p>
+<p>Như vậy sử dụng phép biến đổi Affine có thể giúp ta tạo thành nhiều biến thể, tư thế khác nhau cho cùng một vật thể. Thường được áp dụng trong Data Augumentation để làm giàu dữ liệu trong trường hợp số lượng ảnh không nhiều. Chẳng hạn với ảnh mặt người đang chụp nghiêng ta có thể xoay theo các chiều sao cho từ mặt nghiêng trở thành mặt chính diện hoặc như trong hình trên, hình ảnh messi đang chạy dáng nghiêng đã được chuyển sang chạy dáng thẳng đứng và nghiêng với các độ lớn góc khác nhau.</p>
 
 <p>Một số nghiên cứu chỉ ra rằng khi áp dụng phương pháp Data Augumentation thì độ chính xác của thuật toán với số lượng ảnh huấn luyện nhỏ có thể không thua kém những thuật toán được huấn luyện trên nhiều dữ liệu hơn về độ chính xác.</p>
 
@@ -536,8 +598,9 @@ plt.show()
 
 <p>Trước khi đọc phần này, các bạn vẫn còn nhớ <a href="https://phamdinhkhanh.github.io/2019/11/22/HOG.html">mục 2.1.1 - tính toán gradient descent ở thuật toán HOG</a> chứ? Ảnh được làm mịn sau đó được lọc qua bộ lọc Sobel theo cả 2 chiều dọc và ngang để thu được đạo hàm bậc 1 theo 2 phương x và y lần lượt là $G_x$ và $G_y$. Từ những hình ảnh này, chúng ta có thể tìm được độ dài cạnh gradient và phương cho mỗi pixel như bên dưới:</p>
 
-<p><script type="math/tex">|G| = \sqrt{G_x^2 + G_y^2}</script>
-<script type="math/tex">\theta = \arctan(\frac{G_y}{G_x})</script></p>
+<script type="math/tex; mode=display">|G| = \sqrt{G_x^2 + G_y^2}</script>
+
+<script type="math/tex; mode=display">\theta = \arctan(\frac{G_y}{G_x})</script>
 
 <p>Phương gradient luôn luôn vuông góc với các cạnh. Nó được làm tròn thành một trong bốn góc biểu diễn trục dọc, ngang và 2 phương của đường chéo.</p>
 
@@ -549,7 +612,7 @@ plt.show()
 
 <p><img src="https://imgur.com/pIhXmC2.png" width="600px" height="250px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 1</strong>: Phương pháp xác định edge của thuật toán canny.</p>
+<p><strong>Hình 2</strong>: Phương pháp xác định edge của thuật toán canny.</p>
 <blockquote>
   <p>Điểm A nằm trên cạnh (theo chiều dọc). Phương gradient là norm chuẩn của cạnh. Điểm B và C là điểm nằm trên phương gradient. Nếu điểm A được kiểm tra với điểm B và C để xem liệu nó có là một cực đại cục bộ. Nếu như vậy, nó được xem xét giữ lại cho bước tiếp theo, trái lại thì nó sẽ bị triệt tiêu (bằng cách thiết lập bằng 0).</p>
 </blockquote>
@@ -560,7 +623,7 @@ plt.show()
 
 <p><img src="https://imgur.com/NqLpQIU.jpg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<p><strong>Hình 2:</strong> Phương pháp triệt tiêu cạnh theo ngưỡng cường độ gradient.</p>
+<p><strong>Hình 3:</strong> Phương pháp triệt tiêu cạnh theo ngưỡng cường độ gradient.</p>
 <blockquote>
   <p>Trên hình vẽ là 2 cạnh A màu đỏ và B màu xanh. Cạnh A do có các điểm có cường độ gradient nằm trên <em>maxVal</em> nên được xem là những cạnh đạt tiêu chuẩn. Mặc dù trên cạnh A có những điểm nằm trong ngưỡng từ <em>minVal</em> tới <em>maxVal</em>. Cạnh B được xem là không đạt tiêu chuẩn vì toàn bộ các điểm nằm trên cạnh B đều nằm trong ngưỡng <em>minVal</em> và <em>maxVal</em>. Như vậy cạnh A sẽ được giữ lại và cạnh B sẽ được xóa bỏ.</p>
 </blockquote>
@@ -979,8 +1042,7 @@ print('pixelpoints shape use cv2: {}'.format(pixelpoints.shape))
 pixelpoints shape use cv2: (1865, 1, 2)
 </code></pre></div></div>
 
-<p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_68_1.png" width="200px" height="200px" />  <br />
-<img src="ImagePreprocessing_files/ImagePreprocessing_68_1.png" alt="png" /></p>
+<p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_68_1.png" width="200px" height="200px" /></p>
 
 <p><strong>7. Trích xuất Min, Max value và vị trí của chúng</strong></p>
 
@@ -1226,6 +1288,7 @@ for i in np.arange(4):
   <li><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image">Tensorflow Keras image preprocessing</a></li>
   <li><a href="https://docparser.com/blog/improve-ocr-accuracy/">Improve OCR accuracy by image preprocessing</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny Edge Detector - wiki</a></li>
+  <li><a href="https://www.youtube.com/watch?v=4I2S5Xhf24o">Linear and affine transformations - youtube</a></li>
   <li><a href="https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation">Khao khát học máy bản Tiếng Việt - Tác giả Andrew Ng - Tiep Vu và cộng sự dịch</a></li>
 </ol>
 

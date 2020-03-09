@@ -97,6 +97,12 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh</a></li>
@@ -139,6 +145,8 @@ body {
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
 					
 				</nav>
@@ -180,46 +188,49 @@ body {
 
 <h2 id="1-scorecard-model-là-gì">1. ScoreCard model là gì?</h2>
 
-<p>Scorecard model là một lớp mô hình được ứng dụng rất nhiều trong nhiều lĩnh vực. Đặc biệt là tài chính, kinh doanh, quản lý xã hội. Mô hình Scorecard có tác dụng lượng hóa một hồ sơ cá nhân hoặc tổ chức thành một điểm xếp hạng dựa trên khả năng xảy ra của một sự kiện nào đó như vỡ nợ, vi phạm luật hoặc đánh giá tín nhiệm xã hội của công dân. Dựa trên điểm số từ mô hình scorecard, các tổ chức tài chính hoặc chính phủ có thể đưa ra quyết định cung cấp các sản phẩm dịch vụ và tiện ích tốt hơn nếu một cá nhân có điểm tín nhiệm cao và hạn chế hơn đối với cá nhân có điểm thấp.</p>
+<p>Scorecard model là một lớp mô hình được ứng dụng trong nhiều lĩnh vực như tài chính, kinh doanh, quản lý xã hội. Mô hình Scorecard có tác dụng lượng hóa một hồ sơ cá nhân hoặc tổ chức thành một điểm tín nhiệm dựa trên khả năng xảy ra của một sự kiện nào đó như vỡ nợ, vi phạm luật. Dựa trên điểm tín nhiệm, các tổ chức tài chính hoặc chính phủ có thể cung cấp các sản phẩm, dịch vụ tốt hơn nếu chủ thể có điểm tín nhiệm cao và thấp hơn đối với chủ thể có điểm tín nhiệm thấp.</p>
 
-<p>Trong quản lý tài chính, mục tiêu lớn nhất của mô hình scorecard là muốn đánh giá năng lực trả nợ của người giữ vị thế vay trong tương lai. Đối với khách hàng có tín nhiệm cao thể hiện qua lịch sử tín dụng tốt, mức thu nhập cao, tuân thủ lịch trả nợ, có các tài sản đảm bảo,… sẽ tạo sự yên tâm cho tổ chức tài chính khi cho vay. Họ có thể được đề xuất một hạn mức tín dụng cao hơn vì ngân hàng biết rằng nếu cho những cá nhân này vay vốn thì rất yên tâm. Tuy nhiên đối với những cá nhân có lịch sử tín dụng xấu, không có tài sản đảm bảo, thu nhập thấp,… sẽ là những cá nhân rủi ro cao và ngân hàng có thể cân nhắc cho họ vay số tiền phù hợp với năng lực trả nợ của họ.</p>
+<p><strong>Ứng dụng trong quản trị rủi ro ngân hàng:</strong></p>
 
-<p>Một mô hình Scorecard sẽ sử dụng đa dạng các thông tin đầu vào là những biến nằm trong hồ sơ cá nhân của khách hàng. Những thông tin này có thể được thu thập trong quá trình làm hồ sơ vay vốn, từ hệ thống dữ liệu của ngân hàng nếu là khách hàng cũ, hoặc từ một bên thứ 3. Các biến đầu vào cơ sở được chia thành các nhóm như:</p>
+<p>Trong hoạt động tín dụng, mục tiêu của mô hình scorecard là đánh giá năng lực trả nợ của người giữ vị thế vay trong tương lai. 
+Đầu vào của mô hình Scorecard gồm các thông tin nằm trong hồ sơ cá nhân của khách hàng. Chúng được thu thập chủ yếu từ cục tín dụng hoặc data warehouse của ngân hàng. Các thông tin được chia thành các nhóm cơ bản:</p>
 
 <ul>
   <li>
-    <p>Thông tin nhân khẩu học (demographic): Là những thông tin liên quan đến đặc điểm cá nhân của một người, có ảnh hưởng lớn tới sự kiện dự báo (vỡ nợ, hoặc vi phạm luật). Đó có thể là: Thông tin trình độ học vấn, thu nhập, giới tính, độ tuổi, nghề nghiệp, trạng thái hôn nhân, thành phần gia đình, số người phụ thuộc,….</p>
+    <p>Nhân khẩu học (demographic): Là những thông tin liên quan đến đặc điểm cá nhân như trình độ học vấn, thu nhập, giới tính, độ tuổi, nghề nghiệp, trạng thái hôn nhân, qui mô gia đình, số người phụ thuộc,….</p>
   </li>
   <li>
-    <p>Thông tin về lịch sử tín dụng (credit history): Lịch sử tín dụng, lý lịch nợ xấu, hành vi trả nợ. Đây là những thông tin được quản lý tập trung tại cục tín dụng (bureau credit) của mỗi quốc gia. Dữ liệu được thu thập từ toàn bộ các ngân hàng hoạt động trên lãnh thổ của một quốc gia nhằm tạo thành một data center chung. Điều này nhằm tạo ra một cơ sở dữ liệu tín dụng minh bạch của toàn bộ các công dân mà các ngân hàng thành viên có thể truy cập thông tin (việc truy cập là mất phí). Từ đó ngân hàng nắm bắt được những thông tin tín dụng của cá nhân tại những tổ chức tài chính khác nằm ngoài hệ thống nhằm đưa ra đánh giá sơ bộ về khách hàng.</p>
+    <p>Lịch sử tín dụng (credit history): Đây là những thông tin được quản lý tập trung tại cục tín dụng (bureau credit). Dữ liệu lịch sử vay của khách hàng được tổng hợp từ toàn bộ các ngân hàng hoạt động trên lãnh thổ của một quốc gia vào một data center. Như vậy ngân hàng có thể kiểm tra chéo thông tin tín dụng của khách hàng từ những ngân hàng khác.</p>
   </li>
   <li>
-    <p>Thông tin giao dịch: Lịch sử giao dịch của khách hàng trên các thẻ tín dụng hoặc thẻ ATM sẽ đánh giá một phần nào đó về năng lực tài chính của một cá nhân. Do đó thông tin giao dịch của họ rất hữu ích trong việc đánh giá khả năng trả nợ của họ.</p>
+    <p>Thông tin giao dịch: Lịch sử giao dịch trên các thẻ tín dụng hoặc thẻ ATM sẽ đánh giá một phần nào đó về năng lực tài chính của khách hàng. Do đó thông tin này rất hữu ích đối với dự báo khả năng trả nợ.</p>
   </li>
   <li>
     <p>Thông tin tài sản đảm bảo: Đây là một thông tin đi kèm với các khoản vay thế chấp. Gía trị của tài sản đảm bảo sẽ là phương tiện cover rủi ro trong trường hợp khách hàng vỡ nợ.</p>
   </li>
 </ul>
 
-<p>Bên cạnh các mô hình scorecard đánh giá rủi ro tín dụng, Một số quốc gia còn phát triển hệ thống xếp hạng tín nhiệm xã hội <a href="https://en.wikipedia.org/wiki/Social_Credit_System">(social credit system)</a> áp dụng vào quản lý và điều hành. Để xây dựng những hệ thống này đòi hỏi phải có dữ liệu lớn tích hợp cùng các giải pháp công nghệ. Tại Trung Quốc, chính phủ và 9 tập đoàn công nghệ hàng đầu như <code class="highlighter-rouge">Alibaba, Tencent, Didi Chuxing, Baihe, ... </code> đã lên kế hoạch tổ chức dữ liệu và phát triển mô hình đánh giá tín nhiệm công dân. Các dữ liệu được thu thập từ rất nhiều nguồn khác nhau như: camera giám sát, dữ liệu tài chính, dữ liệu nhân khẩu học, dữ liệu mạng xã hội,… giúp cho điểm tín nhiệm xã hội trở thành một thước đo toàn diện.</p>
+<p><strong>Ứng dụng trong xếp hạng tín nhiệm xã hội:</strong></p>
 
-<p>Nhờ sự những lợi thế được tạo ra từ điểm tín nhiệm xã hội như: Được hưởng dịch vụ công và phúc lợi xã hội tốt hơn, xin việc dễ hơn mà mọi người dân Trung Quốc đều có ý thức tuân thủ luật pháp. Do đó tỷ lệ tội phạm giảm xuống trên cả nước.</p>
+<p>Ngoài ứng dụng trong rủi ro tín dụng, scorecard còn được một số quốc gia ứng dụng vào phát triển hệ thống xếp hạng tín nhiệm xã hội <a href="https://en.wikipedia.org/wiki/Social_Credit_System">(social credit system)</a>. Để xây dựng những hệ thống này đòi hỏi phải có dữ liệu lớn tích hợp cùng các giải pháp công nghệ.</p>
 
-<p>Như vậy chúng ta đã hình dung được ứng dụng của mô hình score card trong rất nhiều các lĩnh vực. Có thể nói đây là những mô hình tuy đơn giản nhưng lại có sức mạnh lớn và được áp dụng khá phổ biến.</p>
+<p>Tại Trung Quốc, chính phủ và 9 tập đoàn công nghệ hàng đầu như <code class="highlighter-rouge">Alibaba, Tencent, Didi Chuxing, Baihe, ... </code> đã lên kế hoạch tổ chức dữ liệu và phát triển mô hình đánh giá tín nhiệm công dân. Các dữ liệu được thu thập từ rất nhiều nguồn khác nhau như: camera giám sát, dữ liệu tài chính, dữ liệu nhân khẩu học, dữ liệu mạng xã hội,… khiến cho điểm tín nhiệm xã hội trở thành một thước đo toàn diện.</p>
 
-<p>Vậy làm thể nào để xây dựng một mô hình score card? Cách thức lượng hóa các biến đầu vào thành điểm số và xếp hạng điểm số như thế nào? Trong bài này, Tôi sẽ giới thiệu tới các bạn một ứng dụng rất cụ thể của scorecard model trong rủi ro tín dụng.</p>
+<p>Nhờ sự những lợi thế được tạo ra khi sở hữu một điểm tín nhiệm xã hội cao như: Được hưởng dịch vụ công và phúc lợi xã hội tốt hơn, xin việc dễ hơn mà mọi người dân Trung Quốc đều có ý thức tuân thủ luật pháp. Do đó tỷ lệ tội phạm giảm xuống trên cả nước. Tuy nhiên điểm tín nhiệm xã hội cũng vấp phải sự phản đối vì nó vi phạm quyền tự do cá nhân và một số phiền hà mà nó gây ra đối với người có điểm số thấp. Nhưng dù sao thì đây cũng là một mô hình tiến bộ và đang được áp dụng rất thành công tại Trung Quốc.</p>
+
+<p>Như vậy chúng ta đã hình dung được ứng dụng của mô hình score card trong rất nhiều các lĩnh vực. Vậy làm thể nào để xây dựng một mô hình score card? Tôi sẽ trình bày ở phần tiếp theo.</p>
 
 <h2 id="2-xây-dựng-model-scorecard-trong-credit-risk">2. Xây dựng model Scorecard trong credit risk</h2>
 
-<p>Ở các quốc gia đang phát triển như Việt Nam thì market trading còn ở qui mô nhỏ. Chính vì thế tín dụng là hoạt động mang lại lợi nhuận chủ yếu cho ngân hàng. Tuy nhiên mọi khoản vay đều tiềm ẩn các nguy cơ rủi ro như vỡ nợ, trả nợ chậm, phá sản,…. Để giám sát, giảm thiểu, phòng ngừa và kiểm soát rủi ro thì các ngân hàng tìm cách lượng hóa rủi ro bằng các công cụ mô hình theo khuyến nghị của của hội nghị basel. Kết quả từ các mô hình rủi ro đã trở thành công cụ hỗ trợ chủ yếu quá trình ra quyết định cho vay của ngân hàng. Chẳng hạn việc chấp nhận hoặc loại bỏ hồ sơ vay, các điều kiện kèm theo mỗi hồ sơ như hạn mức, lãi suất, kì hạn, tài sản đảm bảo,….</p>
+<p>Ở các quốc gia đang phát triển như Việt Nam thì market trading còn ở qui mô nhỏ. Chính vì thế tín dụng là hoạt động mang lại lợi nhuận chủ yếu cho ngân hàng. Tuy nhiên mọi khoản vay đều tiềm ẩn các nguy cơ rủi ro như vỡ nợ, trả nợ chậm, người vay phá sản,…. Để giám sát, giảm thiểu, phòng ngừa và kiểm soát rủi ro thì các ngân hàng tìm cách lượng hóa rủi ro bằng các công cụ mô hình theo khuyến nghị của của hội nghị basel. Kết quả từ các mô hình rủi ro tỏ ra rất hiệu quả trong hỗ trợ quyết định cho vay của ngân hàng. Căn cứ trên điểm tín nhiệm, ngân hàng có thể chấp nhận hoặc loại bỏ hồ sơ vay hoặc đưa ra thêm các điều kiện kèm theo như hạn mức, lãi suất, kì hạn, tài sản đảm bảo,….</p>
 
 <p><strong>Vai trò của mô hình scorecard đối với tín dụng ngân hàng</strong></p>
 
 <p>Credit scorecard là phương pháp dựa trên các mô hình học máy nhằm mục đích ước lượng giá trị xác suất xảy ra một sự kiện đối với một khách hàng như vỡ nợ, phá sản, hoặc trả nợ chậm liên quan đến vị thế tín dụng của người vay. Đây là những mô hình khá đơn giản với số lượng biến đầu vào ít, chỉ khoảng từ 10 đến 20 biến. Dữ liệu được sử dụng cho các mô hình score card phần lớn đến từ cục tín dụng (credit bureaus) kết hợp với dữ liệu nội bộ ngân hàng. Hội nghị basel cũng đưa ra những qui định chặt chẽ đối với đầu vào của mô hình credit scorecard. Các thông tin thu thập phải đảm bảo quyền cá nhân và không vi phạm tới các nội dung như phân biệt tôn giáo, chủng tộc, vùng miền, quốc gia,….</p>
 
-<p>Bộ dữ liệu xây dựng mô hình credit scorecard sẽ được tổng hợp từ những hồ sơ vỡ nợ và những hồ sơ tốt. Sau đó, thông qua các kĩ thuật tiền xử lý dữ liệu để biến đổi các biến đầu vào thành những features có sức mạnh dự báo nguy cơ xảy ra vỡ nợ. Lớp thuật toán được sử dụng chủ yếu trong các mô hình credit scorecard đó là hồi qui logistic, probit hoặc linear. Đây là những phương pháp đơn giản thuộc lớp mô hình phân loại trong các bài toán học có giám sát. Chúng là những phương pháp có tính giải thích cao thông qua phương trình hồi qui.</p>
+<p>Bộ dữ liệu xây dựng mô hình credit scorecard sẽ được tổng hợp từ những hồ sơ vỡ nợ và những hồ sơ tốt. Sau đó, thông qua các kĩ thuật tiền xử lý dữ liệu để biến đổi các biến đầu vào thành những features có sức mạnh dự báo nguy cơ xảy ra vỡ nợ. Lớp thuật toán được sử dụng chủ yếu trong các mô hình credit scorecard đó là hồi qui logistic, probit hoặc linear. Để đơn giản, trong bài này tôi chỉ sử dụng hồi qui logistic. Đây là những phương pháp đơn giản thuộc lớp mô hình phân loại trong học có giám sát. Chúng là những phương pháp có khả năng giải thích cao thông qua phương trình hồi qui.</p>
 
-<p>Chính nhờ khả năng giải thích tốt nên các mô hình credit scorecard có đánh giá tác động của từng biến độc lập (hoặc biến đầu vào) lên kết quả dự báo. Bên cạnh đó điểm tín nhiệm (<code class="highlighter-rouge">credit score</code>) được tính toán khá dễ dàng từ xác suất dự báo. Một số thuật toán khác như neural network, random forest, SVM tuy có kết quả phân loại tốt hơn nhưng khả năng giải thích kết quả không tốt nên không thường được sử dụng để xây dựng các mô hình credit scorecard trên thực tế.</p>
+<p>Chính nhờ khả năng giải thích nên các mô hình credit scorecard có thể đánh giá được điểm tín nhiệm của từng biến độc lập (hoặc biến đầu vào). Tổng hợp các điểm tín nhiệm của biến ta thu được điểm tín nhiệm (<code class="highlighter-rouge">credit score</code>) cuối cùng. Một số thuật toán khác như neural network, random forest, SVM tuy có kết quả phân loại tốt hơn nhưng khả năng giải thích kết quả không tốt nên không thường được sử dụng để xây dựng các mô hình credit scorecard trên thực tế.</p>
 
 <h3 id="21-phương-pháp-chuyên-gia-và-mô-hình">2.1. Phương pháp chuyên gia và mô hình</h3>
 
@@ -273,7 +284,7 @@ Phương pháp mô hình sẽ dựa trên điểm số được lượng hóa t�
 
 <h3 id="22-xây-dựng-mô-hình-credit-scorecard">2.2. Xây dựng mô hình credit scorecard</h3>
 
-<p>Có nhiều thuật toán khác nhau được áp dụng để xây dựng mô hình credit scorecard. Trong bài này tôi sẽ chỉ giới thiệu phương pháp thông dụng nhất đó là hồi qui logistic. Về hồi qui logistic các bạn xem thêm tại <a href="https://machinelearningcoban.com/2017/01/27/logisticregression/">Logistic Regression - Machine learning cơ bản</a>, rất chi tiết và đầy đủ. Quá trình hồi qui sẽ tiếp nhận các features đầu vào đã được tiền xử lý theo phương pháp trọng số dấu hiệu (WOE - weight of evidence), cụ thể sẽ được giới thiệu bên dưới. Cuối cùng đầu ra của mô hình là xác suất vỡ nợ (default probability) của một hồ sơ vay vốn. Xác suất càng cao là dấu hiệu cho thấy khả năng xảy ra rủi ro càng lớn. Từ xác suất, thông qua các phép scale ta sẽ biến đổi sang điểm số tín nhiệm (credit score) đại diện cho mức tín nhiệm của họ. Điểm số này bằng tổng các điểm số tương ứng với mỗi một đặc trưng của người dùng được tạo ra từ WOE.</p>
+<p>Có nhiều thuật toán khác nhau được áp dụng để xây dựng mô hình credit scorecard. Trong bài này tôi sẽ chỉ giới thiệu phương pháp thông dụng nhất đó là hồi qui logistic. Về hồi qui logistic các bạn xem thêm tại <a href="https://machinelearningcoban.com/2017/01/27/logisticregression/">Logistic Regression - Machine learning cơ bản</a>, rất chi tiết và đầy đủ. Quá trình hồi qui sẽ tiếp nhận các features đầu vào đã được tiền xử lý theo phương pháp trọng số dấu hiệu (WOE - weight of evidence), cụ thể sẽ được giới thiệu bên dưới. Cuối cùng đầu ra của mô hình là xác suất vỡ nợ (default probability) của một hồ sơ vay vốn. Xác suất càng cao là dấu hiệu cho thấy khả năng xảy ra rủi ro càng lớn. Từ xác suất, thông qua các phép scale ta sẽ biến đổi sang điểm số tín nhiệm (credit score) đại diện cho mức độ uy tín của khách hàng. Điểm số này bằng tổng các điểm số tương ứng với mỗi một đặc trưng của người dùng được tạo ra từ WOE.</p>
 
 <h4 id="221-weight-of-evidence---woe">2.2.1. Weight of Evidence - WOE</h4>
 
@@ -336,7 +347,7 @@ Phương pháp mô hình sẽ dựa trên điểm số được lượng hóa t�
 
 <script type="math/tex; mode=display">\sum_{i=1}^{n}({\text{ %Good}_{i}-\text{ %Bad}_{i}).\text{WOE}_{i}}</script>
 
-<p>Ta nhận thấy <code class="highlighter-rouge">IV</code> luôn nhận giá trị dương vì $\text{WOE}<em>{i}$ và $(\text{ %Good}</em>{i}-\text{ %Bad}_{i})$ đồng biến. Gía trị <code class="highlighter-rouge">IV</code> sẽ cho ta biết mức độ chênh lệch của <code class="highlighter-rouge">%Good</code> và <code class="highlighter-rouge">%Bad</code> ở mỗi bin là nhiều hay ít. Nếu <code class="highlighter-rouge">IV</code> cao thì sự khác biệt trong phân phối giữa <code class="highlighter-rouge">%Good</code> và <code class="highlighter-rouge">%Bad</code> sẽ lớn và biến hữu ích hơn trong việc phân loại hồ sơ và trái lại <code class="highlighter-rouge">IV</code> nhỏ thì biến ít hữu ích trong việc phân loại hồ sơ. Một số tài liệu cũng đưa ra tiêu chuẩn phân loại sức mạnh của biến theo giá trị <code class="highlighter-rouge">IV</code> như bên dưới:</p>
+<p>Ta nhận thấy <code class="highlighter-rouge">IV</code> luôn nhận giá trị dương vì $\text{WOE}_{i}$ và $(\text{ %Good}_{i}-\text{ %Bad}_{i})$ đồng biến. Gía trị <code class="highlighter-rouge">IV</code> sẽ cho ta biết mức độ chênh lệch của <code class="highlighter-rouge">%Good</code> và <code class="highlighter-rouge">%Bad</code> ở mỗi bin là nhiều hay ít. Nếu <code class="highlighter-rouge">IV</code> cao thì sự khác biệt trong phân phối giữa <code class="highlighter-rouge">%Good</code> và <code class="highlighter-rouge">%Bad</code> sẽ lớn và biến hữu ích hơn trong việc phân loại hồ sơ và trái lại <code class="highlighter-rouge">IV</code> nhỏ thì biến ít hữu ích trong việc phân loại hồ sơ. Một số tài liệu cũng đưa ra tiêu chuẩn phân loại sức mạnh của biến theo giá trị <code class="highlighter-rouge">IV</code> như bên dưới:</p>
 
 <ul>
   <li>&lt;= 0.02: Biến không có tác dụng trong việc phân loại hồ sơ <code class="highlighter-rouge">Good/Bad</code></li>
@@ -348,11 +359,11 @@ Phương pháp mô hình sẽ dựa trên điểm số được lượng hóa t�
 
 <h4 id="222-ưu-và-nhược-điểm-của-phương-pháp-woe">2.2.2. Ưu và nhược điểm của phương pháp WOE</h4>
 
-<p>Sở dĩ các mô hình scorecard lại ưa chuộng phương pháp <code class="highlighter-rouge">WOE</code> bởi vì đây là phương pháp biến đổi biến có nhiều ảnh hưởng tích cực tới quá trình xây dựng mô hình hồi qui logistic. Các lợi thế đó là:</p>
+<p>Sở dĩ các mô hình scorecard lại ưa chuộng <code class="highlighter-rouge">WOE</code> bởi vì đây là phương pháp biến đổi biến có nhiều ảnh hưởng tích cực tới quá trình hồi qui logistic. Các lợi thế đó là:</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">WOE</code> giúp biến đổi các biến độc lập liên tục thành những biến có mối quan hệ đơn điệu (đồng biến hoặc nghịch biến) đối với biến phụ thuộc. Thật vậy, giả sử thống kê cho thấy đối với độ tuổi của khách hàng trong các khoảng <code class="highlighter-rouge">20-30, 30-40, 40-50, 50+</code> thì tỷ lệ <code class="highlighter-rouge">%GOOD/%BAD</code> là <code class="highlighter-rouge">[0.1, 0.5, 0.2, 0.3]</code>. Như vậy <code class="highlighter-rouge">AGE</code> sẽ không có mối quan hệ đồng biến với tỷ lệ <code class="highlighter-rouge">%GOOD/%BAD</code>, tức là nó không có mối quan hệ đồng biến với biến phụ thuộc. Trong khi nếu hồi qui giá trị gốc của <code class="highlighter-rouge">AGE</code> theo logistic thì mối quan hệ với biến phụ thuộc của <code class="highlighter-rouge">AGE</code> sẽ là đơn điệu,là đơn điệu tăng hay giảm phụ thuộc tùy vào dấu của hệ số hồi qui. Điều này là trái với thực tế. Do đó, phương pháp <code class="highlighter-rouge">WOE</code> giúp ta chia nhỏ các biến liên tục thành các khoảng biến mà giá trị của nó là đơn điệu với biến phụ thuộc dựa trên <code class="highlighter-rouge">WOE</code> tương ứng với mỗi khoảng. Do đó các hệ số trong phương trình hồi qui logistic sẽ giải thích được đúng thực tế mối quan hệ giữa biến độc lập với biến phụ thuộc.</p>
+    <p><code class="highlighter-rouge">WOE</code> giúp biến đổi các biến độc lập liên tục thành những biến có mối quan hệ đơn điệu (đồng biến hoặc nghịch biến) đối với biến phụ thuộc. Thật vậy, giả sử thống kê cho thấy đối với độ tuổi của khách hàng trong các khoảng <code class="highlighter-rouge">20-30, 30-40, 40-50, 50+</code> thì tỷ lệ <code class="highlighter-rouge">%GOOD/%BAD</code> là <code class="highlighter-rouge">[0.1, 0.5, 0.2, 0.3]</code>. Như vậy <code class="highlighter-rouge">AGE</code> sẽ không có mối quan hệ đồng biến với tỷ lệ <code class="highlighter-rouge">%GOOD/%BAD</code>, tức là nó không có mối quan hệ đồng biến với biến phụ thuộc. Trong khi nếu hồi qui giá trị gốc của <code class="highlighter-rouge">AGE</code> theo logistic thì mối quan hệ với biến phụ thuộc của <code class="highlighter-rouge">AGE</code> sẽ là đơn điệu (đơn điệu tăng hay giảm phụ thuộc vào dấu của hệ số hồi qui). Điều này là trái với thực tế. Do đó, phương pháp <code class="highlighter-rouge">WOE</code> giúp ta chia nhỏ các biến liên tục thành các khoảng biến mà giá trị của nó là đơn điệu với biến phụ thuộc dựa trên <code class="highlighter-rouge">WOE</code> tương ứng với mỗi khoảng. Do đó các hệ số trong phương trình hồi qui logistic sẽ giải thích được đúng thực tế mối quan hệ giữa biến độc lập với biến phụ thuộc.</p>
   </li>
   <li>
     <p>Phương pháp <code class="highlighter-rouge">WOE</code> giúp loại bỏ các outliers vì các biến có khoảng biến thiên lớn sẽ được group về các nhóm bins. Gía trị của các quan sát outliers sẽ không còn khác biệt so với các những quan sát khác thuộc cùng nhóm vì chúng cùng được gán giá trị bằng trọng số WOE.</p>
@@ -969,11 +980,11 @@ _CreditScore(beta = 0.5, alpha = -1, woe = 0.15, n = 12)
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>42.2677896003704
 </code></pre></div></div>
 
+<p>Gán các giá trị $\beta$ và $\alpha$ vào dictionary.</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>betas_dict = dict(zip(list(X_train.columns), logit_model.coef_[0]))
 alpha = logit_model.intercept_[0]
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>betas_dict
+betas_dict
 </code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'CLAGE_WOE': 0.8622728924386177,
@@ -989,6 +1000,8 @@ alpha = logit_model.intercept_[0]
  'VALUE_WOE': 0.7543949126408607,
  'YOJ_WOE': 0.8837887914052942}
 </code></pre></div></div>
+
+<p>Tính <code class="highlighter-rouge">WOE</code> cho từng features.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cols = []
 features = []

@@ -97,7 +97,17 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation sử dụng mạng Neural</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
 					
@@ -134,6 +144,8 @@ body {
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
 					
@@ -269,12 +281,19 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 <h2 id="21-phân-phối-tiên-nghiệm-và-hậu-nghiệm">2.1. Phân phối tiên nghiệm và hậu nghiệm</h2>
 
-<p>Phân phối hậu nghiệm là họ các phân phối mà tham số của nó đã biết trước dựa trên kinh nghiệm. Chẳng hạn như theo một cách nào đó chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$. Dựa trên các hiểu biết chung về suy luận phân phối (liên tục) cho một tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$, theo định lý Bayes, phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x|\theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.</p>
+<ul>
+  <li>
+    <p><strong>Phân phối tiên nghiệm (prior distribution)</strong>: Phân phối tiên nghiệm đối với một tập hợp các tham số $\theta$ được kí hiệu là $p(\theta)$. Phân phối tiên nghiệm có giá trị xác suất được xác định trước dựa trên kinh nghiệm mà không cần biết trước dữ liệu. Chẳng hạn như theo kinh nghiệm chúng ta đã biết trước rằng khi tung đồng xu đồng chất thì khả năng thu được mặt sấp là $1/2$. Do đó khi thử nghiệm tung một đồng xu đồng chất mới mà ta chưa từng tung trước đây, ta cũng tin chắc rằng xác suất thu được dao động quanh giá trị $1/2$.</p>
+  </li>
+  <li>
+    <p><strong>Phân phối hậu nghiệm (posterior distribution)</strong>: là phân phối được xác định bằng các suy diễn phân phối cho một tập hợp tham số $\theta$ được đưa ra bởi một tập dữ liệu $X$. Do đó nó được kí hiệu dưới dạng xác suất có điều kiện $p(\theta \mid X )$. Theo định lý Bayes, xác suất của phân phối hậu nghiệm bằng tích của hàm hợp lý $p(x \mid \theta)$ với hàm phân phối tiên nghiệm $p(\theta)$ chia cho xác xuất của dữ liệu $p(x)$.</p>
+  </li>
+</ul>
 
 <script type="math/tex; mode=display">% <![CDATA[
 {\displaystyle {\begin{aligned}p(\theta|x)&={\frac {p(x|\theta )\,p(\theta )}{p(x)}}\\&={\frac {p(x|\theta )\,p(\theta )}{\int p(x|\theta ')\,p(\theta ')\,d\theta '}}\end{aligned}}} %]]></script>
 
-<p>Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm (posterior distribution) $p(\theta|x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm (prior distribution) $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (<strong>conjugate prior</strong>) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó. Tức là nếu hàm hợp lý tối đa là một gaussian, lựa chọn một hàm tiên nghiệm với tham số trung bình sẽ đảm bảo hàm hậu nghiệm cũng sẽ phân phối gaussian.</p>
+<p>Theo trường phái thông kê suy diễn bayesian thì một hàm phân phối hậu nghiệm $p(\theta|x)$ thuộc cùng một họ phân phối xác xuất với phân phối tiên nghiệm $p(\theta)$ thì hàm phân phối tiên nghiệm và hậu nghiệm được gọi là phân phối liên hợp (conjugate distributions) và hàm tiên nghiệm được gọi là liên hợp tiên nghiệm (<strong>conjugate prior</strong>) của hàm hợp lý tối đa. Chẳng hạn như lớp các hàm phân phối gaussian sẽ liên hợp với chính nó.</p>
 
 <h2 id="22-phân-phối-poisson">2.2. Phân phối poisson.</h2>
 <p>Phân phối poisson là một phân phối rời rạc. 
@@ -307,8 +326,9 @@ Nhắc lại một số phân phối rời rạc thông dụng.</p>
 $k$ là số lần xuất hiện của sự kiện.</p>
 
 <h2 id="23-phân-phối-beta">2.3. Phân phối beta</h2>
-<p>Beta distribution là một phân phối liên tục xác định dựa trên biến ngẫu nhiên $p \in [0, 1]$ nhằm mô tả sự biến động của tham số $p$ trong phân phối bernoulli. Phân phối beta được đặc tả bởi 2 tham số $\alpha, \beta$ không âm theo phương trình hàm mật độ xác xuất:
-<script type="math/tex">f(p; \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{\beta-1}</script></p>
+<p>Beta distribution là một phân phối liên tục xác định dựa trên biến ngẫu nhiên $p \in [0, 1]$ nhằm mô tả sự biến động của tham số $p$ trong phân phối bernoulli. Phân phối beta được đặc tả bởi 2 tham số $\alpha, \beta$ không âm theo phương trình hàm mật độ xác xuất:</p>
+
+<script type="math/tex; mode=display">f(p; \alpha, \beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}p^{\alpha-1}(1-p)^{\beta-1}</script>
 
 <p>Trong đó hàm $\Gamma(.)$ được gọi là <code class="highlighter-rouge">gamma function</code> có mối liên hệ với giai thừa trong điều kiện tham số của nó là số nguyên.</p>
 
@@ -596,8 +616,7 @@ print(data_words[:1])
 </code></pre></div></div>
 
 <h2 id="43-tạo-ra-các-bigram-và-trigram-cho-mô-hình">4.3. Tạo ra các bigram và trigram cho mô hình.</h2>
-
-<p>Mô hình LDA sẽ sử dụng đầu vào là ma trận đồng xuất hiện của các từ. Để tính toán được tần suất đồng xuất hiện trên những ma trận này chúng ta sẽ tạo ra các bigram (2 từ) và trigram (3 từ) là cụm các từ liên tiếp nhau. Để xây dựng các bigram và trigram có thể sử dụng class Phrases của gensim</p>
+<p>Hiện tại các từ vựng đang gồm toàn bộ là những từ đơn. Để tăng độ chính xác cho mô hình ta sẽ cần gom cụm các từ đơn có tần xuất xuất hiện cùng nhau chung thành những collocations có độ dài gồm 2 hoặc 3 từ. Ta sẽ gọi chúng là các bigram hoặc trigram. Để xây dựng các bigram và trigram trong gensim ta sử dụng class Phrases:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Build the bigram and trigram models
 bigram = gensim.models.Phrases(data_words, min_count=5, threshold=100) # higher threshold fewer phrases.
@@ -768,7 +787,7 @@ lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus,
 
 <p>Sau khi huấn luyện xong mô hình chúng ta có thể save vào folder để lần sau sử dụng lại.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lda.save("your_folder/model_lda_100.model")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lda_model.save("your_folder/model_lda_100.model")
 </code></pre></div></div>
 
 <p>Và load lại model từ folder</p>
