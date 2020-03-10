@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</p></h2> 
 <strong>10 Aug 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-pytorch-là-gì">1. Pytorch là gì?</h1>
 
 <p>Trong số những framework hỗ trợ deeplearning thì pytorch là một trong những framework được ưa chuộng nhiều nhất (cùng với tensorflow và keras), có lượng người dùng đông đảo, cộng đồng lớn mạnh. Vào năm 2019 framework này đã vươn lên vị trí thứ 2 về số lượng người dùng trong những framework hỗ trợ deeplearning (chỉ sau tensorflow). Đây là package sử dụng các thư viện của CUDA và C/C++ hỗ trợ các tính toán trên GPU nhằm gia tăng tốc độ xử lý của mô hình. 2 mục tiêu chủ đạo của package này hướng tới là:</p>
@@ -1238,6 +1242,16 @@ torch.Size([4])
   <li><a href="https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html">Xử lý trên GPU - pytorch</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</p></h2> 
 <strong>17 Feb 2020 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h2 id="1-mất-cân-bằng-dữ-liệu-imbalanced-dataset">1. Mất cân bằng dữ liệu (imbalanced dataset)</h2>
 
 <p>Mất cân bằng dữ liệu là một trong những hiện tượng phổ biến của bài toán phân loại nhị phân (binary classification) như spam email, phát hiện gian lận, dự báo vỡ nợ, chuẩn đoán bệnh lý,…. Trong trường hợp tỷ lệ dữ liệu giữa 2 classes là 50:50 thì được coi là cân bằng. Khi có sự khác biệt trong phân phối giữa 2 classes, chẳng hạn 60:40 thì dữ liệu có hiện tượng mất cân bằng.</p>
@@ -1053,6 +1057,16 @@ Trong quá trình xây dựng mô hình, đặc biệt là các mô hình phân 
 </ol>
 
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

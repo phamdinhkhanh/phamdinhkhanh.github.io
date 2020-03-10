@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 23 - Neural Attentive Session-Based Recommendation</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 23 - Neural Attentive Session-Based Recommendation</p></h2> 
 <strong>11 Feb 2020 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h2 id="1-các-dạng-mô-hình-recommendation">1. Các dạng mô hình Recommendation</h2>
 
 <p>Ngày nay, các thuật toán recommendation ngày càng phát triển đa dạng bởi tính ứng dụng cao trong việc khuyến nghị và matching sản phẩm tới khách hàng trên các nền tảng website/app kinh doanh online. Recommendation có thể coi là vũ khí trong cuộc chơi của các ông lớn trong những ngành có tính đốt tiền cao như ecommerce, airbnb, logistic,…. Do đó đây là bài toán thu hút được rất nhiều sự đầu tư và nghiên cứu từ những trường đại học và từ các tập đoàn công nghệ. Facebook, Amazon, Google, Alibaba,… có thể coi là những nền tảng có hệ thống recommendation phát triển nhất. Recommendation từ những nền tảng này không những đạt độ chính xác cao mà còn đáp ứng nhu cầu đồng thời của một lượng lớn người dùng online. Các kết quả khuyến nghị từ google, facebook rất tốt là điều không quá ngạc nhiên (chỉ khi nó không tốt mới đáng ngạc nhiêu) bởi đây là những tập đoàn có dữ liệu lớn và có đội ngũ nghiên cứu hàng đầu thế giới.</p>
@@ -1388,6 +1392,16 @@ _preddict(test_loader, model)
   </li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

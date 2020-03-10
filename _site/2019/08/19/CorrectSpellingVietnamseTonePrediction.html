@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</p></h2> 
 <strong>19 Aug 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
 <p>Cùng với sự phát triển của deep learning nói chung. Ngày nay lớp các mô hình seq2seq càng tỏ ra hiệu quả trong nhiều tác vụ khác nhau như dịch máy, sửa lỗi chính tả, image captioning, recommendation, dự báo chuỗi thời gian,…. Nhờ sự phát triển của các kiến trúc mạng RNN hiện đại kèm theo các kĩ thuật learning hiệu quả như sử dụng thêm kiến trúc <code class="highlighter-rouge">attention layer</code>, các phương pháp cải thiện accuracy như ` teach_forcing, beam search` mà mô hình dịch máy ngày càng đạt độ chính xác cao. Các tài liệu về các phương pháp trên đã có nhiều tuy nhiên đa phần là lý thuyết và khá khó cho người mới bắt đầu tiếp cận. Bài viết này nhằm mục đích tạo ra một bản diễn giải kèm thực hành về các bước xây dựng mô hình seq2seq ứng dụng trong sửa lỗi chính tả. Để hiểu được các nội dung trong bài yêu cầu bạn đọc có kiến thức nền tảng về <a href="https://phamdinhkhanh.github.io/2019/08/10/PytorchTurtorial1.html">pytorch</a>, nắm vững lý thuyết về mạng <a href="https://phamdinhkhanh.github.io/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">LSTM</a>. Ngoài ra bạn đọc cần có sẵn máy tính cài <a href="https://pytorch.org/">pytorch</a> hoặc các VM hỗ trợ pytorch. Để tiện cho thực hành tôi khuyến nghị bạn đọc sử dụng <a href="https://colab.research.google.com">google colab</a> miễn phí và cài sẵn các deep learning framework cơ bản như tensorflow, pytorch, keras,….</p>
 
@@ -1618,6 +1622,16 @@ Bot: học sinh cấp 1
   <li><a href="https://forum.machinelearningcoban.com/t/aivivn-3-vietnamese-tone-prediction-2nd-place-solution/5759">thêm dấu cho tiếng việt - aivivn 2nd</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

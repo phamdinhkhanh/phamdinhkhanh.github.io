@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 5 - Model Pipeline - SparkSQL</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 5 - Model Pipeline - SparkSQL</p></h2> 
 <strong>15 Jul 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-về-sparksql">1. Giới thiệu về SparkSQL</h1>
 
 <p>SparkSQL là một module của Apache spark cho phép thực hiện các biến đổi với dữ liệu có cấu trúc và các tính toán dựa trên cụm xử lý. Spark cho phép tính toán data phân tán bằng việc chia dữ liệu thành nhiều phần nhỏ và thực hiện tính toán song song từng phần trên nhiều node server khác nhau. Chính vì thế tốc độ xử lý của spark rất nhanh và phù hợp với những dữ liệu kích thước lớn.</p>
@@ -950,6 +954,16 @@ Shape of flights_SEA data: (19956, 7)
 </ol>
 
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

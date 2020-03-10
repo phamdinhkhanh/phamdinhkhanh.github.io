@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</p></h2> 
 <strong>25 Aug 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-về-torchtext">1. Giới thiệu về Torchtext</h1>
 
 <p>Như chúng ta đã biết, qui trình xây dựng một mô hình trong NLP sẽ đi qua các bước sau:</p>
@@ -866,6 +870,16 @@ Khi xây dựng mô hình NLP sẽ có rất nhiều các tình huống chúng t
   <li><a href="https://mlexplained.com/2018/02/08/a-comprehensive-tutorial-to-torchtext/">Comprehensive tutorial torchtext</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

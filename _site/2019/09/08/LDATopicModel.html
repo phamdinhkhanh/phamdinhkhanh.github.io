@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 10 - Thuật toán LDA - Xác định Topic</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 10 - Thuật toán LDA - Xác định Topic</p></h2> 
 <strong>08 Sep 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-bài-toán-phân-loại-topic">1. Bài toán phân loại topic</h1>
 
 <h2 id="11-tại-sao-ta-lại-cần-phân-loại-topic">1.1. Tại sao ta lại cần phân loại topic</h2>
@@ -1092,6 +1096,16 @@ Topic model là một trong những lớp mô hình có nhiều ứng dụng đ�
   </li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

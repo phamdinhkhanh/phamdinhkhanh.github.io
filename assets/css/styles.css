@@ -62,3 +62,28 @@ img.tinypic {
   width: auto;
   height: auto;
 }
+
+/*body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}*/
+
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 10%;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}

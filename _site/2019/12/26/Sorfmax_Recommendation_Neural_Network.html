@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 20 - Recommendation Neural Network</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 20 - Recommendation Neural Network</p></h2> 
 <strong>26 Dec 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h2 id="1-ưu-điểm-của-recommendation-neural-network">1. Ưu điểm của Recommendation Neural Network</h2>
 
 <p>Ở bài trước chúng ta đã tìm hiểu về 2 thuật toán cơ bản trong recommendation đó là <a href="https://phamdinhkhanh.github.io/2019/11/04/Recommendation_Compound_Part1.html">collaborative và content-based filtering</a>. Ý tưởng chung của các thuật toán này đều là tìm cách ước lượng các giá trị rating của những cặp user-item chưa được rate bởi người dùng sao cho sai số so với giá trị thực tế là nhỏ nhất.</p>
@@ -1387,6 +1391,16 @@ and their Compositionality - Tomas Mikolov. etc</a></li>
   <li><a href="https://developers.google.com/machine-learning/recommendation/content-based/basics">recommendation - google course</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

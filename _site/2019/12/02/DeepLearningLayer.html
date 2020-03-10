@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 18 - Các layers quan trọng trong deep learning</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 18 - Các layers quan trọng trong deep learning</p></h2> 
 <strong>02 Dec 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
 
 <p>Mỗi một mô hình deep learning đều có các layers đặc trưng giúp giải quyết các tác vụ cụ thể của từng bài toán deep learning. Chẳng hạn như trong xử lý ảnh chúng ta thường sử dụng mạng <a href="https://www.kaggle.com/phamdinhkhanh/convolutional-neural-network-p1">CNN - convolutional neural network</a> để trích xuất đặc trưng trên các local regional của bức ảnh là các đường nét chính như dọc, ngang, chéo,…. Hoặc layer <a href="https://phamdinhkhanh.github.io/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">LSTM - long short term memory</a> được sử dụng trong các mô hình dịch máy và mô hình phân loại cảm xúc văn bản (sentiment analysis). Tuy nhiên ngoài các layer trên, chúng ta sẽ còn làm quen với rất nhiều các layers khác trong các bài toán về deep learning. Việc hiểu được công dụng của từng layer cũng như trường hợp áp dụng để mang lại hiệu quả cho mô hình rất quan trọng. Chính vì thế bài viết này nhằm mục đích hệ thống lại các layers quan trọng của deep learning như một tài liệu cheat sheet (tài liệu sổ tay) để sử dụng khi cần.</p>
@@ -1065,6 +1069,16 @@ Epoch 5/10
   <li><a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Attention">Attention Layer - tensorflow 2.0</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 21 - Tiền xử lý ảnh</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 21 - Tiền xử lý ảnh</p></h2> 
 <strong>06 Jan 2020 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-vai-trò-của-tiền-xử-lý-ảnh">1. Vai trò của tiền xử lý ảnh</h1>
 
 <p>Khi phát triển một thuật toán phân loại ảnh chúng ta có thể gặp phải một số trường hợp không mong đợi như: Kết quả huấn luyện có độ chính xác rất cao trên cả tập huấn luyện (train dataset) và tập phát triển (dev dataset). Nhưng khi áp dụng vào thực tiễn lại cho độ chính xác thấp. Có rất nhiều các nguyên nhân dẫn tới điều này và một trong số đó là:</p>
@@ -1293,6 +1297,16 @@ for i in np.arange(4):
   <li><a href="https://github.com/aivivn/Machine-Learning-Yearning-Vietnamese-Translation">Khao khát học máy bản Tiếng Việt - Tác giả Andrew Ng - Tiep Vu và cộng sự dịch</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

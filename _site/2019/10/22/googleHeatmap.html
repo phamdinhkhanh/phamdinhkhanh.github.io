@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 14 - Biểu đồ trên Google Map</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 14 - Biểu đồ trên Google Map</p></h2> 
 <strong>22 Oct 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-các-biểu-đồ-dạng-bản-đồ">1. Các biểu đồ dạng bản đồ</h1>
 <p><strong>Bản đồ google map có thể thực hiện được những gì?</strong></p>
 
@@ -728,6 +732,16 @@ memory usage: 66.8+ MB
   <li><a href="https://www.tutorialspoint.com/plotting-google-map-using-gmplot-package-in-python">plotting google map using gmplot package in python - tutorialspoint</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

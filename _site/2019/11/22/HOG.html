@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</p></h2> 
 <strong>22 Nov 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-về-thuật-toán-hog">1. Giới thiệu về thuật toán HOG</h1>
 <h2 id="11-giới-thiệu-chung">1.1. Giới thiệu chung</h2>
 <p>Có rất nhiều các phương pháp khác nhau trong computer vision. Khi phân loại ảnh, chúng ta có thể áp dụng họ các mô hình CNN (Inception Net, mobile Net, Resnet, Dense Net, Alexnet, Unet,…) và khi phát hiện vật thể là các mô hình YOLO, SSD, Faster RCNN, Fast RCNN, Mask RCNN.</p>
@@ -1074,6 +1078,16 @@ Epoch 6/100
   <li><a href="https://phamdinhkhanh.github.io/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection - Phạm Đình Khánh</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

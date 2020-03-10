@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 13 - Model SSD trong Object Detection</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 13 - Model SSD trong Object Detection</p></h2> 
 <strong>05 Oct 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-ssd-model">1. Giới thiệu SSD model</h1>
 
 <p>Ở <a href="https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html">bài 12</a> tôi đã giới thiệu đến các bạn tổng thể các lớp mô hình khác nhau trong object detection. Các kiến trúc cũ hơn có thể kể đến như R-CNN, fast R-CNN. Đặc điểm của chúng là tốc độ xử lý thấp, không đáp ứng được trong việc object dection realtime. Các mạng start-of-art hơn như SSD và YOLOv2, YOLOv3 là những kiến trúc có tốc độ xử lý nhanh mà vẫn đảm bảo về độ chính xác nhờ những thay đổi trong kiến trúc mạng nhằm gói gọn quá trình phát hiện và phân loại vật thể trong 1 lần và cắt bớt được các xử lý không cần thiết.</p>
@@ -1536,6 +1540,16 @@ Khi đưa vào 1 hình ảnh, thuật toán sẽ trả về kết quả bao gồ
   <li><a href="https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

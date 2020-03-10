@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 16 - Model RFM phân khúc khách hàng</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 16 - Model RFM phân khúc khách hàng</p></h2> 
 <strong>08 Nov 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h2 id="i-mô-hình-rfm-recency---frequency---monetary-model">I. Mô hình RFM (Recency - Frequency - Monetary model)</h2>
 
 <p>Theo nguyên lý pareto 20% khách hàng sẽ mang lại 80% doanh số. Do đó doanh nghiệp cần xác định được những khách hàng quan trọng nhất để chăm sóc đặc biệt. Những tập khách hàng này được gọi là VIP, Priority hoặc khách hàng cao cấp, tùy từng doanh nghiệp có cách gọi khác nhau. Việc phân chia khách hàng thành các nhóm khác nhau dựa trên nhu cầu mua sắm sẽ giúp doanh nghiệp kinh doanh hiệu quả hơn, marketing target đến đúng tập khách hàng hơn, và khách hàng được phục vụ tốt hơn. Để minh chứng cho nhận định trên, tôi sẽ lấy ra một vài ví dụ đơn giản:</p>
@@ -494,6 +498,16 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
   <li><a href="https://viblo.asia/p/marketing-voi-python-part-2-phan-khuc-khach-hang-63vKjXXdl2R">Series marketing với python - Khôi Nguyễn</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

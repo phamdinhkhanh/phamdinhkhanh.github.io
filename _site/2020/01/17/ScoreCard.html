@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 22 - Scorecard model</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 22 - Scorecard model</p></h2> 
 <strong>17 Jan 2020 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h2 id="1-scorecard-model-là-gì">1. ScoreCard model là gì?</h2>
 
 <p>Scorecard model là một lớp mô hình được ứng dụng trong nhiều lĩnh vực như tài chính, kinh doanh, quản lý xã hội. Mô hình Scorecard có tác dụng lượng hóa một hồ sơ cá nhân hoặc tổ chức thành một điểm tín nhiệm dựa trên khả năng xảy ra của một sự kiện nào đó như vỡ nợ, vi phạm luật. Dựa trên điểm tín nhiệm, các tổ chức tài chính hoặc chính phủ có thể cung cấp các sản phẩm, dịch vụ tốt hơn nếu chủ thể có điểm tín nhiệm cao và thấp hơn đối với chủ thể có điểm tín nhiệm thấp.</p>
@@ -1220,6 +1224,16 @@ plt.title('Distribution Score in Default vs Non-Default')
 </ol>
 
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

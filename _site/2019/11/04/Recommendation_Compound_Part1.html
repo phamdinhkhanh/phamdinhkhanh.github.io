@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 15 - collaborative và content-based filtering</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 15 - collaborative và content-based filtering</p></h2> 
 <strong>04 Nov 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-thuật-toán-recommendation">1. Thuật toán recommendation</h1>
 
 <p><strong>Tại sao thế giới lại cần recommendation</strong></p>
@@ -605,6 +609,16 @@ movieSubSetRecs = model.recommendForItemSubset(movies, 10)
   <li><a href="https://stanford.edu/~rezab/classes/cme323/S15/notes/lec14.pdf">ALS - alternative least square - standford</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

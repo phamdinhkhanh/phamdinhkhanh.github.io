@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 3 - Mô hình Word2Vec</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 3 - Mô hình Word2Vec</p></h2> 
 <strong>29 Apr 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-word-representation">1. Giới thiệu Word Representation.</h1>
 <p>Khác với các mô hình xử lý ảnh khi các giá trị đầu vào là cường độ màu sắc đã được mã hoá thành giá trị số trong khoảng [0, 255]. Mô hình xử lý ngôn ngữ tự nhiên có đầu vào chỉ là các chữ cái kết hợp với dấu câu. Làm sao chúng ta có thể lượng hoá được những từ ngữ để làm đầu vào cho mạng nơ ron? Kĩ thuật one-hot véc tơ sẽ được áp dụng để thực hiện điều này. Trước khi đi vào phương pháp biểu diễn, chúng ta cần làm rõ một số khái niệm:</p>
 
@@ -1509,6 +1513,16 @@ array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
   <li><a href="https://www.kdnuggets.com/2018/04/implementing-deep-learning-methods-feature-engineering-text-data-cbow.html">The Continuous Bag of Words (CBOW) - kdnuggets.com</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

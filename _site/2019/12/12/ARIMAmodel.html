@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 19 - Mô hình ARIMA trong time series</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 19 - Mô hình ARIMA trong time series</p></h2> 
 <strong>12 Dec 2019 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-về-chuỗi-thời-gian">1. Giới thiệu về chuỗi thời gian</h1>
 
 <p>Dự báo chuỗi thời gian là một trong những mảng đề tài lớn của thống kê, kinh tế lượng và machine learning. Các dự báo chuỗi thời gian được sử dụng rộng khắp các lĩnh vực từ sản xuất kinh doanh, cho đến tài chính ngân hàng, chứng khoán, bảo hiểm, thương mại điện tử, nghiên cứu thị trường, nghiên cứu chính sách quốc gia. Chúng ta có thể kể đến vô số các ứng dụng của dự báo chuỗi thời gian như:</p>
@@ -1118,6 +1122,16 @@ Mean Absolute Percentage Error: 0.1564646147420661
   <li><a href="https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/">ARIMA - machinelearningplus</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">

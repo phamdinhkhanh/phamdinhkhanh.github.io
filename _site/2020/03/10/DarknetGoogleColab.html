@@ -35,6 +35,7 @@
 
 <!-- Style for main home page -->
 <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 
 <style>
 	
@@ -184,9 +185,12 @@ body {
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
 				<div>
-					<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 26 - Huấn luyện YOLO darknet trên google colab</p></h2> 
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 26 - Huấn luyện YOLO darknet trên google colab</p></h2> 
 <strong>10 Mar 2020 - phamdinhkhanh</strong>
-
+</div>
+<br/>
+<div id="toc"></div>
 <h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
 
 <p>Ở bài này tôi sẽ hướng dẫn các bạn huấn luyện model YOLO trên google colab qua các khâu:</p>
@@ -769,6 +773,16 @@ nuoctuong: 96%
   <li><a href="https://github.com/AlexeyAB/darknet">AlexeyAB - darknet git repo</a></li>
 </ol>
 
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
 				</div>
 			</div>
 			<div class="col-md-2 hidden-xs hidden-sm">
