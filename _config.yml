@@ -1,3 +1,7 @@
 plugins:  
     - jekyll-paginate
     - jekyll-redirect-from
+
+markdown: kramdown
+highlighter: rouge
+input: GFM
