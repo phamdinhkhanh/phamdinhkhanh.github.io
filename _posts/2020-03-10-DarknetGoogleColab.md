@@ -35,7 +35,7 @@ Các bạn thực hành trên google colab có thể bỏ qua phần này vì go
 ## 3.1. Google colab
 Google colab là một virtual cloud machine được google cung cấp miễn phí cho các nhà nghiên cứu. Đây là môi trường lý tưởng để phát triển các mô hình vừa và nhỏ với các packages và frame work deep learning và machine learning phổ biến nhất được cài sẵn.
 
-Để sử dụng google colab các bạn vào google drive, sau đó click vào `New > More > Google colab`.
+Tại bước này cần tạo một google colab. Các bạn vào google drive, sau đó click vào `New > More > Google colab`.
 
 <img src="https://imgur.com/Xl4qJ0X.png" class="normalpic"/>
 
@@ -92,8 +92,6 @@ Google colab có tác dụng như là một VM (virtual machine computing) làm 
 
 <img src="https://imgur.com/kpeMAsi.png" class="normalpic"/>
 
-Tại mục này, chúng ta sẽ bắt đầu đi vào thực hành. Để thuận tiện, các bạn có thể download file [darknetGoogleColab.ipynb] trong [phamdinhkhanh - darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab.git) và thực hiện các step bắt đầu từ đây.
-
 
 **Câu lệnh mount google drive:**
 
@@ -127,7 +125,7 @@ Copy token và paste vào dòng `Enter your authorization code:`. Sau bước n�
 
 [Darknet](https://github.com/AlexeyAB/darknet) là một framework open source chuyên biệt về object detection được viết bằng ngôn ngữ C và CUDA. Các mô hình được huấn luyện trên darknet nhanh, đồng thời darknet dễ cài đặt và hỗ trợ tính toán CPU và GPU. Cộng đồng sử dụng darknet đông đảo, đội ngũ support nhiệt tình. Đó là lý do tôi lựa chọn darknet để hướng dẫn các bạn.
 
-Tại bước này chúng ta cần clone project [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab.git) mà tôi đã customize lại một chút cho phù hợp với google colab. 
+Tại bước này chúng ta cần clone project [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab.git) mà tôi đã customize lại một chút cho phù hợp với google colab.
 
 Các bạn thực hiện tuần tự như sau:
 
@@ -589,7 +587,7 @@ Các lưu ý khi huấn luyện model darknet
 
 Như vậy tôi đã giới thiệu đến các bạn các bước chi tiết để huấn luyện một mô hình YOLO trên project darknet. Việc huấn luyện mô hình sẽ đòi hỏi các bạn phải có máy tính cấu hình cao, có hỗ trợ GPU. Tuy nhiên với các bạn sinh viên nghèo vượt khó hoặc sinh viên giàu nhưng tiết kiệm có thể áp dụng hướng dẫn này để tự huấn luyện model mô hình cho các tác vụ object detection của mình trên google colab mà không cần phải lo lắng.
 
-Code của project này đã được tổng hợp trên git repo [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab). Các bạn có thể download về, tìm đến file darknetGoogleColab.ipynb, sau đó upload lên google drive và thực hành theo tuần tự các bước. Các lỗi phát sinh đã được note khá chi tiết ở mục Các lưu ý khi huấn luyện mô hình.
+Code của project này đã được tổng hợp trên git repo [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab). Các bạn có thể download file [phamdinhkhanh - darknetGoogleColab.ipynb](https://github.com/phamdinhkhanh/darknetGoogleColab/blob/master/darknetGoogleColab.ipynb), sau đó upload lên google drive và thực hành theo tuần tự các bước. Các lỗi phát sinh đã được note khá chi tiết ở mục Các lưu ý khi huấn luyện mô hình.
 
 # 8. Tài liệu tham khảo
 
