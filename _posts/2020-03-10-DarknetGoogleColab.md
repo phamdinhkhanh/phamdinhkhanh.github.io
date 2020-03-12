@@ -587,7 +587,12 @@ Các lưu ý khi huấn luyện model darknet
 
 Như vậy tôi đã giới thiệu đến các bạn các bước chi tiết để huấn luyện một mô hình YOLO trên project darknet. Việc huấn luyện mô hình sẽ đòi hỏi các bạn phải có máy tính cấu hình cao, có hỗ trợ GPU. Tuy nhiên với các bạn sinh viên nghèo vượt khó hoặc sinh viên giàu nhưng tiết kiệm có thể áp dụng hướng dẫn này để tự huấn luyện model mô hình cho các tác vụ object detection của mình trên google colab mà không cần phải lo lắng.
 
-Code của project này đã được tổng hợp trên git repo [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab). Các bạn có thể download file [phamdinhkhanh - darknetGoogleColab.ipynb](https://github.com/phamdinhkhanh/darknetGoogleColab/blob/master/darknetGoogleColab.ipynb), sau đó upload lên google drive và thực hành theo tuần tự các bước. Các lỗi phát sinh đã được note khá chi tiết ở mục Các lưu ý khi huấn luyện mô hình.
+Code của project này đã được tổng hợp trên git repo [darknetGoogleColab](https://github.com/phamdinhkhanh/darknetGoogleColab). Các lỗi phát sinh đã được note khá chi tiết ở mục **6. Các lưu ý khi huấn luyện mô hình**. Để thực hành nhanh chóng, bạn có thể mở file [darknetGoogleColab.ipynb](https://colab.research.google.com/drive/1G3AM3CHsMb0iwuBDR-j5rimr_WX2KHc2) và thực hiện từ bước **3.2. Enable GPU trên google colab**. Nếu gặp lỗi phát sinh, vui lòng tạo một issue trên git repo:
+
+<img src="https://imgur.com/GDEBobU.png" class="largepic"/>
+
+Tôi khuyến nghị các bạn đọc qua thuật toán YOLO tại [Bài 25 - YOLO You Only Look Once](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html) để hiểu một chút về lý thuyết.
+
 
 # 8. Tài liệu tham khảo
 
@@ -595,3 +600,4 @@ Code của project này đã được tổng hợp trên git repo [darknetGoogle
 2. [Bài 25 - YOLO You Only Look Once - Khanh blog](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html)
 3. [pjreddie - darknet git repo](https://github.com/pjreddie/darknet)
 4. [AlexeyAB - darknet git repo](https://github.com/AlexeyAB/darknet)
+5. [Bài 25 - YOLO You Only Look Once](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html)
