@@ -1,7 +1,7 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Bài 21 - Tiền xử lý ảnh
+title: Bài 21 - Tiền xử lý ảnh OpenCV
 ---
 
 # 1. Vai trò của tiền xử lý ảnh
