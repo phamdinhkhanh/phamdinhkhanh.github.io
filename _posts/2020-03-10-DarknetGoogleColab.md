@@ -13,29 +13,48 @@ title: Bài 26 - Huấn luyện YOLO darknet trên google colab
 * Cấu hình mô hình.
 * Huấn luyện và dự báo.
 
-Qúa trình huấn luyện YOLO sẽ rất dễ xảy ra lỗi nếu chưa có kinh nghiệm. Chính vì thế tôi sẽ tổng kết các lưu ý quan trọng khi huấn luyện mô hình này trên darknet.
+Qúa trình huấn luyện YOLO sẽ rất dễ xảy ra lỗi nếu chưa có kinh nghiệm. Chính vì thế tôi sẽ tổng kết các lưu ý quan trọng về lỗi khi huấn luyện mô hình trên darknet ở cuối bài. Đồng thời tôi cũng đưa ra một vài tip giúp theo dõi quá trình huấn luyện và tăng tốc độ huấn luyện.
 
-Trước khi đọc bài hướng dẫn mang tính chất thực hành này, tôi khuyến nghị các bạn hãy đọc hiểu lý thuyết mô hình đã được trình bày ở [Bài 25 - YOLO You Only Look Once](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html). Điều này sẽ giúp các trả lời được các câu hỏi **tại sao** về các lỗi của model YOLO khi huấn luyện ở cuối bài viết. Sau khi đã đọc và nắm vững kiến thức ở bài 25, chỉ cần làm theo tuần tự các bước bên dưới là bạn sẽ thu được thành quả.
+Trước khi đọc bài hướng dẫn mang tính chất thực hành này, tôi khuyến nghị các bạn hãy đọc hiểu lý thuyết mô hình đã được trình bày ở [Bài 25 - YOLO You Only Look Once](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html). Điều này sẽ giúp các trả lời được các câu hỏi **tại sao** về các lỗi huấn luyện. Sau khi đã đọc và nắm vững kiến thức ở bài 25, chỉ cần làm theo tuần tự các bước bên dưới là bạn sẽ thu được thành quả.
 
 # 2. Cài đặt cấu hình cuDNN
 
-CUDA Deep Neural Network library (cuDNN) là một thư viện giúp tăng tốc GPU khi huấn luyện các model deep learning. Thư viện này cung cấp quá trình tối ưu huấn luyện feed forward và backpropagation trên các layers: convolution, pooling, normalization, activation. Đây là một thư viện rất mạnh và được hỗ trợ đa dạng trên các deep learning frameworks như:  Caffe,Caffe2, Chainer, Keras,MATLAB, MxNet, TensorFlow, và PyTorch. 
+CUDA Deep Neural Network library (cuDNN) là một thư viện giúp tăng tốc GPU khi huấn luyện các model deep learning. Thư viện này cung cấp quá trình tối ưu huấn luyện feed forward và backpropagation trên các layers: convolution, pooling, normalization, activation. Đây là một thư viện rất mạnh và được hỗ trợ trên đa dạng các deep learning frameworks như:  Caffe,Caffe2, Chainer, Keras,MATLAB, MxNet, TensorFlow, và PyTorch. 
 
-Chúng ta nên sử dụng các thư viện cuDNN mới nhất vì theo như quảng cáo của NVIDIA, nó có thể tăng tốc nhiều lần so với version cũ.
+Chúng ta nên sử dụng các thư viện cuDNN mới nhất vì theo như khuyến cáo của NVIDIA, nó có thể tăng tốc nhiều lần so với version cũ.
 
 
 <img src="https://developer.nvidia.com/sites/default/files/rnn-image_0.png" class="normalpic" />
 
-Đối với các bạn sử dụng máy tính cá nhân đã có GPU, để sử dụng được GPU thì chúng ta phải cài đặt cuDNN theo [hướng dẫn cài đặt cuDNN - NDIVIA](https://developer.nvidia.com/cudnn).
+Đối với các bạn sử dụng máy tính cá nhân đã có GPU, để sử dụng được GPU thì chúng ta phải cài đặt cuDNN. Bạn xem thêm [hướng dẫn cài đặt cuDNN - NDIVIA](https://developer.nvidia.com/cudnn).
 
-Các bạn thực hành trên google colab có thể bỏ qua phần này vì google colab đã cài sẵn cuDNN.
+Các bạn thực hành trên google colab có thể bỏ qua phần này vì google colab đã sẵn có cuDNN.
 
 # 3. Khởi tạo google colab
 
 ## 3.1. Google colab
-Google colab là một virtual cloud machine được google cung cấp miễn phí cho các nhà nghiên cứu. Đây là môi trường lý tưởng để phát triển các mô hình vừa và nhỏ với các packages và frame work deep learning và machine learning phổ biến nhất được cài sẵn.
 
-Tại bước này cần tạo một google colab. Các bạn vào google drive, sau đó click vào `New > More > Google colab`.
+**Tại sao lại là google colab?**
+
+* Huấn luyện model deep learning cần tài nguyên khá lớn. Đối với một quốc gia nghèo như Việt Nam thì tôi không cho rằng việc một sinh viên bỏ ra vài nghìn $ mua GPU để lắp vào Laptop là hợp lý. Trái lại, rất lãng phí và không hiệu quả. 
+
+* Google colab là một virtual cloud machine được google cung cấp miễn phí cho các nhà nghiên cứu. Đây là môi trường lý tưởng để phát triển các mô hình vừa và nhỏ. Điểm tuyệt vời ở google colab đó là môi trường của nó đã cài sẵn các packages machine learning và frame works deep learning thông dụng nhất. 
+
+* Việc cài các frame work deep learning trên máy cá nhân đôi khi khá tốn thời gian vì các lỗi xung đột package, xung đột hệ điều hành. Các bạn có thể mất vài ngày để sửa các lỗi cấu hình trên máy. Trong khi sử dụng google colab là dùng được ngay.
+
+* Cấu hình RAM và GPU của các bạn chưa chắc đã tốt như google. Theo ước tính của tôi, bạn cần 100 triệu để xây một cấu hình máy tương đương với google colab.
+
+* Việc sử dụng GPU trên cấu hình RAM, chip yếu có thể khiến laptop của bạn nhanh bị hỏng.
+
+* Với google colab, bạn có thể dễ dàng làm việc với data được chia sẻ trên google drive từ người khác.
+
+Bên cạnh sử dụng google colab thì bạn có thể sử dụng một số virtual cloud mà tôi nghĩ cũng rất hay đó là: 
+
+* [kaggle kernel](https://www.kaggle.com/getting-started/78482). Kaggle kernel có một kho tài nguyên vô hạn về dữ liệu và jupyter notebook practice từ các data scientist master. Đồng thời kaggle kernel hỗ trợ cả ngôn ngữ R rất phù hợp với người làm tài chính, thống kê.
+
+* [jupyter notebook- azure](https://notebooks.azure.com/help/jupyter-notebooks). Tôi chỉ nghe qua, cũng chưa sử dụng.
+
+Quay trở lại thực hành, tại bước này cần tạo một google colab. Các bạn vào google drive, sau đó click vào `New > More > Google colab`.
 
 <img src="https://imgur.com/Xl4qJ0X.png" class="normalpic"/>
 
@@ -84,7 +103,7 @@ Muốn biết GPU đã enable thành công chưa, ta sử dụng:
 
 <img src="https://imgur.com/rAiiJoU.png" class="medianpic"/>
 
-Như vậy google colab cung cấp 1 GPU Tesla P4 với bộ nhớ 7611MiB. Đây là GPU không quá mạnh nhưng đủ để được để huấn luyện các model deep learning vừa và nhỏ. Phù hợp với các bạn sinh viên và các nhà data scientist nghèo như mình chẳng hạn.
+Như vậy google colab cung cấp 1 GPU Tesla P4 với bộ nhớ 7611MiB. Đây là GPU không quá mạnh nhưng đủ để huấn luyện các model deep learning vừa và nhỏ. Phù hợp với các bạn sinh viên và các nhà data scientist nghèo như mình chẳng hạn.
 
 ## 3.3. Mount google drive
 
@@ -191,7 +210,7 @@ Và rất nhiều các chức năng khác.
 
 Việc cài đặt và hướng dẫn sử dụng các bạn đọc tại [labelImg](https://pypi.org/project/labelImg/).
 
-Khi huấn luyện model YOLO trên darknet. Chúng ta sẽ cần sử dụng đầu vào là các bức ảnh (có thể là một trong các định dạng png, jpg, jpeg) và annotation của chúng (định dạng txt). Bên dưới là nội dung của một file annotation.txt. 
+Khi huấn luyện model YOLO trên darknet chúng ta sẽ cần sử dụng đầu vào là các bức ảnh (có thể là một trong các định dạng png, jpg, jpeg) và annotation của chúng (định dạng txt). Bên dưới là nội dung của một file annotation.txt. 
 
 
 <img src="https://imgur.com/66Lvm3R.png" class="normalpic"/>
@@ -200,9 +219,9 @@ Nội dung của file annotation sẽ bao gồm:
 
 `<id-class> <center-x> <center-y> <bbox-width> <bbox-height>`
 
-Trong đó: các giá trị `<center-x> <center-y> <bbox-width> <bbox-height>` là tâm và kích thước width, height của bounding box đã được chuẩn hóa bằng cách chia cho width và height của ảnh. Do đó các giá trị ngày luôn nằm trong khoảng [0, 1]. `<id-class>` là giá trị index đánh dấu các classes.
+Trong đó: các giá trị `<center-x> <center-y> <bbox-width> <bbox-height>` là tâm và kích thước width, height của bounding box đã được chuẩn hóa bằng cách chia cho width và height của ảnh, do đó các giá trị ngày luôn nằm trong khoảng [0, 1]. `<id-class>` là giá trị index đánh dấu các classes.
 
-Trong trường hợp một ảnh có nhiều bounding box thì mỗi một bounding box sẽ được thể hiện bởi một dòng.
+Trong trường hợp một ảnh có nhiều bounding box thì file annotation sẽ gồm nhiều dòng, mỗi một bounding box là một dòng.
 
 Cảc ảnh và annotation phải được để chung trong cùng 1 folder. Bạn đọc có thể tham khảo qua dữ liệu mẫu [Dữ liệu ảnh sản phẩm TMDT](https://github.com/phamdinhkhanh/VinIDProductObjectDetection/tree/master/img).
 
@@ -234,8 +253,7 @@ Dữ liệu trong folder img sẽ bao gồm các file ảnh và file annotation 
 
 <img src="https://imgur.com/m477lgr.png" class="normalpic"/>
 
-
-file ảnh và annotation phải cùng tên để darknet có thể matching tương ứng tên ảnh và nhãn trong quá trình huấn luyện.
+file ảnh và annotation phải cùng tên để darknet có thể matching chúng trong quá trình huấn luyện.
 
 ### 4.2.3. Phân chia dữ liệu train/validation
 
@@ -543,19 +561,19 @@ Như vậy chúng ta đã hoàn thành quá trình huấn luyện và dự báo 
 
 # 5. Ước tính thời gian huấn luyện
 
-Khi hiểu kỹ về lý thuyết của mô hình YOLO các bạn sẽ hiểu lý do tại sao model YOLO lại huấn luyện lâu như vậy. Từ một ảnh đầu vào kích thước `418x418`, YOLO sẽ cần dự đoán nhãn và tọa độ của tổng cộng `(13x13+26x26+52x52)x3 = 10647` bounding boxes. Giả sử mỗi một batch của chúng ta có kích thước 64 ảnh và số lượng `max_batches = 5000`. Như vậy chúng ta cần dự báo cho tổng cộng: `10647x5000x64 = 3.4 triệu` bounding boxes. Đây là một con số không hề nhỏ nên quá trình huấn luyện trên google colab sẽ mất gần `5h`.
+Khi hiểu kỹ về lý thuyết của mô hình YOLO các bạn sẽ hiểu lý do tại sao model YOLO lại huấn luyện lâu như vậy. Từ một ảnh đầu vào kích thước `418x418`, YOLO sẽ cần dự đoán nhãn và tọa độ của tổng cộng `(13x13+26x26+52x52)x3 = 10647` bounding boxes. Giả sử mỗi một batch của chúng ta có kích thước 64 ảnh và số lượng `max_batches = 5000`. Như vậy chúng ta cần dự báo cho tổng cộng: `10647x5000x64 = 3.4 triệu` bounding boxes. Đây là một con số không hề nhỏ nên quá trình huấn luyện trên google colab sẽ mất tới vài h.
 
-Do đó, trước khi huấn luyện chúng ta cần ước lượng tổng thời gian huấn luyện. Tôi sẽ giới thiệu các bạn một số mẹo ước tính và tiết kiệm thời gian huấn luyện.
+Google colab sẽ chỉ cho phép bạn huấn luyện trong 12h liên tục. Do đó, trước khi huấn luyện chúng ta cần ước lượng tổng thời gian huấn luyện để không vượt quá giới hạn time. Tôi sẽ giới thiệu các bạn một số mẹo ước tính và tiết kiệm thời gian huấn luyện.
 
-* Nên ước tính thời gian huấn luyện của 1 batch. Nếu bạn huấn luyện một batch hết 3.6s. Như vậy 5000 batches sẽ tiêu tốn của bạn khoảng: `(3.6x5000)/3600 = 5 h` huấn luyện. Tất nhiên đây chỉ là ước tính tương đối vì không phải mọi batch đều được huấn luyện với thời gian bằng nhau. Nếu gặp những batch có hình ảnh lỗi, format không tương thích thì có thể tốn rất nhiều thời gian để chương trình gỡ lỗi.
+* Nên ước tính tổng thời gian huấn luyện dựa trên thời gian huấn luyện của 1 batch. Nếu bạn huấn luyện một batch hết 3.6s. Như vậy 5000 batches sẽ tiêu tốn của bạn khoảng: `(3.6x5000)/3600 = 5 h` huấn luyện. Tất nhiên đây chỉ là ước tính tương đối vì không phải mọi batch đều được huấn luyện với thời gian bằng nhau. Nếu gặp những batch có hình ảnh lỗi, format không tương thích thì có thể tốn rất nhiều thời gian để chương trình gỡ lỗi.
 
 * Hãy save log trong quá trình huấn luyện và vẽ biểu đồ loss function. Biểu đồ loss function cho ta biết quá trình huấn luyện đã đi tới trạng thái hội tụ hay chưa? Có thể dừng sớm quá trình huấn luyện nếu bạn quan sát thấy loss function dường như đã hội tụ.
 
-* Huấn luyện trên nhiều GPU song song (cách này không áp dụng được trên google colab). Khi huấn luyện trên nhiều GPU thì nên giảm learning_rate xuống theo cấp số nhân. Chẳng hạn bạn huấn luyện trên 4 GPU thì cần thiết lập learning_rate mới bằng 1/4 learning_rate mặc định trên 1 GPU. Quá trình huấn luyện sẽ nhanh hơn rất nhiều.
+* Huấn luyện trên nhiều GPU song song (cách này chỉ áp dụng với các bạn sở hữu nhiều GPU, không áp dụng trên google colab). Khi huấn luyện trên nhiều GPU thì nên giảm learning_rate xuống theo cấp số nhân. Chẳng hạn bạn huấn luyện trên 4 GPU thì cần thiết lập learning_rate mới bằng 1/4 learning_rate mặc định trên 1 GPU. Quá trình huấn luyện sẽ nhanh hơn rất nhiều.
 
 * Sử dụng pretrain model trên bộ dữ liệu gần giống với bộ dữ liệu đang huấn luyện. Khi đó các trọng số của mô hình pretrain và mô hình tối ưu cho bộ dữ liệu sẽ gần sát nhau. Chúng ta sẽ chỉ cần ít steps huấn luyện hơn để đạt kết quả tốt so với lựa chọn pretrain model được huấn luyện từ một bộ dữ liệu khác biệt lớn.
 
-* Update cuDNN version. Như đã giới thiệu ở mục 1 cấu hình cuDNN. Những kiến trúc cuDNN mới đã được tối ưu hơn rất nhiều giúp tăng tốc quá trình huấn luyện. Sử dụng cuDNN version 7.6 có thể tăng tốc gấp 2 lần so với version 6.0. Do đó hãy cập nhật cuDNN nếu bạn đang sử dụng version cũ. Nhưng lưu ý là cuDNN cần tương thích version với CUDA để tránh các lỗi phát sinh nhé.
+* Update cuDNN version (đối với các bạn huấn luyện trên máy tính cá nhân, môi trường xịn sò của google colab đã update sẵn cuDNN). Như đã giới thiệu ở mục 1 cấu hình cuDNN. Những kiến trúc cuDNN mới đã được tối ưu hơn rất nhiều giúp tăng tốc quá trình huấn luyện. Sử dụng cuDNN version 7.6 có thể tăng tốc gấp 2 lần so với version 6.0. Do đó hãy cập nhật cuDNN nếu bạn đang sử dụng version cũ. Nhưng lưu ý là cuDNN cần tương thích version với CUDA để tránh các lỗi phát sinh nhé.
 
 * Cân nhắc sử dụng kiến trúc đơn giản. Các kiến trúc của YOLO khác đa dạng tùy thuộc vào base network. Các bạn xem lại bài giới thiệu về YOLO để hiểu rõ hơn kiến trúc này. Nếu một số tác vụ với ít classes thì chênh lệch về độ chính xác giữa mô hình kiến trúc phức tạp và đơn giản sẽ không quá lớn. Bạn có thể đặt ra trước cho mình một tiêu chuẩn về mAP của mô hình và huấn luyện thử với các model có kiến trúc đơn giản như tiny YOLO. Có thể những mô hình này đã đạt được tiêu chuẩn. Hơn nữa tốc độ dự báo nhanh và có thể triển khai trên các thiết bị IoT cấu hình thấp là một trong những điểm cộng cho các mô hình như vậy. Simple is the best!
 
