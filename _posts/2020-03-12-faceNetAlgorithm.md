@@ -108,13 +108,17 @@ Tuy nhiên nhược điểm của phương pháp này là chúng ta phải huấ
 ## 3.2. Learning similarity
 
 Phương pháp này dựa trên một phép đo khoảng cách giữa 2 bức ảnh, thông thường là các norm chuẩn $l_1$ hoặc $l_2$ sao cho nếu 2 bức ảnh thuộc cùng một người thì khoảng cách là nhỏ nhất và nếu không thuộc thì khoảng cách sẽ lớn hơn.
-Để cụ thể hơn, tôi minh họa qua hình bên dưới:
 
-<img src="https://imgur.com/MUOIxfq.png" class="largepic" /> | $$\begin{equation}
+$$\begin{equation}
   \begin{cases} d(\text{img1}, \text{img2}) \leq \tau & \rightarrow &\text{same} \\
   d(\text{img1}, \text{img2}) > \tau & \rightarrow & \text{different}
   \end{cases}
 \end{equation}$$
+
+
+Để cụ thể hơn, tôi minh họa qua hình bên dưới:
+
+<img src="https://imgur.com/MUOIxfq.png" class="largepic" />  
 
 **Hình 1:** Phương pháp learning similarity. Thay vì dự báo một phân phối xác suất để tìm ra nhãn phù hợp nhất với ảnh đầu vào. Thuật toán sẽ so sánh khoảng cách giữa ảnh đầu vào (bên phải) với toàn bộ các ảnh còn lại (bên trái). Ta cần chọn một ngưỡng threshold để quyết định ảnh là giống hoặc khác. Giả sử ngưỡng threshold là 0.5. Trong các bức ảnh bên trái thì bức ảnh ở giữa có khoảng cách với ảnh bên phải nhỏ hơn 0.5. Do đó nó được dự báo cùng một người với ảnh bên phải.
 
