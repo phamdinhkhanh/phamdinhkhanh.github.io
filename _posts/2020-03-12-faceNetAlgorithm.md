@@ -142,9 +142,17 @@ Lý thuyết về norm chuẩn bậc 2 tôi khuyến nghị các bạn xem thêm
 
 **Hình 2:** Từ mô hình Convolutional neural network, mô hình trả ra 2 véc tơ encoding là $\mathbf{x_1}$ và $\mathbf{x_2}$ biểu diễn cho lần lượt ảnh 1 và 2. $\mathbf{x_1}$ và $\mathbf{x_2}$ có cùng số chiều. Hàm $f(\mathbf{x})$ có tác dụng tương tự như một phép biến đổi qua layer fully connected trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ. Thông thường là 128 đối đối với các mô hình pretrain.
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $$||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$$ nhỏ.
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người: 
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $$||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$$ lớn.
+$$||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}$$ 
+
+phải là một giá trị nhỏ.
+
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau: 
+
+$$||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}$$ 
+
+phải là một giá trị lớn.
 
 Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.
 
