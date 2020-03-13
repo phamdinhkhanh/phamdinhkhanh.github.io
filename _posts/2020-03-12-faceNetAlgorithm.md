@@ -59,7 +59,7 @@ Một lợi thế của nhận diện khuôn mặt 3D là không bị ảnh hư�
 
 Để tạo ra một ảnh 3D, một cụm ba camera được áp dụng. Mỗi camera sẽ hướng vào một góc khác nhau. Tất cả các camera này phối hợp cùng nhau trong việc theo dõi khuôn mặt của một người trong thời gian thực và có thể nhận diện chúng.
 
-<img src="https://imgur.com/YzRxmM5.png" class="largepic" />
+<img src="https://imgur.com/YzRxmM5.png" class="gigantic" />
 
 Nhận diện khuôn mặt của iphone là nhận diện 3D. Bạn sẽ phải quay tròn khuôn mặt của mình khi xác thực nó để thuật toán học các góc độ khác nhau.
 
@@ -108,16 +108,13 @@ Tuy nhiên nhược điểm của phương pháp này là chúng ta phải huấ
 ## 3.2. Learning similarity
 
 Phương pháp này dựa trên một phép đo khoảng cách giữa 2 bức ảnh, thông thường là các norm chuẩn $l_1$ hoặc $l_2$ sao cho nếu 2 bức ảnh thuộc cùng một người thì khoảng cách là nhỏ nhất và nếu không thuộc thì khoảng cách sẽ lớn hơn.
+Để cụ thể hơn, tôi minh họa qua hình bên dưới:
 
-$$\begin{equation}
+<img src="https://imgur.com/MUOIxfq.png" class="largepic" /> | $$\begin{equation}
   \begin{cases} d(\text{img1}, \text{img2}) \leq \tau & \rightarrow &\text{same} \\
   d(\text{img1}, \text{img2}) > \tau & \rightarrow & \text{different}
   \end{cases}
 \end{equation}$$
-
-Để cụ thể hơn, tôi minh họa qua hình bên dưới:
-
-<img src="https://imgur.com/MUOIxfq.png" class="largepic" />
 
 **Hình 1:** Phương pháp learning similarity. Thay vì dự báo một phân phối xác suất để tìm ra nhãn phù hợp nhất với ảnh đầu vào. Thuật toán sẽ so sánh khoảng cách giữa ảnh đầu vào (bên phải) với toàn bộ các ảnh còn lại (bên trái). Ta cần chọn một ngưỡng threshold để quyết định ảnh là giống hoặc khác. Giả sử ngưỡng threshold là 0.5. Trong các bức ảnh bên trái thì bức ảnh ở giữa có khoảng cách với ảnh bên phải nhỏ hơn 0.5. Do đó nó được dự báo cùng một người với ảnh bên phải.
 
@@ -140,14 +137,14 @@ Kiến trúc của Siam network dựa trên base network là một Convolutional
 Lý thuyết về norm chuẩn bậc 2 tôi khuyến nghị các bạn xem thêm tại [norms chuẩn - machinelearningcoban](https://machinelearningcoban.com/math/#-norms-chuan). Rất đầy đủ và chi tiết.
 
 
-<img src="https://imgur.com/VPC7yvy.png" class="largepic" />
+<img src="https://imgur.com/VPC7yvy.png" class="gigantic" />
 
 
 **Hình 2:** Từ mô hình Convolutional neural network, mô hình trả ra 2 véc tơ encoding là $\mathbf{x_1}$ và $\mathbf{x_2}$ biểu diễn cho lần lượt ảnh 1 và 2. $\mathbf{x_1}$ và $\mathbf{x_2}$ có cùng số chiều. Hàm $f(\mathbf{x})$ có tác dụng tương tự như một phép biến đổi qua layer fully connected trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ. Thông thường là 128 đối đối với các mô hình pretrain.
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$ nhỏ.
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $$||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$$ nhỏ.
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$ lớn.
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $$||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$$ lớn.
 
 Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.
 
@@ -218,7 +215,11 @@ Trong đó $n$ là số lượng các bộ 3 hình ảnh được đưa vào hu�
 
 Mục tiêu của chúng ta là giảm thiểu các trường hợp hợp mô hình nhận diện sai ảnh Negative thành Postive nhất có thể. Do đó để loại bỏ ảnh hưởng của các trường hợp nhận diện đúng Negative và Positive. Ta sẽ điều chỉnh giá trị đóng góp của nó vào hàm loss function về 0. 
 
-Tức là nếu $||f(\mathbf{A})-f(\mathbf{P})||\_2^{2} - ||f(\mathbf{A})-f(\mathbf{N})||\_2^{2}+ \alpha \leq 0$ sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:
+Tức là nếu:
+
+$$||f(\mathbf{A})-f(\mathbf{P})||_2^{2} - ||f(\mathbf{A})-f(\mathbf{N})||_2^{2}+ \alpha \leq 0$$ 
+
+sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:
 
 
 $$\mathcal{L}(\mathbf{A, P, N}) = \sum_{i=0}^{n}\max(||f(\mathbf{A}_i)-f(\mathbf{P}_i)||_2^{2} - ||f(\mathbf{A}_i)-f(\mathbf{N_i})||_2^{2}+ \alpha, 0)$$
@@ -239,8 +240,11 @@ Nếu lựa chọn triple input một cách ngẫu nhiên có thể ảnh khiế
 
 Ý tưởng là chúng ta cần tìm ra bộ ba $(\mathbf{A}, \mathbf{N}, \mathbf{P})$ sao cho $(1)$ là gần đạt được đẳng thức (xảy ra dấu =) nhất. Tức là $d(\mathbf{A}, \mathbf{P})$ lớn nhất và $d(\mathbf{A}, \mathbf{N})$ nhỏ nhất. Hay nói cách khác với mỗi Anchor $\mathbf{A}$ cần xác định:
 * **Hard Positive:** Bức ảnh Positive có khoảng cách xa nhất với Anchor tương ứng với nghiệm:
+
 $$\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$$
+
 * **Hard Negative:** Bức ảnh Negative có khoảng cách gần nhất với Anchor tương ứng với nghiệm:
+
 $$\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$$
 
 
