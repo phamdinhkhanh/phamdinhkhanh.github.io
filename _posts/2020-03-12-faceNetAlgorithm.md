@@ -44,7 +44,7 @@ Tuy nhiên hệ thống nhận diện khuôn mặt được ưa chuộng vì qu�
 
 Các phương pháp truyền thống: Xác thực khuôn mặt bằng cách trích xuất ra một land mark cho face. Land mark như là một bản đồ xác định các vị trí cố định trên khuôn mặt của một người như mắt, mũi, miệng, lông mày,.... 
 
-<img src="https://imgur.com/ua9Bryq.png" class="normalpic" />
+<img src="https://imgur.com/ua9Bryq.png" class="smallpic" />
 
 
 Như vậy thay land mark face đã loại bỏ những phần thông tin không cần thiết và giữ lại những thông tin chính. Khi đó mỗi khuôn mặt sẽ được nén thành một véc tơ n chiều. Thông thường là 68 chiều.
@@ -59,7 +59,7 @@ Một lợi thế của nhận diện khuôn mặt 3D là không bị ảnh hư�
 
 Để tạo ra một ảnh 3D, một cụm ba camera được áp dụng. Mỗi camera sẽ hướng vào một góc khác nhau. Tất cả các camera này phối hợp cùng nhau trong việc theo dõi khuôn mặt của một người trong thời gian thực và có thể nhận diện chúng.
 
-<img src="https://imgur.com/YzRxmM5.png" class="normalpic" />
+<img src="https://imgur.com/YzRxmM5.png" class="largepic" />
 
 Nhận diện khuôn mặt của iphone là nhận diện 3D. Bạn sẽ phải quay tròn khuôn mặt của mình khi xác thực nó để thuật toán học các góc độ khác nhau.
 
@@ -115,7 +115,9 @@ $$\begin{equation}
   \end{cases}
 \end{equation}$$
 
-<img src="https://imgur.com/MUOIxfq.png" class="normalpic" />
+Để cụ thể hơn, tôi minh họa qua hình bên dưới:
+
+<img src="https://imgur.com/MUOIxfq.png" class="largepic" />
 
 **Hình 1:** Phương pháp learning similarity. Thay vì dự báo một phân phối xác suất để tìm ra nhãn phù hợp nhất với ảnh đầu vào. Thuật toán sẽ so sánh khoảng cách giữa ảnh đầu vào (bên phải) với toàn bộ các ảnh còn lại (bên trái). Ta cần chọn một ngưỡng threshold để quyết định ảnh là giống hoặc khác. Giả sử ngưỡng threshold là 0.5. Trong các bức ảnh bên trái thì bức ảnh ở giữa có khoảng cách với ảnh bên phải nhỏ hơn 0.5. Do đó nó được dự báo cùng một người với ảnh bên phải.
 
@@ -138,18 +140,22 @@ Kiến trúc của Siam network dựa trên base network là một Convolutional
 Lý thuyết về norm chuẩn bậc 2 tôi khuyến nghị các bạn xem thêm tại [norms chuẩn - machinelearningcoban](https://machinelearningcoban.com/math/#-norms-chuan). Rất đầy đủ và chi tiết.
 
 
-<img src="https://imgur.com/VPC7yvy.png" class="normalpic" />
+<img src="https://imgur.com/VPC7yvy.png" class="largepic" />
 
 
 **Hình 2:** Từ mô hình Convolutional neural network, mô hình trả ra 2 véc tơ encoding là $\mathbf{x_1}$ và $\mathbf{x_2}$ biểu diễn cho lần lượt ảnh 1 và 2. $\mathbf{x_1}$ và $\mathbf{x_2}$ có cùng số chiều. Hàm $f(\mathbf{x})$ có tác dụng tương tự như một phép biến đổi qua layer fully connected trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ. Thông thường là 128 đối đối với các mô hình pretrain.
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}$ nhỏ.
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$ nhỏ.
 
-* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}$ lớn.
+* Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $||f(\mathbf{x_1}) - f(\mathbf{x_2})||\_2^{2}$ lớn.
 
 Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.
 
-Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm `binary cross entropy` như các bài toán phân loại. Trên thực tế lựa chọn loss function là `binary cross entropy` vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng: $\frac{||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}}{||f(\mathbf{x_1}) + f(\mathbf{x_2})||_2}$ hoặc sử dụng norm chuẩn $l_1$.
+Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm `binary cross entropy` như các bài toán phân loại. Trên thực tế lựa chọn loss function là `binary cross entropy` vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng: 
+
+$$\frac{||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}}{||f(\mathbf{x_1}) + f(\mathbf{x_2})||_2}$$ 
+
+hoặc sử dụng norm chuẩn $l_1$.
 
 Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với bài toán này. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet. 
 
@@ -182,7 +188,7 @@ Trong facenet, quá trình encoding của mạng convolutional neural network đ
 
 Để áp dụng triple loss, chúng ta cần lấy ra 3 bức ảnh trong đó có một bức ảnh là anchor. Chắc bạn còn nhớ khái niệm về anchor box đã được trình bày tại [Bài 25 - YOLO You Only Look Once](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html#5-anchor-box) chứ. Anchor image cũng có tác dụng gần như vậy. Trong 3 ảnh thì ảnh anchor được cố định trước. Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative (của một người khác với anchor) và một ảnh là positive (cùng một người với anchor).
 
-<img src="https://imgur.com/oF1w7lP.png" class="normalpic" />
+<img src="https://imgur.com/oF1w7lP.png" class="largepic" />
 
 
 Kí hiệu ảnh Anchor, Positive, Negative lần lượt là $\mathbf{A}, \mathbf{P}, \mathbf{N}$.
@@ -212,7 +218,7 @@ Trong đó $n$ là số lượng các bộ 3 hình ảnh được đưa vào hu�
 
 Mục tiêu của chúng ta là giảm thiểu các trường hợp hợp mô hình nhận diện sai ảnh Negative thành Postive nhất có thể. Do đó để loại bỏ ảnh hưởng của các trường hợp nhận diện đúng Negative và Positive. Ta sẽ điều chỉnh giá trị đóng góp của nó vào hàm loss function về 0. 
 
-Tức là nếu $||f(\mathbf{A})-f(\mathbf{P})||_2^{2} - ||f(\mathbf{A})-f(\mathbf{N})||_2^{2}+ \alpha \leq 0$ sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:
+Tức là nếu $||f(\mathbf{A})-f(\mathbf{P})||\_2^{2} - ||f(\mathbf{A})-f(\mathbf{N})||\_2^{2}+ \alpha \leq 0$ sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:
 
 
 $$\mathcal{L}(\mathbf{A, P, N}) = \sum_{i=0}^{n}\max(||f(\mathbf{A}_i)-f(\mathbf{P}_i)||_2^{2} - ||f(\mathbf{A}_i)-f(\mathbf{N_i})||_2^{2}+ \alpha, 0)$$
@@ -232,11 +238,13 @@ Nếu lựa chọn triple input một cách ngẫu nhiên có thể ảnh khiế
 Để mô hình khó học hơn và đồng thời cũng giúp mô hình phân biệt chuẩn xác hơn mức độ giống và khác nhau giữa các khuôn mặt, chúng ta cần lựa chọn các input theo các bộ 3 khó học (hard triplets).
 
 Ý tưởng là chúng ta cần tìm ra bộ ba $(\mathbf{A}, \mathbf{N}, \mathbf{P})$ sao cho $(1)$ là gần đạt được đẳng thức (xảy ra dấu =) nhất. Tức là $d(\mathbf{A}, \mathbf{P})$ lớn nhất và $d(\mathbf{A}, \mathbf{N})$ nhỏ nhất. Hay nói cách khác với mỗi Anchor $\mathbf{A}$ cần xác định:
-* **Hard Positive:** Bức ảnh Positive có khoảng cách xa nhất với Anchor, $\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$ 
-* **Hard Negative:** Bức ảnh Negative có khoảng cách gần nhất với Anchor, $\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$
+* **Hard Positive:** Bức ảnh Positive có khoảng cách xa nhất với Anchor tương ứng với nghiệm:
+$$\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$$
+* **Hard Negative:** Bức ảnh Negative có khoảng cách gần nhất với Anchor tương ứng với nghiệm:
+$$\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$$
 
 
-Việc tính toán các giá trị $\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$  và $\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$ có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.
+Việc tính toán các trường hợp `Hard Positive` và `Hard Negative` có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.
 
 Bạn đọc có thể đọc kĩ hơn tại [mục 3.2 - Triplet selection](https://arxiv.org/pdf/1503.03832.pdf) ở bài báo gốc.
 
@@ -270,7 +278,9 @@ Trên là 2 bộ dữ liệu về face phổ biến nhất, được sử dụng
 Các pretrain model cho facenet khá nhiều:
 
 * Bạn có thể sử dụng pretrain model từ [facenet repo - davidsandberg](https://github.com/davidsandberg/facenet)
-![](https://imgur.com/s2kgSEq.png)
+
+<img src="https://imgur.com/s2kgSEq.png" class="normalpic" />
+
 Kiến trúc mà tác giả sử dụng là Inception ResNetv1 trên 2 bộ dữ liệu là CASIA-WebFace và VGGFace2
 
 * Ngoài ra còn rất nhiều các pretrain model khác nằm rải rác trên các nguồn khác nhau. Bạn có thể xem thêm từ chia sẻ [Khai báo pretrained model nhận diện người nổi tiếng - aivivn](https://forum.machinelearningcoban.com/t/khai-bao-pretrained-models-cho-nhan-dien-nguoi-noi-tieng/4566).
