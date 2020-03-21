@@ -99,6 +99,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
@@ -233,7 +235,7 @@ body {
 
 <p>Các phương pháp truyền thống: Xác thực khuôn mặt bằng cách trích xuất ra một land mark cho face. Land mark như là một bản đồ xác định các vị trí cố định trên khuôn mặt của một người như mắt, mũi, miệng, lông mày,….</p>
 
-<p><img src="https://imgur.com/ua9Bryq.png" class="normalpic" /></p>
+<p><img src="https://imgur.com/ua9Bryq.png" class="smallpic" /></p>
 
 <p>Như vậy thay land mark face đã loại bỏ những phần thông tin không cần thiết và giữ lại những thông tin chính. Khi đó mỗi khuôn mặt sẽ được nén thành một véc tơ n chiều. Thông thường là 68 chiều.</p>
 
@@ -247,7 +249,7 @@ body {
 
 <p>Để tạo ra một ảnh 3D, một cụm ba camera được áp dụng. Mỗi camera sẽ hướng vào một góc khác nhau. Tất cả các camera này phối hợp cùng nhau trong việc theo dõi khuôn mặt của một người trong thời gian thực và có thể nhận diện chúng.</p>
 
-<p><img src="https://imgur.com/YzRxmM5.png" class="normalpic" /></p>
+<p><img src="https://imgur.com/YzRxmM5.png" class="gigantic" /></p>
 
 <p>Nhận diện khuôn mặt của iphone là nhận diện 3D. Bạn sẽ phải quay tròn khuôn mặt của mình khi xác thực nó để thuật toán học các góc độ khác nhau.</p>
 
@@ -305,7 +307,9 @@ body {
   \end{cases}
 \end{equation} %]]></script>
 
-<p><img src="https://imgur.com/MUOIxfq.png" class="normalpic" /></p>
+<p>Để cụ thể hơn, tôi minh họa qua hình bên dưới:</p>
+
+<p><img src="https://imgur.com/MUOIxfq.png" class="largepic" /></p>
 
 <p><strong>Hình 1:</strong> Phương pháp learning similarity. Thay vì dự báo một phân phối xác suất để tìm ra nhãn phù hợp nhất với ảnh đầu vào. Thuật toán sẽ so sánh khoảng cách giữa ảnh đầu vào (bên phải) với toàn bộ các ảnh còn lại (bên trái). Ta cần chọn một ngưỡng threshold để quyết định ảnh là giống hoặc khác. Giả sử ngưỡng threshold là 0.5. Trong các bức ảnh bên trái thì bức ảnh ở giữa có khoảng cách với ảnh bên phải nhỏ hơn 0.5. Do đó nó được dự báo cùng một người với ảnh bên phải.</p>
 
@@ -327,56 +331,33 @@ body {
 
 <p>Lý thuyết về norm chuẩn bậc 2 tôi khuyến nghị các bạn xem thêm tại <a href="https://machinelearningcoban.com/math/#-norms-chuan">norms chuẩn - machinelearningcoban</a>. Rất đầy đủ và chi tiết.</p>
 
-<p><img src="https://imgur.com/VPC7yvy.png" class="normalpic" /></p>
+<p><img src="https://imgur.com/VPC7yvy.png" class="gigantic" /></p>
 
 <p><strong>Hình 2:</strong> Từ mô hình Convolutional neural network, mô hình trả ra 2 véc tơ encoding là $\mathbf{x_1}$ và $\mathbf{x_2}$ biểu diễn cho lần lượt ảnh 1 và 2. $\mathbf{x_1}$ và $\mathbf{x_2}$ có cùng số chiều. Hàm $f(\mathbf{x})$ có tác dụng tương tự như một phép biến đổi qua layer fully connected trong mạng neural network để tạo tính phi tuyến và giảm chiều dữ liệu về các kích thước nhỏ. Thông thường là 128 đối đối với các mô hình pretrain.</p>
 
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người, $</td>
-          <td> </td>
-          <td>f(\mathbf{x_1}) - f(\mathbf{x_2})</td>
-          <td> </td>
-          <td>_2^{2}$ nhỏ.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau, $</td>
-          <td> </td>
-          <td>f(\mathbf{x_1}) - f(\mathbf{x_2})</td>
-          <td> </td>
-          <td>_2^{2}$ lớn.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Khi $\mathbf{x_1}, \mathbf{x_2}$ là cùng 1 người:</li>
 </ul>
+
+<script type="math/tex; mode=display">||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}</script>
+
+<p>phải là một giá trị nhỏ.</p>
+
+<ul>
+  <li>Khi $\mathbf{x_1}, \mathbf{x_2}$ là 2 người khác nhau:</li>
+</ul>
+
+<script type="math/tex; mode=display">||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}</script>
+
+<p>phải là một giá trị lớn.</p>
 
 <p>Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm <code class="highlighter-rouge">binary cross entropy</code> như các bài toán phân loại. Trên thực tế lựa chọn loss function là <code class="highlighter-rouge">binary cross entropy</code> vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng: $\frac{</td>
-      <td> </td>
-      <td>f(\mathbf{x_1}) - f(\mathbf{x_2})</td>
-      <td> </td>
-      <td>_2^{2}}{</td>
-      <td> </td>
-      <td>f(\mathbf{x_1}) + f(\mathbf{x_2})</td>
-      <td> </td>
-      <td>_2}$ hoặc sử dụng norm chuẩn $l_1$.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm <code class="highlighter-rouge">binary cross entropy</code> như các bài toán phân loại. Trên thực tế lựa chọn loss function là <code class="highlighter-rouge">binary cross entropy</code> vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng:</p>
+
+<script type="math/tex; mode=display">\frac{||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}}{||f(\mathbf{x_1}) + f(\mathbf{x_2})||_2}</script>
+
+<p>hoặc sử dụng norm chuẩn $l_1$.</p>
 
 <p>Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với bài toán này. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet.</p>
 
@@ -417,7 +398,7 @@ body {
 
 <p>Để áp dụng triple loss, chúng ta cần lấy ra 3 bức ảnh trong đó có một bức ảnh là anchor. Chắc bạn còn nhớ khái niệm về anchor box đã được trình bày tại <a href="https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html#5-anchor-box">Bài 25 - YOLO You Only Look Once</a> chứ. Anchor image cũng có tác dụng gần như vậy. Trong 3 ảnh thì ảnh anchor được cố định trước. Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative (của một người khác với anchor) và một ảnh là positive (cùng một người với anchor).</p>
 
-<p><img src="https://imgur.com/oF1w7lP.png" class="normalpic" /></p>
+<p><img src="https://imgur.com/oF1w7lP.png" class="largepic" /></p>
 
 <p>Kí hiệu ảnh Anchor, Positive, Negative lần lượt là $\mathbf{A}, \mathbf{P}, \mathbf{N}$.</p>
 
@@ -449,21 +430,11 @@ d(\mathbf{A}, \mathbf{P}) < d(\mathbf{A}, \mathbf{N}) \tag{1} %]]></script>
 
 <p>Mục tiêu của chúng ta là giảm thiểu các trường hợp hợp mô hình nhận diện sai ảnh Negative thành Postive nhất có thể. Do đó để loại bỏ ảnh hưởng của các trường hợp nhận diện đúng Negative và Positive. Ta sẽ điều chỉnh giá trị đóng góp của nó vào hàm loss function về 0.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Tức là nếu $</td>
-      <td> </td>
-      <td>f(\mathbf{A})-f(\mathbf{P})</td>
-      <td> </td>
-      <td>_2^{2} -</td>
-      <td> </td>
-      <td>f(\mathbf{A})-f(\mathbf{N})</td>
-      <td> </td>
-      <td>_2^{2}+ \alpha \leq 0$ sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:</td>
-    </tr>
-  </tbody>
-</table>
+<p>Tức là nếu:</p>
+
+<script type="math/tex; mode=display">||f(\mathbf{A})-f(\mathbf{P})||_2^{2} - ||f(\mathbf{A})-f(\mathbf{N})||_2^{2}+ \alpha \leq 0</script>
+
+<p>sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:</p>
 
 <script type="math/tex; mode=display">\mathcal{L}(\mathbf{A, P, N}) = \sum_{i=0}^{n}\max(||f(\mathbf{A}_i)-f(\mathbf{P}_i)||_2^{2} - ||f(\mathbf{A}_i)-f(\mathbf{N_i})||_2^{2}+ \alpha, 0)</script>
 
@@ -481,11 +452,18 @@ d(\mathbf{A}, \mathbf{P}) < d(\mathbf{A}, \mathbf{N}) \tag{1} %]]></script>
 
 <p>Ý tưởng là chúng ta cần tìm ra bộ ba $(\mathbf{A}, \mathbf{N}, \mathbf{P})$ sao cho $(1)$ là gần đạt được đẳng thức (xảy ra dấu =) nhất. Tức là $d(\mathbf{A}, \mathbf{P})$ lớn nhất và $d(\mathbf{A}, \mathbf{N})$ nhỏ nhất. Hay nói cách khác với mỗi Anchor $\mathbf{A}$ cần xác định:</p>
 <ul>
-  <li><strong>Hard Positive:</strong> Bức ảnh Positive có khoảng cách xa nhất với Anchor, $\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$</li>
-  <li><strong>Hard Negative:</strong> Bức ảnh Negative có khoảng cách gần nhất với Anchor, $\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$</li>
+  <li><strong>Hard Positive:</strong> Bức ảnh Positive có khoảng cách xa nhất với Anchor tương ứng với nghiệm:</li>
 </ul>
 
-<p>Việc tính toán các giá trị $\text{argmax}<em>{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$  và $\text{argmin}</em>{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$ có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.</p>
+<script type="math/tex; mode=display">\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))</script>
+
+<ul>
+  <li><strong>Hard Negative:</strong> Bức ảnh Negative có khoảng cách gần nhất với Anchor tương ứng với nghiệm:</li>
+</ul>
+
+<script type="math/tex; mode=display">\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))</script>
+
+<p>Việc tính toán các trường hợp <code class="highlighter-rouge">Hard Positive</code> và <code class="highlighter-rouge">Hard Negative</code> có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.</p>
 
 <p>Bạn đọc có thể đọc kĩ hơn tại <a href="https://arxiv.org/pdf/1503.03832.pdf">mục 3.2 - Triplet selection</a> ở bài báo gốc.</p>
 
@@ -527,14 +505,15 @@ d(\mathbf{A}, \mathbf{P}) < d(\mathbf{A}, \mathbf{N}) \tag{1} %]]></script>
 <p>Các pretrain model cho facenet khá nhiều:</p>
 
 <ul>
-  <li>
-    <p>Bạn có thể sử dụng pretrain model từ <a href="https://github.com/davidsandberg/facenet">facenet repo - davidsandberg</a>
-<img src="https://imgur.com/s2kgSEq.png" alt="" />
-Kiến trúc mà tác giả sử dụng là Inception ResNetv1 trên 2 bộ dữ liệu là CASIA-WebFace và VGGFace2</p>
-  </li>
-  <li>
-    <p>Ngoài ra còn rất nhiều các pretrain model khác nằm rải rác trên các nguồn khác nhau. Bạn có thể xem thêm từ chia sẻ <a href="https://forum.machinelearningcoban.com/t/khai-bao-pretrained-models-cho-nhan-dien-nguoi-noi-tieng/4566">Khai báo pretrained model nhận diện người nổi tiếng - aivivn</a>.</p>
-  </li>
+  <li>Bạn có thể sử dụng pretrain model từ <a href="https://github.com/davidsandberg/facenet">facenet repo - davidsandberg</a></li>
+</ul>
+
+<p><img src="https://imgur.com/s2kgSEq.png" class="normalpic" /></p>
+
+<p>Kiến trúc mà tác giả sử dụng là Inception ResNetv1 trên 2 bộ dữ liệu là CASIA-WebFace và VGGFace2</p>
+
+<ul>
+  <li>Ngoài ra còn rất nhiều các pretrain model khác nằm rải rác trên các nguồn khác nhau. Bạn có thể xem thêm từ chia sẻ <a href="https://forum.machinelearningcoban.com/t/khai-bao-pretrained-models-cho-nhan-dien-nguoi-noi-tieng/4566">Khai báo pretrained model nhận diện người nổi tiếng - aivivn</a>.</li>
 </ul>
 
 <h1 id="6-tổng-kết">6. Tổng kết</h1>

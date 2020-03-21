@@ -127,7 +127,7 @@ Một số lưu ý khi huấn luyện YOLO:
 
 <img src="/assets/images/20200309_YOLOAlgorithm/h5.png" width="650px" height="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-**Hình 5**: Xác định anchor box cho một vật thể. Từ `Cell i` ta xác định được 3 anchor boxes viền xanh như trong hình. Cả 3 anchor boxes này đều giao nhau với bounding box của vật thể. Tuy nhiên chỉ anchor box có đường viền dày nhất màu xanh được lựa chọn làm anchor box cho vật thể bởi nó có IoU so với ground ruth bounding box là cao nhất.
+**Hình 5**: Xác định anchor box cho một vật thể. Từ `Cell i` ta xác định được 3 anchor boxes viền xanh như trong hình. Cả 3 anchor boxes này đều giao nhau với bounding box của vật thể. Tuy nhiên chỉ anchor box có đường viền dày nhất màu xanh được lựa chọn làm anchor box cho vật thể bởi nó có IoU so với ground truth bounding box là cao nhất.
 
 * Mỗi một vật thể trong hình ảnh huấn luyện được phân bố về một cell trên feature map mà chứa điểm mid point của vật thể. Chẳng hạn như hình chú chó trong hình 3 sẽ được phân về cho cell màu đỏ vì điểm mid point của ảnh chú chó rơi vào đúng cell này. Từ cell ta sẽ xác định các anchor boxes bao quanh hình ảnh chú chó.
 
@@ -147,7 +147,7 @@ Một số trường hợp 2 vật thể bị trùng mid point, mặc dù rất 
 
 # 6. Hàm loss function
 
-Cũng tương tự như SSD, hàm loss function của YOLO chia thành 2 phần: $\mathcal{L}_\text{loc}$ (localization loss) đo lường sai số của bounding box và $\mathcal{L}_\text{cls}$ (confidence loss) đo lường sai số của phân phối xác suất các classes. 
+Cũng tương tự như SSD, hàm loss function của YOLO chia thành 2 phần: $\mathcal{L}\_\text{loc}$ (localization loss) đo lường sai số của bounding box và $\mathcal{L}\_\text{cls}$ (confidence loss) đo lường sai số của phân phối xác suất các classes. 
 
 $$\begin{aligned}
 \mathcal{L}_\text{loc} &= \lambda_\text{coord} \sum_{i=0}^{S^2} \sum_{j=0}^B \mathbb{1}_{ij}^\text{obj} [(x_i - \hat{x}_i)^2 + (y_i - \hat{y}_i)^2 + (\sqrt{w_i} - \sqrt{\hat{w}_i})^2 + (\sqrt{h_i} - \sqrt{\hat{h}_i})^2 ] \\
