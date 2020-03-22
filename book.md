@@ -66,7 +66,7 @@ title: Book
 	</nav>
 	</div>
 	<div>
-	<h2><p style="text-align: left; color: #204081; font-weight: bold">V. AI blog</p></h2>
+	<h2><p style="text-align: left; color: #204081; font-weight: bold">VI. AI blog</p></h2>
 	<br>
 	<nav>
 		<li><a style="text-align: left; color: #074B80"  href="https://ai.googleblog.com/">Google blog</a></li>
