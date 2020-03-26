@@ -8,9 +8,16 @@ title: Bài 29 - Xây dựng Flask API cho mô hình deep learning
 
 Quá trình huấn luyện mô hình mới chỉ tạo ra các sản phẩm chạy được trên jupyter notebook. Có một AI engineer khá nổi tiếng nói rằng: `model trên jupyter notebook là model chết`. Mình khá đồng tình với quan điểm này vì nếu không đưa sản phẩm lên production thì mọi việc chúng ta làm đều `unusable`. 
 
-Với các doanh nghiệp lớn, để đưa được model vào ứng dụng sẽ cần quá trình POC, DEV, stress test, QC, deploy. Các quá trình như stress test, QC, deploy sẽ không được thực hiện bởi data scientist mà được thực hiện bởi các data engineer. Chính vì thế khả năng triển khai một ứng dụng thành production luôn là một điểm hạn chế của data scientist. Nhưng thực tế kĩ năng này khá cần thiết nếu bạn muốn tự xây dựng những ứng dụng về AI mà không đủ nguồn lực.
+Với các doanh nghiệp lớn, để đưa được model vào ứng dụng sẽ cần quá trình POC, DEV, stress test, QC, deploy. Các quá trình như stress test, QC, deploy sẽ không được thực hiện bởi data scientist mà được thực hiện bởi các data engineer, QA. Chính vì thế khả năng triển khai một ứng dụng lên production luôn là một điểm hạn chế của data scientist. Thực tế kĩ năng này khá cần thiết nếu bạn muốn tự xây dựng những ứng dụng về AI.
 
-Bài viết này sẽ cung cấp cho các bạn một phương pháp xây dựng và triển khai API cho các model theo hướng tiếp cận đơn giản nhất (simple is the best). 
+Để triển khai được các sản phẩm về AI thì bạn sẽ cần có các kĩ năng sau ngoài kĩ năng chính về dữ liệu và mô hình.
+* Kỹ năng thiết kế API back end services cho các ứng dụng.
+* Kỹ năng front end.
+* Kỹ năng devops để triển khai hạ tầng và môi trường cho các ứng dụng.
+
+Các kỹ năng đó đều là những kỹ năng hoàn toàn không liên quan đến kiến thức về mô hình và thuật toán mà bạn được học. Nhưng là những kỹ năng cần thiết để làm được một sản phẩm trên production. 
+
+Chính vì vậy, nhằm giải quyết khó khăn cho data scientist. Bài viết này mình sẽ giới thiệu phương pháp xây dựng các API cho một ứng dụng AI trên python theo hướng tiếp cận đơn giản nhất. 
 
 Code cho project này được đặt tại [khanhBlogTurtorial](https://github.com/phamdinhkhanh/khanhBlogTurtorial/tree/master/flask). Bạn đọc download về và thực hành theo hướng dẫn tại README.
 
