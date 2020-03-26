@@ -35,7 +35,7 @@ $$score(h_t, \bar{h_s})$$
 
 2\. Các scores sau bước 1 chưa được chuẩn hóa. Để tạo thành một phân phối xác xuất chúng ta đi qua hàm softmax khi đó ta sẽ thu được các trọng số attention weight.
 
-$$\alpha_{ts} = \frac{exp(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}exp(score(h_t, \bar{h_{s'}}))}$$
+$$\alpha_{ts} = \frac{\text{exp}(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}\text{exp}(score(h_t, \bar{h_{s'}}))}$$
 
 $\alpha_{ts}$ là phân phối attention (attention weight) của các từ trong input tới các từ ở vị trí $t$ trong output hoặc target.
 
@@ -172,7 +172,7 @@ Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc bi
 
 Nếu sử dụng precision chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2). Như vậy sẽ có tổng cộng 7 lần từ `the` xuất hiện trong các bản dịch. Ta đã biết:
 
-$\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1$
+$$\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1$$
 
 Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng bản dịch. Một cách tự nhiên là chúng ta sẽ tinh chính score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong bản dịch MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ `the` được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn. Cách tính điểm như trên sẽ tương ứng với trường hợp từ đơn. 
 
@@ -216,17 +216,21 @@ Tuy nhiên chúng ta muốn xem xự xuất hiện của các từ theo cặp đ
 
 > Bảng 1: Thống kê count và count clip của các bigram.
 
-Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là $\frac{1+1+1+1}/{2+1+1+1+1} = \frac{2}{3}$.
+Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là: 
+
+$$\frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}$$
+
 Sau các ví dụ trên bạn đọc đã hình dung được cách tính precision modified rồi chứ? Tôi xin phát biểu công thức tổng quát về tính precision modified cho n-gram (kí hiệu là $P_n$) như sau:
 
 $$P_n = \frac{\sum_{i=1}^{C} \text{count_clip}(ngram_i)}{\sum_{i=1}^{C}\text{count}(ngram_i)}$$
+
 Trong đó C là kích thước của các ngram thu được từ bản dịch MT, $ngram_i$ là một phần tử thuộc bộ ngram. Cách tính $\text{count}$ và $\text{count_clip}$ như thống kê trong bảng 1.
 
 **Vậy BLUE score (bilingual evaluation understudy) được tính như thế nào?**
 
 BLUE score theo như giới thiệu sẽ có tác dụng đánh giá điểm số càng cao nếu kết quả của MT là sát nghĩa với kết quả của người dịch. BLUE score sẽ được tính toán dựa trên $P_1, P_2, P_3, P_4$ theo lũy thừa cơ số tự nhiên $e$:
 
-$$BLUE = exp(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
+$$BLUE = \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
 
 Tuy nhiên chúng ta thấy một điểm hạn chế của BLUE score đó là đối với các câu càng ngắn thì xu hướng BLUE score sẽ càng cao. Điều này dễ hiểu vì khi câu càng ngắn thì số lượng các n_gram càng ít và đồng thời khả năng xuất hiện của chúng trong các bản dịch cũng cao hơn. Chính vì vậy chúng ta cần một chỉ số phạt độ ngắn gọi là Brevity Penalty (kí hiệu là BP).
 
@@ -240,7 +244,7 @@ $$\begin{equation}
             
 Khi đó:
 
-$$BLUE = BP \times exp(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
+$$BLUE = BP \times \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
 
 Hiện nay có nhiều package trên đa dạng các ngôn ngữ machine learning hỗ trợ tính BLUE score. Trên python chúng ta có thể sử dụng package `nltk` như sau:
 ```python

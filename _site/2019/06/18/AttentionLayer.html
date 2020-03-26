@@ -99,6 +99,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
@@ -232,7 +234,7 @@ Cơ chế xây dựng attention layer là một qui trình khá đơn giản. Ch
 
 <p>2. Các scores sau bước 1 chưa được chuẩn hóa. Để tạo thành một phân phối xác xuất chúng ta đi qua hàm softmax khi đó ta sẽ thu được các trọng số attention weight.</p>
 
-<script type="math/tex; mode=display">\alpha_{ts} = \frac{exp(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}exp(score(h_t, \bar{h_{s'}}))}</script>
+<script type="math/tex; mode=display">\alpha_{ts} = \frac{\text{exp}(score(h_t, \bar{h_s}))}{\sum_{s'=1}^{S}\text{exp}(score(h_t, \bar{h_{s'}}))}</script>
 
 <p>$\alpha_{ts}$ là phân phối attention (attention weight) của các từ trong input tới các từ ở vị trí $t$ trong output hoặc target.</p>
 
@@ -387,7 +389,7 @@ Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc bi
 
 <p>Nếu sử dụng precision chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2). Như vậy sẽ có tổng cộng 7 lần từ <code class="highlighter-rouge">the</code> xuất hiện trong các bản dịch. Ta đã biết:</p>
 
-<p>$\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1$</p>
+<script type="math/tex; mode=display">\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1</script>
 
 <p>Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng bản dịch. Một cách tự nhiên là chúng ta sẽ tinh chính score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong bản dịch MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ <code class="highlighter-rouge">the</code> được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn. Cách tính điểm như trên sẽ tương ứng với trường hợp từ đơn.</p>
 
@@ -433,17 +435,21 @@ Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc bi
   <p>Bảng 1: Thống kê count và count clip của các bigram.</p>
 </blockquote>
 
-<p>Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là $\frac{1+1+1+1}/{2+1+1+1+1} = \frac{2}{3}$.
-Sau các ví dụ trên bạn đọc đã hình dung được cách tính precision modified rồi chứ? Tôi xin phát biểu công thức tổng quát về tính precision modified cho n-gram (kí hiệu là $P_n$) như sau:</p>
+<p>Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là:</p>
 
-<p><script type="math/tex">P_n = \frac{\sum_{i=1}^{C} \text{count_clip}(ngram_i)}{\sum_{i=1}^{C}\text{count}(ngram_i)}</script>
-Trong đó C là kích thước của các ngram thu được từ bản dịch MT, $ngram_i$ là một phần tử thuộc bộ ngram. Cách tính $\text{count}$ và $\text{count_clip}$ như thống kê trong bảng 1.</p>
+<script type="math/tex; mode=display">\frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}</script>
+
+<p>Sau các ví dụ trên bạn đọc đã hình dung được cách tính precision modified rồi chứ? Tôi xin phát biểu công thức tổng quát về tính precision modified cho n-gram (kí hiệu là $P_n$) như sau:</p>
+
+<script type="math/tex; mode=display">P_n = \frac{\sum_{i=1}^{C} \text{count_clip}(ngram_i)}{\sum_{i=1}^{C}\text{count}(ngram_i)}</script>
+
+<p>Trong đó C là kích thước của các ngram thu được từ bản dịch MT, $ngram_i$ là một phần tử thuộc bộ ngram. Cách tính $\text{count}$ và $\text{count_clip}$ như thống kê trong bảng 1.</p>
 
 <p><strong>Vậy BLUE score (bilingual evaluation understudy) được tính như thế nào?</strong></p>
 
 <p>BLUE score theo như giới thiệu sẽ có tác dụng đánh giá điểm số càng cao nếu kết quả của MT là sát nghĩa với kết quả của người dịch. BLUE score sẽ được tính toán dựa trên $P_1, P_2, P_3, P_4$ theo lũy thừa cơ số tự nhiên $e$:</p>
 
-<script type="math/tex; mode=display">BLUE = exp(\frac{P_1 + P_2 + P_3 + P_4}{4})</script>
+<script type="math/tex; mode=display">BLUE = \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})</script>
 
 <p>Tuy nhiên chúng ta thấy một điểm hạn chế của BLUE score đó là đối với các câu càng ngắn thì xu hướng BLUE score sẽ càng cao. Điều này dễ hiểu vì khi câu càng ngắn thì số lượng các n_gram càng ít và đồng thời khả năng xuất hiện của chúng trong các bản dịch cũng cao hơn. Chính vì vậy chúng ta cần một chỉ số phạt độ ngắn gọi là Brevity Penalty (kí hiệu là BP).</p>
 
@@ -457,7 +463,7 @@ Trong đó C là kích thước của các ngram thu được từ bản dịch 
 
 <p>Khi đó:</p>
 
-<script type="math/tex; mode=display">BLUE = BP \times exp(\frac{P_1 + P_2 + P_3 + P_4}{4})</script>
+<script type="math/tex; mode=display">BLUE = BP \times \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})</script>
 
 <p>Hiện nay có nhiều package trên đa dạng các ngôn ngữ machine learning hỗ trợ tính BLUE score. Trên python chúng ta có thể sử dụng package <code class="highlighter-rouge">nltk</code> như sau:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.translate.bleu_score</span> <span class="kn">import</span> <span class="n">sentence_bleu</span>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div>
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 29 - Xây dựng Flask API cho mô hình deep learning</p></h2> 
+<strong>23 Mar 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-nhu-cầu-deploy-model">1. Nhu cầu deploy model</h1>
+
+<p>Quá trình huấn luyện mô hình mới chỉ tạo ra các sản phẩm chạy được trên jupyter notebook. Có một AI engineer khá nổi tiếng nói rằng: <code class="highlighter-rouge"><span class="k">model</span> <span class="n">tr</span><span class="err">ê</span><span class="n">n</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="n">l</span><span class="err">à</span> <span class="k">model</span> <span class="n">ch</span><span class="err">ế</span><span class="n">t</span></code>. Mình khá đồng tình với quan điểm này vì nếu không đưa sản phẩm lên production thì mọi việc chúng ta làm đều <code class="highlighter-rouge">unusable</code>.</p>
+
+<p>Với các doanh nghiệp lớn, để đưa được model vào ứng dụng sẽ cần quá trình POC, DEV, stress test, QC, deploy. Các quá trình như stress test, QC, deploy sẽ không được thực hiện bởi data scientist mà được thực hiện bởi các data engineer, QA. Chính vì thế khả năng triển khai một ứng dụng lên production luôn là một điểm hạn chế của data scientist. Thực tế kĩ năng này khá cần thiết nếu bạn muốn tự xây dựng những ứng dụng về AI.</p>
+
+<p>Để triển khai được các sản phẩm về AI thì bạn sẽ cần có các kĩ năng sau ngoài kĩ năng chính về dữ liệu và mô hình.</p>
+<ul>
+  <li>Kỹ năng thiết kế API back end services cho các ứng dụng.</li>
+  <li>Kỹ năng front end.</li>
+  <li>Kỹ năng devops để triển khai hạ tầng và môi trường cho các ứng dụng.</li>
+</ul>
+
+<p>Các kỹ năng đó đều là những kỹ năng hoàn toàn không liên quan đến kiến thức về mô hình và thuật toán mà bạn được học. Nhưng là những kỹ năng cần thiết để làm được một sản phẩm trên production.</p>
+
+<p>Chính vì vậy, nhằm giải quyết khó khăn cho data scientist. Bài viết này mình sẽ giới thiệu phương pháp xây dựng các API cho một ứng dụng AI trên python theo hướng tiếp cận đơn giản nhất.</p>
+
+<p>Code cho project này được đặt tại <a href="https://github.com/phamdinhkhanh/khanhBlogTurtorial/tree/master/flask">khanhBlogTurtorial</a>. Bạn đọc download về và thực hành theo hướng dẫn tại README.</p>
+
+<p>Ngoài ra hãy join group <a href="https://www.facebook.com/groups/3235479620010379/">AICode</a>, một group mới của mình để cùng thảo luận, tìm kiếm và chia sẻ về các source code hay.</p>
+
+<p>Nội dung chính của bài này sẽ tập trung giải thích về code ở project git trên trên.</p>
+
+<h1 id="2-project">2. Project</h1>
+
+<h2 id="21-bài-toán-dự-báo">2.1. Bài toán dự báo</h2>
+
+<p>Mình sẽ không train lại model từ đầu vì đã có rất nhiều các bài viết và hướng dẫn về cách huấn luyện model. Để tiết kiệm thời gian, mình sẽ sử dụng một pretrain model cho bộ dữ liệu imagenet gồm 14 triệu ảnh của 1000 classes khác nhau.</p>
+
+<p>Mô hình dựa trên kiến trúc RestNet50. Một trong những kiến trúc khá hiệu quả đối với image classification. Về thuật toán <a href="https://arxiv.org/abs/1512.03385.pdf">RestNet</a> bạn đọc quan tâm đến kiến trúc mô hình có thể đọc thêm tại link trích dẫn bài báo gốc. Đây là thuật toán được nhóm tác giả đến từ microsoft nghiên cứu từ những năm 2015 với điểm mấu chốt là sử dụng những kết nối tắt giúp cải hiện accuracy.</p>
+
+<p><img src="https://imgur.com/Pt4uRed.png" class="normalpic" /></p>
+
+<blockquote>
+  <p><strong>Hình 1</strong> : Residual learning: a building block (source: từ bài báo gốc). $\mathbf{x}$ là input của mô hình. Sau khi đi qua các CNN projection, mô hình sẽ thu được ở output là $\mathcal{F}(\mathbf{x})$. Thay vì sử dụng chiến lược tăng thêm độ sâu cho model như các cách cải thiện truyền thống trước đó ở các mạng VGG. Mô hình sử dụng một kết nối xác định (mapping identity) từ $\mathbf{x}$ tới output $\mathcal{F}(\mathbf{x})$ bằng cách cộng trực tiếp vào output ở mỗi một block. Kết nối sẽ nhảy qua một vài layers.</p>
+</blockquote>
+
+<p>Ngoài ra tùy vào số lượng các <code class="highlighter-rouge">building block</code> mà resnet có các version như RestNet30, RestNet50, RestNet100. Các mô hình này đều đã có pretrain trên imagenet. Chỉ load vào là dùng được. Tiếp theo ta sẽ cùng tìm hiểu về project.</p>
+
+<h2 id="22-cấu-trúc-project">2.2. Cấu trúc project</h2>
+
+<p>Project của chúng ta sẽ có cấu trúc như sau:</p>
+
+<p><img src="https://imgur.com/ft3a2VS.png" class="normalpic" /></p>
+
+<p>Trong đó các file có chức năng khái quát như sau:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">serve.py</code>: Khởi tạo và run app. Tại đây chúng ta khởi tạo các api cho project.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">utils.py</code>: File chứa các hàm tiện ích được sử dụng ở nhiều module trong project.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">hyper.py</code>: Đây là file chứa siêu tham số của project.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">imagenet.py</code>: Chứa dictionary mapping index tương ứng với label của các classes trong imagenet.</p>
+  </li>
+</ul>
+
+<p>Tiếp theo ta sẽ cùng nghiên cứu chi tiết của từng file này và thử vận hành project nhé.</p>
+
+<h2 id="23-khởi-tạo-một-flask-app">2.3. Khởi tạo một flask app</h2>
+
+<h3 id="231-giới-thiệu-về-flask-và-api">2.3.1. Giới thiệu về Flask và API.</h3>
+
+<p>Flask đã quá quen thuộc đối với những ai làm web, app. Đây là một framework hỗ trợ xây dựng các API trên nền tảng python.</p>
+
+<p>Flask là framework không quá nhanh. Nếu bạn làm việc nhiều với server, có nhiều ngôn ngữ thích hợp hơn mà các chuyên gia hay dùng đó là vuejs, golang, erlang. Nhưng trên ngôn ngữ python thì mình nghĩ Flask là đủ. Ngoài ra Flask cũng có ưu điểm đó là tính bảo mật của nó rất cao, code đẹp và dễ hiểu.</p>
+
+<p>Về định nghĩa của API thì các bạn biết nó là gì rồi chứ? Nếu bạn chưa biết thì mình giải thích đơn giản như sau:</p>
+
+<p>API được coi như chất liệu để làm nên một website. Khi chúng ta tương tác với một ứng dụng là tương tác với dữ liệu của ứng dụng đó được render trong một template html. Dữ liệu đó đến từ đâu? Nó được truyền đến thiết bị của bạn thông qua chính API. API là chiếc cầu nối dữ liệu qua lại giữa client và server và thay đổi những gì mà chúng ta nhìn thấy trên front end. Các phương thức tương tác dữ liệu trên API chính bao gồm: <code class="highlighter-rouge">GET, POST, PUT, PATCH, DELETE</code>. Đối với những beginner thì mình nghĩ chỉ cần hiểu <code class="highlighter-rouge">GET, POST</code> là đủ.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">GET</code>: Client nhận dữ liệu từ server.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">POST</code>: Client gửi dữ liệu lên server. Server xử lý dữ liệu và trả về một kết quả.</p>
+  </li>
+</ul>
+
+<h3 id="232-khởi-tạo-api-trên-flask">2.3.2. Khởi tạo API trên flask</h3>
+
+<p>Để khởi tạo các API trên flask chúng ta sẽ phải khởi tạo app trước. Sau đó tương ứng với mỗi API chúng ta sẽ khai báo 3 thành phần:</p>
+
+<ul>
+  <li>route: Địa chỉ url của api.</li>
+  <li>method: Phương thức để tương tác với api. VD: Nếu bạn muốn gửi dữ liệu lên server thi là <code class="highlighter-rouge">POST</code>, muốn nhận dữ liệu từ server thì là <code class="highlighter-rouge">GET</code>.</li>
+  <li>hàm xử lý dữ liệu: Quyết định dữ liệu sẽ được xử lý như thế nào và trả ra cho client những gì?</li>
+</ul>
+
+<p>Bạn có thể hình dung những gì mình nói ở trên qua ví dụ đơn giản sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import Flask, request
+
+# Khởi tạo flask app
+app = Flask(__name__)
+# route và method
+@app.route("/", methods=["GET"])
+# Hàm xử lý dữ liệu
+def _hello_world():
+	return "Hello world"
+</code></pre></div></div>
+
+<p>Chỉ cần như thế là bạn đã khởi tạo được một app trên flask rồi đó. Tất nhiên đối với những dự án lớn thì sẽ cần nhiều thứ phức tạp hơn như bảo mật, design pattern api, blabla,…. Mình sẽ không đi sau vì không phải là dân chuyên về lĩnh vực này.</p>
+
+<h2 id="24-tìm-hiểu-api-trong-project-thực-hành">2.4. Tìm hiểu API trong project thực hành</h2>
+
+<p>Trong code của project bạn mở file <code class="highlighter-rouge">serve.py</code> có nội dung như bên dưới:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">PIL</span> <span class="n">import</span> <span class="n">Image</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">hyper</span> <span class="k">as</span> <span class="n">hp</span>
+<span class="k">from</span> <span class="n">flask</span> <span class="n">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="n">import</span> <span class="n">flask</span>
+<span class="n">import</span> <span class="n">json</span>
+<span class="n">import</span> <span class="n">io</span>
+<span class="n">import</span> <span class="n">utils</span>
+<span class="n">import</span> <span class="n">imagenet</span>
+
+<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="k">model</span><span class="p">.</span>
+<span class="n">global</span> <span class="k">model</span> 
+<span class="k">model</span> <span class="p">=</span> <span class="n">None</span>
+<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="n">flask</span> <span class="n">app</span>
+<span class="n">app</span> <span class="p">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">route</span> <span class="m">1</span> <span class="n">cho</span> <span class="n">API</span>
+<span class="p">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">methods</span><span class="p">=[</span><span class="s2">"GET"</span><span class="p">])</span>
+<span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">h</span><span class="err">à</span><span class="n">m</span> <span class="n">x</span><span class="err">ử</span> <span class="n">l</span><span class="err">ý</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span><span class="p">.</span>
+<span class="n">def</span> <span class="n">_hello_world</span><span class="p">():</span>
+	<span class="n">return</span> <span class="s2">"Hello world"</span>
+
+<span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">route</span> <span class="m">2</span> <span class="n">cho</span> <span class="n">API</span>
+<span class="p">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/predict"</span><span class="p">,</span> <span class="n">methods</span><span class="p">=[</span><span class="s2">"POST"</span><span class="p">])</span>
+<span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">h</span><span class="err">à</span><span class="n">m</span> <span class="n">x</span><span class="err">ử</span> <span class="n">l</span><span class="err">ý</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span><span class="p">.</span>
+<span class="n">def</span> <span class="n">_predict</span><span class="p">():</span>
+	<span class="n">data</span> <span class="p">=</span> <span class="p">{</span><span class="s2">"success"</span><span class="p">:</span> <span class="nb">False</span><span class="p">}</span>
+	<span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">files</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"image"</span><span class="p">):</span>
+		<span class="p">#</span> <span class="n">L</span><span class="err">ấ</span><span class="n">y</span> <span class="n">file</span> <span class="err">ả</span><span class="n">nh</span> <span class="n">ng</span><span class="err">ườ</span><span class="n">i</span> <span class="n">d</span><span class="err">ù</span><span class="n">ng</span> <span class="n">upload</span> <span class="n">l</span><span class="err">ê</span><span class="n">n</span>
+		<span class="n">image</span> <span class="p">=</span> <span class="n">request</span><span class="p">.</span><span class="n">files</span><span class="p">[</span><span class="s2">"image"</span><span class="p">].</span><span class="nb">read</span><span class="p">()</span>
+		<span class="p">#</span> <span class="n">Convert</span> <span class="n">sang</span> <span class="n">d</span><span class="err">ạ</span><span class="n">ng</span> <span class="k">array</span> <span class="n">image</span>
+		<span class="n">image</span> <span class="p">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+		<span class="p">#</span> <span class="n">resize</span> <span class="err">ả</span><span class="n">nh</span>
+		<span class="n">image_rz</span> <span class="p">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">_preprocess_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span>
+			<span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">IMAGE_WIDTH</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">IMAGE_HEIGHT</span><span class="p">))</span>
+		<span class="p">#</span> <span class="n">D</span><span class="err">ự</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">ph</span><span class="err">â</span><span class="n">n</span> <span class="n">ph</span><span class="err">ố</span><span class="n">i</span> <span class="n">x</span><span class="err">á</span><span class="n">c</span> <span class="n">su</span><span class="err">ấ</span><span class="n">t</span>
+		<span class="n">dist_probs</span> <span class="p">=</span> <span class="k">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image_rz</span><span class="p">)</span>
+		<span class="p">#</span> <span class="n">argmax</span> <span class="m">5</span>
+		<span class="n">argmax_k</span> <span class="p">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dist_probs</span><span class="p">[</span><span class="m">0</span><span class="p">])[::-</span><span class="m">1</span><span class="p">][:</span><span class="m">5</span><span class="p">]</span>
+		<span class="p">#</span> <span class="n">classes</span> <span class="m">5</span>
+		<span class="n">classes</span> <span class="p">=</span> <span class="p">[</span><span class="n">imagenet</span><span class="p">.</span><span class="n">classes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="n">for</span> <span class="n">idx</span> <span class="k">in</span> <span class="k">list</span><span class="p">(</span><span class="n">argmax_k</span><span class="p">)]</span>
+		<span class="p">#</span> <span class="n">probability</span> <span class="k">of</span> <span class="n">classes</span>
+		<span class="n">classes_prob</span> <span class="p">=</span> <span class="p">[</span><span class="n">dist_probs</span><span class="p">[</span><span class="m">0</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="n">for</span> <span class="n">idx</span> <span class="k">in</span> <span class="k">list</span><span class="p">(</span><span class="n">argmax_k</span><span class="p">)]</span>	
+		<span class="n">data</span><span class="p">[</span><span class="s2">"probability"</span><span class="p">]</span> <span class="p">=</span> <span class="n">dict</span><span class="p">(</span><span class="n">zip</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">classes_prob</span><span class="p">))</span>
+		<span class="n">data</span><span class="p">[</span><span class="s2">"success"</span><span class="p">]</span> <span class="p">=</span> <span class="nb">True</span>
+	<span class="n">return</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="p">=</span><span class="nb">False</span><span class="p">,</span> <span class="n">cls</span><span class="p">=</span><span class="n">utils</span><span class="p">.</span><span class="n">NumpyEncoder</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="p">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+	<span class="n">print</span><span class="p">(</span><span class="s2">"App run!"</span><span class="p">)</span>
+	<span class="p">#</span> <span class="nf">Load</span> <span class="k">model</span>
+	<span class="k">model</span> <span class="p">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">_load_model</span><span class="p">()</span>
+	<span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">debug</span><span class="p">=</span><span class="nb">False</span><span class="p">,</span> <span class="n">host</span><span class="p">=</span><span class="n">hp</span><span class="p">.</span><span class="n">IP</span><span class="p">,</span> <span class="n">threaded</span><span class="p">=</span><span class="nb">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Nhìn file <code class="highlighter-rouge">serve.py</code> bạn thấy gì?</p>
+
+<p>Bỏ qua các tiểu tiết xử lý bên trong. Nhìn khải quát các hàm thì ta có thể thấy đây chính là file thiết kế các API của project này. Đồng thời ta cũng nhận định đây là file execute chính của project vì nó có điều kiện <code class="highlighter-rouge">__main__</code> ở cuối.</p>
+
+<p>Cụ thể hơn trong file này các bạn có thể thấy chúng ta thực hiện các chức năng sau:</p>
+
+<ul>
+  <li>Khởi tạo Flask application: dòng <code class="highlighter-rouge">app = Flask(__name__)</code>.</li>
+  <li>Khai báo các đường link của api thông qua các câu lệnh <code class="highlighter-rouge">@app.route()</code>. Nếu các bạn hiểu sâu hơn thì đây chính là <code class="highlighter-rouge">decorator</code> trong python có tác dụng bổ sung thêm chức năng cho hàm bên dưới.</li>
+  <li>Các hàm xử lý dữ liệu của API như <code class="highlighter-rouge">_predict()</code>, <code class="highlighter-rouge">_hello_world()</code>.</li>
+</ul>
+
+<p>Chúng ta cần chú ý tới hàm số <code class="highlighter-rouge">_predict()</code>. Bên trong hàm này ta sẽ nhận file dữ liệu ảnh được gửi lên từ client, sau đó parse sang định dạng numpy array. Sử dụng model được khai báo global để dự báo kết quả. Chi tiết chức năng của từng lệnh mình đã comment trong file.</p>
+
+<p>Dành cho bạn nào là begginer: Khi chúng ta chạy file bằng câu lệnh:</p>
+
+<p><code class="highlighter-rouge">python server.py</code></p>
+
+<p>Chương trình sẽ thực thi các lệnh trong điều kiện <code class="highlighter-rouge">if __name__ == "__main__":</code> Đầu tiên. Do đó model sẽ được load đầu tiên. Do ở đây mình không dùng lệnh <code class="highlighter-rouge">async await</code> nên chương trình sẽ chờ đến khi load model xong thì mới chạy lệnh bên dưới. Python sẽ hơi khác so với các ngôn ngữ compile như java hay C, C++ một chút bởi vì nó mặc định là xử lý đơn luồng nên sẽ chạy tuần tự từ trên xuống dưới. Ngoài python thì còn một ngôn ngữ rất nổi tiếng khác cũng chạy đơn luồng, đó là javascript.</p>
+
+<p>Sau khi load xong model thì chương trình sẽ start app thông qua lệnh <code class="highlighter-rouge">app.run()</code>. Lúc này bạn đã có thể tương tác được với các api của nó.</p>
+
+<h2 id="25-xử-lý-code-theo-design-pattern">2.5. Xử lý code theo design pattern</h2>
+
+<p>Design pattern là một kiến thức rất quan trọng của lập trình hướng đối tượng. Hiểu đơn giản thì design pattern là các mẫu thiết kế có sẵn để mình code project sao cho nó đẹp mắt, gọn gàng và thuận tiện.</p>
+
+<p>Ở đây mình sẽ không đi sâu vào các kiểu design pattern trong lập trình OOP vì các bạn có thế google ra hàng ngàn tài liệu về domain quan trọng này. Mình chỉ nêu ra một số kinh nghiệm mà mình áp dụng ở đây:</p>
+
+<ul>
+  <li>Luôn để các hàm chức năng ở một file gọi là <code class="highlighter-rouge">utils.py</code>. Trong project này file <code class="highlighter-rouge">utils.py</code> như sau:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">hyper</span> <span class="k">as</span> <span class="n">hp</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span><span class="p">,</span> <span class="n">ResNet50</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">image</span> <span class="n">import</span> <span class="n">img_to_array</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">json</span>
+
+<span class="p">#</span> <span class="nf">Load</span> <span class="k">model</span>
+<span class="n">def</span> <span class="n">_load_model</span><span class="p">():</span>
+	<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="k">model</span>
+	<span class="k">model</span> <span class="p">=</span> <span class="n">ResNet50</span><span class="p">(</span><span class="n">weights</span><span class="p">=</span><span class="s1">'imagenet'</span><span class="p">)</span>
+	<span class="n">print</span><span class="p">(</span><span class="s2">"Load model complete!"</span><span class="p">)</span>
+	<span class="n">return</span> <span class="k">model</span>
+		
+
+<span class="p">#</span> <span class="n">Resize</span> <span class="err">ả</span><span class="n">nh</span>
+<span class="n">def</span> <span class="n">_preprocess_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+	<span class="n">img_rz</span> <span class="p">=</span> <span class="n">img</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+	<span class="n">img_rz</span> <span class="p">=</span> <span class="n">img_to_array</span><span class="p">(</span><span class="n">img_rz</span><span class="p">)</span>
+	<span class="n">img_rz</span> <span class="p">=</span> <span class="n">np</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">img_rz</span><span class="p">,</span> <span class="n">axis</span><span class="p">=</span><span class="m">0</span><span class="p">)</span>
+	<span class="n">return</span> <span class="n">img_rz</span>
+
+<span class="p">#</span> <span class="n">Encoding</span> <span class="n">numpy</span> <span class="k">to</span> <span class="n">json</span>
+<span class="n">class</span> <span class="n">NumpyEncoder</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+    <span class="s1">'''
+    Encoding numpy into json
+    '''</span>
+    <span class="n">def</span> <span class="n">default</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">return</span> <span class="n">obj</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">int32</span><span class="p">):</span>
+            <span class="n">return</span> <span class="n">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">int64</span><span class="p">):</span>
+            <span class="n">return</span> <span class="n">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">):</span>
+            <span class="n">return</span> <span class="n">float</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">float64</span><span class="p">):</span>
+            <span class="n">return</span> <span class="n">float</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="n">return</span> <span class="n">json</span><span class="p">.</span><span class="n">JSONEncoder</span><span class="p">.</span><span class="n">default</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ta thấy trong file <code class="highlighter-rouge">utils</code> sẽ để phần lớn là các hàm thường xuyên được dùng trong toàn project như load, save model dữ liệu, preprocessing data và các hàm encoding, decoding,…. Tóm lại những hàm thông dụng, thường xuyên được sử dụng ở nhiều files khác nhau thì nên cấu trúc nó vào <code class="highlighter-rouge">utils</code>. Nếu bạn thắc mắc utils là gì? Nó chính là viết tắt của cụm từ <code class="highlighter-rouge">utilities</code> tức là các hàm <code class="highlighter-rouge">tiện ích</code>.</p>
+
+<ul>
+  <li>
+    <p>Luôn lưu các parameters của project vào một file là <code class="highlighter-rouge">hyper.py</code> (viết tắt của hyperparameter - siêu tham số). Những project to thì sẽ xuất hiện càng nhiều các tham số. Việc đặt các siêu tham số ở chung một file có lợi ích là nó xuất hiện ở $n$ files khác nhau, bạn không phải tìm mất công mà chỉ phải về file hyper tìm và sửa nó. Việc không đặt parameters cho các hằng số như input shape, số units của các layers,… sẽ dễ khiến các bạn kiểm soát dự án của mình khó khăn hơn.</p>
+  </li>
+  <li>
+    <p>Luôn để các packages mà mình sử dụng trong project vào file <code class="highlighter-rouge">requirements.txt</code>. Khi chúng ta code một project trên local thì môi trường là các packages mà ta sử dụng ở máy tính của mình. Nhưng khi chuyển giao code cho người khác chưa chắc máy của họ đã có những packages đó. Do đó việc đưa các package name vào <code class="highlighter-rouge">requiments.txt</code> giúp người khác cài đặt môi trường nhanh hơn. Đã support là phải support nhiệt tình, đã làm là phải làm đến nơi đến chốn.</p>
+  </li>
+  <li>
+    <p>Nên cài đặt một virtual environment cho mỗi một project: Mục đích là để tránh các lỗi xung đột về version. Khi bạn tải code của người khác về và triển khai trên virtual enviroment những package mà có version khác với cấu hình mặc định của python của bạn thì những package đó chỉ sống trong virtual enviroment thôi. Bạn sẽ không cần phải uninstall lại version mặc định của chúng trên python và không ảnh hưởng đến các project khác.</p>
+  </li>
+</ul>
+
+<p>Và còn nhiều những kinh nghiệm khác mà các bạn khi làm việc với càng nhiều project thì sẽ tự đúc rút ra kinh nghiệm.</p>
+
+<h1 id="3-vận-hành-app">3. Vận hành app</h1>
+
+<p>Như vây là mình đã giới thiệu qua các file <code class="highlighter-rouge">serve.py</code>, <code class="highlighter-rouge">utils.py</code> và <code class="highlighter-rouge">hyper.py</code> với chức năng của từng file. Ngoài ra còn một file nữa là <code class="highlighter-rouge">imagenet.py</code>. File này chỉ có tác dụng lưu trữ label của các classes trong bộ dữ liệu imagenet theo index tương ứng.</p>
+
+<p>Cuối cùng để tận hưởng thành quả đọc bài miệt mài từ đầu đến cuối. Bạn chạy lện sau trên commanline:</p>
+
+<p><code class="highlighter-rouge">python serve.py</code></p>
+
+<p>Khi thành công sẽ xuất hiện dòng <code class="highlighter-rouge">Running on http://127.0.0.1:5000/</code>. Chúng ta có thể kiểm tra chức năng của API bằng lện curl (nếu bạn dùng ubuntu, macintosh, linux).</p>
+
+<p>Muốn kiểm tra chức năng của API thì có thể dùng lệnh curl.</p>
+
+<p><code class="highlighter-rouge">curl -X POST -F image=@test1.jpg 'http://127.0.0.1:5000/predict'</code></p>
+
+<p>Với các bạn sử dụng window thì download <a href="https://www.postman.com/downloads/">postman</a> và làm theo hướng dẫn như ảnh bên dưới:</p>
+
+<p><img src="https://imgur.com/TnVU7By.png" class="largepic" /></p>
+
+<p>Ở bước 2 nhớ là phải import hẳn file ảnh vào thì mới được.</p>
+
+<p>Như vậy là các bạn đã hoàn thành một project nho nhỏ về thiết kế một API dự báo nhãn cho hình ảnh. Project này không có gì phức tạp về mặt techinical, chỉ hướng tới việc hiểu và thực hành để build được các API trên flask. Xa hơn chúng ta có thể áp dụng các kiến thức này để làm những ứng dụng hay ho về AI.</p>
+
+<p>Bài viết của mình xin tạm dừng tại đây. Các bạn có thể download code của nó tại project <a href="https://github.com/phamdinhkhanh/khanhBlogTurtorial/tree/master/flask">KhanhBlogTurtorial</a>.</p>
+
+<p>Nếu bạn gặp lỗi cần hỗ trợ hãy post lên group <a href="https://www.facebook.com/groups/3235479620010379/">AICode</a> của mình để cùng trao đổi.</p>
+
+<h1 id="3-tài-liệu">3. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/">Flask - quick start</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=s_ht4AKnWZg">Flask REST API - Youtube</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.amazon.co.uk/Design-patterns-elements-reusable-object-oriented/dp/0201633612">Design patterns elements reusable object oriented</a></p>
+  </li>
+  <li>
+    <p><a href="https://toihocdesignpattern.com/mo-dau-head-first-design-patterns-tieng-viet.html">Head first design patterns - blog dịch</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.academia.edu/8305787/Series_b%C3%A0i_d%E1%BB%8Bch_Design_Pattern_for_Dummies_Series_b%C3%A0i_d%E1%BB%8Bch_Design_Pattern_for_Dummies_Series_b%C3%A0i_d%E1%BB%8Bch_Design_Pattern_for_Dummies_M%E1%BB%A5c_L%E1%BB%A5c_Series_b%C3%A0i_d%E1%BB%8Bch_Design_Pattern_for_Dummies">Design pattern for dummies</a></p>
+  </li>
+</ol>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/HocExcelSQLR/">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

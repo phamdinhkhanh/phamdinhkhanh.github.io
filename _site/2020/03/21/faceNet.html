@@ -99,6 +99,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
@@ -228,7 +230,7 @@ os.chdir(path)
 
 <p>Cả 2 phương pháp trên đều cho phép xác định vị nhiều khuôn mặt trên cùng 1 bức ảnh.</p>
 
-<p><img src="https://imgur.com/QhwBkHx.png" class="normalpic" /></p>
+<p><img src="https://imgur.com/QhwBkHx.png" class="gigantic" /></p>
 
 <p><strong>Hình 1:</strong> So sánh giữa 2 phương pháp Face haar cascade (khung mà đỏ) và face_recognition (khung màu xanh) cho thấy face_recognition phát hiện được hầu hết các khuôn mặt trong khi haar cascade bỏ sót nhiều khuôn mặt ở vị trí đầu tiên.</p>
 
@@ -271,7 +273,7 @@ Checking out files: 100% (150/150), done.
 
 <h2 id="31-pretrain-model">3.1. Pretrain model</h2>
 
-<p>Chúng ta sẽ sử dụng pretrain model có tác dụng embedding các khuôn mặt có trong bức ảnh thành những véc tơ embedding 128 chiều. File pretrain chính là <code class="highlighter-rouge">nn4.small2.v1.t7</code> trong git project.</p>
+<p>Chúng ta sẽ sử dụng pretrain model có tác dụng embedding các khuôn mặt có trong bức ảnh thành những véc tơ embedding 128 chiều. File pretrain chính là <code class="highlighter-rouge">nn4.small2.v1.t7</code> trong <a href="https://github.com/phamdinhkhanh/khanhBlogTurtorial/blob/master/facenet/nn4.small2.v1.t7">git project</a>.</p>
 
 <p>Do model được huấn luyện từ pytorch nên sẽ cần các hàm để load model từ lên opencv như bên dưới.</p>
 
