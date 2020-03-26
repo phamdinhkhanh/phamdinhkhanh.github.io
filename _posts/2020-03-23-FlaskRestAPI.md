@@ -8,7 +8,7 @@ title: Bài 29 - Xây dựng Flask API cho mô hình deep learning
 
 Quá trình huấn luyện mô hình mới chỉ tạo ra các sản phẩm chạy được trên jupyter notebook. Có một AI engineer khá nổi tiếng nói rằng: `model trên jupyter notebook là model chết`. Mình khá đồng tình với quan điểm này vì nếu không đưa sản phẩm lên production thì mọi việc chúng ta làm đều `unusable`. 
 
-Thường với các doanh nghiệp lớn, để đưa được model vào thực tiễn sẽ cần các quá trình POC, DEV, stress test, QC, deploy. Thông thường các bước như stress test, QC, deploy sẽ không được thực hiện bởi data scientist. Chính vì thế khả năng triển khai một ứng dụng thành production luôn là một điểm hạn chế của data scientist. Nhưng trên thực tế kĩ năng này khá cần thiết nếu bạn làm ở những doanh nghiệp nhỏ hoặc các đội nhóm ít người. Vì khi đó mọi thứ dường như chưa đi vào khuôn khổ. Qui trình phát triển phần mềm lỏng lẻo, kinh phí thiếu hụt, không đủ nguồn lực là những nguyên nhân khiến data scientist có khi phải làm tất cả.
+Với các doanh nghiệp lớn, để đưa được model vào ứng dụng sẽ cần quá trình POC, DEV, stress test, QC, deploy. Các quá trình như stress test, QC, deploy sẽ không được thực hiện bởi data scientist mà được thực hiện bởi các data engineer. Chính vì thế khả năng triển khai một ứng dụng thành production luôn là một điểm hạn chế của data scientist. Nhưng thực tế kĩ năng này khá cần thiết nếu bạn muốn tự xây dựng những ứng dụng về AI mà không đủ nguồn lực.
 
 Bài viết này sẽ cung cấp cho các bạn một phương pháp xây dựng và triển khai API cho các model theo hướng tiếp cận đơn giản nhất (simple is the best). 
 
