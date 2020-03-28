@@ -12,7 +12,7 @@ Tiếp nối bài trước, ở bài này mình sẽ hướng dẫn mọi ngư�
 
 Ý tưởng của ứng dụng đó là chúng ta sẽ dự đoán vật thể trong các bức ảnh. Như chúng ta đã biết, nguồn tài nguyên ảnh thì khá nhiều nhưng rất nhiều ảnh không được gán nhãn. Đây sẽ là một trong những ứng dụng giải quyết được vấn đề nhức nhối là sử dụng sức lao động con người ngồi phân loại và gán nhãn cho hàng nghìn bức ảnh. Hãy để những công việc chân tay cho AI làm. Còn bạn có thể ngồi thư dãn. Ứng dụng này có thể nhận biết được hơn 1000 vật thể khác nhau từ các bức ảnh, khá nhiều phải không nào?
 
-Để giúp dễ hiểu hơn đối với bạn đọc không chuyên về lập trình ứng dụng, bài viết được mình giảm nhẹ các phần kỹ thuật nhất có thể.
+Để giúp dễ hiểu hơn đối với bạn đọc không chuyên về lập trình ứng dụng, bài viết được mình giảm nhẹ các phần kỹ thuật nhất có thể. Nếu bạn chỉ quan tâm đến ứng dụng có thể đọc bắt đầu từ mục 3.3. Nếu bạn đọc quan tâm đến kiến trúc mô hình có thể đọc bắt đầu từ mục đầu tới mục 3.3.
 
 Ngoài ra mình cũng sẽ cung cấp mã nguồn code miễn phí tới các bạn nhằm mục đích hỗ trợ cộng đồng tốt hơn.
 
