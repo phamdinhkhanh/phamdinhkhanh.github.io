@@ -147,7 +147,7 @@ model = MobileNet(weights=None)
 model.summary()
 ```
 
-Những dòng (DepthwiseConv2D) là áp dụng tích chập chiều sâu tách biệt. Cách tính shape sẽ khác so với tích chập 2 chiều chuẩn. Bạn đọc quan tâm có thể tính thử.
+Những dòng (DepthwiseConv2D) là áp dụng tích chập chiều sâu tách biệt. Cách tính số lượng tham số sẽ khác so với tích chập 2 chiều chuẩn. Bạn đọc quan tâm có thể tính thử.
 
 ## 3.3. Convert model trên tensorflow js
 
