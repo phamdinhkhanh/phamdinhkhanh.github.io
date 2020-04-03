@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div>
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 31 - Amazon Virtual Machine Deep Learning</p></h2> 
+<strong>03 Apr 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-amazon-web-services">1. Amazon web services</h1>
+
+<p>Nếu các bạn đã từng làm việc với bigdata chắc sẽ không còn xa lạ với các dịch vụ của Amazon Web Serives. Đây là tổng hợp các giải pháp của Amazon như cơ sở dữ liệu, lưu trữ, tính toán, giải pháp AI, machine learning, bảo mật, networking, phân tích dữ liệu, triển khai web, app, cho thuê máy chủ,…. Hệ sinh thái Amazon Web Services là một hệ sinh thái rất rộng lớn, bao gồm nhiều dịch vụ khác nhau và được cộng đồng công nghệ sử dụng rộng rãi. Những dịch vụ nằm trong hệ sinh thái đã giúp các công ty công nghệ triển khai giải pháp của mình trên cloud với chi phí thấp hơn so với việc đầu tư hạ tầng vật lý. Bạn có thể theo dõi các dịch vụ của Amazon web services tại <a href="https://aws.amazon.com/">Amazon web Services</a>:</p>
+
+<p><img src="/assets/images/20200403_AWS/pic1.jpg" class="largepic" /></p>
+
+<p><strong>Hình 1:</strong> Cách dịch vụ của Amazon Web Services.</p>
+
+<p>Dịch vụ AWS có hệ thống máy chủ phân bố trên toàn cầu. Do đó bạn có thể khởi tạo máy chủ của mình nằm ở nhiều nơi trên thế giới. Tuy nhiên để người dùng truy cập nhanh hơn tới hệ thống của bạn thì nên lựa chọn region gần với quốc gia của bạn. Ở Việt Nam mình thường chọn region tại Singapo.</p>
+
+<h2 id="11-có-nên-đầu-tư-deep-learning-computer">1.1. Có nên đầu tư Deep Learning Computer</h2>
+
+<p>Có nhiều bạn đặt ra câu hỏi rằng có nên đầu tư siêu máy tính hỗ trợ GPU hay thuê máy chủ Deep Learning Computing để huấn luyện các mô hình deep learning?</p>
+
+<p>Mình nghĩ rất khó để đưa ra một câu trả lời chính xác phương án nào hợp lý hơn. Theo quan điểm cá nhân thì mình cho rằng đầu tư siêu máy tính có những điểm bất lợi sau:</p>
+
+<ul>
+  <li>
+    <p>Gia tăng chi phí cố định: Công ty của bạn phải bỏ ra một chi phí cố định rất lớn ban đầu thay vì khấu hao từng phần khi sử dụng dịch vụ. Theo tính toán của mình thì đầu tư một máy chủ giá 10 nghìn \USD sử dụng trong 5 năm thì một ngày bạn sẽ tiêu tốn khoảng: 5.4 USD/ngày. Chi phí này có thể cao hơn so với sử dụng dịch vụ máy chủ deep learning.</p>
+  </li>
+  <li>
+    <p>Out of date công nghệ: Các hãng như NVIDIA, Intel liên tục sản xuất ra những chiếc GPU mạnh mẽ hơn. Mình nhớ vào thời điểm 2018, dòng GPU Geforce RTX 2080 Ti được đánh giá khá mạnh để huấn luyện mô hình deep learning. Nhưng hiện tại nó đã bị bỏ xa bởi các dòng mới hơn như Tesla K80 (dòng GPU default của google colab), Tesla V100.</p>
+  </li>
+  <li>
+    <p>Nâng cấp cấu hình khó khăn: Một máy tính thường bị giới hạn các thành phần như số khay cắm RAM, GPU. Do đó việc nâng cấp lên cấu hình cao hơn sẽ gặp hạn chế. Thuê máy chủ deep learning sẽ có sẵn một số cầu hình máy phù hợp với nhu cầu sử dụng. Ngoài ra có thể điều chỉnh được tăng giảm RAM, dung lượng ổ cứng.</p>
+  </li>
+  <li>
+    <p>Cấu hình hay lỗi: Để sử dụng được các frame work deep learning sẽ cần cài đặt CUDA, cuDNN,…. Những thư viện này thường hay bị lỗi nếu chưa có kinh nghiệm cài đặt. Trong khi đó các máy chủ deep learning sẽ được cung cấp sẵn một số môi trường như tensorflow, pytorch, mxnet.</p>
+  </li>
+</ul>
+
+<p>Để đăng kí dịch vụ của aws các bạn truy cập vào link: <a href="https://signin.aws.amazon.com/signin">Amazon Signin</a></p>
+
+<p>Bạn sẽ cần mở một thẻ tín dụng quốc tế để đăng kí dịch vụ của AWS.</p>
+
+<h2 id="12-dịch-vụ-ec2">1.2. Dịch vụ EC2</h2>
+
+<p>EC2 (elastic computing) là một trong những dịch vụ đầu tiên của Amazon Cloud Computing. Platform này cho phép bạn triển khai các ứng dụng trên các máy chủ cloud được đặt ở nhiều nơi khác nhau trên toàn cầu.</p>
+
+<p>EC2 có nhiều cấu hình máy mặc định phù hợp với các mục đích khác nhau như: làm server, tính toán, lưu trữ, deep learning, gaming và sử dụng cho các mục đích chung. Đồng thời bạn cũng có thể cấu hình máy cloud cho riêng mình dựa trên cấu hình máy mặc định như mở rộng RAM, ổ cứng,… Đối với cấu hình máy có 4 Thông số chính mà chúng ta quan tâm:</p>
+
+<ul>
+  <li>CPU: Số lượng thread CPUs, càng nhiều thì xử lý đa luồng càng nhanh chóng.</li>
+  <li>GPU: Có 2 dòng GPU chính là GPU card đồ họa phục vụ cho các máy Gamming và GPU Computing hỗ trợ các model deep learning. Với mục đích là xây dựng mô hình deep learning, bạn nên lựa chọn các dòng GPU phù hợp với deep learning.</li>
+  <li>RAM: Dung lượng RAM cho máy.</li>
+  <li>Volume: Dung lượng ổ cứng. Thông thường các bộ dữ liệu bigdata thường rất lớn. Dữ liệu video, âm thanh và ảnh thường lớn hơn dữ liệu text. Một bộ dữ liệu có thể tốn vài chục GB là bình thường. Do đó bạn cần phải cấu hình dung lượng ổ cứng sao cho có thể chứa được các bộ dữ liệu này.</li>
+  <li>Region: Là vị trí đặt máy chủ vật lý. Bạn nên lựa chọn vị trí máy chủ gần với quốc gia mình để không bị các sự cố đường truyền.</li>
+</ul>
+
+<h1 id="2-khởi-tạo-một-ec2">2. Khởi tạo một EC2</h1>
+
+<p>Để khởi tạo máy chủ EC2 (chúng ta sẽ gọi là instance) các bạn vào trang chủ của EC2 theo phân bố ở từng khu vực. Chẳng hạn tôi chọn <a href="https://ap-southeast-1.console.aws.amazon.com/ec2/v2/home">ap-southeast-1/ec2</a> để khởi tạo một instance tại singapo.</p>
+
+<p>Một màn hình cấu hình hiện ra cho phép chúng ta lựa chọn cấu hình máy theo 7 bước:</p>
+
+<p><img src="/assets/images/20200403_AWS/pic3.jpg" class="largepic" /></p>
+
+<p><strong>Hình 2:</strong> Màn hình cấu hình máy. Khi lựa chọn cấu hình máy tại bước đầu tiên chúng ta nên search “deep learning” để tìm các cấu hình máy đã cài sẵn môi trường cho các thư viện deep learning, các thư viện tính toán deep learning như CUDA, cuDNN, NCCL, Intel MKL-DNN, docker và hỗ trợ GPU. Nếu không lựa chọn đúng cấu hình máy, các bạn sẽ không có GPU và các thư viện deep learning để huấn luyện mô hình.</p>
+
+<h2 id="21-lựa-chọn-cấu-hình-gpu">2.1. Lựa chọn cấu hình GPU</h2>
+
+<p><img src="/assets/images/20200403_AWS/pic4.jpg" class="largepic" />
+<strong>Hình 3:</strong> Các cấu hình GPU</p>
+
+<p>Amazon đã phân chia các phân hệ máy của mình phù hợp với từng mục đích sử dụng. Cột Family là họ các phân hệ máy tính mà bạn chọn lựa, được chia thành các loại như storage, computing, general, GPU,….</p>
+
+<p>Với mục đích là huấn luyện model Deep Learning thì mình sẽ lựa chọn Family là <code class="highlighter-rouge">GPU instances</code>. Lưu ý là trong phân hệ GPU thì có cả gaming và deep learning và chia thành 4 dòng máy chính là: g2, g3, g4dn, p2, p3. Đuôi suffix của các máy đều là <code class="highlighter-rouge">large</code> tức máy có cấu hình cao. Bên dưới các dòng máy này là <code class="highlighter-rouge">medium</code> (trung bình) và <code class="highlighter-rouge">small</code> (nhỏ).</p>
+
+<p>Bạn cần phải hiểu từng dòng máy nào sử dụng GPU gì, phù hợp với deep learning hay gaming, sau đó mới quyết định lựa chọn để phù hợp với mục đích sử dụng. Bên dưới mình sẽ lý giải sơ qua các dòng máy:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">p2</code>: Sử dụng dòng GPU NVIDIA Tesla K80 hỗ trợ các xử lý và tính toán Machine Learning, Deep Learning. Gía từ 4-6 USD.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">p3</code>: Sử dụng dòng GPU NVIDIA Tesla V100 hỗ trợ các xử lý và tính toán Machine learning và Deep Learning. Gía trong khoảng từ 6-8 USD/h.</p>
+  </li>
+</ul>
+
+<p>Về khả năng xử lý tính toán thì theo trang <a href="https://www.microway.com/knowledge-center-articles/comparison-of-nvidia-geforce-gpus-and-nvidia-tesla-gpus/">microway</a> khối lượng xử lý của Tesla V100 đối với 64 bit floating point là gấp 4 lần Tesla K80.</p>
+
+<p><img src="/assets/images/20200403_AWS/pic5.jpg" class="largepic" /></p>
+
+<p><strong>Hình 4:</strong> Bảng khối lượng xử lý TFLOPS của các dòng GPU đối với 64 bit floating point.</p>
+
+<p><strong>FLOPS là gì?</strong></p>
+
+<p>Nếu bạn đọc các bài báo về các mô hình object detection thì bên cạnh chỉ tiêu là số khung hình/giây (fps - frame per seconds) thường thấy có một chỉ tiêu khác là FLOPS.</p>
+
+<p><img src="/assets/images/20200403_AWS/pic6.jpg" class="normalpic" /></p>
+
+<p><strong>Hình 5:</strong> Bảng bench mark các models object detection.</p>
+
+<p>Bạn đã từng thắc mắc FLOPS (floating point operation per second) là gì chưa? Đây chính là chỉ số đo lường số lượng các phép toán tử (operation) cần được thực hiện trên một mạng trong 1 giây. Chỉ số này càng lớn thì mô hình càng cần nhiều các xử lý tính toán và do đó tốc độ khung hình/giây của nó càng chậm. TFLOPS còn gọi là Tera FLOPS cũng tương tự như FLOPS nhưng là đơn vị tính toán lớn hơn. 1 tera FLOPS = 1 nghìn tỷ FLOPS.</p>
+
+<p>Các dòng bắt đầu bằng chữ <code class="highlighter-rouge">g</code> là dành cho đồ họa và gamming:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">g2</code>: Hỗ trợ GPU NVIDIA GRID GPU.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">g3</code>: Hỗ trợ GPU NVIDIA Tesla M60 GPUs. Mạnh hơn <code class="highlighter-rouge">g2</code>.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">g4dn</code>: Hỗ trợ NVIDIA T4 GPU. Mạnh hơn <code class="highlighter-rouge">g3</code>.</p>
+  </li>
+</ul>
+
+<p>Tên của một dòng máy sẽ nằm ở cột Type có cú pháp là <code class="highlighter-rouge">[dòng máy].[số lượng GPU]xlarge</code>. Ví dụ: Type là <code class="highlighter-rouge">p2.8xlarge</code> nghĩa là dòng máy có 8 GPU Tesla K80 và thuộc dòng máy cấu hình cao. Tất nhiên chi phí sử dụng của nó sẽ cao hơn so với các dòng <code class="highlighter-rouge">p2.xlarge</code> chỉ gồm 1 GPU. Ngoài ra các cột khác có ý nghĩa như sau:</p>
+
+<ul>
+  <li>
+    <p>Cột <code class="highlighter-rouge">vCPUs</code> là số lượng threads CPU của máy. Càng lớn thì hiệu năng xử ý đa luồng càng cao.</p>
+  </li>
+  <li>
+    <p>Cột <code class="highlighter-rouge">Memory (GiB)</code> là dung lượng RAM. Đối với máy deep learning bạn nên chọn RAM ít nhất là 32 GB. Trong trường hợp lỗi hết RAM (<code class="highlighter-rouge">out of memory</code>) bạn cần điều chỉnh giảm kích thước <code class="highlighter-rouge">batch size</code>.</p>
+  </li>
+  <li>
+    <p>Cột <code class="highlighter-rouge">Instance Storage (GB)</code> là dung lượng ổ cứng. Trong đó ổ cứng SSD sẽ có tốc độ cao hơn EBS nhưng nhược điểm là bạn không thể sử dụng phân bổ link hoạt dung lượng SSD giữa các máy. Trong khi đó EBS cho phép detach, attach giữa các máy với nhau.</p>
+  </li>
+  <li>
+    <p>Cột <code class="highlighter-rouge">Network Performance</code> là tốc độ băng thông. Một điểm mà mình rất thích trên Amazon Virtual Machine đó là tốc độ băng thông rất lớn. Một bộ dữ liệu vài chục GB bạn có thể download xong trong vài phút trên Amazon Virtual Machine. Bạn sẽ rút ngắn được rất nhiều thời gian cho khâu download và giải nén dữ liệu.</p>
+  </li>
+</ul>
+
+<h2 id="22-giá-cả-ec2">2.2. Giá cả EC2</h2>
+
+<p>Trước khi submit cấu hình máy, bạn có thể xem qua giá cả tại <a href="https://aws.amazon.com/ec2/pricing/on-demand/">EC2 pricing on-demand</a> để ước tính chi phí bỏ ra. Giá cả sử dụng sẽ bao gồm:</p>
+
+<ul>
+  <li>Chi phí theo yêu cầu:</li>
+</ul>
+
+<p>Được tính theo giờ. Thường với các máy hỗ trợ từ GPU cho deep learning các mức giá từ &lt;5 USD/h, 10-15 USD/h và 25-35 USD/h.</p>
+
+<p><img src="/assets/images/20200403_AWS/pic20.jpg" class="largepic" /></p>
+
+<p><strong>Hình 6:</strong> Bảng giá các dòng GPU. Mình chỉ nên chọn dòng <code class="highlighter-rouge">p3.2xlarge</code> hoặc <code class="highlighter-rouge">p2.xlarge</code> thôi cho rẻ nhé mọi người.</p>
+
+<p>Ví dụ bạn sử dụng máy 2h/ngày. Budget được cấp là 2000 USD thì bạn nên lựa chọn máy có price dưới $\frac{2000}{365 \times 2} = 2.7$ USD/giờ. Nếu lựa chọn máy 10-15 USD/giờ, khả năng bị vượt ngân sách là rất cao.</p>
+
+<p>Với mình thì lựa chọn dòng máy <code class="highlighter-rouge">p2.xlarge</code> là đủ.</p>
+
+<ul>
+  <li>Chi phí truyền dữ liệu:</li>
+</ul>
+
+<p>Ngoài ra bạn còn tốn chi phí truyền dữ liệu. Chi phí này được amazon phân chia khá nhiều trường hợp nhưng theo mình review thì hầu hết dưới 0.1 USD/GB nên cũng không đáng kể lắm so với chi phí sử dụng GPU.</p>
+
+<ul>
+  <li>Các chi phí khác: Một số chi phí khác mà Amazon sẽ thu của bạn nhưng không đáng kể lắm như:</li>
+</ul>
+
+<p>Chi phí sử dụng IP động: Chi phí này chỉ khoảng 0.005 USD/một IP trên h.</p>
+
+<p>Chi phí dự trữ công suất: Nếu dùng không hết công suất dự trữ bạn sẽ bị tính phí. Chi phí này cũng không đáng kể.</p>
+
+<h1 id="3-truy-cập-amazon-virtual-cloud">3. Truy cập Amazon Virtual Cloud</h1>
+
+<h2 id="31-xác-thực-ssh">3.1. Xác thực SSH</h2>
+
+<p>Để truy cập và làm việc với VM chúng ta sẽ thông qua phương thức SSH.</p>
+
+<p>SSH là Secure Shell, là một giao thức điều khiển từ xa cho phép người dùng kiểm soát và chỉnh sửa server từ xa qua Internet. Dịch vụ được tạo ra nhằm thay thế cho trình Telnet vốn không có mã hóa và sử dụng kỹ thuật cryptographic để đảm bảo tất cả giao tiếp gửi tới và gửi từ server từ xa diễn ra trong tình trạng mã hóa. Nó cung cấp thuật toán để chứng thực người dùng từ xa, chuyển input từ client tới host, và trả về kết quả cho client.</p>
+
+<p>Để truy cập với Virtual Cloud, tại local, bạn cần phải cài SSH đối với hệ điều hành ubuntu và linux và OpenSSH đối với window. Bạn có thể đọc hướng dẫn cài SSH tại <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse">window SSH</a>. Sau khi cài đặt xong SSH. Tại máy local, bạn cần và khởi tạo một SSH client. Từ SSH client chúng ta sẽ sử dụng một file mã hóa <code class="highlighter-rouge">.pem</code> để truy cập tới Virtual Machine (SSH server).</p>
+
+<p><img src="/assets/images/20200403_AWS/pic19.jpg" class="gigantic" /></p>
+
+<p><strong>Hình 7:</strong> Save file <code class="highlighter-rouge">.pem</code> xác thực securities.</p>
+
+<p>Để lấy file <code class="highlighter-rouge">.pem</code>, tại bước 7 của xác thực bạn download key pair và save vào folder dưới một tên bất kì. Chẳng hạn mình lấy tên file là <code class="highlighter-rouge">mykey.pem</code>.</p>
+
+<p>Sau đó chúng ta sẽ truy cập vào Virtual Machine và làm theo các bước sau:</p>
+
+<p><strong>Bước 1</strong>: Phân quyền admin execute cho file <code class="highlighter-rouge">.pem</code>.</p>
+
+<p><code class="highlighter-rouge">chmod 400 mykey.pem</code></p>
+
+<p><strong>Bước 2</strong>: Truy cập vào VM</p>
+
+<p><code class="highlighter-rouge">ssh -i "mykey.pem" ubuntu@domain</code></p>
+
+<p>Sau khi truy cập thành công màn hình sẽ hiển thị như sau:</p>
+
+<h1 id="4-kết-nối-local-jupyter-notebook-tới-vm">4. Kết nối local jupyter notebook tới VM</h1>
+
+<p>Mặc định jupyter notebook sẽ hoạt động trên port 8888. Nếu bạn muốn sử dụng giao diện code trên jupyter notebook từ SSH client để run code trên SSH server thì cần mapping port 8888 của local với port 8888 của server. Khi đó tại <strong>bước 2</strong> ta thay đổi lệnh thành:</p>
+
+<p><code class="highlighter-rouge">ssh -L 8888:localhost:8888 -i "mykey.pem" ubuntu@domain</code></p>
+
+<p>Tham số <code class="highlighter-rouge">-L</code> có ý nghĩa mapping là mapping port <code class="highlighter-rouge">8888</code> của SSH server với <code class="highlighter-rouge">localhost:8888</code>.</p>
+
+<p>Lúc này để khởi động jupyter notebook, tại commandline của server bạn khởi động <code class="highlighter-rouge">jupyter notebook</code> bằng lệnh:</p>
+
+<p><code class="highlighter-rouge">jupyter notebook</code></p>
+
+<p>Một đường link truy cập jupyter notebook từ <code class="highlighter-rouge">SSH client</code> sẽ được trả về. Bạn copy đường link này và truy cập bằng internet explore. Như vậy là ta đã có thể tương tác với server thông qua jupyter notebook trên client.</p>
+
+<h1 id="5-download-dữ-liệu">5. Download dữ liệu</h1>
+
+<h2 id="51-lệnh-download-dữ-liệu">5.1. Lệnh download dữ liệu</h2>
+
+<p>Để download một tập dữ liệu bạn sử dụng lện wget</p>
+
+<p><code class="highlighter-rouge">wget [sourceLink] -O [targetFolder]</code></p>
+
+<p>Trong đó <code class="highlighter-rouge">sourceLink</code> là file nguồn cần download dữ liệu và <code class="highlighter-rouge">targetFolder</code> là link tới folder đích cần lưu trữ.</p>
+
+<p>Ngoài ra khi bạn download các tập dữ liệu lớn về thì định dạng thường ở dạng <code class="highlighter-rouge">.zip</code>.</p>
+
+<ul>
+  <li>Khi đó giải nén bằng cách:</li>
+</ul>
+
+<p><code class="highlighter-rouge">unzip [file.zip] -d [targetFolder]</code></p>
+
+<p>Trong đó <code class="highlighter-rouge">file.zip</code> là tên file zip cần giải nén và <code class="highlighter-rouge">targetFolder</code> là địa chỉ cần giải nén.</p>
+
+<ul>
+  <li>Trường hợp định dạng là <code class="highlighter-rouge">.tar</code> thì giải nén bằng lệnh:</li>
+</ul>
+
+<p><code class="highlighter-rouge">tar -xvf [file.tar] -C [targetFolder]</code></p>
+
+<p>Trong đó <code class="highlighter-rouge">file.tar</code> là tên file tar cần giải nén và <code class="highlighter-rouge">targetFolder</code> địa chỉ cần giải nén. Các thành phần của argument như sau:</p>
+
+<p>x: Extract - giải nén file.</p>
+
+<p>v: Verbose - show quá trình giải nén file.</p>
+
+<p>f: File - định dạng file giải nén.</p>
+
+<p>C: Copy kết quả giải nén vào một foler cụ thể.</p>
+
+<p>Với các định dạng khác như <code class="highlighter-rouge">gzip</code>, <code class="highlighter-rouge">bz2</code> bạn xem thêm tại hướng dẫn <a href="https://www.tecmint.com/18-tar-command-examples-in-linux/">tar commandline</a>, rất đầy đủ và chi tiết.</p>
+
+<h2 id="52-cài-đặt-kaggle-cli">5.2. Cài đặt kaggle cli</h2>
+
+<p><strong>Tại sao cần cài đặt kaggle cli?</strong></p>
+
+<p>Như chúng ta đã biết kaggle là một nguồn dữ liệu rất đa dạng và phong phú. Tại đây bạn có thể tìm được rất nhiều các bộ dữ liệu đặc thù về ảnh, âm thanh, văn bản, video,… từ các công ty có nhu cầu phân tích dữ liệu. Trên tất cả các nền tảng data competition thì mình thấy kaggle là nơi có cộng đồng đông đảo nhất. Tại kaggle mình học được rất nhiều code từ các master và các ý tưởng phân tích hay. Tuy nhiên mình không mấy khi tham dự các cuộc thi ở đây vì mình biết rằng sẽ phải dành rất nhiều thời gian cho nó trong khi công việc của mình thì khá bận.</p>
+
+<p>Tại sao kaggle lại có nhiều cuộc thi như vậy? Mình nghĩ lý do chính là vì chi phí để xây dựng một đội data scientist in house ở nước ngoài khá tốn kém. Do đó các công ty thường lựa chọn tổ chức cuộc thi trên kaggle. Nhược điểm là dữ liệu của họ sẽ bị public nhưng ưu điểm là bài toán của họ sẽ được giải quyết bởi những master hàng đầu về data science và chắc chắn đó là những giải pháp không tồi, thậm chí là tốt hơn nhiều so với build một đội data scientist in house. Ngay cả google cũng thường xuyên tổ chức các cuộc thi để tìm kiếm giải pháp trên kaggle.</p>
+
+<p>Để download nguồn dữ liệu trên kaggle, bạn phải cài đặt kaggle và kaggle cli như sau:</p>
+
+<p><strong>Bước 1</strong>: Tại SSH server bạn cài đặt các packages <code class="highlighter-rouge">kaggle, kaggle-cli</code> như sau:</p>
+
+<p><code class="highlighter-rouge">pip3 install kaggle</code></p>
+
+<p><code class="highlighter-rouge">pip3 install kaggle-cli</code></p>
+
+<p><strong>Bước 2</strong>: Lấy token xác thực tài khoản kaggle của bạn.
+Bạn cần truy cập vào kaggle account để lấy file <code class="highlighter-rouge">kaggle.json</code> token. Sau khi đăng nhập tài khoản kaggle, bạn vào mục <code class="highlighter-rouge">my account</code> sau đó tìm đến và click vào <code class="highlighter-rouge">export token</code> như màn hình bên dưới để lưu <code class="highlighter-rouge">kaggle.json</code> file về máy.</p>
+
+<p><img src="/assets/images/20200403_AWS/pic16.jpg" class="largepic" /></p>
+
+<p><strong>Hình 8:</strong> Lấy file xác thực token truy cập kaggle <code class="highlighter-rouge">kaggle.json</code> tại <code class="highlighter-rouge">https://www.kaggle.com/your_username/account</code>.</p>
+
+<p><strong>Bước 3</strong>: Upload file <code class="highlighter-rouge">kaggle.json</code> lên google drive hoặc dropbox. Sau đó bật chế độ share và copy link share. Mục đích chính là có thể download file từ SSH server.</p>
+
+<p><strong>Bước 4</strong>: Tại SSH server bạn download file về bằng lệnh wget.</p>
+
+<p><code class="highlighter-rouge">wget [link kaggle.json share from dropbox] -O [/kaggle/kaggle.json]</code></p>
+
+<p>Trong đó địa chỉ <code class="highlighter-rouge">/.kaggle/kaggle.json</code> là nơi mà bạn cài đặt file <code class="highlighter-rouge">kaggle.json</code> trên SSH server. Thường nó sẽ nằm ở ngay <code class="highlighter-rouge">root</code> directory. Bạn sẽ kiểm tra <code class="highlighter-rouge">kaggle.json</code> đã được đặt đúng vị trí chưa bằng lệnh sau:</p>
+
+<p><code class="highlighter-rouge">ubuntu@ip-your-DNS:~$ sudo su</code></p>
+
+<p><code class="highlighter-rouge">root@ip--your-DNS:/home/ubuntu# cd ../..</code></p>
+
+<p><code class="highlighter-rouge">root@ip--your-DNS:/# cd kaggle</code></p>
+
+<p><code class="highlighter-rouge">root@ip--your-DNS:/kaggle# ls</code></p>
+
+<p><code class="highlighter-rouge">kaggle.json</code></p>
+
+<p>Nếu đã có file <code class="highlighter-rouge">kaggle.json</code> thì khi đó kaggle đã có thể xác thực token và cho phép bạn download data của họ. Để download một bộ dữ liệu bất kì bạn gõ:</p>
+
+<p><code class="highlighter-rouge">kaggle competitions download -c [datasetname]</code></p>
+
+<p>Muốn lấy data từ một cuộc thi bất kì bạn vào cuộc thi đó và lựa chọn Data &gt; API</p>
+
+<p><img src="/assets/images/20200403_AWS/pic17.jpg" class="largepic" /></p>
+
+<p><strong>Hình 9:</strong> Cách lấy câu lệnh clone data từ kaggle.</p>
+
+<h1 id="6-kết-luận">6. Kết luận</h1>
+
+<p>Như vậy qua bài viết này mình đã giới thiệu đến các bạn các kiến thức:</p>
+
+<ul>
+  <li>Cách thức lựa chọn Amazon Virtual Machine cho mô hình deep learning.</li>
+  <li>Quá trình khởi tạo một Amazon Virtual Machine.</li>
+  <li>Kết nối Jupyter notebook</li>
+  <li>Download dữ liệu từ kaggle</li>
+</ul>
+
+<p>Theo xu hướng, các công ty sẽ dần chuyển sang sử dụng dịch vụ cloud cho các tác vụ xây dựng mô hình Deep Learning. Do đó làm quen với công nghệ <code class="highlighter-rouge">Cloud Computing</code> sẽ giúp bạn nâng cao năng suất lao động và không bị lạc hậu. Các nhà tuyển dụng AI cũng đánh giá cao những ứng viên có kinh nghiệm về <code class="highlighter-rouge">cloud computing</code> nên đây sẽ là một điểm cộng trong kinh nghiệm làm việc của bạn.</p>
+
+<p>Hi vọng rằng qua bài chia sẻ của mình, bạn sẽ có thêm những kinh nghiệm mới về các dịch vụ của Amazon Web Services.</p>
+
+<h1 id="7-tài-liệu-tham-khảo">7. Tài liệu tham khảo</h1>
+
+<ol>
+  <li>
+    <p><a href="https://docs.aws.amazon.com/ec2/index.html?nc2=h_ql_doc_ec2">Amazon Documentation</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://www.coursera.org/aws">Amazon Web Services Course - Coursera</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.coursera.org/learn/aws-machine-learning">Getting Started with AWS Machine Learning</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.coursera.org/learn/aws-fundamentals-building-serverless-applications">AWS Fundamentals: Building Serverless Applications</a></p>
+  </li>
+  <li>
+    <p><a href="https://aws.amazon.com/training/">AWS Training - để lấy chứng chỉ</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
