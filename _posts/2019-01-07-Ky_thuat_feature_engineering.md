@@ -125,6 +125,7 @@ euclidean(n1, n2), euclidean(n2, n3), euclidean(n3, n4)
 Những từ hiếm khi được tìm thấy trong tập văn bản (corpus) nhưng có mặt trong một văn bản cụ thể có thể quan trọng hơn. Do đó cần tăng trọng số của các nhóm từ ngữ để tách chúng ra khỏi các từ phổ biến. Cách tiếp cận này được gọi là TF-IDF (Term Frequency - Inverse Document Frequency), chúng ta có thể tham khảo [tf-idf - wiki](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). Các chỉ số chính đánh giá tần xuất xuất hiện của một từ trong toàn bộ tập văn bản là idf và tfidf được tính như bên dưới:
 
 $$\large idf(t,D) = \log\frac{\mid D\mid}{df(d,t)+1}$$
+
 $$\large tfidf(t,d,D) = tf(t,d) \times idf(t,D)$$
 
 Ở đây
@@ -134,6 +135,34 @@ $$\large tfidf(t,d,D) = tf(t,d) \times idf(t,D)$$
 * $tf(t, d)$ là tần suất các từ xuất hiện trong một văn bản.
 
 Như vậy một từ càng phổ biến khi idf càng nhỏ và tfidf càng lớn.
+
+Để tính tfidf cho các từ trong văn bản ta có thể sử dụng package sklearn như sau:
+
+```
+from sklearn.feature_extraction.text import TfidfVectorizer
+corpus = [
+ 	'tôi thích ăn bánh mì nhân thịt',
+	'cô ấy thích ăn bánh mì, còn tôi thích ăn xôi',
+	'thị trường chứng khoán giảm làm tôi lo lắng',
+	'chứng khoán sẽ phục hồi vào thời gian tới. danh mục của tôi sẽ tăng trở lại',
+  'dự báo thời tiết hà nội có mưa vào chiều và tối. tôi sẽ mang ô khi ra ngoài'
+]
+
+# Khởi tạo model tính tfidf cho mỗi từ
+# Tham số max_df để loại bỏ các từ stopwords xuất hiện ở hơn 90% các câu.
+vectorizer = TfidfVectorizer(max_df = 0.9)
+# Tokenize các câu theo tfidf
+X = vectorizer.fit_transform(corpus)
+print('words in dictionary:')
+print(vectorizer.get_feature_names())
+print('X shape: ', X.shape)
+```
+	words in dictionary:
+	['bánh', 'báo', 'chiều', 'chứng', 'còn', 'có', 'cô', 'của', 'danh', 'dự', 'gian', 'giảm', 'hà', 'hồi', 'khi', 'khoán', 'lo', 'làm', 'lại', 'lắng', 'mang', 'mì', 'mưa', 'mục', 'ngoài', 'nhân', 'nội', 'phục', 'ra', 'sẽ', 'thích', 'thị', 'thịt', 'thời', 'tiết', 'trường', 'trở', 'tăng', 'tối', 'tới', 'và', 'vào', 'xôi', 'ăn', 'ấy']
+	X shape:  (5, 45)
+
+Ta có thể thấy từ `tôi` xuất hiện ở toàn bộ các câu và không mang nhiều ý nghĩa của chủ đề của câu nên có thể coi là một stopword. Bằng phương pháp lọc cận trên của tần suất xuất hiện từ trong văn bản là 90% ta đã loại bỏ được từ này khỏi dictionary.
+
 
 Các phương pháp bỏ túi có thể tìm được ở các link như [Catch me if you can competition](https://www.kaggle.com/c/catch-me-if-you-can-intruder-detection-through-webpage-session-tracking), [bag of app](https://www.kaggle.com/xiaoml/bag-of-app-id-python-2-27392), [bag of event](http://www.interdigital.com/download/58540a46e3b9659c9f000372):
 
