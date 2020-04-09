@@ -20,7 +20,7 @@ Vậy thì với từng kiểu dữ liệu khác nhau sẽ có phương pháp x�
 
 # 2. Định nghĩa generator
 
-generator có thể coi là một người vay nợ, được quyền sử dụng tiền của người khác mà không trả ngay. Nếu chúng ta coi tiền là dữ liệu thì ta có thể hình dung generator sẽ sử dụng và biến đổi dữ liệu như cách người vay nợ sử dụng tiền vào các mục đích của mình. Tuy nhiên dữ liệu sau biến đổi không được trả về như các hàm thông thường.
+generator có thể coi là một người vay nợ, được quyền sử dụng tiền của người khác mà không trả ngay. Nếu chúng ta coi tiền là dữ liệu thì ta có thể hình dung generator sẽ sử dụng và biến đổi dữ liệu như cách người vay nợ sử dụng tiền vào các mục đích của mình. Tuy nhiên dữ liệu sau biến đổi không được trả về như các hàm return thông thường của python.
 
 Để đơn giản hóa mình lấy ví dụ một hàm tính lãi suất phải trả theo năm như sau:
 
@@ -44,7 +44,7 @@ print('scales of origin balance: ', scales)
     scales of origin balance:  [0.010000000000000009, 0.030301000000000133, 0.061520150601000134, 0.09368527268436089, 0.12682503013196977]
     
 
-Tuy nhiên nếu sử dụng generator thì chúng ta chỉ việc thay `return` bằng `yield`.
+Nếu sử dụng generator thì chúng ta chỉ việc thay `return` bằng `yield`.
 
 
 ```
@@ -78,7 +78,7 @@ Ta thấy generator sẽ không trả về kết quả ngay mà chỉ tạo sẵ
 
 
 
-Do đó generator có lợi thế là:
+Chúng ta có thể thấy generator có lợi thế là:
 
 * Không sinh toàn bộ dữ liệu cùng một lúc, do đó sẽ nâng cao hiệu suất vì sử dụng ít bộ nhớ hơn.
 
@@ -88,7 +88,7 @@ Do đó generator có lợi thế là:
 
 # 3. Các cách khởi tạo một Dataset
 
-Dataset là một class của tensorflow được sử dụng để wrap dữ liệu trước khi truyền vào mô hình để huấn luyện. Bạn hình dung dữ liệu của bạn có input là ma trận X và output là Y. Ban đầu X và Y chỉ là các dữ liệu thô định dạng numpy. Tất nhiên chúng ta có thể truyền trực tiếp chúng vào hàm `fit()` của mô hình nhưng để kiểm soát được X và Y chẳng hạn như fit vào với batch size bằng bao nhiêu? có shuffle dữ liệu hay không thì chúng ta nên wrap chúng trong `tf.Dataset`.
+Dataset là một class của tensorflow được sử dụng để wrap dữ liệu trước khi truyền vào mô hình để huấn luyện. Bạn hình dung dữ liệu của bạn có input là ma trận X và output là Y. Ban đầu X và Y chỉ là các dữ liệu thô định dạng numpy. Tất nhiên chúng ta có thể truyền trực tiếp chúng vào hàm `fit()` của mô hình. Nhưng để kiểm soát được X và Y chẳng hạn như fit vào với batch size bằng bao nhiêu? có shuffle dữ liệu hay không thì chúng ta nên wrap chúng trong `tf.Dataset`.
 
 Có 2 phương pháp chính để khởi tạo một tf.Dataset trong tensorflow:
 
