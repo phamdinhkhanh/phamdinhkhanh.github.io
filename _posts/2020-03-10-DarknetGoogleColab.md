@@ -496,11 +496,17 @@ Nếu bạn nào gặp lỗi:
 
 `CUDA Error: out of memory: File exists`
 
-Hãy quay trở lại file `yolov3-5c-5000-max-steps.cfg` và điều chỉnh giảm `subdivisions=32`. Sau đó train lại model từ đầu.
+Hãy quay trở lại file `yolov3-5c-5000-max-steps.cfg` và điều chỉnh tăng `subdivisions=32`. Sau đó train lại model từ đầu.
 
 Tổng cộng quá trình train hết khoảng `5h` đồng hồ. Nếu bạn muốn ngồi đợi thành quả, hãy kiên nhẫn chờ đợi. Hoặc nếu muốn có ngay thành quả, hãy download file [pretrain nhận diện sản phẩm TMDT của tôi](https://drive.google.com/drive/folders/1Oj7yOMEPG59BRVyA3QjVoHWyzX8lNW-E?usp=sharing).
 
 Một số lưu ý: 
+
+* Log của chương trình sẽ không hiện ra tại màn hình do chúng ta đã save vào file `yolov3-5c.log`. Mục đích chính là để lưu lại log nhằm visualize loss function (xem mục 4.5.4). Nếu bạn muốn monitor ngay tại màn hình google colab thì chạy lệnh:
+
+`!./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show`
+
+Bạn có thể mở một google colab khác để thực hiện mục `4.5.4 visualize loss function`.
 
 * Đừng quên kiểm tra đường truyền internet thường xuyên. Google Colab sẽ tự động kill các session offline trong vòng 1h. Tức nếu bạn tắt colab hoặc bị disconnect internet thì mọi thứ vẫn tiếp diễn trong 1h và sau đó luồng training sẽ bị kill.
 
