@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 30 - Xây dựng Web AI trên tensorflow js</p></h2> 
 <strong>28 Mar 2020 - phamdinhkhanh</strong>
@@ -283,7 +285,56 @@ Applications</a>.</p>
 
 <p>Mình có thể liệt kê một số layers như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "mobilenet_1.00_224"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre></td><td class="rouge-code"><pre>Model: "mobilenet_1.00_224"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -332,15 +383,19 @@ predictions (Activation)     (None, 1000)              0
 Total params: 4,253,864
 Trainable params: 4,231,976
 Non-trainable params: 21,888
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để không quá rối mắt, mình đã truncate một số layers trung gian. Bạn có thể simmulate lại kết quả trên tensorlfow:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span>
 
 <span class="k">model</span> <span class="p">=</span> <span class="n">MobileNet</span><span class="p">(</span><span class="n">weights</span><span class="p">=</span><span class="n">None</span><span class="p">)</span>
 <span class="k">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Những dòng (DepthwiseConv2D) là áp dụng tích chập chiều sâu tách biệt. Cách tính số lượng tham số sẽ khác so với tích chập 2 chiều chuẩn. Bạn đọc quan tâm có thể tính thử.</p>
 
@@ -354,29 +409,39 @@ Non-trainable params: 21,888
   <li>Cài đặt package tensorflowjs</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!pip install tensorflowjs
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!pip install tensorflowjs
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Load và save pretrain model MobileNet</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span>
 
 <span class="k">model</span> <span class="p">=</span> <span class="n">MobileNet</span><span class="p">(</span><span class="n">weights</span><span class="p">=</span><span class="s1">'imagenet'</span><span class="p">)</span>
 <span class="k">model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'mobilenet.h5'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Convert file <code class="highlighter-rouge">mobilenet.h5</code> về một folder của tensorflow js</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import tensorflowjs as tfjs
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>import tensorflowjs as tfjs
 import os
 
 os.mkdir('mobilenet_js')
 tfjs.converters.save_keras_model(model, 'mobilenet_js')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hoặc bạn cũng có thể gõ trên commandline theo cú pháp:</p>
 
@@ -530,7 +595,15 @@ async function predictImage(){
 
 <p>Code khởi tạo app của mình như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const express = require('express');
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>const express = require('express');
 let app = express();
 
 app.get("/", cors(corsOptions), (req, res, next) =&gt; {
@@ -538,7 +611,7 @@ app.get("/", cors(corsOptions), (req, res, next) =&gt; {
 	res.sendFile(path.join(__dirname+"/index.html"));
 	next();
 });
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>app đã khởi tạo một API GET khai báo tại vị trí root trả về trang chủ là <code class="highlighter-rouge">index.html</code>. Tại đây chúng ta sẽ tương tác với giao diện và thực hiện các chức năng upload, dự báo ảnh.</p>
 

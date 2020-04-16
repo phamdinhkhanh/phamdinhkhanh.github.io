@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 23 - Neural Attentive Session-Based Recommendation</p></h2> 
 <strong>11 Feb 2020 - phamdinhkhanh</strong>
@@ -455,24 +457,43 @@ Mục tiêu của chúng ta là cần dự báo xem trong các session của t�
 
 <p>Bên dưới chúng ta sẽ tiến hành đọc dữ liệu từ các file trong tập dataset <code class="highlighter-rouge">yoochoose</code> và thực hiện một số lọc bỏ các session có độ dài ngắn và các item có tần suất xuất hiện thấp.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import os
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>import os
 
 path = 'your_folder_path'
 os.chdir(path)
 os.listdir()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Unzip file <code class="highlighter-rouge">yoochoose-data.7z</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pyunpack import Archive
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from pyunpack import Archive
 
 os.mkdir('yoochoose-data')
 Archive('yoochoose-data.7z').extractall('yoochoose-data')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đọc dữ liệu yoochoo-clicks.dat dataset</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import os
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>import os
 import pandas as pd
 from datetime import datetime
 import time
@@ -482,17 +503,23 @@ dataset = pd.read_csv(filepath, names = ['SessionId', 'DateTime', 'ItemId', 'Cat
 dataset['DateTime'] = dataset['DateTime'].apply(lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S.%fZ'))
 dataset['Timestamp'] = dataset['DateTime'].apply(lambda x: x.strftime('%s.%f'))
 dataset = dataset.sort_values(by = ['SessionId', 'DateTime'], ascending = True)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bên dưới ta sẽ lọc bỏ các itemId có ít hơn 5 lượt xuất hiện và lọc bỏ các session có ít hơn 2 itemId.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Thống kê số lượt xuất hiện và lọc ra các ItemId có trên 5 lượt xuất hiện
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Thống kê số lượt xuất hiện và lọc ra các ItemId có trên 5 lượt xuất hiện
 df_item_count = dataset[['ItemId', 'SessionId']].groupby('ItemId').count().sort_values(by = 'SessionId', ascending = False)
 df_item_count.columns = ['CountItemId']
 df_item_count_5 = df_item_count[df_item_count['CountItemId'] &lt; 5]
 # Lọc khỏi dataset những ItemId có ít hơn 5 lượt xuất hiện
 dataset = dataset[~dataset['ItemId'].isin(list(df_item_count_5.index))]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="412-phân-chia-dữ-liệu-traintest">4.1.2. Phân chia dữ liệu train/test</h4>
 
@@ -502,17 +529,36 @@ dataset = dataset[~dataset['ItemId'].isin(list(df_item_count_5.index))]
 
 <p>Bên dưới ta sẽ thực hành phân chia train/test cho mô hình.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from datetime import timedelta
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from datetime import timedelta
 # Phân chia tập train/test sao cho tập test là 7 ngày gần đây nhất và train là dữ liệu còn lại
 maxdate = dataset['DateTime'].max()
 mindate7 = maxdate - timedelta(days = 7)
 test = dataset[dataset['DateTime'] &gt;= mindate7]
 dataset = dataset[dataset['DateTime'] &lt;= mindate7]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lấy ra ngẫu nhiên 1/4 số lượng các session cho huấn luyện.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>import numpy as np
 
 # list các sessionIds
 sessIds = list(dataset['SessionId'].unique())
@@ -525,16 +571,19 @@ sessIdsFilter = sessIds[:n_filter]
 dataset.set_index('SessionId', inplace=True)
 dataset_filter = dataset[dataset.index.isin(sessIdsFilter)]
 dataset_filter = dataset_filter.reset_index()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khởi tạo chuỗi các itemId sắp xếp theo thời gian trên mỗi session. Mỗi một itemId sẽ tương ứng với giá trị thời gian của nó. Cấu trúc của các <code class="highlighter-rouge">train_sess, test_sess</code> có dạng:</p>
 
 <p><code class="highlighter-rouge">['sessionId': {'itemId1':'Timestamp1', ..., 'itemId_n':'Timestamp_n'}]</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Lấy ra dictionary có dạng {SessionId:{ItemId1:Timestamp1, ItemId2:Timestamp2, ...}}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># Lấy ra dictionary có dạng {SessionId:{ItemId1:Timestamp1, ItemId2:Timestamp2, ...}}
 train_sess = dataset_filter[['SessionId', 'ItemId', 'Timestamp']].groupby('SessionId').apply(lambda x: dict(zip(x['ItemId'], x['Timestamp'])))
 test_sess = test[['SessionId', 'ItemId', 'Timestamp']].groupby('SessionId').apply(lambda x: dict(zip(x['ItemId'], x['Timestamp'])))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="413-preprocessing-data">4.1.3. Preprocessing data</h4>
 
@@ -555,7 +604,30 @@ Như vậy sau các cặp (input, output) sẽ là:</p>
   <li>cặp thứ n-1: <code class="highlighter-rouge">([itemId_1, itemId_2,..., itemId_(n-1)], [itemId_n])</code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessDict = {214834865: '1396808691.295000', 214706441: '1396808691.426000', 214820225: '1396808691.422000'}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>sessDict = {214834865: '1396808691.295000', 214706441: '1396808691.426000', 214820225: '1396808691.422000'}
 
 def _preprocess_sess_dict(sessDict):
     sessDictTime = dict([(v, k) for (k, v) in sessDict.items()])
@@ -578,11 +650,33 @@ print('input sequences: ', inp_seq)
 print('input times: ', inp_time)
 print('targets: ', labels)
 print('sequence: ', itemIds)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khởi tạo chuỗi input và output cho toàn bộ các session</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _preprocess_data(data_sess):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>def _preprocess_data(data_sess):
     inp_seqs = []
     inp_times = []
     labels = []
@@ -604,11 +698,25 @@ train = (train_inp_seqs, train_labs)
 test = (test_inp_seqs, test_labs)
 
 print('Done.')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Do kích thước dữ liệu là khá lớn nên để thuận lợi cho những lượt train sau ta nên lưu dữ liệu của train và test vào một folder là <code class="highlighter-rouge">yoochoose-data-4</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pickle
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>import pickle
 import os
 
 def _save_file(filename, obj):
@@ -622,11 +730,21 @@ if not os.path.exists('yoochoose-data/yoochoose-data-4'):
 # Lưu train/test
 _save_file('yoochoose-data/yoochoose-data-4/train.pkl', train)
 _save_file('yoochoose-data/yoochoose-data-4/test.pkl', test)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ở những lượt huấn luyện sau ta chỉ cần load lại những dữ liệu train/test đã lưu tại folder <code class="highlighter-rouge">yoochoose-data-4</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pickle
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>import pickle
 
 def _load_file(filename):
   with open(filename, 'rb') as fn:
@@ -636,13 +754,69 @@ def _load_file(filename):
 # Load dữ liệu train/test từ folder
 train = _load_file('yoochoose-data/yoochoose-data-4/train.pkl')
 test = _load_file('yoochoose-data/yoochoose-data-4/test.pkl') 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="414-khởi-tạo-dictionary">4.1.4. Khởi tạo dictionary</h4>
 
 <p>Chúng ta cần sử dụng dictionary để nhúng itemId của mỗi một sản phẩm thành một index sao cho mỗi chỉ số này là duy nhất đối với mỗi itemId. Từ index ta có thể tạo ra được các véc tơ one-hot dễ dàng làm đầu vào cho huấn luyện mô hình ở bước embedding.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Các token default
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre># Các token default
 PAD_token = 0  # token padding cho câu ngắn
 
 class Voc:
@@ -698,36 +872,53 @@ class Voc:
     # Hàm convert sequence về chuỗi các indices
     def _seqItem2seqIndex(self, x):
         return [voc.item2index[item] if item in voc.item2index else 0 for item in x]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lấy toàn bộ list các itemIds trong các session.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from itertools import chain
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>from itertools import chain
 seq_targets = [train[1]] + [test[1]]
 sessionIds = list(chain.from_iterable(seq_targets))
 sessionIds = set(sessionIds)
 print('Number of sessionIds: ', len(sessionIds))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khởi tạo vocabullary cho bộ dữ liệu.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>voc = Voc('DictItemId')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>voc = Voc('DictItemId')
 voc.addSenquence(seq_targets)
 
 # Convert thử nghiệm một sequence itemIds
 print('sequence of itemIds: ', train[0][7])
 print('converted indices: ', voc._seqItem2seqIndex(train[0][7]))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo ta sẽ chuyển dữ liệu train,  test từ item sang indices của item</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>train_x_index = [voc._seqItem2seqIndex(seq) for seq in train[0]]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>train_x_index = [voc._seqItem2seqIndex(seq) for seq in train[0]]
 test_x_index = [voc._seqItem2seqIndex(seq) for seq in test[0]]
 train_y_index = voc._seqItem2seqIndex(train[1])
 test_y_index = voc._seqItem2seqIndex(test[1])
 train_index = (train_x_index, train_y_index)
 test_index = (test_x_index, test_y_index)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="415-phân-chia-tập-traintestvalidation">4.1.5. Phân chia tập train/test/validation</h4>
 
@@ -748,7 +939,84 @@ test_index = (test_x_index, test_y_index)
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def load_data(root='', valid_portion=0.1, maxlen=19, sort_by_len=False, train_set=None, test_set=None):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+</pre></td><td class="rouge-code"><pre>def load_data(root='', valid_portion=0.1, maxlen=19, sort_by_len=False, train_set=None, test_set=None):
     """Load dataset từ root
     root: folder dữ liệu train, trong trường hợp train_set, test_set tồn tại thì không sử dụng train_set và test_set
     valid_portion: tỷ lệ phân chia dữ liệu validation/train
@@ -825,7 +1093,7 @@ test_index = (test_x_index, test_y_index)
     valid = (valid_set_x, valid_set_y)
     test = (test_set_x, test_set_y)
     return train, valid, test
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="42-data-loader">4.2. Data Loader</h3>
 
@@ -835,7 +1103,26 @@ test_index = (test_x_index, test_y_index)
 
 <p><code class="highlighter-rouge">Dataset</code> sẽ có dữ liệu hoàn toàn giống với tập train/test và validation mà ta đã phân chia ở bước trên. Chúng được tạo ra đơn thuần là để thích hợp với định dạng data được sử dụng trong quá trình khởi tạo <code class="highlighter-rouge">DataLoader</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from torch.utils.data import Dataset
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>from torch.utils.data import Dataset
 
 class RecSysDataset(Dataset):
     """define the pytorch Dataset class for yoochoose and diginetica datasets.
@@ -854,7 +1141,7 @@ class RecSysDataset(Dataset):
 
     def __len__(self):
         return len(self.data[0])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="422-hàm-phụ-trợ">4.2.2. Hàm phụ trợ</h4>
 
@@ -877,7 +1164,30 @@ class RecSysDataset(Dataset):
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>import torch
 
 def collate_fn(data):
     """
@@ -900,7 +1210,7 @@ def collate_fn(data):
     # Transpose dữ liệu từ batch_size x maxlen --&gt; maxlen x batch_size
     padded_sesss = padded_sesss.transpose(0,1)
     return padded_sesss, torch.tensor(labels).long(), lens
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="43-metric">4.3. Metric</h3>
 
@@ -917,7 +1227,71 @@ def collate_fn(data):
 
 <p>Để tính toán các metrics trên sẽ dựa trên ground truth và top $k$ sản phẩm được suggest từ mô hình như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre></td><td class="rouge-code"><pre>import torch
 
 def get_recall(indices, targets):
     """
@@ -981,7 +1355,7 @@ def evaluate(logits, targets, k=20):
     recall = get_recall(indices, targets)
     mrr = get_mrr(indices, targets)
     return recall, mrr
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hàm <code class="highlighter-rouge">evaluate()</code> sẽ tính toán đồng thời cả 2 chỉ số là <code class="highlighter-rouge">recall@k</code> và <code class="highlighter-rouge">mrr@k</code>.  Tham số của hàm <code class="highlighter-rouge">evaluate()</code> bao gồm:</p>
 
@@ -996,7 +1370,18 @@ def evaluate(logits, targets, k=20):
 
 <p>Kiểm tra hàm <code class="highlighter-rouge">evaluate()</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>import torch
 import numpy as np
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -1007,7 +1392,7 @@ logits = torch.tensor([[0.1, 0.2, 0.7],
 targets = torch.tensor([1, 2, 2]).to(device)
 
 evaluate(logits = logits, targets = targets, k = 2)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="44-model-narm">4.4. Model NARM</h3>
 
@@ -1040,7 +1425,101 @@ Embedding Layer sẽ nhận đầu vào là một sequence của các item index
 
 <h5 id="quá-trình-tính-attention">Quá trình tính attention</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import torch
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+</pre></td><td class="rouge-code"><pre>import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
@@ -1134,11 +1613,31 @@ class NARM(nn.Module):
         scores = torch.matmul(c_t, B) # batch_size x n_items
         # scores = self.sf(scores)
         return scores
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="442-kiểm-tra-model-narm">4.4.2. Kiểm tra model NARM</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Thử nghiệm model bằng cách giả lập 1 input và thực hiện quá trình feed forward
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre># Thử nghiệm model bằng cách giả lập 1 input và thực hiện quá trình feed forward
 from torch import nn
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -1158,7 +1657,7 @@ model_test = NARM(hidden_size = hidden_size, n_items  = 100000, embedding_dim = 
 print('model phrase: \n', model_test)
 scores = model_test.forward(input_seq = input_variable, input_lengths = lengths)
 print('probability distribution: ', scores.shape)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="45-validation">4.5. Validation</h3>
 
@@ -1166,7 +1665,24 @@ print('probability distribution: ', scores.shape)
 
 <p>Đầu tiên ta sẽ sử dụng <code class="highlighter-rouge">model</code> để dự báo xác suất output cho từng batch. <code class="highlighter-rouge">valid_loader</code> là một iterator được sử dụng để khởi tạo batch. Sử dụng vòng lặp để để duyệt qua toàn bộ batch của <code class="highlighter-rouge">valid_loader</code> và lưu các giá trị <code class="highlighter-rouge">recall@k</code> và <code class="highlighter-rouge">mrr@k</code> tính được ở mỗi batch vào list. Cuối cùng lấy trung bình của toàn bộ các chỉ số này để thu được <code class="highlighter-rouge">recall@k</code> và <code class="highlighter-rouge">mrr@k</code> đại diện trên tập validation.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def validate(valid_loader, model):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>def validate(valid_loader, model):
     model.eval()
     recalls = []
     mrrs = []
@@ -1183,7 +1699,7 @@ print('probability distribution: ', scores.shape)
     mean_recall = torch.mean(torch.stack(recalls))
     mean_mrr = torch.mean(torch.stack(mrrs))
     return mean_recall, mean_mrr
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="46-training-model">4.6. Training model</h3>
 
@@ -1191,7 +1707,115 @@ print('probability distribution: ', scores.shape)
 
 <p>Hàm <code class="highlighter-rouge">trainForEpoch()</code> thực hiện huấn luyện mô hình trên mỗi một epoch. Dựa vào Data Loader, chúng ta có thể dễ dàng duyệt qua toàn bộ dataset và training trên từng batch.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">os</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">os</span>
 <span class="n">import</span> <span class="n">time</span>
 <span class="n">import</span> <span class="nb">random</span>
 <span class="n">import</span> <span class="n">argparse</span>
@@ -1299,7 +1923,7 @@ print('probability distribution: ', scores.shape)
         <span class="n">start</span> <span class="p">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="k">model</span> <span class="p">=</span> <span class="n">main</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để nhanh gọn thì tôi chỉ training model trên 2 epoch có sử dụng GPU, thời gian huấn luyện hết tổng cộng 15 phút. Các bạn có thể điều chỉnh tăng epochs để thu được kết quả tốt hơn.</p>
 
@@ -1311,7 +1935,21 @@ print('probability distribution: ', scores.shape)
 
 <p>Trước khi thực hiện dự báo thì ta sẽ cần phải load mô hình từ <code class="highlighter-rouge">PATH</code> đã lưu trước đó. Có 2 kiểu save mô hình chính trên pytorch đó là save toàn bộ mô hình và save các checkpoints. Nếu save toàn bộ mô hình sẽ buộc phải xác định các classes và cấu trúc thư mục lưu trữ mô hình nên thường dẫn tới xảy ra lỗi khi thay đổi project. Do đó save theo checkpoint thường được khuyến nghị, đối với bài toán này chúng ta cũng save mô hình theo checkpoint. Để load lại mô hình cũ ta thực hiện như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">torch</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">torch</span>
 <span class="n">import</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span> <span class="k">as</span> <span class="n">optim</span>
 
 <span class="n">device</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'cpu'</span><span class="p">)</span>
@@ -1325,22 +1963,51 @@ print('probability distribution: ', scores.shape)
 <span class="n">epoch</span> <span class="p">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'epoch'</span><span class="p">]</span>
 
 <span class="k">model</span><span class="p">.</span><span class="n">eval</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lưu ý: Sau khi load xong model ta luôn phải chạy hàm <code class="highlighter-rouge">model.eval()</code> để kích hoạt các dropout và batchnormalization layer. Nếu không kết quả dự báo có thể dẫn tới sai lệch. Tiếp theo chúng ta sẽ sử dụng mô hình để dự báo cho một trường hợp cụ thể.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Lựa chọn ngẫu nhiên một session trên test
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre># Lựa chọn ngẫu nhiên một session trên test
 import numpy as np
 i = np.random.randint(0, len(test_index[0]))
 x = [test_index[0][i]]
 y = [test_index[1][i]]
 print('item indexes sequence input: ', x)
 print('item index next output: ', y)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo ta sẽ khởi tạo data loader và đưa vào dự báo</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Step 1: Khởi tạo test_loader để biến đổi dữ liệu session đưa vào mô hình
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre># Step 1: Khởi tạo test_loader để biến đổi dữ liệu session đưa vào mô hình
 test_data = RecSysDataset([x, y])
 test_loader = DataLoader(test_data, batch_size = args['batch_size'], shuffle = False, collate_fn = collate_fn)
 
@@ -1362,7 +2029,7 @@ def _preddict(loader, model):
     return indices
 
 _preddict(test_loader, model)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kết quả cho thấy mô hình dự báo là chính xác. Index của item mà thực tế khách hàng dự báo nằm trong list các sản phẩm được suggest.</p>
 

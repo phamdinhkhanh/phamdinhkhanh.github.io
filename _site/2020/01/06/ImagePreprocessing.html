@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 21 - Tiền xử lý ảnh OpenCV</p></h2> 
 <strong>06 Jan 2020 - phamdinhkhanh</strong>
@@ -284,7 +286,31 @@ a_2 y\end{bmatrix} %]]></script>
 
 <p>Hàm <code class="highlighter-rouge">_downloadImage()</code> sẽ có tác dụng tải và convert ảnh sang numpy array từ đầu vào là link url của ảnh. Bạn đọc lưu ý, hàm này sẽ được sử dụng xuyên suốt bài hướng dẫn.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>import cv2
 import numpy as np
 from PIL import Image
 import requests
@@ -308,10 +334,12 @@ print('scale image shape: {}'.format(imgScale.shape))
 
 plt.subplot(121),plt.imshow(imgScale),plt.title('Origin Image')
 plt.subplot(122),plt.imshow(imgScale),plt.title('Scale Image')
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>origin image shape: (709, 621, 3)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>origin image shape: (709, 621, 3)
 scale image shape: (1418, 1242, 3)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_3_2.png" width="300px" height="200px" /></p>
 
@@ -338,7 +366,35 @@ y + t_y\end{bmatrix} %]]></script>
 
 <p>Trong opencv, Áp dụng hàm <code class="highlighter-rouge">cv2.warpAffine()</code> với đầu vào là ma trận dịch chuyển $\mathbf{M}$ và bức ảnh gốc ta thu được kết quả là ảnh sau dịch chuyển.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows, cols = img.shape[:2]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>rows, cols = img.shape[:2]
 # Dịch chuyển hình ảnh xuống góc dưới bên phải
 tx, ty = (200, 200)
 M1 = np.array([[1, 0, tx], 
@@ -366,7 +422,7 @@ plt.subplot(152),plt.imshow(tran1),plt.title('Translate to Bottom Right')
 plt.subplot(153),plt.imshow(tran2),plt.title('Translate to Bottom Left')
 plt.subplot(154),plt.imshow(tran3),plt.title('Translate to Up Right')
 plt.subplot(155),plt.imshow(tran4),plt.title('Translate to Up Left')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_6_1.png" width="800px" height="200px" /></p>
 
@@ -396,7 +452,34 @@ sin(\theta) & cos(\theta)\end{bmatrix} %]]></script>
 
 <p>Bên dưới là một ví dụ xoay ảnh kích thước 45 độ tại tâm của ảnh.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Xoay ảnh kích thước 45 độ tại tâm của ảnh, độ phóng đại ảnh không đổi.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre># Xoay ảnh kích thước 45 độ tại tâm của ảnh, độ phóng đại ảnh không đổi.
 M5 = cv2.getRotationMatrix2D(center = (cols/2,rows/2), angle=-45, scale=1)
 tran5 = cv2.warpAffine(img, M5, (cols,rows))
 
@@ -423,7 +506,7 @@ plt.subplot(233),plt.imshow(tran6),plt.title('Rotate 45 resize 0.5')
 plt.subplot(234),plt.imshow(tran7),plt.title('Rotate -45 at centroid')
 plt.subplot(235),plt.imshow(tran8),plt.title('Rotate 20 at upper left corner')
 plt.subplot(236),plt.imshow(tran9),plt.title('Rotate 20 at bottom right corner')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_8_1.png" width="650px" height="450px" /></p>
 
@@ -433,7 +516,25 @@ plt.subplot(236),plt.imshow(tran9),plt.title('Rotate 20 at bottom right corner')
 
 <p>Kiểm tra ví dụ bên dưới, chúng ta cùng nhìn vào các điểm mà tôi lựa chọn (được đánh dấu x, màu trắng).</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows,cols,ch = img.shape
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>rows,cols,ch = img.shape
 
 pts1 = np.float32([[50,50], [200,50], [50,200]])
 # pts2 = np.float32([[50,100], [200,50], [50,200]])
@@ -451,7 +552,7 @@ for (x, y) in pts1:
 plt.subplot(122),plt.imshow(imageAffine),plt.title('Output')
 for (x, y) in pts2:
   plt.scatter(x, y, s=50, c='white', marker='x')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_10_0.png" width="300px" height="200px" /></p>
 
@@ -465,7 +566,21 @@ for (x, y) in pts2:
 
 <p>Xem code bên dưới.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pts1 = np.float32([[50,50],[350,50],[50,350],[350,350]])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>pts1 = np.float32([[50,50],[350,50],[50,350],[350,350]])
 pts2 = np.float32([[0,0],[200,50],[50,300],[300,300]])
 
 M = cv2.getPerspectiveTransform(pts1,pts2)
@@ -479,13 +594,24 @@ plt.subplot(122),plt.imshow(dst),plt.title('Perspective Transform')
 for (x, y) in pts2:
   plt.scatter(x, y, s=50, c='white', marker='x')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_13_0.png" width="300px" height="200px" /></p>
 
 <p>Như vậy phép biến đổi này cũng gần giống như phép biến đổi Affine. Khác biệt đó là nó chỉ trả ra bức ảnh là biến đổi trên vùng ảnh bị giới hạn trong tọa độ của 4 điểm gốc thay vì biến đổi trên toàn bộ bức ảnh ban đầu như phép biến đổi Affine. Trong trường hợp muốn crop ảnh ta sẽ xác định trước tọa độ của 4 góc và sử dụng phép biến đổi phối cảnh giữa 4 điểm với chính các điểm đó.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pts1 = np.float32([[50,50],[350,50],[50,350],[350,350]])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>pts1 = np.float32([[50,50],[350,50],[50,350],[350,350]])
 
 M = cv2.getPerspectiveTransform(pts1,pts1)
 
@@ -496,7 +622,7 @@ for (x, y) in pts1:
   plt.scatter(x, y, s=50, c='white', marker='x')
 plt.subplot(122),plt.imshow(dst),plt.title('Crop Image')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_15_0.png" width="300px" height="200px" /></p>
 
@@ -522,7 +648,18 @@ K = \frac{1}{25}
 
 <p>Khi đó mỗi một vùng ảnh cục bộ (local region) kích thước 5x5 trên ảnh gốc, các pixels sẽ được lấy giá trị bằng nhau và bằng trung bình của toàn bộ các pixels trên vùng ảnh. Dịch chuyển bộ lọc $K$ trên toàn bộ các vùng ảnh gốc như một phép tích chập 2 chiều thông thường ta sẽ được ảnh smoothing. Cụ thể như code bên dưới.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>import cv2
 import numpy as np
 
 kernel = np.ones((5,5),np.float32)/25
@@ -533,7 +670,7 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(imgSmooth),plt.title('Averaging')
 plt.xticks([]), plt.yticks([])
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_18_0.png" width="300px" height="200px" /></p>
 
@@ -546,7 +683,17 @@ plt.show()
 
 <p>Tương tự như tích chập 2 chiều, chúng cũng sử dụng một ma trận vuông 2 chiều gồm toàn giá trị 1 để lấy trung bình trên các vùng cục bộ. Chúng ta có thể thực hiện thông qua các hàm <code class="highlighter-rouge">cv2.blur()</code> và <code class="highlighter-rouge">cv2.boxFilter()</code>. Chẳng hạn như ta làm như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url = 'https://photo-2-baomoi.zadn.vn/w1000_r1/2019_05_10_351_30668071/06856d2daf6c46321f7d.jpg'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>url = 'https://photo-2-baomoi.zadn.vn/w1000_r1/2019_05_10_351_30668071/06856d2daf6c46321f7d.jpg'
 img = _downloadImage(url)
 
 blur = cv2.blur(img,(5,5))
@@ -556,7 +703,7 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(blur),plt.title('Blurred')
 plt.xticks([]), plt.yticks([])
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_20_0.png" width="300px" height="200px" /></p>
 
@@ -564,14 +711,21 @@ plt.show()
 
 <p>Bộ lọc gaussian được khởi tạo thông qua hàm <code class="highlighter-rouge">cv2.GaussianBlur()</code>. Chúng ta cần xác định độ lệch chuẩn theo 2 phương X và Y là $\sigma_x$ và $\sigma_y$. Bộ lọc Gaussian rất hiệu quả trong việc xóa bỏ noise khỏi hình ảnh.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gaussian_img = cv2.GaussianBlur(img, (5, 5), 0)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>gaussian_img = cv2.GaussianBlur(img, (5, 5), 0)
 
 plt.subplot(121),plt.imshow(img),plt.title('Original')
 plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(gaussian_img),plt.title('Gaussian Blurred')
 plt.xticks([]), plt.yticks([])
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_22_0.png" width="300px" height="200px" /></p>
 
@@ -588,7 +742,17 @@ plt.show()
 
 <p>Bên dưới là kết quả áp dụng các bộ lọc này:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>median_img = cv2.medianBlur(img, 5, 0)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>median_img = cv2.medianBlur(img, 5, 0)
 bilateral_img = cv2.bilateralFilter(img, 9, 75, 75)
 
 plt.subplot(131),plt.imshow(img),plt.title('Original')
@@ -598,7 +762,7 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(133),plt.imshow(bilateral_img),plt.title('Bilateral Blurred')
 plt.xticks([]), plt.yticks([])
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_24_0.png" width="450px" height="200px" /></p>
 
@@ -652,7 +816,22 @@ plt.show()
 
 <p>Tất cả các bước trên được openCV gói gọn trong một hàm số là <code class="highlighter-rouge">cv2.Canny()</code>. Trong hàm số này chúng ta sẽ khai báo tham số đầu tiên là hình ảnh đầu vào, tham số thứ 2 và thứ 3 lần lượt là ngưỡng <em>minVal</em> và <em>maxVal</em>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>import cv2
 import numpy as np
 import requests
 from matplotlib import pyplot as plt
@@ -667,7 +846,7 @@ plt.subplot(122),plt.imshow(edges,cmap = 'gray')
 plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_26_0.png" width="400px" height="300px" /></p>
 
@@ -698,7 +877,23 @@ plt.show()
 
 <p>Bây giờ ta sẽ cùng tìm các contours cho một ảnh nhị phân.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>import cv2
 import numpy as np
 import requests
 from matplotlib import pyplot as plt
@@ -714,7 +909,7 @@ img = cv2.imdecode(img, cv2.IMREAD_COLOR)
 imgCanny = cv2.Canny(img, 100, 200)
 
 contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Có 3 tham số trong hàm <code class="highlighter-rouge">cv2.findContours()</code>, đầu tiên là hình ảnh gốc, thứ 2 là phương pháp trích xuất contours, thứ 3 là phương pháp xấp xỉ contour. Kết quả trả ra là hình ảnh và contours. Trong đó contours là một list của toàn bộ các contours xác định trong hình ảnh. Mỗi một contour là một numpy array của các tọa độ $(x, y)$ của các điểm biên trong object.</p>
 
@@ -730,7 +925,28 @@ contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_TREE, cv2.CHAIN_APPROX
 
 <p>Thành phần còn lại sẽ chính là tham số về màu sắc, độ dày của contour.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Vì drawContours sẽ thay đổi ảnh gốc nên cần lưu ảnh sang một biến mới.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre># Vì drawContours sẽ thay đổi ảnh gốc nên cần lưu ảnh sang một biến mới.
 imgOrigin = img.copy()
 img1 = img.copy()
 img2 = img.copy()
@@ -751,7 +967,7 @@ plt.xticks([]), plt.yticks([])
 plt.subplot(144),plt.imshow(img2),plt.title('Contour 4')
 plt.xticks([]), plt.yticks([])
 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_32_1.png" width="800px" height="150px" /></p>
 
@@ -765,7 +981,19 @@ plt.xticks([]), plt.yticks([])
 
 <p>Hàm <code class="highlighter-rouge">cv2.moments()</code> sẽ hỗ trợ ta thực hiện tính toán các moments. Kết quả trả về là một dictionary như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>import cv2
 import numpy as np
 
 url = 'https://image.flaticon.com/icons/png/512/130/130188.png'
@@ -777,11 +1005,20 @@ plt.imshow(imgCanny)
 # Tìm kiếm contours trên ảnh nhị phân từ bộ lọc canny
 contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_34_0.png" width="200px" height="200px" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Vẽ contour 0 trên hình ảnh gốc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre># Vẽ contour 0 trên hình ảnh gốc
 img1 = img.copy()
 cv2.drawContours(img1, contours, 0, (0, 255, 0), 5)
 plt.imshow(img1)
@@ -790,10 +1027,11 @@ plt.imshow(img1)
 cnt = contours[0]
 M = cv2.moments(cnt)
 print('Moment values of contour 0: {}'.format(M))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Moment values of contour 0: {'m00': 129.5, 'm10': 9821.833333333332, 'm01': 35877.166666666664, 'm20': 1204998.5833333333, 'm11': 3155542.208333333, 'm02': 10432159.25, 'm30': 218048987.95000002, 'm21': 443324957.01666665, 'm12': 1071073460.4833333, 'm03': 3214254682.55, 'mu20': 460068.77616902627, 'mu11': 434464.5907872161, 'mu02': 492614.1687044203, 'mu30': 56869583.044915825, 'mu21': 43584319.12291357, 'mu12': 39122522.03416099, 'mu03': 51138718.292099, 'nu20': 27.43362658094103, 'nu11': 25.90686428569736, 'nu02': 29.374288916648254, 'nu30': 297.99269854672315, 'nu21': 228.3788305516631, 'nu12': 204.9993210906005, 'nu03': 267.963361926664}
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Moment values of contour 0: {'m00': 129.5, 'm10': 9821.833333333332, 'm01': 35877.166666666664, 'm20': 1204998.5833333333, 'm11': 3155542.208333333, 'm02': 10432159.25, 'm30': 218048987.95000002, 'm21': 443324957.01666665, 'm12': 1071073460.4833333, 'm03': 3214254682.55, 'mu20': 460068.77616902627, 'mu11': 434464.5907872161, 'mu02': 492614.1687044203, 'mu30': 56869583.044915825, 'mu21': 43584319.12291357, 'mu12': 39122522.03416099, 'mu03': 51138718.292099, 'nu20': 27.43362658094103, 'nu11': 25.90686428569736, 'nu02': 29.374288916648254, 'nu30': 297.99269854672315, 'nu21': 228.3788305516631, 'nu12': 204.9993210906005, 'nu03': 267.963361926664}
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_35_1.png" width="200px" height="200px" /></p>
 
@@ -801,7 +1039,15 @@ print('Moment values of contour 0: {}'.format(M))
 
 <script type="math/tex; mode=display">c_x = \frac{M_{10}}{M_{00}}, c_y = \frac{M_{01}}{M_{00}}</script>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tính toán tâm của contour 0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre># Tính toán tâm của contour 0
 cx = int(M['m10']/M['m00'])
 cy = int(M['m01']/M['m00'])
 print('Centroid position ({}, {})'.format(cx, cy))
@@ -809,21 +1055,25 @@ print('Centroid position ({}, {})'.format(cx, cy))
 # Vẽ biểu đồ tâm contour 0 và contour 0
 plt.imshow(img1)
 plt.scatter(cx, cy, s=50, c='red', marker='o')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Centroid position (75, 277)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Centroid position (75, 277)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_37_2.png" width="200px" height="200px" /></p>
 
 <p>Để biết diện tích của contour ta dùng hàm <code class="highlighter-rouge">cv2.contourArea()</code> hoặc phần tử <strong>M[‘m00’]</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>area = cv2.contourArea(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>area = cv2.contourArea(cnt)
 print('area of contour 0: {}'.format(area))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>area of contour 0: 129.5
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>area of contour 0: 129.5
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="243-bounding-box">2.4.3. Bounding box</h3>
 
@@ -839,7 +1089,15 @@ print('area of contour 0: {}'.format(area))
 
 <p>Ví dụ chúng ta sẽ tìm ra các Bounding box hình chữ nhật đứng đối với một contour như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>img = _downloadImage('https://i0.wp.com/cdn-images-1.medium.com/max/2400/1*LmxW8FDfXZJl5yvESvjP7Q.jpeg?resize=660%2C373&amp;ssl=1')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>img = _downloadImage('https://i0.wp.com/cdn-images-1.medium.com/max/2400/1*LmxW8FDfXZJl5yvESvjP7Q.jpeg?resize=660%2C373&amp;ssl=1')
 # Chuyển đổi sang ảnh gray
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Chuyển sang ảnh nhị phân
@@ -847,43 +1105,61 @@ _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
 plt.imshow(img)
 # Tìm kiếm contours trên ảnh nhị phân
 contours, hierarchy = cv2.findContours(img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_42_0.png" width="300px" height="200px" /></p>
 
 <p>Sử dụng hàm <code class="highlighter-rouge">cv.contourArea()</code> để tìm ra diện tích các contours và sắp xếp thứ tự diện tích từ cao xuống thấp.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tìm ra diện tích của toàn bộ các contours
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre># Tìm ra diện tích của toàn bộ các contours
 area_cnt = [cv2.contourArea(cnt) for cnt in contours]
 area_sort = np.argsort(area_cnt)[::-1]
 # Top 5 contour có diện tích lớn nhất
 area_sort[:5]
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([45, 78, 89, 93, 63])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>array([45, 78, 89, 93, 63])
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Từ contour, ta sẽ xác định tọa độ góc trên bên trái và độ dài cạnh width, height của contour thông qua hàm <code class="highlighter-rouge">cv2.boundingRect()</code>. Từ đó vẽ bounding box hình chữ nhật đứng lên hình ảnh gốc bằng cách sử dụng hàm <code class="highlighter-rouge">cv.rectangle()</code> như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Vẽ bounding box cho contours có diện tích lớn thứ 2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Vẽ bounding box cho contours có diện tích lớn thứ 2
 cnt = contours[area_sort[1]]
 x,y,w,h = cv2.boundingRect(cnt)
 print('centroid: ({}, {}), (width, height): ({}, {})'.format(x, y, w, h))
 img = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
 plt.imshow(img)
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>centroid: (334, 211), (width, height): (73, 74) &lt;img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_46_2.png" width="300px" height="200px"/&gt;    
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>centroid: (334, 211), (width, height): (73, 74) &lt;img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_46_2.png" width="300px" height="200px"/&gt;    
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Vẽ bounding box hình chữ nhật xoay diện tích nhỏ nhất bao quanh một contour</strong></p>
 
 <p>Để vẽ một bounding box có diện tích tối thiểu bao quanh một contour xác định chúng ta sử dụng hàm <code class="highlighter-rouge">cv2.minAreaRect()</code>. Hàm này sẽ trả về một cấu trúc Box 2 chiều bao gồm các thông số: Tọa độ đỉnh trên cùng bên trái (x, y), (width, height), góc xoay. Nhưng để vẽ hình chữ nhật thì ta cần tọa độ của 4 góc. Thông qua hàm <code class="highlighter-rouge">cv2.boxPoint()</code> ta sẽ chuyển các hình dữ nhật thành các box 2D. Cụ thể như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rect = cv2.minAreaRect(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>rect = cv2.minAreaRect(cnt)
 box = cv2.boxPoints(rect)
 box = np.int0(box)
 img = cv2.drawContours(img,[box],0,(100,100,100),2)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_48_1.png" width="300px" height="200px" /></p>
 
 <p><strong>2. Bounding box các hình dạng khác</strong></p>
@@ -894,12 +1170,17 @@ plt.imshow(img)
   <li>Hình tròn: hàm <code class="highlighter-rouge">cv2.minEnclosingCircle()</code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(x, y), radius = cv2.minEnclosingCircle(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>(x, y), radius = cv2.minEnclosingCircle(cnt)
 center = (int(x),int(y))
 radius = int(radius)
 img = cv2.circle(img,center,radius,(0,255,0),2)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_50_1.png" width="300px" height="200px" /></p>
 
@@ -909,25 +1190,36 @@ plt.imshow(img)
 
 <p>Do số 8 đã nhiều hình rồi nên để quan sát rõ hơn ta sẽ chuyển qua một số khác.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Lấy contour có diện tích lớn thứ 3
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre># Lấy contour có diện tích lớn thứ 3
 cnt = contours[area_sort[3]]
 ellipse = cv2.fitEllipse(cnt)
 img = cv2.ellipse(img,ellipse,(0,255,0),2)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_52_1.png" width="300px" height="200px" /></p>
 
 <ul>
   <li>Đường thẳng: Hàm <code class="highlighter-rouge">cv2.fitLine()</code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rows,cols = img.shape[:2]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>rows,cols = img.shape[:2]
 [vx,vy,x,y] = cv2.fitLine(cnt, cv2.DIST_L2,0,0.01,0.01)
 lefty = int((-x*vy/vx) + y)
 righty = int(((cols-x)*vy/vx)+y)
 img = cv2.line(img,(cols-1,righty),(0,lefty),(0,255,0),2)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_54_1.png" width="300px" height="200px" /></p>
 
@@ -945,13 +1237,17 @@ plt.imshow(img)
 
 <p>Aspect ratio sẽ cho ta biết hình dạng tương đối của bounding box là cao dẹt hay rộng thấp.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x,y,w,h = cv2.boundingRect(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>x,y,w,h = cv2.boundingRect(cnt)
 aspect_ratio = float(w)/h
 print('aspect ratio: {}'.format(aspect_ratio))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aspect ratio: 0.9041095890410958
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>aspect ratio: 0.9041095890410958
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>2. Độ phủ (extent)</strong></p>
 
@@ -961,7 +1257,15 @@ print('aspect ratio: {}'.format(aspect_ratio))
 
 <p>Trong đó $S_{contour}$ là diện tích của contour và $S_{area}$ là diện tích của bounding box.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tính diện tích của contour
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre># Tính diện tích của contour
 area = cv2.contourArea(cnt)
 # Tính diện tích bouding box
 x,y,w,h = cv2.boundingRect(cnt)
@@ -969,10 +1273,11 @@ rect_area = w*h
 # Tính độ phủ
 extent = float(area)/rect_area
 print('Extent: {}'.format(extent))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extent: 0.4712536322125363
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Extent: 0.4712536322125363
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>3. Độ cô đặc (Solidity)</strong></p>
 
@@ -982,17 +1287,25 @@ print('Extent: {}'.format(extent))
 
 <p>Với $S_{contour}, S_{CVhull}$ lần lượt là diện tích contour và diện tích đa diện lồi.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>area = cv2.contourArea(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>area = cv2.contourArea(cnt)
 # Khởi tạo một đa diện lồi bao quanh contour
 hull = cv2.convexHull(cnt)
 hull_area = cv2.contourArea(hull)
 # Tính toán độ cô đặc
 solidity = float(area)/hull_area
 print('Solidity : {}'.format(solidity))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Solidity : 0.6777611940298508
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Solidity : 0.6777611940298508
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>4. Đường kính tương đương (Equivalent Diameter)</strong></p>
 
@@ -1000,30 +1313,51 @@ print('Solidity : {}'.format(solidity))
 
 <script type="math/tex; mode=display">\text{ED} = \sqrt{\frac{4\times S_{contour}}{\pi}}</script>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>area = cv2.contourArea(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>area = cv2.contourArea(cnt)
 equi_diameter = np.sqrt(4*area/np.pi)
 print('Equivalent Diameter : {}'.format(equi_diameter))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Equivalent Diameter : 53.76700090502712
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Equivalent Diameter : 53.76700090502712
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>5. Hướng (Orientation)</strong></p>
 
 <p>Hướng là góc mà đối tượng hướng tới. Phương pháp sau đây sẽ đưa ra các độ dài của các trục chính và trục phụ.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(x,y),(MA,ma),angle = cv2.fitEllipse(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(x,y),(MA,ma),angle = cv2.fitEllipse(cnt)
 print('Angle of Orientation: {}'.format(angle))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Angle of Orientation: 149.97474670410156
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Angle of Orientation: 149.97474670410156
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>6. Mặt nạ (Mask) và các điểm pixels</strong></p>
 
 <p>Trong một số trường hợp chúng ta muốn trích xuất tất cả các điểm pixels tạo thành vật thể. Đây là những điểm có giá trị cường độ khác 0.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>img = _downloadImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8amhxBfrtf4Xcnf3jQOKUn2PhqsxMRj-JbCNpkOze6tv_4oiV&amp;s')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>img = _downloadImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8amhxBfrtf4Xcnf3jQOKUn2PhqsxMRj-JbCNpkOze6tv_4oiV&amp;s')
 imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Find contour
 contours, hierarchy = cv2.findContours(imgray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -1037,12 +1371,24 @@ print('centroid: ({}, {}), (width, height): ({}, {})'.format(x, y, w, h))
 # Vẽ bounding box
 img = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>centroid: (13, 9), (width, height): (96, 84) &lt;img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_67_2.png" width="200px" height="200px"/&gt;    
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>centroid: (13, 9), (width, height): (96, 84) &lt;img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_67_2.png" width="200px" height="200px"/&gt;    
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Khởi tạo contour mask zero
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre># Khởi tạo contour mask zero
 mask = np.zeros(imgray.shape, np.uint8)
 # Vẽ contour trên back ground mask zero
 cv2.drawContours(mask,[cnt],0,255,-1)
@@ -1053,10 +1399,12 @@ print('pixelpoints shape use numpy: {}'.format(pixelpoints.shape))
 # Hoặc cũng có thể dùng hàm cv2.findNoneZero()
 pixelpoints = cv2.findNonZero(mask)
 print('pixelpoints shape use cv2: {}'.format(pixelpoints.shape))
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pixelpoints shape use numpy: (1865, 2)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>pixelpoints shape use numpy: (1865, 2)
 pixelpoints shape use cv2: (1865, 1, 2)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_68_1.png" width="200px" height="200px" /></p>
 
@@ -1064,26 +1412,42 @@ pixelpoints shape use cv2: (1865, 1, 2)
 
 <p>Chúng ta có thể tìm ra các điểm có giá trị cường độ ảnh lớn nhất và nhỏ nhất kèm theo vị trí tọa độ của chúng.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(imgray, mask = mask)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(imgray, mask = mask)
 print('(min, max) values ({}, {})'.format(min_val, max_val))
 print('(min, max) location ({}, {})'.format(min_loc, max_loc))
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(min, max) values (11.0, 255.0)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(min, max) values (11.0, 255.0)
 (min, max) location ((24, 50), (42, 11))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>8. Trích xuất trung bình cường độ màu sắc</strong></p>
 
 <p>Chúng ta có thể tìm ra trung bình màu sắc của một object thông qua hàm <code class="highlighter-rouge">cv2.mean()</code> như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean_val = cv2.mean(img, mask = mask)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>mean_val = cv2.mean(img, mask = mask)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>9/. Trích xuất các điểm ngoài cùng</strong></p>
 
 <p>Các điểm ngoài cùng là những điểm nằm ở ngoài cùng của object tại các vị trí <code class="highlighter-rouge">top, bottom, right, left</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>leftmost = tuple(cnt[cnt[:,:,0].argmin()][0])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>leftmost = tuple(cnt[cnt[:,:,0].argmin()][0])
 rightmost = tuple(cnt[cnt[:,:,0].argmax()][0])
 topmost = tuple(cnt[cnt[:,:,1].argmin()][0])
 bottommost = tuple(cnt[cnt[:,:,1].argmax()][0])
@@ -1093,7 +1457,7 @@ plt.scatter(x = leftmost[0], y = leftmost[1])
 plt.scatter(x = rightmost[0], y = rightmost[1])
 plt.scatter(x = topmost[0], y = topmost[1])
 plt.scatter(x = bottommost[0], y = bottommost[1])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_74_1.png" width="200px" height="200px" /></p>
 
@@ -1103,7 +1467,19 @@ plt.scatter(x = bottommost[0], y = bottommost[1])
 
 <p>Gỉa sử chúng ta có một dãy các chữ số ngẫu nhiên như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>img = _downloadImage('https://i0.wp.com/cdn-images-1.medium.com/max/2400/1*LmxW8FDfXZJl5yvESvjP7Q.jpeg?resize=660%2C373&amp;ssl=1')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>img = _downloadImage('https://i0.wp.com/cdn-images-1.medium.com/max/2400/1*LmxW8FDfXZJl5yvESvjP7Q.jpeg?resize=660%2C373&amp;ssl=1')
 # Chuyển ảnh sang gray image
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Chuyển sang ảnh nhị phân
@@ -1115,26 +1491,46 @@ plt.subplot(141), plt.imshow(img), plt.title('Origin Image')
 plt.subplot(142), plt.imshow(imgGray), plt.title('Gray Image')
 plt.subplot(143), plt.imshow(imgBi), plt.title('Binary Image')
 plt.subplot(144), plt.imshow(imgGrayBi), plt.title('Gray of Binary Image')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_76_1.png" width="800px" height="150px" /></p>
 
 <p>Tìm ra các contour từ ảnh nhị phân đã được chuyển sang gray</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>contours, hierarchy = cv2.findContours(imgGrayBi, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>contours, hierarchy = cv2.findContours(imgGrayBi, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 # Sắp xếp các contour theo diện tích giảm dần:
 area_cnt = [cv2.contourArea(cnt) for cnt in contours]
 area_sort = np.argsort(area_cnt)[::-1]
 # Top 20 contour có diện tích lớn nhất
 area_sort[:20]
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 45,  78,  89,  93,  63,  55,  83,  53,  95, 110,  74,  60,  70,
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>array([ 45,  78,  89,  93,  63,  55,  83,  53,  95, 110,  74,  60,  70,
        113,  99, 106,  76, 117,  56,  91])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Vẽ bounding box cho 25 contours có diện tích lớn nhất</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _drawBoundingBox(img, cnt):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>def _drawBoundingBox(img, cnt):
   x,y,w,h = cv2.boundingRect(cnt)
   img = cv2.rectangle(img, (x,y),(x+w,y+h),(0,255,0),2)
   return img
@@ -1146,7 +1542,7 @@ for i in area_sort[:25]:
   imgOrigin = _drawBoundingBox(imgOrigin, cnt)
   
 plt.imshow(imgOrigin)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_80_1.png" width="400px" height="200px" /></p>
 
@@ -1154,7 +1550,62 @@ plt.imshow(imgOrigin)
 
 <p>Ta nhận thấy có một số bounding box overlap nhau như các bounding box quanh số 0, 5, 9. Chúng ta có thể sử dụng hàm non-max suppression như bên dưới để triệt tiêu các bounding box overlap nhau và chỉ giữ lại các bounding box lớn nhất.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td><td class="rouge-code"><pre>import numpy as np
 
 def non_max_suppression(boxes, overlapThresh):
   '''
@@ -1209,11 +1660,25 @@ def non_max_suppression(boxes, overlapThresh):
 boundingBoxes = [cv2.boundingRect(cnt) for cnt in contours]
 boundingBoxes = np.array([(x,y,x+w,y+h) for (x,y,w,h) in boundingBoxes])
 pick = non_max_suppression(boundingBoxes, 0.5)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Áp dụng hàm <code class="highlighter-rouge">non_max_suppression()</code> để triệt tiêu các bounding box chồng lấn.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x,y,w,h = cv2.boundingRect(cnt)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>x,y,w,h = cv2.boundingRect(cnt)
 
 # Vẽ bounding box cho 25 contours có diện tích lớn nhất
 boundingBoxes = []
@@ -1227,21 +1692,44 @@ for i in area_sort[:25]:
 boundingBoxes = [box for box in boundingBoxes if box[:2] != (0, 0)]
 boundingBoxes = np.array(boundingBoxes)
 pick = non_max_suppression(boundingBoxes, 0.5)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Vẽ các hình ảnh của bounding box sau khi triệt tiêu.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>imgOrigin = img.copy()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>imgOrigin = img.copy()
 for (startX, startY, endX, endY) in pick:
     imgOrigin = cv2.rectangle(imgOrigin, (startX, startY), (endX, endY), (0, 255, 0), 2)
 plt.imshow(imgOrigin)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_84_1.png" width="400px" height="200px" /></p>
 
 <p>Như vậy các bounding box overlap nhau ở các vị trí số 0, 5, 9 đã được triệt tiêu để giữ lại 1 bounding box lớn nhất. Chúng ta cũng có thể crop các ảnh theo các bounding box như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _cropImage(x1, y1, x2, y2, img):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>def _cropImage(x1, y1, x2, y2, img):
   if np.ndim(img) == 3:
     crop = img[y1:y2, x1:x2, :]
   else:
@@ -1260,7 +1748,7 @@ for i in np.arange(4):
       ax[i,j].set_xlabel('Sub Image '+str(i+j+j*i))
     except:
       next
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200106_ImagePreprocessing/ImagePreprocessing_86_0.png" width="800px" height="400px" /></p>
 

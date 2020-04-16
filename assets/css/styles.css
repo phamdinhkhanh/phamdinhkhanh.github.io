@@ -1,8 +1,16 @@
-
-div.highlight {
-	background: black
+/*code.less override boostrap*/
+pre, pre code {
+  padding: 0 3px 2px;
+  #font > #family > .monospace;
+  background-color: black;
+  color:  white;
+  font-size: @baseFontSize - 1;
+  .border-radius(3px);
+  border: transparent;
+  padding-right: 15px;
 }
 
+/*********************************************/
 img.gigantic {
   display: block;
   max-width:800px;

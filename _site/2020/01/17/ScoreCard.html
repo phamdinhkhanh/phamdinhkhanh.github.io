@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 22 - Scorecard model</p></h2> 
 <strong>17 Jan 2020 - phamdinhkhanh</strong>
@@ -452,21 +454,73 @@ Phương pháp mô hình sẽ dựa trên điểm số được lượng hóa t�
 
 <h4 id="241-khảo-sát-dữ-liệu">2.4.1. Khảo sát dữ liệu.</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 
 data = pd.read_csv('http://www.creditriskanalytics.net/uploads/1/9/5/1/19511601/hmeq.csv', header = 0, sep = ',')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khảo sát dữ liệu</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data.describe()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>data.describe()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://i.imgur.com/6rXuNYM.png" width="700px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>mean của BAD chính là tỷ lệ số hợp đồng nợ xấu và chiếm 19.95%. Ta sẽ visualize phân phối của các biến để tìm hiểu phân phối của chúng.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sns
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre>import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Biểu đồ histogram
@@ -514,7 +568,7 @@ for i, (fieldname, dtype) in enumerate(zip(data.columns, data.dtypes.values)):
       
 fig.suptitle('Visualization all fields')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_14_0.png" width="700px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -531,21 +585,77 @@ plt.show()
 
 <p>Đối với biến numeric:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>columns_num = data.select_dtypes(['float', 'int']).columns
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>columns_num = data.select_dtypes(['float', 'int']).columns
 data[columns_num] = data[columns_num].apply(lambda x: x.fillna(x.mean()), axis=0)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đối với biến category:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>columns_obj = data.select_dtypes(['object']).columns
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>columns_obj = data.select_dtypes(['object']).columns
 data[columns_obj] = data[columns_obj].apply(lambda x: x.fillna('Missing'), axis=0)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Tính toán WOE cho từng biến</strong></p>
 
 <p>Hàm <code class="highlighter-rouge">_bin_table()</code> bên dưới sẽ có tác dụng phân chia các nhóm bins và thống kê số lượng các quan sát, số lượng good và bad ở mỗi nhóm.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre>import numpy as np
 import matplotlib.pyplot as plt
 
 MAX_VAL = 999999999
@@ -597,27 +707,59 @@ def _bin_table(data, colname, n_bins = 10, qcut = None):
   df_GB.columns = ['#BAD', '#GOOD']
   df_summary = df_Thres.join(df_Count).join(df_GB)
   return df_summary, thres
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Phân chia các bins theo ngưỡng cutpoints. Phù hợp với những biến thứ bậc.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df_summary, thres = _bin_table(data, 'DELINQ', qcut=[MIN_VAL, 2, MAX_VAL])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>df_summary, thres = _bin_table(data, 'DELINQ', qcut=[MIN_VAL, 2, MAX_VAL])
 df_summary
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://i.imgur.com/usleTPO.png" width="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Phân chia các bins theo khai báo số lượng bins. Phù hợp với các biến liên tục.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df_summary, thres = _bin_table(data, 'DEBTINC', n_bins=5)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>df_summary, thres = _bin_table(data, 'DEBTINC', n_bins=5)
 df_summary
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://i.imgur.com/rVWTUZb.png" width="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Tiếp theo hàm <code class="highlighter-rouge">_WOE()</code> sẽ tính toán các trọng số <code class="highlighter-rouge">WOE</code> ở mỗi bins và chỉ số <code class="highlighter-rouge">IV</code> cho từng biến. Trong trường hợp một bin có số lượng quan sát nhỏ hơn một ngưỡng tối thiểu ta sẽ ghép nó vào bin liền trước.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _WOE(data, colname, n_bins = None, min_obs = 100, qcut = None):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>def _WOE(data, colname, n_bins = None, min_obs = 100, qcut = None):
   # Thống kê bins và lấy ra thres hold ban đầu
   df_summary, thres = _bin_table(data, colname, n_bins = n_bins, qcut = qcut)
   # Thay thế giá trị 0 của #BAD trong df_summary bằng 1 để không bị lỗi chia cho 0
@@ -645,14 +787,24 @@ df_summary
 
 df_summary, IV, thres = _WOE(data, 'DEBTINC', n_bins = 7, min_obs= 100)
 df_summary
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p>Information Value of DEBTINC column: 1.3795573580411762</p>
 
 <p><img src="https://i.imgur.com/VcYgsd0.png" width="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Vẽ biểu đồ giá trị WOE của các bins.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _plot(df_summary):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>def _plot(df_summary):
   colname = list(df_summary['COLUMN'].unique())[0]
   df_summary['WOE'].plot(linestyle='-', marker='o')
   plt.title('WOE of {} field'.format(colname))
@@ -662,21 +814,35 @@ df_summary
   plt.xlabel('Bin group')
 
 _plot(df_summary)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_28_0.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Tiếp theo ta sẽ tính toán giá trị WOE cho toàn bộ các biến.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Đối với các biến numeric
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Đối với các biến numeric
 WOE_dict=dict()
 nbins = {'LOAN': 10, 'MORTDUE': 10, 'VALUE': 10, 'YOJ':10, 'CLAGE':10, 'NINQ': 2, 'CLNO':10, 'DEBTINC':7}
 for (col, bins) in nbins.items():
   df_summary, IV, thres = _WOE(data, colname=col, n_bins=bins)
   WOE_dict[col] = {'table':df_summary, 'IV':IV}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Information Value of LOAN column: 0.1601563338988017
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>Information Value of LOAN column: 0.1601563338988017
 Information Value of MORTDUE column: 0.05131351983314017
 Information Value of VALUE column: 0.14188912125986042
 Information Value of YOJ column: 0.06714693781095009
@@ -684,35 +850,67 @@ Information Value of CLAGE column: 0.22171042878294653
 Information Value of NINQ column: 0.06965935231976197
 Information Value of CLNO column: 0.06043698467606807
 Information Value of DEBTINC column: 1.3795573580411762
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Do các biến <code class="highlighter-rouge">DEROG, DELINQ</code> có xu hướng là biến thứ bậc hơn là biến liên tục nên áp dụng cách phân chia theo quantile sẽ tạo ra những khoảng bins có độ dài bằng 0. Do đó chúng ta sẽ phân chia theo ngưỡng cutpoint.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for col in ['DEROG', 'DELINQ']:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>for col in ['DEROG', 'DELINQ']:
   df_summary, IV, thres = _WOE(data, colname=col, n_bins=5, qcut=[MIN_VAL, 2, MAX_VAL])
   WOE_dict[col] = {'table':df_summary, 'IV':IV}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Information Value of DEROG column: 0.19008112833205368
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Information Value of DEROG column: 0.19008112833205368
 Information Value of DELINQ column: 0.3366699247263777
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo ta sẽ tính toán IV cho các biến category là <code class="highlighter-rouge">REASON</code> và <code class="highlighter-rouge">JOB</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for col in ['REASON', 'JOB']:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>for col in ['REASON', 'JOB']:
   df_summary, IV, thres = _WOE(data, colname=col)
   WOE_dict[col] = {'table':df_summary, 'IV':IV}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Information Value of REASON column: 0.008618460238864025
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Information Value of REASON column: 0.008618460238864025
 Information Value of JOB column: 0.1237305657142077
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h4 id="243-xếp-hạng-các-biến-theo-sức-mạnh-dự-báo">2.4.3. Xếp hạng các biến theo sức mạnh dự báo</h4>
 
 <p>Dựa trên giá trị IV đã tính toán ở bước trước, ta sẽ xếp hạng các biến này như bên dưới.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>columns = []
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>columns = []
 IVs = []
 for col in data.columns:
   if col != 'BAD':
@@ -734,7 +932,7 @@ def _rank_IV(iv):
 
 df_WOE['rank']=df_WOE['IV'].apply(lambda x: _rank_IV(x))
 df_WOE.sort_values('IV', ascending=False)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://i.imgur.com/0Em7GFw.png" width="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -744,7 +942,16 @@ df_WOE.sort_values('IV', ascending=False)
 
 <p>Phương trình hồi qui logistic trong credit scorecard sẽ không hồi qui trực tiếp trên các biến gốc mà thay vào đó giá trị WOE ở từng biến sẽ được sử dụng thay thế để làm đầu vào. Ta sẽ tính toán các biến WOE bằng cách map mỗi khoảng bin tương ứng với giá trị WOE của nó như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for col in WOE_dict.keys():
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for col in WOE_dict.keys():
   try:
     key = list(WOE_dict[col]['table']['WOE'].index)
     woe = list(WOE_dict[col]['table']['WOE'])
@@ -753,17 +960,28 @@ df_WOE.sort_values('IV', ascending=False)
     data[col_woe] = data[col].map(d)
   except:
     print(col)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Gán giá trị input là các biến WOE và biến mục tiêu là data[‘BAD’].</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X = data.filter(like='_WOE', axis = 1)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>X = data.filter(like='_WOE', axis = 1)
 y = data['BAD']
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Phân chia tập train/test có tỷ lệ kích thước mẫu là 80:20. Tỷ lệ của GOOD/BAD là cân bằng trên cả train và test.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.model_selection import train_test_split
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>from sklearn.model_selection import train_test_split
 
 ids = np.arange(X.shape[0])
 X_train, X_test, y_train, y_test, id_train, id_test = train_test_split(X, y, ids, test_size = 0.2, stratify = y, shuffle = True, random_state = 123)
@@ -772,32 +990,54 @@ print('X_train shape: ', X_train.shape)
 print('X_test shape: ', X_test.shape)
 print('y_train shape: ', y_train.shape)
 print('y_test shape: ', y_test.shape)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train shape:  (4768, 12)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>X_train shape:  (4768, 12)
 X_test shape:  (1192, 12)
 y_train shape:  (4768,)
 y_test shape:  (1192,)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Xây dựng phương trình hồi qui logistic các biến đầu vào <code class="highlighter-rouge">WOE</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.linear_model import LogisticRegression
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from sklearn.linear_model import LogisticRegression
 
 logit_model = LogisticRegression(solver = 'lbfgs', max_iter=1000, fit_intercept=True, tol=0.0001, C=1, penalty='l2')
 logit_model.fit(X_train, y_train)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
                    intercept_scaling=1, l1_ratio=None, max_iter=1000,
                    multi_class='auto', n_jobs=None, penalty='l2',
                    random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
                    warm_start=False)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Dự báo và kiểm tra accuracy trên tập train/test</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics import accuracy_score
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>from sklearn.metrics import accuracy_score
 
 y_pred_train = logit_model.predict(X_train)
 acc_train = accuracy_score(y_pred_train, y_train)
@@ -806,15 +1046,34 @@ acc_test = accuracy_score(y_pred_test, y_test)
 
 print('accuracy on train: ', acc_train)
 print('accuracy on test: ', acc_test)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>accuracy on train:  0.8655620805369127
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>accuracy on train:  0.8655620805369127
 accuracy on test:  0.8557046979865772
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Đường cong ROC trên tập test</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics import roc_curve, auc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>from sklearn.metrics import roc_curve, auc
 
 y_pred_prob_test = logit_model.predict_proba(X_test)[:, 1]
 fpr, tpr, thres = roc_curve(y_test, y_pred_prob_test)
@@ -831,7 +1090,7 @@ def _plot_roc_curve(fpr, tpr, thres, auc):
     plt.title('ROC Curve')
 
 _plot_roc_curve(fpr, tpr, thres, roc_auc)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_50_0.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -839,7 +1098,20 @@ _plot_roc_curve(fpr, tpr, thres, roc_auc)
 
 <p><strong>Đường cong precision và recall trên tập test</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics import precision_recall_curve
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>from sklearn.metrics import precision_recall_curve
 precision, recall, thres = precision_recall_curve(y_test, y_pred_prob_test)
 
 def _plot_prec_rec_curve(prec, rec, thres):
@@ -852,7 +1124,7 @@ def _plot_prec_rec_curve(prec, rec, thres):
     plt.legend()
 
 _plot_prec_rec_curve(precision, recall, thres)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_52_0.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -864,7 +1136,28 @@ _plot_prec_rec_curve(precision, recall, thres)
 
 <p>Tính toán phân phối xác suất tích lũy của GOOD và BAD</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _KM(y_pred, n_bins):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>def _KM(y_pred, n_bins):
   _, thresholds = pd.qcut(y_pred, q=n_bins, retbins=True)
   cmd_BAD = []
   cmd_GOOD = []
@@ -885,11 +1178,22 @@ _plot_prec_rec_curve(precision, recall, thres)
   return cmd_BAD, cmd_GOOD, thresholds
 
 cmd_BAD, cmd_GOOD, thresholds = _KM(y_pred_prob_test, n_bins=20)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Biểu đồ phân phối xác suất tích lũy của GOOD và BAD</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _plot_KM(cmd_BAD, cmd_GOOD, thresholds):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>def _plot_KM(cmd_BAD, cmd_GOOD, thresholds):
   plt.figure(figsize = (10, 8))
   plt.plot(thresholds, cmd_BAD, 'y-', label = 'BAD')
   plt.plot(thresholds, cmd_GOOD, 'g-', label = 'GOOD')
@@ -900,19 +1204,23 @@ cmd_BAD, cmd_GOOD, thresholds = _KM(y_pred_prob_test, n_bins=20)
   plt.legend()
 
 _plot_KM(cmd_BAD, cmd_GOOD, thresholds)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_55_0.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Kiểm định Kolmogorov-Smirnov test:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from scipy import stats
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>from scipy import stats
 
 stats.ks_2samp(cmd_BAD, cmd_GOOD)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ks_2sampResult(statistic=0.5238095238095238, pvalue=0.005467427576534314)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Ks_2sampResult(statistic=0.5238095238095238, pvalue=0.005467427576534314)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>p-value &lt; 0.05 cho thấy phân phối tích lũy giữa tỷ lệ BAD và GOOD là khác biệt nhau. Do đó mô hình có ý nghĩa trong phân loại hồ sơ.</p>
 
@@ -982,7 +1290,16 @@ stats.ks_2samp(cmd_BAD, cmd_GOOD)
 
 <p>Ta có thể tạo ra hàm số tính điểm cho mỗi feature như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import numpy as np
 
 def _CreditScore(beta, alpha, woe, n = 12, odds = 1/4, pdo = -50, thres_score = 600):
   factor = pdo/np.log(2)
@@ -991,19 +1308,35 @@ def _CreditScore(beta, alpha, woe, n = 12, odds = 1/4, pdo = -50, thres_score = 
   return score
 
 _CreditScore(beta = 0.5, alpha = -1, woe = 0.15, n = 12)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>42.2677896003704
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>42.2677896003704
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Gán các giá trị $\beta$ và $\alpha$ vào dictionary.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>betas_dict = dict(zip(list(X_train.columns), logit_model.coef_[0]))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>betas_dict = dict(zip(list(X_train.columns), logit_model.coef_[0]))
 alpha = logit_model.intercept_[0]
 betas_dict
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'CLAGE_WOE': 0.8622728924386177,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>{'CLAGE_WOE': 0.8622728924386177,
  'CLNO_WOE': 0.8543750687914803,
  'DEBTINC_WOE': 0.9440898350669948,
  'DELINQ_WOE': 1.0549527325475119,
@@ -1015,11 +1348,36 @@ betas_dict
  'REASON_WOE': 0.6474770785463775,
  'VALUE_WOE': 0.7543949126408607,
  'YOJ_WOE': 0.8837887914052942}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tính <code class="highlighter-rouge">WOE</code> cho từng features.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cols = []
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>cols = []
 features = []
 woes = []
 betas = []
@@ -1044,16 +1402,19 @@ for col in columns:
 
 df_WOE = pd.DataFrame({'Columns': cols, 'Features': features, 'WOE': woes, 'Betas':betas, 'Scores':scores})
 df_WOE.head()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://i.imgur.com/M9S43rO.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Như vậy ta đã hoàn thiện bảng tính điểm số cho mỗi features. Từ điểm số này ta có thể suy ra điểm tín nhiệm của mỗi một hồ sơ bằng cách tính tổng điểm số của toàn bộ các features của hồ sơ đó. Bên dưới ta sẽ thực hành tính điểm tín nhiệm cho một hồ sơ ngẫu nhiên:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Giả sử một hồ sơ ngẫu nhiên có các thông số như sau
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># Giả sử một hồ sơ ngẫu nhiên có các thông số như sau
 test_obs = data[columns].iloc[0:1, :]
 test_obs
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1108,7 +1469,15 @@ test_obs
 
 <p>Viết hàm tính toán điểm số cho mỗi trường của một bộ hồ sơ:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _search_score(obs, col):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def _search_score(obs, col):
   feature = [str(inter) for inter in list(WOE_dict[col]['table'].index) if obs[col].values[0] in inter][0]
   score = df_WOE[(df_WOE['Columns'] == col) &amp; (df_WOE['Features'] == feature)]['Scores'].values[0]
   return score
@@ -1116,14 +1485,25 @@ test_obs
 # Tính điểm cho trường 'LOAN' của bộ hồ sơ test
 score = _search_score(test_obs, 'LOAN')
 score
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.44658078049054
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>19.44658078049054
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Điểm chi tiết của từng trường trong bộ hồ sơ và điểm của toàn bộ bộ hồ sơ sẽ là:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _total_score(obs, columns = columns):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>def _total_score(obs, columns = columns):
   scores = dict()
   for col in columns:
     scores[col] = _search_score(obs, col)
@@ -1133,26 +1513,46 @@ score
 scores, total_score = _total_score(test_obs)
 print('score for each fields: \n', scores)
 print('final total score: ', total_score)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>score for each fields: 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>score for each fields: 
  {'LOAN': 19.44658078049054, 'MORTDUE': 33.012513466194235, 'VALUE': 15.69994163833087, 'REASON': 43.538372007335425, 'JOB': 37.68068758093487, 'YOJ': 43.98355819454406, 'DEROG': 55.07303330234773, 'DELINQ': 62.44181186557311, 'CLAGE': 25.919777863398743, 'NINQ': 58.24490019541234, 'CLNO': 20.143965087500664, 'DEBTINC': -42.56375867673781}
 final total score:  372.6213833053248
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ta có thể tính toán điểm tín nhiệm cho toàn bộ các hồ sơ trên tập data như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total_scores = []
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>total_scores = []
 for i in np.arange(data[columns].shape[0]):
   obs = data[columns].iloc[i:(i+1), :]
   _, score = _total_score(obs)
   total_scores.append(score)
 data['Score'] = total_scores
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Biểu đồ phân phối của điểm số theo GOOD và BAD</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.figure(figsize=(16, 4))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>plt.figure(figsize=(16, 4))
 plt.subplot(121)
 sns.distplot(data['Score'])
 plt.title('Distribution Score of Total data')
@@ -1163,7 +1563,7 @@ sns.distplot(data[data['BAD']==0]['Score'], label='Non-Default',
              hist_kws={"color": "g", "alpha":0.5})
 plt.legend(loc = 'lower right')
 plt.title('Distribution Score in Default vs Non-Default')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200117_Scorecard/ScoreCard_74_1.png" width="700px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 

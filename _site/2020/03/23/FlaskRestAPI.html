@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 29 - Xây dựng Flask API cho mô hình deep learning</p></h2> 
 <strong>23 Mar 2020 - phamdinhkhanh</strong>
@@ -299,7 +301,16 @@ body {
 
 <p>Bạn có thể hình dung những gì mình nói ở trên qua ví dụ đơn giản sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import Flask, request
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>from flask import Flask, request
 
 # Khởi tạo flask app
 app = Flask(__name__)
@@ -308,7 +319,7 @@ app = Flask(__name__)
 # Hàm xử lý dữ liệu
 def _hello_world():
 	return "Hello world"
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Chỉ cần như thế là bạn đã khởi tạo được một app trên flask rồi đó. Tất nhiên đối với những dự án lớn thì sẽ cần nhiều thứ phức tạp hơn như bảo mật, design pattern api, blabla,…. Mình sẽ không đi sau vì không phải là dân chuyên về lĩnh vực này.</p>
 
@@ -316,7 +327,59 @@ def _hello_world():
 
 <p>Trong code của project bạn mở file <code class="highlighter-rouge">serve.py</code> có nội dung như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">PIL</span> <span class="n">import</span> <span class="n">Image</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">PIL</span> <span class="n">import</span> <span class="n">Image</span>
 <span class="n">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">import</span> <span class="n">hyper</span> <span class="k">as</span> <span class="n">hp</span>
 <span class="k">from</span> <span class="n">flask</span> <span class="n">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
@@ -368,7 +431,7 @@ def _hello_world():
 	<span class="p">#</span> <span class="nf">Load</span> <span class="k">model</span>
 	<span class="k">model</span> <span class="p">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">_load_model</span><span class="p">()</span>
 	<span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">debug</span><span class="p">=</span><span class="nb">False</span><span class="p">,</span> <span class="n">host</span><span class="p">=</span><span class="n">hp</span><span class="p">.</span><span class="n">IP</span><span class="p">,</span> <span class="n">threaded</span><span class="p">=</span><span class="nb">False</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Nhìn file <code class="highlighter-rouge">serve.py</code> bạn thấy gì?</p>
 
@@ -402,7 +465,45 @@ def _hello_world():
   <li>Luôn để các hàm chức năng ở một file gọi là <code class="highlighter-rouge">utils.py</code>. Trong project này file <code class="highlighter-rouge">utils.py</code> như sau:</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">hyper</span> <span class="k">as</span> <span class="n">hp</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">hyper</span> <span class="k">as</span> <span class="n">hp</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">applications</span> <span class="n">import</span> <span class="n">MobileNet</span><span class="p">,</span> <span class="n">ResNet50</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">image</span> <span class="n">import</span> <span class="n">img_to_array</span>
 <span class="n">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -440,7 +541,7 @@ def _hello_world():
         <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">float64</span><span class="p">):</span>
             <span class="n">return</span> <span class="n">float</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
         <span class="n">return</span> <span class="n">json</span><span class="p">.</span><span class="n">JSONEncoder</span><span class="p">.</span><span class="n">default</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ta thấy trong file <code class="highlighter-rouge">utils</code> sẽ để phần lớn là các hàm thường xuyên được dùng trong toàn project như load, save model dữ liệu, preprocessing data và các hàm encoding, decoding,…. Tóm lại những hàm thông dụng, thường xuyên được sử dụng ở nhiều files khác nhau thì nên cấu trúc nó vào <code class="highlighter-rouge">utils</code>. Nếu bạn thắc mắc utils là gì? Nó chính là viết tắt của cụm từ <code class="highlighter-rouge">utilities</code> tức là các hàm <code class="highlighter-rouge">tiện ích</code>.</p>
 

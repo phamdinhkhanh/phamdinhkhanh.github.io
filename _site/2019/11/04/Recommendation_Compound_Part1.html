@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 15 - collaborative và content-based filtering</p></h2> 
 <strong>04 Nov 2019 - phamdinhkhanh</strong>
@@ -464,7 +466,28 @@ Như vậy giá trị dự báo được tính toán đơn giản hơn so với 
 
 <p>Dữ liệu sẽ được load dưới dạng rdd. Đây là định dạng dữ liệu chịu lỗi tốt và có khả năng phân tán linh hoạt trên nhiều cụm xử lý của spark. Vì những tiện ích này chúng thường được sử dụng trong các tính toán và biến đổi dữ liệu.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pyspark.ml.evaluation import RegressionEvaluator
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.recommendation import ALS
 from pyspark.sql import Row
 
@@ -485,14 +508,25 @@ ratingRDD = parts.map(lambda p: Row(userId=int(p[0]), movieId=int(p[1]),
 ratings = spark.createDataFrame(ratingsRDD)
 # Chia mẫu train, test theo tỷ lệ 0.8/0.2
 (trainig, testing) = ratings.randomSplit([0.8, 0.2])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hiển thị 5 dòng đầu tiên của file ratings.dat.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lines.show(5)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>lines.show(5)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+--------------------+
 |               value|
 +--------------------+
 |1::1193::5::97830...|
@@ -502,7 +536,7 @@ ratings = spark.createDataFrame(ratingsRDD)
 |1::2355::5::97882...|
 +--------------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Bước 2</strong>: Xây dựng và đánh giá mô hình ALS trên pyspark.</p>
 
@@ -516,7 +550,16 @@ only showing top 5 rows
   <li>ratingCol: tên cột chứa giá trị của rating</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">X</span><span class="err">â</span><span class="n">y</span> <span class="n">d</span><span class="err">ự</span><span class="n">ng</span> <span class="n">m</span><span class="err">ô</span> <span class="n">h</span><span class="err">ì</span><span class="n">nh</span> <span class="n">recommendation</span> <span class="n">s</span><span class="err">ử</span> <span class="n">d</span><span class="err">ụ</span><span class="n">ng</span> <span class="n">thu</span><span class="err">ậ</span><span class="n">t</span> <span class="n">to</span><span class="err">á</span><span class="n">n</span> <span class="n">ALS</span> <span class="n">tr</span><span class="err">ê</span><span class="n">n</span> <span class="n">t</span><span class="err">ậ</span><span class="n">p</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span> <span class="n">hu</span><span class="err">ấ</span><span class="n">n</span> <span class="n">luy</span><span class="err">ệ</span><span class="n">n</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="p">#</span> <span class="n">X</span><span class="err">â</span><span class="n">y</span> <span class="n">d</span><span class="err">ự</span><span class="n">ng</span> <span class="n">m</span><span class="err">ô</span> <span class="n">h</span><span class="err">ì</span><span class="n">nh</span> <span class="n">recommendation</span> <span class="n">s</span><span class="err">ử</span> <span class="n">d</span><span class="err">ụ</span><span class="n">ng</span> <span class="n">thu</span><span class="err">ậ</span><span class="n">t</span> <span class="n">to</span><span class="err">á</span><span class="n">n</span> <span class="n">ALS</span> <span class="n">tr</span><span class="err">ê</span><span class="n">n</span> <span class="n">t</span><span class="err">ậ</span><span class="n">p</span> <span class="n">d</span><span class="err">ữ</span> <span class="n">li</span><span class="err">ệ</span><span class="n">u</span> <span class="n">hu</span><span class="err">ấ</span><span class="n">n</span> <span class="n">luy</span><span class="err">ệ</span><span class="n">n</span>
 
 <span class="k">from</span> <span class="n">datetime</span> <span class="n">import</span> <span class="n">datetime</span>
 <span class="n">start_time</span> <span class="p">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
@@ -525,20 +568,26 @@ only showing top 5 rows
 <span class="n">end_time</span> <span class="p">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
 
 <span class="n">print</span><span class="p">(</span><span class="s1">'Execute time {}'</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">end_tine</span> <span class="p">-</span> <span class="n">start_time</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Thời gian huấn luyện sẽ chỉ hết khoảng 5 phút trên máy tính của mình trong khi huấn luyện các mô hình content-based và collaborative-filtering mà mình đã thực hiện tại <a href="https://www.kaggle.com/phamdinhkhanh/matrix-factorization-movie-length-1m">matrix fractorization movie length-1m</a> trên cùng bộ dữ liệu hết gần 2 tiếng. Theo mình nhận thấy ALS training nhanh hơn rất nhiều so với các dạng thuật toán collaborative và content-based filtering khác.
 Cuối cùng là đánh giá mô hình thông qua chỉ số căn bậc 2 của trung bình sai số dự báo so với giá trị rating trên tập test, chỉ số RMSE.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>predictions = model.transform(test)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>predictions = model.transform(test)
 evaluator = RegressionEvaluator(metricName="rmse", labelCol="rating",
                                predictionCol="prediction")
 rmse = evaluator.evaluate(predictions)
 print("Root-mean-square error = " + str(rmse))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Root-mean-square error = 0.8951146317977956
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Root-mean-square error = 0.8951146317977956
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Giá trị sai số này thấp hơn so với giá trị sai số phổ biến của các thuật toán content-based và collaborative-filtering khác khi hầu hết RMSE đều khoảng 0.9x.</p>
 
@@ -546,32 +595,73 @@ print("Root-mean-square error = " + str(rmse))
 
 <p>Thông thường các nền tảng recommendation sẽ tìm ra top 5 hoặc 10 sản phẩm để khuyến nghị cho người dùng vì đây là số lượng vừa đủ (không quá nhiều, cũng không quá ít) để người dùng lựa chọn.
 Trong pyspark, để tìm ra top 10 sản phẩm để khuyến nghị cho mỗi một user ta thực hiện lệnh <code class="highlighter-rouge">recommendForAllUsers(10)</code>, rất đơn giản phải không?</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tạo ra top 10 bộ phim khuyến nghị cho mỗi một user
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># Tạo ra top 10 bộ phim khuyến nghị cho mỗi một user
 userRecs = model.recommendForAllUsers(10)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Trong thuật toán thì user và item là bình đẳng, chỉ cần hoán vị dòng cho cột tại ma trận tiện ích là ta thu được thuật toán recommend user cho item. Muốn tìm ra 10 bộ phim để khuyến nghị cho một user ta sử dụng hàm <code class="highlighter-rouge">recommendForAllItems(10)</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tạo ra top 10 user khuyến nghị cho mỗi một bộ phim
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># Tạo ra top 10 user khuyến nghị cho mỗi một bộ phim
 movieRecs = model.recommendForAllItems(10)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ngoài ra khi muốn khuyến nghị các bộ phim cho một nhóm các user cụ thể chúng ta chỉ cần xác định các userids và truyền vào hàm <code class="highlighter-rouge">recommendForUserSubset()</code>. Thực hiện như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Chúng ta cũng có thể tạo ra top 10 bộ phim khuyến nghị cho một tợp hợp các users xác định
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Chúng ta cũng có thể tạo ra top 10 bộ phim khuyến nghị cho một tợp hợp các users xác định
 users = ratings.select(als.getUserCol()).distinct().limit(3)
 userSubsetRecs = model.recommendForUserSubset(users, 10)
 # Hoặc chúng ta cũng có thể tạo ra top 10 users được khuyến nghị cho một tợp hợp các bộ phim xác định
 movies = ratings.select(als.getItemCol()).distinct().limit(3)
 movieSubSetRecs = model.recommendForItemSubset(movies, 10)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kết quả của top 10 users được khuyến nghị cho 3 bộ phim đầu tiên.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(movieSubSetRecs.select('recommendations').toPandas()['recommendations'])
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>list(movieSubSetRecs.select('recommendations').toPandas()['recommendations'])
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[Row(userId=1341, rating=5.175587177276611),
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>[[Row(userId=1341, rating=5.175587177276611),
   Row(userId=2339, rating=5.153608322143555),
   Row(userId=4102, rating=5.109521865844727),
   Row(userId=283, rating=5.0519866943359375),
@@ -601,7 +691,7 @@ movieSubSetRecs = model.recommendForItemSubset(movies, 10)
   Row(userId=768, rating=5.804270267486572),
   Row(userId=5440, rating=5.796679973602295),
   Row(userId=4069, rating=5.729244709014893)]]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ta nhận thấy các user được lựa chọn để khuyến nghị cho một bộ phim đều có rating cao nhất. Thứ tự sắp xếp của rating cũng là từ cao xuống thấp.</p>
 

@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</p></h2> 
 <strong>25 Aug 2019 - phamdinhkhanh</strong>
@@ -236,13 +238,19 @@ Trong ví dụ bên dưới chúng ta cùng xem các quá trình dữ liệu ho�
 
 <p>Khai báo trường nhằm mục đích nói cho dữ liệu biết chúng ta có những trường gì và được tạo ra từ dữ liệu như thế nào. Để khai báo trường chúng ta sử dụng class Field của torchtext. Xem ví dụ sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from torchtext.data import Field
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from torchtext.data import Field
 
 tokenize = lambda x: x.split(' ')
 TEXT = Field(sequential = True, tokenize = tokenize, lower = True)
 LABEL = Field(sequential = False, use_vocab = False)
 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Trong tác vụ phân loại mục đích của comment, chúng ta có 6 nhãn (toxic, severe toxic, obscene, threat, insult, and identity hate).</p>
 
@@ -252,22 +260,33 @@ LABEL = Field(sequential = False, use_vocab = False)
 
 <p>Bên dưới ta sẽ đọc dữ liệu:
 Mount folder trên google colab</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from google.colab import drive
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
 import os
 drive.mount('/content/gdrive')
 path = os.path.join('gdrive/My Drive/your_folder_path')
 os.chdir(path)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p>Đọc dữ liệu</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 
 data = pd.read_csv('practical-torchtext/data/train.csv', header = 0, index_col = 0)
 print('data.shape: ', data.shape)
 data.head()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data.shape:  (25, 7)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>data.shape:  (25, 7)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <style>
 table, th, td {
@@ -414,7 +433,38 @@ th, td {
 
 <p>Có rất nhiều các dạng Dataset khác nhau trong torchtext được sử dụng tương thích với các định dạng dữ liệu khác nhau. Chẳng hạn tsv/txt/csv file sẽ tương thích với class TabularDataset. Bên dưới chúng ta sẽ đọc dữ liệu từ csv file sử dụng TabularDataset.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from torchtext.data import TabularDataset
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre>from torchtext.data import TabularDataset
 
 # Khai báo thông tin fields thông qua các cặp ("field name", Field)
 tv_datafields = [("id", None), # chúng ta không cần id nên gán trị của nó là None
@@ -445,28 +495,35 @@ test = TabularDataset(
            format='csv',
            skip_header=True, 
            fields=test_datafields)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Chúng ta có 2 dạng biến đổi chính là LABEL và TEXT. Trong đó LABEL dành cho những biến category ở output và TEXT dành cho những biến dạng text cần được tokenize thành list các từ.</p>
 
 <p>Kiểm tra kết quả được khởi tạo từ TabularDataset.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('train[0]: ', train[0])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>print('train[0]: ', train[0])
 print('train[0].__dict__.keys(): ', train[0].__dict__.keys())
 print('train[0].__dict__: ', train[0].__dict__)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>train[0]:  &lt;torchtext.data.example.Example object at 0x7fef75b8c0b8&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>train[0]:  &lt;torchtext.data.example.Example object at 0x7fef75b8c0b8&gt;
 train[0].__dict__.keys():  dict_keys(['comment_text', 'toxic', 'severe_toxic', 'threat', 'obscene', 'insult', 'identity_hate'])
 train[0].__dict__:  {'comment_text': ['explanation\nwhy', 'the', 'edits', 'made', 'under', 'my', 'username', 'hardcore', 'metallica', 'fan', 'were', 'reverted?', 'they', "weren't", 'vandalisms,', 'just', 'closure', 'on', 'some', 'gas', 'after', 'i', 'voted', 'at', 'new', 'york', 'dolls', 'fac.', 'and', 'please', "don't", 'remove', 'the', 'template', 'from', 'the', 'talk', 'page', 'since', "i'm", 'retired', 'now.89.205.38.27'], 'toxic': '0', 'severe_toxic': '0', 'threat': '0', 'obscene': '0', 'insult': '0', 'identity_hate': '0'}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Example object là một tợp hợp các thuộc tính được tổng hợp trong dataset. Chúng ta thấy dataset đã được khởi tạo và các câu đã được tokenize thành các từ. Tuy nhiên chúng ta chưa thể map các câu thành từ và từ từ thành index do chưa khởi tạo mapping.</p>
 
 <p>Torchtext sẽ quản lý map các từ với index tương ứng thông qua hàm <code class="highlighter-rouge">build_vocab()</code> tham số được truyền vào chính là các câu huấn luyện.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TEXT.build_vocab(train)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TEXT.build_vocab(train)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>sau khi chạy hàm trên, torchtext sẽ duyệt qua toàn bộ các phần tử nằm trong train dataset, kiểm tra các dữ liệu tương ứng với <code class="highlighter-rouge">TEXT</code> field và thêm các từ vào trong từ điển của nó. Trong torchtext đã có class Vocab quản lý từ vựng. Vocab sẽ quản lý việc mapping các từ tới index thông qua tham số <code class="highlighter-rouge">stoi</code> và chuyển ngược mapping index sang từ bằng tham số <code class="highlighter-rouge">itos</code>. Ngoài ra Vocab cũng có thể xây dựng một ma trận embedding các từ từ rất nhiều các model pretrained như <a href="http://mlexplained.com/2018/02/15/language-modeling-tutorial-in-torchtext-practical-torchtext-part-2/">word2vec</a>. Vocab cũng sử dụng các tham số như <code class="highlighter-rouge">max_size</code> và <code class="highlighter-rouge">min_freq</code> để xác định tối đa bao nhiêu từ trong từ điển và tần suất xuất hiện nhỏ nhất của 1 từ để nó được đưa vào từ điển. Những từ không xuất hiện trong từ điển sẽ được chuyển đổi thành <code class="highlighter-rouge">&lt;unk&gt;</code>.</p>
 
@@ -508,7 +565,29 @@ train[0].__dict__:  {'comment_text': ['explanation\nwhy', 'the', 'edits', 'made'
 
 <p>Code bên dưới sẽ khởi tạo các <code class="highlighter-rouge">Iterators</code> cho dữ liệu train/test và validation.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from __future__ import division
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
@@ -530,9 +609,21 @@ import math
 
 USE_CUDA = torch.cuda.is_available()
 device = torch.device("cuda" if USE_CUDA else "cpu")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from torchtext.data import Iterator, BucketIterator
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>from torchtext.data import Iterator, BucketIterator
 
 train_iter, val_iter = BucketIterator.splits(
  (train, valid), # Truyền tập dữ liệu chúng ta muốn tạo vào iterator 
@@ -544,7 +635,7 @@ train_iter, val_iter = BucketIterator.splits(
 )
 
 test_iter = Iterator(test, batch_size=64, device=device, sort=False, sort_within_batch=False, repeat=False)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tham số <code class="highlighter-rouge">sort_within_batch</code> được thiết lập là True sẽ sắp xếp dữ liệu trong mỗi minibatch theo thứ tự giảm dần theo <code class="highlighter-rouge">sort_key</code>.</p>
 
@@ -585,7 +676,30 @@ test_iter = Iterator(test, batch_size=64, device=device, sort=False, sort_within
 
 <p>Chính vì thế chúng ta sẽ sử dụng một tip nhỏ bằng cách wrap batch thành một tuple của 2 phần tử $x$ và $y$. Trong đó $x$ là biến độc lập và $y$ là biến phụ thuộc.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class BatchWrapper:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>class BatchWrapper:
       def __init__(self, dl, x_var, y_vars):
             self.dl, self.x_var, self.y_vars = dl, x_var, y_vars # we pass in the list of attributes for x 
 
@@ -608,14 +722,47 @@ test_iter = Iterator(test, batch_size=64, device=device, sort=False, sort_within
 train_dl = BatchWrapper(train_iter, "comment_text", ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"])
 valid_dl = BatchWrapper(val_iter, "comment_text", ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"])
 test_dl = BatchWrapper(test_iter, "comment_text", None)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Những gì đã thực hiện ở đoạn code trên đó là chuyển hóa batch thành tuple của input và output</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>next(train_dl.__iter__())
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>next(train_dl.__iter__())
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(tensor([[ 63, 220, 368,  ..., 348,  81, 329],
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre>(tensor([[ 63, 220, 368,  ..., 348,  81, 329],
          [552,  46,  61,  ..., 210, 674, 209],
          [  3,  37,   4,  ..., 541,  22,   6],
          ...,
@@ -647,7 +794,7 @@ test_dl = BatchWrapper(test_iter, "comment_text", None)
          [1., 0., 0., 0., 0., 0.],
          [0., 0., 0., 0., 0., 0.],
          [0., 0., 0., 0., 0., 0.]], device='cuda:0'))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="6-huấn-luyện-mô-hình">6. Huấn luyện mô hình</h1>
 
@@ -670,7 +817,41 @@ Trong module LSTM chúng ta cần xác định 3 tham số chính đó là:</p>
 
 <p>Để hiểu rõ hơn về kiến trúc của mạng LSTM và đầu ra của mạng LSTM lại có kích thước như trên các bạn có thể tham khảo <a href="https://phamdinhkhanh.github.io/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html">giới thiệu về mạng LSTM</a>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span> <span class="k">as</span> <span class="n">nn</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span> <span class="k">as</span> <span class="n">nn</span>
 <span class="n">import</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 <span class="n">import</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span> <span class="k">as</span> <span class="n">optim</span>
 <span class="k">from</span> <span class="n">torch</span><span class="p">.</span><span class="n">autograd</span> <span class="n">import</span> <span class="n">Variable</span>
@@ -704,11 +885,53 @@ nh = 500
 nl = 3
 model = SimpleLSTMBaseline(nh, emb_dim=em_sz, num_linear=nl)
 model = model.to(device)
-</span></code></pre></div></div>
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bây h ta sẽ tạo một vòng lặp huấn luyện. Chúng ta có thể duyệt qua những Iterator được đóng gói và data sẽ được tự động truyền vào sau khi được đưa lên GPU và tham số hóa.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import tqdm
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre>import tqdm
 
 opt = optim.Adam(model.parameters(), lr=1e-2)
 loss_func = nn.BCEWithLogitsLoss()
@@ -750,8 +973,18 @@ for epoch in range(1, epochs + 1):
     val_loss /= len(valid)
     print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}'.format(epoch, epoch_loss, val_loss))
 
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch: 1, Training Loss: -17331.3613, Validation Loss: -12972.5557
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Epoch: 1, Training Loss: -17331.3613, Validation Loss: -12972.5557
 Epoch: 2, Training Loss: -26293.1348, Validation Loss: -18848.7305
 Epoch: 3, Training Loss: -38160.9180, Validation Loss: -26296.4727
 Epoch: 4, Training Loss: -53191.8555, Validation Loss: -35586.1328
@@ -761,11 +994,21 @@ Epoch: 7, Training Loss: -123066.7891, Validation Loss: -77651.4453
 Epoch: 8, Training Loss: -156701.6562, Validation Loss: -97493.2812
 Epoch: 9, Training Loss: -196662.9688, Validation Loss: -120866.4688
 Epoch: 10, Training Loss: -243723.7969, Validation Loss: -148217.6719
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo chúng ta sẽ đánh giá mô hình</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>import numpy as np
 
 test_preds = []
 for x, y in tqdm.tqdm(test_dl):
@@ -775,17 +1018,23 @@ for x, y in tqdm.tqdm(test_dl):
     preds = 1 / (1 + np.exp(-preds))
     test_preds.append(preds)
     test_preds = np.hstack(test_preds)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kết quả dự báo</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 df = pd.read_csv("practical-torchtext/data/test.csv")
 for i, col in enumerate(["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]):
     df[col] = test_preds[:, i]
 
 df
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <table border="1" class="t01">
   <thead>

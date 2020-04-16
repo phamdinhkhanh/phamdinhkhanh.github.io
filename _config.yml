@@ -2,8 +2,13 @@ plugins:
     - jekyll-paginate
     - jekyll-redirect-from
 
-highlighter: rouge
 markdown: kramdown
+kramdown:
+    highlighter: rouge
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
+
 # More › http://kramdown.gettalong.org/quickre...
 # Options › http://kramdown.gettalong.org/options...
 # kramdown:

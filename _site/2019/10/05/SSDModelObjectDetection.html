@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 13 - Model SSD trong Object Detection</p></h2> 
 <strong>05 Oct 2019 - phamdinhkhanh</strong>
@@ -450,7 +452,242 @@ Trong trường hợp negative match prediction tức vùng được dự báo l
 
 <p>Kết quả trả về là một tensor có shape là <code class="highlighter-rouge">(feature_width, feature_height, n_boxes, 8)</code>, trong đó chiếu cuối cùng = 8 tương ứng với 4 offsets của default bounding box và 4 variances đại diện cho các scales của default bounding box.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from __future__ import division
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+</pre></td><td class="rouge-code"><pre>from __future__ import division
 import numpy as np
 import keras.backend as K
 from keras.engine.topology import InputSpec
@@ -685,11 +922,61 @@ class AnchorBoxes(Layer):
         }
         base_config = super(AnchorBoxes, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bên dưới ta sẽ kiểm nghiệm kết quả test AnchorBoxes layer khi truyền thử nghiệm đầu vào là tensor $x$.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Test output of Anchor box
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+</pre></td><td class="rouge-code"><pre># Test output of Anchor box
 import tensorflow as tf
 x = tf.random.normal(shape = (4, 38, 38, 512))
 
@@ -739,9 +1026,10 @@ normalize_coords = True
 
 anchors = AnchorBoxes(img_height, img_width, this_scale=scales[1], next_scale=scales[2])(x)
 print('anchors shape: ', anchors.get_shape())
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anchors shape:  (4, 38, 38, 4, 8)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>anchors shape:  (4, 38, 38, 4, 8)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy kết quả output của anchors box trả ra là <code class="highlighter-rouge">(feature_width, feature_height, n_boxes, 8)</code> là hợp lý.</p>
 
@@ -1252,7 +1540,32 @@ def ssd_300(image_size,
   <li>variances: Các tham số biến đổi dùng để tính các anchor box.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from keras.optimizers import Adam, SGD
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>from keras.optimizers import Adam, SGD
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TerminateOnNaN, CSVLogger
 from keras import backend as K
 from keras.models import load_model
@@ -1277,11 +1590,30 @@ from data_generator.data_augmentation_chain_original_ssd import SSDDataAugmentat
 from data_generator.object_detection_2d_misc_utils import apply_inverse_transforms
 
 %matplotlib inline
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Thiết lập tham số cho mô hình</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>img_height = 300
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>img_height = 300
 img_width = 300
 img_channels = 3
 mean_color = [123, 117, 104]
@@ -1300,11 +1632,43 @@ offsets = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
 clip_boxes = False
 variances = [0.1, 0.1, 0.2, 0.2]
 normalize_coords = True
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khởi tạo một mô hình ssd_300 dựa trên các tham số đã thiết lập.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1: Build Keras model.
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="c1"># 1: Build Keras model.
 </span>
 <span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span> <span class="c1"># xóa các object tại session cũ.
 </span>
@@ -1336,14 +1700,191 @@ normalize_coords = True
 <span class="n">ssd_loss</span> <span class="o">=</span> <span class="n">SSDLoss</span><span class="p">(</span><span class="n">neg_pos_ratio</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">ssd_loss</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kiểm tra kiến trúc các layers của mô hình:</p>
 
 <pre><code class="language-{python}">model.summary()
 </code></pre>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_1"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+</pre></td><td class="rouge-code"><pre>Model: "model_1"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
@@ -1520,7 +2061,7 @@ Total params: 26,285,486
 Trainable params: 26,285,486
 Non-trainable params: 0
 __________________________________________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>2 phần xử lý trên chính là những xử lý mấu chốt của thuật toán mà chúng ta cần nắm được. Phần khởi tạo các data_generator và huấn luyện mô hình khá đơn giản các bạn có thể tham khảo code gốc tại <a href="https://github.com/pierluigiferrari/ssd_keras">SSD_keras - git repository</a>, rất chi tiết.
 Khi đưa vào 1 hình ảnh, thuật toán sẽ trả về kết quả bao gồm các khung hình bao quan vật thể kèm theo nhãn và xác suất của lớp mà vật thể bao trong khung hình có thể thuộc về nhất. Thuật toán có thể dự báo nhiều vật thể có kích thước to nhỏ khác nhau.</p>

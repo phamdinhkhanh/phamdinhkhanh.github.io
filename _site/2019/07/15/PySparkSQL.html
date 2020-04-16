@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 5 - Model Pipeline - SparkSQL</p></h2> 
 <strong>15 Jul 2019 - phamdinhkhanh</strong>
@@ -251,7 +253,19 @@ body {
 
 <p>Bên dưới ta cùng khởi tạo một SparkContext là <code class="highlighter-rouge">sc</code>:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
 <span class="c1"># Stop spark if it existed.
 </span><span class="k">try</span><span class="p">:</span>
     <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -263,54 +277,82 @@ body {
 </span><span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
 <span class="c1"># Check spark context version
 </span><span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;SparkContext master=local appName=First app&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>&lt;SparkContext master=local appName=First app&gt;
 2.3.1
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lưu ý chúng ta chỉ có thể khởi tạo SparkContext 1 lần nên nếu chưa stop <code class="highlighter-rouge">sc</code> mà chạy lại lệnh trên sẽ bị lỗi. Do đó lệnh SparkContext.getOrCreate() được sử dụng để khởi tạo mới SparkContext nếu nó chưa xuất hiện và lấy lại SparkContext cũ nếu đã được khởi tạo và đang run.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;SparkContext master=local appName=First app&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>&lt;SparkContext master=local appName=First app&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="22-khởi-tạo-một-session-trong-sparkcontext">2.2. Khởi tạo một Session trong SparkContext:</h2>
 
 <p>Như vậy sau bước trên ta đã có môi trường kết nối tới cluster. Tuy nhiên để hoạt động được trong môi trường này thì chúng ta cần phải khởi tạo session thông qua hàm SparkSession.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="n">my_spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 <span class="c1"># Print my_spark session
 </span><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pyspark.sql.session.SparkSession object at 0x000001D9D96E18D0&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>&lt;pyspark.sql.session.SparkSession object at 0x000001D9D96E18D0&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hàm getOrCreate() của session cũng tương tự như context để tránh trường hợp phát sinh lỗi khi session đã tồn tại và đang hoạt động nhưng được khởi tạo lại.</p>
 
 <p>Thuộc tính <code class="highlighter-rouge">catalog</code> trong 1 Session sẽ liệt kê toàn bộ các dữ liệu có bên trong 1 cluster. Trong đó để xem toàn bộ các bảng đang có trong cluster chúng ta sử dụng hàm <code class="highlighter-rouge">.listTables()</code>.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># List all table exist in spark sesion
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># List all table exist in spark sesion
 </span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>[]
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hiện tại trên cluster đang chưa có bảng nào. Để thêm một bảng vào cluster chúng ta có thể đọc từ my_spark.read.csv()
 Dữ liệu file csv các bạn có thể download từ link sau <a href="https://www.kaggle.com/miquar/explore-flights-csv-airports-csv-airlines-csv/data">flights.csv</a></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">'flights.csv'</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">flights</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">'flights.csv'</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 <span class="c1"># show fligths top 5
 </span><span class="n">flights</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
 |YEAR|MONTH|DAY|DAY_OF_WEEK|AIRLINE|FLIGHT_NUMBER|TAIL_NUMBER|ORIGIN_AIRPORT|DESTINATION_AIRPORT|SCHEDULED_DEPARTURE|DEPARTURE_TIME|DEPARTURE_DELAY|TAXI_OUT|WHEELS_OFF|SCHEDULED_TIME|ELAPSED_TIME|AIR_TIME|DISTANCE|WHEELS_ON|TAXI_IN|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ARRIVAL_DELAY|DIVERTED|CANCELLED|CANCELLATION_REASON|AIR_SYSTEM_DELAY|SECURITY_DELAY|AIRLINE_DELAY|LATE_AIRCRAFT_DELAY|WEATHER_DELAY|
 +----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
 |2015|    1|  1|          4|     AS|           98|     N407AS|           ANC|                SEA|               0005|          2354|            -11|      21|      0015|           205|         194|     169|    1448|     0404|      4|             0430|        0408|          -22|       0|        0|               null|            null|          null|         null|               null|         null|
@@ -322,14 +364,47 @@ Dữ liệu file csv các bạn có thể download từ link sau <a href="https:
 only showing top 5 rows
 
 []
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để kiểm tra các schema có trong một table chúng ta sử dụng hàm <code class="highlighter-rouge">printSchema()</code>.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">flights</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre>root
  |-- YEAR: string (nullable = true)
  |-- MONTH: string (nullable = true)
  |-- DAY: string (nullable = true)
@@ -361,18 +436,21 @@ only showing top 5 rows
  |-- AIRLINE_DELAY: string (nullable = true)
  |-- LATE_AIRCRAFT_DELAY: string (nullable = true)
  |-- WEATHER_DELAY: string (nullable = true)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="23-thêm-một-spark-dataframe-lưu-trữ-local-vào-một-catalog">2.3. Thêm một spark DataFrame lưu trữ local vào một catalog</h2>
 
 <p>Tuy nhiên lúc này flights vẫn chỉ là một spark DataFrame chưa có trong catalog của của cluster. Sử dụng hàm <code class="highlighter-rouge">listTable()</code> liệt kê danh sách bảng ta thu được 1 list rỗng.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># list all table exist in spark session
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># list all table exist in spark session
 </span><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>[]
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lý do là bởi khi được đọc từ hàm <code class="highlighter-rouge">read.csv()</code> thì dữ liệu chỉ được lưu trữ ở Local dưới dạng một spark DataFrame. Để đưa dự liệu từ local lên cluster chúng ta cần save nó dưới dạng một <code class="highlighter-rouge">temporary table</code> thông một trong những lệnh bên dưới:</p>
 
@@ -401,14 +479,19 @@ only showing top 5 rows
 
 <p>Bên dưới ta sẽ khởi tạo một temporary table với tên là flights_temp cho bảng flights.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a temporary table on catalog of local data frame flights as new temporary table flights_temp on catalog
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># Create a temporary table on catalog of local data frame flights as new temporary table flights_temp on catalog
 </span><span class="n">flights</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s">'flights_temp'</span><span class="p">)</span>
 <span class="c1"># check list all table available on catalog
 </span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Table(name='flights_temp', database=None, description=None, tableType='TEMPORARY', isTemporary=True)]
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>[Table(name='flights_temp', database=None, description=None, tableType='TEMPORARY', isTemporary=True)]
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="24-các-lệnh-biến-đổi-dữ-liệu-của-spark-dataframe">2.4. Các lệnh biến đổi dữ liệu của spark DataFrame</h2>
 
@@ -420,11 +503,46 @@ only showing top 5 rows
 
 <p>Chẳng hạn bên dưới ta sẽ thêm 1 trường mới là HOUR_ARR được tính dựa trên AIR_TIME/60 (qui từ phút ra h) của bảng flights như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'HOUR_ARR'</span><span class="p">,</span> <span class="n">flights</span><span class="o">.</span><span class="n">AIR_TIME</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">'HOUR_ARR'</span><span class="p">,</span> <span class="n">flights</span><span class="o">.</span><span class="n">AIR_TIME</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
 <span class="n">flights</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>root
  |-- YEAR: string (nullable = true)
  |-- MONTH: string (nullable = true)
  |-- DAY: string (nullable = true)
@@ -457,7 +575,7 @@ only showing top 5 rows
  |-- LATE_AIRCRAFT_DELAY: string (nullable = true)
  |-- WEATHER_DELAY: string (nullable = true)
  |-- HOUR_ARR: double (nullable = true)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>
@@ -470,12 +588,25 @@ only showing top 5 rows
 
 <p>Bên dưới chúng ta sẽ tạo ra trường <code class="highlighter-rouge">avg_speed</code> tính vận tốc trung bình của các máy bay bằng cách lấy khoảng cách (DISTANCE) chi cho thời gian bay (HOUR_ARR) group by theo mã máy bay (TAIL_NUMBER) bằng lệnh select.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">avg_speed</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">,</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> <span class="s">"TAIL_NUMBER"</span><span class="p">,</span> <span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">DISTANCE</span><span class="o">/</span><span class="n">flights</span><span class="o">.</span><span class="n">HOUR_ARR</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s">"avg_speed"</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">avg_speed</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">,</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> <span class="s">"TAIL_NUMBER"</span><span class="p">,</span> <span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">DISTANCE</span><span class="o">/</span><span class="n">flights</span><span class="o">.</span><span class="n">HOUR_ARR</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s">"avg_speed"</span><span class="p">))</span>
 <span class="n">avg_speed</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 <span class="n">avg_speed</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------+-------------------+-----------+-----------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+--------------+-------------------+-----------+-----------------+
 |ORIGIN_AIRPORT|DESTINATION_AIRPORT|TAIL_NUMBER|        avg_speed|
 +--------------+-------------------+-----------+-----------------+
 |           ANC|                SEA|     N407AS|514.0828402366864|
@@ -485,18 +616,31 @@ only showing top 5 rows
 |           SEA|                ANC|     N527AS|436.5829145728643|
 +--------------+-------------------+-----------+-----------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li><strong>.selectExpr(“column1”, “column2”, … , “columnt”, “formularExpr”):</strong> Hoàn toàn tương tự như <code class="highlighter-rouge">.select()</code> nhưng tham số formular được thay thế bằng chuỗi string biểu diễn công thức như trong câu lệnh SQL.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">avg_speed_exp</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">,</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> <span class="s">"TAIL_NUMBER"</span><span class="p">,</span> <span class="s">"(DISTANCE/HOUR_ARR) AS avg_speed"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">avg_speed_exp</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">,</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> <span class="s">"TAIL_NUMBER"</span><span class="p">,</span> <span class="s">"(DISTANCE/HOUR_ARR) AS avg_speed"</span><span class="p">)</span>
 <span class="n">avg_speed_exp</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 <span class="n">avg_speed_exp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------+-------------------+-----------+-----------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+--------------+-------------------+-----------+-----------------+
 |ORIGIN_AIRPORT|DESTINATION_AIRPORT|TAIL_NUMBER|        avg_speed|
 +--------------+-------------------+-----------+-----------------+
 |           ANC|                SEA|     N407AS|514.0828402366864|
@@ -506,7 +650,7 @@ only showing top 5 rows
 |           SEA|                ANC|     N527AS|436.5829145728643|
 +--------------+-------------------+-----------+-----------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li><strong>.filter(condition):</strong> Lọc một bảng theo một điều kiện nào đó. Condition có thể làm một string expression biểu diễn công thức lọc hoặc một công thức giữa các trường trong spark DataFrame. Lưu ý Condition phải trả về một trường dạng Boolean type.</li>
@@ -514,12 +658,25 @@ only showing top 5 rows
 
 <p>Chẳng hạn chúng ta muốn lọc những chuyến bay xuất phát từ sân bay <code class="highlighter-rouge">SEA</code> và điểm đến là <code class="highlighter-rouge">ANC</code> ta có thể sử dụng filter như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter_SEA_ANC</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT == 'SEA'"</span><span class="p">)</span> \
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">filter_SEA_ANC</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT == 'SEA'"</span><span class="p">)</span> \
                         <span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"DESTINATION_AIRPORT == 'ANC'"</span><span class="p">)</span>
 <span class="n">filter_SEA_ANC</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+------------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+------------------+
 |YEAR|MONTH|DAY|DAY_OF_WEEK|AIRLINE|FLIGHT_NUMBER|TAIL_NUMBER|ORIGIN_AIRPORT|DESTINATION_AIRPORT|SCHEDULED_DEPARTURE|DEPARTURE_TIME|DEPARTURE_DELAY|TAXI_OUT|WHEELS_OFF|SCHEDULED_TIME|ELAPSED_TIME|AIR_TIME|DISTANCE|WHEELS_ON|TAXI_IN|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ARRIVAL_DELAY|DIVERTED|CANCELLED|CANCELLATION_REASON|AIR_SYSTEM_DELAY|SECURITY_DELAY|AIRLINE_DELAY|LATE_AIRCRAFT_DELAY|WEATHER_DELAY|          HOUR_ARR|
 +----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+------------------+
 |2015|    1|  1|          4|     AS|          135|     N527AS|           SEA|                ANC|               0025|          0024|             -1|      11|      0035|           235|         215|     199|    1448|     0254|      5|             0320|        0259|          -21|       0|        0|               null|            null|          null|         null|               null|         null| 3.316666666666667|
@@ -529,7 +686,7 @@ only showing top 5 rows
 |2015|    1|  1|          4|     AS|           85|     N764AS|           SEA|                ANC|               1020|          1020|              0|      19|      1039|           223|         220|     198|    1448|     1257|      3|             1303|        1300|           -3|       0|        0|               null|            null|          null|         null|               null|         null|               3.3|
 +----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+------------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li><strong>.groupBy(“column1”, “column2”,…,”columnt”):</strong> Tương tự như lệnh GROUP BY của SQL, lệnh này sẽ nhóm các biến theo các dimension được truyền vào groupBy. Theo sau lệnh <code class="highlighter-rouge">groupBy()</code> là một build-in function của spark DataFrame được sử dụng để tính toán theo một biến đo lường nào đó chẳng hạn như hàm <code class="highlighter-rouge">avg()</code>, <code class="highlighter-rouge">min()</code>, <code class="highlighter-rouge">max()</code>, <code class="highlighter-rouge">sum()</code>.  Tham số được truyền vào các hàm này chính là tên biến đo lường.</li>
@@ -537,11 +694,23 @@ only showing top 5 rows
 
 <p>Bên dưới chúng ta sẽ tính thời gian bay trung bình theo điểm xuất phát (ORIGIN_AIRPORT).</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">avg_time_org_airport</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">)</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s">"HOUR_ARR"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">avg_time_org_airport</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s">"ORIGIN_AIRPORT"</span><span class="p">)</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s">"HOUR_ARR"</span><span class="p">)</span>
 <span class="n">avg_time_org_airport</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------+------------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+--------------+------------------+
 |ORIGIN_AIRPORT|     avg(HOUR_ARR)|
 +--------------+------------------+
 |           BGM| 1.096525096525096|
@@ -551,7 +720,7 @@ only showing top 5 rows
 |         12888|0.4413461538461539|
 +--------------+------------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li><strong>.join(tableName, on = “columnNameJoin”, how = “leftouter”):</strong> Join 2 bảng với nhau tương tự như lệnh left join trong SQL. Kết quả trả về sẽ là các trường mới trong bảng <code class="highlighter-rouge">tableName</code> kết hợp với các trường cũ trong bảng gốc thông qua key là. Lưu ý rằng <code class="highlighter-rouge">columnNameJoin</code> phải trùng nhau giữa 2 bảng.</li>
@@ -568,11 +737,23 @@ Lệnh này sẽ lựa chọn các trường trong bảng theo điều kiện t�
 
 <p>Chẳng hạn bên dưới chúng ta lấy ra những chuyến bay có thời gian bay &gt; 10 phút.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights_10</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">'SELECT * FROM flights_temp WHERE AIR_TIME &gt; 10'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">flights_10</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">'SELECT * FROM flights_temp WHERE AIR_TIME &gt; 10'</span><span class="p">)</span>
 <span class="n">flights_10</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>+----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
 |YEAR|MONTH|DAY|DAY_OF_WEEK|AIRLINE|FLIGHT_NUMBER|TAIL_NUMBER|ORIGIN_AIRPORT|DESTINATION_AIRPORT|SCHEDULED_DEPARTURE|DEPARTURE_TIME|DEPARTURE_DELAY|TAXI_OUT|WHEELS_OFF|SCHEDULED_TIME|ELAPSED_TIME|AIR_TIME|DISTANCE|WHEELS_ON|TAXI_IN|SCHEDULED_ARRIVAL|ARRIVAL_TIME|ARRIVAL_DELAY|DIVERTED|CANCELLED|CANCELLATION_REASON|AIR_SYSTEM_DELAY|SECURITY_DELAY|AIRLINE_DELAY|LATE_AIRCRAFT_DELAY|WEATHER_DELAY|
 +----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
 |2015|    1|  1|          4|     AS|           98|     N407AS|           ANC|                SEA|               0005|          2354|            -11|      21|      0015|           205|         194|     169|    1448|     0404|      4|             0430|        0408|          -22|       0|        0|               null|            null|          null|         null|               null|         null|
@@ -582,7 +763,7 @@ Lệnh này sẽ lựa chọn các trường trong bảng theo điều kiện t�
 |2015|    1|  1|          4|     AS|          135|     N527AS|           SEA|                ANC|               0025|          0024|             -1|      11|      0035|           235|         215|     199|    1448|     0254|      5|             0320|        0259|          -21|       0|        0|               null|            null|          null|         null|               null|         null|
 +----+-----+---+-----------+-------+-------------+-----------+--------------+-------------------+-------------------+--------------+---------------+--------+----------+--------------+------------+--------+--------+---------+-------+-----------------+------------+-------------+--------+---------+-------------------+----------------+--------------+-------------+-------------------+-------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li><strong>GROUP BY:</strong> Lệnh này sẽ thống kê các các trường measurement (các trường dùng để tính toán) theo một nhóm các trường dimension (các trường dùng để phân loại) dựa trên các aggregation function như <code class="highlighter-rouge">sum(), avg(), min(), max(), mean(), median(), count(), count(distinct())</code> của SQL.</li>
@@ -590,12 +771,26 @@ only showing top 5 rows
 
 <p>Chẳng hạn chúng ta muốn tính số phút bay trung bình của mỗi hãng bay trong năm sẽ sử dụng hàm GROUP BY như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">())</span>
 <span class="n">agg_arr_time</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">"SELECT ORIGIN_AIRPORT, DESTINATION_AIRPORT, TAIL_NUMBER, MEAN(AIR_TIME) AS avg_speed FROM flights_temp GROUP BY ORIGIN_AIRPORT, DESTINATION_AIRPORT, TAIL_NUMBER"</span><span class="p">)</span>
 <span class="n">agg_arr_time</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Table(name='flights_temp', database=None, description=None, tableType='TEMPORARY', isTemporary=True)]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>[Table(name='flights_temp', database=None, description=None, tableType='TEMPORARY', isTemporary=True)]
 +--------------+-------------------+-----------+------------------+
 |ORIGIN_AIRPORT|DESTINATION_AIRPORT|TAIL_NUMBER|         avg_speed|
 +--------------+-------------------+-----------+------------------+
@@ -606,7 +801,7 @@ only showing top 5 rows
 |           AVL|                ATL|     N994AT|              30.5|
 +--------------+-------------------+-----------+------------------+
 only showing top 5 rows
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ngoài ra ta còn có thể sử dụng vô số các lệnh SQL khác đối với các bảng xuất hiện trong catalog của clusters.</p>
 
@@ -657,10 +852,44 @@ only showing top 5 rows
 
 <p>Bên dưới chúng ta sẽ cùng đi xây dựng 1 pipeline cho model dự báo khả năng trễ chuyến bay dựa trên dữ liệu đầu vào là bảng flights. Trước tiên chúng ta cùng tìm hiểu các trường trong bảng dữ liệu.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flights</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">flights</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>root
  |-- YEAR: string (nullable = true)
  |-- MONTH: string (nullable = true)
  |-- DAY: string (nullable = true)
@@ -693,7 +922,7 @@ only showing top 5 rows
  |-- LATE_AIRCRAFT_DELAY: string (nullable = true)
  |-- WEATHER_DELAY: string (nullable = true)
  |-- HOUR_ARR: double (nullable = true)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ý nghĩa các trường như sau:</p>
 
@@ -747,16 +976,35 @@ only showing top 5 rows
   </li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Shape of previous data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'Shape of previous data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 <span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">"select ARRIVAL_DELAY, ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK, DESTINATION_AIRPORT, AIRLINE from flights_temp where ORIGIN_AIRPORT = 'SEA' and AIRLINE in ('DL', 'AA') "</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of flights_SEA data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shape of previous data: (5819079, 32)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Shape of previous data: (5819079, 32)
 Shape of flights_SEA data: (19956, 7)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create boolean variable IS_DELAY variable as Target
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1"># Create boolean variable IS_DELAY variable as Target
 </span><span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"IS_DELAY"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">ARRIVAL_DELAY</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 <span class="c1"># Now Convert Boolean variable into integer
 </span><span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"label"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">IS_DELAY</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
@@ -770,24 +1018,41 @@ Shape of flights_SEA data: (19956, 7)
 </span><span class="s">                                and AIRLINE is not null"</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of model_data data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shape of model_data data: (19823, 9)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Shape of model_data data: (19823, 9)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Một chú ý quan trọng đó là các model phân loại của pyspark luôn mặc định nhận biến dự báo là label. Do đó trong bất kì model nào chúng ta cũng cần tạo ra biến integer là nhãn của model dưới tên label.</p>
 
 <p>Convert các biến string sang numeric bằng hàm <code class="highlighter-rouge">.withColumn()</code></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK
 </span><span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"ARRIVAL_TIME"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">ARRIVAL_TIME</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"MONTH"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">MONTH</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"YEAR"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">YEAR</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"DAY_OF_WEEK"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">DAY_OF_WEEK</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>root
  |-- ARRIVAL_DELAY: string (nullable = true)
  |-- ARRIVAL_TIME: integer (nullable = true)
  |-- MONTH: integer (nullable = true)
@@ -797,11 +1062,29 @@ Shape of flights_SEA data: (19956, 7)
  |-- AIRLINE: string (nullable = true)
  |-- IS_DELAY: boolean (nullable = true)
  |-- label: integer (nullable = true)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Biến đổi các biến String bằng StringIndexer và OneHotEncoder.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
 <span class="c1"># I. With DESTINATION_AIRPORT
 # Create StringIndexer
 </span><span class="n">dest_indexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> \
@@ -819,30 +1102,41 @@ Shape of flights_SEA data: (19956, 7)
 <span class="c1"># Create OneHotEncoder
 </span><span class="n">airline_onehot</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_INDEX"</span><span class="p">,</span> \
                                <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_FACT"</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đầu ra của quá trình biến đổi trên 2 biến DESTINATION_AIRPORT và AIRLINE chính là biến DESTINATION_FACT và AIRLINE_FACT. Hai biến này sẽ cần được đưa vào vector tổng hợp sẽ được giới thiệu biên dưới. Các objects: dest_indexer, dest_onehot, airline_indexer, airline_onehot sẽ được truyền vào pipeline theo thứ tự để thể hiện quá trình transform dữ liệu tuần tự từ trái qua phải.</p>
 
 <p>Bước cuối cùng của pipeline là kết hợp toàn bộ các columns chứa các features thành một column duy nhất. Bước này phải được thực hiện trước khi model training bởi spark model sẽ chỉ chấp nhận đầu vào ở định dạng này. Chúng ta có thể lưu mỗi một giá trị từ một cột như một phần tử của vector. Khi đó vector sẽ chứa toàn bộ các thông tin cần thiết của 1 quan sát để xác định nhãn hoặc giá trị dự báo ở đầu ra của quan sát đó. Class <code class="highlighter-rouge">VectorAssembler</code> của pyspark.ml.feature sẽ tạo ra vector tổng hợp đại diện cho toàn bộ các chiều của quan sát đầu vào. Việc chúng ta cần thực hiện chỉ là truyền vào class list string tên các trường thành phần của vector tổng hợp.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a VectorAssembler
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># Make a VectorAssembler
 </span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">VectorAssembler</span>
 <span class="n">vec_assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span> <span class="o">=</span> <span class="p">[</span><span class="s">"ARRIVAL_TIME"</span><span class="p">,</span> <span class="s">"MONTH"</span><span class="p">,</span> <span class="s">"YEAR"</span><span class="p">,</span> \
                                              <span class="s">"DAY_OF_WEEK"</span><span class="p">,</span> <span class="s">"DESTINATION_FACT"</span><span class="p">,</span>\
                                              <span class="s">"AIRLINE_FACT"</span><span class="p">],</span> 
                                 <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"features"</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau stage này chúng ta sẽ tổng hợp các biến trong inputCols thành một vector dự báo ở outputCol được lưu dưới tên <code class="highlighter-rouge">features</code>. Nhãn của model luôn mặc định là biến <code class="highlighter-rouge">label</code> đã khởi tạo từ đầu.</p>
 
 <p>Tiếp theo chúng ta sẽ khởi tạo pipeline biến đổi dữ liệu cho model thông qua class <code class="highlighter-rouge">Pipeline</code> của <code class="highlighter-rouge">pyspark.ml</code>. Các transformer biến đổi dữ liệu sẽ được sắp xếp trong 1 list và truyền vào tham số stages như bên dưới.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
 <span class="c1"># Make a pipeline
 </span><span class="n">flights_sea_pipe</span>  <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">dest_indexer</span><span class="p">,</span> <span class="n">dest_onehot</span><span class="p">,</span> <span class="n">airline_indexer</span><span class="p">,</span> \
                                        <span class="n">airline_onehot</span><span class="p">,</span> <span class="n">vec_assembler</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau khi dữ liệu được <code class="highlighter-rouge">fit()</code> qua pipeline sẽ thu được đầu ra là vector tổng hợp các biến dự báo <code class="highlighter-rouge">features</code> và nhãn của quan sát <code class="highlighter-rouge">label</code>.</p>
 
@@ -852,38 +1146,63 @@ Shape of flights_SEA data: (19956, 7)
 
 <p>Sau khi đi qua pipe line ở bước Transform dữ liệu chúng ta sẽ thu được vector tổng hợp (Vector Assemble) và nhãn (LABLE) ở đầu ra. Tiếp theo tại bước này sẽ thực hiện phân chia tập train/test theo tỷ lệ 80%/20%. Trong đó model được xây dựng trên tập Train và được đánh giá trên tập Test. Tại sao lại phải để riêng 1 tập test mà không hồi qui trên toàn bộ dữ liệu? Đó là vì model thường phân loại hoặc dự báo tốt trên dữ liệu nó đã được huấn luyện mà không phân loại, dự báo tốt đối với dữ liệu mới. Chính vì thế tập test được coi như dữ liệu mới không được sử dụng trong huấn luyện và dùng để đánh giá khả năng dự báo của model.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># create pipe_data from pipeline
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># create pipe_data from pipeline
 </span><span class="n">pipe_data</span> <span class="o">=</span> <span class="n">flights_sea_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Split train/test data
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># Split train/test data
 </span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">pipe_data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="322-huấn-luyện-và-đánh-giá-model">3.2.2. Huấn luyện và đánh giá model.</h3>
 
 <p>Có rất nhiều các lớp model phân loại đã được giới thiệu trong mục 3.1. Để đơn giản hóa chúng ta sẽ chọn ra model LogisticRegression trong ví dụ demo này làm model phân loại.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="c1"># Create logistic regression
 </span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để đánh giá model chúng ta cần sử dụng các metric như <code class="highlighter-rouge">ROC, Accuracy, F1, precision hoặc recal</code>. Do dữ liệu không có hiện tượng mất cân bằng giữa 2 lớp nên ta sẽ sử dụng ROC làm metric đánh giá model. Trong trường hợp mẫu mất cân bằng thì các chỉ số <code class="highlighter-rouge">F1, precision hoặc recal</code> nên được sử dụng thay thế vì trong tình huống này ROC, Accuracy thường mặc định là rất cao. Chúng ta sử dụng class <code class="highlighter-rouge">BinaryClassificationEvaluator</code> trong <code class="highlighter-rouge">pyspark.ml.evaluation</code> module để tính toán các metrics đánh giá model.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import the evaluation submodule
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># Import the evaluation submodule
 </span><span class="kn">import</span> <span class="nn">pyspark.ml.evaluation</span> <span class="k">as</span> <span class="n">evals</span>
 
 <span class="c1"># Create a BinaryClassificationEvaluator
 </span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">evals</span><span class="o">.</span><span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">metricName</span> <span class="o">=</span> <span class="s">"areaUnderROC"</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="323-tuning-model-thông-qua-param-gridsearch">3.2.3. Tuning model thông qua param gridSearch.</h3>
 
 <p>pyspark cho phép chúng ta tuning model trên một gridSearch các params. Tuning model được hiểu là tìm kiếm trong 1 không gian các tham số của model để thu được model mà giá trị của metric khai báo ở bước 3.2.2 thu được là nhỏ nhất trên tập test. Để xây dựng một gridSearch chúng ta sử dụng class ParamGridBuilder của submodule pyspark.ml.tuning. Để thêm các gridSearch chúng ta sử dụng phương thức <code class="highlighter-rouge">.addGrid()</code> và sau đó sử dụng hàm <code class="highlighter-rouge">.build()</code> để khởi tạo gridSearch. Mỗi lớp model sẽ có các tham số khác nhau. Do đó để tuning được model cần phải xác định xem model có những tham số gì. Việc này đòi hỏi bạn phải nắm vững về thuật toán và phương pháp tối ưu của model. Mình sẽ không đi sâu vào phần này. Đối với LogisticRegression mình sẽ lựa chọn lr.regParam là tham số tuning. Một lưu ý khác là việc tuning có thể rất tốt thời gian và tài nguyên của máy tính do thực hiện nhiều model của cùng 1 lớp model nhưng với các tham số khau. Do đó bạn cần cân nhắc cấu hình máy trước khi thực hiện.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import the tuning submodule
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1"># Import the tuning submodule
 </span><span class="kn">import</span> <span class="nn">pyspark.ml.tuning</span> <span class="k">as</span> <span class="n">tune</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
@@ -895,11 +1214,19 @@ Shape of flights_SEA data: (19956, 7)
 
 <span class="c1"># Build the grid
 </span><span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau khi build xong gridSearch chúng ta cần Cross Validate toàn bộ các model trên tập các tham số khởi tạo ở <code class="highlighter-rouge">grid</code>. Nếu bạn đọc chưa nắm rõ về Cross Validate là gì xin mời đọc bài viết <a href="http://rpubs.com/phamdinhkhanh/383309">Cross validation tuning threshold</a> của mình. Chúng ta cần khởi tạo một cross validator từ class CrossValidator của pyspark.ml.tuning.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the CrossValidator
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1"># Create the CrossValidator
 </span><span class="n">cv</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">CrossValidator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
                <span class="n">estimatorParamMaps</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
                <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span>
@@ -907,33 +1234,43 @@ Shape of flights_SEA data: (19956, 7)
 
 <span class="c1"># Fit cross validation on models
 </span><span class="n">models</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mình sẽ không chạy lệnh này do máy cấu hình yếu. Sau khi tuning xong chúng ta sẽ thu được model tốt nhất thông qua hàm:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_lr</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">bestModel</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">best_lr</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">bestModel</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Do không chạy tuning nên mình sẽ gán cho best_lr model chính là model LogisticRegression với giá trị mặc định của regParam = 0.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_lr</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">best_lr</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">best_lr</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LogisticRegression_44d7b66a6ac3918984b4
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>LogisticRegression_44d7b66a6ac3918984b4
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lưu ý để dự báo từ các model của pyspark, chúng ta không sử dụng hàm <code class="highlighter-rouge">predict()</code> như thông thường mà sử dụng hàm <code class="highlighter-rouge">transform()</code>. Kiểm tra mức độ chính xác của model trên tập test bằng hàm <code class="highlighter-rouge">evaluate()</code>.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use the model to predict the test set
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># Use the model to predict the test set
 </span><span class="n">test_results</span> <span class="o">=</span> <span class="n">best_lr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the predictions
 </span><span class="k">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_results</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5890717985162973
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>0.5890717985162973
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy trên tập test model đạt mức độ chính xác khoảng 58.9%. Phương án tốt được cân nhắc là thêm biến để cải thiện model.</p>
 

@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</p></h2> 
 <strong>22 Nov 2019 - phamdinhkhanh</strong>
@@ -320,7 +322,23 @@ G_y = \begin{bmatrix} -1 & -2 & -1 \\
 
 <p>Hiện tại, gradient được tính khá dễ dàng trên thư viện <code class="highlighter-rouge">sklearn</code> hoặc <code class="highlighter-rouge">OpenCV</code>:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
@@ -336,39 +354,74 @@ G_y = \begin{bmatrix} -1 & -2 & -1 \\
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Gray Image'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image shape: (1120, 2016, 3)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>image shape: (1120, 2016, 3)
 gray shape:  (1120, 2016)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191122_HOG/HOG_3_2.png" width="600px" hieght="300px" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate gradient gx, gy
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1"># Calculate gradient gx, gy
 </span><span class="n">gx</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">gy</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'gray shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'gray shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'gx shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gx</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'gy shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gy</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gray shape: (1120, 2016)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>gray shape: (1120, 2016)
 gx shape: (1120, 2016)
 gy shape: (1120, 2016)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cartToPolar</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">angleInDegrees</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">g</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cartToPolar</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">angleInDegrees</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
 <span class="k">print</span><span class="p">(</span><span class="s">'gradient format: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'theta format: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradient format: (1120, 2016)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>gradient format: (1120, 2016)
 theta format: (1120, 2016)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">w</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="n">w</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
@@ -387,7 +440,7 @@ theta format: (1120, 2016)
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Direction of gradient'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191122_HOG/HOG_7_1.png" width="800px" hieght="150px" /></p>
 
@@ -502,7 +555,44 @@ theta format: (1120, 2016)
   <li>winStride: Số bước stride (đơn vị pixels) khi di chuyển window trên ảnh gốc để tính véc tơ histogram trên mỗi block của ảnh.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Kích thước ảnh gốc: '</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'Kích thước ảnh gốc: '</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1"># 1. Khai báo các tham số
 </span><span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># h x w in pixels
@@ -539,15 +629,21 @@ theta format: (1120, 2016)
                <span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước hog feature (h, w, block_size_h, block_size_w, nbins): '</span><span class="p">,</span> <span class="n">hog_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Kích thước ảnh gốc:  (1120, 2016, 3)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>Kích thước ảnh gốc:  (1120, 2016, 3)
 Kích thước bức ảnh crop theo winSize (pixel):  (2016, 1120)
 Kích thước của 1 block (pixel):  (16, 16)
 Kích thước của block stride (pixel):  (8, 8)
 Kích thước lưới ô vuông (ô vuông):  (140, 252)
 Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251, 2, 2, 9)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Với đầu vào là một bức ảnh kích thước <code class="highlighter-rouge">1120 x 2016</code>, nếu áp dụng thuật toán tính HOG với kích thước cells là <code class="highlighter-rouge">8x8</code> chúng ta sẽ thu được một lưới ô vuông với kích thước là <code class="highlighter-rouge">1120/8 = 140</code> ô theo chiều cao và <code class="highlighter-rouge">2016/8 = 252</code> ô theo chiều rộng. Tiếp tục khởi tạo các block kích thước <code class="highlighter-rouge">2x2</code> ô với stride là <code class="highlighter-rouge">8x8</code> pixels ta sẽ trải qua 139 bước theo chiều cao và 251 bước theo chiều rộng. Trên mỗi block ta có 4 véc tơ histogram tương ứng với mỗi ô, mỗi véc tơ gồm 9 chiều tương ứng với 9 bins. Như vậy véc tơ HOG tổng hợp của bức ảnh sẽ có kích thước là <code class="highlighter-rouge">139 x 251 x 2 x 2 x 9 = 1256004</code> chiều.</p>
 
@@ -555,15 +651,21 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 
 <p>Trên sklearn chúng ta xây dựng một bộ mô tả HOG như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">feature</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">feature</span>
 <span class="n">H</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">hog</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pixels_per_cell</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                 <span class="n">cells_per_block</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">transform_sqrt</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">block_norm</span><span class="o">=</span><span class="s">"L2"</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước hog features: '</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Kích thước hog features:  (1256004,)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Kích thước hog features:  (1256004,)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Trong đó các tham số quan trọng gồm:</p>
 <ul>
@@ -575,7 +677,20 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 
 <p>Ngoài ra trong skimage chúng ta còn cho phép biểu diễn hình ảnh của phân phối HOG trên bức ảnh như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">feature</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -588,7 +703,7 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 <span class="n">hogImage</span> <span class="o">=</span> <span class="n">hogImage</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">"uint8"</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hogImage</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191122_HOG/HOG_15_1.png" width="300px" hieght="150px" /></p>
 
@@ -601,7 +716,19 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 
 <p>Ngoài ra, để phát hiện người trong các hình ảnh tĩnh hoặc thậm chí video chúng ta có thể sử dụng mô hình pretrained - SVM dự báo dựa trên đầu vào là đặc trưng của ảnh được trích xuất từ thuật toán HOG. Các mô hình đã được tích hợp sẵn vào opencv nên khá đơn giản để áp dụng.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">from</span> <span class="nn">imutils.object_detection</span> <span class="kn">import</span> <span class="n">non_max_suppression</span>
 <span class="kn">from</span> <span class="nn">imutils</span> <span class="kn">import</span> <span class="n">paths</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -613,11 +740,67 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 <span class="c1"># Khởi tạo một bộ mô tả đặc trưng HOG
 </span><span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">()</span>
 <span class="n">hog</span><span class="o">.</span><span class="n">setSVMDetector</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor_getDefaultPeopleDetector</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>hàm <code class="highlighter-rouge">HOGDescriptor()</code> sẽ khởi tạo một bộ mô tả đặc trưng theo thuật toán HOG. Sau đó chúng ta áp dụng hàm <code class="highlighter-rouge">setSVMDetector()</code> để thiết lập mô hình pretrained dựa trên thuật toán SVM. Cuối cùng ta thu được một mô hình phát hiện người trên các bức ảnh. Việc load thuật toán thật đơn giản phải không các bạn? Để xem hiệu quả của thuật toán ra sao chúng ta cùng thử dự báo trên folder gồm các ảnh chứa người nhé.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="n">patches</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">imutils</span>
@@ -673,9 +856,39 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
         <span class="c1"># cv2.imshow("Before NMS", orig)
 </span>        <span class="c1"># cv2.imshow("After NMS", image)
 </span>        <span class="c1"># cv2.waitKey(0)
-</span></code></pre></div></div>
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>weights:  [[2.71816366]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>weights:  [[2.71816366]
  [0.52841349]]
 rects:  (2, 4)
 [INFO] person_010.bmp: 2 original boxes, 2 after suppression
@@ -705,7 +918,7 @@ weights:  [[3.47940904]
  [1.68886039]]
 rects:  (2, 4)
 [INFO] person_044.bmp: 2 original boxes, 2 after suppression
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191122_HOG/HOG_19_1.png" width="600px" hieght="300px" />
 <img src="/assets/images/20191122_HOG/HOG_19_2.png" width="600px" hieght="300px" />
@@ -741,7 +954,41 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
 
 <p>Đầu tiên chúng ta cần tạo ra véc tơ HOG cho mỗi hình ảnh để làm đầu vào huấn luyện.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">imutils</span>
 
@@ -775,9 +1022,17 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span>
 
 <span class="n">data</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">_preprocessing</span><span class="p">(</span><span class="s">'trainData/**/*.jpg'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fn</span><span class="p">:</span>
@@ -785,13 +1040,29 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
         
 <span class="c1"># _save('X_train.pkl', data)
 # _save('y_train.pkl', labels)
-</span></code></pre></div></div>
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _save('X_test.pkl', dataTest)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># _save('X_test.pkl', dataTest)
 # _save('y_test.pkl', labelsTest)
-</span></code></pre></div></div>
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="k">def</span> <span class="nf">_transform_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
     <span class="c1"># Tạo input array X
@@ -805,31 +1076,59 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dict</span><span class="p">,</span> <span class="n">le</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_dict</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">_transform_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Xây dựng thuật toán kNN với số lượng các điểm lân cận $k = 1$.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
            metric_params=None, n_jobs=None, n_neighbors=1, p=2,
            weights='uniform')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
 </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="n">uniq_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">y_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">uniq_labels</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              precision    recall  f1-score   support
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>              precision    recall  f1-score   support
 
        Buick       1.00      1.00      1.00       100
        Chery       1.00      1.00      1.00       100
@@ -845,23 +1144,47 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
    micro avg       1.00      1.00      1.00      1000
    macro avg       1.00      1.00      1.00      1000
 weighted avg       1.00      1.00      1.00      1000
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Kiểm tra độ chính xác trên tập test
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác trên tập test
 </span><span class="n">dataTest</span><span class="p">,</span> <span class="n">labelsTest</span> <span class="o">=</span> <span class="n">_preprocessing</span><span class="p">(</span><span class="s">'TestData/**/*.jpg'</span><span class="p">)</span>
 <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_dict</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">_transform_data</span><span class="p">(</span><span class="n">dataTest</span><span class="p">,</span> <span class="n">labelsTest</span><span class="p">)</span> 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_predTest</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">y_predTest</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
 </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="n">uniq_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">y_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predTest</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">uniq_labels</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              precision    recall  f1-score   support
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>              precision    recall  f1-score   support
 
        Buick       0.93      0.80      0.86        50
        Chery       0.81      0.96      0.88        50
@@ -877,11 +1200,28 @@ weighted avg       1.00      1.00      1.00      1000
    micro avg       0.82      0.82      0.82       500
    macro avg       0.86      0.82      0.82       500
 weighted avg       0.86      0.82      0.82       500
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Xây dựng model với mạng CNN</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="c1"># loading all images
@@ -898,13 +1238,27 @@ weighted avg       0.86      0.82      0.82       500
 <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">brands</span><span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="s">'/'</span><span class="o">+</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s">"RGB"</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">imgs</span><span class="p">)],</span> <span class="n">order</span><span class="o">=</span><span class="s">'F'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'uint8'</span><span class="p">)</span>
 <span class="c1"># Mỗi ảnh có kích thước 70x70 = 2500 pixel và 3 kênh màu = 14700 pixel
 </span><span class="k">print</span><span class="p">(</span><span class="s">'total images: '</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Buick', 'Chery', 'Citroen', 'Honda', 'Hyundai', 'Lexus', 'Mazda', 'Peugeot', 'Toyota', 'VW']
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>['Buick', 'Chery', 'Citroen', 'Honda', 'Hyundai', 'Lexus', 'Mazda', 'Peugeot', 'Toyota', 'VW']
 total images:  (1000, 14700)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># reshape anh ngược trở về kích thước 70x70x3
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1"># reshape anh ngược trở về kích thước 70x70x3
 </span><span class="n">img_x</span> <span class="o">=</span> <span class="n">img_y</span> <span class="o">=</span> <span class="mi">70</span>
 
 <span class="k">def</span> <span class="nf">ImageConvert</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -916,16 +1270,83 @@ total images:  (1000, 14700)
     <span class="k">return</span> <span class="n">im_ex</span>
 
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">ImageConvert</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">images</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 <span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span><span class="p">,</span> <span class="n">SGD</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span><span class="p">,</span> <span class="n">ModelCheckpoint</span>
@@ -987,9 +1408,45 @@ total images:  (1000, 14700)
 <span class="n">model</span> <span class="o">=</span> <span class="n">contruction</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="c1"># Let's look at the summary
 </span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "sequential_2"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>Model: "sequential_2"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -1025,9 +1482,18 @@ Total params: 21,409,098
 Trainable params: 21,409,098
 Non-trainable params: 0
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">batch</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">early_stopping</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">)</span>
 <span class="n">CNN_file</span> <span class="o">=</span> <span class="s">'10car_1CNN_CMCMCMCMF.h5py'</span>
@@ -1036,9 +1502,22 @@ _________________________________________________________________
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
                     <span class="n">epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
                     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">early_stopping</span><span class="p">,</span> <span class="n">take_best_model</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 800 samples, validate on 200 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>Train on 800 samples, validate on 200 samples
 Epoch 1/100
 800/800 [==============================] - 5s 6ms/sample - loss: 2.6464 - categorical_accuracy: 0.1025 - val_loss: 4.8430 - val_categorical_accuracy: 0.0000e+00
 Epoch 2/100
@@ -1051,17 +1530,23 @@ Epoch 5/100
 800/800 [==============================] - 3s 4ms/sample - loss: 1.5432 - categorical_accuracy: 0.0787 - val_loss: 10.7318 - val_categorical_accuracy: 0.0350
 Epoch 6/100
 800/800 [==============================] - 3s 4ms/sample - loss: 1.2267 - categorical_accuracy: 0.0900 - val_loss: 13.0984 - val_categorical_accuracy: 0.5800
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Vẽ biểu đồ accuracy và loss</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191122_HOG/HOG_40_1.png" width="600px" hieght="300px" /></p>
 

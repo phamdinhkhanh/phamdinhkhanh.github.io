@@ -1,12 +1,12 @@
-//https://blog.webjeda.com/jekyll-toc/
-// Adding 'Contents' headline to the TOC
+/*//https://blog.webjeda.com/jekyll-toc/
+// Adding 'Contents' headline to the TOC*/
 #markdown-toc::before {
     content: "Contents";
     font-weight: bold;
 }
 
 
-// Using numbers instead of bullets for listing
+/*// Using numbers instead of bullets for listing*/
 #markdown-toc ul {
     list-style: decimal;
 }

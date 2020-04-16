@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 3 - Mô hình Word2Vec</p></h2> 
 <strong>29 Apr 2019 - phamdinhkhanh</strong>
@@ -233,7 +235,19 @@ Giả sử chúng ta có từ điển là tợp hợp gồm $n$ từ vựng <cod
 
 <p>Trong python chúng ta có thể biến đổi các từ sang dạng one-hot véc tơ thông qua hàm OneHotEncoder của sklearn. Nhưng trước tiên ta sẽ gán index cho các class bằng LabelEncoder:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'anh'</span><span class="p">,</span> <span class="s">'em'</span><span class="p">,</span> <span class="s">'gia đình'</span><span class="p">,</span> <span class="s">'bạn bè'</span><span class="p">,</span> <span class="s">'anh'</span><span class="p">,</span> <span class="s">'em'</span><span class="p">]</span>
@@ -245,16 +259,33 @@ Giả sử chúng ta có từ điển là tợp hợp gồm $n$ từ vựng <cod
 <span class="k">print</span><span class="p">(</span><span class="s">'Convert to number: '</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="c1"># Biến đổi lại sang class
 </span><span class="k">print</span><span class="p">(</span><span class="s">'Invert into classes: '</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Class of words:  ['anh' 'bạn bè' 'em' 'gia đình']
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Class of words:  ['anh' 'bạn bè' 'em' 'gia đình']
 Convert to number:  [0 2 3 1 0 2]
 Invert into classes:  ['anh' 'em' 'gia đình' 'bạn bè' 'anh' 'em']
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Thực hiện OneHotEncoder</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="n">oh</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
@@ -268,9 +299,26 @@ Invert into classes:  ['anh' 'em' 'gia đình' 'bạn bè' 'anh' 'em']
 <span class="n">one_hot</span> <span class="o">=</span> <span class="n">oh</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words_indices</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Transform words into one-hot matrices: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">one_hot</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Inverse transform to categories from one-hot matrices: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">oh</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">one_hot</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Classes_indices:  [('anh', 0), ('bạn bè', 1), ('em', 2), ('gia đình', 3)]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>Classes_indices:  [('anh', 0), ('bạn bè', 1), ('em', 2), ('gia đình', 3)]
 One-hot categories and indices: [array(['anh', 'bạn bè', 'em', 'gia đình'], dtype=object), array([0, 1, 2, 3], dtype=object)]
 Words and corresponding indices:  [('anh', 0), ('em', 2), ('gia đình', 3), ('bạn bè', 1), ('anh', 0), ('em', 2)]
 Transform words into one-hot matrices: 
@@ -287,7 +335,7 @@ Inverse transform to categories from one-hot matrices:
  ['bạn bè' 1]
  ['anh' 0]
  ['em' 2]]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="2-word-embedding">2. Word Embedding</h1>
 <p>Sau khi biểu diễn từ dưới dạng one-hot véc tơ, mô hình đã có thể huấn luyện được từ dữ liệu được mã hóa. Tuy nhiên dữ liệu này chỉ đáp ứng được khả năng huấn luyện mà chưa phản ảnh được mối liên hệ về mặt ngữ nghĩa của các từ. Các hạn chế đó là:</p>
@@ -335,7 +383,15 @@ Inverse transform to categories from one-hot matrices:
 
 <p>Chúng ta cũng có thể tìm ra biểu diễn của mỗi từ trong từ điển bằng một véc tơ các nhân tố ẩn dựa vào việc lựa chọn một số lượng các giá trị đặc trưng.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="n">ln</span> 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="n">ln</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">underthesea</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 
@@ -343,12 +399,21 @@ Inverse transform to categories from one-hot matrices:
 <span class="n">token</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 <span class="c1"># Tokenize câu search
 </span><span class="k">print</span><span class="p">(</span><span class="s">'tokenization of sentences: '</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tokenization of sentences:  ['Khoa học', 'dữ liệu', 'là', 'một', 'lĩnh vực', 'đòi hỏi', 'kiến thức', 'về', 'toán', 'và', 'lập trình', '.', 'Tôi', 'rất', 'yêu thích', 'Khoa học', 'dữ liệu', '.']
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>tokenization of sentences:  ['Khoa học', 'dữ liệu', 'là', 'một', 'lĩnh vực', 'đòi hỏi', 'kiến thức', 'về', 'toán', 'và', 'lập trình', '.', 'Tôi', 'rất', 'yêu thích', 'Khoa học', 'dữ liệu', '.']
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span>
 <span class="c1"># Tạo ma trận coherence dưới dạng sparse thông qua khai báo vị trí khác 0 của trục x và y
 </span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
 <span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
@@ -356,9 +421,24 @@ Inverse transform to categories from one-hot matrices:
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="n">X</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>array([[0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -373,32 +453,59 @@ Inverse transform to categories from one-hot matrices:
        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Thực hiện phân tích suy biến:
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1"># Thực hiện phân tích suy biến:
 </span><span class="n">U</span><span class="p">,</span> <span class="n">S_diag</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of U: '</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Length of diagonal: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">S_diag</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of V: '</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shape of U:  (15, 15)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Shape of U:  (15, 15)
 Length of diagonal:  15
 Shape of V:  (15, 15)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Các ma trận $\mathbf{U, V}$ lần lượt là ma trận trực giao suy biến trái và phải. Ma trận $\mathbf{S}$ là ma trận đường chéo chính. Ta có:
 <script type="math/tex">\mathbf{U_{15x15}S_{15x15}V_{15x15} = X}</script>
 Đường chéo chính của ma trận $\mathbf{S_{15x15}}$ được sắp xếp theo thứ tự giảm dần. Cần lựa chọn bao nhiêu chiều dữ liệu để biểu diễn từ sẽ lấy bấy nhiêu dòng của ma trận đường chéo chính. Để véc tơ biểu diễn sát nhất chúng ta nên lấy các dòng tương ứng với các giá trị đặc trưng lớp nhất. Chẳng hạn muốn biểu diễn các từ dưới dạng véc tơ 6 chiều ta lấy tích $\mathbf{S_{6 \times 15}V_{15x15}} = \mathbf{X_{6 \times 15}}$. Khi đó các cột của ma trận đầu ra $\mathbf{X_{6 \times  15}}$ sẽ là một véc tơ nhúng của từ tại vị trí tương ứng trong từ điển.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">S_truncate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
 <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">S_truncate</span><span class="p">,</span> <span class="n">S_diag</span><span class="p">[:</span><span class="mi">6</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'S truncate: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">S_truncate</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Word Embedding 6 dimensionality: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S_truncate</span><span class="p">,</span> <span class="n">V</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>S truncate: 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>S truncate: 
  [[2. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
@@ -412,7 +519,7 @@ Word Embedding 6 dimensionality:
  [0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="22-phương-pháp-auto-encoder">2.2. Phương pháp auto encoder</h2>
 
@@ -426,7 +533,24 @@ Word Embedding 6 dimensionality:
 
 <p>Bên dưới chúng ta sẽ tiến hành nhúng từ thông qua auto encoder</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="kn">import</span> <span class="n">RMSprop</span><span class="p">,</span> <span class="n">Adam</span>
 
@@ -443,9 +567,38 @@ Word Embedding 6 dimensionality:
 <span class="n">model_auto</span> <span class="o">=</span> <span class="n">autoencoder</span><span class="p">(</span><span class="n">input_unit</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">hidden_unit</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
 
 <span class="n">model_auto</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_________________________________________________________________
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>_________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
 dense_7 (Dense)              (None, 15)                240       
@@ -474,18 +627,43 @@ Epoch 5/5
 
 
 &lt;keras.callbacks.History at 0x7ff579fdd518&gt;
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mỗi một từ sẽ được biểu diễn bởi véc tơ nhúng có các thành phần là hệ số kết nối hidden units tới output unit tương ứng. Trích xuất layers cuối cùng ta sẽ thu được ma trận nhúng:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">embedding_matrix</span> <span class="o">=</span> <span class="n">model_auto</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">embedding_matrix</span> <span class="o">=</span> <span class="n">model_auto</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">bias</span> <span class="o">=</span> <span class="n">model_auto</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of embedding_matrix: '</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Embedding_matrix: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Shape of embedding_matrix:  (6, 15)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>Shape of embedding_matrix:  (6, 15)
 Embedding_matrix: 
  [[ 0.38889918  0.5211232  -0.35681784 -0.29142842  0.25496536  0.47015667
    0.12295379  0.34093136  0.36910903  0.09683032 -0.41072607 -0.07050186
@@ -505,9 +683,21 @@ Embedding_matrix:
  [ 0.26897088  0.24455284 -0.27629155  0.4157534  -0.27802745  0.12034645
    0.47979772  0.5275412   0.00355813  0.26329502 -0.18948056  0.00509128
    0.4196368   0.4636546   0.08472057]]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
 <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
 
 <span class="k">def</span> <span class="nf">cosine</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -519,27 +709,39 @@ Embedding_matrix:
 </span><span class="n">e1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="c1"># Quan hệ tương quan ngữ nghĩa giữa từ khoa học và dữ liệu
 </span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5303333
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>0.5303333
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tìm từ tương quan nhất với một từ thông qua khoảng cách cosine_similarity.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Từ có khoảng cách lớn nhất với từ khoa học theo thứ tự
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># Từ có khoảng cách lớn nhất với từ khoa học theo thứ tự
 </span><span class="n">cosines</span> <span class="o">=</span> <span class="p">[</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'cosines: '</span><span class="p">,</span> <span class="n">cosines</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">([</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cosines:  [1.0, 0.5303333, -0.59790766, 0.46414658, 0.27999142, 0.6444732, 0.04827654, 0.63190365, 0.52158606, 0.3612144, -0.48850852, -0.4804919, 0.05340819, 0.71187574, -0.27760592]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>cosines:  [1.0, 0.5303333, -0.59790766, 0.46414658, 0.27999142, 0.6444732, 0.04827654, 0.63190365, 0.52158606, 0.3612144, -0.48850852, -0.4804919, 0.05340819, 0.71187574, -0.27760592]
 
 
 
 
 
 array([ 0, 13,  5,  7,  1,  8,  3,  9,  4, 12,  6, 14, 11, 10,  2])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>như vậy 2 từ ở vị trí thứ 13 và 1 tương ứng với <code class="highlighter-rouge">yêu</code> và <code class="highlighter-rouge">dữ liệu</code> là 2 từ có mối liên hệ gần nhất với từ <code class="highlighter-rouge">khoa học</code>. Xét với bối cảnh của 2 câu văn trên cho thấy khá phù hợp bởi 2 cụm từ: <code class="highlighter-rouge">yêu khoa_học</code> và <code class="highlighter-rouge">khoa_học dữ_liệu</code>.</p>
 
@@ -657,7 +859,28 @@ Giả sử chúng ta có một câu văn như sau: <code class="highlighter-roug
 
 <p>Bước 1: Tạo từ điển</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="kn">import</span> <span class="n">text</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="kn">import</span> <span class="n">text</span>
 <span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">np_utils</span>
 <span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="kn">import</span> <span class="n">sequence</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">gutenberg</span>
@@ -678,9 +901,18 @@ Giả sử chúng ta có một câu văn như sau: <code class="highlighter-roug
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Vocabulary Size:'</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Vocabulary Sample:'</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">word2id</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">10</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using TensorFlow backend.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>Using TensorFlow backend.
 
 
 [nltk_data] Downloading package gutenberg to /root/nltk_data...
@@ -689,20 +921,59 @@ Giả sử chúng ta có một câu văn như sau: <code class="highlighter-roug
 [nltk_data]   Unzipping tokenizers/punkt.zip.
 Vocabulary Size: 12746
 Vocabulary Sample: [('the', 1), ('and', 2), ('of', 3), ('to', 4), ('that', 5), ('in', 6), ('he', 7), ('shall', 8), ('unto', 9), ('for', 10)]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 2: Mã hoá toàn bộ các câu văn bằng index.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wids</span> <span class="o">=</span> <span class="p">[[</span><span class="n">word2id</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">text_to_word_sequence</span><span class="p">(</span><span class="n">doc</span><span class="p">)]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">norm_bible</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">wids</span> <span class="o">=</span> <span class="p">[[</span><span class="n">word2id</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">text_to_word_sequence</span><span class="p">(</span><span class="n">doc</span><span class="p">)]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">norm_bible</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Embedding sentence by index: '</span><span class="p">,</span> <span class="n">wids</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Embedding sentence by index:  [[1, 53, 1342, 6058], [1, 280, 2678, 3, 1, 53, 1342, 6058], [1, 254, 448, 3, 162, 194, 8769], [43, 43, 6, 1, 734, 27, 1368, 1, 205, 2, 1, 139], [43, 48, 2, 1, 139, 26, 258, 2085, 2, 2086, 2, 551, 26, 46, 1, 266, 3, 1, 1030]]
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Embedding sentence by index:  [[1, 53, 1342, 6058], [1, 280, 2678, 3, 1, 53, 1342, 6058], [1, 254, 448, 3, 162, 194, 8769], [43, 43, 6, 1, 734, 27, 1368, 1, 205, 2, 1, 139], [43, 48, 2, 1, 139, 26, 258, 2085, 2, 2086, 2, 551, 26, 46, 1, 266, 3, 1, 1030]]
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 3: Xác định <code class="highlighter-rouge">Context --&gt; Target</code>.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="k">def</span> <span class="nf">generate_context_word_pairs</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
     <span class="n">context_length</span> <span class="o">=</span> <span class="n">window_size</span><span class="o">*</span><span class="mi">2</span>
     <span class="k">for</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
@@ -738,9 +1009,20 @@ Vocabulary Sample: [('the', 1), ('and', 2), ('of', 3), ('to', 4), ('that', 5), (
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Context (X): ['the', 'old', 'of', 'the'] -&gt; Target (Y): testament
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>Context (X): ['the', 'old', 'of', 'the'] -&gt; Target (Y): testament
 Context (X): ['old', 'testament', 'the', 'king'] -&gt; Target (Y): of
 Context (X): ['testament', 'of', 'king', 'james'] -&gt; Target (Y): the
 Context (X): ['of', 'the', 'james', 'bible'] -&gt; Target (Y): king
@@ -751,7 +1033,7 @@ Context (X): ['1', '1', 'the', 'beginning'] -&gt; Target (Y): in
 Context (X): ['1', 'in', 'beginning', 'god'] -&gt; Target (Y): the
 Context (X): ['in', 'the', 'god', 'created'] -&gt; Target (Y): beginning
 Context (X): ['the', 'beginning', 'created', 'the'] -&gt; Target (Y): god
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 4: Xây dựng mạng nơ ron gồm 3 layers chính:</p>
 <ol>
@@ -760,7 +1042,21 @@ Context (X): ['the', 'beginning', 'created', 'the'] -&gt; Target (Y): god
   <li>Dense layer: Tính phân phối xác xuất của từ <code class="highlighter-rouge">Target</code> dựa vào hàm softmax.</li>
 </ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">keras.backend</span> <span class="k">as</span> <span class="n">K</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">keras.backend</span> <span class="k">as</span> <span class="n">K</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Lambda</span>
 <span class="n">embed_size</span> <span class="o">=</span> <span class="mi">100</span>
@@ -774,9 +1070,26 @@ Context (X): ['the', 'beginning', 'created', 'the'] -&gt; Target (Y): god
 
 <span class="c1"># view model summary
 </span><span class="k">print</span><span class="p">(</span><span class="n">cbow</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Colocations handled automatically by placer.
 _________________________________________________________________
@@ -793,18 +1106,30 @@ Trainable params: 2,561,946
 Non-trainable params: 0
 _________________________________________________________________
 None
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'number of window: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wids</span><span class="p">))</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'number of window: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wids</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>number of window:  30103
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>number of window:  30103
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 5: Huấn luyện mô hình. 
 Chúng ta sẽ huấn luyện mô hình dựa trên 100 câu văn đầu tiên và trải qua 5 epochs.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">generate_context_word_pairs</span><span class="p">(</span><span class="n">corpus</span><span class="o">=</span><span class="n">wids</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">):</span>
@@ -814,9 +1139,39 @@ Chúng ta sẽ huấn luyện mô hình dựa trên 100 câu văn đầu tiên v
             <span class="k">print</span><span class="p">(</span><span class="s">'Processed {} (context, word) pairs'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
     <span class="k">print</span><span class="p">(</span><span class="s">'Epoch:'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s">'</span><span class="se">\t</span><span class="s">Loss:'</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed 500 (context, word) pairs
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>Processed 500 (context, word) pairs
 Processed 1000 (context, word) pairs
 Processed 1500 (context, word) pairs
 Processed 2000 (context, word) pairs
@@ -846,20 +1201,27 @@ Processed 1500 (context, word) pairs
 Processed 2000 (context, word) pairs
 Processed 2500 (context, word) pairs
 Epoch: 5 	Loss: 16937.563758765813
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 6: Trích xuất ma trận nhúng của các từ.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">cbow</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">id2word</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12745, 100)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(12745, 100)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -1028,13 +1390,19 @@ Epoch: 5 	Loss: 16937.563758765813
 <p>5 rows × 100 columns</p>
 </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># visualize model structure
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># visualize model structure
 </span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
 <span class="kn">from</span> <span class="nn">keras.utils.vis_utils</span> <span class="kn">import</span> <span class="n">model_to_dot</span>
 
 <span class="n">SVG</span><span class="p">(</span><span class="n">model_to_dot</span><span class="p">(</span><span class="n">cbow</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_layer_names</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
                  <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190429_word2vec/output_32_0.svg" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -1042,7 +1410,19 @@ Epoch: 5 	Loss: 16937.563758765813
 
 <p>Bước 1: Chuẩn bị dữ liệu là các cặp [context, target]</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">skipgrams</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">skipgrams</span>
 
 <span class="c1"># generate skip-grams
 </span><span class="n">skip_grams</span> <span class="o">=</span> <span class="p">[</span><span class="n">skipgrams</span><span class="p">(</span><span class="n">wid</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span> <span class="k">for</span> <span class="n">wid</span> <span class="ow">in</span> <span class="n">wids</span><span class="p">[:</span><span class="mi">100</span><span class="p">]]</span>
@@ -1054,9 +1434,19 @@ Epoch: 5 	Loss: 16937.563758765813
           <span class="n">id2word</span><span class="p">[</span><span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> 
           <span class="n">id2word</span><span class="p">[</span><span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> 
           <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(the (1), harmless (6878)) -&gt; 0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>(the (1), harmless (6878)) -&gt; 0
 (king (53), ramoth (4038)) -&gt; 0
 (james (1342), bible (6058)) -&gt; 1
 (king (53), bible (6058)) -&gt; 1
@@ -1066,11 +1456,41 @@ Epoch: 5 	Loss: 16937.563758765813
 (james (1342), lintels (11682)) -&gt; 0
 (king (53), give (155)) -&gt; 0
 (the (1), james (1342)) -&gt; 1
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 2: Xây dựng mạng nơ ron</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">concatenate</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">concatenate</span>
 <span class="c1"># from keras.engine.input_layer import Input
 </span><span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Reshape</span>
 <span class="kn">from</span> <span class="nn">keras.layers.embeddings</span> <span class="kn">import</span> <span class="n">Embedding</span>
@@ -1100,9 +1520,65 @@ Epoch: 5 	Loss: 16937.563758765813
 
 <span class="c1"># view model summary
 </span><span class="k">print</span><span class="p">(</span><span class="s">'model merge word and context: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_________________________________________________________________</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="n">_________________________________________________________________</span>
 <span class="n">Layer</span> <span class="p">(</span><span class="n">type</span><span class="p">)</span>                 <span class="n">Output</span> <span class="n">Shape</span>              <span class="n">Param</span> <span class="p">#</span>   
 <span class="p">=================================================================</span>
 <span class="n">input_20</span> <span class="p">(</span><span class="n">InputLayer</span><span class="p">)</span>        <span class="p">(</span><span class="n">None</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>                 <span class="m">0</span>         
@@ -1158,15 +1634,21 @@ Epoch: 5 	Loss: 16937.563758765813
 <span class="n">__________________________________________________________________________________________________</span>
 <span class="k">model</span> <span class="n">merge</span> <span class="n">word</span> <span class="k">and</span> <span class="n">context</span><span class="p">:</span> 
  <span class="n">None</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># visualize model structure
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># visualize model structure
 </span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
 <span class="kn">from</span> <span class="nn">keras.utils.vis_utils</span> <span class="kn">import</span> <span class="n">model_to_dot</span>
 
 <span class="n">SVG</span><span class="p">(</span><span class="n">model_to_dot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_layer_names</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
                  <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190429_word2vec/output_37_0.svg" width="600px" height="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -1174,7 +1656,21 @@ Epoch: 5 	Loss: 16937.563758765813
 
 <p>Để cho nhanh thì mình sẽ training trên 100 skip_grams đầu tiên.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skip_grams</span><span class="p">[:</span><span class="mi">100</span><span class="p">]):</span>
         <span class="n">pair_first_elem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">]))[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'int32'</span><span class="p">)</span>
@@ -1188,9 +1684,19 @@ Epoch: 5 	Loss: 16937.563758765813
 
     <span class="k">print</span><span class="p">(</span><span class="s">'Epoch:'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s">'Loss:'</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
 
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed 0 (skip_first, skip_second, relevance) pairs
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Processed 0 (skip_first, skip_second, relevance) pairs
 Epoch: 1 Loss: 24.676736623048782
 Processed 0 (skip_first, skip_second, relevance) pairs
 Epoch: 2 Loss: 22.21561288833618
@@ -1200,21 +1706,29 @@ Processed 0 (skip_first, skip_second, relevance) pairs
 Epoch: 4 Loss: 15.21924028545618
 Processed 0 (skip_first, skip_second, relevance) pairs
 Epoch: 5 Loss: 12.227664299309254
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước 4: Trích xuất ra véc tơ nhúng ở layer đầu tiên.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">word_embedding_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s">'word_embedding'</span><span class="p">)</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">word_embedding_layer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">id2word</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12746, 100)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(12746, 100)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -1385,7 +1899,16 @@ Epoch: 5 Loss: 12.227664299309254
 
 <p>Tìm các từ gần nghĩa nhất với 2 từ <code class="highlighter-rouge">['egypt', 'king']</code> dựa trên khoảng cách euclidean.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
 
 <span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">distance_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1394,9 +1917,17 @@ Epoch: 5 Loss: 12.227664299309254
                    <span class="k">for</span> <span class="n">search_term</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'egypt'</span><span class="p">,</span> <span class="s">'king'</span><span class="p">]}</span>
 
 <span class="n">similar_words</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12746, 12746)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>(12746, 12746)
 
 
 
@@ -1404,11 +1935,28 @@ Epoch: 5 Loss: 12.227664299309254
 
 {'egypt': ['ethiopia', 'earth', 'dwell', 'go', 'from'],
  'king': ['out', 'these', 'by', 'lord', 'son']}
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Biểu diễn các từ trong không gian nén 100 chiều về 2 chiều.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">words</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">similar_words</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="p">[])</span>
@@ -1425,10 +1973,11 @@ Epoch: 5 Loss: 12.227664299309254
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">T</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">'steelblue'</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s">'k'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">T</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s">'offset points'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Total words: 12 	Word Embedding shapes: (12, 100)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Total words: 12 	Word Embedding shapes: (12, 100)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190429_word2vec/output_45_1.png" width="600px" height="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -1438,15 +1987,21 @@ Epoch: 5 Loss: 12.227664299309254
 
 <p>Cách training trên chỉ sử dụng để chúng ta hiểu rõ cơ chế hoạt động của 2 phương pháp <strong>skip-grams</strong> và <strong>CBOW</strong> trong mô hình word2vec. Trên thực tế mô hình có thể được training trên gensim với chỉ 1 vài dòng rất đơn giản như sau:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
 <span class="c1"># Training model với 1000 câu đầu tiên trong kinh thánh
 </span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">norm_bible</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">total_examples</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">corpus_count</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(210070, 336740)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(210070, 336740)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Trong đó có một số tham số quan trọng trong Word2Vec như sau:</p>
 
@@ -1457,12 +2012,48 @@ Epoch: 5 Loss: 12.227664299309254
   <li>wokers: Số core CPU được huy động để huấn luyện. Càng nhiều core tốc độ huấn luyện càng nhanh.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Lấy véc tơ biểu diễn của từ king
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1"># Lấy véc tơ biểu diễn của từ king
 </span><span class="k">print</span><span class="p">(</span><span class="s">'embedding vector shape: '</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>embedding vector shape:  (150,)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>embedding vector shape:  (150,)
 
 array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
         0.16904514,  0.13904604, -0.389859  , -0.27150822, -0.20627081,
@@ -1495,12 +2086,24 @@ array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
        -0.06671996,  0.1638959 ,  0.4423822 ,  0.24692418, -0.09863947,
        -0.06495735, -0.5664116 ,  0.52329963,  0.01605448,  0.33879682],
       dtype=float32)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Lấy các từ có mối liên hệ gần nhất với 1 từ dựa trên khoảng cách
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># Lấy các từ có mối liên hệ gần nhất với 1 từ dựa trên khoảng cách
 </span><span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s">'king'</span><span class="p">)</span>
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('admah', 0.8957317471504211),
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>[('admah', 0.8957317471504211),
  ('tidal', 0.872719407081604),
  ('zeboiim', 0.8709798455238342),
  ('shinar', 0.870228111743927),
@@ -1510,7 +2113,7 @@ array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
  ('chedorlaomer', 0.8627975583076477),
  ('amraphel', 0.861689031124115),
  ('bela', 0.8449435830116272)]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="3-tài-liệu-tham-khảo">3. Tài liệu tham khảo</h1>
 

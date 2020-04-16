@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 16 - Model RFM phân khúc khách hàng</p></h2> 
 <strong>08 Nov 2019 - phamdinhkhanh</strong>
@@ -336,17 +338,36 @@ Một cách khá đơn giản là tính trung bình ranks của các biến ta t
 <p><strong>Bước 1:</strong> Thu thập dữ liệu đơn hàng.
 Dữ liệu được tôi sử dụng cho bài viết này được lấy từ một cuộc thi trên kaggle. Bạn đọc có thể download tại <a href="https://drive.google.com/file/d/1fAF2ZJC9F7N5qjacQ0tAn7YS8hQU4wFU/view?usp=sharing">dataCustomerRFM</a></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">pyodbc</span>
  
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'dataCustomerRFM.csv'</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191108_RFMModel/dfCustomerTable.png" width="700px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p><strong>Bước 2 :</strong> Tính các giá trị Recency, Frequency và Monetary</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="c1"># 1. Calculate Recency
 # 1.1. Find the most recent orderDate.
 </span>
@@ -360,46 +381,65 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfRecentOrder</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s">'CustomerID'</span><span class="p">])</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'RecentOrderDate'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'RecentOrderDate'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">))</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'RecentOrderDate'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Do số ngày gần nhất kể từ lần mua hàng cuối cùng càng cao thì mức độ active của khách hàng càng thấp. Do đó giá trị này càng nhỏ thì khách hàng đó càng có thứ hạng cao. Chính vì vậy ta cần đổi dấu của Recency để giá trị của biến đồng biến với rank của khách hàng.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Đổi dấu recency
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1"># Đổi dấu recency
 </span><span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo ta sẽ tính tần suất của khách hàng mua hàng trong toàn bộ thời gian nghiên cứu.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2. Calculate Frequency
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># 2. Calculate Frequency
 </span><span class="n">dfFrequency</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">OrderID</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">dfFrequency</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Frequency'</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfFrequency</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'CustomerID'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Cuối cùng là tính tổng số tiền mà khách hàng đã chi tiêu.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3. Calculate Monetary
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1"># 3. Calculate Monetary
 </span><span class="n">dfMonetary</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">dfMonetary</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Monetary'</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfMonetary</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'CustomerID'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Bước 3:</strong> Mapping giá trị các trường Recency, Frequency, Monetary với rank tương ứng trong ngưỡng ranks là 10.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">orderFrequencies</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Frequency'</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">'first'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">orderFrequencies</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'Frequency'</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">'first'</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'rFrequency'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">orderFrequencies</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[[</span><span class="s">'rRecency'</span><span class="p">,</span> <span class="s">'rMonetary'</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">'Recency'</span><span class="p">,</span> <span class="s">'Monetary'</span><span class="p">]]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="bp">False</span><span class="p">))</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'rFrequency'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s">'rRecency'</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s">'rMonetary'</span><span class="p">])</span><span class="o">/</span><span class="mi">3</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'FinalRank'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy chúng ta đã tính xong rank cho từng khách hàng. Hãy cùng xem phân phối điểm rank của khách hàng như thế nào thông qua biểu đồ histogram với số lượng bins = 10.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_13_0.png" width="500px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Ta nhận thấy biểu đồ có hình dạng phân phối chuẩn. Điều này cho thấy tập khách hàng của công ty đa phần sẽ nằm ở những điểm rank nằm trong khoảng trung bình, chẳng hạn từ 4-6. Với các điểm rank quá cao hoặc quá thấp thì số lượng khách hàng tập trung càng thấp.</p>
@@ -412,19 +452,27 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
   <li>Khách hàng VIP - nhãn <strong>VIP</strong>: Rank [7, 9]</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># help(pd.qcut)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># help(pd.qcut)
 # df['rank'].min()
 </span>
 <span class="n">df</span><span class="p">[</span><span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Low'</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">),</span> <span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Normal'</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">,</span> <span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'VIP'</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Thống kê số lượng khách hàng theo mỗi Segment.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">CustomerID</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span> <span class="o">=</span> <span class="s">'</span><span class="si">%.2</span><span class="s">f</span><span class="si">%%</span><span class="s">'</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">CustomerID</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span> <span class="o">=</span> <span class="s">'</span><span class="si">%.2</span><span class="s">f</span><span class="si">%%</span><span class="s">'</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Tỷ lệ số lượng khách hàng theo segment KH'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_17_1.png" width="400px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -432,33 +480,41 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 
 <p>Tiếp theo chúng ta sẽ visualize biểu đồ theo doanh số, tần suất mua hàng, thời gian quay trở lại của các nhóm khách hàng sau khi đã segment.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span> <span class="o">=</span> <span class="s">'</span><span class="si">%.2</span><span class="s">f</span><span class="si">%%</span><span class="s">'</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span> <span class="o">=</span> <span class="s">'</span><span class="si">%.2</span><span class="s">f</span><span class="si">%%</span><span class="s">'</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Tỷ lệ doanh số theo segment KH'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_19_1.png" width="400px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Khách hàng normal lại là khách hàng mang lại doanh số lớn nhất cho công ty, chiến tới gần 80%. Công ty vẫn chưa thể đạt được mục tiêu 20% khách hàng VIP mang lại 80% lợi nhuận.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Doanh số theo segment KH'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_21_1.png" width="400px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Trung bình một khách hàng VIP tiêu khoảng 3.5 triệu. Khách hàng thông thường tiêu khoảng 2.9 triệu và khách hàng Thấp tiêu dưới 1 triệu. Chênh lệch tiêu thụ giữa khách hàng thông thường và khách hàng VIP không quá lớn. Trong khi chênh lệch này so với khách hàng ít tiềm năng là rất lớn. Công ty đang chưa có một tập khách hàng thực sự gọi là VIP hẳn. Đừng buồn vì các điều chỉnh về chính sách sản phẩm và chăm sóc khách hàng phù hợp sẽ cải thiện dần các chỉ số này.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Frequency</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Frequency</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Tần suất mua hàng theo segment KH'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_23_1.png" width="400px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Khách hàng thông thường mua nhiều đơn hàng hơn so với các khách hàng VIP. Khách hàng ít tiềm năng mua quá ít đơn hàng.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Recency</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Segment'</span><span class="p">)</span><span class="o">.</span><span class="n">Recency</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Số ngày mua hàng gần nhất theo segment KH'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191108_RFMModel/RFMModel_25_1.png" width="400px" height="500px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 

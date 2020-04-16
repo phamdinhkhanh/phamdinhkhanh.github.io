@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 19 - Mô hình ARIMA trong time series</p></h2> 
 <strong>12 Dec 2019 - phamdinhkhanh</strong>
@@ -295,7 +297,17 @@ Phương trình hồi qui ARIMA(p, d, q) có thể được biểu diễn dướ
 
 <p>Bây giờ chúng ta sẽ cùng lấy dữ liệu chỉ số VNINDEX 30 thông qua package vnquant nào.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from vnquant.DataLoader import DataLoader
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>from vnquant.DataLoader import DataLoader
 
 loader = DataLoader(symbols="VN30",
            start="2019-01-01",
@@ -305,11 +317,13 @@ loader = DataLoader(symbols="VN30",
 
 data = loader.download()
 data.head()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2019-12-12 04:22:07,057 : INFO : NumExpr defaulting to 2 threads.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>2019-12-12 04:22:07,057 : INFO : NumExpr defaulting to 2 threads.
 2019-12-12 04:22:07,076 : INFO : data VN30 from 2019-01-01 to 2019-12-09 have already cloned!
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -443,12 +457,17 @@ data.head()
 
 <p>Sử dụng hàm visualization trên chính vnquant để visualize dữ liệu lịch sử giá và khối lượng giao dịch.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from vnquant import Plot
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>from vnquant import Plot
 Plot._vnquant_candle_stick(data = data,
                       title='VNIndex 30 from 2019-01-02 to 2019-12-09',
                       ylab='Date', xlab='Price',
                       show_vol=True)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/vnindex30.png" width="750px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -463,20 +482,27 @@ Plot._vnquant_candle_stick(data = data,
 <p>Mục tiêu của mô hình sẽ là dự báo chuỗi $r_t$. Từ chuỗi $r_t$ ta có thể dễ dàng biến đổi ngược lại thành giá đóng cửa của chuỗi VnIndex 30.
 Hàm <code class="highlighter-rouge">data.shift(1)</code> sẽ giúp ta lấy trễ bậc 1 của chuỗi giá close. Công thức tính toán lợi suất như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>import numpy as np
 # Tính chuỗi return
 r_t = np.log(data['close']/data['close'].shift(1)).values[:, 0]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Fill giá trị <code class="highlighter-rouge">np.nan</code> bằng trung bình chuỗi.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean = np.nanmean(r_t)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>mean = np.nanmean(r_t)
 r_t[0]=mean
 r_t[:5]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0.00012009, -0.01991272,  0.00164388,  0.01328955, -0.00704843])
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>array([ 0.00012009, -0.01991272,  0.00164388,  0.01328955, -0.00704843])
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Các biểu đồ:</strong></p>
 
@@ -486,7 +512,16 @@ r_t[:5]
 
 <p>Để hiểu rõ hơn về xu hướng, biến động, ta hãy cùng vẽ biểu đồ chuỗi lợi suất $r_t$.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 plt.figure(figsize=(16, 4))
 plt.plot(np.arange(r_t.shape[0]), r_t, '-o')
 plt.axhline(y=mean, label='mean return', c='red')
@@ -495,7 +530,7 @@ plt.xlabel('Date Order')
 plt.ylabel('Return Rate')
 plt.legend()
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_15_0.png" width="750px" height="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -507,14 +542,21 @@ plt.show()
 
 <p>Ta có thể vẽ biểu đồ biểu diễn chuỗi $r_t$ dựa trên chuỗi $r_{t-1}$ để xem chúng có quan hệ tuyến tính hay ngẫu nhiên.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 8))
 plt.scatter(x=r_t[1:], y=r_t[:-1])
 plt.title('Return rate vs Lag order 1 according to date')
 plt.xlabel('r(t-1)')
 plt.ylabel('r(t)')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_17_0.png" width="400px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Đồ thị cho thấy 2 chuỗi $r_t$ và $r_{t-1}$ không có mối quan hệ tương quan. Biểu đồ của chúng là một tợp hợp các điểm không tuân theo một trend cụ thể.</p>
@@ -525,7 +567,16 @@ plt.show()
 
 <p>Ta hãy cũng khảo sát qua biểu đồ phân phối xác suất của chuỗi lợi suất.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sns
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import seaborn as sns
 
 plt.figure(figsize = (8, 6))
 sns.distplot(r_t, bins = 20)
@@ -534,7 +585,7 @@ plt.title('Distribution return of VnIndex30')
 plt.legend()
 plt.xlabel('return rate')
 plt.ylabel('frequency')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_20_1.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Từ biểu đồ phân phối lợi suất ta nhận thấy chuỗi phân phối lợi suất dường như có dạng phân phối chuẩn và có kì vọng bằng 0. Chúng ta có thể kiểm định phân phối chuẩn thông qua biểu đồ qqplot (quantiles quantiles plot).</p>
@@ -549,20 +600,27 @@ Từ biểu đồ ta kết luận 2 chuỗi có phân phối tương tự nhau n
 
 <p>Cách 1: Sử dụng trực tiếp hàm <code class="highlighter-rouge">sm.qqplot()</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import statsmodels.api as sm
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>import statsmodels.api as sm
 sm.qqplot(r_t)
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_22_0.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Cách 2: Tính ra chuỗi lý thuyết và vẽ đồ thị
 Chúng ta cũng có thể vẽ biểu đồ qqplot bằng cách tính ra trực tiếp giá trị phân phối thực nhiệm (Theoretical Quantiles) và vẽ biểu đồ lợi suất thực tế đã được sắp xếp theo thứ tự tăng dần (Sample Quantiles).</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from scipy import stats
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from scipy import stats
 tq = stats.probplot(r_t)
 plt.scatter(x=tq[0][0], y = tq[0][1])
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_24_0.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Như vậy từ đồ thị ta có thể khẳng định chuỗi lợi suất có phân phối chuẩn vì đồ thị của phân phối lý thuyết và phân phối thực nghiệm nằm trên cùng một đường thẳng.</p>
@@ -630,22 +688,35 @@ H1: |\phi| < 1, \Rightarrow \text{non-unit root}
 <script type="math/tex">DF = \frac{\hat\phi - 1}{SE(\hat\phi)}</script>
 Chúng ta sẽ so sánh giá trị ngưỡng kiểm định này với giá trị tới hạn của phân phối Dickey - Fuller để đưa ra kết luận về chấp nhận hoặc bác bỏ giả thuyết $H_0$. Trên python đã hỗ trợ kiểm định ADF thông qua package <code class="highlighter-rouge">statsmodels</code>. Ta sẽ kiểm định ADF cho chuỗi lợi suất.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.tsa.stattools import adfuller
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>from statsmodels.tsa.stattools import adfuller
 result = adfuller(r_t)
 print('ADF Statistic: %f' % result[0])
 print('p-value: %f' % result[1])
 print('Critical Values:')
 for key, value in result[4].items():
 	print('\t%s: %.3f' % (key, value))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ADF Statistic: -14.707253
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>ADF Statistic: -14.707253
 p-value: 0.000000
 Critical Values:
 	1%: -3.459
 	5%: -2.874
 	10%: -2.573
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Gía trị p-value &lt; 0.05, kết luận chúng ta sẽ bác bỏ giả thuyết $H_0$. Phương trình đặc trưng không có nghiệm đơn vị. Do đó chuỗi lợi suất có tính chất dừng.</p>
 
@@ -663,11 +734,15 @@ Hệ số tự tương quan bậc $s$ được xác định như sau:</p>
 
 <p>giá trị $\rho(s,t)$ đo lường khả năng dự báo của biến $x_t$ nếu chỉ sử dụng biến $x_s$. Trong trường hợp 2 đại lượng có tương quan hoàn hảo tức $\rho(s,t)=±1$ ta có thể biểu diễn $x_t=\beta_0+\beta_1 x_s$. Hệ số của $\beta_1$ sẽ ảnh hưởng lên chiều của hệ số tương quan. Theo đó $\rho(s, t)=1$ khi $\beta_1&gt;0$ và $\rho(s,t)=−1$ khi $\beta_1&lt;0$. Chúng ta có thể vẽ biểu đồ các hệ số tự tương quan ACF theo các bậc liên tiếp thông qua hàm plot_acf của <code class="highlighter-rouge">statsmodels</code> như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 plt.figure(figsize = (8, 6))
 ax1 = plot_acf(r_t)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_30_1.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Trục hoành là độ trễ, trục tung là giá trị của hệ số tự tương quan tương ứng với độ trễ. Dải màu hồng chính là khoảng tin cậy 95% để giá trị hệ số tự tương quan bằng 0. Nếu tại một độ trễ nhỏ nhất mà đoạn thẳng (vuông góc với trục hoành) mà độ dài đại diện cho giá trị của hệ số tự tương quan nằm ngoài khoảng tin cậy thì đó chính là độ trễ phù hợp lớn nhất mà ta nên lựa chọn cho quá trình trung bình trượt $\text{MV}(q)$.
@@ -692,11 +767,15 @@ Gía trị ước lượng của mô hình đối với $x_t$ chính là:</p>
 Đó là tất cả về PACF. Khá dễ hiểu phải không nào?
 PACF sẽ có tác dụng tìm ra hệ số bậc tự do $p$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 plt.figure(figsize = (8, 6))
 ax2 = plot_pacf(r_t)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_33_1.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Tương tự như ACF, bậc của PACF cũng thường nhỏ hơn 5. Như vậy ta cũng có thể lựa chọn bậc tự do của PACF là một giá trị nào đó từ 1 đến 5.
@@ -722,14 +801,45 @@ Giả sử rằng chúng ta có một mô hình thống kê tương ứng với 
 
 <p>Mô hình ARIMA có thể được xây dựng khá dễ dàng trên python thông qua package <code class="highlighter-rouge">statsmodels</code>. Điều mà chúng ta cần thực hiện chỉ là khai báo bậc của mô hình ARIMA. Giả sử cần xây dựng một mô hình ARIMA(2, 0, 0) ta thực hiện như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.tsa.arima_model import ARIMA
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>from statsmodels.tsa.arima_model import ARIMA
 
 model_arima = ARIMA(r_t, order = (2, 0, 2))
 model_fit = model_arima.fit()
 print(model_fit.summary())
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                              ARMA Model Results                              
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>                              ARMA Model Results                              
 ==============================================================================
 Dep. Variable:                      y   No. Observations:                  234
 Model:                     ARMA(2, 2)   Log Likelihood                 826.298
@@ -755,7 +865,7 @@ AR.2           -0.2159           +0.9802j            1.0037            0.2845
 MA.1           -0.2313           -0.9731j            1.0002           -0.2871
 MA.2           -0.2313           +0.9731j            1.0002            0.2871
 -----------------------------------------------------------------------------
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bảng trên chính là summary kết quả từ mô hình ARIMA.</p>
 
@@ -787,7 +897,20 @@ MA.2           -0.2313           +0.9731j            1.0002            0.2871
 <p>Trên đây là những điểm sơ đẳng nhất mà tôi rút ra từ kinh nghiệm của mình. Ngoài ra còn rất nhiều những sự khác biệt nữa giữa machine learning và thống kê, kinh tế lượng mà làm nhiều chúng ta sẽ tự đúc kết ra.
 Quay trở lại việc lựa chọn mô hình tốt nhất trong lớp các mô hình ARIMA, đơn giản chúng ta có thể căn cứ trên AIC như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">statsmodels</span><span class="p">.</span><span class="n">tsa</span><span class="p">.</span><span class="n">arima_model</span> <span class="n">import</span> <span class="n">ARIMA</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">statsmodels</span><span class="p">.</span><span class="n">tsa</span><span class="p">.</span><span class="n">arima_model</span> <span class="n">import</span> <span class="n">ARIMA</span>
 
 <span class="n">def</span> <span class="n">_arima_fit</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
   <span class="n">models</span> <span class="p">=</span> <span class="n">dict</span><span class="p">()</span>
@@ -800,13 +923,17 @@ Quay trở lại việc lựa chọn mô hình tốt nhất trong lớp các mô
 
 <span class="n">orders</span> <span class="p">=</span> <span class="p">[(</span><span class="m">2</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">)]</span>
 <span class="n">models</span> <span class="p">=</span> <span class="n">_arima_fit</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">r_t</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ARIMA(2,0,2) --&gt; AIC=-1640.5962884691016; BIC=-1619.8643617769553
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>ARIMA(2,0,2) --&gt; AIC=-1640.5962884691016; BIC=-1619.8643617769553
 ARIMA(2,0,0) --&gt; AIC=-1637.2904778611642; BIC=-1623.4691933997333
 ARIMA(5,0,0) --&gt; AIC=-1633.0803506362663; BIC=-1608.8931028287625
 ARIMA(0,0,5) --&gt; AIC=-1633.0818121578536; BIC=-1608.8945643503498
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ta nhận thấy mô hình ARIMA(2,0,2) là phù hợp nhất với bộ dữ liệu lợi suất vì nó tương ứng với chỉ số AIC là nhỏ nhất.</p>
 
@@ -821,7 +948,17 @@ pip install pyramid-arima
 
 <p>Xây dựng phương trình hồi qui theo phương pháp Auto ARIMA</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">pyramid</span><span class="p">.</span><span class="n">arima</span> <span class="n">import</span> <span class="n">auto_arima</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">pyramid</span><span class="p">.</span><span class="n">arima</span> <span class="n">import</span> <span class="n">auto_arima</span>
 <span class="k">model</span> <span class="p">=</span> <span class="n">auto_arima</span><span class="p">(</span><span class="n">r_t</span><span class="p">,</span> <span class="n">start_p</span><span class="p">=</span><span class="m">0</span><span class="p">,</span> <span class="n">start_q</span><span class="p">=</span><span class="m">0</span><span class="p">,</span>
                            <span class="n">max_p</span><span class="p">=</span><span class="m">5</span><span class="p">,</span> <span class="n">max_q</span><span class="p">=</span><span class="m">5</span><span class="p">,</span> <span class="n">m</span><span class="p">=</span><span class="m">12</span><span class="p">,</span>
                            <span class="n">start_P</span><span class="p">=</span><span class="m">0</span><span class="p">,</span> <span class="n">seasonal</span><span class="p">=</span><span class="nb">False</span><span class="p">,</span>
@@ -831,15 +968,21 @@ pip install pyramid-arima
                            <span class="n">stepwise</span><span class="p">=</span><span class="nb">True</span><span class="p">)</span>
 
 <span class="n">print</span><span class="p">(</span><span class="k">model</span><span class="p">.</span><span class="n">aic</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fit ARIMA: order=(0, 0, 0); AIC=-1640.286, BIC=-1633.376, Fit time=0.015 seconds
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>Fit ARIMA: order=(0, 0, 0); AIC=-1640.286, BIC=-1633.376, Fit time=0.015 seconds
 Fit ARIMA: order=(1, 0, 0); AIC=-1638.538, BIC=-1628.172, Fit time=0.035 seconds
 Fit ARIMA: order=(0, 0, 1); AIC=-1638.569, BIC=-1628.203, Fit time=0.042 seconds
 Fit ARIMA: order=(1, 0, 1); AIC=nan, BIC=nan, Fit time=nan seconds
 Total fit time: 0.119 seconds
 -1640.286473393612
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ở đây chúng ta sẽ khai báo điểm bắt đầu và kết thúc của $p, q$, bậc của $d$ và phương pháp điều chỉnh mô hình là stepwise.</p>
 
@@ -849,8 +992,9 @@ Total fit time: 0.119 seconds
 
 <p>Kết quả mô hình tốt nhất thu được là ARIMA(0, 0, 0):</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.summary()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model.summary()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="simpletable">
 <caption>ARMA Model Results</caption>
@@ -888,26 +1032,38 @@ Total fit time: 0.119 seconds
 <h2 id="45-kiếm-tra-yếu-tố-mùa-vụ">4.5. Kiếm tra yếu tố mùa vụ</h2>
 <p>Trong một số chuỗi thời gian thường xuất hiện yếu tố mùa vụ. Việc tìm ra chu kì và qui luật mùa vụ sẽ giúp cho mô hình dự báo chuẩn xác hơn. Yếu tố mùa vụ cũng không phải là một trong những yếu tố quá khó nhận biết. Chúng ta có thể dễ dàng phát hiện ra chúng thông qua đồ thị của chuỗi. Chẳng hạn bên dưới là dữ liệu <a href="https://fred.stlouisfed.org/series/IPG2211A2N">sản xuất công nghiệp điện và khí đốt</a> tại Hoa Kỳ từ năm 1985 đến năm 2019, với tần suất theo tháng. Chúng ta hãy cùng xem biểu diễn đồ thị của chuỗi.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 import matplotlib.pyplot as plt
 
 df_season = pd.read_csv('USAElectricAndGas.csv', parse_dates=['DATE'], index_col='DATE')
 df_season.columns = ['Quantity']
 print('data frame shape: ', df_season.shape)
 df_season.plot(figsize=(16, 4))
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data frame shape:  (418, 1)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>data frame shape:  (418, 1)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_45_2.png" width="750px" height="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Ta nhận thấy chuỗi có chu kì là 1 năm. Nhu cầu tiêu thụ điện và gas tăng vào những tháng mùa đông do nhu cầu sưởi ấm tăng cao. Ngoài ra chúng ta có thể sử dụng một phép phân rã mùa vụ (seasonal decompose) để trích lọc ra các thành phần cấu thành nên chuỗi bao gồm: xu hướng (trend), mùa vụ (seasonal), phần dư (residual) như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.tsa.seasonal import seasonal_decompose
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from statsmodels.tsa.seasonal import seasonal_decompose
 result = seasonal_decompose(df_season, model='multiplicative')
 fig = result.plot()
 fig.set_size_inches(16, 12)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_47_0.png" width="750px" height="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -918,33 +1074,53 @@ fig.set_size_inches(16, 12)
 <p><strong>Phân chia tập train/test</strong>
 Đầu tiên để thuận tiện cho việc kiêm định mô hình dự báo chúng ta sẽ phân chia tập train/test sao cho năm 2019 sẽ được sử dụng làm dữ liệu test và dữ liệu còn lại được sử dụng để huấn luyện mô hình.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>train, test = df_season[df_season.index &lt; '2019-01-01'], df_season[df_season.index &gt;= '2019-01-01']
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>train, test = df_season[df_season.index &lt; '2019-01-01'], df_season[df_season.index &gt;= '2019-01-01']
 print('train shape: ', train.shape)
 print('test shape: ', test.shape)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>train shape:  (408, 1)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>train shape:  (408, 1)
 test shape:  (10, 1)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Chúng ta sẽ cùng kiểm tra xem các đặc tính tự tương quan và tương quan riêng phần của chuỗi tiêu thụ điện và gas ra sao. Từ đó quyết định xem quá trình tự hồi qui và trung bình trượt của mô hình ARIMA nên nằm trong khoảng giá trị bao nhiêu và sử dụng phương pháp stepwise để tìm kiếm mô hình phù hợp nhất.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 
 plot_pacf(train)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_52_0.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plot_acf(train)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>plot_acf(train)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_53_0.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Như vậy từ biểu đồ ta có thể lựa chọn bậc tự tương quan riêng phần PACF và tự tương quan ACF là các giá trị nhỏ hơn hoặc bằng 5. Do chuỗi có trend nên chúng ta sẽ lấy sai phân bậc 1 để tạo chuỗi dừng, hay nói cách khác bậc của intergration $d=1$. Ngoài ra chúng ta cần phải xác định thêm các bậc $(P, D, Q)$ của yếu tố mùa vụ được trích xuất từ chuỗi ban đầu. Để mô hình hiểu được chúng ta đang hồi qui trên mô hình SARIMA thì cần thiết lập tham số <code class="highlighter-rouge">seasonal=True</code> và chu kì của mùa vụ <code class="highlighter-rouge">m=12</code>. Chiến lược stepwise sẽ tự động tìm cho ta một mô hình tốt nhất dựa trên tham số đã thiết lập.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pyramid.arima import auto_arima
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>from pyramid.arima import auto_arima
 model_sarima = auto_arima(train, start_p=0, start_q=0,
                            max_p=5, max_q=5, m=12,
                            start_P=0, seasonal=True,
@@ -954,21 +1130,29 @@ model_sarima = auto_arima(train, start_p=0, start_q=0,
                            stepwise=True)
 
 print(model_sarima.aic())
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fit ARIMA: order=(0, 1, 0) seasonal_order=(0, 1, 1, 12); AIC=1944.015, BIC=1955.951, Fit time=0.761 seconds
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>Fit ARIMA: order=(0, 1, 0) seasonal_order=(0, 1, 1, 12); AIC=1944.015, BIC=1955.951, Fit time=0.761 seconds
 Fit ARIMA: order=(0, 1, 0) seasonal_order=(0, 1, 0, 12); AIC=2081.725, BIC=2089.682, Fit time=0.050 seconds
 ...
 Fit ARIMA: order=(1, 1, 1) seasonal_order=(2, 1, 2, 12); AIC=1832.589, BIC=1864.420, Fit time=16.458 seconds
 Fit ARIMA: order=(2, 1, 2) seasonal_order=(2, 1, 2, 12); AIC=1837.042, BIC=1876.831, Fit time=18.368 seconds
 Total fit time: 186.823 seconds
 1832.5893833106343
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Phương pháp stepwise đã giúp chúng ta tìm được mô hình SARIMA tốt nhất cho bài toán dự báo như bên dưới:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model_sarima.summary()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model_sarima.summary()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="simpletable">
 <caption>Statespace Model Results</caption>
@@ -1045,7 +1229,26 @@ Total fit time: 186.823 seconds
 
 <p>Sau khi đã tìm ra được mô hình ARIMA tốt nhất. Chúng ta sẽ dự báo cho khoảng thời gian tiếp theo. Dự báo cho chuỗi thời gian khá đặc thù và khác biệt so với các lớp mô hình dự báo khác vì giá trị time step liền trước sẽ được sử dụng để dự báo cho time step liền sau. Do đó đòi hỏi phải có một vòng lặp liên tiếp dự báo qua các bước thời gian. Rất may mắn là hàm <code class="highlighter-rouge">predict()</code> đã tự động giúp ta thực hiện việc đó. Ta sẽ chỉ phải xác định số lượng phiên tiếp theo muốn dự báo là bao nhiêu. Chẳng hạn bên dưới ta sẽ dự báo cho 10 tháng tới tương ứng trên tập <code class="highlighter-rouge">test</code> kèm theo giá trị ngưỡng tin cậy của nó.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_pred_perious = 10
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>n_pred_perious = 10
 fitted, confint = model_sarima.predict(n_periods=n_pred_perious, return_conf_int=True)
 date = pd.date_range(train.index[-1], periods=n_pred_perious, freq='MS')
 
@@ -1064,7 +1267,7 @@ plt.ylim((0, 130))
 plt.legend()
 plt.title('SARIMA regression model forecast for 12 next months')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191212_ARIMAmodel/ARIMAmodel_60_0.png" width="600px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -1079,7 +1282,21 @@ plt.show()
 
 <p>Các chỉ số này càng nhỏ thì chứng tỏ mô hình dự báo càng khớp với giá trị thực tế. Mô hình có thể được tính toán trên tập test như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _measure_metric(y, yhat):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>def _measure_metric(y, yhat):
   e = y-yhat
   mse=np.mean(e**2)
   rmse=np.sqrt(mse)
@@ -1093,13 +1310,17 @@ plt.show()
   return mse, rmse, mae, mape
 
 mse, rmse, mae, mape=_measure_metric(test.values[0], fitted)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Mean Square Error: 476.3896685459648
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>Mean Square Error: 476.3896685459648
 Root Mean Square Error: 21.826352616641305
 Mean Absolute Error: 19.369003668097253
 Mean Absolute Percentage Error: 0.1564646147420661
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Giải thích ý nghĩa các thông số:</p>
 

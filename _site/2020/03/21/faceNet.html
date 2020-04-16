@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 28 - Thực hành training Facenet</p></h2> 
 <strong>21 Mar 2020 - phamdinhkhanh</strong>
@@ -210,13 +212,19 @@ body {
 
 <p>Trước tiên để làm việc được với notebook bạn cần mount folder google drive:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from google.colab import drive
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
 import os
 
 drive.mount("/content/gdrive")
 path = "/content/gdrive/My Drive/[thay folder của bạn vào đây]"
 os.chdir(path)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="11-install-face_recognition">1.1. install face_recognition</h2>
 
@@ -241,12 +249,15 @@ os.chdir(path)
 
 <p>Để cài package bạn gõ lệnh</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!pip install face_recognition
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!pip install face_recognition
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Collecting face_recognition
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Collecting face_recognition
 Successfully installed face-recognition-1.3.0 face-recognition-models-0.3.0
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="12-các-packages-khác">1.2. Các packages khác</h2>
 
@@ -258,12 +269,15 @@ Successfully installed face-recognition-1.3.0 face-recognition-models-0.3.0
 
 <p>Tôi đã chuẩn bị sẵn một bộ dữ liệu này. Bạn run lệnh bên dưới để clone data.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!git clone https://github.com/phamdinhkhanh/FacenetDataset.git ./Dataset
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!git clone https://github.com/phamdinhkhanh/FacenetDataset.git ./Dataset
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cloning into './Dataset2'...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Cloning into './Dataset2'...
 Checking out files: 100% (150/150), done.
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mỗi folder là ảnh của một người. Chúng ta có tổng cộng 5 folder</p>
 
@@ -282,7 +296,23 @@ Checking out files: 100% (150/150), done.
 
 <p>Do model được huấn luyện từ pytorch nên sẽ cần các hàm để load model từ lên opencv như bên dưới.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">H</span><span class="err">à</span><span class="n">m</span> <span class="nf">load</span> <span class="k">model</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="p">#</span> <span class="n">H</span><span class="err">à</span><span class="n">m</span> <span class="nf">load</span> <span class="k">model</span>
 <span class="p">##</span> <span class="nf">Load</span> <span class="k">model</span> <span class="n">t</span><span class="err">ừ</span> <span class="n">Caffe</span>
 <span class="n">import</span> <span class="n">cv2</span>
 <span class="n">import</span> <span class="n">os</span>
@@ -298,10 +328,11 @@ Checking out files: 100% (150/150), done.
   """</span>
   <span class="k">model</span> <span class="p">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">dnn</span><span class="p">.</span><span class="n">readNetFromTorch</span><span class="p">(</span><span class="n">model_path_fl</span><span class="p">)</span>
   <span class="n">return</span> <span class="k">model</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>encoder = _load_torch(EMBEDDING_FL)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>encoder = _load_torch(EMBEDDING_FL)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="32-convert-ảnh-bob">3.2. Convert ảnh bob</h2>
 
@@ -315,7 +346,25 @@ Checking out files: 100% (150/150), done.
 
 <p>Hàm <code class="highlighter-rouge">_blogImage()</code> được sử dụng để convert hình ảnh RGB thành ảnh blob.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>import cv2
 
 def _blobImage(image, out_size = (300, 300), scaleFactor = 1.0, mean = (104.0, 177.0, 123.0)):
   """
@@ -333,13 +382,49 @@ def _blobImage(image, out_size = (300, 300), scaleFactor = 1.0, mean = (104.0, 1
                                     swapRB=False,  # Trường hợp ảnh là BGR thì set bằng True để chuyển qua RGB
                                     crop=False)
   return imageBlob
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="33-trích-suất-các-khuôn-mặt">3.3. Trích suất các khuôn mặt.</h2>
 
 <p>Hàm <code class="highlighter-rouge">_extract_bbox()</code> có tác dụng trích xuất các vị trí khuôn mặt.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from face_recognition import face_locations
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>from face_recognition import face_locations
 import matplotlib.pyplot as plt
 
 IMAGE_TEST = os.path.join(path, "Dataset/khanh/001.jpg")
@@ -375,11 +460,41 @@ def _extract_bbox(image, single = True):
     return bbox
   else:
     return bboxs
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hàm <code class="highlighter-rouge">_extract_face()</code> sẽ trích suất ra ra ảnh RGB của face.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _extract_face(image, bbox, face_scale_thres = (20, 20)):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>def _extract_face(image, bbox, face_scale_thres = (20, 20)):
   """
   input:
     image: ma trận RGB ảnh đầu vào
@@ -409,16 +524,53 @@ bbox = _extract_bbox(image)
 face = _extract_face(image, bbox)
 plt.axis("off")
 plt.imshow(face)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.image.AxesImage at 0x7fbae455fd68&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>&lt;matplotlib.image.AxesImage at 0x7fbae455fd68&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200321_Facenet/faceNet_18_1.png" class="normalpic" /></p>
 
 <p>Tiếp theo ta sẽ tạo vòng lặp trích suất khuông mặt từ các bức ảnh và lưu trữ vào một pickle file. Do giả định mỗi bức ảnh chỉ bao gồm 1 người nên <code class="highlighter-rouge">_extract_bbox()</code> được thiết lập <code class="highlighter-rouge">single=True</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from imutils import paths
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>from imutils import paths
 DATASET_PATH = "./Dataset"
 
 def _model_processing(face_scale_thres = (20, 20)):
@@ -454,14 +606,29 @@ def _model_processing(face_scale_thres = (20, 20)):
   return faces, y_labels, images_file
 
 faces, y_labels, images_file = _model_processing()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Total bbox face extracted: 142
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Total bbox face extracted: 142
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Nhớ lưu dữ liệu vào các file pickle để load lên dùng lại khi cần.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pickle
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>import pickle
 
 def _save_pickle(obj, file_path):
   with open(file_path, 'wb') as f:
@@ -475,13 +642,26 @@ def _load_pickle(file_path):
 _save_pickle(faces, "./faces.pkl")
 _save_pickle(y_labels, "./y_labels.pkl")
 _save_pickle(images_file, "./images_file.pkl")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="34-embedding-từ-pretrain-model">3.4. Embedding từ pretrain model</h2>
 
 <p>Ở bước 3.1 chúng ta đã load model encoder. Tiếp theo chúng ta sẽ sử dụng các ảnh khuôn mặt đã được trích xuất từ bước 3.2 để tạo embedding véc tơ. Đầu vào của model sẽ là các ảnh blob kích thước <code class="highlighter-rouge">96x96</code> nên ta sẽ convert dữ liệu về ảnh blob và sau đó truyền qua encoder.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _embedding_faces(encoder, faces):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>def _embedding_faces(encoder, faces):
   emb_vecs = []
   for face in faces:
     faceBlob = _blobImage(face, out_size = (96, 96), scaleFactor=1/255.0, mean=(0, 0, 0))
@@ -494,17 +674,27 @@ _save_pickle(images_file, "./images_file.pkl")
 embed_faces = _embedding_faces(encoder, faces)
 # Nhớ save embed_faces vào Dataset.
 _save_pickle(embed_faces, "./embed_blob_faces.pkl")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="35-most-similarity">3.5. Most similarity</h2>
 
 <p>Để thuận tiện cho so sánh hiệu quả giữa model pretrain và model self-training chúng ta sẽ phân chia tập dữ liệu thành tập train và test với tỷ lệ <code class="highlighter-rouge">80:20</code> và so sánh độ chính xác chỉ trên tập test.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>embed_faces = _load_pickle("./embed_blob_faces.pkl")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>embed_faces = _load_pickle("./embed_blob_faces.pkl")
 y_labels = _load_pickle("./y_labels.pkl")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.model_selection import train_test_split
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>from sklearn.model_selection import train_test_split
 ids = np.arange(len(y_labels))
 
 X_train, X_test, y_train, y_test, id_train, id_test = train_test_split(np.stack(embed_faces), y_labels, ids, test_size = 0.2, stratify = y_labels)
@@ -512,19 +702,36 @@ X_train = np.squeeze(X_train, axis = 1)
 X_test = np.squeeze(X_test, axis = 1)
 print(X_train.shape, X_test.shape)
 print(len(y_train), len(y_test))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(113, 128) (29, 128)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(113, 128) (29, 128)
 113 29
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_save_pickle(id_train, "./id_train.pkl")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>_save_pickle(id_train, "./id_train.pkl")
 _save_pickle(id_test, "./id_test.pkl")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau khi lấy được dữ liệu các khuôn mặt, chúng ta sẽ sử dụng phương pháp <a href="https://phamdinhkhanh.github.io/2020/03/12/faceNetAlgorithm.html">learning similarity</a> ở bài 27 để tìm kiếm các ảnh tương đồng nhất làm nhãn cho ảnh dự báo. Theo phương pháp này chúng ta sẽ không bị phụ thuộc vào số lượng classes khi output thay đổi. Để tính toán similarity ta dùng hàm cosine_similarity của sklearn, khá đơn giản.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics.pairwise import cosine_similarity
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>from sklearn.metrics.pairwise import cosine_similarity
 
 def _most_similarity(embed_vecs, vec, labels):
   sim = cosine_similarity(embed_vecs, vec)
@@ -537,14 +744,25 @@ def _most_similarity(embed_vecs, vec, labels):
 vec = X_test[1].reshape(1, -1)
 # Tìm kiếm ảnh gần nhất
 _most_similarity(X_train, vec, y_train)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'baejun'
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>'baejun'
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kiểm tra độ chính xác trên tập test</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># def _acc_test(test_set, y_test):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre># def _acc_test(test_set, y_test):
 from sklearn.metrics import accuracy_score
 
 y_preds = []
@@ -554,10 +772,11 @@ for vec in X_test:
   y_preds.append(y_pred)
 
 print(accuracy_score(y_preds, y_test))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6206896551724138
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>0.6206896551724138
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy với phương pháp sử dụng lại pretrain model thì chúng ta chỉ đạt độ chính xác là <code class="highlighter-rouge">62%</code> trên tập test. Kết quả của các bạn cũng sẽ khác mình một chút. Đây là một tỷ lệ khá thấp vậy có cách nào để cải thiện độ chính xác của model không? Chúng ta cùng tìm hiểu ở mục tiếp theo. Huấn luyện model bằng triplot loss function.</p>
 
@@ -571,13 +790,30 @@ print(accuracy_score(y_preds, y_test))
 
 <p><code class="highlighter-rouge">base_netwok</code> model dự kiến của mình là VGG19. Chúng ta có thể dễ dạng load kiến trúc này nhừ keras</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%tensorflow_version 2.x
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>%tensorflow_version 2.x
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TensorFlow 2.x selected.
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorFlow 2.x selected.
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">,</span> <span class="n">Flatten</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span>
@@ -592,9 +828,61 @@ print(accuracy_score(y_preds, y_test))
 
 <span class="k">model</span> <span class="p">=</span> <span class="n">_base_network</span><span class="p">()</span>
 <span class="k">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_3"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre>Model: "model_3"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -646,7 +934,7 @@ Total params: 17,926,080
 Trainable params: 17,926,080
 Non-trainable params: 0
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="42-preprocessing-data">4.2. Preprocessing data</h2>
 
@@ -654,10 +942,20 @@ _________________________________________________________________
 
 <p>Chúng ta sẽ resize lại các ảnh thông qua hàm resize của opencv.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>faces = _load_pickle("./faces.pkl")
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>faces = _load_pickle("./faces.pkl")
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cv2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import cv2
 
 faceResizes = []
 for face in faces:
@@ -666,25 +964,35 @@ for face in faces:
 
 X = np.stack(faceResizes)
 X.shape
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(142, 224, 224, 3)
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(142, 224, 224, 3)
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Phân chia tập train/test</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>id_train = _load_pickle("./id_train.pkl")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>id_train = _load_pickle("./id_train.pkl")
 id_test = _load_pickle("./id_test.pkl")
 
 X_train, X_test = X[id_train], X[id_test]
 
 print(X_train.shape)
 print(X_test.shape)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(113, 224, 224, 3)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(113, 224, 224, 3)
 (29, 224, 224, 3)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="43-triplet-semi-hard-loss">4.3. Triplet-semi-hard loss</h2>
 
@@ -692,39 +1000,80 @@ print(X_test.shape)
 
 <p>Để sử dụng loss function triplet ta cần complile model như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import tensorflow_addons as tfa
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>import tensorflow_addons as tfa
 
 model.compile(
     optimizer=tf.keras.optimizers.Adam(0.001),
     loss=tfa.losses.TripletSemiHardLoss())
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="44-huấn-luyện-model">4.4. Huấn luyện model</h2>
 
 <p>Để huấn luyện model, ta khởi tạo một tensorflow dataset với batch_size = 32 và shuffle sau mỗi 1024 steps.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(X_train.shape, len(y_train))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>print(X_train.shape, len(y_train))
 
 gen_train = tf.data.Dataset.from_tensor_slices((X_train, y_train)).repeat().shuffle(1024).batch(32)
 gen_train
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(113, 224, 224, 3) 113
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>(113, 224, 224, 3) 113
 
 
 
 
 
 &lt;BatchDataset shapes: ((None, 224, 224, 3), (None,)), types: (tf.uint8, tf.string)&gt;
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>history = model.fit(
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>history = model.fit(
     gen_train,
     steps_per_epoch = 50,
     epochs=10)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train for 50 steps
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>Train for 50 steps
 Epoch 1/10
 50/50 [==============================] - 21s 421ms/step - loss: 0.9579
 Epoch 2/10
@@ -745,30 +1094,41 @@ Epoch 9/10
 50/50 [==============================] - 20s 406ms/step - loss: 1.5807e-05
 Epoch 10/10
 50/50 [==============================] - 20s 406ms/step - loss: 0.0000e+00
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.save("model/model_triplot.h5")
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model.save("model/model_triplot.h5")
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="45-accuracy-on-test">4.5. Accuracy on test</h2>
 
 <p>Sau khi huấn luyện xong mô hình ta cùng kiểm tra accuracy trên tập test</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train_vec = model.predict(X_train)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>X_train_vec = model.predict(X_train)
 X_test_vec = model.predict(X_test)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>y_preds = []
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>y_preds = []
 for vec in X_test_vec:
   vec = vec.reshape(1, -1)
   y_pred = _most_similarity(X_train_vec, vec, y_train)
   y_preds.append(y_pred)
 
 print(accuracy_score(y_preds, y_test))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6551724137931034
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>0.6551724137931034
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy việc huấn luyện lại model trên chính bộ dữ liệu gốc theo Triplot loss function đã giúp chúng ta cải thiện độ chính xác trên tập test lên 3%. Nhưng tỷ lệ này vẫn còn khá thấp. Để hiểu rõ hơn nguyên nhân lỗi là gì, hãy cùng đi phân tích lỗi.</p>
 
@@ -776,7 +1136,17 @@ print(accuracy_score(y_preds, y_test))
 
 <p>Ta sẽ biểu diễn các ảnh bị dự báo sai và xem chúng có đặc điểm gì?</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>idx_diff = np.flatnonzero(np.array(y_preds) != np.array(y_test))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>idx_diff = np.flatnonzero(np.array(y_preds) != np.array(y_test))
 
 fg, ax = plt.subplots(2, 5, figsize=(15, 8))
 fg.suptitle('Wrong predict images')
@@ -786,7 +1156,7 @@ for i in np.arange(2):
     ax[i, j].imshow(X_test[idx_diff[i + j + j*i]])
     ax[i, j].set_xlabel('Transform '+str(i+j+j*i))
     ax[i, j].axis('off')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200321_Facenet/faceNet_54_0.png" class="gigantic" /></p>
 
@@ -809,7 +1179,23 @@ for i in np.arange(2):
 
 <p>Tiếp theo ta sẽ xem các ảnh này bị dự báo sai với ảnh nào gần nhất.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _most_similarity_idx(embed_vecs, vec, labels):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>def _most_similarity_idx(embed_vecs, vec, labels):
   sim = cosine_similarity(embed_vecs, vec)
   sim = np.squeeze(sim, axis = 1)
   argmax = np.argsort(sim)[::-1][:1][0]
@@ -825,9 +1211,17 @@ for vec in X_test_vec:
 
 # Lọc ra tiếp các ảnh bị dự báo sai.
 nearest_idx = [nearest_idx[idx] for idx in idx_diff]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fg, ax = plt.subplots(2, 5, figsize=(15, 8))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>fg, ax = plt.subplots(2, 5, figsize=(15, 8))
 fg.suptitle('Nearest predict images')
 
 for i in np.arange(2):
@@ -835,7 +1229,7 @@ for i in np.arange(2):
     ax[i, j].imshow(X_train[nearest_idx[i + j + j*i]])
     ax[i, j].set_xlabel('Transform '+str(i+j+j*i))
     ax[i, j].axis('off')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200321_Facenet/faceNet_57_0.png" class="gigantic" /></p>
 
@@ -885,7 +1279,18 @@ for i in np.arange(2):
 
 <p><img src="https://imgur.com/U4bCFjh.png" class="gigantic" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.keras.preprocessing.image import ImageDataGenerator
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 datagen = ImageDataGenerator(
     featurewise_center=True,
@@ -896,11 +1301,22 @@ datagen = ImageDataGenerator(
     horizontal_flip=True)
 
 datagen.fit(X_train)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Với mỗi bức ảnh trên tập train sẽ lấy ra 5 ảnh biến thể. Như vậy ta có khoảng gần 550 ảnh.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>no_batch = 0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>no_batch = 0
 X_au = []
 y_au = []
 for i in np.arange(len(X_train)):
@@ -911,39 +1327,76 @@ for i in np.arange(len(X_train)):
     no_img += 1
     if no_img == 5:
       break
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="61-huấn-luyện-model">6.1 Huấn luyện model</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import tensorflow_addons as tfa
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>import tensorflow_addons as tfa
 model2 = _base_network()
 
 model2.compile(
     optimizer=tf.keras.optimizers.Adam(0.001),
     loss=tfa.losses.TripletSemiHardLoss())
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Điều chỉnh tăng batch_size = 64
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># Điều chỉnh tăng batch_size = 64
 gen_train2 = tf.data.Dataset.from_tensor_slices((X_au, y_au)).repeat().shuffle(1024).batch(64)
 gen_train2
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;BatchDataset shapes: ((None, 224, 224, 3), (None,)), types: (tf.float32, tf.string)&gt;
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>&lt;BatchDataset shapes: ((None, 224, 224, 3), (None,)), types: (tf.float32, tf.string)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(len(X_au), len(y_au))
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>print(len(X_au), len(y_au))
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>565 565
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>565 565
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>history = model2.fit(
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>history = model2.fit(
     gen_train2,
     steps_per_epoch = 50,
     epochs=20)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train for 15 steps
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>Train for 15 steps
 Epoch 1/10
 15/15 [==============================] - 13s 874ms/step - loss: 0.2821
 Epoch 2/10
@@ -964,16 +1417,37 @@ Epoch 9/10
 15/15 [==============================] - 12s 825ms/step - loss: 1.8847e-04
 Epoch 10/10
 15/15 [==============================] - 12s 825ms/step - loss: 1.1150e-04
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model2.save("model/model_triplot_au.h5")
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model2.save("model/model_triplot_au.h5")
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="62-accuracy-trên-test">6.2. Accuracy trên test</h2>
 
 <p>Để dự báo trên tập test thì chúng ta sẽ cần phải transform ảnh trên X theo đúng như nguyên tắc tranform trên tập train.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data_tf = ImageDataGenerator(
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>data_tf = ImageDataGenerator(
     featurewise_center=True,
     featurewise_std_normalization=True,
     rotation_range=20,
@@ -993,23 +1467,33 @@ for i in np.arange(len(X_test)):
     no_img += 1
     if no_img == 1:
       break
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train_vec = model2.predict(np.stack(X_au))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>X_train_vec = model2.predict(np.stack(X_au))
 X_test_vec = model2.predict(np.stack(X_test_tf))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>y_preds = []
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>y_preds = []
 for vec in X_test_vec:
   vec = vec.reshape(1, -1)
   y_pred = _most_similarity(X_train_vec, vec, y_au)
   y_preds.append(y_pred)
 
 print(accuracy_score(y_preds, y_test))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6896551724137931
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>0.6896551724137931
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy bạn đã thấy hiệu quả của model rồi chứ? Sau khi thực hiện augumentation thì accuracy của chúng ta đã tăng lên từ 65%-68%. Tôi nghĩ rằng trong điều kiện bộ dữ liệu là không quá tốt thì đây là một kết quả chấp nhận được.</p>
 
@@ -1017,17 +1501,65 @@ print(accuracy_score(y_preds, y_test))
 
 <p>Trước tiên chúng ta cần tạo một hàm normalize để tiền xử lý ảnh trước khi đưa vào dự báo mô hình.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def _normalize_image(image, epsilon=0.000001):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>def _normalize_image(image, epsilon=0.000001):
   means = np.mean(image.reshape(-1, 3), axis=0)
   stds = np.std(image.reshape(-1, 3), axis=0)
   image_norm = image - means
   image_norm = image_norm/(stds + epsilon)
   return image_norm
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau đó ta thực hiện một vòng lặp để trích suất toàn bộ các faces trên ảnh và dự báo kết quả trên từng face.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAGE_OUTPUT = "./predictions.jpg"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre>IMAGE_OUTPUT = "./predictions.jpg"
 IMAGE_PREDICT = "./test1.jpg"
 
 # Trích xuất bbox image 
@@ -1069,7 +1601,7 @@ cv2.imwrite(IMAGE_OUTPUT, image)
 plt.figure(figsize = (16, 8))
 img = plt.imread(IMAGE_OUTPUT)
 plt.imshow(img)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="8-kết-luận">8. Kết luận</h1>
 

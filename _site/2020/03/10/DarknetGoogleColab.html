@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 26 - Huấn luyện YOLO darknet trên google colab</p></h2> 
 <strong>10 Mar 2020 - phamdinhkhanh</strong>
@@ -287,14 +289,19 @@ body {
 
 <p><strong>Command line kiểm tra version cuda:</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!nvcc --version
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!nvcc --version
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc: NVIDIA (R) Cuda compiler driver
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>nvcc: NVIDIA (R) Cuda compiler driver
 Copyright (c) 2005-2018 NVIDIA Corporation
 Built on Sat_Aug_25_21:08:01_CDT_2018
 Cuda compilation tools, release 10.0, V10.0.130
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="32-enable-gpu-trên-google-colab">3.2. Enable GPU trên google colab</h2>
 
@@ -310,8 +317,9 @@ Cuda compilation tools, release 10.0, V10.0.130
 
 <p><strong>Command line kiểm tra cấu hình GPU</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!nvidia-smi
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!nvidia-smi
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="https://imgur.com/rAiiJoU.png" class="medianpic" /></p>
 
@@ -325,17 +333,25 @@ Cuda compilation tools, release 10.0, V10.0.130
 
 <p><strong>Câu lệnh mount google drive:</strong></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/gdrive'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Go to this URL in a browser: https://accounts.google.com...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>Go to this URL in a browser: https://accounts.google.com...
 
 Enter your authorization code:
 ··········
 Mounted at /content/gdrive
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Dòng <code class="highlighter-rouge">Enter your authorization code:</code>: Yêu cầu chúng ta nhập token để đăng nhập vào VM.</p>
 
@@ -357,18 +373,31 @@ Mounted at /content/gdrive
 
 <p><strong>Step 1</strong>: Thay đổi đường dẫn tới folder mặc định là <code class="highlighter-rouge">My Drive</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import os
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>import os
 
 path = "/content/gdrive/My Drive"
 os.chdir(path)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Step 2:</strong> Sử dụng command line để clone git project <code class="highlighter-rouge">darknetTurtorial</code> từ github repo của tôi.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!git clone https://github.com/phamdinhkhanh/darknetGoogleColab.git
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!git clone https://github.com/phamdinhkhanh/darknetGoogleColab.git
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cloning into 'darknetGoogleColab'...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>Cloning into 'darknetGoogleColab'...
 remote: Enumerating objects: 430, done.[K
 remote: Counting objects: 100% (430/430), done.[K
 remote: Compressing objects: 100% (321/321), done.[K
@@ -376,7 +405,7 @@ remote: Total 430 (delta 102), reused 430 (delta 102), pack-reused 0[K
 Receiving objects: 100% (430/430), 6.20 MiB | 10.37 MiB/s, done.
 Resolving deltas: 100% (102/102), done.
 Checking out files: 100% (473/473), done.
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau khi chạy thành công bạn kiểm tra trên My Drive của Google drive bạn sẽ thấy folder <code class="highlighter-rouge">darknetGoogleColab</code> vừa mới được clone về.</p>
 
@@ -384,13 +413,19 @@ Checking out files: 100% (473/473), done.
 
 <p>Sau đó chúng ta cd vào folder và phân quyền execute module darknet để có thể chạy được các lệnh trên darknet.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%cd darknetGoogleColab
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>%cd darknetGoogleColab
 
 !ls
 
 # phân quyền execute module darknet
 !chmod +x ./darknet
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lúc này chúng ta đã có thể sử dụng được các lệnh của dự báo, huấn luyện của darknet trên hệ điều hành ubuntu.</p>
 
@@ -430,10 +465,19 @@ Checking out files: 100% (473/473), done.
 
 <p>Trong hướng dẫn này chúng ta cùng xây dựng một mô hình nhận diện sản phẩm thương mại điện tử gồm 5 nhóm mặt hàng: <code class="highlighter-rouge">bia, cafe, mytom, nuoctuong, sua</code>. Để không mất thời gian cho khâu chuẩn bị dữ liệu thì các bạn có thể clone dữ liệu từ git repo của tôi:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!git clone https://github.com/phamdinhkhanh/VinIDProductObjectDetection.git traindata
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!git clone https://github.com/phamdinhkhanh/VinIDProductObjectDetection.git traindata
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cloning into 'data'...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>Cloning into 'data'...
 remote: Enumerating objects: 325, done.[K
 remote: Counting objects: 100% (325/325), done.[K
 remote: Compressing objects: 100% (139/139), done.[K
@@ -441,7 +485,7 @@ remote: Total 325 (delta 2), reused 324 (delta 1), pack-reused 0[K
 Receiving objects: 100% (325/325), 12.15 MiB | 15.99 MiB/s, done.
 Resolving deltas: 100% (2/2), done.
 Checking out files: 100% (216/216), done.
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Lệnh trên sẽ clone dữ liệu về folder <code class="highlighter-rouge">traindata</code> trong project của chúng ta.</p>
 
@@ -457,7 +501,28 @@ Checking out files: 100% (216/216), done.
 
 <p>Ở bước này ta sẽ tạo ra 2 file train.txt và valid.txt chứa dữ liệu đường dẫn tới các file hình ảnh nằm trong tập train và validation. Chúng ta sẽ sử dụng đoạn code bên dưới để lựa chọn ra ngẫu nhiên 20 files làm dữ liệu validation và các files còn lại làm dữ liệu train.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import glob2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>import glob2
 import numpy as np
 
 all_files = []
@@ -478,7 +543,7 @@ with open("valid.txt", "w") as f:
   for idx in np.arange(len(all_files)):
     if idx in rand_idx:
       f.write(all_files[idx]+'\n')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="43-cấu-hình-darknet">4.3. Cấu hình darknet</h2>
 
@@ -486,13 +551,19 @@ with open("valid.txt", "w") as f:
 
 <p>Đây là files chứa tên các classes mà chúng ta sẽ huấn luyện mô hình. Trên file này, thứ tự các classes name cần phải đặt đúng với index của nó trong các file label của vật thể.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Create obj.names config file
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Create obj.names config file
 !echo bia &gt; obj.names
 !echo cafe &gt;&gt; obj.names
 !echo mytom &gt;&gt; obj.names
 !echo nuoctuong &gt;&gt; obj.names
 !echo sua &gt;&gt; obj.names
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đoạn code trên sử dụng lệnh <code class="highlighter-rouge">echo</code> của <code class="highlighter-rouge">bash</code> để tạo và write nội dung vào file <code class="highlighter-rouge">obj.names</code>. Sau đó, một file <code class="highlighter-rouge">obj.names</code> được tạo thành trong project foler. Bạn có thể mở file này ra để kiểm tra nội dung.</p>
 
@@ -509,13 +580,19 @@ with open("valid.txt", "w") as f:
 
 <p>Chạy lệnh bên dưới để tạo file này.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Config obj.data config file
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># Config obj.data config file
 !echo classes=5 &gt; obj.data
 !echo train=train.txt &gt;&gt; obj.data
 !echo valid=test.txt &gt;&gt; obj.data
 !echo names=obj.names &gt;&gt; obj.data
 !echo backup=backup &gt;&gt; obj.data
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="433-tạo-file-config-model">4.3.3. Tạo file config model</h3>
 
@@ -546,12 +623,15 @@ with open("valid.txt", "w") as f:
 
 <p>Các file config này đã có sẵn trong github repo của tôi nên bạn có thể download về sử dụng ngay.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>os.path.exists("obj.data")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>os.path.exists("obj.data")
 os.path.exists("yolov3-5c-5000-max-steps.cfg")
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>True
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="44-các-hàm-phụ-trợ">4.4. Các hàm phụ trợ</h2>
 
@@ -569,7 +649,36 @@ os.path.exists("yolov3-5c-5000-max-steps.cfg")
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#download files
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>#download files
 def imShow(path):
   import cv2
   import matplotlib.pyplot as plt
@@ -598,7 +707,7 @@ def upload():
 def download(path):
   from google.colab import files
   files.download(path)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="45-huấn-luyện-mô-hình">4.5. Huấn luyện mô hình</h2>
 
@@ -614,10 +723,21 @@ def download(path):
 
 <p>Ở ví dụ thực hành này, chúng ta sẽ sử dụng pretrain model <a href="https://pjreddie.com/media/files/darknet53.conv.74">darknet53.conv.74</a> dược huấn luyện từ bộ dữ liệu ImageNet. Trước tiên hãy clone file weight về google drive.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!wget https://pjreddie.com/media/files/darknet53.conv.74
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!wget https://pjreddie.com/media/files/darknet53.conv.74
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--2020-03-08 07:55:46--  https://pjreddie.com/media/files/darknet53.conv.74
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>--2020-03-08 07:55:46--  https://pjreddie.com/media/files/darknet53.conv.74
 Resolving pjreddie.com (pjreddie.com)... 128.208.4.108
 Connecting to pjreddie.com (pjreddie.com)|128.208.4.108|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -627,14 +747,15 @@ Saving to: ‘darknet53.conv.74’
 darknet53.conv.74   100%[===================&gt;] 154.96M  1.11MB/s    in 1m 45s  
 
 2020-03-08 07:57:32 (1.47 MB/s) - ‘darknet53.conv.74’ saved [162482580/162482580]
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="452-backup-model">4.5.2. Backup model</h3>
 
 <p>Tạo một folder backup để lưu kết quả huấn luyện sau mỗi 1000 steps. Folder backup này phải trùng với tên với link folder backup đã được khai báo ở step <code class="highlighter-rouge">4.3.3. tạo file config data</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!mkdir backup
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!mkdir backup
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Nếu để 1000 steps mới backup model có thể khá lâu. Để tránh các lỗi phát sinh khi huấn luyện tại 1000 steps đầu tiên, trong project của mình tôi đã điều chỉnh sẵn last model backup sau mỗi 100 steps.</p>
 
@@ -648,10 +769,35 @@ darknet53.conv.74   100%[===================&gt;] 154.96M  1.11MB/s    in 1m 45s
 
 <p>Trong đó các <code class="highlighter-rouge">[data config file]</code>, <code class="highlighter-rouge">[model config file]</code> là những file config. <code class="highlighter-rouge">[pretrain-model weights]</code> là file model pretrain.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show &gt; yolov3-5c.log
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show &gt; yolov3-5c.log
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>layer     filters    size              input                output
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>layer     filters    size              input                output
    0 conv     32  3 x 3 / 1   608 x 608 x   3   -&gt;   608 x 608 x  32 0.639 BF
    1 conv     64  3 x 3 / 2   608 x 608 x  32   -&gt;   304 x 304 x  64 3.407 BF
    2 conv     32  1 x 1 / 1   304 x 304 x  64   -&gt;   304 x 304 x  32 0.379 BF
@@ -675,17 +821,25 @@ Total BFLOPS 139.527
  Allocate additional workspace_size = 13.31 MB 
 Loading weights from darknet53.conv.74...Done!
 Saving weights to backup/yolov3-5c-5000-max-steps_last.weights
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Nếu bạn nào gặp lỗi:</p>
 
 <p><code class="highlighter-rouge">CUDA Error: out of memory: File exists</code></p>
 
-<p>Hãy quay trở lại file <code class="highlighter-rouge">yolov3-5c-5000-max-steps.cfg</code> và điều chỉnh giảm <code class="highlighter-rouge">subdivisions=32</code>. Sau đó train lại model từ đầu.</p>
+<p>Hãy quay trở lại file <code class="highlighter-rouge">yolov3-5c-5000-max-steps.cfg</code> và điều chỉnh tăng <code class="highlighter-rouge">subdivisions=32</code>. Sau đó train lại model từ đầu.</p>
 
 <p>Tổng cộng quá trình train hết khoảng <code class="highlighter-rouge">5h</code> đồng hồ. Nếu bạn muốn ngồi đợi thành quả, hãy kiên nhẫn chờ đợi. Hoặc nếu muốn có ngay thành quả, hãy download file <a href="https://drive.google.com/drive/folders/1Oj7yOMEPG59BRVyA3QjVoHWyzX8lNW-E?usp=sharing">pretrain nhận diện sản phẩm TMDT của tôi</a>.</p>
 
 <p>Một số lưu ý:</p>
+
+<ul>
+  <li>Log của chương trình sẽ không hiện ra tại màn hình do chúng ta đã save vào file <code class="highlighter-rouge">yolov3-5c.log</code>. Mục đích chính là để lưu lại log nhằm visualize loss function (xem mục 4.5.4). Nếu bạn muốn monitor ngay tại màn hình google colab thì chạy lệnh:</li>
+</ul>
+
+<p><code class="highlighter-rouge">!./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show</code></p>
+
+<p>Bạn có thể mở một google colab khác để thực hiện mục <code class="highlighter-rouge">4.5.4 visualize loss function</code>.</p>
 
 <ul>
   <li>
@@ -702,9 +856,11 @@ Saving weights to backup/yolov3-5c-5000-max-steps_last.weights
 
 <p>Trong git project được customize từ darknet tôi đã code sẵn một file có tác dụng visualize loss function. Ý tưởng xử lý không có gì khó, chúng ta sẽ tìm trong log các dòng có <code class="highlighter-rouge">Average Loss</code> và trích xuất giá trị loss function và visualize. Bạn đọc có thể mở file ra nghiên cứu.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!python3 plotTrainLoss.py yolov3-5c.log
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>!python3 plotTrainLoss.py yolov3-5c.log
 imShow('training_loss_plot.png')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200310_YOLOGoogleColab/DarknetGoogleColab_50_0.png" class="normalpic" /></p>
 
@@ -714,25 +870,34 @@ imShow('training_loss_plot.png')
 
 <p>Sau khi huấn luyện xong mô hình, kết quả sau cùng sẽ được lưu trong folder backup</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!ls backup
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!ls backup
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yolov3-5c-5000-max-steps_last.weights
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>yolov3-5c-5000-max-steps_last.weights
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để dự báo cho một bức ảnh ta sử dụng cú pháp:</p>
 
 <p><code class="highlighter-rouge">!./darknet detector test [data config file] [model config file] [last-model weights] [image path] -dont_show</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!./darknet detector test obj.data yolov3-5c-5000-max-steps-test.cfg backup/yolov3-5c-5000-max-steps_last.weights traindata/test/nuoctuong3.jpg -dont_show
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>!./darknet detector test obj.data yolov3-5c-5000-max-steps-test.cfg backup/yolov3-5c-5000-max-steps_last.weights traindata/test/nuoctuong3.jpg -dont_show
 
 imShow('predictions.jpg')
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>traindata/test/nuoctuong3.jpg: Predicted in 56.505000 milli-seconds.
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>traindata/test/nuoctuong3.jpg: Predicted in 56.505000 milli-seconds.
 nuoctuong: 34%
 nuoctuong: 87%
 nuoctuong: 96%
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20200310_YOLOGoogleColab/DarknetGoogleColab_55_1.png" class="normalpic" /></p>
 

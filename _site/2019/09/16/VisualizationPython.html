@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 11 - Visualization trong python</p></h2> 
 <strong>16 Sep 2019 - phamdinhkhanh</strong>
@@ -225,7 +227,20 @@ body {
 
 <p><strong>Lấy dữ liệu chứng khoán của apple</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import pandas as pd
 
 import datetime
@@ -238,7 +253,7 @@ end = datetime.datetime(2017, 1, 11)
 
 df = web.DataReader("AAPL", 'yahoo', start, end)
 df.tail()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -327,11 +342,15 @@ df.tail()
 
 <p><strong>Biểu diễn giá chứng khoán dưới dạng biểu đồ line</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>plt.plot(df['Close'].tail(100))
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_3_1.png" /></p>
 
@@ -349,37 +368,55 @@ plt.title('Gía chứng khoán APPLE')
 
 <p>Chẳng hạn để thay đổi line từ dạng đường nét liền sang nét đứt:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '--')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>plt.plot(df['Close'].tail(100), linestyle = '--')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_5_1.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Đường nét đứt có gạch nối
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre># Đường nét đứt có gạch nối
 plt.plot(df['Close'].tail(100), linestyle = '-.')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_6_1.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Đường nét chấm
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre># Đường nét chấm
 plt.plot(df['Close'].tail(100), linestyle = ':')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_7_1.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '-')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>plt.plot(df['Close'].tail(100), linestyle = '-')
 plt.ylabel('Gía chứng khoán')
 plt.xlabel('Thời gian')
 plt.title('Gía chứng khoán APPLE')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_8_1.png" /></p>
 
@@ -395,20 +432,23 @@ plt.title('Gía chứng khoán APPLE')
 
 <p>Bên dưới là một số kết hợp của linstyle và marker.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '-', marker = 'o')
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>plt.plot(df['Close'].tail(100), linestyle = '-', marker = 'o')
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_10_1.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.plot(df['Close'].tail(100), linestyle = '--', marker = 's', color = 'red')
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>plt.plot(df['Close'].tail(100), linestyle = '--', marker = 's', color = 'red')
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_11_1.png" /></p>
 
 <p>Hoặc chúng ta cũng có thể vẽ biểu đồ line từ pandas dataframe.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df['Close'].tail(100).plot(marker = 's')
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df['Close'].tail(100).plot(marker = 's')
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_13_1.png" /></p>
 
@@ -416,25 +456,41 @@ plt.title('Gía chứng khoán APPLE')
 
 <p>Biểu đồ barchart là dạng biểu đồ có thể coi là phổ biến nhất và được dùng chủ yếu trong trường hợp so sánh giá trị giữa các nhóm thông qua độ dài cột. Để biểu diễn biểu đồ barchart trong python chúng ta sử dụng hàm <code class="highlighter-rouge">plt.bar()</code>. Các tham số truyền vào bao gồm tên các nhóm (tham số <code class="highlighter-rouge">x</code>) và giá trị của các nhóm (tham số <code class="highlighter-rouge">height</code>).</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.bar(x = ['nhóm A', 'nhóm B', 'nhóm C'], height = [10, 20, 50])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>plt.bar(x = ['nhóm A', 'nhóm B', 'nhóm C'], height = [10, 20, 50])
 plt.xlabel('Tên các nhóm')
 plt.ylabel('Gía trị nhóm')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_15_1.png" /></p>
 
 <p>Thay đổi màu sắc các nhóm.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plt.bar(x = ['nhóm A', 'nhóm B', 'nhóm C'], height = [10, 20, 50], color = 'green')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>plt.bar(x = ['nhóm A', 'nhóm B', 'nhóm C'], height = [10, 20, 50], color = 'green')
 plt.xlabel('Tên các nhóm')
 plt.ylabel('Gía trị nhóm')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_17_1.png" /></p>
 
 <p>Thêm nhãn giá trị cho các cột bằng tham số plt.text(). Trong đó tham số <code class="highlighter-rouge">x</code> và <code class="highlighter-rouge">y</code> của <code class="highlighter-rouge">plt.text()</code> qui định tọa độ điểm bắt đầu của rectangle chứa label tên của nhóm. <code class="highlighter-rouge">s</code> chứa tên labels của nhóm và <code class="highlighter-rouge">size</code> qui định kích thước của text.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x_values = [0, 1, 2]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>x_values = [0, 1, 2]
 y_values = [10, 20, 50]
 data_labels = ['10', '20', '50']
 plt.bar(x = data_labels, height = y_values, color = 'green')
@@ -444,13 +500,35 @@ for i in range(len(data_labels)): # your number of bars
   y = y_values[i]+1, #takes your y values as vertical positioning argument 
   s = data_labels[i], # the labels you want to add to the data
   size = 9)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_19_0.png" /></p>
 
 <p>Chúng ta cũng có thể vẽ biểu đồ của 2 biến trở lên là các barchart liền kề nhau.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>import numpy as np
 
 men_means, men_std = (20, 35, 30, 35, 27), (2, 3, 4, 1, 2)
 women_means, women_std = (25, 32, 34, 20, 25), (3, 5, 2, 3, 3)
@@ -472,15 +550,17 @@ ax.set_xticklabels(('G1', 'G2', 'G3', 'G4', 'G5'))
 ax.legend()
 
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_21_0.png" /></p>
 
 <p>Ta cũng có thể biểu diễn biểu đồ thông qua dataframe.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = pd.DataFrame({'x': [10, 20, 50]}, index = ['G1', 'G2', 'G3'])
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>df = pd.DataFrame({'x': [10, 20, 50]}, index = ['G1', 'G2', 'G3'])
 df
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -520,8 +600,9 @@ df
 </table>
 </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.plot.bar()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df.plot.bar()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_24_1.png" /></p>
 
@@ -531,7 +612,15 @@ df
 
 <p>Để tạo biểu đồ tròn trong mathplotlib.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>import numpy as np
 plt.pie(x = np.array([10, 20, 50]), # giá trị của các nhóm
         labels = ['Nhóm A', 'Nhóm B', 'Nhóm C'], # Nhãn của các nhóm
         colors = ['red', 'blue', 'green'], # Màu sắc của các nhóm
@@ -539,7 +628,7 @@ plt.pie(x = np.array([10, 20, 50]), # giá trị của các nhóm
         shadow = True
        )
 plt.title('Biểu đồ tròn tỷ lệ % của các nhóm')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_26_1.png" /></p>
 
@@ -547,7 +636,19 @@ plt.title('Biểu đồ tròn tỷ lệ % của các nhóm')
 
 <p>Biểu đồ boxplot sẽ cho ta biết đặc trưng về phân phối của 1 biến dựa trên các giá trị trung bình, min, max, các khoảng phân vị 25%, 50%, 75%. Đây là biểu đồ được sử dụng nhiều trong chứng khoán và thống kê học để so sánh các biến với nhau.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>import numpy as np
 x = np.random.randn(100) + np.arange(0, 100) * 0.5
 y = np.random.randn(100) + np.arange(0, 100) * 1.0 + 10
 z = np.random.randn(100) + np.arange(0, 100) * 2 - 15
@@ -559,7 +660,7 @@ plt.boxplot([x, y, z],
 plt.title('Biểu đồ Boxplot')
 plt.xlabel('Classes')
 plt.ylabel('Gía trị của x, y, z')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_28_1.png" /></p>
 
@@ -569,7 +670,20 @@ plt.ylabel('Gía trị của x, y, z')
 
 <p>Để tìm hiểu kĩ hơn về thống kê và vẽ biểu đồ trên dataframe các bạn có thể tham khảo bài <a href="https://www.kaggle.com/phamdinhkhanh/gi-i-thi-u-pandas">Giới thiệu pandas</a>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 import datetime
 import pandas_datareader.data as web
 from pandas import Series, DataFrame
@@ -582,7 +696,7 @@ df = web.DataReader(["AAPL", "GOOGL", "MSFT", "FB"], 'yahoo', start, end)
 # Chỉ lấy giá close
 df = df[['Close']]
 df.tail()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -666,37 +780,43 @@ df.tail()
 
 <p>Biểu đồ line</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.plot()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df.plot()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_32_1.png" /></p>
 
 <p>Biểu đồ line kết hợp point</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.tail(20).plot(linestyle = '-', marker = '^')
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df.tail(20).plot(linestyle = '-', marker = '^')
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_34_1.png" /></p>
 
 <p>Biểu đồ barchart</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.tail(3).plot.bar()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df.tail(3).plot.bar()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_36_1.png" /></p>
 
 <p>Biểu đồ tròn</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.iloc[-1, :].plot.pie(autopct = '%.2f%%')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>df.iloc[-1, :].plot.pie(autopct = '%.2f%%')
 plt.title('Biểu đồ tròn')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_38_1.png" /></p>
 
 <p>Biểu đồ diện tích</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.plot.area()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>df.plot.area()
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_40_1.png" /></p>
 
@@ -715,10 +835,13 @@ plt.title('Biểu đồ tròn')
 
 <p>Trong machine learning ứng dụng lớn nhất của heatmap có lẽ là thể hiện các giá trị của hệ số tương quan. Ta sẽ cùng tìm hiểu cách vẽ biểu đồ heatmap biểu diễn hệ số tương quan.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tính correlation
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># Tính correlation
 df_cor = df.corr()
 df_cor
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -798,7 +921,66 @@ df_cor
 
 <p>Để vẽ biểu đồ heatmap chúng ta có thể sử dụng hàm số <code class="highlighter-rouge">heatmap()</code> như bên dưới.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def heatmap(data, row_labels, col_labels, ax=None,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="rouge-code"><pre>def heatmap(data, row_labels, col_labels, ax=None,
             cbar_kw={}, cbarlabel="", **kwargs):
     """
     Create a heatmap from a numpy array and two lists of labels.
@@ -857,21 +1039,84 @@ df_cor
     ax.tick_params(which="minor", bottom=False, left=False)
 
     return im, cbar
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hàm số sẽ có tác dụng thiết lập các bảng heatmap và labels của trục x, y trên đồ thị.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inds = ['AAPL', 'FB', 'GOOGL', 'MSFT']
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>inds = ['AAPL', 'FB', 'GOOGL', 'MSFT']
 fig, ax = plt.subplots()
 
 im, cbar = heatmap(df_cor, row_labels = inds, col_labels = inds)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_47_0.png" /></p>
 
 <p>Chúng ta sẽ thêm titles giá trị các biến nằm trong <code class="highlighter-rouge">df_cor</code> vào các ô giá trị tương ứng thông qua hàm số <code class="highlighter-rouge">annotate_heatmap()</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="rouge-code"><pre>import matplotlib
 
 def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
                      textcolors=["black", "white"],
@@ -930,24 +1175,33 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
             texts.append(text)
 
     return texts
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inds = ['AAPL', 'FB', 'GOOGL', 'MSFT']
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>inds = ['AAPL', 'FB', 'GOOGL', 'MSFT']
 fig, ax = plt.subplots()
 im, cbar = heatmap(df_cor, row_labels = inds, col_labels = inds)
 texts = annotate_heatmap(im, valfmt="{x:.2f}")
 fig.tight_layout()
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_50_0.png" /></p>
 
 <p>Hoặc ta có thể visualize biểu đồ heatmap thông qua package <code class="highlighter-rouge">seaborn</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sns
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>import seaborn as sns
 
 sns.heatmap(df_cor, annot=True)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_52_1.png" /></p>
 
@@ -956,7 +1210,19 @@ sns.heatmap(df_cor, annot=True)
 
 <p>Mỗi một bộ dữ liệu đều có một đặt trưng riêng của nó. Để mô hình hóa những đặc trưng này, thống kê học sử dụng thống kê mô tả như tính mean, max, median, standard deviation, percentile. Để tính thống kê mô tả cho một dataset dạng pandas dataframe trong python đơn giản ta sử dụng hàm <code class="highlighter-rouge">describe()</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn import datasets
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>from sklearn import datasets
 iris = datasets.load_iris()
 
 X = iris.data 
@@ -968,7 +1234,7 @@ dataset['species'] = y
 print('dataset.shape: ', dataset.shape)
 
 dataset.describe()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -1101,7 +1367,22 @@ dataset.describe()
 
 <p>Bên dưới ta sẽ thực hành vẽ hàm mật độ xác suất của độ dài các đài hoa thông qua hàm <code class="highlighter-rouge">distplot()</code> của package seaborn.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import seaborn as sns
 
 sns.distplot(dataset['sepal length (cm)'], 
@@ -1116,7 +1397,7 @@ plt.xlabel('sepal length')
 # Khai báo tiêu đề cho trục y
 plt.ylabel('iris sepal length density distribution')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_57_0.png" /></p>
 
@@ -1140,7 +1421,15 @@ plt.show()
 
 <p>Nếu không set style hiển thị mặc định là seaborn đồ thị sẽ là:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 
 plt.hist(dataset['sepal length (cm)'], bins = 20)
 # Khai báo tiêu đề cho trục x
@@ -1148,11 +1437,23 @@ plt.xlabel('species')
 # Khai báo tiêu đề cho trục y
 plt.ylabel('iris sepal length (cm)')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_61_0.png" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Setup style của matplotlib dưới dạng seaborn
@@ -1164,7 +1465,7 @@ plt.xlabel('species')
 # Khai báo tiêu đề cho trục y
 plt.ylabel('iris sepal length (cm)')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_62_0.png" /></p>
 
@@ -1174,7 +1475,17 @@ plt.show()
 
 <p>Các bin edges được khai báo thông qua cũng cùng tham số <code class="highlighter-rouge">bins</code>, giá trị được truyền vào khi đó là 1 list các điểm đầu mút. Từ đó giúp đồ thị linh hoạt hơn khi có thể hiệu chỉnh độ dài các bins tùy thích.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import seaborn as sns
 
 bin_edges = [4, 5, 5.5, 6, 6.5, 8]
@@ -1184,7 +1495,7 @@ plt.xlabel('species')
 # Khai báo tiêu đề cho trục y
 plt.ylabel('iris sepal length (cm)')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_65_0.png" /></p>
 
@@ -1196,20 +1507,36 @@ plt.show()
 
 <p>Hãy hình dung qua ví dụ cụ thể khi visualization dữ liệu iris theo chiều dài, rộng cánh hoa và đài hoa.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sn
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>import seaborn as sn
 import matplotlib.pyplot as plt
 
 sn.swarmplot(x = 'species', y = 'sepal length (cm)', data = dataset)
 plt.xlabel('species')
 plt.ylabel('Length of species')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_68_0.png" /></p>
 
 <p>Muốn thay nhãn của các x = [0, 1, 2] sang target_names = [‘setosa’, ‘versicolor’, ‘virginica’] ta sử dụng hàm plt.xticks().</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sn
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import seaborn as sn
 import matplotlib.pyplot as plt
 
 sn.swarmplot(x = 'species', y = 'sepal length (cm)', data = dataset)
@@ -1218,7 +1545,7 @@ plt.xlabel('species')
 plt.xticks(ticks = [0, 1, 2], labels = ['setosa', 'versicolor', 'virginica'])
 plt.ylabel('Sepal length of species')
 plt.show()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_70_0.png" /></p>
 
@@ -1230,7 +1557,16 @@ plt.show()
 
 <p>Chẳng hạn bên dưới trên cùng 1 biểu đồ chúng ta biểu diễn độ rộng và dài của đài hoa.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 fg, ax = plt.subplots(1, 2)
 
 ax[0].plot(dataset.iloc[:, 0])
@@ -1239,7 +1575,7 @@ ax[1].plot(dataset.iloc[:, 1])
 ax[1].set_xlabel('Chiều rộng đài hoa')
 
 fg.suptitle('Biểu đồ Line độ rộng và dài đài hoa')
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_73_1.png" /></p>
 
@@ -1247,16 +1583,35 @@ fg.suptitle('Biểu đồ Line độ rộng và dài đài hoa')
 
 <p>Chúng ta có thể sử dụng biểu đồ <code class="highlighter-rouge">plt.subplots()</code> để biểu diễn hình ảnh của các nhãn trong phân loại hình ảnh.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from google.colab import drive
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
 import os
 
 drive.mount('/content/gdrive')
 path = '/content/gdrive/My Drive/Colab Notebooks/visualization'
 os.chdir(path)
 os.listdir()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['common_pdf_shape.png',
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>['common_pdf_shape.png',
  'kde_shape.png',
  'n01443537_9.JPEG',
  'n01443537_1.JPEG',
@@ -1268,9 +1623,28 @@ os.listdir()
  'n01443537_8.JPEG',
  'n01443537_5.JPEG',
  'n01443537_7.JPEG']
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import glob
@@ -1289,7 +1663,7 @@ for i in np.arange(2):
   for j in np.arange(5):
     ax[i, j].imshow(images[i + j + j*i])
     ax[i, j].set_xlabel('Fish '+str(i+j+j*i))
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190916_VisualizationPython/VisualizationPython_76_0.png" width="800" height="400" /></p>
 

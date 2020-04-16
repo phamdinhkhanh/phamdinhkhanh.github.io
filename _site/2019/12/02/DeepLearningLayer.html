@@ -7,6 +7,9 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 <title>Khoa học dữ liệu</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,11 +36,6 @@
 <meta property="article:section" content="" />
 
 <link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
-
-<!-- Style for main home page -->
-<link rel="stylesheet" href="/assets/css/styles.css">
-<link rel="stylesheet" href="/assets/css/styles_toc.css">
-
 <style>
 	
 </style>
@@ -99,6 +97,10 @@ body {
 				<br>
 				<nav>
 					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
 					
@@ -195,7 +197,7 @@ body {
 				<div class="PageNavigation">
 				</div>
 				<h1 itemprop="name" class="post-title"></h1>
-				<div>
+				<div id="bootstrap-overrides">
 					<div>
 <h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 18 - Các layers quan trọng trong deep learning</p></h2> 
 <strong>02 Dec 2019 - phamdinhkhanh</strong>
@@ -266,12 +268,17 @@ body {
   <li>Đọc và khảo sát dữ liệu:</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>import pandas as pd
 dataset = pd.read_csv('spam.csv', header=0, sep=',',encoding='latin-1')
 dataset = dataset.iloc[:, :2]
 dataset.columns = ['Label', 'Email']
 dataset.head()
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div>
 <style scoped="">
@@ -327,15 +334,60 @@ dataset.head()
 
 <p>Đồ thị phân phối các classes:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dataset.groupby('Label').Email.count().plot.bar()
-</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>dataset.groupby('Label').Email.count().plot.bar()
+</pre></td></tr></tbody></table></code></pre></div></div>
 <p><img src="/assets/images/20191202_DLLayer/DeepLearningLayer_4_1.png" width="400px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <ul>
   <li>Làm sạch dữ liệu bằng cách chuẩn hóa các từ viết hoa thành viết thường, loại bỏ dấu câu, loại bỏ chữ số, tách số dính liền với từ và loại bỏ stop words,… thông qua package gensim.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import gensim
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="rouge-code"><pre>import gensim
 from gensim.parsing.preprocessing import strip_non_alphanum, strip_multiple_whitespaces, preprocess_string, split_alphanum, strip_short, strip_numeric
 import re 
 import nltk
@@ -379,7 +431,7 @@ docs = remove_number(docs)
 docs = replace_multiple_whitespaces(docs)
 docs = remove_stopwords(docs)
 dataset['Content_Clean'] = docs
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Khởi tạo tokenizer để mã hóa các email.</li>
@@ -387,7 +439,21 @@ dataset['Content_Clean'] = docs
 
 <p>Để chuyển các câu văn thành ma trận số, chúng ta cần tạo ra một từ điển mapping mỗi từ với index tương ứng của nó. module tokenizer dễ dàng giúp ta thực hiện việc này.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.keras.preprocessing.text import Tokenizer
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 
 def _tokenize_matrix(docs, max_words=1000, max_len=150):
@@ -401,14 +467,17 @@ def _tokenize_matrix(docs, max_words=1000, max_len=150):
   return X_tok, X, tok
 
 X_tok, X, tok = _tokenize_matrix(docs=dataset['Content_Clean'], max_words=1000, max_len=150)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mã hóa nhãn spam/ham về biến one-hot.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.preprocessing import LabelEncoder
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 y = le.fit_transform(dataset['Label'])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><strong>Bước 2:</strong> Xây dựng model LSTM</p>
 
@@ -418,7 +487,32 @@ y = le.fit_transform(dataset['Label'])
   <li>Khởi tạo model Dense Layer</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">TimeDistributed</span><span class="p">,</span> <span class="n">Flatten</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">TimeDistributed</span><span class="p">,</span> <span class="n">Flatten</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span><span class="p">,</span> <span class="n">Sequential</span>
 <span class="k">from</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">preprocessing</span> <span class="n">import</span> <span class="n">LabelEncoder</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">RMSprop</span><span class="p">,</span> <span class="n">Adam</span>
@@ -443,9 +537,33 @@ y = le.fit_transform(dataset['Label'])
 <span class="n">lstm_dense</span><span class="p">=</span><span class="n">RNN_Dense</span><span class="p">()</span>
 <span class="n">lstm_dense</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 <span class="n">lstm_dense</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_14"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>Model: "model_14"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -469,19 +587,33 @@ Total params: 159,137
 Trainable params: 159,137
 Non-trainable params: 0
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Huấn luyện model dense</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lstm_dense.fit(X, y, batch_size=128,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>lstm_dense.fit(X, y, batch_size=128,
                epochs=10,
                validation_split=0.2,
                callbacks=[EarlyStopping(monitor='val_loss',min_delta=0.0001)])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 4457 samples, validate on 1115 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Train on 4457 samples, validate on 1115 samples
 Epoch 1/10
 4457/4457 [==============================] - 13s 3ms/sample - loss: 0.4479 - acc: 0.8548 - val_loss: 0.2716 - val_acc: 0.8700
 Epoch 2/10
@@ -491,13 +623,32 @@ Epoch 9/10
 4457/4457 [==============================] - 12s 3ms/sample - loss: 0.1474 - acc: 0.9462 - val_loss: 0.1279 - val_acc: 0.9570
 Epoch 10/10
 4457/4457 [==============================] - 12s 3ms/sample - loss: 0.1466 - acc: 0.9462 - val_loss: 0.1237 - val_acc: 0.9543
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Khởi tạo model TimeDistributed Layer</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">def</span> <span class="n">RNN_TimeDis</span><span class="p">(</span><span class="n">maxword</span><span class="p">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">=</span><span class="m">100</span><span class="p">,</span> <span class="n">max_len</span><span class="p">=</span><span class="m">150</span><span class="p">,</span> <span class="n">n_unit_lstm</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">n_unit_dense</span><span class="p">=</span><span class="m">64</span><span class="p">):</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="n">def</span> <span class="n">RNN_TimeDis</span><span class="p">(</span><span class="n">maxword</span><span class="p">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">=</span><span class="m">100</span><span class="p">,</span> <span class="n">max_len</span><span class="p">=</span><span class="m">150</span><span class="p">,</span> <span class="n">n_unit_lstm</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">n_unit_dense</span><span class="p">=</span><span class="m">64</span><span class="p">):</span>
     <span class="n">inputs</span> <span class="p">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="s1">'inputs'</span><span class="p">,</span> <span class="n">shape</span><span class="p">=[</span><span class="n">max_len</span><span class="p">])</span>
     <span class="n">layer</span> <span class="p">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">maxword</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">input_length</span><span class="p">=</span><span class="n">max_len</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
     <span class="p">#</span> <span class="n">Embedding</span> <span class="p">(</span><span class="n">input_dim</span><span class="p">:</span> <span class="n">size</span> <span class="k">of</span> <span class="n">vocabolary</span><span class="p">,</span> 
@@ -516,9 +667,35 @@ Epoch 10/10
 <span class="n">lstm_timedis</span><span class="p">=</span><span class="n">RNN_TimeDis</span><span class="p">()</span>
 <span class="n">lstm_timedis</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 <span class="n">lstm_timedis</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_15"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>Model: "model_15"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -544,19 +721,36 @@ Total params: 156,001
 Trainable params: 156,001
 Non-trainable params: 0
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>Huấn luyện model Time Distributed Layer</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lstm_timedis.fit(X, y, batch_size=128,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>lstm_timedis.fit(X, y, batch_size=128,
                epochs=10,
                validation_split=0.2,
                callbacks=[EarlyStopping(monitor='val_loss',min_delta=0.0001)])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 4457 samples, validate on 1115 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>Train on 4457 samples, validate on 1115 samples
 Epoch 1/10
 4457/4457 [==============================] - 13s 3ms/sample - loss: 0.1701 - acc: 0.9365 - val_loss: 0.1452 - val_acc: 0.9471
 Epoch 2/10
@@ -569,7 +763,7 @@ Epoch 5/10
 4457/4457 [==============================] - 13s 3ms/sample - loss: 0.1599 - acc: 0.9444 - val_loss: 0.1345 - val_acc: 0.9525
 Epoch 6/10
 4457/4457 [==============================] - 13s 3ms/sample - loss: 0.1438 - acc: 0.9484 - val_loss: 0.1366 - val_acc: 0.9516
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Kết quả cho thấy model áp dụng Time Distributed và áp dụng Dense đều khá tốt. Mức độ chính xác thu được trên tập validation đều trên 95%.</p>
 
@@ -593,7 +787,26 @@ Epoch 6/10
 
 <p><strong>Bước 1:</strong> Load dữ liệu từ keras.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Load dữ liệu.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre># Load dữ liệu.
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 from tensorflow import keras
@@ -612,18 +825,44 @@ print('X_test shape: {}'.format(X_test.shape))
 print('y_test shape: {}'.format(y_test.shape))
 print('X_val shape: {}'.format(X_val.shape))
 print('y_val shape: {}'.format(y_val.shape))
-</code></pre></div></div>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train shape: (55000, 28, 28, 1)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>X_train shape: (55000, 28, 28, 1)
 y_train shape: (55000,)
 X_test shape: (10000, 28, 28, 1)
 y_test shape: (10000,)
 X_val shape: (5000, 28, 28, 1)
 y_val shape: (5000,)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Bước tiếp theo tuy đơn giản nhưng vô cùng quan trọng. Rất nhiều beginer thường bỏ qua vì chưa có kinh nghiệm. Đó là kiểm tra phân phối số quan sát trên các nhóm.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib.pyplot as plt
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
 import numpy as np
 
 # Thống kê số lượng ở mỗi classes
@@ -643,13 +882,23 @@ def _plot_bar(x, title = 'Number observations of each class'):
 
 _plot_bar(y_train)
 _plot_bar(y_test)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191202_DLLayer/DeepLearningLayer_23_0.png" width="600px" height="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p>Do input của mạng LeNet có kích thước <code class="highlighter-rouge">32 x 32</code> nên ta cần padding thêm các chiều để có kích thước là <code class="highlighter-rouge">32 x 32</code>. Thực hiện dễ dàng như sau:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train = np.pad(X_train, ((0, 0), (2, 2), (2, 2), (0, 0)), 'constant')
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>X_train = np.pad(X_train, ((0, 0), (2, 2), (2, 2), (0, 0)), 'constant')
 X_val = np.pad(X_val, ((0, 0), (2, 2), (2, 2), (0, 0)), 'constant')
 X_test = np.pad(X_test, ((0, 0), (2, 2), (2, 2), (0, 0)), 'constant')
 
@@ -659,12 +908,15 @@ print('X_val shape: {}'.format(X_val.shape))
 
 # Để chắc chắn đã padding đúng thì hiển thị ra 1 hình ảnh số để kiểm tra:
 plt.imshow(np.squeeze(X_train[np.random.randint(55000)], axis=2), cmap=plt.cm.binary)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X_train shape: (55000, 32, 32, 1)
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>X_train shape: (55000, 32, 32, 1)
 X_test shape: (10000, 32, 32, 1)
 X_val shape: (5000, 32, 32, 1)
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20191202_DLLayer/DeepLearningLayer_25_2.png" width="200px" height="200px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -678,7 +930,54 @@ X_val shape: (5000, 32, 32, 1)
 
 <p>Chúng ta khởi tạo model LeNet không có BatchNormalization.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">BatchNormalization</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">BatchNormalization</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span><span class="p">,</span> <span class="n">SGD</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="k">Model</span>
 
@@ -725,9 +1024,39 @@ X_val shape: (5000, 32, 32, 1)
   <span class="n">return</span> <span class="k">model</span>
 
 <span class="n">lenet_no_batchnorm</span> <span class="p">=</span> <span class="n">_Lenet_No_BatchNorm</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_17"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>Model: "model_17"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -757,11 +1086,26 @@ Total params: 33,954
 Trainable params: 33,954
 Non-trainable params: 0
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Huấn luyện model LeNet khi không có Batch Normalization</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.keras.callbacks import EarlyStopping
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.callbacks import EarlyStopping
 # Compile model
 optimizer = Adam(learning_rate=0.005, beta_1=0.9, beta_2=0.999, amsgrad=False)
 lenet_no_batchnorm.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
@@ -776,9 +1120,19 @@ lenet_no_batchnorm.fit(X_train, y_train,
               epochs=10,
               shuffle=True,
               callbacks=[earlyStopping])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 44000 samples, validate on 11000 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Train on 44000 samples, validate on 11000 samples
 Epoch 1/10
 44000/44000 [==============================] - 21s 479us/sample - loss: 1.5967 - acc: 0.8620 - val_loss: 1.4977 - val_acc: 0.9615
 Epoch 2/10
@@ -788,10 +1142,61 @@ Epoch 6/10
 44000/44000 [==============================] - 20s 463us/sample - loss: 1.4744 - acc: 0.9834 - val_loss: 1.4789 - val_acc: 0.9780
 Epoch 7/10
 44000/44000 [==============================] - 20s 465us/sample - loss: 1.4734 - acc: 0.9840 - val_loss: 1.4817 - val_acc: 0.9754
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Khởi tạo model LeNet khi có BatchNormalization</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">BatchNormalization</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">BatchNormalization</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span><span class="p">,</span> <span class="n">SGD</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="k">Model</span>
 
@@ -842,9 +1247,43 @@ Epoch 7/10
   <span class="n">return</span> <span class="k">model</span>
 
 <span class="n">lenet_batchnorm</span> <span class="p">=</span> <span class="n">_Lenet_BatchNorm</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_22"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre>Model: "model_22"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -878,11 +1317,26 @@ Total params: 34,034
 Trainable params: 33,994
 Non-trainable params: 40
 _________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Huấn luyện model với Batch Normalization</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.keras.callbacks import EarlyStopping
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.callbacks import EarlyStopping
 # Compile model
 optimizer = Adam(learning_rate=0.005, beta_1=0.9, beta_2=0.999, amsgrad=False)
 lenet_batchnorm.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
@@ -897,9 +1351,19 @@ lenet_batchnorm.fit(X_train, y_train,
               epochs=10,
               shuffle=True,
               callbacks=[earlyStopping])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 44000 samples, validate on 11000 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Train on 44000 samples, validate on 11000 samples
 Epoch 1/10
 44000/44000 [==============================] - 30s 688us/sample - loss: 1.5439 - acc: 0.9005 - val_loss: 1.9579 - val_acc: 0.4065
 Epoch 2/10
@@ -909,7 +1373,7 @@ Epoch 6/10
 44000/44000 [==============================] - 29s 654us/sample - loss: 1.4734 - acc: 0.9845 - val_loss: 1.4813 - val_acc: 0.9743
 Epoch 7/10
 44000/44000 [==============================] - 29s 655us/sample - loss: 1.4740 - acc: 0.9841 - val_loss: 1.4774 - val_acc: 0.9790
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Ta thấy rằng model khi áp dụng Batch Normalization có tốc độ hội tụ nhanh hơn và độ chính xác cũng đồng thời cao hơn chút so với không áp dụng Batch Normalization. Điều đó chứng tỏ cơ chế chuẩn hóa dữ liệu sau mỗi layer đã giúp cho các tham số hội tụ nhanh hơn. Một thay đổi nhỏ nhưng hiệu quả mang lại thật bất ngờ.</p>
 
@@ -944,7 +1408,35 @@ Epoch 7/10
 
 <p>Sau đây ta sẽ áp dụng Attention Layer đằng sau LSTM model trong tác vụ phân loại mail spam và so sánh hiệu quả so với áp dụng các layer như TimeDistrubted Layer và Dense Layer.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.keras.layers import Layer, InputSpec
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.layers import Layer, InputSpec
 from tensorflow.keras import initializers
 
 class AttLayer(Layer):
@@ -972,9 +1464,35 @@ class AttLayer(Layer):
 
     def get_output_shape_for(self, input_shape):
         return (input_shape[0], input_shape[-1])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">TimeDistributed</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">Attention</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">TimeDistributed</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">Attention</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span><span class="p">,</span> <span class="n">Sequential</span>
 <span class="k">from</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">preprocessing</span> <span class="n">import</span> <span class="n">LabelEncoder</span>
 <span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">RMSprop</span><span class="p">,</span> <span class="n">Adam</span>
@@ -1000,9 +1518,36 @@ class AttLayer(Layer):
 <span class="n">lstm_attlayer</span><span class="p">=</span><span class="n">RNN_AttLayer</span><span class="p">()</span>
 <span class="n">lstm_attlayer</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
 <span class="n">lstm_attlayer</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_24"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre>Model: "model_24"
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
@@ -1029,15 +1574,30 @@ Total params: 146,465
 Trainable params: 146,465
 Non-trainable params: 0
 __________________________________________________________________________________________________
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lstm_dense.fit(X, y, batch_size=128,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>lstm_dense.fit(X, y, batch_size=128,
                epochs=10,
                validation_split=0.2,
                callbacks=[EarlyStopping(monitor='val_loss',min_delta=0.0001)])
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train on 4457 samples, validate on 1115 samples
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>Train on 4457 samples, validate on 1115 samples
 Epoch 1/10
 4457/4457 [==============================] - 12s 3ms/sample - loss: 0.1402 - acc: 0.9488 - val_loss: 0.1475 - val_acc: 0.9444
 Epoch 2/10
@@ -1048,7 +1608,7 @@ Epoch 4/10
 4457/4457 [==============================] - 12s 3ms/sample - loss: 0.1328 - acc: 0.9520 - val_loss: 0.1156 - val_acc: 0.9596
 Epoch 5/10
 4457/4457 [==============================] - 12s 3ms/sample - loss: 0.1328 - acc: 0.9502 - val_loss: 0.1172 - val_acc: 0.9605
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy ta thấy rằng khi áp dụng attention layer vào mô hình phân loại email thì độ chính xác của mô hình cao hơn. Ngay từ những epoch đầu tiên mô hình đã đạt được độ chính xác dường như hoàn hảo.</p>
 
