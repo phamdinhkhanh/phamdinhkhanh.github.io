@@ -112,8 +112,7 @@ Như vậy về bản chất hàm loss function của multitask learning là t�
 
 * Tiết kiệm tài nguyên tính toán: Bạn sẽ không cần phải huấn luyện mỗi một nhiệm vụ một mô hình mà có thể sử dụng kết hợp các nhiệm vụ khác nhau trong cùng một mô hình.
 
-* Kết quả từ mô hình multitask learning có độ chính xác cao hơn so với huấn luyện 
-từng mô hình riêng lẻ. Nguyên nhân là bởi có sự hỗ trợ từ những nhiệm vụ lẫn nhau. Những kinh nghiệm được học từ những nhiệm vụ này sẽ bổ sung cho nhiệm vụ khác. Chẳng hạn như khi chúng ta thực hiện phân loại thời trang và màu sắc đồng thời. Hầu hết các trường hợp áo sơ mi có màu trắng, quần âu màu đen, giày màu đen. Do đó kinh nghiệm phân loại thời trang sẽ được chia sẻ cho nhiệm vụ phân loại màu sắc.
+* Kết quả từ mô hình multitask learning có độ chính xác cao hơn so với huấn luyện từng mô hình riêng lẻ. Nguyên nhân là bởi có sự hỗ trợ từ những nhiệm vụ lẫn nhau. Những kinh nghiệm được học từ những nhiệm vụ này sẽ bổ sung cho nhiệm vụ khác. Chẳng hạn như khi chúng ta thực hiện phân loại thời trang và màu sắc đồng thời. Hầu hết các trường hợp áo sơ mi có màu trắng, quần âu màu đen, giày màu đen. Do đó kinh nghiệm phân loại thời trang sẽ được chia sẻ cho nhiệm vụ phân loại màu sắc.
 
 ## 2.6. Sử dụng multitask learning như thế nào cho hiệu quả?
 
@@ -143,11 +142,6 @@ Phần thực hành của bài viết trên google colab tại [Bài 35 - Multit
 
 Dữ liệu được sử dụng là bộ dữ liệu về fashion. Các bạn download dữ liệu theo link sau:
 
-
-
-
-
-
 ```
 from google.colab import drive
 import os
@@ -157,29 +151,15 @@ path = '/content/gdrive/My Drive/Colab Notebooks/MultitaskLearning'
 os.chdir(path)
 ```
 
-    Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&response_type=code&scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
-    
-    Enter your authorization code:
-    ··········
-    Mounted at /content/gdrive
-    
-
-
+Download dữ liệu từ git
 ```
-# !mkdir multitaskLearning
+!mkdir multitaskLearning
 %cd multitaskLearning
-# !git init
-# !git remote add -f origin https://github.com/phamdinhkhanh/khanhBlogTurtorial.git
-# !git config core.sparseCheckout true
-# !echo "Bai34-multitaskLearning/dataset" >> .git/info/sparse-checkout
-# !git pull origin master
-```
-
-    /content/gdrive/My Drive/Colab Notebooks/MultitaskLearning/multitaskLearning
-    
-
-
-```
+!git init
+!git remote add -f origin https://github.com/phamdinhkhanh/khanhBlogTurtorial.git
+!git config core.sparseCheckout true
+!echo "Bai34-multitaskLearning/dataset" >> .git/info/sparse-checkout
+!git pull origin master
 !ls 'Bai34-multitaskLearning/dataset'
 ```
 
