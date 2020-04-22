@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 34 - Multitask Learning</p></h2> 
+<strong>22 Apr 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-về-multitask-learning">1. Giới thiệu về Multitask learning</h1>
+<h2 id="11-khái-niệm-multitask-learning">1.1 Khái niệm multitask learning</h2>
+
+<p>Các bài toán phân loại thông thường của classification có một hạn chế đó là với mỗi ảnh đầu vào chúng ta chỉ dự đoán được một nhãn duy nhất cho ảnh. Tuy nhiên trên thực thế có thể xuất hiện nhiều hơn 1 nhãn trên ảnh.</p>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/pic1.png" class="largepic" /></p>
+
+<p><strong>Hình 1:</strong> Kết quả trả về của thuật toán image classification chỉ cho phép đưa ra 1 nhãn/ảnh. Trong khi hình ảnh thực tế là nhiều hơn 1 nhãn/ảnh.
+Source: <a href="https://aicode.herokuapp.com/">AICode web - Khanh blog</a>.</p>
+
+<p>Yêu cầu thực tiễn đã phát sinh nhu cầu về một thuật toán cho phép thực hiện nhiều nhiệm vụ đồng thời nhưng chỉ sử dụng một mạng neural duy nhất. Mỗi một nhiệm vụ sẽ bổ trợ cho những nhiệm vụ còn lại trong quá trình dự báo. Đó chính là học đa nhiệm multitask learning. Hãy cùng hiểu hơn thông qua ví dụ:</p>
+
+<h2 id="12-ví-dụ-multitask-learning">1.2. Ví dụ multitask learning</h2>
+
+<ul>
+  <li>
+    <p>Trong lĩnh vực xe tự hành, chúng ta phải nhận biết nhiều vật thể khác nhau trên cùng một bức ảnh như: Biển báo giao thông, vạch kẻ đường, người đi bộ, đèn giao thông, các loại phương tiện,….</p>
+  </li>
+  <li>
+    <p>Trong lĩnh vực thời trang (mà chúng ta sẽ thực hiện ở phần thực hành) chúng ta cần phân biệt đồng thời loại sản phẩm thời trang kèm theo các đặc tính về màu sắc sản phẩm (xanh, đỏ, tím, vàng, …), giới tính (nam, nữ), độ tuổi (người già, thanh niên, trẻ em), mùa (trang phục mùa đông, mùa hạ, ….).</p>
+  </li>
+</ul>
+
+<p>Như vậy chúng ta cần sử dụng Multitask learning để thực hiện nhiều tác vụ phân loại khác nhau trên cùng một ảnh đầu vào để nhận biết xem chúng có thực sự xuất hiện hay không.</p>
+
+<h1 id="2-tìm-hiểu-về-multitask-learning">2. Tìm hiểu về Multitask Learning</h1>
+
+<h2 id="21-kiến-trúc-thuật-toán-multitask-learning">2.1. Kiến trúc thuật toán multitask learning</h2>
+
+<p>Ở bài trước chúng ta đã được tìm hiểu về <a href="https://phamdinhkhanh.github.io/2020/04/15/TransferLearning.html">transfer learning</a>. Kiến trúc của multitask learning về cơ bản cũng tương tự như multitask learning và bao gồm 2 phrases:</p>
+
+<ul>
+  <li>
+    <p><strong>Phrase 1</strong>: Base network có tác dụng làm nhiệm vụ trích lọc đặc trưng (feature extractor). Lưu ý trong thuật toán multitask learning thì feature extractor sẽ tạo ra output là những đặc chưng chung cho toàn bộ các tác vụ.</p>
+  </li>
+  <li>
+    <p><strong>Phrase 2</strong>: Từ đặc trưng chung được trích suất từ <strong>phrase 1</strong>, chúng ta áp dụng chúng vào $C$ thuật toán phân loại nhị phân (Binary Classification) khác nhau. Output của chúng ta sẽ bao gồm nhiều units (multi-head) mà mỗi unit sẽ tính toán khả năng xảy ra của một tác vụ phân loại nhị phân. Ví dụ output unit thứ $j$ là output của tác vụ phân loại nhị phân thứ $j$.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/pic2.png" class="largepic" /></p>
+
+<p><strong>Hình 2:</strong> Kiến trúc của một mạng multitask learning.</p>
+
+<h2 id="22-mã-hóa-output-cho-multitask-learning">2.2. Mã hóa output cho Multitask learning</h2>
+
+<p>Giả sử chúng ta đang xây dựng một thuật toán multitask learning huấn luyện đồng thời 2 nhiệm vụ là phân loại sản phẩm thời trang và màu sắc của sản phẩm.</p>
+
+<p>Chúng ta có 3 nhãn thời trang lần lượt là: <code class="highlighter-rouge">{dress, jean, shirt}</code>
+và 2 nhãn màu sắc lần lượt là: <code class="highlighter-rouge">{black, blue, red}</code>.</p>
+
+<p>Thuật toán multitask learning sẽ học đồng thời 6 tác vụ phân loại nhị phân trên một bức ảnh đầu vào bao gồm phân loại:</p>
+<ul>
+  <li>Có xuất hiện dress trong ảnh hay không?</li>
+  <li>Có xuất hiện jean trong ảnh hay không?
+…</li>
+  <li>Có xuất hiện mày xanh trong ảnh hay không?</li>
+  <li>Có xuất hiện màu đỏ trong ảnh hay không?</li>
+</ul>
+
+<p>Để thực hiện huấn luyện 6 tác vụ huấn luyện binary classification đồng thời chúng ta sẽ one-hot encoding theo cả 2 yếu tố loại sản phẩm và màu sắc và sau đó concatenate véc tơ embedding lại với nhau. Như vậy một véc tơ output sẽ có 2 giá trị bằng 1 (một giá trị cho loại sản phẩm và một giá trị cho màu sắc).</p>
+
+<p>Ví dụ: Các tác vụ theo thứ tự là một list: <code class="highlighter-rouge">[dress, jean, shirt, black, blue, red]</code>.</p>
+
+<p>Một sản phẩm gán nhãn là <code class="highlighter-rouge">blue dress</code> sẽ được encoding thành véc tơ [1, 0, 0, 0, 1, 0]. Trong đó vị trí thứ 1 và thứ 5 tương ứng với <code class="highlighter-rouge">dress</code> và <code class="highlighter-rouge">blue</code> trong list các tác vụ.</p>
+
+<p>Phương pháp encoding nhiều biến category như trên còn được gọi là <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html">Multi label binary encoding</a>.</p>
+
+<h2 id="23-multitask-learning-có-gì-khác-so-với-transfer-learning">2.3. Multitask learning có gì khác so với transfer learning</h2>
+
+<p>Ta có thể thấy multitask learning là quá trình thực hiện nhiều bài toán phân loại nhị phân đồng thời trên cùng một đầu vào. Do đó chúng ta sẽ áp dụng hàm sigmoid để tính phân phối xác suất trên từng sự kiện. Trái lại, transfer learning là một bài toán phân loại với $C$ class nên để tính phân phối xác suất thì hàm softmax sẽ được áp dụng (trong trường hợp $C=2$ thì hàm softmax trở thành hàm sigmoid). Để hiểu hơn về hàm softmax và sigmoid, xem thêm tại <a href="https://machinelearningcoban.com/2017/02/17/softmax/#-cong-thuc-cua-softmax-function">Blog Machine Learning Cơ bản</a>. Cả 2 phương pháp học máy cũng tồn tại sự khác biệt trong hàm loss function mà chúng ta sẽ tìm hiểu ở chương tiếp theo.</p>
+
+<h2 id="24-hàm-loss-function">2.4 Hàm loss function</h2>
+
+<p>Chúng ta cùng ôn lại một chút kiến thức cơ bản:</p>
+
+<ul>
+  <li>Đối với bài toán phân loại nhị phân hàm loss function có dạng:</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{y},\hat{\mathbf{y}}) = -\sum_{i = 1}^N (y_{i}.\log(\hat{y}_{i}) + (1-y_{i}).\log(1-\hat{y}_{i}))</script>
+
+<ul>
+  <li>Trong trường hợp bài toán phân loại có $C$ nhãn. $C$ nhiều hơn 2 nhãn. Đồng thời chúng ta sử dụng hàm sorfmax để tính phân phối xác suất output thì hàm loss function là một hàm cross entropy như sau:</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{y},\hat{\mathbf{y}}) = -\sum_{i = 1}^N\sum_{j=1}^{C}y_{ij}.\log(\hat{y}_{ij})</script>
+
+<ul>
+  <li>Trong thuật toán multitask learning, đối với mỗi một tác vụ phân loại sẽ có giá trị hàm loss function là:</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{y},\hat{\mathbf{y}}) = -\sum_{i = 1}^N (y_{i}.\log(\hat{y}_{i}) + (1-y_{i}).\log(1-\hat{y}_{i}))</script>
+
+<p>Như vậy khi có $C$ tác vụ phân loại khác nhau, hàm loss function gộp của chúng sẽ là:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{y},\hat{\mathbf{y}}) = -\sum_{i = 1}^N\sum_{j=1}^{C}y_{ij}.\log(\hat{y}_{ij})+(1-y_{ij}).\log(1-\hat{y}_{ij})</script>
+
+<p>Trong đó $i$ là chỉ số của mẫu, $j$ là chỉ số của từng tác vụ.</p>
+
+<p>Như vậy về bản chất hàm loss function của multitask learning là tổng các loss function (dạng binary cross entropy) của từng bài toán phân loại nhị phân ứng của mỗi một tác vụ.</p>
+
+<h2 id="25-lợi-ích-của-multitask-learnning">2.5. Lợi ích của multitask learnning</h2>
+
+<ul>
+  <li>
+    <p>Tiết kiệm tài nguyên tính toán: Bạn sẽ không cần phải huấn luyện mỗi một nhiệm vụ một mô hình mà có thể sử dụng kết hợp các nhiệm vụ khác nhau trong cùng một mô hình.</p>
+  </li>
+  <li>
+    <p>Kết quả từ mô hình multitask learning có độ chính xác cao hơn so với huấn luyện 
+từng mô hình riêng lẻ. Nguyên nhân là bởi có sự hỗ trợ từ những nhiệm vụ lẫn nhau. Những kinh nghiệm được học từ những nhiệm vụ này sẽ bổ sung cho nhiệm vụ khác. Chẳng hạn như khi chúng ta thực hiện phân loại thời trang và màu sắc đồng thời. Hầu hết các trường hợp áo sơ mi có màu trắng, quần âu màu đen, giày màu đen. Do đó kinh nghiệm phân loại thời trang sẽ được chia sẻ cho nhiệm vụ phân loại màu sắc.</p>
+  </li>
+</ul>
+
+<h2 id="26-sử-dụng-multitask-learning-như-thế-nào-cho-hiệu-quả">2.6. Sử dụng multitask learning như thế nào cho hiệu quả?</h2>
+
+<ul>
+  <li>
+    <p><strong>Các mô hình có chung đặc trưng</strong>: Trong multitask learning, các mô hình sẽ cùng sử dụng một đặc trưng chung để huấn luyện đồng thời các nhiệm vụ khác nhau. Do đó nếu những đặc trưng giúp phân loại những nhiệm vụ này không cùng tính chất thì mô hình sẽ không đạt độ chính xác cao. Trong bài toán phân loại thời trang và màu sắc thì các đặc trưng của thời trang và các đặc trưng về màu sắc cùng là những thuộc tính trong lĩnh vực thời trang nên có thể cùng được huấn luyện trong multitask learning.</p>
+  </li>
+  <li>
+    <p><strong>Kích thước dữ liệu giữa các class tương tự nhau</strong>:. Giả sử chúng cần phân loại đồng thời 1000 nhiệm vụ khác nhau, mỗi nhiệm vụ nhận biết một class và bao gồm 100 ảnh. Như vậy khi sử dụng multitask learning thì để nhận biết một nhiệm vụ đơn lẻ $T_1$ chúng ta sẽ được hưởng lợi từ 99900 đặc trưng được học từ 999 nhiệm vụ còn lại. 99900 ảnh là một số lượng khá lớn nên các đặc trưng học được sẽ đa dạng hơn và giúp cải thiện nhiệm vụ đơn lẻ $T_1$.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/pic3.png" class="largepic" /></p>
+
+<p><strong>Hình 3:</strong> Thuật toán multitask learning hiệu quả khi không xảy ra hiện tượng mất cân bằng mẫu.</p>
+
+<p>Trái lại nếu xảy ra hiện tượng mất cân bằng dữ liệu. Nhiệm vụ $T_1$ chiếm tới 99000 ảnh và các nhiệm vụ còn lại chiếm 1000 ảnh. Như vậy hầu hết các đặc trưng học được từ mạng sẽ chủ yếu mang đặc trưng đặc thù của nhiệm vụ $T_1$ và dễ dẫn tới mô hình dự báo kém trên các nhiệm vụ còn lại.</p>
+
+<ul>
+  <li><strong>Nên huấn luyện trên một mạng neural kích thước lớn</strong>: Khi số lượng classes càng gia tăng thì khả năng dự báo nhầm class sẽ lớn hơn, do đó độ chính xác dự báo giảm và tỷ lệ nghịch với số lượng classes. Điều này đã được kiểm chứng trong các mô hình object detection. Mô hình multitask learning sẽ huấn luyện trên nhiều classes hơn so với từng mô hình classification. Do đó ta cần sử dụng một kích thước mạng neural lớn hơn để học được nhiều đặc trưng. Từ đó giúp cải thiện độ chính xác trên từng nhiệm vụ.</li>
+</ul>
+
+<h1 id="3-thực-hành-xây-dựng-mô-hình-multitask-learning">3. Thực hành xây dựng mô hình multitask learning</h1>
+
+<p>Trong bài thực hành này chúng ta cùng huấn luyện một mô hình phân loại thời trang nhưng đồng thời dự báo cả màu sắc.</p>
+
+<p>Để hiểu rõ hơn tuần tự các bước ở phần thực hành, các bạn xem ở phần mục lục <code class="highlighter-rouge">Table of contents</code> bên trái nếu ở trên google colab hoặc phần <code class="highlighter-rouge">Menu</code> nếu ở trên website <code class="highlighter-rouge">phamdinhkhanh.github.io</code>.</p>
+
+<p>Phần thực hành của bài viết trên google colab tại <a href="https://colab.research.google.com/drive/1iErI9f8IGtXn1I3qiPbCmXTsJvrDmNQZ">Bài 35 - MultitaskLearning - KhanhBlog</a></p>
+
+<h2 id="31-dataset">3.1. Dataset</h2>
+
+<p>Dữ liệu được sử dụng là bộ dữ liệu về fashion. Các bạn download dữ liệu theo link sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
+import os
+
+drive.mount('/content/gdrive')
+path = '/content/gdrive/My Drive/Colab Notebooks/MultitaskLearning'
+os.chdir(path)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&amp;redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&amp;response_type=code&amp;scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
+
+Enter your authorization code:
+··········
+Mounted at /content/gdrive
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre># !mkdir multitaskLearning
+%cd multitaskLearning
+# !git init
+# !git remote add -f origin https://github.com/phamdinhkhanh/khanhBlogTurtorial.git
+# !git config core.sparseCheckout true
+# !echo "Bai34-multitaskLearning/dataset" &gt;&gt; .git/info/sparse-checkout
+# !git pull origin master
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/content/gdrive/My Drive/Colab Notebooks/MultitaskLearning/multitaskLearning
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!ls 'Bai34-multitaskLearning/dataset'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>black_jeans  blue_dress  blue_shirt  red_shirt
+black_shirt  blue_jeans  red_dress
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Như vậy bộ dữ liệu của chúng ta sẽ bao gồm 7 nhãn có cấu trúc <code class="highlighter-rouge">màu sắc + loại sản phẩm thời trang</code>. Mỗi nhãn sẽ tương ứng với một nhiệm vụ huấn luyện.</p>
+
+<p>Tiếp theo chúng ta sẽ cùng xem phân phối số quan sát giữa các classes.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>import glob2
+import pandas as pd
+
+def _list_images(root_dir, exts = ['.jpg', '.jpeg', '.png']):
+  list_images = glob2.glob('Bai34-multitaskLearning'+'/**')
+  image_links = []
+  for image_link in list_images:
+    for ext in exts:
+      if ext in image_link[-5:]:
+        image_links.append(image_link)
+  return image_links
+
+imagePaths = sorted(_list_images(root_dir='Bai34-multitaskLearning'))
+labels = [path.split("/")[2] for path in imagePaths]
+
+data = pd.DataFrame({'label': labels, 'source': imagePaths})
+data.groupby('label').source.count().plot.bar()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_16_1.png" class="largepic" /></p>
+
+<p>Mặc dù khá đơn giản nhưng khảo sát dữ liệu là bước vô cùng cần thiết trước khi xây dựng mô hình. Bạn đọc nhớ đừng bỏ qua nhé.</p>
+
+<p>Đồ thị cho thấy kích thước mẫu giữa các classes khá đồng đều, mỗi class khoảng 200-370 quan sát. Các classes <code class="highlighter-rouge">blue jeans</code>, <code class="highlighter-rouge">black shirt</code> và <code class="highlighter-rouge">blue shirt</code> có số lượng quan sát ít hơn (từ 200-210). Tuy nhiên số lượng dữ liệu ở mỗi class là đủ lớn để xây dựng mô hình dự báo và không xảy ra hiện tượng mất cân bằng dữ liệu trầm trọng.</p>
+
+<h2 id="32-mô-hình">3.2. Mô hình</h2>
+
+<p>Bên dưới mình sẽ tạo ra một mô hình sử dụng chung đầu vào và chia làm hai nhánh, một nhánh phân loại các sản phẩm thời trang và một nhánh phân loại màu sắc. Nhánh thứ nhất (phân loại thời trang) được tạo thông qua hàm <code class="highlighter-rouge">_fashion_base_network()</code> và nhánh thứ hai (phân loại màu sắc) được tạo thông qua hàm <code class="highlighter-rouge">_color_base_network()</code>. Do màu sắc ít đặc trưng hơn so với thời trang nên không cần phải sử dụng một mạng neural quá sâu. Độ dài ngắn hơn so với nhánh thứ nhất.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre></td><td class="rouge-code"><pre><span class="p">%</span><span class="n">tensorflow_version</span> <span class="m">2.</span><span class="n">x</span>
+
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span><span class="p">,</span> <span class="n">Sequential</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">DepthwiseConv2D</span><span class="p">,</span> <span class="n">GlobalAveragePooling2D</span><span class="p">,</span> <span class="n">Input</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span>
+<span class="n">import</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
+<span class="n">INPUT_SHAPE</span> <span class="p">=</span> <span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">N_CLASSES</span> <span class="p">=</span> <span class="m">6</span>
+
+<span class="n">class</span> <span class="n">KhanhBlogNet</span><span class="p">(</span><span class="n">object</span><span class="p">):</span>
+  <span class="p">@</span><span class="n">staticmethod</span>
+  <span class="n">def</span> <span class="n">build_model</span><span class="p">(</span><span class="n">inputShape</span> <span class="p">=</span> <span class="n">INPUT_SHAPE</span><span class="p">,</span> <span class="n">classes</span> <span class="p">=</span> <span class="n">N_CLASSES</span><span class="p">,</span> <span class="n">finAct</span> <span class="p">=</span> <span class="s1">'softmax'</span><span class="p">):</span>
+    <span class="p">#</span> <span class="n">DepthWiseCONV</span> <span class="p">=&gt;</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">inpt</span> <span class="p">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="p">=</span><span class="n">inputShape</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> 
+              <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">inpt</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="p">(</span><span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span><span class="p">)</span> <span class="p">*</span> <span class="m">2</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="p">(</span><span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span><span class="p">)</span> <span class="p">*</span> <span class="m">4</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">first</span> <span class="p">(</span><span class="k">and</span> <span class="n">only</span><span class="p">)</span> <span class="k">set</span> <span class="k">of</span> <span class="n">FC</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="n">layers</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="m">1048</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.4</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s2">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">softmax</span> <span class="n">classifier</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">classes</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="n">finAct</span><span class="p">,</span> <span class="n">name</span><span class="p">=</span><span class="s2">"fashion_output"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">model</span> <span class="p">=</span> <span class="k">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">=[</span><span class="n">inpt</span><span class="p">],</span> <span class="n">outputs</span><span class="p">=[</span><span class="n">x</span><span class="p">])</span>
+    <span class="n">return</span> <span class="k">model</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">KhanhBlogNet</span><span class="p">.</span><span class="n">build_model</span><span class="p">(</span><span class="n">inputShape</span><span class="p">=</span><span class="n">INPUT_SHAPE</span><span class="p">,</span> <span class="n">classes</span><span class="p">=</span><span class="n">N_CLASSES</span><span class="p">,</span>  <span class="n">finAct</span><span class="p">=</span><span class="s1">'sigmoid'</span><span class="p">)</span>
+<span class="k">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre>Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 96, 96, 3)]       0         
+_________________________________________________________________
+conv2d (Conv2D)              (None, 96, 96, 32)        896       
+_________________________________________________________________
+batch_normalization (BatchNo (None, 96, 96, 32)        128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 96, 96, 32)        9248      
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 96, 96, 32)        128       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 32, 32, 32)        0         
+_________________________________________________________________
+dropout (Dropout)            (None, 32, 32, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 32, 32, 64)        18496     
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 32, 32, 64)        256       
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 32, 32, 64)        36928     
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 32, 32, 64)        256       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 16, 16, 64)        0         
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 16, 16, 128)       73856     
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 16, 16, 128)       512       
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 16, 16, 128)       147584    
+_________________________________________________________________
+batch_normalization_5 (Batch (None, 16, 16, 128)       512       
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 16, 16, 128)       147584    
+_________________________________________________________________
+batch_normalization_6 (Batch (None, 16, 16, 128)       512       
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 16, 16, 128)       147584    
+_________________________________________________________________
+batch_normalization_7 (Batch (None, 16, 16, 128)       512       
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 8, 8, 128)         0         
+_________________________________________________________________
+flatten (Flatten)            (None, 8192)              0         
+_________________________________________________________________
+dense (Dense)                (None, 1048)              8586264   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 1048)              0         
+_________________________________________________________________
+activation (Activation)      (None, 1048)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 6)                 6294      
+_________________________________________________________________
+fashion_output (Activation)  (None, 6)                 0         
+=================================================================
+Total params: 9,177,550
+Trainable params: 9,176,142
+Non-trainable params: 1,408
+_________________________________________________________________
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Kiến trúc model của <code class="highlighter-rouge">fashion base network</code> do mình tự thiết kế được lấy ý tưởng từ mô hình VGG16:</p>
+
+<ul>
+  <li>
+    <p>Sử dụng nhiều layers Convolutional 2D liên tiếp nhau trước khi kết nối tới Maxpooling Layer. Kiến trúc block dạng <code class="highlighter-rouge">[[Conv]_n-MaxPool]_m</code> với $m, n$ là số lần lặp lại của các layers (ý tưởng từ VGG16).</p>
+  </li>
+  <li>
+    <p>Sau mỗi layer Convolutional 2D thì output của mạng nơ ron trở nên nhỏ hơn và đồng thời chiều sâu của mạng cũng tăng lên. Việc này là để đảm bảo số lượng các đặc trưng học được ở tầng high-level trở nên đa dạng hơn và có sức mạnh để phân biệt các tác vụ.</p>
+  </li>
+  <li>
+    <p>Nhằm giảm thiểu overfitting thì mình áp dụng Dropout layers ở đầu tiên với xác suất 0.25 và cuối cùng với xác suất 0.4. Như vậy số lượng thông tin từ ảnh được truyền vào mạng neural chỉ còn 75% và ở đầu ra thì 60% các đặc trưng được lựa chọn ngẫu nhiên để dự báo output. So với trước khi áp dụng Drop Out thì mô hình của mình đã giảm được hiện tượng overfitting đáng kể.</p>
+  </li>
+  <li>
+    <p>Để tăng tốc độ hội tụ thì mình sử dụng thêm Batch Normalization sau mỗi layer Convolutional 2D.</p>
+  </li>
+</ul>
+
+<p>Với keras thì việc tạo những kiến trúc mạng là không quá khó khăn. Các bạn cũng có thể tự tạo cho mình những kiến trúc dựa trên các ý tưởng sẵn có từ các bài báo. Thậm chí nếu training hiệu quả có thể viết paper.</p>
+
+<h2 id="33-huấn-luyện-mô-hình">3.3. Huấn luyện mô hình</h2>
+
+<p>Để huấn luyện mô hình mình sẽ sử dụng ImageGenerator, bạn đọc xem lại <a href="https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html#321-s%E1%BB%AD-d%E1%BB%A5ng-imagegenerator">Bài 32 - Kĩ thuật tensorflow Dataset</a> để hiểu thêm về ImageGenerator.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+image_aug = ImageDataGenerator(rotation_range=25, 
+                         width_shift_range=0.1, height_shift_range=0.1, 
+                         shear_range=0.2, zoom_range=0.2,
+	                       horizontal_flip=True, fill_mode="nearest")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Augumentation sẽ thực hiện các biến đổi:</p>
+
+<ul>
+  <li>
+    <p>Xoay ảnh ngẫu nhiên với một góc tối đa là 25 độ, Đổng thời dịch chuyển ngẫu nhiên theo chiều width và height là 10% kích thước mỗi chiều.</p>
+  </li>
+  <li>
+    <p>Ảnh được phóng đại lên 20% so với kích thước gốc một cách ngẫu nhiên.</p>
+  </li>
+  <li>
+    <p>Ảnh được lật theo chiều ngang.</p>
+  </li>
+</ul>
+
+<p>Các phép biến đổi này không bao gồm chuẩn hóa ảnh nên không làm thay đổi độ lớn của các pixels trên ảnh gốc.</p>
+
+<p>Optimizer mình sử dụng là Adam với learning rate được khởi tạo là 0.001. Hệ số learning rate sẽ được điều chỉnh giảm dần theo epochs. Mô hình được huấn luyện trên 50 EPOCHS.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>LR_RATE = 0.01
+EPOCHS = 50
+opt = Adam(lr=LR_RATE, decay=LR_RATE / EPOCHS)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hàm loss function mà chúng ta sử dụng sẽ là <code class="highlighter-rouge">Binary Cross Entropy</code>, Bạn đọc đã hiểu lý do vì sao rồi chứ? Xem lại mục <code class="highlighter-rouge">2.4 Hàm loss function</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Để quá trình huấn luyện được nhanh hơn thì chúng ta không nên sử dụng hàm <code class="highlighter-rouge">flow_from_directory()</code> của ImageGenerator mà thay vào đó save ảnh và đọc từ numpy. Quá trình huấn luyện sẽ nhanh hơn đáng kể. Tuy nhiên cách này sẽ không hợp lý nếu bộ dữ liệu của bạn lớn hơn nhiều kích thước của RAM. Xem lại <a href="https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a> để hiểu hơn về các phương pháp truyền dữ liệu vào huấn luyện mô hình.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre>import cv2
+import numpy as np
+
+images = []
+labels = []
+# Lấy list imagePaths theo từng label
+data_sources = data.groupby('label').source.apply(lambda x: list(x))
+# data_sources = data_sources[data_sources.index != 'blue_shirt']
+for i, sources in enumerate(data_sources):
+  np.random.shuffle(list(sources))
+  # sources_200 = sources[:200]
+  label = data_sources.index[i]
+  sources = data_sources[label]
+  for imagePath in sources:
+    # Đọc dữ liệu ảnh
+    image = cv2.imread(imagePath)
+    image = cv2.resize(image, INPUT_SHAPE[:2])
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = np.array(image)
+    images.append(image)
+    # Gán dữ liệu label
+    fashion, color = label.split('_')
+    labels.append([fashion, color])
+  
+# Stack list numpy array của ảnh thành một array
+images = np.stack(images)
+images = images/255.0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Để mô hình hội tụ nhanh hơn thì chúng ta nên chia toàn bộ cường độ các pixels cho 255.</p>
+
+<p>Chúng ta lưu ý rằng mô hình Multitask learning sẽ xử lý nhiều tác vụ đồng thời. Mỗi tác vụ là một bài toán phân loại nhị phân có output là giá trị 0 hoặc 1 đánh dấu hai khả năng xảy ra hoặc không xảy ra của tác vụ. Do đó các label cần được chuyển hóa thành véc tơ binary (chỉ gồm hai giá trị 0 và 1). Trong đó 1 đại diện cho sự kiện tác vụ xảy ra và 0 đại diện cho sự kiện không xảy ra. Bạn có thể sử dụng <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html">MultiLabelBinarizer</a> của Sklearn để mã hóa nhị phân đa biến output (Multi Label Binary).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.utils import to_categorical
+from sklearn.preprocessing import MultiLabelBinarizer
+import pickle
+
+mlb = MultiLabelBinarizer()
+# One-hot encoding cho fashion
+y = mlb.fit_transform(labels)
+
+# Lưu trữ mlb.pkl file
+f = open('mlb.pkl', "wb")
+f.write(pickle.dumps(mlb))
+f.close()
+print('classes of labels: ', mlb.classes_)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>classes of labels:  ['black' 'blue' 'dress' 'jeans' 'red' 'shirt']
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Như vậy các nhãn của chúng ta lần lượt là <code class="highlighter-rouge">['black' 'blue' 'dress' 'jeans' 'red' 'shirt']</code>. Mỗi nhãn tương ứng với một tác vụ phân loại nhị phân. Chẳng hạn output unit tương ứng với vị trí thứ nhất thuộc về tác vụ <code class="highlighter-rouge">black</code> nhằm phân biệt màu sắc của sản phẩm có phải là màu đen hay không.</p>
+
+<p>Để dễ hình dung output sau khi mã hóa nhị phân đa biến, chúng ta khảo sát kết quả output tại ảnh thứ nhất:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>print(y[0])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>[1 1]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta thấy giá trị 1 tại vị trí 1 (black) và 4 (jeans). Như vậy ảnh của chúng ta là một chiếc <code class="highlighter-rouge">black jeans</code>.</p>
+
+<p>Chúng ta có thể visualize để kiểm chứng.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+plt.imshow(images[0])
+plt.title(labels[0])
+plt.axis('Off')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_35_1.png" class="largepic" /></p>
+
+<h3 id="331-phân-chia-tập-trainvalidation">3.3.1. Phân chia tập train/validation</h3>
+
+<p>Tập train và validation được phân chia theo tỷ lệ <code class="highlighter-rouge">80/20</code> một cách ngẫu nhiên.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from sklearn.model_selection import train_test_split
+
+(X_train, X_val, y_train, y_val) = train_test_split(images, y, 
+                                                    test_size=0.2, random_state=123)
+print(X_train.shape, y_train.shape)
+print(X_val.shape, y_val.shape)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(1504, 96, 96, 3) (1504, 6)
+(376, 96, 96, 3) (376, 6)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tập train được sử dụng cho nhiệm vụ huấn luyện và validation được sử dụng để kiểm định mô hình.</p>
+
+<h3 id="332-huấn-luyện-mô-hình">3.3.2. Huấn luyện mô hình</h3>
+
+<p>Bạn đọc có thể huấn luyện ngay từ đầu hoặc download <a href="https://drive.google.com/file/d/1yYJPG7TGI_U39opRCX5wJKtz5PwN07v1/view?usp=sharing">Pretrained-model Fashion Multitask Learning</a> và load lại model theo lệnh bên dưới.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model.load_weights('model_fashion_multitask_learning.h5')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo huấn luyện mô hình</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>BATCH_SIZE = 32
+
+history = model.fit(
+	image_aug.flow(X_train, y_train, batch_size=BATCH_SIZE),
+	validation_data=(X_val, y_val),
+	steps_per_epoch=len(X_train) // BATCH_SIZE,
+	epochs=EPOCHS, verbose=1)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Epoch 50/50
+47/47 [==============================] - 90s 2s/step - loss: 0.0798 - accuracy: 0.9015 - val_loss: 0.0520 - val_accuracy: 0.8068
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Quá trình huấn luyện mất khoảng 30 phút. Sau đó đừng quên save lại model.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>model.save('model_fashion_multitask_learning.h5')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="4-dự-báo-thời-trang">4. Dự báo thời trang</h1>
+
+<p>Cuối cùng không thể thiết là kiếm chứng lại kết quả dự báo mô hình bằng một vài hình ảnh trên mạng.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>import requests
+
+def _downloadImage(url):
+  resp = requests.get(url)
+  img = np.asarray(bytearray(resp.content), dtype="uint8")
+  img = cv2.imdecode(img, cv2.IMREAD_COLOR)
+  img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+  return img
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>def _predict_image(image, model, mlb):
+  # Lấy kích thước 3 kênh của image
+  (w, h, c) = image.shape
+  # Nếu resize width = 400 thì height resize sẽ là
+  height_rz = int(h*400/w)
+  # Resize lại ảnh để hiện thị 
+  output = cv2.resize(image, (height_rz, 400))
+  # Resize lại ảnh để dự báo
+  image = cv2.resize(image, IMAGE_DIMS[:2])/255.0
+  # Dự báo xác suất của ảnh
+  prob = model.predict(np.expand_dims(image, axis=0))[0]
+  # Trích ra 2 xác suất cao nhất
+  argmax = np.argsort(prob)[::-1][:2]
+  # Show classes và probability ra ảnh hiển thị
+  for (i, j) in enumerate(argmax):
+    # popup nhãn và xác suất dự báo lên ảnh hiển thị
+    label = "{}: {:.2f}%".format(mlb.classes_[j], prob[j] * 100)
+    cv2.putText(output, label, (5, (i * 20) + 15), 
+      cv2.FONT_HERSHEY_SIMPLEX, 0.5, (225, 0, 0), 2)
+  # Hiển thị ảnh dự báo
+  plt.figure(figsize=(8, 16))
+  plt.axis('Off')
+  plt.imshow(output)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Bên dưới là một số ảnh demo thời trang mà thuật toán dự báo. Bạn đọc có thể copy đường link ảnh bất kì trên mạng và trải nghiệm.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>url = 'https://dojeannam.com/wp-content/uploads/2017/07/qu%E1%BA%A7n-jean-nam-wash-b%E1%BA%A1c-tr%E1%BA%AFng-sau.jpg'  
+IMAGE_DIMS = (96, 96, 3)
+
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_50_0.png" class="largepic" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>url = 'https://oldnavy.gap.com/webcontent/0017/191/832/cn17191832.jpg'  
+IMAGE_DIMS = (96, 96, 3)
+
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_51_0.png" class="largepic" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>url = 'https://allensolly.imgix.net/img/app/product/8/85181-250173.jpg'  
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_52_0.png" class="largepic" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>url = 'https://keimag.com.my/image/cache/cache/4001-5000/4432/main/3163-DSC_0557-2c-0-1-0-1-1-800x1200.jpg'  
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_53_0.png" class="largepic" /></p>
+
+<p>Thậm chí thuật toán còn có thể dự đoán được những nhãn không có trong huấn luyện như <code class="highlighter-rouge">red dress</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>url = 'https://cdn.shopify.com/s/files/1/1708/7943/products/1-7-2010453_1024x1024.jpg?v=1578490466'
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_55_0.png" class="largepic" /></p>
+
+<p>Hoặc một chiếc <code class="highlighter-rouge">blue shirt</code> chưa từng có trước đó trong tập huấn luyện</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>url = 'https://assets.abfrlcdn.com/img/app/product/3/317578-1475149-large.jpg'
+image = _downloadImage(url)
+_predict_image(image, model, mlb)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_57_0.png" class="largepic" /></p>
+
+<h1 id="5-tổng-kết">5. Tổng kết</h1>
+
+<p>Như vậy qua bài viết này bạn đã hiểu được kiến thức cơ bản về thuật toán Multitask Learning, trường hợp áp dụng thực tiễn và đồng thời được thực hành huấn luyện một mô hình dự báo sản phẩm thời trang.</p>
+
+<p>Trên thực tế, tôi đã áp dụng Multitask Learning vào rất nhiều các bài toán của mình. Trong đó bao gồm xây dựng mô hình Fashion Image Search cho start up của tôi.</p>
+
+<p>Xung quanh Multitask Learning còn rất nhiều các ứng dụng thực tiễn khác mà bạn đọc có thể thực hiện sau bài viết này.</p>
+
+<p>Để thực hiện bài viết, không thể thiếu là các tài liệu mà tôi đã tham khảo.</p>
+
+<h1 id="6-tài-liệu">6. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=UdXfsAr4Gjw">Multitask Learning - Andrew Ng - Youtube</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=IHH47nZ7FZU">Tesla Autopilot and Multi-Task Learning for Perception and Prediction - Andrej Karpathy - Youtube</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/multitask-learning-teach-your-ai-more-to-make-it-better-dde116c2cd40">Multitask learning: teach your AI more to make it better - Alexandr Honchar
+</a></p>
+  </li>
+  <li>
+    <p><a href="https://ruder.io/multi-task/">An Overview of Multi-Task Learning in Deep Neural Networks</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.pyimagesearch.com/2018/05/07/multi-label-classification-with-keras/">PyImagesearch - multi label classification with keras</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
