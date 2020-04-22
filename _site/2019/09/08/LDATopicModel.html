@@ -210,22 +210,28 @@ body {
 
 <h2 id="11-tại-sao-ta-lại-cần-phân-loại-topic">1.1. Tại sao ta lại cần phân loại topic</h2>
 
-<p>Trong cuộc sống sẽ rất cần đến các bài toán phân loại topics. Chẳng hạn như người đọc báo có thể dễ dàng lựa chọn thể loại báo ưa thích thông qua topics mà nó được gán. Người mua sách có thể lựa chọn được những sách liên quan đến chủ đề mà mình quan tâm thông qua topics. Hoặc người đưa tin có thể tóm tắt nội dung của các mẩu tin thông qua topics. Tóm lại tác vụ phân loại topics giúp chúng ta đọc hiểu, lựa chọn và tìm kiếm những thông tin có nội dung xác định nhanh và chính xác hơn. Trong lớp những bài toán phân loại topics thì thuật toán LDA là một trong những lớp mô hình được ưa chuộng vì hiệu quả tính toán nhanh, đưa ra kết quả chính xác dựa trên lớp mô hình sinh (generative model). Kết quả của LDA trả ra bao gồm phân phối theo văn bản và phân phối theo mỗi từ. Trong đó phân phối theo văn bản là một tợp hợp phân phối hỗi hợp của một số lượng cố định các topics và mỗi từ sẽ biểu diễn mức độ đóng góp vào văn bản thông qua biểu diễn của nó theo topics. Để hiểu hơn về LDA là mô hình như thế nào và lịch sử hình thành phát triển của nó ra sao chúng ta cùng tìm hiểu quan bài viết này.</p>
+<p>Trong cuộc sống sẽ rất cần đến các bài toán phân loại topics. Chẳng hạn như người đọc báo có thể dễ dàng lựa chọn thể loại báo ưa thích thông qua topics mà nó được gán. Người mua sách có thể lựa chọn được những sách liên quan đến chủ đề mà mình quan tâm thông qua topics. Hoặc người đưa tin có thể tóm tắt nội dung của các mẩu tin thông qua topics. Tóm lại tác vụ phân loại topics giúp chúng ta đọc hiểu, lựa chọn và tìm kiếm những thông tin có nội dung xác định nhanh và chính xác hơn. Trong lớp những bài toán phân loại topics thì thuật toán LDA là một trong những lớp mô hình được sử dụng nhiều nhất vì hiệu quả tính toán nhanh, độ chính xác cao. LDA là một mô hình thuộc lớp mô hình sinh (generative model) được thầy Andrew Ng và bác David Blei phát triển độc lập vào những năm 2003.</p>
+
+<p>Do thuộc lớp mô hình sinh nên kết quả phân cụm topics của mô hình dựa trên phân phối văn bản và phân phối từ. Trong đó phân phối văn bản là một phân phối hỗi hợp của một số lượng cố định các topics. Mỗi từ sẽ biểu diễn mức độ đóng góp vào văn bản thông qua biểu diễn của nó theo topics. Để hiểu hơn về LDA là mô hình như thế nào và lịch sử hình thành phát triển của nó ra sao, mình sẽ giới thiệu tới các bạn thông qua bài viết này.</p>
 
 <h2 id="12-các-dạng-mô-hình-tìm-chủ-đề">1.2. Các dạng mô hình tìm chủ đề.</h2>
-<p>Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Một tợp hợp các từ (words hoặc terms) được lựa chọn trước hay còn gọi là bag of word sao cho những từ này không phải là stop words và với mỗi một văn bản (document) ta sẽ đo lường tần suất xuất hiện của chúng. Những tần suất này sau đó sẽ được so sánh với tần suất văn bản xuất hiện từ trong toàn bộ bộ văn bản (corpus). Từ đó ta tính được chỉ số tf-idf của từng từ trong tập bag of word.</p>
+<p>Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Chúng ta khởi tạo một tập hợp các từ (words hoặc terms) hay còn gọi là túi từ (bag of word), tập hợp những từ này đã loại bỏ stop words. tf-idf sẽ được tính toán bằng cách đo lường tần suất xuất hiện của từ trong văn bản chia cho tần suất văn bản mà có xuất hiện từ trên toàn bộ bộ văn bản (corpus).</p>
 
 <p><img src="https://cdn-images-1.medium.com/max/720/1*jNnpbGPxkjehlvTCXq9B8g.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <p><strong>Hình 1:</strong> Công thức tính tf-idf dựa trên tần suất xuất hiện của từ trong văn bản và nghịch đảo tần suất văn bản xuất hiện từ trên với tổng số lượng văn bản.</p>
 
-<p>Chỉ số tf-idf sẽ giúp ta tìm được những từ có ý nghĩa quan trọng trong 1 corpus và loại bỏ những từ ít quan trọng và common words thông qua giá trị của tf-idf càng lớn đối với những từ quan trọng.</p>
+<p>Chỉ số tf-idf sẽ giúp ta đánh giá mức độ quan trọng của từ trong corpus và lọc bỏ những từ ít quan trọng như common words thông qua giá trị của tf-idf. tf-idf càng lớn thì từ càng quan trọng.</p>
 
 <p>Các bạn có thể xem thêm tại <a href="https://phamdinhkhanh.github.io/2019/01/07/Ky_thuat_feature_engineering.html">Kỹ thuật feature engineering - 2.1: Trích lọc đặc trưng cho văn bản</a>.</p>
 
 <p>Kết quả sau cùng ta thu được một ma trận document-word $\mathbf{X}$ sao cho mỗi cột của ma trận sẽ chứa các giá trị tf-idf đại diện cho một văn bản trong corpus và mỗi dòng đại diện cho một từ.</p>
 
-<p>Do đó ta có thể coi tf-idf là một phương pháp giảm chiều dữ liệu. Trong khi tf-idf có một số đặc trưng rất tốt đặc biệt là trong xác định tợp hợp các từ có ảnh hưởng lớn đến phân biệt nội dung các văn bản. Nhưng phương pháp này vẫn bộc lộ những yếu điểm như số lượng chiều giảm thiểu là không đáng kể và cung cấp rất ít về những thông tin cấu thành bên trong của văn bản như các topic và nhân tố ẩn bên trong là gì?</p>
+<p><img src="https://www.bogotobogo.com/Algorithms/images/tf_idf/Doc_Table.png" alt="" /></p>
+
+<p>Khi lựa chọn ngưỡng min tf-idf để lọc bỏ stop words, ta sẽ giảm chiều của ma trận $\mathbf{X}$. Do đó có thể coi tf-idf là một phương pháp giảm chiều dữ liệu.</p>
+
+<p>tf-idf là một đặc trưng rất tốt giúp xác định topics văn bản. Nhưng phương pháp này vẫn bộc lộ những yếu điểm như số lượng chiều giảm thiểu là không đáng kể và cung cấp rất ít về những thông tin cấu thành bên trong của văn bản như các topic và nhân tố ẩn bên trong là gì?</p>
 
 <h2 id="121-model-lsa">1.2.1. Model LSA.</h2>
 
