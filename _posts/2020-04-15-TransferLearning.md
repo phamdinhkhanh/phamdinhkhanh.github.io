@@ -42,7 +42,7 @@ your_model.fit(data, labels, epochs=100, callbacks=[callback],
 
 ### 1.2.1. Chuyển giao tri thức
 
-Trong quá trình bùng nổ của deep learning, các tài nguyên về AI ngày càng dồi dào. Song song với quá trình phát triển đó,ngày càng có nhiều các mô hình pretrain có chất lượng tốt và độ chính xác cao. Hầu như mọi domain đều có thể tìm kiếm được các mô hình pretrain.
+Trong quá trình bùng nổ của deep learning, các tài nguyên về AI ngày càng dồi dào. Song song với quá trình phát triển đó,ngày càng có nhiều các pretrained-model có chất lượng tốt và độ chính xác cao. Hầu như mọi domain đều có thể tìm kiếm được các pretrained-model.
 
 Lý thuyết về transfer learning được Lorien Pratt thực nghiệm lần đầu năm 1993 và sau đó viết lại nó dưới dạng một lý thuyết toán học vào năm 1998 đã hiện thực hóa ý tưởng về chuyển giao tri thức giữa các mô hình như giữa con người với nhau.
 
@@ -50,7 +50,7 @@ Một mô hình đã có khả năng tận dụng lại các tri thức đã hu�
 
 ### 1.2.2. Cải thiện accuracy và tiết kiệm chi phí huấn luyện
 
-Ví dụ trong bài toán phân loại chó và mèo. Nếu huấn luyện từ đầu, bạn sẽ tốn nhiều epochs huấn luyện hơn để đạt được độ chính xác cao. Tuy nhiên nếu bạn biết tận dụng lại các mô hình pretrained model thì sẽ cần ít epochs huấn luyện hơn để đạt được một độ chính xác mong đợi. Thậm chí độ chính xác có thể lớn hơn so với khi không áp dụng transfer learning.
+Ví dụ trong bài toán phân loại chó và mèo. Nếu huấn luyện từ đầu, bạn sẽ tốn nhiều epochs huấn luyện hơn để đạt được độ chính xác cao. Tuy nhiên nếu bạn biết tận dụng lại các pretrained-model thì sẽ cần ít epochs huấn luyện hơn để đạt được một độ chính xác mong đợi. Thậm chí độ chính xác có thể lớn hơn so với khi không áp dụng transfer learning.
 
 <img src="/assets/images/20200415_TransferLearning/pic1.jpg" class="largepic"/>
 
@@ -64,7 +64,7 @@ Từ đồ thị ta có thể thấy sử dụng transfer learning sẽ mang l�
 
 ### 1.2.3. Hiệu quả với dữ liệu nhỏ
 
-Trong trường hợp bộ dữ liệu có kích thước quá nhỏ và khó có thể tìm kiếm và mở rộng thêm thì các mô hình được huấn luyện từ chúng sẽ khó có thể dự báo tốt. Tận dụng lại tri thức từ các mô hình pretrain với cùng tác vụ phân loại sẽ giúp các mô hình được huấn luyện dự báo tốt hơn với dữ liệu mới vì mô hình được học trên cả 2 nguồn tri thức đó là dữ liệu huấn luyện và dữ liệu mà nó đã được học trước đó.
+Trong trường hợp bộ dữ liệu có kích thước quá nhỏ và khó có thể tìm kiếm và mở rộng thêm thì các mô hình được huấn luyện từ chúng sẽ khó có thể dự báo tốt. Tận dụng lại tri thức từ các pretrained-model với cùng tác vụ phân loại sẽ giúp các mô hình được huấn luyện dự báo tốt hơn với dữ liệu mới vì mô hình được học trên cả 2 nguồn tri thức đó là dữ liệu huấn luyện và dữ liệu mà nó đã được học trước đó.
 
 
 
@@ -77,7 +77,7 @@ Quá trình áp dụng tri thức đã được học từ một mô hình trư�
 
 Để hiểu rõ hơn, mình lấy ví dụ:
 
-Trong bài toán dự báo dog and cat. Chúng ta có 2 nhãn cần phân loại là dog, cat và cả 2 nhãn này đều xuất hiện trong một bộ dữ liệu imagenet. Như vậy chúng ta kì vọng rằng có thể tận dụng lại các weights từ mô hình pretrain trên bộ dữ liệu imagenet để huấn luyện lại bài toán nhanh hơn, chuẩn xác hơn.
+Trong bài toán dự báo dog and cat. Chúng ta có 2 nhãn cần phân loại là dog, cat và cả 2 nhãn này đều xuất hiện trong một bộ dữ liệu imagenet. Như vậy chúng ta kì vọng rằng có thể tận dụng lại các weights từ pretrained-model trên bộ dữ liệu imagenet để huấn luyện lại bài toán nhanh hơn, chuẩn xác hơn.
 
 
 
@@ -90,21 +90,21 @@ Như chúng ta đã biết các layers CNN về bản chất là một feature e
 
 **Hình 2**: Các đặc trưng học được từ mạng CNN. Ở những Convolutional Layers đầu tiên, các bộ lọc phát hiện được các chi tiết chung dưới dạng các nét ngang, dọc và các cạnh của ảnh. Đây là những đặc trưng bậc thấp (low level feature) và khá chung chung. Chúng ta chưa thể nhận biết được vật thể dựa trên những đường nét này. Ở những Convolutional Layers cuối cùng là những đặc trưng bậc cao (high level feature) được tổng hợp từ đặc trưng bậc thấp. Đây là những đặc trưng tốt và có sức mạnh phân loại các classes.
 
-Quá trình transfer learning sẽ tận dụng lại các đặc trưng được học từ những mô hình pretrain. Để hiểu hơn về cách thức chuyển giao, chúng ta cùng tìm hiểu về kiến trúc của mô hình sử dụng transfer learning:
+Quá trình transfer learning sẽ tận dụng lại các đặc trưng được học từ những pretrained-model. Để hiểu hơn về cách thức chuyển giao, chúng ta cùng tìm hiểu về kiến trúc của mô hình sử dụng transfer learning:
 
-* phrase 1: Là một mạng Base Network có tác dụng trích lọc đặc trưng được cấu tạo từ các Convolutional 2D Layers. Base Network sẽ được trích xuất từ một phần của mô hình pretrain sau khi loại bỏ các top fully connected layers. Để dễ hình dung mình giả định model pretrained được sử dụng là VGG16, một kiến trúc khá tốt được google phát triển vào năm 2014. Điểm cải tiến của VGG16 so với các kiến trúc CNN trước đó là sử dụng nhiều Convolutional 2D Layers nối tiếp nhau. Cụ thể các layers có cấu trúc [[Conv]_n-MaxPool]_m thay vì [Conv-MaxPool]_m, với m, n là tần suất xuất hiện của các khối mạng được lặp lại bao bọc trong ngoặc vuông.
+* **Phrase 1**: Là một mạng Base Network có tác dụng trích lọc đặc trưng được cấu tạo từ các Convolutional 2D Layers. Base Network sẽ được trích xuất từ một phần của pretrained-model sau khi loại bỏ các top fully connected layers. Để dễ hình dung mình giả định model pretrained được sử dụng là VGG16, một kiến trúc khá tốt được google phát triển vào năm 2014. Điểm cải tiến của VGG16 so với các kiến trúc CNN trước đó là sử dụng nhiều Convolutional 2D Layers nối tiếp nhau. Cụ thể các layers có cấu trúc [[Conv]_n-MaxPool]_m thay vì [Conv-MaxPool]_m, với m, n là tần suất xuất hiện của các khối mạng được lặp lại bao bọc trong ngoặc vuông.
 
 <img src="/assets/images/20200415_TransferLearning/pic3.jpg" class="largepic"/>
 
 **Hình 3**: Kiến trúc của mạng VGG16 được sử dụng làm base network trong transfer learning.
 
-* phrase 2: Là các Fully Connected Layers giúp giảm chiều dữ liệu và tính toán phân phối xác suất ở output. Bản chất Fully Connected Layers này chính là một mạng MLP (Multiple Layer Perceptron), một kiến trúc nguyên thủy nhất của thuật toán neural network. Số lượng các units ở output chính bằng với số lượng classes của bài toán phân loại. Các hệ số của fully connected layers sẽ được khởi tạo một cách ngẫu nhiên.
+* **Phrase 2**: Là các Fully Connected Layers giúp giảm chiều dữ liệu và tính toán phân phối xác suất ở output. Bản chất Fully Connected Layers chính là một mạng MLP (Multiple Layer Perceptron), một kiến trúc nguyên thủy nhất của thuật toán neural network. Số lượng các units ở output chính bằng với số lượng classes của bài toán phân loại. Các hệ số của fully connected layers sẽ được khởi tạo một cách ngẫu nhiên.
 
 <img src="/assets/images/20200415_TransferLearning/pic4.jpg" class="largepic"/>
 
 **Hình 4**: Kiến trúc base network kết hợp với fully connected layers.
 
-Quá trình khởi tạo mô hình chúng ta sẽ tận dụng lại các weight của `base_network`. Dữ liệu ảnh sau khi đi qua `base_network` sẽ tạo ra những features tốt, những feature này chính là đầu vào input $\mathbf{X}$ cho mạng MLP để dự báo $\hat{\mathbf{y}}$. Hệ số $\mathbf{W}$ và $\mathbf{b}$ được khởi tạo ngẫu nhiên. Các hệ số của base network được load lại từ pretrain model.
+Quá trình khởi tạo mô hình chúng ta sẽ tận dụng lại các weight của `base_network`. Dữ liệu ảnh sau khi đi qua `base_network` sẽ tạo ra những đặc trưng tốt, những đặc trưng này chính là đầu vào input $\mathbf{X}$ cho mạng MLP để dự báo $\hat{\mathbf{y}}$. Hệ số $\mathbf{W}$ và $\mathbf{b}$ được khởi tạo ngẫu nhiên. Các hệ số của base network được load lại từ pretrain model.
 
 Để dễ hình dung các bước và đồng thời kiểm nghiệm hiệu quả của transfer learning, chúng ta cùng thực hành trên bộ dữ liệu dog and cat.
 
@@ -112,7 +112,7 @@ Quá trình khởi tạo mô hình chúng ta sẽ tận dụng lại các weight
 
 ## 3.1. Dataset
 
-Để minh họa cho phương pháp transfer learning mình sẽ huấn luyện bài toán dog and cat trên bộ dữ liệu [Sub Dog and Cat](https://github.com/ardamavi/Dog-Cat-Classifier.git) với khoảng 1400 ảnh.
+Dữ liệu được sử dụng để minh họa cho phương pháp transfer learning là bộ dữ liệu [Sub Dog and Cat](https://github.com/ardamavi/Dog-Cat-Classifier.git) với khoảng 1400 ảnh.
 
 Bạn đọc có thể bắt đầu thực hành tại [Transfer Learning](https://colab.research.google.com/drive/1EDWZxaKd6SNkAZUX1zwHXZYXPkKnFsL4).
 
@@ -166,9 +166,9 @@ Ta thấy dữ liệu giữa 2 classes là cân bằng với mỗi loại khoả
 
 ### 3.1.1. Phân chia tập train/validation
 
-Một thủ tục không thể thiếu của quá trình huấn luyện model đó là phân chia tập train/validation. Dữ liệu sẽ được huấn luyện trên tập dữ liệu train và kiểm định trên tập test. Một số qui trình phát triển model ngặt hơn còn phân chia thêm tập dev để fine tunning tham số giữa các mô hình và tập test để kiểm định mô hình trên tập dữ liệu thực tế mà người dùng sinh ra. Tuy nhiên để đơn giản hóa mình sẽ chỉ sử dụng tập train/validation.
+Một thủ tục không thể thiếu của quá trình huấn luyện model đó là phân chia tập train/validation. Dữ liệu sẽ được huấn luyện trên tập dữ liệu train và kiểm định trên tập validation. Một số qui trình phát triển model ngặt hơn còn phân chia thêm tập dev để fine tuning tham số giữa các mô hình và tập test để kiểm định mô hình trên tập dữ liệu thực tế mà người dùng sinh ra. Tuy nhiên để đơn giản hóa mình sẽ chỉ sử dụng tập train/validation.
 
-Sau đó chúng ta phân chia tập train/test theo tỷ lệ 80/20. Để tỷ lệ class cân bằng giữa bộ dữ liệu train và test ta nên sử dụng hàm train_test_split của sklearn với `stratify=y`.
+Sau đó chúng ta phân chia tập train/validation theo tỷ lệ 80/20. Để tỷ lệ class cân bằng giữa bộ dữ liệu train và test ta nên sử dụng hàm train_test_split của sklearn với `stratify=y`.
 
 
 ```
@@ -364,15 +364,15 @@ val_generator = DataGenerator(
 
 Tùy vào mục đích biến đổi mà bạn đọc có thể thêm hoặc bớt các bước xử lý ảnh. Mình sẽ lý giải các bước xử lý chính:
 
-normalize: Có thuẩn hóa mỗi một ảnh với theo phân phối chuẩn bằng cách trừ đi trung bình và chia cho phương sai toàn bộ các pixels tương ứng ở mỗi kênh.
+* **normalize**: Có thuẩn hóa mỗi một ảnh với theo phân phối chuẩn bằng cách trừ đi trung bình và chia cho phương sai toàn bộ các pixels tương ứng ở mỗi kênh.
 
-zoom_range: Là một khoảng giá trị phóng đại ảnh: [lower, upper]. Giá trị phóng đại của một ảnh sẽ được sinh ngẫu nhiên nằm trong khoảng zoom_range. Giá trị phóng đại này càng nhỏ thì ảnh sẽ càng được phóng to.
+* **zoom_range**: Là một khoảng giá trị phóng đại ảnh: [lower, upper]. Giá trị phóng đại của một ảnh sẽ được sinh ngẫu nhiên nằm trong khoảng zoom_range. Giá trị phóng đại này càng nhỏ thì ảnh sẽ càng được phóng to.
 
-rotation: Góc xoay ngẫu nhiên của một bức ảnh. Thông thường chỉ thiết lập từ 10-20 độ.
+* **rotation**: Góc xoay ngẫu nhiên của một bức ảnh. Thông thường chỉ thiết lập từ 10-20 độ.
 
-brightness_range: Khoảng điều chỉnh độ sáng cho bức ảnh. Độ sáng sẽ là một giá trị ngẫu nhiên từ [minVal, maxVal].
+* **brightness_range**: Khoảng điều chỉnh độ sáng cho bức ảnh. Độ sáng sẽ là một giá trị ngẫu nhiên từ [minVal, maxVal].
 
-Lưu ý: Khi khởi tạo Data Generator với các mô hình sử dụng pretrained model thì chúng ta sẽ phải thực hiện các bước biến đổi dữ liệu trong data pipeline đồng nhất với pipeline được áp dụng trên pretrained model. Khi đó các features được tạo thành từ base network mới có tác dụng phân loại tốt.
+Lưu ý: Khi khởi tạo Data Generator với các mô hình sử dụng pretrained model thì chúng ta sẽ phải thực hiện các bước biến đổi dữ liệu trong data pipeline đồng nhất với pipeline được áp dụng trên pretrained model. Khi đó các đặc trưng được tạo thành từ base network mới có tác dụng phân loại tốt.
 
 Các phép biến đổi trên tập train và validation mình đã tham chiếu với biến đổi mà tác giả sử dụng khi thực hiện model pretrain với bộ dữ liệu imagenet từ trước.
 
@@ -443,7 +443,7 @@ Ta có thể thấy với cùng một bức ảnh nhưng đã sinh ra khá nhi�
 
 ## 4.1. Khởi tạo model huấn luyện
 
-Tiếp theo chúng ta sẽ huấn luyện mô hình. Việc đầu tiên cần thực hiện là khởi tạo base network cho mô hình. Trên keras đã có hầu hết các model pretrain phổ biến trên bộ dữ liệu imagenet. Lý do tác giả lựa chọn bộ dữ liệu này để huấn luyện các model pretrain là vì có tới 1000 classes khác nhau. Do đó hầu như mọi bài toán classification đều có nhãn xuất hiện trong imagenet và có thể tái sử dụng pretrain model.
+Tiếp theo chúng ta sẽ huấn luyện mô hình. Việc đầu tiên cần thực hiện là khởi tạo base network cho mô hình. Trên keras đã có hầu hết các model pretrain phổ biến trên bộ dữ liệu imagenet. Lý do tác giả lựa chọn bộ dữ liệu này để huấn luyện các pretrained-model là vì có tới 1000 classes khác nhau. Do đó hầu như mọi bài toán classification đều có nhãn xuất hiện trong imagenet và có thể tái sử dụng pretrained-model.
 
 Ta khởi tạo model như sau:
 
@@ -482,14 +482,14 @@ model.summary()
     _________________________________________________________________
     
 
-Để ý kĩ bạn sẽ thấy `base network` là một pretrain model `VGG16` đã được truncate top layer thông qua tham số `include_top=False`. Bài toán của chúng ta có số lượng nhãn khác với imagenet nên sẽ ta gán vào base network một mạng MLP gồm các Layers Fully Connected sao cho layer cuối có số units = số lượng output classes.
+Để ý kĩ bạn sẽ thấy `base network` là một pretrain model `Mobilenet` đã được truncate top layer thông qua tham số `include_top=False`. Bài toán của chúng ta có số lượng nhãn khác với imagenet nên sẽ ta gán vào base network một mạng MLP gồm các Layers Fully Connected sao cho layer cuối có số units = số lượng output classes.
 
 Tiếp theo ta sẽ thực hiện quá trình warm up để huấn luyện mô hình nhanh hơn.
 
 
 ## 4.2. Warm up
 
-`Warm up` là quá trình cần thiết để mô hình hội tụ nhanh hơn. Warm up sẽ đóng băng lại các layers CNN để cho hệ số của chúng không đổi và train lại trên các layers fully conntected cuối cùng. Mục đích của warm up là giữ nguyên được các đặc trưng tổng quát đã được học từ pretrained-model mà những đặc trưng này là tốt vì được huấn luyện trên bộ dữ liệu có kích thước lớn hơn và có độ chính xác cao hơn sao với khởi tạo hệ số ngẫu nhiên. Như vậy phrase 2 (xem hình 2) của mô hình sẽ không thay đổi input $\mathbf{X}$ và coi như chúng ta huấn luyện lại mạng MLP.
+`Warm up` là quá trình cần thiết để mô hình hội tụ nhanh hơn. Warm up sẽ đóng băng lại các layers CNN để cho hệ số của chúng không đổi và chỉ train lại trên các Fully Conntected Layers ở cuối cùng. Mục đích của warm up là giữ nguyên được các đặc trưng bậc cao (high-level) đã được học từ pretrained-model mà những đặc trưng này là tốt vì được huấn luyện trên bộ dữ liệu có kích thước lớn hơn và có độ chính xác cao hơn sao với khởi tạo hệ số ngẫu nhiên. Như vậy Phrase 2 (xem hình 2) của mô hình sẽ không thay đổi input $\mathbf{X}$ và coi như chúng ta huấn luyện lại mạng MLP.
 
 
 ```
@@ -524,13 +524,13 @@ model.fit(train_generator,
 
 Bạn sẽ thấy accuracy sẽ được cải thiện rất nhanh chỉ sau epoch đầu tiên.
 
-Tuy nhiên bài toán có hiện tượng overfitting khi val_accuracy thấp hơn nhiều so với train_accuracy.
+Tuy nhiên bài toán có hiện tượng overfitting khi `val_accuracy` thấp hơn nhiều so với `train_accuracy`.
 
 Để giảm thiểu overfitting chúng ta sẽ thực hiện một số hiệu chỉnh đối với mô hình như:
 
 * Mạng nơ ron có khả năng xấp xỉ được hầu hết các hàm số. Khi kiến trúc mạng càng phức tạp và bộ dữ liệu huấn luyện có kích thước nhỏ thì khả năng học được chính xác trên từng điểm dữ liệu sẽ rất tốt. Nhưng việc học này sẽ không tốt trên dữ liệu mới. Chúng ta có thể sử dụng Dropout Layer để giảm thiểu độ phức tạp trong kiến trúc của mô hình. Dropout sẽ làm nhiệm vụ cắt tỉa bớt một số kết nối Fully Connected.
 
-* Để giảm thiểu mức độ phức tạp của hàm số chúng ta cũng có thể sử dụng các phương pháp hiệu chuẩn (regularization) bằng cách thêm vào loss function thành phần norm chuẩn của ma trận hệ số các layers.
+* Để giảm thiểu mức độ phức tạp của hàm số chúng ta cũng có thể sử dụng các phương pháp hiệu chuẩn (regularization) bằng cách thêm vào loss function thành phần norm chuẩn Frobenius của ma trận hệ số các layers.
 
 $$\mathcal{L}_{reg}(\mathbf{W};\mathbf{X}) = \mathcal{L}(\mathbf{W}; \mathbf{X}) + \lambda ||\mathbf{W}||_{F}^{2}$$
 
@@ -548,15 +548,15 @@ your_model.add(Dense(64, input_dim=64,
 
 * Một trong những nguyên nhân chủ yếu của overfitting đó là dữ liệu huấn luyện có kích thước quá bé và không tổng quát các trường hợp của ảnh. Trên thực tế bộ dữ liệu [dog and cat gốc](https://www.kaggle.com/c/dogs-vs-cats/data) có kích thước là 25000 ảnh và lớn gấp hàng chục lần dữ liệu huấn luyện với khoảng 1000 ảnh ảnh. Tăng cường thêm dữ liệu huấn luyện cho tập train là một giải pháp có thể cân nhắc tới.
 
-* Fine tunning lại những layers của base network để cải thiện đặc trưng (sẽ được trình bày ở phần sau).
+* Fine tuning lại những layers của base network để cải thiện đặc trưng (sẽ được trình bày ở phần sau).
 
-# 5. Fine tunning model
+# 5. Fine tuning model
 
 Mục đích chính của việc warm up model là để mô hình hội tụ nhanh hơn tới global optimal value.
 
-Sau khi mô hình đạt ngưỡng tối ưu, sẽ rất khó để chúng ta tăng được thêm độ chính xác hơn nữa. 
+Sau khi mô hình đạt ngưỡng tối ưu trên các Fully Connected Layers, sẽ rất khó để chúng ta tăng được thêm độ chính xác hơn nữa. 
 
-Lúc này chúng ta sẽ cần unfrozen các layers của base network và huấn luyện mô hình trên toàn bộ các layers đã được tải trọng số từ pretrain model. Quá trình này được gọi là fine-tunning.
+Lúc này chúng ta sẽ cần phá băng (unfrozen) các layers của base network và huấn luyện mô hình trên toàn bộ các layers từ pretrained- model. Quá trình này được gọi là fine tuning.
 
 
 ```
@@ -612,21 +612,21 @@ Các đặc trưng học được trên ít dữ liệu sẽ có tác dụng ph�
 
 **Hình 5**: Chiến lược áp dụng transfer learning.
 
-* Đối với dữ liệu nhỏ: Train lại toàn bộ các layers sẽ làm mất đi các đặc trưng đã được học từ model pretrained và dẫn tới mô hình dự báo sẽ không chính xác. Do đó chúng ta chỉ nên train lại các fully connected layers cuối.
+* Đối với dữ liệu nhỏ: Train lại toàn bộ các layers sẽ làm mất đi các đặc trưng đã được học từ model pretrained và dẫn tới mô hình dự báo sẽ không chính xác. Chúng ta chỉ nên train lại các fully connected layers cuối.
 
-* Đối với dữ liệu lớn và giống domain: Có thể train lại model trên toàn bộ layers. Nhưng để quá trình huấn luyện nhanh hơn thì chúng ta sẽ thực hiện bước khởi động (warm up) và sau đó mới fine tune lại mô hình.
+* Đối với dữ liệu lớn và giống domain: Có thể train lại model trên toàn bộ layers. Nhưng để quá trình huấn luyện nhanh hơn thì chúng ta sẽ thực hiện bước khởi động (warm up) và sau đó mới fine tuning lại mô hình.
 
-* Đối với dữ liệu lớn và khác domain: Chúng ta nên huấn luyện lại model từ đầu vì mô hình pretrain không tạo ra được các đặc trưng tốt cho dữ liệu khác domain.
+* Đối với dữ liệu lớn và khác domain: Chúng ta nên huấn luyện lại model từ đầu vì pretrain-model không tạo ra được các đặc trưng tốt cho dữ liệu khác domain.
 
 ## 6.2. Khi nào thực hiện transfer learning
 
 Có một số trường hợp bạn áp dụng transfer learning nhưng không thấy thực sự hiệu quả. Lý do là bởi transfer learning chỉ phù hợp với một số tình huống cụ thể như sau:
 
-* Chỉ nên transfer learning giữa 2 mô hình có cùng domain. Mô hình pretrain A và mô hình cần huấn luyện B không có chung domain về dữ liệu thì các đặc trưng học được từ bộ feature extractor của A sẽ không thực sự hữu ích trong việc phân loại của mô hình B. Cụ thể hơn. Nếu bạn muốn xây dựng một ứng dụng âm thanh đánh thức trợ lý ảo của google bằng tiếng Việt khi nói từ :"dậy đi google". Bạn đã có sẵn mô hình pretrain A đối với tác vụ `speech to text` nhưng huấn luyện trên Tiếng Anh. Như vậy bạn không nên thực hiện transfer learning trong trường hợp này. Như trong ví dụ của mình thì mô hình pretrain của imagenet đã bao gồm 2 classes dog and cat. 
+* Chỉ nên transfer learning giữa 2 mô hình có cùng domain. pretrained-model A và mô hình cần huấn luyện B không có chung domain về dữ liệu thì các đặc trưng học được từ bộ feature extractor của A sẽ không thực sự hữu ích trong việc phân loại của mô hình B. Cụ thể hơn. Nếu bạn muốn xây dựng một ứng dụng âm thanh đánh thức trợ lý ảo của google bằng tiếng Việt khi nói từ :"dậy đi google". Bạn đã có sẵn pretrained-model A đối với tác vụ `speech to text` nhưng huấn luyện trên Tiếng Anh. Như vậy bạn không nên thực hiện transfer learning trong trường hợp này. Như trong ví dụ của mình thì pretrained-model của imagenet đã bao gồm 2 classes dog and cat. 
 
-* Dữ liệu huấn luyện mô hình pretrain A phải lớn hơn so với mô hình B. Nếu chúng ta transfer hệ số từ một mô hình pretrain được huấn luyện trên dữ liệu có kích thước nhỏ thì các đặc trưng học được từ mô hình A sẽ không tổng quát để giúp ích phân loại dữ liệu mô hình B.
+* Dữ liệu huấn luyện pretrained-model A phải lớn hơn so với mô hình B. Nếu chúng ta transfer hệ số từ một pretrained-model được huấn luyện trên dữ liệu có kích thước nhỏ thì các đặc trưng học được từ mô hình A sẽ không tổng quát để giúp ích phân loại dữ liệu mô hình B.
 
-* Mô hình pretrain A phải là mô hình có phẩm chất tốt. Đây là một yêu cầu hiển nhiên vì mô hình tốt mới tạo ra được những đặc trưng tốt.
+* pretrained-model A phải là mô hình có phẩm chất tốt. Đây là một yêu cầu hiển nhiên vì mô hình tốt mới tạo ra được những đặc trưng tốt.
 
 # 7. Tổng kết
 
