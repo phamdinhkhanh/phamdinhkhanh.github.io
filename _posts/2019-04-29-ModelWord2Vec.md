@@ -1250,9 +1250,11 @@ similar_words
     {'egypt': ['ethiopia', 'earth', 'dwell', 'go', 'from'],
      'king': ['out', 'these', 'by', 'lord', 'son']}
 
+### 2.3.1. Biểu diễn t-SNE
 
+t-SNE là một thuật toán giảm chiều dữ liệu `dimensionality reduction` rất hiệu quả. Thông thường đối với những véc tơ nhiều hơn 3 chiều chúng ta sẽ tìm cách giảm chúng về 2 hoặc 3 chiều bằng thuật toán t-SNE và biểu diễn chúng trong không gian để nhận biết mối liên hệ, tính chất.
 
-Biểu diễn các từ trong không gian nén 100 chiều về 2 chiều.
+Tiếp theo chúng ta sẽ biểu diễn các từ trong không gian 2 chiều dựa trên thuật toán t-SNE.
 
 
 ```python
