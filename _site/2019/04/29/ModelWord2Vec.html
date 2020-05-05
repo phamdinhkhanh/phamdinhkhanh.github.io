@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
@@ -1939,7 +1941,11 @@ Epoch: 5 Loss: 12.227664299309254
  'king': ['out', 'these', 'by', 'lord', 'son']}
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Biểu diễn các từ trong không gian nén 100 chiều về 2 chiều.</p>
+<h3 id="231-biểu-diễn-t-sne">2.3.1. Biểu diễn t-SNE</h3>
+
+<p>t-SNE là một thuật toán giảm chiều dữ liệu <code class="highlighter-rouge">dimensionality reduction</code> rất hiệu quả. Thông thường đối với những véc tơ nhiều hơn 3 chiều chúng ta sẽ tìm cách giảm chúng về 2 hoặc 3 chiều bằng thuật toán t-SNE và biểu diễn chúng trong không gian để nhận biết mối liên hệ, tính chất.</p>
+
+<p>Tiếp theo chúng ta sẽ biểu diễn các từ trong không gian 2 chiều dựa trên thuật toán t-SNE.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2

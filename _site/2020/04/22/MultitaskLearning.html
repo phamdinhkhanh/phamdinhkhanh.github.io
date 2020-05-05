@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
@@ -213,7 +215,7 @@ body {
 
 <p><img src="/assets/images/20200422_MultitaskLearning/pic1.png" class="largepic" /></p>
 
-<p><strong>Hình 1:</strong> Kết quả trả về của thuật toán image classification chỉ cho phép đưa ra 1 nhãn/ảnh. Trong khi hình ảnh thực tế là nhiều hơn 1 nhãn/ảnh.
+<p><strong>Hình 1:</strong> Kết quả trả về của thuật toán image classification chỉ cho phép đưa ra 1 nhãn/ảnh. Trong hình ảnh ví dụ xuất hiện đồng thời của 3 class khác nhau là <code class="highlighter-rouge">xe cộ, cột đèn và người</code> trong khi nhãn được dự báo là <code class="highlighter-rouge">bullet train</code>.
 Source: <a href="https://aicode.herokuapp.com/">AICode web - Khanh blog</a>.</p>
 
 <p>Yêu cầu thực tiễn đã phát sinh nhu cầu về một thuật toán cho phép thực hiện nhiều nhiệm vụ đồng thời nhưng chỉ sử dụng một mạng neural duy nhất. Mỗi một nhiệm vụ sẽ bổ trợ cho những nhiệm vụ còn lại trong quá trình dự báo. Đó chính là học đa nhiệm multitask learning. Hãy cùng hiểu hơn thông qua ví dụ:</p>
@@ -229,7 +231,7 @@ Source: <a href="https://aicode.herokuapp.com/">AICode web - Khanh blog</a>.</p>
   </li>
 </ul>
 
-<p>Như vậy chúng ta cần sử dụng Multitask learning để thực hiện nhiều tác vụ phân loại khác nhau trên cùng một ảnh đầu vào để nhận biết xem chúng có thực sự xuất hiện hay không.</p>
+<p>Như vậy chúng ta cần sử dụng Multitask learning để thực hiện nhiều nhiệm vụ phân loại khác nhau trên cùng một ảnh đầu vào để nhận biết xem chúng có thực sự xuất hiện trong ảnh hay không.</p>
 
 <h1 id="2-tìm-hiểu-về-multitask-learning">2. Tìm hiểu về Multitask Learning</h1>
 
@@ -239,44 +241,41 @@ Source: <a href="https://aicode.herokuapp.com/">AICode web - Khanh blog</a>.</p>
 
 <ul>
   <li>
-    <p><strong>Phrase 1</strong>: Base network có tác dụng làm nhiệm vụ trích lọc đặc trưng (feature extractor). Lưu ý trong thuật toán multitask learning thì feature extractor sẽ tạo ra output là những đặc chưng chung cho toàn bộ các tác vụ.</p>
+    <p><strong>Phrase 1</strong>: Base network có tác dụng làm nhiệm vụ trích lọc đặc trưng (feature extractor). Lưu ý trong thuật toán multitask learning thì feature extractor sẽ tạo ra output là những đặc trưng chung cho toàn bộ các nhiệm vụ.</p>
   </li>
   <li>
-    <p><strong>Phrase 2</strong>: Từ đặc trưng chung được trích suất từ <strong>phrase 1</strong>, chúng ta áp dụng chúng vào $C$ thuật toán phân loại nhị phân (Binary Classification) khác nhau. Output của chúng ta sẽ bao gồm nhiều units (multi-head) mà mỗi unit sẽ tính toán khả năng xảy ra của một tác vụ phân loại nhị phân. Ví dụ output unit thứ $j$ là output của tác vụ phân loại nhị phân thứ $j$.</p>
+    <p><strong>Phrase 2</strong>: Thực hiện nhiều nhiệm vụ phân loại. Các đặc trưng chung được trích suất từ <strong>phrase 1</strong> sẽ được sử dụng làm đầu vào cho $C$ bài toán phân loại nhị phân (Binary Classification) khác nhau. Output của chúng ta sẽ bao gồm nhiều units (Multi-head) mà mỗi unit sẽ tính toán khả năng xảy ra của một nhiệm vụ phân loại nhị phân. Xem mô tả qua ví dụ bên dưới.</p>
   </li>
 </ul>
 
 <p><img src="/assets/images/20200422_MultitaskLearning/pic2.png" class="largepic" /></p>
 
-<p><strong>Hình 2:</strong> Kiến trúc của một mạng multitask learning.</p>
+<p><strong>Hình 2:</strong> Kiến trúc của một mạng Multitask learning. Output của <code class="highlighter-rouge">Base Network</code> trong <code class="highlighter-rouge">Phrase 1</code> là input của các nhiệm vụ phân loại trong <code class="highlighter-rouge">Phrase 2</code>.</p>
 
 <h2 id="22-mã-hóa-output-cho-multitask-learning">2.2. Mã hóa output cho Multitask learning</h2>
 
-<p>Giả sử chúng ta đang xây dựng một thuật toán multitask learning huấn luyện đồng thời 2 nhiệm vụ là phân loại sản phẩm thời trang và màu sắc của sản phẩm.</p>
+<p>Mã hóa output của Multitask learning sẽ khác biệt so với mã hóa output cho các bài toán phân loại thông thường. Mình sẽ minh họa qua ví dụ: Chúng ta đang xây dựng một thuật toán Multitask learning huấn luyện đồng thời 2 nhiệm vụ là phân loại sản phẩm thời trang và màu sắc của sản phẩm. Dữ liệu bao gồm 3 nhãn thời trang: <code class="highlighter-rouge">{dress, jean, shirt}</code> và 2 nhãn màu sắc: <code class="highlighter-rouge">{black, blue, red}</code>.</p>
 
-<p>Chúng ta có 3 nhãn thời trang lần lượt là: <code class="highlighter-rouge">{dress, jean, shirt}</code>
-và 2 nhãn màu sắc lần lượt là: <code class="highlighter-rouge">{black, blue, red}</code>.</p>
-
-<p>Thuật toán multitask learning sẽ học đồng thời 6 tác vụ phân loại nhị phân trên một bức ảnh đầu vào bao gồm phân loại:</p>
+<p>Thuật toán multitask learning sẽ học đồng thời 6 nhiệm vụ phân loại nhị phân trên một bức ảnh đầu vào đó là những bài toán:</p>
 <ul>
-  <li>Có xuất hiện dress trong ảnh hay không?</li>
-  <li>Có xuất hiện jean trong ảnh hay không?
+  <li>Ảnh có phải là dress hay không?</li>
+  <li>Ảnh có phải là jean hay không?
 …</li>
-  <li>Có xuất hiện mày xanh trong ảnh hay không?</li>
-  <li>Có xuất hiện màu đỏ trong ảnh hay không?</li>
+  <li>Ảnh có phải có màu xanh hay không?</li>
+  <li>Ảnh có phải có màu đỏ hay không?</li>
 </ul>
 
-<p>Để thực hiện huấn luyện 6 tác vụ huấn luyện binary classification đồng thời chúng ta sẽ one-hot encoding theo cả 2 yếu tố loại sản phẩm và màu sắc và sau đó concatenate véc tơ embedding lại với nhau. Như vậy một véc tơ output sẽ có 2 giá trị bằng 1 (một giá trị cho loại sản phẩm và một giá trị cho màu sắc).</p>
+<p>Như vậy output của mỗi nhiệm vụ sẽ là một giá trị 0 hoặc 1 (0 đại điện cho No và 1 đại diện cho Yes). Tổng hợp output của các nhiệm vụ ta sẽ thu được một véc tơ gồm 6 chiều. Trên một véc tơ output sẽ có 2 phần tử có giá trị 1 (một cho loại sản phẩm và một cho màu sắc) và các phần tử còn lại bằng 0.</p>
 
-<p>Ví dụ: Các tác vụ theo thứ tự là một list: <code class="highlighter-rouge">[dress, jean, shirt, black, blue, red]</code>.</p>
+<p>Cụ thể hơn, các nhiệm vụ phân loại các nhãn mục tiêu theo thứ tự list: <code class="highlighter-rouge">[dress, jean, shirt, black, blue, red]</code>.</p>
 
 <p>Một sản phẩm gán nhãn là <code class="highlighter-rouge">blue dress</code> sẽ được encoding thành véc tơ [1, 0, 0, 0, 1, 0]. Trong đó vị trí thứ 1 và thứ 5 tương ứng với <code class="highlighter-rouge">dress</code> và <code class="highlighter-rouge">blue</code> trong list các tác vụ.</p>
 
 <p>Phương pháp encoding nhiều biến category như trên còn được gọi là <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html">Multi label binary encoding</a>.</p>
 
-<h2 id="23-multitask-learning-có-gì-khác-so-với-transfer-learning">2.3. Multitask learning có gì khác so với transfer learning</h2>
+<h2 id="23-multitask-learning-có-gì-khác-so-với-transfer-learning">2.3. Multitask learning có gì khác so với Transfer learning</h2>
 
-<p>Ta có thể thấy multitask learning là quá trình thực hiện nhiều bài toán phân loại nhị phân đồng thời trên cùng một đầu vào. Do đó chúng ta sẽ áp dụng hàm sigmoid để tính phân phối xác suất trên từng sự kiện. Trái lại, transfer learning là một bài toán phân loại với $C$ class nên để tính phân phối xác suất thì hàm softmax sẽ được áp dụng (trong trường hợp $C=2$ thì hàm softmax trở thành hàm sigmoid). Để hiểu hơn về hàm softmax và sigmoid, xem thêm tại <a href="https://machinelearningcoban.com/2017/02/17/softmax/#-cong-thuc-cua-softmax-function">Blog Machine Learning Cơ bản</a>. Cả 2 phương pháp học máy cũng tồn tại sự khác biệt trong hàm loss function mà chúng ta sẽ tìm hiểu ở chương tiếp theo.</p>
+<p>Ta có thể thấy Multitask learning là quá trình thực hiện nhiều bài toán phân loại nhị phân đồng thời trên cùng một đầu vào. Do đó xác suất cho mỗi nhiệm vụ phân loại nhị phân sẽ được tính dựa trên hàm sigmoid. Trái lại, Transfer learning là một bài toán phân loại với $C$ classes nên phân phối xác suất là hàm softmax. Trong trường hợp $C=2$ thì hàm softmax trở thành hàm sigmoid. Để hiểu hơn về hàm softmax và sigmoid, xem thêm tại <a href="https://machinelearningcoban.com/2017/02/17/softmax/#-cong-thuc-cua-softmax-function">Blog Machine Learning Cơ bản</a>. Ngoài khác biệt về hàm activation tính phân phối xác suất, cả 2 phương pháp học máy cũng tồn tại sự khác biệt về hàm loss function mà chúng ta sẽ tìm hiểu ở phần 2.4 tiếp theo.</p>
 
 <h2 id="24-hàm-loss-function">2.4 Hàm loss function</h2>
 
@@ -315,7 +314,7 @@ và 2 nhãn màu sắc lần lượt là: <code class="highlighter-rouge">{black
     <p>Tiết kiệm tài nguyên tính toán: Bạn sẽ không cần phải huấn luyện mỗi một nhiệm vụ một mô hình mà có thể sử dụng kết hợp các nhiệm vụ khác nhau trong cùng một mô hình.</p>
   </li>
   <li>
-    <p>Kết quả từ mô hình multitask learning có độ chính xác cao hơn so với huấn luyện từng mô hình riêng lẻ. Nguyên nhân là bởi có sự hỗ trợ từ những nhiệm vụ lẫn nhau. Những kinh nghiệm được học từ những nhiệm vụ này sẽ bổ sung cho nhiệm vụ khác. Chẳng hạn như khi chúng ta thực hiện phân loại thời trang và màu sắc đồng thời. Hầu hết các trường hợp áo sơ mi có màu trắng, quần âu màu đen, giày màu đen. Do đó kinh nghiệm phân loại thời trang sẽ được chia sẻ cho nhiệm vụ phân loại màu sắc.</p>
+    <p>Kết quả từ mô hình Multitask learning có độ chính xác cao hơn so với huấn luyện từng mô hình riêng lẻ. Nguyên nhân là bởi có sự hỗ trợ lẫn nhau giữa các nhiệm vụ. Những đặc trưng tốt được học từ những nhiệm vụ này sẽ giúp ích phân loại nhiệm vụ khác.</p>
   </li>
 </ul>
 
@@ -323,7 +322,7 @@ và 2 nhãn màu sắc lần lượt là: <code class="highlighter-rouge">{black
 
 <ul>
   <li>
-    <p><strong>Các mô hình có chung đặc trưng</strong>: Trong multitask learning, các mô hình sẽ cùng sử dụng một đặc trưng chung để huấn luyện đồng thời các nhiệm vụ khác nhau. Do đó nếu những đặc trưng giúp phân loại những nhiệm vụ này không cùng tính chất thì mô hình sẽ không đạt độ chính xác cao. Trong bài toán phân loại thời trang và màu sắc thì các đặc trưng của thời trang và các đặc trưng về màu sắc cùng là những thuộc tính trong lĩnh vực thời trang nên có thể cùng được huấn luyện trong multitask learning.</p>
+    <p><strong>Các nhiệm vụ có chung đặc trưng phân loại</strong>: Trong Multitask learning, các nhiệm vụ sẽ cùng sử dụng một đặc trưng chung để phân biệt. Do đó nếu những đặc trưng giúp phân loại những nhiệm vụ này không liên quan và hỗ trợ nhau trong phân loại thì mô hình sẽ không đạt độ chính xác cao.</p>
   </li>
   <li>
     <p><strong>Kích thước dữ liệu giữa các class tương tự nhau</strong>:. Giả sử chúng cần phân loại đồng thời 1000 nhiệm vụ khác nhau, mỗi nhiệm vụ nhận biết một class và bao gồm 100 ảnh. Như vậy khi sử dụng multitask learning thì để nhận biết một nhiệm vụ đơn lẻ $T_1$ chúng ta sẽ được hưởng lợi từ 99900 đặc trưng được học từ 999 nhiệm vụ còn lại. 99900 ảnh là một số lượng khá lớn nên các đặc trưng học được sẽ đa dạng hơn và giúp cải thiện nhiệm vụ đơn lẻ $T_1$.</p>
@@ -337,7 +336,7 @@ và 2 nhãn màu sắc lần lượt là: <code class="highlighter-rouge">{black
 <p>Trái lại nếu xảy ra hiện tượng mất cân bằng dữ liệu. Nhiệm vụ $T_1$ chiếm tới 99000 ảnh và các nhiệm vụ còn lại chiếm 1000 ảnh. Như vậy hầu hết các đặc trưng học được từ mạng sẽ chủ yếu mang đặc trưng đặc thù của nhiệm vụ $T_1$ và dễ dẫn tới mô hình dự báo kém trên các nhiệm vụ còn lại.</p>
 
 <ul>
-  <li><strong>Nên huấn luyện trên một mạng neural kích thước lớn</strong>: Khi số lượng classes càng gia tăng thì khả năng dự báo nhầm class sẽ lớn hơn, do đó độ chính xác dự báo giảm và tỷ lệ nghịch với số lượng classes. Điều này đã được kiểm chứng trong các mô hình object detection. Mô hình multitask learning sẽ huấn luyện trên nhiều classes hơn so với từng mô hình classification. Do đó ta cần sử dụng một kích thước mạng neural lớn hơn để học được nhiều đặc trưng. Từ đó giúp cải thiện độ chính xác trên từng nhiệm vụ.</li>
+  <li><strong>Huấn luyện trên một mạng neural kích thước lớn</strong>: Khi số lượng classes càng gia tăng thì khả năng dự báo nhầm class sẽ lớn hơn, do đó độ chính xác dự báo giảm và tỷ lệ nghịch với số lượng classes. Điều này đã được kiểm chứng trong các mô hình object detection. Mô hình multitask learning sẽ huấn luyện trên nhiều classes hơn so với từng mô hình classification. Do đó ta cần sử dụng một kích thước mạng neural lớn hơn để học được nhiều đặc trưng. Từ đó giúp cải thiện độ chính xác trên từng nhiệm vụ.</li>
 </ul>
 
 <h1 id="3-thực-hành-xây-dựng-mô-hình-multitask-learning">3. Thực hành xây dựng mô hình multitask learning</h1>
@@ -854,33 +853,7 @@ print('classes of labels: ', mlb.classes_)
 </pre></td><td class="rouge-code"><pre>classes of labels:  ['black' 'blue' 'dress' 'jeans' 'red' 'shirt']
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Như vậy các nhãn của chúng ta lần lượt là <code class="highlighter-rouge">['black' 'blue' 'dress' 'jeans' 'red' 'shirt']</code>. Mỗi nhãn tương ứng với một tác vụ phân loại nhị phân. Chẳng hạn output unit tương ứng với vị trí thứ nhất thuộc về tác vụ <code class="highlighter-rouge">black</code> nhằm phân biệt màu sắc của sản phẩm có phải là màu đen hay không.</p>
-
-<p>Để dễ hình dung output sau khi mã hóa nhị phân đa biến, chúng ta khảo sát kết quả output tại ảnh thứ nhất:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>print(y[0])
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>[1 1]
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Ta thấy giá trị 1 tại vị trí 1 (black) và 4 (jeans). Như vậy ảnh của chúng ta là một chiếc <code class="highlighter-rouge">black jeans</code>.</p>
-
-<p>Chúng ta có thể visualize để kiểm chứng.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
-plt.imshow(images[0])
-plt.title(labels[0])
-plt.axis('Off')
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p><img src="/assets/images/20200422_MultitaskLearning/MultitaskLearning_35_1.png" class="largepic" /></p>
+<p>Như vậy các nhãn của chúng ta lần lượt là <code class="highlighter-rouge">['black' 'blue' 'dress' 'jeans' 'red' 'shirt']</code>. Mỗi nhãn tương ứng với một tác vụ phân loại nhị phân.</p>
 
 <h3 id="331-phân-chia-tập-trainvalidation">3.3.1. Phân chia tập train/validation</h3>
 
