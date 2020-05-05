@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 35 - Multitask Learning - Multi Branch</p></h2> 
+<strong>05 May 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung.</h1>
+
+<p>ở bài trước chúng ta đã tìm hiểu về học đa tác vụ (<a href="https://phamdinhkhanh.github.io/2020/04/22/MultitaskLearning.html">multitask learning</a>). Thuật toán có khả năng dự báo nhiều tác vụ trên cùng một đầu vào, có sự chia sẻ đặc trưng giữa các tác vụ trong quá trình dự báo mà không cần xây dựng nhiều mô hình độc lập. Tiết kiệm được tài nguyên và thời gian huấn luyện.</p>
+
+<p>Multitask learning thường được ứng dụng trong nhiều lĩnh vực trong đó có xe tự hành, image search, sinh trắc học trên khuôn mặt, y sinh và rất nhiều các ứng dụng khác. Bạn đọc có thể tham khảo thêm về ứng dụng của multitask learning trong sinh trắc học khuôn mặt và chuẩn đoán ảnh X-quang trong hội nghị toàn cầu về xử lý ảnh <a href="https://www.youtube.com/watch?v=9Sx2qWKGzlc&amp;list=PLBAFw2oKatLJ7Mb8Xat6fq_oGyD7JdaNU&amp;index=4">ICCV 2019</a> (từ phút thứ 60 của video) ứng dụng trong sinh trắc học trên khuôn mặt và y sinh.</p>
+
+<p>Chúng ta cũng được tìm hiểu ở bài trước rằng multitask learning sẽ tương tốt trong trường hợp quá trình phân biệt các tác vụ chia sẻ nhiều đặc trưng giống nhau. Vậy đối với trừng hợp không chia sẻ đặc trưng thì multitask learning sẽ cần điều chỉnh như thế nào? Đó chính là kiến trúc rẽ nhánh mà chúng ta sẽ cùng tìm hiểu ở bài này.</p>
+
+<h1 id="2-kiến-trúc-rẽ-nhánh-multi-branch">2. Kiến trúc rẽ nhánh (multi-branch)</h1>
+
+<p>Kiến trúc rẽ nhánh sẽ cho phép thuật toán học được nhiều tác vụ đồng thời nhưng không chia sẻ đặc trưng. Mô hình của chúng ta sử dụng chung một đầu vào là ảnh và phân nhánh thành nhiều mô hình con. Mỗi mô hình sẽ phụ trách dự báo cho một tác vụ một cách độc lập.</p>
+
+<p>Ví dụ: Trong nhận diện khuôn mặt, chúng ta sẽ cần sử dụng rất nhiều các dự báo trên cùng một ảnh khuôn mặt như: giới tính, độ tuổi, chủng tộc, màu mắt, màu tóc,….</p>
+
+<p>Những tác vụ trên không chia sẻ các đặc trưng để phân biệt. Ví dụ: Khi phân biệt giới tính chúng ta dựa trên các đặc trưng về độ dài tóc, râu, lông mày, mắt, cằm và quai hàm nhiều hơn nhưng phân biệt độ tuổi chúng ta chủ yếu dựa vào nết nhăn trên khuôn mặt, màu da, màu tóc. Đây là những đặc trưng không hoàn toàn giống nhau. Do đó sử dụng kiến trúc multitask learning chia sẻ tham số cho bài toán này sẽ không hợp lý.</p>
+
+<p>Một lựa chọn tốt hơn trong trường hợp này cho chúng ta đó là xây dựng một kiến trúc rẽ nhánh ngay từ input layer. Giữa các nhánh là độc lập, chỉ sử dụng chung một đầu vào mà không chia sẻ tham số.</p>
+
+<p><img src="/assets/images/20200505_MultitaskLearningMultiBranch/pic1.png" class="largepic" /></p>
+
+<p><strong>Hình 1:</strong> Kiến trúc rẽ nhánh của mô hình multitask learning trong tác vụ dự báo <code class="highlighter-rouge">age, gender, race</code>. Mỗi nhánh thực hiện một tác vụ như sau:</p>
+
+<ul>
+  <li>Nhánh thứ 1: Dự báo độ tuổi dựa trên thuật toán regression.</li>
+  <li>Nhánh thứ 2: Là một bài toán phân loại nhị phân (binary classification) dự báo giới tính.</li>
+  <li>Nhánh thứ 3: Là một bài toán phân loại đa lớp (multiclass classification) dự báo 5 chủng tộc khác nhau của khuôn mặt.</li>
+</ul>
+
+<p>Hàm loss function tổng quát cần tối ưu vẫn là tổng có trọng số của toàn bộ loss function trên từng nhánh model.</p>
+
+<h1 id="3-ưu-và-nhược-điểm-của-kiến-trúc-rẽ-nhánh">3. Ưu và nhược điểm của kiến trúc rẽ nhánh</h1>
+
+<h2 id="31-ưu-điểm-của-kiến-trúc-rẽ-nhánh">3.1. Ưu điểm của kiến trúc rẽ nhánh</h2>
+
+<ul>
+  <li>
+    <p>Kiến trúc rẽ nhánh sẽ cho phép xây dựng được nhiều mô hình trên cùng một bộ dữ liệu.</p>
+  </li>
+  <li>
+    <p>Các mô hình là những tác vụ độc lập và không có các đặc trưng phân loại giống nhau.</p>
+  </li>
+  <li>
+    <p>Khi một tác vụ hoạt động không tốt thì cũng không ảnh hưởng tới những tác vụ khác vì mối quan hệ giữa các mô hình là độc lập.</p>
+  </li>
+  <li>
+    <p>Tiết kiệm tài nguyên và chi phí thời gian tính toán vì chúng ta huấn luyện các tác vụ đồng thời trên cùng một mô hình mà không cần huấn luyện lại từng mô hình đơn lẻ.</p>
+  </li>
+  <li>
+    <p>Kiến trúc rẽ nhánh đồng thời cũng kết hợp được giữa các bài toán classifcation và prediction với nhau trong cùng một kiến trúc mô hình.</p>
+  </li>
+  <li>
+    <p>Kiến trúc rẽ nhánh cho phép ta áp dụng được nhiều hàm loss function khác nhau trên các tác vụ huấn luyện khác nhau.</p>
+  </li>
+</ul>
+
+<h2 id="32-nhược-điểm-của-kiến-trúc-rẽ-nhánh">3.2. Nhược điểm của kiến trúc rẽ nhánh</h2>
+
+<ul>
+  <li>
+    <p>Kiến trúc rẽ nhánh thường yêu cầu các mô hình phải có input image cùng một shape. Một số tác vụ dự báo chỉ cần một shape nhỏ hơn cũng đã cho kết quả tốt nên sẽ gây lãng phí tài nguyên tính toán nếu tất cả các mô hình sử dụng chung một high resolution image.</p>
+  </li>
+  <li>
+    <p>Loss function của kiến trúc rẽ nhánh rất đa dạng, trong đó một số tác vụ có thể có loss function đóng góp đa số vào loss function tổng quát cuối cùng. Do đó cần thiết lập trọng số cho loss function để cân bằng ảnh hưởng của chi phí mất mát giữa các tác vụ.</p>
+  </li>
+</ul>
+
+<p>Để hiểu rõ hơn ưu và nhược điểm của kiến trúc rẽ nhánh, chúng ta sẽ cùng đi vào phần thực hành.</p>
+
+<h1 id="4-thực-hành-xây-dựng-mô-hình-multitask-learning">4. Thực hành xây dựng mô hình multitask learning</h1>
+
+<h2 id="41-dataset">4.1. Dataset</h2>
+
+<p>Bộ dữ liệu về face được sử dụng là <a href="https://susanqq.github.io/UTKFace/">UTKFace</a>. Bộ dữ liệu bao gồm ảnh của đa dạng các sắc tộc, giới tính, độ tuổi.</p>
+
+<p>Tên các files ảnh được đặt theo cấu trúc: <code class="highlighter-rouge">[age]_[gender]_[race]_[date&amp;time].jpg</code> Trong đó:</p>
+
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<p>Để thực hành thì các bạn chỉ cần download file <a href="https://drive.google.com/drive/folders/0BxYys69jI14kU0I1YUQyY1ZDRUE">crop_part1.tar.gz</a> là những ảnh khuôn mặt đã được crop bằng cách thêm lỗi tắt vào google drive. Nhớ sắp xếp chúng vào cùng thư mục với file notebook.</p>
+
+<p><img src="/assets/images/20200505_MultitaskLearningMultiBranch/pic2.png" class="largepic" /></p>
+
+<p>Bạn đọc mở file sau đây để thực hành <a href="https://colab.research.google.com/drive/1hmZxj3s9KScWUCbAi3MhlWtQL9XxzJdxhttps://colab.research.google.com/drive/1hmZxj3s9KScWUCbAi3MhlWtQL9XxzJdx">Multitask learning - Multi branch Google Colab</a> hoặc thực hiện tuần tự theo các step ở file này.</p>
+
+<p>Mount google drive đến folder chứa colab notebook file.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
+import os
+
+drive.mount('/content/gdrive')
+path = '/content/gdrive/My Drive/Colab Notebooks/MultitaskLearning'
+os.chdir(path)
+!ls
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&amp;redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&amp;response_type=code&amp;scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
+
+Enter your authorization code:
+··········
+Mounted at /content/gdrive
+ Bai34MultitaskLearning        MultitaskLearning.ipynb
+ checkpoint		       MultitaskLearning_MultiBranchOutput.ipynb
+ crop_part1		      'UTKface_Aligned&amp;cropped'
+ multi-output-classification   UTKface_crop_part1
+ multitaskLearning
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau đó chúng ta giải nén <code class="highlighter-rouge">UTKface_crop_part1/crop_part1.tar.gz</code> bằng lện tar.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!tar -xvf UTKface_Aligned\&amp;cropped/crop_part1.tar.gz
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo chúng ta sẽ trích lọc các nhãn từ link ảnh bao gồm: <code class="highlighter-rouge">age, gender, race</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>import glob2
+imagePaths = glob2.glob('crop_part1/*')
+print('Number of images', len(imagePaths))
+
+# Extract age, gender, race từ link ảnh
+
+multiLabels = []
+ages = []
+genders = []
+races = []
+linkImages = []
+
+for i, imageLink in enumerate(imagePaths):
+  try:
+    age, gender, race, _ = imageLink.split('/')[1].split('_')
+    linkImages.append(imageLink)
+  except:
+    next
+  age = int(age)
+  gender = int(gender)
+  race = int(race)
+  multiLabels.append((age, gender, race))
+  ages = [label[0] for label in multiLabels]
+  genders = [label[1] for label in multiLabels]
+  races = [label[2] for label in multiLabels]
+
+dict_labels = {'ages': ages,
+               'genders': genders,
+               'races': races,
+               'linkImages': linkImages}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Number of images 0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+
+X = plt.imread('crop_part1/27_1_3_20170104232751618.jpg.chip.jpg')
+plt.imshow(X)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>&lt;matplotlib.image.AxesImage at 0x7f50b1de2b00&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="MultitaskLearning_MultiBranchOutput_Face_files/MultitaskLearning_MultiBranchOutput_Face_12_1.png" alt="png" /></p>
+
+<p>Tiếp theo chúng ta sẽ kiểm tra phân phối giữa các nhóm trong cùng một biến nhằm phát hiện những bất thường về dữ liệu như hiện tượng mất cân đối nghiêm trọng giữa các nhóm.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+import numpy as np
+
+def _plot_bar(varname):
+  labels, values = np.unique(dict_labels[varname], return_counts = True)
+  plt.figure(figsize=(10, 6))
+  ax = plt.subplot()
+  ax.bar(x=labels, height=values)
+  ax.set_title('No samples of ' + varname)
+  ax.set_xlabel(varname)
+  ax.set_ylabel('No samples')
+  plt.show()
+
+_plot_bar('ages')
+_plot_bar('genders')
+_plot_bar('races')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="MultitaskLearning_MultiBranchOutput_Face_files/MultitaskLearning_MultiBranchOutput_Face_14_0.png" alt="png" /></p>
+
+<p><img src="MultitaskLearning_MultiBranchOutput_Face_files/MultitaskLearning_MultiBranchOutput_Face_14_1.png" alt="png" /></p>
+
+<p><img src="MultitaskLearning_MultiBranchOutput_Face_files/MultitaskLearning_MultiBranchOutput_Face_14_2.png" alt="png" /></p>
+
+<p>Nhìn vào số liệu ta có thể thấy:</p>
+
+<ul>
+  <li>Bộ dữ liệu có nhiều ảnh của trẻ sơ sinh và người từ 20-30 tuổi. Tỷ lệ người già chiếm một phần thiểu số.</li>
+  <li>Tỷ lệ người da trắng chiếm đa số trong bộ dữ liệu (khoảng 5000 ảnh và trên 50%), ít nhất là người da đen (chỉ khoảng 3-5%) và các chủng tộc còn lại chiếm tỷ lệ giao động từ 10-15%.</li>
+  <li>Có hiện tượng mất cân bằng giới tính, Giới tính nữ (nhãn 1) nhiềm hơn nam (nhãn 0).</li>
+</ul>
+
+<p>Trong trường hợp này chúng ta có thể thực hiện một số biện pháp data augumentation để tăng cường thêm ảnh cho những nhóm thiểu số. Tuy nhiên với mục đích chính là hiểu rõ thuật toán mình sẽ bỏ qua bước này.</p>
+
+<h2 id="42-mô-hình">4.2. Mô hình</h2>
+
+<p>Mỗi một lượt huấn luyện, toàn bộ các mô hình con sẽ có chung một ảnh đầu vào. Sau đó từ đầu vào sẽ rẽ nhánh tới từng mô hình con phục vụ cho các mục tiêu dự báo khác nhau về <code class="highlighter-rouge">age, gender, race</code>. Mỗi một mô hình con sẽ sử dụng một mạng Convolutional Neural Network với cùng kích thước inputshape là ảnh <code class="highlighter-rouge">96 x 96 x 3</code>.</p>
+
+<p><strong>Thêm ảnh về kiến trúc các nhánh mô hình</strong></p>
+
+<p>Các hàm <code class="highlighter-rouge">_age_basenetwork()</code>, <code class="highlighter-rouge">_gender_basenetwork()</code>, <code class="highlighter-rouge">_race_basenetwork()</code> sẽ có tác dụng khởi tạo những mô hình con CNN tương ứng với các tác vụ phân loại <code class="highlighter-rouge">age, gender</code> và <code class="highlighter-rouge">race</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+</pre></td><td class="rouge-code"><pre><span class="p">%</span><span class="n">tensorflow_version</span> <span class="m">2.</span><span class="n">x</span>
+
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span><span class="p">,</span> <span class="n">Sequential</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">DepthwiseConv2D</span><span class="p">,</span> <span class="n">GlobalAveragePooling2D</span><span class="p">,</span> <span class="n">Input</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span>
+<span class="n">import</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
+<span class="n">INPUT_SHAPE</span> <span class="p">=</span> <span class="p">(</span><span class="m">96</span><span class="p">,</span> <span class="m">96</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">N_AGES</span> <span class="p">=</span> <span class="m">1</span>
+<span class="n">N_GENDERS</span> <span class="p">=</span> <span class="m">1</span>
+<span class="n">N_RACES</span> <span class="p">=</span> <span class="m">5</span>
+
+<span class="n">class</span> <span class="n">AgeGenderRaceNet</span><span class="p">(</span><span class="n">object</span><span class="p">):</span>
+  <span class="n">def</span> <span class="n">_age_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="p">=</span> <span class="n">N_AGES</span><span class="p">,</span> <span class="n">finAct</span> <span class="p">=</span> <span class="s1">'linear'</span><span class="p">):</span>
+    <span class="p">#</span> <span class="n">DepthWiseCONV</span> <span class="p">=&gt;</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">DepthwiseConv2D</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> 
+                        <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="p">(</span><span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span><span class="p">)</span> <span class="p">*</span> <span class="m">4</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">1024</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s2">"same"</span><span class="p">,</span>
+          <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">first</span> <span class="p">(</span><span class="k">and</span> <span class="n">only</span><span class="p">)</span> <span class="k">set</span> <span class="k">of</span> <span class="n">FC</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="n">layers</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s2">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">softmax</span> <span class="n">classifier</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">classes</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="n">finAct</span><span class="p">,</span> <span class="n">name</span><span class="p">=</span><span class="s2">"age_output"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="n">x</span>
+    
+  <span class="n">def</span> <span class="n">_gender_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="p">=</span> <span class="n">N_GENDERS</span><span class="p">,</span> <span class="n">finAct</span> <span class="p">=</span> <span class="s1">'sigmoid'</span><span class="p">):</span>
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">MLP</span> <span class="n">classifier</span>
+    <span class="p">#</span> <span class="n">S</span><span class="err">ố</span> <span class="n">units</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">output</span> <span class="n">ph</span><span class="err">ả</span><span class="n">i</span> <span class="n">b</span><span class="err">ằ</span><span class="n">ng</span> <span class="n">s</span><span class="err">ố</span> <span class="n">l</span><span class="err">ượ</span><span class="n">ng</span> <span class="n">nh</span><span class="err">ó</span><span class="n">m</span> <span class="n">gi</span><span class="err">ớ</span><span class="n">i</span> <span class="n">t</span><span class="err">í</span><span class="n">nh</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">classes</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="n">finAct</span><span class="p">,</span> <span class="n">name</span><span class="p">=</span><span class="s2">"gender_output"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="n">x</span>
+
+  <span class="n">def</span> <span class="n">_race_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="p">=</span> <span class="n">N_RACES</span><span class="p">,</span> <span class="n">finAct</span> <span class="p">=</span> <span class="s1">'softmax'</span><span class="p">):</span>
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.25</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">CONV</span> <span class="p">=&gt;</span> <span class="n">RELU</span> <span class="p">=&gt;</span> <span class="n">POOL</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">MLP</span> <span class="n">classifier</span>
+    <span class="p">#</span> <span class="n">S</span><span class="err">ố</span> <span class="n">units</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">output</span> <span class="n">ph</span><span class="err">ả</span><span class="n">i</span> <span class="n">b</span><span class="err">ằ</span><span class="n">ng</span> <span class="n">s</span><span class="err">ố</span> <span class="n">l</span><span class="err">ượ</span><span class="n">ng</span> <span class="n">nh</span><span class="err">ó</span><span class="n">m</span> <span class="n">s</span><span class="err">ắ</span><span class="n">c</span> <span class="n">t</span><span class="err">ộ</span><span class="n">c</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="m">128</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span><span class="p">=-</span><span class="m">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">classes</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">Activation</span><span class="p">(</span><span class="n">finAct</span><span class="p">,</span> <span class="n">name</span><span class="p">=</span><span class="s2">"race_output"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="n">x</span>
+
+  <span class="p">@</span><span class="n">staticmethod</span>
+  <span class="n">def</span> <span class="n">build</span><span class="p">(</span><span class="n">inputShape</span><span class="p">=</span><span class="n">INPUT_SHAPE</span><span class="p">,</span> <span class="n">numGender</span> <span class="p">=</span> <span class="n">N_GENDERS</span><span class="p">,</span> <span class="n">numRace</span> <span class="p">=</span> <span class="n">N_RACES</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="p">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="p">=</span><span class="n">INPUT_SHAPE</span><span class="p">)</span>
+    <span class="n">ageBranch</span><span class="p">=</span><span class="n">AgeGenderRaceNet</span><span class="p">.</span><span class="n">_age_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">=</span><span class="n">inputs</span><span class="p">,</span>
+      <span class="n">classes</span><span class="p">=</span><span class="m">1</span><span class="p">,</span> <span class="n">finAct</span><span class="p">=</span><span class="s1">'linear'</span><span class="p">)</span>
+    <span class="n">genderBranch</span><span class="p">=</span><span class="n">AgeGenderRaceNet</span><span class="p">.</span><span class="n">_gender_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">=</span><span class="n">inputs</span><span class="p">,</span>
+      <span class="n">classes</span> <span class="p">=</span> <span class="n">numGender</span><span class="p">,</span> <span class="n">finAct</span><span class="p">=</span><span class="s1">'sigmoid'</span><span class="p">)</span>
+    <span class="n">raceBranch</span><span class="p">=</span><span class="n">AgeGenderRaceNet</span><span class="p">.</span><span class="n">_race_basenetwork</span><span class="p">(</span><span class="n">inputs</span><span class="p">=</span><span class="n">inputs</span><span class="p">,</span>
+      <span class="n">classes</span> <span class="p">=</span> <span class="n">numRace</span><span class="p">,</span> <span class="n">finAct</span><span class="p">=</span><span class="s1">'softmax'</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">T</span><span class="err">ạ</span><span class="n">o</span> <span class="n">m</span><span class="err">ộ</span><span class="n">t</span> <span class="n">m</span><span class="err">ô</span> <span class="n">h</span><span class="err">ì</span><span class="n">nh</span> <span class="n">s</span><span class="err">ử</span> <span class="n">d</span><span class="err">ụ</span><span class="n">ng</span> <span class="err">đầ</span><span class="n">u</span> <span class="n">v</span><span class="err">à</span><span class="n">o</span> <span class="n">l</span><span class="err">à</span> <span class="n">m</span><span class="err">ộ</span><span class="n">t</span> <span class="n">batch</span> <span class="n">images</span><span class="p">,</span> <span class="n">sau</span> <span class="err">đó</span> <span class="n">m</span><span class="err">ô</span> <span class="n">h</span><span class="err">ì</span><span class="n">nh</span> <span class="n">s</span><span class="err">ẽ</span> 
+    <span class="p">#</span> <span class="n">r</span><span class="err">ẽ</span> <span class="n">nh</span><span class="err">á</span><span class="n">nh</span><span class="p">,</span> <span class="n">m</span><span class="err">ộ</span><span class="n">t</span> <span class="n">nh</span><span class="err">á</span><span class="n">nh</span> <span class="n">x</span><span class="err">á</span><span class="n">c</span> <span class="err">đị</span><span class="n">nh</span> <span class="err">đặ</span><span class="n">c</span> <span class="n">tr</span><span class="err">ư</span><span class="n">ng</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">colors</span> <span class="n">v</span><span class="err">à</span> <span class="n">m</span><span class="err">ộ</span><span class="n">t</span> <span class="n">nh</span><span class="err">á</span><span class="n">nh</span> <span class="n">x</span><span class="err">á</span><span class="n">c</span> <span class="err">đị</span><span class="n">nh</span> <span class="err">đặ</span><span class="n">c</span> <span class="n">tr</span><span class="err">ư</span><span class="n">ng</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">fashion</span>
+    <span class="k">model</span> <span class="p">=</span> <span class="k">Model</span><span class="p">(</span>
+      <span class="n">inputs</span><span class="p">=</span><span class="n">inputs</span><span class="p">,</span>
+      <span class="n">outputs</span><span class="p">=[</span><span class="n">ageBranch</span><span class="p">,</span> <span class="n">genderBranch</span><span class="p">,</span> <span class="n">raceBranch</span><span class="p">],</span>
+      <span class="n">name</span><span class="p">=</span><span class="s2">"age_gender_race_net"</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="k">model</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">AgeGenderRaceNet</span><span class="p">.</span><span class="n">build</span><span class="p">(</span><span class="n">inputShape</span><span class="p">=</span><span class="n">INPUT_SHAPE</span><span class="p">,</span> <span class="n">numGender</span> <span class="p">=</span> <span class="n">N_GENDERS</span><span class="p">,</span> <span class="n">numRace</span> <span class="p">=</span> <span class="n">N_RACES</span><span class="p">)</span>
+<span class="k">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+</pre></td><td class="rouge-code"><pre>Model: "age_gender_race_net"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_2 (InputLayer)            [(None, 96, 96, 3)]  0                                            
+__________________________________________________________________________________________________
+depthwise_conv2d_1 (DepthwiseCo (None, 96, 96, 3)    30          input_2[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 96, 96, 3)    12          depthwise_conv2d_1[0][0]         
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 96, 96, 32)   896         batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 96, 96, 32)   128         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 96, 96, 16)   448         input_2[0][0]                    
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 96, 96, 16)   448         input_2[0][0]                    
+__________________________________________________________________________________________________
+max_pooling2d_8 (MaxPooling2D)  (None, 32, 32, 32)   0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 96, 96, 16)   64          conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 96, 96, 16)   64          conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 32, 32, 32)   0           max_pooling2d_8[0][0]            
+__________________________________________________________________________________________________
+max_pooling2d_10 (MaxPooling2D) (None, 32, 32, 16)   0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_13 (MaxPooling2D) (None, 32, 32, 16)   0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 32, 32, 64)   18496       dropout_5[0][0]                  
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 32, 32, 16)   0           max_pooling2d_10[0][0]           
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 32, 32, 16)   0           max_pooling2d_13[0][0]           
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 32, 32, 64)   256         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 32, 32, 32)   4640        dropout_6[0][0]                  
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 32, 32, 32)   4640        dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 32, 32, 128)  73856       batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 32, 32, 32)   128         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 32, 32, 32)   128         conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 32, 32, 128)  512         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+max_pooling2d_11 (MaxPooling2D) (None, 16, 16, 32)   0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_14 (MaxPooling2D) (None, 16, 16, 32)   0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 32, 32, 256)  295168      batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 16, 16, 32)   0           max_pooling2d_11[0][0]           
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 16, 16, 32)   0           max_pooling2d_14[0][0]           
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 32, 32, 256)  1024        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 16, 16, 32)   9248        dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 16, 16, 32)   9248        dropout_9[0][0]                  
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 32, 32, 1024) 2360320     batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 16, 16, 32)   128         conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 16, 16, 32)   128         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 32, 32, 1024) 4096        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+max_pooling2d_12 (MaxPooling2D) (None, 8, 8, 32)     0           batch_normalization_22[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_15 (MaxPooling2D) (None, 8, 8, 32)     0           batch_normalization_26[0][0]     
+__________________________________________________________________________________________________
+max_pooling2d_9 (MaxPooling2D)  (None, 16, 16, 1024) 0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 2048)         0           max_pooling2d_12[0][0]           
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 2048)         0           max_pooling2d_15[0][0]           
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 262144)       0           max_pooling2d_9[0][0]            
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 128)          262272      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          262272      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 262144)       0           flatten_3[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 128)          512         dense_6[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 128)          512         dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 1)            262145      activation_1[0][0]               
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 1)            129         batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 5)            645         batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+age_output (Activation)         (None, 1)            0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+gender_output (Activation)      (None, 1)            0           dense_7[0][0]                    
+__________________________________________________________________________________________________
+race_output (Activation)        (None, 5)            0           dense_9[0][0]                    
+==================================================================================================
+Total params: 3,572,593
+Trainable params: 3,568,747
+Non-trainable params: 3,846
+__________________________________________________________________________________________________
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Mô hình dự đoán tuổi sẽ có nhiều classes hơn, do đó kiến trúc mạng được thiết kế sẽ sâu hơn so với mô hinh dự đoán chủng tộc và giới tính.</p>
+
+<p>Kiến trúc của các mô hình con đều rất đơn giản. Đó là các layer <code class="highlighter-rouge">[CONV*m-MAXPOOLING*n]*p</code> liên tiếp nhau.</p>
+
+<h2 id="43-huấn-luyện-mô-hình">4.3. Huấn luyện mô hình</h2>
+
+<p>Để huấn luyện mô hình mình sẽ sử dụng ImageGenerator, bạn đọc xem lại <a href="https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html#321-s%E1%BB%AD-d%E1%BB%A5ng-imagegenerator">Bài 32 - Kĩ thuật tensorflow Dataset</a> để hiểu thêm về ImageGenerator.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+image_aug = ImageDataGenerator(rotation_range=25, 
+                         width_shift_range=0.1, height_shift_range=0.1, 
+                         shear_range=0.2, zoom_range=0.2,
+	                       horizontal_flip=True, fill_mode="nearest")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Optimizer mình sử dụng là Adam với learning rate được khởi tạo là 0.005.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>LR_RATE = 0.005
+EPOCHS = 50
+opt = Adam(lr=LR_RATE, decay=LR_RATE / EPOCHS)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Đối với hai bài toán phân loại gender và race chúng ta sử dụng hàm loss function dạng cross entropy. Giả sử bài toán phân loại có $C$ classes output. $y_{i}$ là giá trị thực tế của output và $\hat{y}_{i}$ là giá trị dự báo từ mô hình. Khi đó:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{W}; \mathbf{X}) = -\sum_{i=1}^{N}\sum_{j=1}^{C} y_{ij}.\log(\hat{y}_{ij})</script>
+
+<p>Tuy nhiên đối với Age có thể coi là một biến liên tục, thay vì xây dựng một mô hình classification thì chúng ta sẽ coi đây là một bài toán dự báo với biến liên tục. Hàm loss function được sử dụng sẽ là MSE:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{W}; \mathbf{X}) = \frac{1}{N}\sum_{i=1}^{N}(\hat{y}_{i} - y_{i})^2</script>
+
+<p>Loss function tổng quát sẽ bằng tổng loss function ở cả 3 nhánh.</p>
+
+<p>Hàm MSE sẽ có trị số lớn gấp nhiều lần so với cross entropy nên để giảm ảnh hưởng của MSE ta sẽ thiết lập trọng số loss function của age nhỏ hơn so với gender và race.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>losses = {
+	"age_output": "mean_squared_error",
+	"gender_output": "binary_crossentropy",
+	"race_output": "sparse_categorical_crossentropy"
+}
+
+lossWeights = {"age_output": 0.03, "gender_output": 1.0, "race_output": 1.0}
+model.compile(loss=losses, loss_weights= lossWeights, optimizer=opt, metrics=['accuracy'])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="431-phân-chia-tập-trainvalidation">4.3.1. Phân chia tập train/validation</h3>
+
+<p>Như thường lệ chúng ta sẽ phân chia tập train và validation theo tỷ lệ 80/20. Tập train cho huấn luyện và tập validation cho kiểm định.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre>import cv2
+import numpy as np
+
+# Phân chia tập train/validation theo tỷ lệ 80/20
+n_samples = len(dict_labels['linkImages'])
+indices = np.arange(n_samples)
+np.random.shuffle(indices)
+n_train = int(0.8*n_samples)
+index_train, index_val = indices[:n_train], indices[n_train:]
+image_train, image_val = [], []
+gender_train, gender_val = [], []
+race_train, race_val = [], []
+label_train, label_val = [], []
+
+def _image_path(index_train):
+  image_train = []
+  label_train = []
+  age_train = []
+  gender_train = []
+  race_train = []
+  for i in index_train:
+    imagePath = dict_labels['linkImages'][i]
+    # Đọc dữ liệu ảnh
+    image = cv2.imread(imagePath)
+    image = cv2.resize(image, INPUT_SHAPE[:2])
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = np.array(image)
+    image_train.append(image)
+    # Gán nhãn cho age, gender, race
+    age_train.append(dict_labels['ages'][i])
+    gender_train.append(dict_labels['genders'][i])
+    race_train.append(dict_labels['races'][i])
+    label_train.append([dict_labels['ages'][i], dict_labels['genders'][i], dict_labels['races'][i]])
+  
+  # Stack list numpy array của ảnh thành một array
+  image_train = np.stack(image_train)
+  # label_train = np.stack(label_train)
+  age_train = np.stack(age_train)
+  gender_train = np.stack(gender_train)
+  race_train = np.stack(race_train)
+  image_train = image_train/255.0
+  return image_train, label_train, age_train, gender_train, race_train
+
+image_train, label_train, age_train, gender_train, race_train = _image_path(index_train)
+image_val, label_val, age_val, gender_val, race_val = _image_path(index_val)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="432-huấn-luyện-mô-hình">4.3.2. Huấn luyện mô hình</h3>
+
+<p>Chúng ta sẽ huấn luyện mô hình qua 50 epochs. Sử dụng checkpoint để lưu model có loss function nhỏ nhất trên validation và đồng thời backup mô hình sau mỗi 20 epochs.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.callbacks import ModelCheckpoint
+import os
+
+if not os.path.exists('checkpoint'):
+	os.mkdir('checkpoint')
+
+
+cp_callback = ModelCheckpoint(
+    filepath='checkpoint', 
+    verbose=1, 
+    save_weights_only=False,
+    save_freq=20)
+
+history = model.fit(
+	image_train, {"age_output": age_train, "gender_output": gender_train, "race_output": race_train},
+	validation_data=(image_val, {"age_output": age_val, "gender_output": gender_val, "race_output": race_val}),
+	batch_size=32,
+	steps_per_epoch=len(image_train) // 32,
+	epochs=EPOCHS, verbose=1,
+	callbacks=[cp_callback])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+</pre></td><td class="rouge-code"><pre>Epoch 1/50
+ 19/244 [=&gt;............................] - ETA: 38:24 - loss: 29.2699 - age_output_loss: 924.0161 - gender_output_loss: 0.5985 - race_output_loss: 0.9509 - age_output_accuracy: 0.0724 - gender_output_accuracy: 0.6711 - race_output_accuracy: 0.6645
+Epoch 00001: saving model to checkpoint
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow/python/ops/resource_variable_ops.py:1817: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 39/244 [===&gt;..........................] - ETA: 36:41 - loss: 20.2688 - age_output_loss: 624.6887 - gender_output_loss: 0.5958 - race_output_loss: 0.9323 - age_output_accuracy: 0.0825 - gender_output_accuracy: 0.6851 - race_output_accuracy: 0.6651
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 59/244 [======&gt;.......................] - ETA: 33:46 - loss: 16.6293 - age_output_loss: 503.2106 - gender_output_loss: 0.5911 - race_output_loss: 0.9419 - age_output_accuracy: 0.0842 - gender_output_accuracy: 0.6827 - race_output_accuracy: 0.6647
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 79/244 [========&gt;.....................] - ETA: 30:19 - loss: 15.2535 - age_output_loss: 457.4263 - gender_output_loss: 0.5938 - race_output_loss: 0.9369 - age_output_accuracy: 0.0902 - gender_output_accuracy: 0.6780 - race_output_accuracy: 0.6646
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 99/244 [===========&gt;..................] - ETA: 26:44 - loss: 14.0014 - age_output_loss: 415.8371 - gender_output_loss: 0.5832 - race_output_loss: 0.9431 - age_output_accuracy: 0.0878 - gender_output_accuracy: 0.6891 - race_output_accuracy: 0.6616
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+119/244 [=============&gt;................] - ETA: 23:09 - loss: 13.3412 - age_output_loss: 394.0124 - gender_output_loss: 0.5800 - race_output_loss: 0.9408 - age_output_accuracy: 0.0874 - gender_output_accuracy: 0.6917 - race_output_accuracy: 0.6675
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+139/244 [================&gt;.............] - ETA: 19:28 - loss: 12.8235 - age_output_loss: 376.7086 - gender_output_loss: 0.5769 - race_output_loss: 0.9453 - age_output_accuracy: 0.0850 - gender_output_accuracy: 0.6949 - race_output_accuracy: 0.6659
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+159/244 [==================&gt;...........] - ETA: 15:47 - loss: 12.3316 - age_output_loss: 360.3804 - gender_output_loss: 0.5801 - race_output_loss: 0.9401 - age_output_accuracy: 0.0825 - gender_output_accuracy: 0.6950 - race_output_accuracy: 0.6716
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+179/244 [=====================&gt;........] - ETA: 12:05 - loss: 11.8322 - age_output_loss: 343.4265 - gender_output_loss: 0.5816 - race_output_loss: 0.9478 - age_output_accuracy: 0.0828 - gender_output_accuracy: 0.6940 - race_output_accuracy: 0.6688
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+199/244 [=======================&gt;......] - ETA: 8:22 - loss: 11.5272 - age_output_loss: 333.2910 - gender_output_loss: 0.5798 - race_output_loss: 0.9487 - age_output_accuracy: 0.0804 - gender_output_accuracy: 0.6952 - race_output_accuracy: 0.6698
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+219/244 [=========================&gt;....] - ETA: 4:39 - loss: 11.2538 - age_output_loss: 324.0854 - gender_output_loss: 0.5799 - race_output_loss: 0.9513 - age_output_accuracy: 0.0796 - gender_output_accuracy: 0.6943 - race_output_accuracy: 0.6671
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+239/244 [============================&gt;.] - ETA: 55s - loss: 10.9755 - age_output_loss: 314.9449 - gender_output_loss: 0.5798 - race_output_loss: 0.9474 - age_output_accuracy: 0.0800 - gender_output_accuracy: 0.6944 - race_output_accuracy: 0.6680 
+Epoch 00001: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+244/244 [==============================] - 2927s 12s/step - loss: 10.9471 - age_output_loss: 313.9161 - gender_output_loss: 0.5794 - race_output_loss: 0.9502 - age_output_accuracy: 0.0808 - gender_output_accuracy: 0.6949 - race_output_accuracy: 0.6671 - val_loss: 18.7273 - val_age_output_loss: 572.7776 - val_gender_output_loss: 0.5789 - val_race_output_loss: 0.9651 - val_age_output_accuracy: 0.0169 - val_gender_output_accuracy: 0.6994 - val_race_output_accuracy: 0.6713
+Epoch 2/50
+ 15/244 [&gt;.............................] - ETA: 39:18 - loss: 10.7096 - age_output_loss: 308.6943 - gender_output_loss: 0.5513 - race_output_loss: 0.8974 - age_output_accuracy: 0.0736 - gender_output_accuracy: 0.7186 - race_output_accuracy: 0.6840
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 35/244 [===&gt;..........................] - ETA: 37:47 - loss: 8.8685 - age_output_loss: 247.7646 - gender_output_loss: 0.5583 - race_output_loss: 0.8773 - age_output_accuracy: 0.0817 - gender_output_accuracy: 0.7123 - race_output_accuracy: 0.6897
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 55/244 [=====&gt;........................] - ETA: 34:42 - loss: 8.6804 - age_output_loss: 241.2939 - gender_output_loss: 0.5599 - race_output_loss: 0.8817 - age_output_accuracy: 0.0815 - gender_output_accuracy: 0.7090 - race_output_accuracy: 0.6929
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 75/244 [========&gt;.....................] - ETA: 31:21 - loss: 8.6301 - age_output_loss: 239.3411 - gender_output_loss: 0.5568 - race_output_loss: 0.8930 - age_output_accuracy: 0.0819 - gender_output_accuracy: 0.7120 - race_output_accuracy: 0.6860
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 95/244 [==========&gt;...................] - ETA: 27:41 - loss: 8.4367 - age_output_loss: 232.9243 - gender_output_loss: 0.5563 - race_output_loss: 0.8927 - age_output_accuracy: 0.0791 - gender_output_accuracy: 0.7138 - race_output_accuracy: 0.6827
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+115/244 [=============&gt;................] - ETA: 24:01 - loss: 8.5269 - age_output_loss: 236.1605 - gender_output_loss: 0.5597 - race_output_loss: 0.8824 - age_output_accuracy: 0.0800 - gender_output_accuracy: 0.7078 - race_output_accuracy: 0.6903
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+135/244 [===============&gt;..............] - ETA: 20:20 - loss: 8.3889 - age_output_loss: 231.5004 - gender_output_loss: 0.5627 - race_output_loss: 0.8812 - age_output_accuracy: 0.0783 - gender_output_accuracy: 0.7062 - race_output_accuracy: 0.6918
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+155/244 [==================&gt;...........] - ETA: 16:37 - loss: 8.2607 - age_output_loss: 226.8665 - gender_output_loss: 0.5601 - race_output_loss: 0.8946 - age_output_accuracy: 0.0801 - gender_output_accuracy: 0.7094 - race_output_accuracy: 0.6854
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+175/244 [====================&gt;.........] - ETA: 12:54 - loss: 8.1353 - age_output_loss: 222.4826 - gender_output_loss: 0.5622 - race_output_loss: 0.8987 - age_output_accuracy: 0.0808 - gender_output_accuracy: 0.7076 - race_output_accuracy: 0.6842
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+195/244 [======================&gt;.......] - ETA: 9:09 - loss: 7.9410 - age_output_loss: 215.8758 - gender_output_loss: 0.5642 - race_output_loss: 0.9006 - age_output_accuracy: 0.0804 - gender_output_accuracy: 0.7075 - race_output_accuracy: 0.6840
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+215/244 [=========================&gt;....] - ETA: 5:25 - loss: 7.9107 - age_output_loss: 214.8421 - gender_output_loss: 0.5649 - race_output_loss: 0.9005 - age_output_accuracy: 0.0781 - gender_output_accuracy: 0.7056 - race_output_accuracy: 0.6841
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+235/244 [===========================&gt;..] - ETA: 1:41 - loss: 7.8758 - age_output_loss: 213.5597 - gender_output_loss: 0.5670 - race_output_loss: 0.9021 - age_output_accuracy: 0.0784 - gender_output_accuracy: 0.7045 - race_output_accuracy: 0.6830
+Epoch 00002: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+244/244 [==============================] - 2932s 12s/step - loss: 7.8454 - age_output_loss: 212.5322 - gender_output_loss: 0.5680 - race_output_loss: 0.9014 - age_output_accuracy: 0.0773 - gender_output_accuracy: 0.7041 - race_output_accuracy: 0.6843 - val_loss: 20.4274 - val_age_output_loss: 629.6763 - val_gender_output_loss: 0.5821 - val_race_output_loss: 0.9550 - val_age_output_accuracy: 0.1109 - val_gender_output_accuracy: 0.7004 - val_race_output_accuracy: 0.6595
+Epoch 3/50
+ 11/244 [&gt;.............................] - ETA: 36:11 - loss: 8.1862 - age_output_loss: 219.7931 - gender_output_loss: 0.5764 - race_output_loss: 1.0160 - age_output_accuracy: 0.0868 - gender_output_accuracy: 0.7036 - race_output_accuracy: 0.6467
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 31/244 [==&gt;...........................] - ETA: 38:02 - loss: 8.5985 - age_output_loss: 236.6638 - gender_output_loss: 0.5731 - race_output_loss: 0.9255 - age_output_accuracy: 0.0903 - gender_output_accuracy: 0.7033 - race_output_accuracy: 0.6828
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 51/244 [=====&gt;........................] - ETA: 35:16 - loss: 7.8998 - age_output_loss: 215.2543 - gender_output_loss: 0.5534 - race_output_loss: 0.8888 - age_output_accuracy: 0.0892 - gender_output_accuracy: 0.7181 - race_output_accuracy: 0.6902
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 71/244 [=======&gt;......................] - ETA: 31:53 - loss: 7.8006 - age_output_loss: 212.6448 - gender_output_loss: 0.5569 - race_output_loss: 0.8643 - age_output_accuracy: 0.0874 - gender_output_accuracy: 0.7183 - race_output_accuracy: 0.6988
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 91/244 [==========&gt;...................] - ETA: 28:23 - loss: 7.7237 - age_output_loss: 209.6027 - gender_output_loss: 0.5575 - race_output_loss: 0.8782 - age_output_accuracy: 0.0867 - gender_output_accuracy: 0.7173 - race_output_accuracy: 0.6938
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+111/244 [============&gt;.................] - ETA: 24:45 - loss: 7.4768 - age_output_loss: 201.6903 - gender_output_loss: 0.5594 - race_output_loss: 0.8666 - age_output_accuracy: 0.0821 - gender_output_accuracy: 0.7170 - race_output_accuracy: 0.6964
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+131/244 [===============&gt;..............] - ETA: 21:06 - loss: 7.3628 - age_output_loss: 197.4697 - gender_output_loss: 0.5652 - race_output_loss: 0.8734 - age_output_accuracy: 0.0839 - gender_output_accuracy: 0.7111 - race_output_accuracy: 0.6929
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+151/244 [=================&gt;............] - ETA: 17:22 - loss: 7.3428 - age_output_loss: 196.8649 - gender_output_loss: 0.5649 - race_output_loss: 0.8720 - age_output_accuracy: 0.0823 - gender_output_accuracy: 0.7084 - race_output_accuracy: 0.6926
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+171/244 [====================&gt;.........] - ETA: 13:39 - loss: 7.4604 - age_output_loss: 200.8791 - gender_output_loss: 0.5615 - race_output_loss: 0.8726 - age_output_accuracy: 0.0812 - gender_output_accuracy: 0.7105 - race_output_accuracy: 0.6929
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+191/244 [======================&gt;.......] - ETA: 9:55 - loss: 7.4045 - age_output_loss: 199.3676 - gender_output_loss: 0.5589 - race_output_loss: 0.8645 - age_output_accuracy: 0.0801 - gender_output_accuracy: 0.7137 - race_output_accuracy: 0.6945 
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+211/244 [========================&gt;.....] - ETA: 6:10 - loss: 7.5255 - age_output_loss: 203.4311 - gender_output_loss: 0.5561 - race_output_loss: 0.8665 - age_output_accuracy: 0.0781 - gender_output_accuracy: 0.7155 - race_output_accuracy: 0.6950
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+231/244 [===========================&gt;..] - ETA: 2:26 - loss: 7.5564 - age_output_loss: 204.2778 - gender_output_loss: 0.5559 - race_output_loss: 0.8722 - age_output_accuracy: 0.0785 - gender_output_accuracy: 0.7160 - race_output_accuracy: 0.6935
+Epoch 00003: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+244/244 [==============================] - 2933s 12s/step - loss: 7.5258 - age_output_loss: 203.2711 - gender_output_loss: 0.5548 - race_output_loss: 0.8728 - age_output_accuracy: 0.0783 - gender_output_accuracy: 0.7158 - race_output_accuracy: 0.6933 - val_loss: 7.2711 - val_age_output_loss: 192.4794 - val_gender_output_loss: 0.5810 - val_race_output_loss: 0.9158 - val_age_output_accuracy: 0.0409 - val_gender_output_accuracy: 0.7035 - val_race_output_accuracy: 0.6820
+Epoch 4/50
+  7/244 [..............................] - ETA: 33:09 - loss: 8.0997 - age_output_loss: 226.5923 - gender_output_loss: 0.5286 - race_output_loss: 0.7734 - age_output_accuracy: 0.0583 - gender_output_accuracy: 0.7524 - race_output_accuracy: 0.7524
+Epoch 00004: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 27/244 [==&gt;...........................] - ETA: 38:00 - loss: 7.2978 - age_output_loss: 197.9445 - gender_output_loss: 0.5325 - race_output_loss: 0.8270 - age_output_accuracy: 0.0816 - gender_output_accuracy: 0.7376 - race_output_accuracy: 0.7222
+Epoch 00004: saving model to checkpoint
+INFO:tensorflow:Assets written to: checkpoint/assets
+ 47/244 [====&gt;.........................] - ETA: 35:38 - loss: 7.1844 - age_output_loss: 193.5383 - gender_output_loss: 0.5402 - race_output_loss: 0.8380 - age_output_accuracy: 0.0794 - gender_output_accuracy: 0.7436 - race_output_accuracy: 0.7160
+Epoch 00004: saving model to checkpoint
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="434-huấn-luyện-lại-mô-hình">4.3.4. Huấn luyện lại mô hình</h3>
+
+<p>Quá trình huấn luyện sẽ khá tốn thời gian. Mình huấn luyện 4 epochs trên google colab hết khoảng 2 tiếng. Để huấn luyện lại mô hình từ checkpoint các bạn chỉ cần load lại model. Các trạng thái của optimizer như learning rate, gradient descent đã được lưu lại. Chúng ta sẽ chỉ cần retrain lại mô hình.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">load_model</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span>
+
+<span class="n">LR_RATE</span> <span class="p">=</span> <span class="m">0.001</span>
+<span class="n">EPOCHS</span> <span class="p">=</span> <span class="m">50</span>
+<span class="n">opt</span> <span class="p">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="p">=</span><span class="n">LR_RATE</span><span class="p">,</span> <span class="n">decay</span><span class="p">=</span><span class="n">LR_RATE</span> <span class="p">/</span> <span class="n">EPOCHS</span><span class="p">)</span>
+<span class="k">model</span> <span class="p">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">'checkpoint'</span><span class="p">)</span>
+<span class="k">model</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="n">losses</span><span class="p">,</span> <span class="n">loss_weights</span><span class="p">=</span> <span class="n">lossWeights</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">cp_callback</span> <span class="p">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="p">=</span><span class="s1">'checkpoint'</span><span class="p">,</span> 
+    <span class="n">verbose</span><span class="p">=</span><span class="m">1</span><span class="p">,</span> 
+    <span class="n">save_weights_only</span><span class="p">=</span><span class="nb">False</span><span class="p">,</span>
+    <span class="n">save_freq</span><span class="p">=</span><span class="m">20</span><span class="p">)</span>
+
+<span class="n">history</span> <span class="p">=</span> <span class="k">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span>
+	<span class="n">image_train</span><span class="p">,</span> <span class="p">{</span><span class="s2">"age_output"</span><span class="p">:</span> <span class="n">age_train</span><span class="p">,</span> <span class="s2">"gender_output"</span><span class="p">:</span> <span class="n">gender_train</span><span class="p">,</span> <span class="s2">"race_output"</span><span class="p">:</span> <span class="n">race_train</span><span class="p">},</span>
+	<span class="n">validation_data</span><span class="p">=(</span><span class="n">image_val</span><span class="p">,</span> <span class="p">{</span><span class="s2">"age_output"</span><span class="p">:</span> <span class="n">age_val</span><span class="p">,</span> <span class="s2">"gender_output"</span><span class="p">:</span> <span class="n">gender_val</span><span class="p">,</span> <span class="s2">"race_output"</span><span class="p">:</span> <span class="n">race_val</span><span class="p">}),</span>
+	<span class="n">batch_size</span><span class="p">=</span><span class="m">32</span><span class="p">,</span>
+	<span class="n">steps_per_epoch</span><span class="p">=</span><span class="n">len</span><span class="p">(</span><span class="n">image_train</span><span class="p">)</span> <span class="p">//</span> <span class="m">32</span><span class="p">,</span>
+	<span class="n">epochs</span><span class="p">=</span><span class="n">EPOCHS</span><span class="p">,</span> <span class="n">verbose</span><span class="p">=</span><span class="m">1</span><span class="p">,</span>
+	<span class="n">callbacks</span><span class="p">=[</span><span class="n">cp_callback</span><span class="p">])</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="435-dự-báo-độ-tuổi-giới-tính-và-chủng-tộc">4.3.5. Dự báo độ tuổi, giới tính và chủng tộc</h3>
+
+<p>Từ mô hình sau huẩn luyện, chúng ta có thể load lại chúng từ checkpoint và dự báo cho đồng thời các tác vụ. Output của chúng ta sẽ là một tupple gồm 3 outputs tương ứng với từng tác vụ dự báo <code class="highlighter-rouge">age, gender, race</code>. Đối với age, kết quả sẽ được làm tròn phần nguyên để ước lượng độ tuổi. Đối với gender và race, nhãn của output sẽ là phần tử có xác suất lớn nhất. Phần này xin dành cho bạn đọc như một bài tập.</p>
+
+<h1 id="5-hướng-mở-rộng">5. Hướng mở rộng</h1>
+
+<p>Như vậy mô hình MultiTaskLearning sử dụng nhiều branch đã có khả năng dự báo được nhiều đặc tính trên khuôn mặt đồng thời và đạt kết quả khá tốt. Thực tế cho thấy trong 3 tác vụ dự báo thì age có khả năng nhầm lẫn cao nhất vì age chứa nhiều ảnh nhiễu. Có người có thể trông già trước tuổi hoặc trẻ hơn tuổi. Đồng thời số lượng classes của age cũng là lớn nhất.</p>
+
+<p>Do đó để cải thiện độ chính xác cho age, bạn đọc có thể thử nghiệm thêm nhiều hàm loss function khác bằng cách coi dự báo age làm một bài toán phân loại. Khi đó output sẽ là một véc tơ phân phối xác suất $\hat{p}<em>{i} = (\hat{p}</em>{i1}, … ,\hat{p}<em>{iK})$ với $p</em>{ij}$ tương ứng với xác suất rơi vào tuổi $j$ của người $i$. Bên dưới là một vài hàm loss function mà mình nghĩ ra:</p>
+
+<ul>
+  <li><strong>Hàm MSE</strong>: Nếu coi giá trị dự báo của bài toán classification là trung bình có trọng số $\bar{y}<em>{i} = \sum</em>{j=1}^{K}(j.\hat{p}_{ij})$ theo phân phối xác suất thì hàm loss function dạng MSE sẽ là:</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{X}; \mathbf{W}) = \frac{1}{N}\sum_{i=1}^{N}(\bar{y}_{i}-y_{i})^2</script>
+
+<ul>
+  <li>
+    <p><strong>Hàm Variance</strong>: Nếu coi tuổi thực $y_i$ được phân rã về từng nhóm tuổi $j$ với xác suất là $\hat{p}_{ij}$. Khi đó phương sai giữa giá trị sau phân rã và tuổi thực sẽ là:
+<script type="math/tex">\mathcal{L}(\mathbf{X}; \mathbf{W}) = \sum_{i=1}^{N}\sum_{j=1}^{K}\hat{p}_{ij}(j-\hat{p}_{ij}*y_{i})^2</script></p>
+  </li>
+  <li>
+    <p><strong>Hàm MSE cross entropy</strong>: Tương tự như hàm variance nhưng ta lấy logarith của độ tuổi. Lấy cảm hứng từ sự kết hợp giữa hàm MSE và cross entropy.</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{X}; \mathbf{W}) = \sum_{i=1}^{N}\sum_{j=1}^{K}\hat{p}_{ij}(\log{(j)}-\hat{p}_{ij}*\log(y_{i}))^2</script>
+
+<p>Việc huấn luyện với các hàm số trên xin dành cho bạn đọc như một bài toán mở. Nếu kết quả tốt, bạn có thể viết báo nhé. Đừng quên cảm ơn mình vì đã gợi ý cho bạn.</p>
+
+<p>Ngoài ra bạn đọc cũng có thể dựa trên ý tưởng của thuật toán được trình bày tại bài viết này để thực hành lại <a href="https://phamdinhkhanh.github.io/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a> và so sánh hiệu quả giữa 2 phương pháp rẽ nhánh và chia sẻ tham số.</p>
+
+<h1 id="6-tổng-kết">6. Tổng kết</h1>
+
+<p>Như vậy sau bài viết này mình đã giới thiệu tới các bạn một dạng tiếp cận mới cho bài toán multitask learning trong trường hợp các tác vụ huấn luyện không chia sẻ đặc trưng phân loại. Kiến trúc multi-branch sẽ hiệu quả hơn so với kiến trúc multi-label output ở bài trước.</p>
+
+<p>Đồng thời bạn đọc cũng được tiếp cận với một số định hướng mở rộng bài toán bằng việc thay đổi các dạng hàm loss function khác nhau để cải thiện độ chính xác của mô hình dự báo.</p>
+
+<h1 id="7-tài-liệu">7. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://www.pyimagesearch.com/2018/06/04/keras-multiple-outputs-and-multiple-losses/">Keras: Multiple outputs and multiple losses - Pyimagesearch</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/ftp/arxiv/papers/1709/1709.01664.pdf">Deep Convolutional Neural Network for Age Estimation based on
+VGG-Face Model</a></p>
+  </li>
+  <li>
+    <p><a href="https://paperswithcode.com/task/age-estimation/codeless?page=3">Age estimation - paper with code</a></p>
+  </li>
+  <li>
+    <p><a href="https://link.springer.com/article/10.1186/s13640-018-0278-6">Age estimation via face images: a survey - Springer</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/pdf/1908.04913.pdf">FairFace: Face Attribute Dataset for Balanced Race, Gender, Age</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
