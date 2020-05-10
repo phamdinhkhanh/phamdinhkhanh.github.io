@@ -74,10 +74,10 @@ Bộ dữ liệu về face được sử dụng là [UTKFace](https://susanqq.gi
 
 Tên các files ảnh được đặt theo cấu trúc: `[age]_[gender]_[race]_[date&time].jpg` Trong đó:
 
-* [age]: độ tuổi, giá trị là một số nguyên từ 0 đến 116.
-* [gender]: giới tính.
-* [race]: chủng tộc, giá trị là số nguyên từ 0-4 lần lượt tương ứng với 5 sắc tộc da trắng, da đen, châu á, ấn độ và sắc tộc khác (như người tây ban nha, châu mỹ latin, trung đông).
-* [date&time]: ngày tháng chụp ảnh có định dạng yyyymmddHHMMSSFFF.
+* `age`: độ tuổi, giá trị là một số nguyên từ 0 đến 116.
+* `gender`: giới tính.
+* `race`: chủng tộc, giá trị là số nguyên từ 0-4 lần lượt tương ứng với 5 sắc tộc da trắng, da đen, châu á, ấn độ và sắc tộc khác (như người tây ban nha, châu mỹ latin, trung đông).
+* `date&time`: ngày tháng chụp ảnh có định dạng yyyymmddHHMMSSFFF.
 
 
 Để thực hành thì các bạn chỉ cần download file [crop_part1.tar.gz](https://drive.google.com/drive/folders/0BxYys69jI14kU0I1YUQyY1ZDRUE) là những ảnh khuôn mặt đã được crop bằng cách thêm lỗi tắt vào google drive. Nhớ sắp xếp chúng vào cùng thư mục với file notebook.
