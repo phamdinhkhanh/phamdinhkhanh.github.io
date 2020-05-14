@@ -458,8 +458,9 @@ Tổng quát cú pháp:
 
 `!./darknet detector train [data config file] [model config file] [pretrain-model weights] -dont_show > [file log saved]`
 
-Trong đó các `[data config file]`, `[model config file]` là những file config. `[pretrain-model weights]` là file model pretrain.
+Trong đó các `[data config file]`, `[model config file]` là những file config. `[pretrain-model weights]` là file model pretrain và `[file log saved]` là file log quá trình training.
 
+Note: Khi save log vào `[file log saved]` thì mặc định mô hình của bạn sẽ không hiển thị log ra ngoài màn hình nữa. Nhiều bạn đã hiểu lầm rằng mô hình ngừng chạy. Để hiển thị log quá trình huấn luyện thì bạn bỏ `> [file log saved]` ở cuối câu lệnh.
 
 ```
 !./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show > yolov3-5c.log
