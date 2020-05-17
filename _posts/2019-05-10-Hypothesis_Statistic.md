@@ -11,15 +11,13 @@ title: Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê
 * Đại lượng ngẫu nhiên liên tục: Giá trị của nó có thể rơi vào bất kì một giá trị nào nằm trong một khoảng xác định. Chẳng hạn chiều cao, cân nặng của một người có thể coi là đại lượng liên tục.
 * Đại lượng ngẫu nhiên rời rạc: Giá trị của nó nằm trong một tập hợp hữu hạn các khả năng. Ví dụ như trường hợp tung đồng xu ta chỉ có thể nhận các giá trị là {0, 1} tương ứng với khả năng rơi vào mặt S(sấp) hặc mặt N (ngửa). 
 
-2.**Kì vọng**: hay còn gọi là trung bình của một đại lượng ngẫu nhiên:
-
-$$\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)$$
+2.**Kì vọng**: là giá trị trung bình của một đại lượng ngẫu nhiên. Giá trị của kỳ vọng được chia thành 2 trường hợp:
 
 * Nếu $\text{x}$ là đại lượng ngẫu nhiên rời rạc.
 
 	$$\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)$$
 
-	Trong đó $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$. Trường hợp khả năng xảy ra của các $x_i$ là như nhau: $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$
+	Trong đó $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$. Khi khả năng xảy ra của các biến cố ngẫu nhiên rời rạc $x_i$ là như nhau thì giá trị của kỳ vọng: $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$
 
 * Nếu $\text{x}$ là một đại lượng ngẫu nhiên liên tục:
 
@@ -34,9 +32,9 @@ $$\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)$$
 
 $$\text{cov(x, y)} = \text{E}[(\text{x}-\bar{\text{x}})(\text{y}-\bar{\text{y}})] = \frac{\sum_{i=1}^{n} (x_i-\bar{\text{x}})(y_i-\bar{\text{y}})}{n}$$
 
-Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ và được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng theo thứ tự tương ứng trong chuỗi.
+Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ và được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng như công thức trên.
 
-Các tính chất của hiệp phương sai:
+Như vậy ta có thể rút ra các tính chất của hiệp phương sai:
 * tính chất giao hoán: 
 $$\text{cov(x, y) = cov(y, x)}$$
 * tính chất tuyến tính:
@@ -46,7 +44,8 @@ $$\begin{eqnarray}\text{cov(x, y)} & = & \text{E(xy)}-\mu_\text{x}\text{E(y)}-\m
 
 Trong đó $\mu_\text{x}, \mu_\text{y}$ lần lượt là kì vọng của $\text{x, y}$. Chứng minh công thức trên không khó. Xin dành cho bạn đọc.
 
-4.**Phương sai**: Là trường hợp đặc biệt của hiệp phương sai khi đo lường mối quan hệ giữa một biến với chính nó. Về công thức phương sai bằng tổng bình phương sai số của từng phần tử so với trung bình. Phương sai của một số thể hiện mức độ biến thiên của số đó xung quanh giá trị trung bình. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại. 
+4.**Phương sai**: Là trường hợp đặc biệt của hiệp phương sai giữa một đại lượng ngẫu nhiên với chính nó. Giá trị của phương sai luôn lớn hơn hoặc bằng 0 do bằng tổng bình phương sai số của từng mẫu so với kỳ vọng. Trong trường hợp phương sai bằng 0, đại lượng là một hằng số không biến thiên. Phương sai của một đại lượng thể hiện mức độ biến động của đại lượng đó xung quanh giá trị kỳ vọng. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại.
+
 Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2$. Công thức phương sai được tính như sau:
 
 * Nếu $x$ là đại lượng ngẫu nhiên rời rạc:
@@ -57,7 +56,7 @@ Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2
 
 * Nếu $x$ là đại lượng ngẫu nhiên liên tục:
 
-	$$\text{Var}(x) = \int (x_i-\mu)^2 p(x_i) dx$$
+	$$\text{Var}(x) = \int (x-\mu)^2 p(x) dx$$
 
 	Phương sai của một biến có thể được tính toán thông qua kì vọng của biến:
 
@@ -69,9 +68,9 @@ Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2
 	& = & \text{E}(x^2)-\text{E}(x)^2 \\
 	\end{eqnarray}$$
 
-	Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ.
+	Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ. Đồng thời từ công thức trên ta cũng suy ra một bất đẳng thức quan trọng đó là kỳ vọng của bình phương luôn lớn hơn bình phương của kỳ vọng: $\text{E}(x^2) \geq \text{E}(x)^2$
 
-5.**Độ lệch chuẩn**: Độ lệch chuẩn của một biến có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số biến so với trung bình.
+5.**Độ lệch chuẩn**: Độ lệch chuẩn của một đại lượng có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số của đại lượng so với trung bình.
 
 $$\sigma_x = \sqrt{\text{Var}(x)}$$
 
@@ -79,19 +78,22 @@ Trong trường hợp các biến rời rạc phân phối đều với xác xu�
 
 $$\sigma_x = \sqrt{\frac{\sum_{i=1}^{n}(x-\bar{x})^2}{n}}$$
 
-6.**Hệ số tương quan**: Là một chỉ số gần gũi với hiệp phương sai. Nó cũng nhằm đánh giá mối quan hệ tương quan cùng chiều hoặc ngược chiều giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai đó là bên cạnh đánh giá sự đồng biến, hệ số tương quan còn cho biết mối quan hệ tương quan tuyến tính mạnh hay yếu. 
+Trong thống kê chúng ta thường xác định các giá trị outliers dựa trên nguyên lý 3 sigma bằng cách xem những giá trị nằm ngoài khoảng $[\muy-3\sigma, \muy+3\sigma]$ như là outliers. Ta có thể xử lý outliers bằng cách đưa về đầu mút gần nhất $\muy-3\sigma$ hoặc $\muy+3\sigma$ hoặc loại bỏ luôn outliers.
 
-Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Phương trình biểu diễn tương quan được tính như sau:
+6.**Hệ số tương quan**: Là một chỉ số có quan hệ gần gũi với hiệp phương sai. Hệ số tương quan đánh giá mối quan hệ đồng biến hay nghịch biến giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai, hệ số tương quan cho biết thêm mối quan hệ tương quan tuyến tính giữa 2 biến là mạnh hay yếu. 
+
+Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Trường hợp hệ số tương quan bằng 0, hai đại lượng là độc lập tuyến tính. Phương trình biểu diễn tương quan được tính như sau:
 
 $$\rho_{\text{xy}} = \frac{\text{cov(x,y)}}{\sigma_{x}\sigma_{y}}$$
+
+Trong hồi qui tuyến tính và logistic, hệ số tương quan thường được dùng để ranking mức độ quan trọng của biến trước khi thực hiện hồi qui. Trong các mô hình timeseries như ARIMA, GARCH chúng ta cũng xác định các tham số bậc tự do của phương trình hồi qui dựa trên hệ số tương quan giữa các chuỗi với độ trễ của nó.
 
 ## 1.2. Qui luật số lớn
 
 Qui luật số lớn cho rằng khi một mẫu con có kích thước càng lớn được rút ra từ tổng thể thì trung bình của nó càng đại diện cho tổng thể. Phát biểu toán học của qui luật số lớn:
 
-Xét $n$ biến ngẫu nhiên $X_1, X_2,..., X_n$ độc lập cùng tuân theo phân phối $\mathbf{N}(\mu, \sigma^2)$, với mọi số thực $\epsilon$  dương, xác suất để khoảng cách giữa trung bình tích lũy 
-$Y_{n}={\frac {X_{1}+X_{2}+...+X_{n}}{n}}$ và kỳ vọng $\text{E(X)}$ lớn hơn 
-$\epsilon$ là tiến về 0 khi $n$ tiến về dương vô cùng.
+Xét $n$ mẫu ngẫu nhiên $X_1, X_2,..., X_n$ độc lập cùng tuân theo phân phối $\mathbf{N}(\mu, \sigma^2)$, với mọi số thực $\epsilon$  dương, xác suất để khoảng cách giữa trung bình tích lũy và kỳ vọng $P(\frac{X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)} > 
+\epsilon) \rightarrow 0$ khi $n \rightarrow \infty$.
 
 $$\lim_{n \rightarrow \infty} P(|\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)}| \geq \epsilon) = 0$$
 
