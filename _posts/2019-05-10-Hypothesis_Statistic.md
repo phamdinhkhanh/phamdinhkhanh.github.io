@@ -219,7 +219,7 @@ $$p(y) = \int_{x} p(x, y) dx$$
 
 ## 2.4. Xác xuất có điều kiện:
 
-Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y|x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:
+Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y\|x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:
 
 $$p(y|x) = \frac{p(x, y)}{p(x)}$$
 
@@ -252,22 +252,18 @@ $$\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\
 **Ví dụ**: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là thu nhập khách hàng. Tính xác xuất khách hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND biết rằng $p(y=1) = 0.01$, $p(x<10) = 0.2$ và xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05.
 
 
-**Lời giải**:
-
-Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x<10\|y=1)=0.9$ và $p(x<10\|y=0)=0.05$.
+**Lời giải**: Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x<10\|y=1)=0.9$ và $p(x<10\|y=0)=0.05$.
 
 Áp dụng công thức bayes:
 
 $$\begin{eqnarray} p(y=1|x<10) & = &\frac{p(x<10, y=1)}{p(x<10)} \\ 
 							   & = & \frac{p(x<10, y=1)}{\sum_{y} p(x<10, y)}\\ 
-							   & = & \frac{p(x<10\|y=1)p(y=1)}{p(x<10\|y=1)p(y=1)+p(x<10\|y=0)p(y=0)}\\
+							   & = & \frac{p(x<10 \|y=1)p(y=1)}{p(x<10 \|y=1)p(y=1)+p(x<10 \|y=0)p(y=0)}\\
 							   & = & \frac{0.9 \times 0.01}{0.9 \times 0.01 + 0.05 \times 0.99} \\
 							   & = & \frac{0.009}{0.009+0.0495} = 0.153846\end{eqnarray}$$
 
 
-ta làm như sau:
-Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.
-
+Điểm mấu chốt của công thức bayes đó là chúng ta có thể tính được xác suất có điều kiện khi đã biết phân phối xác suất ngược lại của điều kiện theo biến cố cần tính xác suất.
 
 # Phần 3 - Kiểm định và phân phối thống kê
 

@@ -444,14 +444,7 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 
 <h2 id="24-xác-xuất-có-điều-kiện">2.4. Xác xuất có điều kiện:</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y</td>
-      <td>x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:</td>
-    </tr>
-  </tbody>
-</table>
+<p>Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y|x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:</p>
 
 <script type="math/tex; mode=display">p(y|x) = \frac{p(x, y)}{p(x)}</script>
 
@@ -484,21 +477,18 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 
 <p><strong>Ví dụ</strong>: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là thu nhập khách hàng. Tính xác xuất khách hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND biết rằng $p(y=1) = 0.01$, $p(x&lt;10) = 0.2$ và xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05.</p>
 
-<p><strong>Lời giải</strong>:</p>
-
-<p>Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x&lt;10|y=1)=0.9$ và $p(x&lt;10|y=0)=0.05$.</p>
+<p><strong>Lời giải</strong>: Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x&lt;10|y=1)=0.9$ và $p(x&lt;10|y=0)=0.05$.</p>
 
 <p>Áp dụng công thức bayes:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{eqnarray} p(y=1|x<10) & = &\frac{p(x<10, y=1)}{p(x<10)} \\ 
 							   & = & \frac{p(x<10, y=1)}{\sum_{y} p(x<10, y)}\\ 
-							   & = & \frac{p(x<10\|y=1)p(y=1)}{p(x<10\|y=1)p(y=1)+p(x<10\|y=0)p(y=0)}\\
+							   & = & \frac{p(x<10 \|y=1)p(y=1)}{p(x<10 \|y=1)p(y=1)+p(x<10 \|y=0)p(y=0)}\\
 							   & = & \frac{0.9 \times 0.01}{0.9 \times 0.01 + 0.05 \times 0.99} \\
 							   & = & \frac{0.009}{0.009+0.0495} = 0.153846\end{eqnarray} %]]></script>
 
-<p>ta làm như sau:
-Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.</p>
+<p>Điểm mấu chốt của công thức bayes đó là chúng ta có thể tính được xác suất có điều kiện khi đã biết phân phối xác suất ngược lại của điều kiện theo biến cố cần tính xác suất.</p>
 
 <h1 id="phần-3---kiểm-định-và-phân-phối-thống-kê">Phần 3 - Kiểm định và phân phối thống kê</h1>
 
