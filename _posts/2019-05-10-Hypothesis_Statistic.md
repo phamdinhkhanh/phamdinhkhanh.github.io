@@ -235,17 +235,37 @@ Ví dụ xác suất có điều kiện: Xác xuất chiến thắng (biến c�
 
 $$p(y|x = 6) = \frac{p(x, y = 6)}{p(x = 6)}$$
 
-Khi đó $p(x = 6)$ thông thường sẽ bằng $\frac{1}{6}$ đối với khối xúc sắc đồng chất là xác suất tiên nghiệm mà ta đã biết trước, ngay cả khi không cần đến điều kiện $y$ là người đó đã chiến thắng. Xác suất $p(y|x=6)$ là xác suất hậu nghiệm cho biết khả năng chiến thắng trong điều kiện đã biết tung được mặt $x=6$.
+Khi đó $p(x = 6)$ thông thường sẽ bằng $\frac{1}{6}$ nếu khối xúc sắc là đồng chất chính là xác suất tiên nghiệm mà ta đã biết trước, ngay cả khi không cần đến điều kiện $y$ là người đó đã chiến thắng. 
 
-Trong các mô hình classification, xác suất dự báo đối với input là quan sát $\mathbf{X}$ sẽ là xác suất hậu nghiệm $P(\mathbf{Y}=1|X)$ trong điều kiện mẫu có các đặc trưng mẫu là $\mathbf{X}$.
+Xác suất $p(y \|x=6)$ là xác suất hậu nghiệm cho biết khả năng chiến thắng trong điều kiện đã biết tung được mặt $x=6$.
+
+Trong các mô hình classification, xác suất dự báo đối với input là quan sát $X$ sẽ là xác suất hậu nghiệm $P(Y=1 \|X)$ trong điều kiện mẫu có các đặc trưng mẫu là $X$.
 
 ## 2.5. Công thức bayes
 
 Chúng ta có thể biểu diễn xác xuất có điều kiện của biến cố $y$ theo $x$ dựa trên xác xuất có điều kiện của biến cố $x$ theo $y$.
 
-$$\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\ & = & \frac{p(x, y)}{\sum_{y} p(x, y)}\\ & = & \frac{p(x|y)p(y)}{\sum_{y}p(x|y)p(y)}\end{eqnarray}$$
+$$\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\ 
+						  & = & \frac{p(x, y)}{\sum_{y} p(x, y)}\\ 
+						  & = & \frac{p(x|y)p(y)}{\sum_{y}p(x|y)p(y)}\end{eqnarray}$$
 
-Ví dụ: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND ta làm như sau:
+**Ví dụ**: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là thu nhập khách hàng. Tính xác xuất khách hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND biết rằng $p(y=1) = 0.01$, $p(x<10) = 0.2$ và xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05.
+
+
+**Lời giải**:
+
+Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x<10\|y=1)=0.9$ và $p(x<10\|y=0)=0.05$.
+
+Áp dụng công thức bayes:
+
+$$\begin{eqnarray} p(y=1|x<10) & = &\frac{p(x<10, y=1)}{p(x<10)} \\ 
+							   & = & \frac{p(x<10, y=1)}{\sum_{y} p(x<10, y)}\\ 
+							   & = & \frac{p(x<10\|y=1)p(y=1)}{p(x<10\|y=1)p(y=1)+p(x<10\|y=0)p(y=0)}\\
+							   & = & \frac{0.9 \times 0.01}{0.9 \times 0.01 + 0.05 \times 0.99} \\
+							   & = & \frac{0.009}{0.009+0.0495} = 0.153846\end{eqnarray}$$
+
+
+ta làm như sau:
 Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.
 
 

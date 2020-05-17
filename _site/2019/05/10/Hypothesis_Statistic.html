@@ -218,9 +218,7 @@ body {
   <li>Đại lượng ngẫu nhiên rời rạc: Giá trị của nó nằm trong một tập hợp hữu hạn các khả năng. Ví dụ như trường hợp tung đồng xu ta chỉ có thể nhận các giá trị là {0, 1} tương ứng với khả năng rơi vào mặt S(sấp) hặc mặt N (ngửa).</li>
 </ul>
 
-<p>2.<strong>Kì vọng</strong>: hay còn gọi là trung bình của một đại lượng ngẫu nhiên:</p>
-
-<script type="math/tex; mode=display">\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)</script>
+<p>2.<strong>Kì vọng</strong>: là giá trị trung bình của một đại lượng ngẫu nhiên. Giá trị của kỳ vọng được chia thành 2 trường hợp:</p>
 
 <ul>
   <li>
@@ -228,7 +226,7 @@ body {
 
     <script type="math/tex; mode=display">\text{E(x)} = \bar{\text{x}} = \sum_{i=1}^{n} x_i p(x_i)</script>
 
-    <p>Trong đó $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$. Trường hợp khả năng xảy ra của các $x_i$ là như nhau: $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$</p>
+    <p>Trong đó $p(x_i)$ là xác xuất xảy ra biến cố $x = x_i$. Khi khả năng xảy ra của các biến cố ngẫu nhiên rời rạc $x_i$ là như nhau thì giá trị của kỳ vọng: $\text{E}(x) = \frac{\sum_{i=1}^{n}x_i}{n}$</p>
   </li>
   <li>
     <p>Nếu $\text{x}$ là một đại lượng ngẫu nhiên liên tục:</p>
@@ -248,9 +246,9 @@ body {
 
 <script type="math/tex; mode=display">\text{cov(x, y)} = \text{E}[(\text{x}-\bar{\text{x}})(\text{y}-\bar{\text{y}})] = \frac{\sum_{i=1}^{n} (x_i-\bar{\text{x}})(y_i-\bar{\text{y}})}{n}</script>
 
-<p>Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ và được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng theo thứ tự tương ứng trong chuỗi.</p>
+<p>Gía trị của hiệp phương sai giữa 2 chuỗi số $\text{x,y}$ được kí hiệu là $\text{cov(x,y)}$ hoặc $\sigma_{\text{xy}}$ và được tính bằng kì vọng của tích chéo độ lệch so với trung bình của 2 đại lượng như công thức trên.</p>
 
-<p>Các tính chất của hiệp phương sai:</p>
+<p>Như vậy ta có thể rút ra các tính chất của hiệp phương sai:</p>
 <ul>
   <li>tính chất giao hoán: 
 <script type="math/tex">\text{cov(x, y) = cov(y, x)}</script></li>
@@ -263,8 +261,9 @@ body {
 
 <p>Trong đó $\mu_\text{x}, \mu_\text{y}$ lần lượt là kì vọng của $\text{x, y}$. Chứng minh công thức trên không khó. Xin dành cho bạn đọc.</p>
 
-<p>4.<strong>Phương sai</strong>: Là trường hợp đặc biệt của hiệp phương sai khi đo lường mối quan hệ giữa một biến với chính nó. Về công thức phương sai bằng tổng bình phương sai số của từng phần tử so với trung bình. Phương sai của một số thể hiện mức độ biến thiên của số đó xung quanh giá trị trung bình. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại. 
-Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2$. Công thức phương sai được tính như sau:</p>
+<p>4.<strong>Phương sai</strong>: Là trường hợp đặc biệt của hiệp phương sai giữa một đại lượng ngẫu nhiên với chính nó. Giá trị của phương sai luôn lớn hơn hoặc bằng 0 do bằng tổng bình phương sai số của từng mẫu so với kỳ vọng. Trong trường hợp phương sai bằng 0, đại lượng là một hằng số không biến thiên. Phương sai của một đại lượng thể hiện mức độ biến động của đại lượng đó xung quanh giá trị kỳ vọng. Nếu phương sai càng lớn, miền biến thiên của đại lượng càng cao và ngược lại.</p>
+
+<p>Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2$. Công thức phương sai được tính như sau:</p>
 
 <ul>
   <li>
@@ -277,7 +276,7 @@ Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2
   <li>
     <p>Nếu $x$ là đại lượng ngẫu nhiên liên tục:</p>
 
-    <script type="math/tex; mode=display">\text{Var}(x) = \int (x_i-\mu)^2 p(x_i) dx</script>
+    <script type="math/tex; mode=display">\text{Var}(x) = \int (x-\mu)^2 p(x) dx</script>
 
     <p>Phương sai của một biến có thể được tính toán thông qua kì vọng của biến:</p>
 
@@ -290,11 +289,11 @@ Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2
   & = & \text{E}(x^2)-\text{E}(x)^2 \\
   \end{eqnarray} %]]></script>
 
-    <p>Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ.</p>
+    <p>Đây là một trong những tính chất rất thường được sử dụng trong tính toán nhanh phương sai mà bạn đọc cần nhớ. Đồng thời từ công thức trên ta cũng suy ra một bất đẳng thức quan trọng đó là kỳ vọng của bình phương luôn lớn hơn bình phương của kỳ vọng: $\text{E}(x^2) \geq \text{E}(x)^2$</p>
   </li>
 </ul>
 
-<p>5.<strong>Độ lệch chuẩn</strong>: Độ lệch chuẩn của một biến có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số biến so với trung bình.</p>
+<p>5.<strong>Độ lệch chuẩn</strong>: Độ lệch chuẩn của một đại lượng có giá trị bằng căn bậc 2 của phương sai. Nó đại diện cho sai số của đại lượng so với trung bình.</p>
 
 <script type="math/tex; mode=display">\sigma_x = \sqrt{\text{Var}(x)}</script>
 
@@ -302,19 +301,22 @@ Phương sai được kí hiệu là $\text{Var}(x)$, $\sigma_x^2$ hoặc $s_x^2
 
 <script type="math/tex; mode=display">\sigma_x = \sqrt{\frac{\sum_{i=1}^{n}(x-\bar{x})^2}{n}}</script>
 
-<p>6.<strong>Hệ số tương quan</strong>: Là một chỉ số gần gũi với hiệp phương sai. Nó cũng nhằm đánh giá mối quan hệ tương quan cùng chiều hoặc ngược chiều giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai đó là bên cạnh đánh giá sự đồng biến, hệ số tương quan còn cho biết mối quan hệ tương quan tuyến tính mạnh hay yếu.</p>
+<p>Trong thống kê chúng ta thường xác định các giá trị outliers dựa trên nguyên lý 3 sigma bằng cách xem những giá trị nằm ngoài khoảng $[\mu-3\sigma, \mu+3\sigma]$ như là outliers. Ta có thể xử lý outliers bằng cách đưa về đầu mút gần nhất $\mu-3\sigma$ hoặc $\mu+3\sigma$ hoặc loại bỏ luôn outliers.</p>
 
-<p>Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Phương trình biểu diễn tương quan được tính như sau:</p>
+<p>6.<strong>Hệ số tương quan</strong>: Là một chỉ số có quan hệ gần gũi với hiệp phương sai. Hệ số tương quan đánh giá mối quan hệ đồng biến hay nghịch biến giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai, hệ số tương quan cho biết thêm mối quan hệ tương quan tuyến tính giữa 2 biến là mạnh hay yếu.</p>
+
+<p>Hệ số tương quan giao động trong khoảng [-1, 1]. Tại 2 giá trị đầu mút -1 và 1, hai biến hoàn toàn tương quan tuyến tính. Tức ta có thể biểu diễn $\text{y}=a\text{x}+b$. Trường hợp hệ số tương quan bằng 0, hai đại lượng là độc lập tuyến tính. Phương trình biểu diễn tương quan được tính như sau:</p>
 
 <script type="math/tex; mode=display">\rho_{\text{xy}} = \frac{\text{cov(x,y)}}{\sigma_{x}\sigma_{y}}</script>
+
+<p>Trong hồi qui tuyến tính và logistic, hệ số tương quan thường được dùng để ranking mức độ quan trọng của biến trước khi thực hiện hồi qui. Trong các mô hình timeseries như ARIMA, GARCH chúng ta cũng xác định các tham số bậc tự do của phương trình hồi qui dựa trên hệ số tương quan giữa các chuỗi với độ trễ của nó.</p>
 
 <h2 id="12-qui-luật-số-lớn">1.2. Qui luật số lớn</h2>
 
 <p>Qui luật số lớn cho rằng khi một mẫu con có kích thước càng lớn được rút ra từ tổng thể thì trung bình của nó càng đại diện cho tổng thể. Phát biểu toán học của qui luật số lớn:</p>
 
-<p>Xét $n$ biến ngẫu nhiên $X_1, X_2,…, X_n$ độc lập cùng tuân theo phân phối $\mathbf{N}(\mu, \sigma^2)$, với mọi số thực $\epsilon$  dương, xác suất để khoảng cách giữa trung bình tích lũy 
-$Y_{n}={\frac {X_{1}+X_{2}+…+X_{n}}{n}}$ và kỳ vọng $\text{E(X)}$ lớn hơn 
-$\epsilon$ là tiến về 0 khi $n$ tiến về dương vô cùng.</p>
+<p>Xét $n$ mẫu ngẫu nhiên $X_1, X_2,…, X_n$ độc lập cùng tuân theo phân phối $\mathbf{N}(\mu, \sigma^2)$, với mọi số thực $\epsilon$  dương, xác suất để khoảng cách giữa trung bình tích lũy và kỳ vọng $P(\frac{X_{1}+X_{2}+…+X_{n}}{n} - \text{E(X)} &gt; 
+\epsilon) \rightarrow 0$ khi $n \rightarrow \infty$ hay biểu diễn lim:</p>
 
 <script type="math/tex; mode=display">\lim_{n \rightarrow \infty} P(|\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)}| \geq \epsilon) = 0</script>
 
@@ -382,9 +384,9 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 
 <h2 id="21-khái-niệm-biến-ngẫu-nhiên">2.1. Khái niệm biến ngẫu nhiên:</h2>
 
-<p>Biến ngẫu nhiên là một đại lượng được sử dụng để đo lường kết quả của những sự kiện ngẫu nhiên. Chẳng hạn như $\mathbf{x} \in {1, 2, 3, 4, 5, 6}$ là trong phép đo kết quả các lần tung một xúc xắc 6 mặt đồng chất thì $\mathbf{x}$ được coi là biến ngẫu nhiên.</p>
+<p>Biến ngẫu nhiên là một đại lượng được sử dụng để đo lường kết quả của những sự kiện ngẫu nhiên. Chẳng hạn như $\mathbf{x} \in {1, 2, 3, 4, 5, 6}$ là các biến cố trong phép đo kết quả các lần tung một xúc xắc 6 mặt đồng chất thì $\mathbf{x}$ được coi là biến ngẫu nhiên.</p>
 
-<p>Trong xác xuất thống kê có hai khái niệm biến ngẫu nhiên rời rạc và biến ngẫu nhiên liên tục. Biến ngẫu nhiên rời rạc là đại lượng mà các giá trị của nó nằm trong một tập hợp cho trước. Trái lại, biến ngẫu nhiên liên tục có miền giá trị là tập con của các số thực, có thể hữu hạn hoặc không hữu hạn.</p>
+<p>Trong xác xuất thống kê có hai khái niệm biến ngẫu nhiên là biến ngẫu nhiên rời rạc và biến ngẫu nhiên liên tục. Biến ngẫu nhiên rời rạc là đại lượng mà các giá trị của nó nằm trong một tập hợp cho trước. Trái lại, biến ngẫu nhiên liên tục có miền giá trị là tập con thuộc $\mathcal{R}$ (tập số thực), có thể hữu hạn hoặc không hữu hạn.</p>
 
 <p>Hàm phân phối xác xuất (<em>probability distribution function</em>) $p(x)$ của một biến ngẫu nhiên $\mathbf{x}$ rời rạc là một hàm số đo lường xác xuất xảy ra sự kiện $p(\mathbf{x} = x)$ của một biến cố. Như vậy $1 \geq p(x) \geq 0$ và tổng xác xuất của toàn bộ các khả năng trong không gian biến cố bằng 1, hay:</p>
 
@@ -426,7 +428,7 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 
 <h2 id="23-phân-phối-xác-xuất-biên">2.3. Phân phối xác xuất biên:</h2>
 
-<p>Nếu chúng ta cố định một biến cố và tính tổng hoặc tích phân các xác xuất chung $p(x, y)$ theo biến cố còn lại thì ta sẽ thu được hàm phân phối xác xuất của theo một biến. Hàm phân phối xác xuất này được gọi là xác xuất biên (<em>marginal probability</em>) được tính như sau:</p>
+<p>Nếu chúng ta cố định một biến cố và tính tổng (đối với biến rời rạc) hoặc tích phân (đối với biến liên tục) các xác xuất chung $p(x, y)$ theo biến cố còn lại thì ta sẽ thu được hàm phân phối xác xuất của theo một biến. Hàm phân phối xác xuất này được gọi là xác xuất biên (<em>marginal probability</em>) được tính như sau:</p>
 
 <p><strong>Biến rời rạc:</strong></p>
 
@@ -445,36 +447,63 @@ Xét một biến ngẫu nhiên $\text{X}$ tuân theo phân phối chuẩn $\mat
 <table>
   <tbody>
     <tr>
-      <td>Xác xuất của x theo điều kiện của y kí hiệu là $p(x</td>
-      <td>y)$. Khi đó ta có:</td>
+      <td>Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y</td>
+      <td>x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:</td>
     </tr>
   </tbody>
 </table>
 
-<script type="math/tex; mode=display">p(x|y) = \frac{p(x, y)}{p(y)}</script>
+<script type="math/tex; mode=display">p(y|x) = \frac{p(x, y)}{p(x)}</script>
 
-<p>Từ đó suy ra:</p>
+<p>Xác suất hậu nghiệm cho ta biết khả năng xảy ra của một biến cố (biến cố $y$) trong điều kiện đã xét đến khả năng xảy ra của các biến cố khác (biến cố $x$).</p>
+
+<p>Ngoài ra xác suất $p(x)$ còn được gọi là xác suất tiên nghiệm (prior probability), tức xác suất dựa trên niềm tin hoặc kinh nghiệm đã biết từ trước, trước khi các dấu hiệu xác suất (chính là điều kiện $y$) xuất hiện.</p>
+
+<p>Từ công thức xác suất trên suy ra:</p>
 
 <script type="math/tex; mode=display">p(x, y) = p(x|y)p(y) = p(y|x)p(x)</script>
 
-<p>Vị dụ cụ thể: Xác xuất chiến thắng (biến cố $x$) trong điều kiện tung được xúc sắc mặt 6 (biến cố $y$) là:</p>
+<p>Ví dụ xác suất có điều kiện: Xác xuất chiến thắng (biến cố $y$) trong điều kiện tung được xúc sắc mặt 6 (biến cố $x$) là:</p>
 
-<script type="math/tex; mode=display">p(x|y = 6) = \frac{p(x, y = 6)}{p(y = 6)}</script>
+<script type="math/tex; mode=display">p(y|x = 6) = \frac{p(x, y = 6)}{p(x = 6)}</script>
+
+<p>Khi đó $p(x = 6)$ thông thường sẽ bằng $\frac{1}{6}$ nếu khối xúc sắc là đồng chất chính là xác suất tiên nghiệm mà ta đã biết trước, ngay cả khi không cần đến điều kiện $y$ là người đó đã chiến thắng.</p>
+
+<p>Xác suất $p(y |x=6)$ là xác suất hậu nghiệm cho biết khả năng chiến thắng trong điều kiện đã biết tung được mặt $x=6$.</p>
+
+<p>Trong các mô hình classification, xác suất dự báo đối với input là quan sát $X$ sẽ là xác suất hậu nghiệm $P(Y=1 |X)$ trong điều kiện mẫu có các đặc trưng mẫu là $X$.</p>
 
 <h2 id="25-công-thức-bayes">2.5. Công thức bayes</h2>
 
-<p>Chúng ta có thể biểu diễn xác xuất có điều kiện của biến cố $x$ theo $y$ dựa trên xác xuất có điều kiện của biến cố $y$ theo $x$.</p>
+<p>Chúng ta có thể biểu diễn xác xuất có điều kiện của biến cố $y$ theo $x$ dựa trên xác xuất có điều kiện của biến cố $x$ theo $y$.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
-\begin{eqnarray} p(x|y) & = &\frac{p(x, y)}{p(y)} \\ & = & \frac{p(x, y)}{\sum_{x} p(x, y)}\\ & = & \frac{p(y|x)p(x)}{\sum_{x}p(y|x)p(x)}\end{eqnarray} %]]></script>
+\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\ 
+						  & = & \frac{p(x, y)}{\sum_{y} p(x, y)}\\ 
+						  & = & \frac{p(x|y)p(y)}{\sum_{y}p(x|y)p(y)}\end{eqnarray} %]]></script>
 
-<p>Ví dụ: Gọi $x$ là biến cố khách hàng vỡ nợ, $y$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND ta làm như sau:
+<p><strong>Ví dụ</strong>: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là thu nhập khách hàng. Tính xác xuất khách hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND biết rằng $p(y=1) = 0.01$, $p(x&lt;10) = 0.2$ và xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05.</p>
+
+<p><strong>Lời giải</strong>:</p>
+
+<p>Từ điều kiện xác suất khách hàng có thu nhập dưới 10 triệu trong điều kiện vỡ nợ và không vỡ nợ lần lượt là 0.9 và 0.05 ta có $p(x&lt;10|y=1)=0.9$ và $p(x&lt;10|y=0)=0.05$.</p>
+
+<p>Áp dụng công thức bayes:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray} p(y=1|x<10) & = &\frac{p(x<10, y=1)}{p(x<10)} \\ 
+							   & = & \frac{p(x<10, y=1)}{\sum_{y} p(x<10, y)}\\ 
+							   & = & \frac{p(x<10\|y=1)p(y=1)}{p(x<10\|y=1)p(y=1)+p(x<10\|y=0)p(y=0)}\\
+							   & = & \frac{0.9 \times 0.01}{0.9 \times 0.01 + 0.05 \times 0.99} \\
+							   & = & \frac{0.009}{0.009+0.0495} = 0.153846\end{eqnarray} %]]></script>
+
+<p>ta làm như sau:
 Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.</p>
 
 <h1 id="phần-3---kiểm-định-và-phân-phối-thống-kê">Phần 3 - Kiểm định và phân phối thống kê</h1>
 
 <h2 id="31-phân-phối-thống-kê">3.1. Phân phối thống kê</h2>
-<p>Thống kê là bộ môn khoa học dựa trên các qui luật số lớn. Từ thời kì cổ đại các nhà toán học đã nhận ra một số qui luật của thống kê chẳng hạn như khi tung một đồng xu đồng chất thì xác xuất nhận được các mặt xấp và ngửa đều bằng nhau và bằng 0.5. Chính qui luật đơn giản này đã hình thành nên một phân phối nổi tiếng về xác xuất là phân phối bernouli cho biết khả năng để xảy ra $p$ lần nếu thực hiện cùng một phép thử ngẫu nhiên $n$ lần với xác xuất các lần bằng nhau và bằng $\lambda \in [0, 1]$. Từ định nghĩa về phân phối bernouli bạn đọc đã hiểu được phân phối là gì rồi chứ? Phân phối chính là đặc trưng cho sự phân bố của các biến ngẫu nhiên trên toàn tập xác định của nó. Trong tự nhiên có những qui luật phân phối tri phối hầu hết các nhân tố, chúng có thể mô hình hoá được và đúng với số lớn mà ta sẽ tìm hiểu ở bên dưới. Nhưng trước tiên chúng ta sẽ làm quen với các khái niệm trong phân phối.</p>
+<p>Thống kê là bộ môn khoa học dựa trên các qui luật số lớn. Từ thời kì cổ đại các nhà toán học đã nhận ra một số qui luật của thống kê chẳng hạn như khi tung một đồng xu đồng chất thì xác xuất nhận được các mặt xấp và ngửa đều bằng nhau và bằng 0.5. Chính qui luật đơn giản này đã hình thành nên một phân phối nổi tiếng về xác xuất là phân phối bernouli cho biết khả năng để xảy ra một biến cố $K$ trong một phép thử ngẫu nhiên là $\lambda_K \in [0, 1]$. Từ định nghĩa về phân phối bernouli bạn đọc đã hiểu được phân phối là gì rồi chứ? Phân phối chính là đặc trưng cho sự phân bố của các biến ngẫu nhiên trên toàn tập xác định của nó. Trong tự nhiên có những qui luật phân phối tri phối hầu hết các nhân tố, chúng có thể mô hình hoá được và đúng với số lớn mà ta sẽ tìm hiểu ở bên dưới. Nhưng trước tiên chúng ta sẽ làm quen với các khái niệm trong phân phối.</p>
 <ol>
   <li><strong>Hàm mật độ xác xuất và phân phối xác xuất</strong>:
 <br />

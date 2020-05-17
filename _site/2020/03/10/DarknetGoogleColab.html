@@ -771,7 +771,9 @@ darknet53.conv.74   100%[===================&gt;] 154.96M  1.11MB/s    in 1m 45s
 
 <p><code class="highlighter-rouge">!./darknet detector train [data config file] [model config file] [pretrain-model weights] -dont_show &gt; [file log saved]</code></p>
 
-<p>Trong đó các <code class="highlighter-rouge">[data config file]</code>, <code class="highlighter-rouge">[model config file]</code> là những file config. <code class="highlighter-rouge">[pretrain-model weights]</code> là file model pretrain.</p>
+<p>Trong đó các <code class="highlighter-rouge">[data config file]</code>, <code class="highlighter-rouge">[model config file]</code> là những file config. <code class="highlighter-rouge">[pretrain-model weights]</code> là file model pretrain và <code class="highlighter-rouge">[file log saved]</code> là file log quá trình training.</p>
+
+<p>Note: Khi save log vào <code class="highlighter-rouge">[file log saved]</code> thì mặc định mô hình của bạn sẽ không hiển thị log ra ngoài màn hình nữa. Nhiều bạn đã hiểu lầm rằng mô hình ngừng chạy. Để hiển thị log quá trình huấn luyện thì bạn bỏ <code class="highlighter-rouge">&gt; [file log saved]</code> ở cuối câu lệnh.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>!./darknet detector train obj.data yolov3-5c-5000-max-steps.cfg darknet53.conv.74 -dont_show &gt; yolov3-5c.log
