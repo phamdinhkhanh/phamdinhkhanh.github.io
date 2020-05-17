@@ -159,9 +159,9 @@ $$[\bar{\text{X}}-u_{\alpha/2}\frac{s_{x}}{\sqrt{n}}, \bar{\text{X}}+u_{\alpha/2
 
 ## 2.1. Khái niệm biến ngẫu nhiên:
 
-Biến ngẫu nhiên là một đại lượng được sử dụng để đo lường kết quả của những sự kiện ngẫu nhiên. Chẳng hạn như $\mathbf{x} \in \{1, 2, 3, 4, 5, 6\}$ là trong phép đo kết quả các lần tung một xúc xắc 6 mặt đồng chất thì $\mathbf{x}$ được coi là biến ngẫu nhiên.
+Biến ngẫu nhiên là một đại lượng được sử dụng để đo lường kết quả của những sự kiện ngẫu nhiên. Chẳng hạn như $\mathbf{x} \in \{1, 2, 3, 4, 5, 6\}$ là các biến cố trong phép đo kết quả các lần tung một xúc xắc 6 mặt đồng chất thì $\mathbf{x}$ được coi là biến ngẫu nhiên.
 
-Trong xác xuất thống kê có hai khái niệm biến ngẫu nhiên rời rạc và biến ngẫu nhiên liên tục. Biến ngẫu nhiên rời rạc là đại lượng mà các giá trị của nó nằm trong một tập hợp cho trước. Trái lại, biến ngẫu nhiên liên tục có miền giá trị là tập con của các số thực, có thể hữu hạn hoặc không hữu hạn.
+Trong xác xuất thống kê có hai khái niệm biến ngẫu nhiên là biến ngẫu nhiên rời rạc và biến ngẫu nhiên liên tục. Biến ngẫu nhiên rời rạc là đại lượng mà các giá trị của nó nằm trong một tập hợp cho trước. Trái lại, biến ngẫu nhiên liên tục có miền giá trị là tập con thuộc $\mathcal{R}$ (tập số thực), có thể hữu hạn hoặc không hữu hạn.
 
 Hàm phân phối xác xuất (*probability distribution function*) $p(x)$ của một biến ngẫu nhiên $\mathbf{x}$ rời rạc là một hàm số đo lường xác xuất xảy ra sự kiện $p(\mathbf{x} = x)$ của một biến cố. Như vậy $1 \geq p(x) \geq 0$ và tổng xác xuất của toàn bộ các khả năng trong không gian biến cố bằng 1, hay:
 
@@ -202,7 +202,7 @@ $$\sum_{x}\int p(x, y) dy = 1$$
 
 ## 2.3. Phân phối xác xuất biên:
 
-Nếu chúng ta cố định một biến cố và tính tổng hoặc tích phân các xác xuất chung $p(x, y)$ theo biến cố còn lại thì ta sẽ thu được hàm phân phối xác xuất của theo một biến. Hàm phân phối xác xuất này được gọi là xác xuất biên (*marginal probability*) được tính như sau:
+Nếu chúng ta cố định một biến cố và tính tổng (đối với biến rời rạc) hoặc tích phân (đối với biến liên tục) các xác xuất chung $p(x, y)$ theo biến cố còn lại thì ta sẽ thu được hàm phân phối xác xuất của theo một biến. Hàm phân phối xác xuất này được gọi là xác xuất biên (*marginal probability*) được tính như sau:
 
 **Biến rời rạc:**
 
@@ -219,27 +219,33 @@ $$p(y) = \int_{x} p(x, y) dx$$
 
 ## 2.4. Xác xuất có điều kiện:
 
-Xác xuất của x theo điều kiện của y kí hiệu là $p(x|y)$. Khi đó ta có:
+Xác xuất của $y$ theo điều kiện của $x$ kí hiệu là $p(y|x)$ còn được gọi là xác suất hậu nghiệm (posterior probability) trong thống kê bayesian (bayesian statistic) có công thức như sau:
 
-$$p(x|y) = \frac{p(x, y)}{p(y)}$$
+$$p(y|x) = \frac{p(x, y)}{p(x)}$$
 
+Xác suất hậu nghiệm cho ta biết khả năng xảy ra của một biến cố (biến cố $y$) trong điều kiện đã xét đến khả năng xảy ra của các biến cố khác (biến cố $x$).
 
-Từ đó suy ra:
+Ngoài ra xác suất $p(x)$ còn được gọi là xác suất tiên nghiệm (prior probability), tức xác suất dựa trên niềm tin hoặc kinh nghiệm đã biết từ trước, trước khi các dấu hiệu xác suất (chính là điều kiện $y$) xuất hiện.
+
+Từ công thức xác suất trên suy ra:
 
 $$p(x, y) = p(x|y)p(y) = p(y|x)p(x)$$
 
+Ví dụ xác suất có điều kiện: Xác xuất chiến thắng (biến cố $y$) trong điều kiện tung được xúc sắc mặt 6 (biến cố $x$) là:
 
-Vị dụ cụ thể: Xác xuất chiến thắng (biến cố $x$) trong điều kiện tung được xúc sắc mặt 6 (biến cố $y$) là:
+$$p(y|x = 6) = \frac{p(x, y = 6)}{p(x = 6)}$$
 
-$$p(x|y = 6) = \frac{p(x, y = 6)}{p(y = 6)}$$
+Khi đó $p(x = 6)$ thông thường sẽ bằng $\frac{1}{6}$ đối với khối xúc sắc đồng chất là xác suất tiên nghiệm mà ta đã biết trước, ngay cả khi không cần đến điều kiện $y$ là người đó đã chiến thắng. Xác suất $p(y|x=6)$ là xác suất hậu nghiệm cho biết khả năng chiến thắng trong điều kiện đã biết tung được mặt $x=6$.
+
+Trong các mô hình classification, xác suất dự báo đối với input là quan sát $\mathbf{X}$ sẽ là xác suất hậu nghiệm $P(\mathbf{Y}=1|X)$ trong điều kiện mẫu có các đặc trưng mẫu là $\mathbf{X}$.
 
 ## 2.5. Công thức bayes
 
-Chúng ta có thể biểu diễn xác xuất có điều kiện của biến cố $x$ theo $y$ dựa trên xác xuất có điều kiện của biến cố $y$ theo $x$.
+Chúng ta có thể biểu diễn xác xuất có điều kiện của biến cố $y$ theo $x$ dựa trên xác xuất có điều kiện của biến cố $x$ theo $y$.
 
-$$\begin{eqnarray} p(x|y) & = &\frac{p(x, y)}{p(y)} \\ & = & \frac{p(x, y)}{\sum_{x} p(x, y)}\\ & = & \frac{p(y|x)p(x)}{\sum_{x}p(y|x)p(x)}\end{eqnarray}$$
+$$\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\ & = & \frac{p(x, y)}{\sum_{y} p(x, y)}\\ & = & \frac{p(x|y)p(y)}{\sum_{y}p(x|y)p(y)}\end{eqnarray}$$
 
-Ví dụ: Gọi $x$ là biến cố khách hàng vỡ nợ, $y$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND ta làm như sau:
+Ví dụ: Gọi $y$ là biến cố khách hàng vỡ nợ, $x$ là biến cố khách hàng thu nhập dưới 10 triệu VND. Tính xác xuất khác hàng vỡ nợ trong điều kiện khác hàng thu nhập dưới 10 triệu VND ta làm như sau:
 Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta có thu nhập dưới 10 triệu nếu vỡ nợ. Mẫu số là tổng xác xuất với khách hàng vỡ nợ và không vỡ nợ khi ông ta có thu nhập dưới 10 triệu.
 
 
@@ -247,7 +253,7 @@ Tử số là xác xuất khách hàng vỡ nợ nhân với xác xuất ông ta
 
 
 ## 3.1. Phân phối thống kê
-Thống kê là bộ môn khoa học dựa trên các qui luật số lớn. Từ thời kì cổ đại các nhà toán học đã nhận ra một số qui luật của thống kê chẳng hạn như khi tung một đồng xu đồng chất thì xác xuất nhận được các mặt xấp và ngửa đều bằng nhau và bằng 0.5. Chính qui luật đơn giản này đã hình thành nên một phân phối nổi tiếng về xác xuất là phân phối bernouli cho biết khả năng để xảy ra $p$ lần nếu thực hiện cùng một phép thử ngẫu nhiên $n$ lần với xác xuất các lần bằng nhau và bằng $\lambda \in [0, 1]$. Từ định nghĩa về phân phối bernouli bạn đọc đã hiểu được phân phối là gì rồi chứ? Phân phối chính là đặc trưng cho sự phân bố của các biến ngẫu nhiên trên toàn tập xác định của nó. Trong tự nhiên có những qui luật phân phối tri phối hầu hết các nhân tố, chúng có thể mô hình hoá được và đúng với số lớn mà ta sẽ tìm hiểu ở bên dưới. Nhưng trước tiên chúng ta sẽ làm quen với các khái niệm trong phân phối.
+Thống kê là bộ môn khoa học dựa trên các qui luật số lớn. Từ thời kì cổ đại các nhà toán học đã nhận ra một số qui luật của thống kê chẳng hạn như khi tung một đồng xu đồng chất thì xác xuất nhận được các mặt xấp và ngửa đều bằng nhau và bằng 0.5. Chính qui luật đơn giản này đã hình thành nên một phân phối nổi tiếng về xác xuất là phân phối bernouli cho biết khả năng để xảy ra một biến cố $K$ trong một phép thử ngẫu nhiên là $\lambda_K \in [0, 1]$. Từ định nghĩa về phân phối bernouli bạn đọc đã hiểu được phân phối là gì rồi chứ? Phân phối chính là đặc trưng cho sự phân bố của các biến ngẫu nhiên trên toàn tập xác định của nó. Trong tự nhiên có những qui luật phân phối tri phối hầu hết các nhân tố, chúng có thể mô hình hoá được và đúng với số lớn mà ta sẽ tìm hiểu ở bên dưới. Nhưng trước tiên chúng ta sẽ làm quen với các khái niệm trong phân phối.
 1. **Hàm mật độ xác xuất và phân phối xác xuất**:
 <br/>
 Trong thống kê chúng ta có rất nhiều các kiểu phân phối khác nhau. Trong đó có những phân phối cơ bản và thông dụng nhất bao gồm: phân phối chuẩn, t-student, Chi-square, Fisher, Bernouli và Poission. Một phân phối được đặc trưng bởi 1 hàm số thể hiện giá trị của phân phối xảy ra tại mỗi một điểm. Tuỳ thuộc vào biến cố là liên tục hay rời rạc mà tên hàm định nghĩa của chúng có thể khác nhau. Trong trường hợp biến liên tục hàm đại diện cho một phân phối được gọi là mật độ xác xuất (*pdf - probability density function*) và tên gọi hàm phân phối xác xuất (*pmf - probability mass function*) được sử dụng khi biến rời rạc. 
