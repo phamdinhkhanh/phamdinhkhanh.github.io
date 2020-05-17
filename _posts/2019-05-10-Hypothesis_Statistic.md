@@ -78,7 +78,7 @@ Trong trường hợp các biến rời rạc phân phối đều với xác xu�
 
 $$\sigma_x = \sqrt{\frac{\sum_{i=1}^{n}(x-\bar{x})^2}{n}}$$
 
-Trong thống kê chúng ta thường xác định các giá trị outliers dựa trên nguyên lý 3 sigma bằng cách xem những giá trị nằm ngoài khoảng $[\muy-3\sigma, \muy+3\sigma]$ như là outliers. Ta có thể xử lý outliers bằng cách đưa về đầu mút gần nhất $\muy-3\sigma$ hoặc $\muy+3\sigma$ hoặc loại bỏ luôn outliers.
+Trong thống kê chúng ta thường xác định các giá trị outliers dựa trên nguyên lý 3 sigma bằng cách xem những giá trị nằm ngoài khoảng $[\mu-3\sigma, \mu+3\sigma]$ như là outliers. Ta có thể xử lý outliers bằng cách đưa về đầu mút gần nhất $\mu-3\sigma$ hoặc $\mu+3\sigma$ hoặc loại bỏ luôn outliers.
 
 6.**Hệ số tương quan**: Là một chỉ số có quan hệ gần gũi với hiệp phương sai. Hệ số tương quan đánh giá mối quan hệ đồng biến hay nghịch biến giữa 2 đại lượng ngẫu nhiên. Tuy nhiên khác với hiệp phương sai, hệ số tương quan cho biết thêm mối quan hệ tương quan tuyến tính giữa 2 biến là mạnh hay yếu. 
 
@@ -93,7 +93,7 @@ Trong hồi qui tuyến tính và logistic, hệ số tương quan thường đ�
 Qui luật số lớn cho rằng khi một mẫu con có kích thước càng lớn được rút ra từ tổng thể thì trung bình của nó càng đại diện cho tổng thể. Phát biểu toán học của qui luật số lớn:
 
 Xét $n$ mẫu ngẫu nhiên $X_1, X_2,..., X_n$ độc lập cùng tuân theo phân phối $\mathbf{N}(\mu, \sigma^2)$, với mọi số thực $\epsilon$  dương, xác suất để khoảng cách giữa trung bình tích lũy và kỳ vọng $P(\frac{X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)} > 
-\epsilon) \rightarrow 0$ khi $n \rightarrow \infty$.
+\epsilon) \rightarrow 0$ khi $n \rightarrow \infty$ hay biểu diễn lim:
 
 $$\lim_{n \rightarrow \infty} P(|\frac {X_{1}+X_{2}+...+X_{n}}{n} - \text{E(X)}| \geq \epsilon) = 0$$
 
