@@ -168,15 +168,16 @@ Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nh
 Đối với câu trên có 2 bản dịch tương ứng là:
 * Bản dịch 1: `The cat is on the mat`.
 * Bản dịch 2: `There is a cat on the mat`.
+
 Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc biệt khi gồm 7 từ the: `the the the the the the the`.
 
-Nếu sử dụng precision chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2). Như vậy sẽ có tổng cộng 7 lần từ `the` xuất hiện trong các bản dịch. Ta đã biết:
+Nếu sử dụng precision làm thước đo, chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2) chia cho độ dài của MT. Như vậy sẽ có tổng cộng 7 lần từ `the` xuất hiện đồng thời trong các bản dịch và MT. Do đó:
 
 $$\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1$$
 
-Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng bản dịch. Một cách tự nhiên là chúng ta sẽ tinh chính score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong bản dịch MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ `the` được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn. Cách tính điểm như trên sẽ tương ứng với trường hợp từ đơn. 
+Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng thuật toán. Một cách tự nhiên hơn là chúng ta sẽ tinh chỉnh score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ `the` được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn.
 
-Tuy nhiên chúng ta muốn xem xự xuất hiện của các từ theo cặp để đo được bối cảnh của từ. Cách đo này hoàn toàn tương tự với từ đơn. Để dễ hình dùng tôi sẽ thay đổi câu dịch MT sang: `the cat the cat on the mat.` Với câu trên chúng ta sẽ có các cặp từ `the cat, cat the, cat on, on the, the mat`. Thống kê tần xuất xuất hiện của các cặp từ và cận trên của nó (tức số lần xuất hiện nhiều nhất trong các bản dịch) ta được bảng bên dưới:
+Một khía cạnh khác, để đánh giá bản dịch tốt hơn, chúng ta muốn xem sự xuất hiện của các từ theo cặp để đo được bối cảnh của từ. Để dễ hình dùng tôi sẽ thay đổi câu dịch MT sang: `the cat the cat on the mat.` Với câu trên chúng ta sẽ có các cặp từ đôi {`the cat, cat the, cat on, on the, the mat`}. Thống kê tần suất của các cặp từ trong MT (chỉ số count) và tần suất xuất hiện của chúng trong các bản dịch (chỉ số count clip) ta được bảng bên dưới:
 
 <table style="margin-left:auto;margin-right:auto;text-align:center;" border="1">
 <tbody>
@@ -210,15 +211,16 @@ Tuy nhiên chúng ta muốn xem xự xuất hiện của các từ theo cặp đ
         <th>1</th>
         <th>1</th>
     </tr>
-</th>
 </tbody>
 </table>
 
-> Bảng 1: Thống kê count và count clip của các bigram.
+> Bảng 1: Thống kê count và count_clip của các bigram. Chỉ số count là tần suất xuất hiện của cặp từ trong MT. Chỉ số count_clip là tần suất xuất hiện của cặp từ trong các bản dịch.
 
-Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là: 
+Như vậy lấy tổng tần suất của cặp từ trong bản dịch chia cho tổng tần suất trong MT của các cặp bigram ta thu được precision là: 
 
-$$\frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}$$
+$$precision = \frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}$$
+
+Theo phương pháp tính precision như trên chúng ta sẽ khắc phục được hạn chế đó là các từ xuất hiện nhiều trong bản dịch như `the cat` do lỗi lặp từ của mô hình sẽ làm giảm precision.
 
 Sau các ví dụ trên bạn đọc đã hình dung được cách tính precision modified rồi chứ? Tôi xin phát biểu công thức tổng quát về tính precision modified cho n-gram (kí hiệu là $P_n$) như sau:
 
