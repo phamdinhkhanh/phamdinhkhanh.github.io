@@ -79,9 +79,9 @@ Lưu ý là chúng ta luôn có một bước cộng thêm Positional Encoding v
 
 <img src='/assets/images/20190616_attention/SelfAttentionLayer.png' width="600px" style="display:block; margin-left:auto; margin-right:auto"/>
 
-> **Hình 4:** Self Attention. Trong khung màu vàng là 3 ma trận $\mathbf{W_q, W_k, W_v}$ chính là những hệ số mà model cần huấn luyện. Sau khi nhân các ma trận này với ma trận đầu vào $\mathbf{X}$ ta thu được ma trận $\mathbf{Q, W, V}$ sẽ được giải thích bên dưới.
+> **Hình 4:** Self Attention. Trong khung màu vàng là 3 ma trận $\mathbf{W_q, W_k, W_v}$ chính là những hệ số mà model cần huấn luyện. Sau khi nhân các ma trận này với ma trận đầu vào $\mathbf{X}$ ta thu được ma trận $\mathbf{Q, K, V}$ (tương ứng với trong hình là ma trận Query, Key và Value). Ma trận Query và Key có tác dụng tính toán ra phân phối score cho các cặp từ (giải thích ở hình 6). Ma trận Value sẽ dựa trên phân phối score để tính ra véc tơ phân phối xác suất output.
 
-Như vậy mỗi một từ sẽ được gán bởi 3 vector query, key và value là các dòng của $\mathbf{Q, W, V}$.
+Như vậy mỗi một từ sẽ được gán bởi 3 vector query, key và value là các dòng của $\mathbf{Q, K, V}$.
 
 
 <img src='/assets/images/20190616_attention/VectorQueryKeyValue.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
@@ -157,9 +157,11 @@ Quá trình decoder cũng hoàn toàn tương tự như encoder ngoại trừ l�
 
 > **Hình 11:** Quá trình biến đổi giá trị input thành các giá trị output.
 
-Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLUE score (tôi sẽ giải thích chỉ số này ở mục 5) thì tác giả trong bài viết có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như `I study at school` có thể dịch nhiều nghĩa như `tôi học ở trường` hoặc `tôi nghiên cứu ở trường`.
+Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLUE score (tôi sẽ giải thích chỉ số này ở mục 4) thì tác giả trong bài báo gốc có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như `I study at school` có thể dịch nhiều nghĩa như `tôi học ở trường` hoặc `tôi nghiên cứu ở trường`.
 
 # 4. BLUE score
+
+Mục này tôi chỉ giới thiệu về chỉ số BLUE score đánh giá các thuật toán dịch máy. Đối với các bạn chỉ quan tâm đến attention có thể bỏ qua.
 
 Để đo lường các tác vụ dịch máy hoàn toàn không đơn giản như các bài toán phân loại khác bởi ở các bài toán phân loại chúng ta đã có sẵn ground truth cho một quan sát đầu ra và ground truth này là duy nhất và cố định. Tuy nhiên đối với dịch máy, một câu input có thể có nhiều bản dịch khác nhau. Do đó không thể sử dụng nhãn duy nhất để so khớp như precision hoặc recall được. Xin phép được lấy ví dụ từ wiki về [BLUE score](https://en.wikipedia.org/wiki/BLEU).
 
@@ -488,3 +490,5 @@ Như vậy sau bài hướng dẫn này các bạn đã biết được:
 5. [Minsuk Heo - youtube chanel](https://www.youtube.com/watch?v=z1xs9jdZnuY&fbclid=IwAR0ILROn9IEiXO0IgNqLAdTDt7UoXa-s_gD7k9MfGMCFIAGfwKMDfFyA-a0)
 5. [What is tranformer? - Maxime Allard](https://medium.com/inside-machine-learning/what-is-a-transformer-d07dd1fbec04)
 6. [Deep learing for NLP - CS244d standford](https://cs224d.stanford.edu/lecture_notes/notes4.pdf)
+7. [The Illustrated Transformer - Jay Alammar](http://jalammar.github.io/illustrated-transformer/)
+8. [Transformer model for language understanding - tensorflow tutorials](https://www.tensorflow.org/tutorials/text/transformer)
