@@ -231,7 +231,7 @@ sẽ được điều chỉnh về 0. Khi đó hàm loss function trở thành:
 
 $$\mathcal{L}(\mathbf{A, P, N}) = \sum_{i=0}^{n}\max(||f(\mathbf{A}_i)-f(\mathbf{P}_i)||_2^{2} - ||f(\mathbf{A}_i)-f(\mathbf{N_i})||_2^{2}+ \alpha, 0)$$
 
-Như vậy khi áp dụng Triple loss vào các mô hình convolutional neural network chúng ta có thể tạo ra các biểu diễn ảnh tốt nhất cho một người. Những biểu diễn ảnh này sẽ giảm thiểu tối đa những trường hợp ảnh Negative rất giống Positive. Các bức ảnh thuộc cùng một label sẽ trở nên gần nhau hơn trong không gian chiếu euclidean và cách xa những ảnh khác label.
+Như vậy khi áp dụng Triple loss vào các mô hình convolutional neural network chúng ta có thể tạo ra các biểu diễn véc tơ tốt nhất cho mỗi một bức ảnh. Những biểu diễn véc tơ này sẽ phân biệt tốt các ảnh Negative rất giống ảnh Positive. Và đồng thời các bức ảnh thuộc cùng một label sẽ trở nên gần nhau hơn trong không gian chiếu euclidean.
 
 Một chú ý quan trọng khi huấn luyện mô hình siam network với triplot function đó là chúng ta luôn phải xác định trước cặp ảnh $(\mathbf{A}, \mathbf{P})$ thuộc về cùng một người. Ảnh $\mathbf{N}$ sẽ được lựa chọn ngẫu nhiên từ các bức ảnh thuộc các nhãn còn lại. Do đó cần thu thập ít nhất 2 bức ảnh/1 người để có thể chuẩn bị được dữ liệu huấn luyện.
 
@@ -239,18 +239,19 @@ Một chú ý quan trọng khi huấn luyện mô hình siam network với tripl
 
 Nếu lựa chọn triple input một cách ngẫu nhiên có thể ảnh khiến cho bất đẳng thức $(1)$ dễ dàng xảy ra vì trong các ảnh ngẫu nhiên, khả năng giống nhau giữa 2 ảnh là rất khó. Hầu hết các trường hợp đều thỏa mãn bất đẳng thức $(1)$ và không gây ảnh hưởng đến giá trị của loss function do giá trị của chúng được set về 0. Như vậy việc học những bức ảnh Negative quá khác biệt với Anchor sẽ không có nhiều ý nghĩa.
 
-Để mô hình khó học hơn và đồng thời cũng giúp mô hình phân biệt chuẩn xác hơn mức độ giống và khác nhau giữa các khuôn mặt, chúng ta cần lựa chọn các input theo các bộ 3 khó học (hard triplets).
+Để mô hình khó học hơn và đồng thời cũng giúp mô hình phân biệt chuẩn xác hơn mức độ giống và khác nhau giữa các khuôn mặt, chúng ta cần lựa chọn các input theo bộ 3 khó học (hard triplets).
 
 Ý tưởng là chúng ta cần tìm ra bộ ba $(\mathbf{A}, \mathbf{N}, \mathbf{P})$ sao cho $(1)$ là gần đạt được đẳng thức (xảy ra dấu =) nhất. Tức là $d(\mathbf{A}, \mathbf{P})$ lớn nhất và $d(\mathbf{A}, \mathbf{N})$ nhỏ nhất. Hay nói cách khác với mỗi Anchor $\mathbf{A}$ cần xác định:
 
 * **Hard Positive:** Bức ảnh Positive có khoảng cách xa nhất với Anchor tương ứng với nghiệm:
 
-$$\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))$$
+$$\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}_i, \mathbf{P}_i))$$
 
 * **Hard Negative:** Bức ảnh Negative có khoảng cách gần nhất với Anchor tương ứng với nghiệm:
 
-$$\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))$$
+$$\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}_i, \mathbf{N}_j))$$
 
+Với $i, j$ là nhãn của người trong ảnh.
 
 Việc tính toán các trường hợp `Hard Positive` và `Hard Negative` có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.
 
