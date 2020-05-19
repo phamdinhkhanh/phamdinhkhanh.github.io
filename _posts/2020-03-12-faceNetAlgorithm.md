@@ -160,16 +160,13 @@ phải là một giá trị lớn.
 
 Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.
 
-Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm `binary cross entropy` như các bài toán phân loại. Trên thực tế lựa chọn loss function là `binary cross entropy` vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng: 
+Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên không nhất thiết phải lựa chọn hàm loss function là hàm `binary cross entropy` như các bài toán phân loại nhị phân. Trên thực tế lựa chọn loss function là `binary cross entropy` vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng: 
 
 $$\frac{||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}}{||f(\mathbf{x_1}) + f(\mathbf{x_2})||_2}$$ 
 
 hoặc sử dụng norm chuẩn $l_1$.
 
-Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với bài toán này. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet. 
-
-
-
+Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với việc biểu diễn véc tơ cho face. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet. 
 
 # 4. Thuật toán facenet
 
