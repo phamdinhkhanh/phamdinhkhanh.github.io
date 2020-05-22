@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
@@ -292,10 +294,10 @@ Language Understanding</a></p>
 <p><img src="/assets/images/20190616_attention/SelfAttentionLayer.png" width="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <blockquote>
-  <p><strong>Hình 4:</strong> Self Attention. Trong khung màu vàng là 3 ma trận $\mathbf{W_q, W_k, W_v}$ chính là những hệ số mà model cần huấn luyện. Sau khi nhân các ma trận này với ma trận đầu vào $\mathbf{X}$ ta thu được ma trận $\mathbf{Q, W, V}$ sẽ được giải thích bên dưới.</p>
+  <p><strong>Hình 4:</strong> Self Attention. Trong khung màu vàng là 3 ma trận $\mathbf{W_q, W_k, W_v}$ chính là những hệ số mà model cần huấn luyện. Sau khi nhân các ma trận này với ma trận đầu vào $\mathbf{X}$ ta thu được ma trận $\mathbf{Q, K, V}$ (tương ứng với trong hình là ma trận Query, Key và Value). Ma trận Query và Key có tác dụng tính toán ra phân phối score cho các cặp từ (giải thích ở hình 6). Ma trận Value sẽ dựa trên phân phối score để tính ra véc tơ phân phối xác suất output.</p>
 </blockquote>
 
-<p>Như vậy mỗi một từ sẽ được gán bởi 3 vector query, key và value là các dòng của $\mathbf{Q, W, V}$.</p>
+<p>Như vậy mỗi một từ sẽ được gán bởi 3 vector query, key và value là các dòng của $\mathbf{Q, K, V}$.</p>
 
 <p><img src="/assets/images/20190616_attention/VectorQueryKeyValue.png" width="400px" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
@@ -381,9 +383,11 @@ Language Understanding</a></p>
   <p><strong>Hình 11:</strong> Quá trình biến đổi giá trị input thành các giá trị output.</p>
 </blockquote>
 
-<p>Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLUE score (tôi sẽ giải thích chỉ số này ở mục 5) thì tác giả trong bài viết có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như <code class="highlighter-rouge">I study at school</code> có thể dịch nhiều nghĩa như <code class="highlighter-rouge">tôi học ở trường</code> hoặc <code class="highlighter-rouge">tôi nghiên cứu ở trường</code>.</p>
+<p>Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLUE score (tôi sẽ giải thích chỉ số này ở mục 4) thì tác giả trong bài báo gốc có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như <code class="highlighter-rouge">I study at school</code> có thể dịch nhiều nghĩa như <code class="highlighter-rouge">tôi học ở trường</code> hoặc <code class="highlighter-rouge">tôi nghiên cứu ở trường</code>.</p>
 
 <h1 id="4-blue-score">4. BLUE score</h1>
+
+<p>Mục này tôi chỉ giới thiệu về chỉ số BLUE score đánh giá các thuật toán dịch máy. Đối với các bạn chỉ quan tâm đến attention có thể bỏ qua.</p>
 
 <p>Để đo lường các tác vụ dịch máy hoàn toàn không đơn giản như các bài toán phân loại khác bởi ở các bài toán phân loại chúng ta đã có sẵn ground truth cho một quan sát đầu ra và ground truth này là duy nhất và cố định. Tuy nhiên đối với dịch máy, một câu input có thể có nhiều bản dịch khác nhau. Do đó không thể sử dụng nhãn duy nhất để so khớp như precision hoặc recall được. Xin phép được lấy ví dụ từ wiki về <a href="https://en.wikipedia.org/wiki/BLEU">BLUE score</a>.</p>
 
@@ -394,17 +398,18 @@ Language Understanding</a></p>
 <p>Đối với câu trên có 2 bản dịch tương ứng là:</p>
 <ul>
   <li>Bản dịch 1: <code class="highlighter-rouge">The cat is on the mat</code>.</li>
-  <li>Bản dịch 2: <code class="highlighter-rouge">There is a cat on the mat</code>.
-Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc biệt khi gồm 7 từ the: <code class="highlighter-rouge">the the the the the the the</code>.</li>
+  <li>Bản dịch 2: <code class="highlighter-rouge">There is a cat on the mat</code>.</li>
 </ul>
 
-<p>Nếu sử dụng precision chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2). Như vậy sẽ có tổng cộng 7 lần từ <code class="highlighter-rouge">the</code> xuất hiện trong các bản dịch. Ta đã biết:</p>
+<p>Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc biệt khi gồm 7 từ the: <code class="highlighter-rouge">the the the the the the the</code>.</p>
+
+<p>Nếu sử dụng precision làm thước đo, chúng ta sẽ đếm các từ xuất hiện trong MT mà xuất hiện trong toàn bộ các bản dịch (bao gồm cả 1 và 2) chia cho độ dài của MT. Như vậy sẽ có tổng cộng 7 lần từ <code class="highlighter-rouge">the</code> xuất hiện đồng thời trong các bản dịch và MT. Do đó:</p>
 
 <script type="math/tex; mode=display">\text{precision} = \frac{\text{total right predict}}{\text{length output}} = \frac{7}{7} = 1</script>
 
-<p>Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng bản dịch. Một cách tự nhiên là chúng ta sẽ tinh chính score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong bản dịch MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ <code class="highlighter-rouge">the</code> được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn. Cách tính điểm như trên sẽ tương ứng với trường hợp từ đơn.</p>
+<p>Bản dịch trên là không tốt nhưng sử dụng precision đã đưa ra một điểm số cao cho nó nên không phù hợp để đo chất lượng thuật toán. Một cách tự nhiên hơn là chúng ta sẽ tinh chỉnh score bằng cách giới hạn cận trên của một từ được phép xuất hiện trong MT bằng cách đếm số lần xuất hiện nhiều nhất của nó trong mỗi bản dịch. Như vậy từ <code class="highlighter-rouge">the</code> được tính nhiều nhất là 2 lần bằng với số lần xuất hiện trong bản dịch 1. Khi đó điểm precision đã được modified sẽ là $\frac{2}{7}$ và có vẻ điểm này đã hợp lý hơn.</p>
 
-<p>Tuy nhiên chúng ta muốn xem xự xuất hiện của các từ theo cặp để đo được bối cảnh của từ. Cách đo này hoàn toàn tương tự với từ đơn. Để dễ hình dùng tôi sẽ thay đổi câu dịch MT sang: <code class="highlighter-rouge">the cat the cat on the mat.</code> Với câu trên chúng ta sẽ có các cặp từ <code class="highlighter-rouge">the cat, cat the, cat on, on the, the mat</code>. Thống kê tần xuất xuất hiện của các cặp từ và cận trên của nó (tức số lần xuất hiện nhiều nhất trong các bản dịch) ta được bảng bên dưới:</p>
+<p>Một khía cạnh khác, để đánh giá bản dịch tốt hơn, chúng ta muốn xem sự xuất hiện của các từ theo cặp để đo được bối cảnh của từ. Để dễ hình dùng tôi sẽ thay đổi câu dịch MT sang: <code class="highlighter-rouge">the cat the cat on the mat.</code> Với câu trên chúng ta sẽ có các cặp từ đôi {<code class="highlighter-rouge">the cat, cat the, cat on, on the, the mat</code>}. Thống kê tần suất của các cặp từ trong MT (chỉ số count) và tần suất xuất hiện của chúng trong các bản dịch (chỉ số count clip) ta được bảng bên dưới:</p>
 
 <table style="margin-left:auto;margin-right:auto;text-align:center;" border="1">
 <tbody>
@@ -438,17 +443,18 @@ Giả sử bản dịch Machine Translation (viết tắt là MT) hơi đặc bi
         <th>1</th>
         <th>1</th>
     </tr>
-&lt;/th&gt;
 </tbody>
 </table>
 
 <blockquote>
-  <p>Bảng 1: Thống kê count và count clip của các bigram.</p>
+  <p>Bảng 1: Thống kê count và count_clip của các bigram. Chỉ số count là tần suất xuất hiện của cặp từ trong MT. Chỉ số count_clip là tần suất xuất hiện của cặp từ trong các bản dịch.</p>
 </blockquote>
 
-<p>Như vậy lấy tổng các lần xuất hiện (đã bị giới hạn trên) chia cho số lần xuất hiện ở bản dịch MT của các cặp bigram ta thu được độ chính xác là:</p>
+<p>Như vậy lấy tổng tần suất của cặp từ trong bản dịch chia cho tổng tần suất trong MT của các cặp bigram ta thu được precision là:</p>
 
-<script type="math/tex; mode=display">\frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}</script>
+<script type="math/tex; mode=display">precision = \frac{1+1+1+1}{2+1+1+1+1} = \frac{2}{3}</script>
+
+<p>Theo phương pháp tính precision như trên chúng ta sẽ khắc phục được hạn chế đó là các từ xuất hiện nhiều trong bản dịch như <code class="highlighter-rouge">the cat</code> do lỗi lặp từ của mô hình sẽ làm giảm precision.</p>
 
 <p>Sau các ví dụ trên bạn đọc đã hình dung được cách tính precision modified rồi chứ? Tôi xin phát biểu công thức tổng quát về tính precision modified cho n-gram (kí hiệu là $P_n$) như sau:</p>
 
@@ -878,6 +884,8 @@ Attention matrix by scale dot product:
   <li><a href="https://www.youtube.com/watch?v=z1xs9jdZnuY&amp;fbclid=IwAR0ILROn9IEiXO0IgNqLAdTDt7UoXa-s_gD7k9MfGMCFIAGfwKMDfFyA-a0">Minsuk Heo - youtube chanel</a></li>
   <li><a href="https://medium.com/inside-machine-learning/what-is-a-transformer-d07dd1fbec04">What is tranformer? - Maxime Allard</a></li>
   <li><a href="https://cs224d.stanford.edu/lecture_notes/notes4.pdf">Deep learing for NLP - CS244d standford</a></li>
+  <li><a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer - Jay Alammar</a></li>
+  <li><a href="https://www.tensorflow.org/tutorials/text/transformer">Transformer model for language understanding - tensorflow tutorials</a></li>
 </ol>
 
 <script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 36 - BERT model</p></h2> 
+<strong>23 May 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
+
+<h2 id="11-một-số-khái-niệm">1.1. Một số khái niệm</h2>
+
+<p>Trước khi đi vào bài này, chúng ta cần hiểu rõ một số khái niệm:</p>
+
+<ul>
+  <li>
+    <p><strong>Nhiệm vụ phía sau (Downstream task)</strong>: Là những tác vụ supervised-learning được cải thiện dựa trên những pretrained model. VD: Chúng ta sử dụng lại các biểu diễn từ học được từ những pretrained model trên bộ văn bản lớn vào một tác vụ phân tích cảm xúc huấn luyện trên bộ văn bản có <strong>kích thước nhỏ hơn</strong>. Áp dụng pretrain-embedding đã giúp cải thiện mô hình. Như vậy tác vụ sử dụng pretrain-embedding được gọi là downstream task.</p>
+  </li>
+  <li>
+    <p><strong>Điểm khái quát đánh giá mức độ hiểu ngôn ngữ (GLUE score benchmark)</strong>: <a href="https://gluebenchmark.com/">GLUE score benchmark</a> là một tập hợp các chỉ số được xây dựng để đánh giá khái quát mức độ hiểu ngôn ngữ của các model NLP. Các đánh giá được thực hiện trên các bộ dữ liệu tiêu chuẩn được qui định tại các convention về phát triển và thúc đẩy NLP. Mỗi bộ dữ liệu tương ứng với một loại tác NLP vụ như: Phân tích cảm xúc (Sentiment Analysis), hỏi đáp (Question and Answering), dự báo câu tiếp theo (NSP - Next Sentence Prediction), nhận diện thực thể trong câu (NER - Name Entity Recognition), suy luận ngôn ngữ tự nhiên (NLI - Natural Languague Inference). Nếu bạn muốn tìm hiểu thêm về cách tính GLUE score và các bộ dữ liệu trong GLUE có thể đọc thêm <a href="https://www.tensorflow.org/datasets/catalog/glue">tensorflow - glue</a>.</p>
+  </li>
+  <li>
+    <p><strong>Quan hệ văn bản (Textual Entailment)</strong>: Là tác vụ đánh giá mối quan hệ định hướng giữa 2 văn bản? Nhãn output của các cặp câu được chia thành đối lập (contradiction), trung lập (neutral) hay có quan hệ đi kèm (textual entailment). Cụ thể hơn, chúng ta có các câu:</p>
+  </li>
+</ul>
+
+<p>A: Hôm nay trời mưa.</p>
+
+<p>B: Tôi mang ô tới trường.</p>
+
+<p>C: Hôm nay trời không mưa.</p>
+
+<p>D: Hôm nay là thứ 3.</p>
+
+<p>Khi đó (A, B) có mối quan hệ đi kèm. Các cặp câu (A, C) có mối quan hệ đổi lập và (A, D) là trung lập.</p>
+
+<ul>
+  <li>
+    <p><strong>Suy luận ngôn ngữ (Natural Language Inference)</strong>: Là các tác vụ suy luận ngôn ngữ đánh giá mối quan hệ giữa các cặp câu, cũng tương tự như Textual Entailment.</p>
+  </li>
+  <li>
+    <p><strong>Phân tích cảm xúc (Sentiment Analysis)</strong>: Phân loại cảm xúc văn bản thành 2 nhãn tích cực (positive) và tiêu cực (negative). Thường được sử dụng trong các hệ thống đánh giá bình luận của người dùng.</p>
+  </li>
+  <li>
+    <p><strong>Hỏi đáp (Question and Answering)</strong>: Là thuật toán hỏi và đáp. Đầu vào là một cặp câu (pair sequence) bao gồm: câu hỏi (question) có chức năng hỏi và đoạn văn bản (paragraph) chứa thông tin trả lời cho câu hỏi. Một bộ dữ liệu chuẩn nằm trong GLUE dataset được sử dụng để đánh giá tác vụ hỏi và đáp là <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD - Stanford Question Answering Dataset</a>. Đây là một bài toán khá thú vị, các bạn có thể xem thêm ứng dụng <a href="https://www.facebook.com/TowardDataScience/videos/201232064499053/">Question and Answering - BERT model</a> mà mình đã sharing.</p>
+  </li>
+  <li>
+    <p><strong>Ngữ cảnh (Contextual)</strong>: Là ngữ cảnh của từ. Một từ được định nghĩa bởi một cách phát âm nhưng khi được đặt trong những câu khác nhau thì có thể mang ngữ nghĩa khác nhau. ngữ cảnh có thể coi là môi trường xung quanh từ để góp phần định nghĩa từ. VD:</p>
+  </li>
+</ul>
+
+<p>A: Tôi <code class="highlighter-rouge">đồng</code> ý với ý kiến của anh.</p>
+
+<p>B: Lão Hạc phải kiếm từng <code class="highlighter-rouge">đồng</code> để nuôi cậu Vàng.</p>
+
+<p>Thì từ <code class="highlighter-rouge">đồng</code> trong câu A và B có ý nghĩa khác nhau. Chúng ta biết điều này vì dựa vào ngữ cảnh của từ.</p>
+
+<ul>
+  <li>
+    <p><strong>Hiện đại nhất (SOTA)</strong>: state-of-art là những phương pháp, kỹ thuật tốt nhất mang lại hiệu quả cao nhất từ trước đến nay.</p>
+  </li>
+  <li>
+    <p><strong>Mô hình biểu diễn mã hóa 2 chiều dựa trên biến đổi (BERT-Bidirectional Encoder Representation from Transformer)</strong>: Mô hình BERT. Đây là lớp mô hình SOTA trong nhiều tác vụ của <code class="highlighter-rouge">GLUE score benchmark</code>.</p>
+  </li>
+  <li>
+    <p><strong>LTR model</strong>: là mô hình học bối cảnh theo một chiều duy nhất từ trái sang phải. Chẳng hạn như lớp các model RNN.</p>
+  </li>
+  <li>
+    <p><strong>MLM (Masked Language Model)</strong>: Là mô hình mà bối cảnh của từ được học từ cả 2 phía bên trái và bên phải cùng một lúc từ những bộ dữ liệu unsupervised text. Dữ liệu input sẽ được masked (tức thay bằng một token MASK) một cách ngẫu nhiên với tỷ lệ thấp. Huấn luyện mô hình dự báo từ được masked dựa trên bối cảnh xung quanh là những từ không được masked nhằm tìm ra biểu diễn của từ.</p>
+  </li>
+</ul>
+
+<h2 id="12-lý-do-tại-sao-mình-viết-về-bert">1.2. Lý do tại sao mình viết về BERT?</h2>
+
+<p>Tại thời điểm mình viết về model BERT thì BERT đã được ra đời khá lâu. BERT là model biểu diễn ngôn ngữ được google giới thiệu vào năm 2018. Tại thời điểm công bố, BERT đã tạo ra một sự rung động trong cộng đồng NLP bởi những cải tiến chưa từng có ở những model trước đó. Trong bài báo <a href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a> các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ:</p>
+
+<ul>
+  <li>
+    <p>Tăng GLUE score (General Language Understanding Evaluation score), một chỉ số tổng quát đánh giá mức độ hiểu ngôn ngữ lên <code class="highlighter-rouge">80.5%</code>.</p>
+  </li>
+  <li>
+    <p>Tăng accuracy trên bộ dữ liệu <a href="https://cims.nyu.edu/~sbowman/multinli/">MultiNLI</a> đánh giá tác vụ quan hệ văn bản (text entailment) lên 86.7%.</p>
+  </li>
+  <li>
+    <p>Tăng accuracy F1 score trên bộ dữ liệu <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD v1.1</a> đánh giá tác vụ question and answering lên 93.2%.</p>
+  </li>
+</ul>
+
+<p>Ở thời điểm hiện tại, BERT đã được ứng dụng cho Tiếng Việt. Bạn đọc có thể tham khảo dự án <a href="https://github.com/VinAIResearch/PhoBERT">PhoBERT</a> của VinAI về huấn luyện trước biểu diễn từ (pre-train word embedding) sử dụng model BERT. Một số bạn ứng dụng model PhoBERT vào các tác vụ như sentiment analysis và đạt được kết quả cao như <a href="https://github.com/suicao/PhoBert-Sentiment-Classification/">phân loại cảm xúc bình luận - Khôi Nguyễn</a>.</p>
+
+<p>BERT đã được ra đời lâu như vậy và cũng đã được ứng dụng rộng rãi thì tại sao mình lại viết về model này? Đó là vì BERT và các biến thể mô hình của nó đang là hot trend và sẽ định hướng các thuật toán NLP trong tương lai.</p>
+
+<h2 id="13-ngữ-cảnh-contextual-và-vai-trò-trong-nlp">1.3. Ngữ cảnh (Contextual) và vai trò trong NLP</h2>
+
+<p>Trước khi tìm hiểu các kỹ thuật đã tạo ra ưu thế vượt trội cho mô hình BERT. Chúng ta hãy khám phá vai trò của ngữ cảnh trong NLP.</p>
+
+<p>Bản chất của ngôn ngữ là âm thanh được phát ra để diễn giải dòng suy nghĩ của con người. Trong giao tiếp, các từ thường không đứng độc lập mà chúng sẽ đi kèm với các từ khác để liên kết mạch lạc thành một câu. Hiệu quả biểu thị nội dung và truyền đạt ý nghĩa sẽ lớn hơn so với từng từ đứng độc lập.</p>
+
+<p>Ngữ cảnh trong câu có một sự ảnh hưởng rất lớn trong việc giải thích ý nghĩa của từ. Hiểu được vai trò mấu chốt đó, các thuật toán NLP SOTA đều cố gắng đưa ngữ cảnh vào mô hình nhằm tạo ra sự đột phá và cải tiến và mô hình BERT cũng như vậy.</p>
+
+<p>Phân cấp mức độ phát triển của các phương pháp embedding từ trong NLP có thể bao gồm các nhóm:</p>
+
+<p><strong>Non-context (không bối cảnh)</strong>: Là các thuật toán không tồn tại bối cảnh trong biểu diễn từ. Đó là các thuật toán NLP đời đầu như ` word2vec, GLoVe, fasttext`. Chúng ta chỉ có duy nhất một biểu diễn véc tơ cho mỗi một từ mà không thay đổi theo bối cảnh. VD:</p>
+
+<p>Câu A: <code class="highlighter-rouge">Đơn vị tiền tệ của Việt Nam là [đồng]</code></p>
+
+<p>Câu B: <code class="highlighter-rouge">Vợ [đồng] ý với ý kiến của chồng là tăng thêm mỗi tháng 500k tiền tiêu vặt</code></p>
+
+<p>Thì từ đồng sẽ mang 2 ý nghĩa khác nhau nên phải có hai biểu diễn từ riêng biệt. Các thuật toán non-context đã không đáp ứng được sự đa dạng về ngữ nghĩa của từ trong NLP.</p>
+
+<p><strong>Uni-directional (một chiều)</strong>: Là các thuật toán đã bắt đầu xuất hiện bối cảnh của từ. Các phương pháp nhúng từ base trên RNN là những phương pháp nhúng từ một chiều. Các kết quả biểu diễn từ đã có bối cảnh nhưng chỉ được giải thích bởi một chiều từ trái qua phải hoặc từ phải qua trái. VD:</p>
+
+<p>Câu C: Hôm nay tôi mang 200 tỷ [gửi] ở ngân hàng.</p>
+
+<p>Câu D: Hôm nay tôi mang 200 tỷ [gửi] ….</p>
+
+<p>Như vậy véc tơ biểu diễn của từ <code class="highlighter-rouge">gửi</code> được xác định thông qua các từ liền trước với nó. Nếu chỉ dựa vào các từ liền trước <code class="highlighter-rouge">Hôm nay tôi mang 200 tỷ</code> thì ta có thể nghĩ từ phù hợp ở vị trí hiện tại là <code class="highlighter-rouge">cho vay, mua, thanh toán,...</code>.</p>
+
+<p>Ví dụ đơn giản trên đã cho thấy các thuật toán biểu diễn từ có bối cảnh tuân theo theo một chiều sẽ gặp hạn chế lớn trong biểu diễn từ hơn so với biểu diễn 2 chiều.</p>
+
+<p>ELMo là một ví dụ cho phương pháp một chiều. Mặc dù ELMo có kiến trúc dựa trên một mạng BiLSTM xem xét bối cảnh theo hai chiều từ trái sang phải và từ phải sang trái nhưng những chiều này là độc lập nhau nên ta coi như đó là biểu diễn một chiều.</p>
+
+<p>Thuật toán ELMo đã cải tiến hơn so với word2vec và fasttext đó là tạo ra nghĩa của từ theo bối cảnh. Trong ví dụ về từ <code class="highlighter-rouge">đồng</code> thì ở mỗi câu A và B chúng ta sẽ có một biểu diễn từ khác biệt.</p>
+
+<p><strong>Bi-directional (hai chiều)</strong>: Ngữ nghĩa của một từ không chỉ được biểu diễn bởi những từ liền trước mà còn được giải thích bởi toàn bộ các từ xung quanh. Luồng giải thích tuân theo <strong>đồng thời</strong> từ trái qua phải và từ phải qua trái <strong>cùng một lúc</strong>. Đại diện cho các phép biểu diễn từ này là những mô hình sử dụng kỹ thuật <code class="highlighter-rouge">transformer</code> mà chúng ta sẽ tìm hiểu bên dưới. Gần đây, những thuật toán NLP theo trường phái bidirectional như <a href="https://arxiv.org/abs/1810.04805">BERT</a>, <a href="https://arxiv.org/abs/1801.06146">ULMFit</a>, <a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI GPT</a>  đã đạt được những kết quả SOTA trên hầu hết các tác vụ của <code class="highlighter-rouge">GLUE benchmark</code>.</p>
+
+<h2 id="14-tiếp-cận-nông-và-học-sâu-trong-ứng-dụng-pre-training-nlp">1.4. Tiếp cận nông và học sâu trong ứng dụng pre-training NLP</h2>
+
+<h3 id="141-tiếp-cận-nông-shallow-approach">1.4.1. Tiếp cận nông (shallow approach)</h3>
+
+<p><strong>Imagenet trong Computer Vision</strong></p>
+
+<p>Trong xử lý ảnh chúng ta đều biết tới những pretrained models nổi tiếng trên bộ dữ liệu Imagenet với 1000 classes. Nhờ số lượng classes lớn nên hầu hết các nhãn trong phân loại ảnh thông thường đều xuất hiện trong Imagenet và chúng ta có thể học chuyển giao lại các tác vụ xử lý ảnh rất nhanh và tiện lợi. Chúng ta cũng kỳ vọng NLP có một tợp hợp các pretrained models như vậy, tri thức từ model được huấn luyện trên các nguồn tài nguyên văn bản không nhãn (unlabeled text) rất dồi dào và sẵn có.</p>
+
+<p><strong>Khó khăn học chuyển giao trong NLP</strong></p>
+
+<p>Tuy nhiên trong NLP việc học chuyển giao là không hề đơn giản như Computer Vision. Tại sao vậy?</p>
+
+<p>Các kiến trúc mạng deep CNN của Computer Vision cho phép học chuyển giao trên đồng thời cả low-level và high-level features thông qua việc tận dụng lại các tham số từ những layers của mô hình pretrained.</p>
+
+<p>Nhưng trong NLP, các thuật toán cũ hơn như <code class="highlighter-rouge">GLoVe, word2vec, fasttext</code> chỉ cho phép sử dụng các biểu diễn véc tơ nhúng của từ là các low-level features như là đầu vào cho layer đầu tiên của mô hình. Các layers còn lại giúp tạo ra high-level features thì dường như được huấn luyện lại từ đầu.</p>
+
+<p>Như vậy chúng ta chỉ chuyển giao được các đặc trưng ở mức độ rất nông nên phương pháp này còn được gọi là tiếp cận nông (shallow approach). Việc tiếp cận với các layers sâu hơn là không thể. Điều này tạo ra một hạn chế rất lớn đối với NLP so với Computer Vision trong việc học chuyển giao. Cách tiếp cận nông trong học chuyển giao còn được xem như là <strong>feature-based</strong>.</p>
+
+<p>Khi áp dụng feature-based, chúng ta sẽ tận dụng lại các biểu diễn từ được huấn luyện trước trên những kiến trúc mô hình cố định và những bộ văn bản có kích thước <strong>rất lớn</strong> để nâng cao khả năng biểu diễn từ trong không gian đa chiều. Một số pretrained feature-based bạn có thể áp dụng trong tiếng anh đã được huấn luyện sẵn đó là GloVe, <a href="https://wikipedia2vec.github.io/wikipedia2vec/pretrained/">word2vec</a>, <a href="https://fasttext.cc/docs/en/english-vectors.html">fasttext</a>, <a href="https://arxiv.org/abs/1802.05365">ELMo</a>.</p>
+
+<h3 id="142-học-sâu-deep-learning">1.4.2. Học sâu (deep-learning)</h3>
+
+<p>Các mô hình NLP đột phá trong hai năm trở lại đây như <a href="https://arxiv.org/abs/1810.04805">BERT</a>, <a href="https://arxiv.org/pdf/1802.05365">ELMo</a>, <a href="https://arxiv.org/abs/1801.06146">ULMFit</a>, <a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI GPT</a> đã cho phép việc chuyển giao layers trong NLP khả thi hơn.</p>
+
+<p>Chúng ta không chỉ học chuyển giao được các đặc trưng mà còn chuyển giao được kiến trúc của mô hình nhờ số lượng layers nhiều hơn, chiều sâu của mô hình sâu hơn trươc đó.</p>
+
+<p>Các kiến trúc mới phân cấp theo level có khả năng chuyển giao được những cấp độ khác nhau của đặc trưng từ low-level tới high-level. Trong khi học nông chỉ chuyển giao được low-level tại layer đầu tiên. Tất nhiên low-level cũng đóng vai trò quan trọng trong các tác vụ NLP. Nhưng high-level là những đặc trưng có ý nghĩa hơn vì đó là những đặc trưng đã được tinh luyện.</p>
+
+<p>Người ta kỳ vọng rằng <code class="highlighter-rouge">ULMFit, OpenAI GPT, BERT</code> sẽ là những mô hình pretrained giúp tiến gần hơn tới việc xây dựng một lớp các pretrained models <code class="highlighter-rouge">ImageNet for NLP</code>. Các bạn có thể xem thêm ý tưởng về xây dựng <a href="https://ruder.io/nlp-imagenet/">Imagenet for NLP</a>.</p>
+
+<p>Khi học chuyển giao theo phương pháp học sâu chúng ta sẽ tận dụng lại kiến trúc từ mô hình pretrained và bổ sung một số layers phía sau để phù hợp với nhiệm vụ huấn luyện. Các tham số của các layers gốc sẽ được <strong>fine-tunning</strong> lại. Chỉ một số ít các tham số ở layers bổ sung được huấn luyện lại từ đầu. Bạn đọc có thể tìm hiểu thêm về fine-tuning tại <a href="https://phamdinhkhanh.github.io/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a>.</p>
+
+<h2 id="21-phương-pháp-transformer">2.1. Phương pháp transformer</h2>
+
+<h3 id="211-encoder-và-decoder-trong-bert">2.1.1. Encoder và decoder trong BERT</h3>
+
+<p>Trước khi hiểu về BERT chúng ta cùng ôn lại về kỹ thuật transformer. Mình đã diễn giải kỹ thuật này tại <a href="https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html">Bài 4 - Attention is all you need</a>. Đây làm một lớp mô hình seq2seq gồm 2 phrase encoder và decoder. Mô hình hoàn toàn không sử dụng các kiến trúc Recurrent Neural Network của RNN mà chỉ sử dụng các layers attention để embedding các từ trong câu. Kiến trúc cụ thể của mô hình như sau:</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic1.png" class="largepic" /></p>
+
+<p><strong>Hình 1:</strong> Sơ đồ kiến trúc transformer kết hợp với attention. Nguồn <a href="https://arxiv.org/abs/1706.03762">attention is all you need</a>.</p>
+
+<p>Mô hình sẽ bao gồm 2 phase.</p>
+
+<ul>
+  <li>
+    <p><strong>Encoder</strong>: Bao gồm 6 layers liên tiếp nhau. Mỗi một layer sẽ bao gồm một sub-layer là Multi-Head Attention kết hợp với fully-connected layer như mô tả ở nhánh encoder bên trái của hình vẽ. Kết thúc quá trình encoder ta thu được một vector embedding output cho mỗi từ.</p>
+  </li>
+  <li>
+    <p><strong>Decoder</strong>: Kiến trúc cũng bao gồm các layers liên tiếp nhau. Mỗi một layer của Decoder cũng có các sub-layers gần tương tự như layer của Encoder nhưng bổ sung thêm sub-layer đầu tiên là <code class="highlighter-rouge">Masked Multi-Head Attention</code> có tác dụng loại bỏ các từ trong tương lai khỏi quá trình attention.</p>
+  </li>
+</ul>
+
+<h3 id="212-các-tiến-trình-self-attention-và-encoder-decoder-attention">2.1.2. Các tiến trình self-attention và encoder-decoder attention</h3>
+
+<p>Trong kiến trúc transformer chúng ta áp dụng 2 dạng attention khác nhau tại từng bước huấn luyện.</p>
+
+<p><strong>self-attention</strong>: Được sử dụng trong cùng một câu input, tại encoder hoặc tại decoder. Đây chính là attention được áp dụng tại các Multi-Head Attention ở đầu vào của cả 2 phase encoder và decoder.</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic2.png" class="largepic" /></p>
+
+<p><strong>Hình 2:</strong> Sơ đồ vị trí áp dụng self-attention trong kiến trúc transformer. Các véc tơ embedding của cùng một chuỗi encoder hoặc decoder tự liên kết với nhau để tính toán attention như hình bên phải.</p>
+
+<p><strong>Encoder-decoder attention</strong>:</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic3.png" class="largepic" /></p>
+
+<p><strong>Hình 3:</strong> Bên trái là vị trí áp dụng encoder-decoder attention. Bên phải là cách tính trọng số attention khi kết hợp mỗi véc tơ embedding ở decoder với toàn bộ các véc tơ embedding ở encoder.</p>
+
+<p>Sở dĩ được gọi là encoder-decoder attention vì đây là kiến trúc attention tương tác giữa các véc tơ embedding của encoder và decoder. véc tơ context được tính toán trên encoder đã được tính tương quan với véc tơ decoder nên sẽ có ý nghĩa giải thích bối cảnh của từ tại vị trí time step decoder tương ứng. Sau khi kết hợp giữa véc tơ context và véc tơ decoder ta sẽ project tiếp qua một fully connected layer để tính phân phối xác suất cho output.</p>
+
+<p>Mặc dù có kiến trúc chỉ gồm các biến đổi attention nhưng Transformer lại có kết quả rất tốt trong các tác vụ NLP như sentiment analysis và dịch máy.</p>
+
+<h1 id="2-giới-thiệu-về-bert">2. Giới thiệu về BERT</h1>
+
+<p><a href="https://arxiv.org/pdf/1810.04805.pdf">BERT</a> là viết tắt của cụm từ <code class="highlighter-rouge">Bidirectional Encoder Representation from Transformer</code> có nghĩa là mô hình biểu diễn từ theo 2 chiều ứng dụng kỹ thuật <code class="highlighter-rouge">Transformer</code>. BERT được thiết kế để huấn luyện trước các biểu diễn từ (pre-train word embedding). Điểm đặc biệt ở BERT đó là nó có thể điều hòa cân bằng bối cảnh theo cả 2 chiều trái và phải.</p>
+
+<p>Cơ chế attention của Transformer sẽ truyền toàn bộ các từ trong câu văn đồng thời vào mô hình một lúc mà không cần quan tâm đến chiều của câu. Do đó Transformer được xem như là huấn luyện hai chiều (bidirectional) mặc dù trên thực tế chính xác hơn chúng ta có thể nói rằng đó là huấn luyện không chiều (non-directional). Đặc điểm này cho phép mô hình học được bối cảnh của từ dựa trên toàn bộ các từ xung quanh nó bao gồm cả từ bên trái và từ bên phải.</p>
+
+<h2 id="21-fine-tuning-model-bert">2.1. Fine-tuning model BERT</h2>
+
+<p>Một điểm đặc biệt ở BERT mà các model embedding trước đây chưa từng có đó là kết quả huấn luyện có thể fine-tuning được. Chúng ta sẽ thêm vào kiến trúc model một output layer để tùy biến theo tác vụ huấn luyện.</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic4.png" class="largepic" /></p>
+
+<p><strong>Hình 4:</strong> Toàn bộ tiến trình pre-training và fine-tuning của BERT. Một kiến trúc tương tự được sử dụng cho cả pretrain-model và fine-tuning model. Chúng ta sử dụng cùng một tham số pretrain để khởi tạo mô hình cho các tác vụ down stream khác nhau. Trong suốt quá trình fine-tuning thì toàn bộ các tham số của layers học chuyển giao sẽ được fine-tune. Đối với các tác vụ sử dụng input là một cặp sequence (pair-sequence) ví dụ như <code class="highlighter-rouge">question and answering</code> thì ta sẽ thêm token khởi tạo là <code class="highlighter-rouge">[CLS]</code> ở đầu câu, token <code class="highlighter-rouge">[SEP]</code> ở giữa để ngăn cách 2 câu.</p>
+
+<p>Tiến trình áp dụng fine-tuning sẽ như sau:</p>
+
+<ul>
+  <li>
+    <p><strong>Bước 1</strong>: Embedding toàn bộ các token của cặp câu bằng các véc tơ nhúng từ pretrain model. Các token embedding bao gồm cả 2 token là <code class="highlighter-rouge">[CLS]</code> và <code class="highlighter-rouge">[SEP]</code> để đánh dấu vị trí bắt đầu của câu hỏi và vị trí ngăn cách giữa 2 câu. 2 token này sẽ được dự báo ở output để xác định các phần <code class="highlighter-rouge">Start/End Spand</code> của câu output.</p>
+  </li>
+  <li>
+    <p><strong>Bước 2</strong>: Các embedding véc tơ sau đó sẽ được truyền vào kiến trúc multi-head attention với nhiều block code (thường là 6, 12 hoặc 24 blocks tùy theo kiến trúc BERT). Ta thu được một véc tơ output ở encoder.</p>
+  </li>
+  <li>
+    <p><strong>Bước 3</strong>: Để dự báo phân phối xác suất cho từng vị trí từ ở decoder, ở mỗi time step chúng ta sẽ truyền vào decoder véc tơ output của encoder và véc tơ embedding input của decoder để tính encoder-decoder attention (cụ thể về encoder-decoder attention là gì các bạn xem lại mục 2.1.1). Sau đó projection qua liner layer và softmax để thu được phân phối xác suất cho output tương ứng ở time step $t$.</p>
+  </li>
+  <li>
+    <p><strong>Bước 4</strong>: Trong kết quả trả ra ở output của transformer ta sẽ cố định kết quả của câu Question sao cho trùng với câu Question ở input. Các vị trí còn lại sẽ là thành phần mở rộng <code class="highlighter-rouge">Start/End Span</code> tương ứng với câu trả lời tìm được từ câu input.</p>
+  </li>
+</ul>
+
+<p>Lưu ý quá trình huấn luyện chúng ta sẽ fine-tune lại toàn bộ các tham số của model BERT đã cut off top linear layer và huấn luyện lại từ đầu các tham số của linear layer mà chúng ta thêm vào kiến trúc model BERT để customize lại phù hợp với bài toán.</p>
+
+<p>Như vậy các bạn đã hình dung được model BERT được fine-tuning trong một tác vụ như thế nào rồi chứ? Tôi cá rằng qua quá trình thực hành ở bài sau các bạn sẽ nắm vững hơn cách thức fine-tune BERT model.</p>
+
+<h2 id="23-masked-ml-mlm">2.3. Masked ML (MLM)</h2>
+
+<p>Masked ML là một tác vụ cho phép chúng ta fine-tuning lại các biểu diễn từ trên các bộ dữ liệu unsupervised-text bất kỳ. Chúng ta có thể áp dụng Masked ML cho những ngôn ngữ khác nhau để tạo ra biểu diễn embedding cho chúng. Các bộ dữ liệu của tiếng anh có kích thước lên tới vài vài trăm tới vài nghìn GB được huấn luyện trên BERT đã tạo ra những kết quả khá ấn tượng.</p>
+
+<p>Bên dưới là sơ đồ huấn luyện BERT theo tác vụ Masked ML</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic5.png" class="largepic" /></p>
+
+<p><strong>Hình 5:</strong> Sơ đồ kiến trúc BERT cho tá vụ Masked ML.</p>
+
+<p>Theo đó:</p>
+
+<ul>
+  <li>
+    <p>Khoảng 15 % các token của câu input được thay thế bởi <code class="highlighter-rouge">[MASK]</code> token trước khi truyền vào model đại diện cho những từ bị che dấu (masked). Mô hình sẽ dựa trên các từ không được che (non-masked) dấu xung quanh <code class="highlighter-rouge">[MASK]</code> và đồng thời là bối cảnh của <code class="highlighter-rouge">[MASK]</code> để dự báo giá trị gốc của từ được che dấu. Số lượng từ được che dấu được lựa chọn là một số ít (15%) để tỷ lệ bối cảnh chiếm nhiều hơn (85%).</p>
+  </li>
+  <li>
+    <p>Bản chất của kiến trúc BERT vẫn là một mô hình seq2seq gồm 2 phase encoder giúp embedding các từ input và decoder giúp tìm ra phân phối xác suất của các từ ở output. Kiến trúc Transfomer encoder được giữ lại trong tác vụ Masked ML. Sau khi thực hiện self-attention và feed forward ta sẽ thu được các véc tơ embedding ở output là $O_1, O_2,…, O_5$</p>
+  </li>
+  <li>
+    <p>Để tính toán phân phối xác suất cho từ output, chúng ta thêm một Fully connect layer ngay sau Transformer Encoder. Hàm softmax có tác dụng tính toán phân phối xác suất. Số lượng units của fully connected layer phải bằng với kích thước của từ điển.</p>
+  </li>
+  <li>
+    <p>Cuối cùng ta thu được véc tơ nhúng của mỗi một từ tại vị trí MASK sẽ là embedding véc tơ giảm chiều của véc tơ $O_i$ sau khi đi qua fully connected layer như mô tả trên hình vẽ bên phải.</p>
+  </li>
+</ul>
+
+<p>Hàm loss function của BERT sẽ bỏ qua mất mát từ những từ không bị che dấu và chỉ đưa vào mất mát của những từ bị che dấu. Do đó mô hình sẽ hội tụ lâu hơn nhưng đây là đặc tính bù trừ cho sự gia tăng ý thức về bối cảnh. Việc lựa chọn ngẫu nhiên 15% số lượng các từ bị che dấu cũng tạo ra vô số các kịch bản input cho mô hình huấn luyện nên mô hình sẽ cần phải huấn luyện rất lâu mới học được toàn diện các khả năng.</p>
+
+<h2 id="24-next-sentence-prediction-nsp">2.4. Next Sentence Prediction (NSP)</h2>
+
+<p>Đây là một bài toán phân loại học có giám sát với 2 nhãn (hay còn gọi là phân loại nhị phân). Input đầu vào của mô hình là một cặp câu (pair-sequence) sao cho 50% câu thứ 2 được lựa chọn là câu tiếp theo của câu thứ nhất và 50% được lựa chọn một cách ngẫu nhiên từ bộ văn bản mà không có mối liên hệ gì với câu thứ nhất. Nhãn của mô hình sẽ tương ứng với <code class="highlighter-rouge">IsNext</code> khi cặp câu là liên tiếp hoặc <code class="highlighter-rouge">NotNext</code> nếu cặp câu không liên tiếp.</p>
+
+<p>Cũng tương tự như mô hình Question and Answering, chúng ta cần đánh dấu các vị trí đầu câu thứ nhất bằng token <code class="highlighter-rouge">[CLS]</code> và vị trí cuối các câu bằng token <code class="highlighter-rouge">[SEP]</code>. Các token này có tác dụng nhận biết các vị trí bắt đầu và kết thúc của từng câu thứ nhất và thứ hai.</p>
+
+<p><img src="/assets/images/20200523_BERTModel/pic1.png" class="largepic" /></p>
+
+<p><strong>Hình 6:</strong> Sơ đồ kiến trúc model BERT cho tác vụ NSP.</p>
+
+<p>Thông tin input được preprocessing trước khi đưa vào mô hình huấn luyện bao gồm:</p>
+
+<ul>
+  <li>Ngữ nghĩa của từ (token embeddings): Thông qua các embedding véc tơ cho từng từ. Các véc tơ được khởi tạo từ pretrain model.</li>
+</ul>
+
+<p>Ngoài embedding biểu diễn từ của các từ trong câu, mô hình còn embedding thêm một số thông tin:</p>
+
+<ul>
+  <li>
+    <p>Loại câu (segment embeddings): Gồm hai véc tơ là $E_A$ nếu từ thuộc câu thứ nhất và $E_B$ nếu từ thuộc câu thứ hai.</p>
+  </li>
+  <li>
+    <p>Vị trí của từ trong câu (position embedding): là các véc tơ $E_0, …, E_{10}$. Tương tự như positional embedding trong transformer.</p>
+  </li>
+</ul>
+
+<p>Véc tơ input sẽ bằng tổng của cả ba thành phần embedding theo <code class="highlighter-rouge">từ, câu</code> và <code class="highlighter-rouge">vị trí</code>.</p>
+
+<h1 id="3-các-kiến-trúc-model-bert">3. Các kiến trúc model BERT</h1>
+
+<p>Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên bản đều dựa trên việc thay đổi kiến trúc của Transformer tập trung ở 3 tham số: $L$: số lượng các block sub-layers trong transformer, $H$: kích thước của embedding véc tơ (hay còn gọi là hidden size), $A$: Số lượng head trong multi-head layer, mỗi một head sẽ thực hiện một self-attention. Tên gọi của 2 kiến trúc bao gồm:</p>
+
+<ul>
+  <li>
+    <p>$\textbf{BERT}_{\textbf{BASE}}(L=12, H=768, A=12)$: Tổng tham số 110 triệu.</p>
+  </li>
+  <li>
+    <p>$\textbf{BERT}_{\textbf{LARGE}}(L=24, H=1024, A=16)$: Tổng tham số 340 triệu.</p>
+  </li>
+</ul>
+
+<p>Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, tăng kích thước hidden size của embedding véc tơ gấp 1.33 lần và tăng số lượng head trong multi-head layer gấp 1.33 lần.</p>
+
+<h1 id="4-thực-hành-model-bert">4. Thực hành model BERT</h1>
+<h2 id="41-giới-thiệu-về-bài-toán">4.1. Giới thiệu về bài toán</h2>
+
+<p>Chúng ta sẽ cùng xây dựng một ứng dụng Question and Answering có chức năng hỏi đáp.</p>
+
+<p>Dữ liệu bao gồm:</p>
+
+<p>Input: Một cặp câu &lt;Question, Paragraph&gt;, Question là câu hỏi và Paragraph là đoạn văn bản chứa câu trả lời cho câu hỏi.</p>
+
+<p>Output: Câu trả lời được trích suất từ Paragraph.</p>
+
+<p>Đây là một ứng dụng khá thú vụ mà tôi đã compile thành công trên thiết bị android. Các bạn có thể download ứng dụng về và chạy thử nghiệm <a href="https://www.facebook.com/TowardDataScience/videos/201232064499053/">BERT - Tensorflow Lite - Khanh Blog</a>.</p>
+
+<p>Để thực hiện tác vụ này tôi sẽ sử dụng pretrain model từ package transformer. Chúng ta có thể cài thông qua câu lệnh bên dưới.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!pip install transformers
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre>Collecting transformers
+[?25l  Downloading https://files.pythonhosted.org/packages/12/b5/ac41e3e95205ebf53439e4dd087c58e9fd371fd8e3724f2b9b4cdb8282e5/transformers-2.10.0-py3-none-any.whl (660kB)
+[K     |████████████████████████████████| 665kB 2.8MB/s 
+[?25hRequirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.6/dist-packages (from transformers) (2019.12.20)
+Collecting tokenizers==0.7.0
+[?25l  Downloading https://files.pythonhosted.org/packages/14/e5/a26eb4716523808bb0a799fcfdceb6ebf77a18169d9591b2f46a9adb87d9/tokenizers-0.7.0-cp36-cp36m-manylinux1_x86_64.whl (3.8MB)
+[K     |████████████████████████████████| 3.8MB 14.6MB/s 
+[?25hRequirement already satisfied: dataclasses; python_version &lt; "3.7" in /usr/local/lib/python3.6/dist-packages (from transformers) (0.7)
+Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/lib/python3.6/dist-packages (from transformers) (4.41.1)
+Collecting sacremoses
+[?25l  Downloading https://files.pythonhosted.org/packages/7d/34/09d19aff26edcc8eb2a01bed8e98f13a1537005d31e95233fd48216eed10/sacremoses-0.0.43.tar.gz (883kB)
+[K     |████████████████████████████████| 890kB 28.9MB/s 
+[?25hRequirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from transformers) (2.23.0)
+Collecting sentencepiece
+[?25l  Downloading https://files.pythonhosted.org/packages/d4/a4/d0a884c4300004a78cca907a6ff9a5e9fe4f090f5d95ab341c53d28cbc58/sentencepiece-0.1.91-cp36-cp36m-manylinux1_x86_64.whl (1.1MB)
+[K     |████████████████████████████████| 1.1MB 44.5MB/s 
+[?25hRequirement already satisfied: numpy in /usr/local/lib/python3.6/dist-packages (from transformers) (1.18.4)
+Requirement already satisfied: filelock in /usr/local/lib/python3.6/dist-packages (from transformers) (3.0.12)
+Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from sacremoses-&gt;transformers) (1.12.0)
+Requirement already satisfied: click in /usr/local/lib/python3.6/dist-packages (from sacremoses-&gt;transformers) (7.1.2)
+Requirement already satisfied: joblib in /usr/local/lib/python3.6/dist-packages (from sacremoses-&gt;transformers) (0.15.1)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;transformers) (1.24.3)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;transformers) (2.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;transformers) (2020.4.5.1)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests-&gt;transformers) (3.0.4)
+Building wheels for collected packages: sacremoses
+  Building wheel for sacremoses (setup.py) ... [?25l[?25hdone
+  Created wheel for sacremoses: filename=sacremoses-0.0.43-cp36-none-any.whl size=893260 sha256=6a91001f4e422c7561a79667a70494bc9d94fdf57f29570ca9ac2f2f582a21ec
+  Stored in directory: /root/.cache/pip/wheels/29/3c/fd/7ce5c3f0666dab31a50123635e6fb5e19ceb42ce38d4e58f45
+Successfully built sacremoses
+Installing collected packages: tokenizers, sacremoses, sentencepiece, transformers
+Successfully installed sacremoses-0.0.43 sentencepiece-0.1.91 tokenizers-0.7.0 transformers-2.10.0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="42-xây-dựng-một-ứng-dụng-question-and-answering">4.2. Xây dựng một ứng dụng Question and Answering</h2>
+
+<p>Các bước dữ liệu:</p>
+
+<ul>
+  <li>
+    <p><strong>Tokenize</strong>: Tạo chuỗi token là concatenate của cặp câu <code class="highlighter-rouge">&lt;Question, Paragraph&gt;</code>, thêm các token <code class="highlighter-rouge">[CLS]</code> đánh dấu vị trí bắt đầu câu <code class="highlighter-rouge">Question</code> và <code class="highlighter-rouge">[SEP]</code> đánh dấu vị trí kết thúc câu. Sau đó Tokenize toàn bộ cặp câu <code class="highlighter-rouge">&lt;Question, Paragraph&gt;</code> thành chuỗi index từ từ điển.</p>
+  </li>
+  <li>
+    <p><strong>Set Segment IDs</strong>: Tạo véc tơ segment cho cặp câu <code class="highlighter-rouge">Question</code> và <code class="highlighter-rouge">Paragraph</code>. Trong đó index 0 đánh dấu các vị trí thuộc câu A và index 1 đánh dấu các vị trí thuộc câu B.</p>
+  </li>
+  <li>
+    <p><strong>Evaluate</strong>: Khởi tạo model từ pretrain model <code class="highlighter-rouge">bert-large-uncased-whole-word-masking-finetuned-squad</code>. Và dự báo các vị trí <code class="highlighter-rouge">start</code> và <code class="highlighter-rouge">end</code> nằm trong chuỗi token.</p>
+  </li>
+  <li>
+    <p><strong>Reconstruct Answer</strong>:Trích suất thông tin câu trả lời.</p>
+  </li>
+</ul>
+
+<p>Source code của mô hình được tham khảo tại <a href="https://mccormickml.com/2020/03/10/question-answering-with-a-fine-tuned-BERT">Question answering with fine tuned BERT</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">transformers</span> <span class="n">import</span> <span class="n">BertTokenizer</span>
+<span class="k">from</span> <span class="n">transformers</span> <span class="n">import</span> <span class="n">BertForQuestionAnswering</span>
+<span class="n">import</span> <span class="n">torch</span>
+<span class="p">#</span> <span class="n">Initialize</span> <span class="n">tokenizer</span> <span class="n">for</span> <span class="n">corpus</span> <span class="k">of</span> <span class="n">bert</span><span class="p">-</span><span class="n">large</span><span class="p">-</span><span class="n">uncased</span>
+<span class="n">tokenizer</span> <span class="p">=</span> <span class="n">BertTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">Initialize</span> <span class="k">model</span> <span class="n">BertForQuestionAnswering</span> <span class="n">for</span> <span class="n">bert</span><span class="p">-</span><span class="n">large</span><span class="p">-</span><span class="n">uncased</span>
+<span class="k">model</span> <span class="p">=</span> <span class="n">BertForQuestionAnswering</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+
+<span class="n">def</span> <span class="n">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">):</span>
+    <span class="s1">'''
+    Lấy input là chuỗi string của câu question và answer_text chứa nội dung câu trả lời của câu question.
+    Xác định từ trong answer_text là câu trả lời và in ra.
+    '''</span>
+    <span class="p">#</span> <span class="p">========</span> <span class="n">Tokenize</span> <span class="p">========</span>
+    <span class="p">#</span> <span class="err">Á</span><span class="n">p</span> <span class="n">d</span><span class="err">ụ</span><span class="n">ng</span> <span class="n">tokenizer</span> <span class="n">cho</span> <span class="n">c</span><span class="err">ặ</span><span class="n">p</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="p">&lt;</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">&gt;.</span> <span class="n">input_ids</span> <span class="n">l</span><span class="err">à</span> <span class="n">concatenate</span> <span class="n">indice</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">c</span><span class="err">ả</span> <span class="m">2</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">sau</span> <span class="n">khi</span> <span class="err">đã</span> <span class="n">th</span><span class="err">ê</span><span class="n">m</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">token</span> <span class="n">CLS</span> <span class="n">v</span><span class="err">à</span> <span class="n">SEP</span> <span class="n">nh</span><span class="err">ư</span> <span class="n">m</span><span class="err">ô</span> <span class="n">t</span><span class="err">ả</span> <span class="n">trong</span> <span class="n">t</span><span class="err">á</span><span class="n">c</span> <span class="n">v</span><span class="err">ụ</span> <span class="n">Question</span> <span class="k">and</span> <span class="n">Answering</span><span class="p">.</span>
+    <span class="n">input_ids</span> <span class="p">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="p">========</span> <span class="k">Set</span> <span class="n">Segment</span> <span class="n">IDs</span> <span class="p">========</span>
+    <span class="p">#</span> <span class="n">X</span><span class="err">á</span><span class="n">c</span> <span class="err">đị</span><span class="n">nh</span> <span class="n">v</span><span class="err">ị</span> <span class="n">tr</span><span class="err">í</span> <span class="err">đầ</span><span class="n">u</span> <span class="n">ti</span><span class="err">ê</span><span class="n">n</span> <span class="n">ch</span><span class="err">ứ</span><span class="n">a</span> <span class="n">token</span> <span class="p">[</span><span class="n">SEP</span><span class="p">]</span> <span class="n">trong</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span><span class="p">.</span>
+    <span class="n">sep_index</span> <span class="p">=</span> <span class="n">input_ids</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">sep_token_id</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">T</span><span class="err">ạ</span><span class="n">o</span> <span class="n">segment</span> <span class="n">index</span> <span class="err">đá</span><span class="n">nh</span> <span class="n">d</span><span class="err">ấ</span><span class="n">u</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">v</span><span class="err">ị</span> <span class="n">tr</span><span class="err">í</span> <span class="n">t</span><span class="err">ừ</span> <span class="n">thu</span><span class="err">ộ</span><span class="n">c</span> <span class="n">question</span> <span class="p">(</span><span class="n">gi</span><span class="err">á</span> <span class="n">tr</span><span class="err">ị</span> <span class="m">0</span><span class="p">)</span> <span class="n">v</span><span class="err">à</span> <span class="n">answer_text</span> <span class="p">(</span><span class="n">gi</span><span class="err">á</span> <span class="n">tr</span><span class="err">ị</span> <span class="m">1</span><span class="p">)</span>
+    <span class="n">num_seg_a</span> <span class="p">=</span> <span class="n">sep_index</span> <span class="p">+</span> <span class="m">1</span>
+    <span class="n">num_seg_b</span> <span class="p">=</span> <span class="n">len</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span> <span class="p">-</span> <span class="n">num_seg_a</span>
+    <span class="n">segment_ids</span> <span class="p">=</span> <span class="p">[</span><span class="m">0</span><span class="p">]*</span><span class="n">num_seg_a</span> <span class="p">+</span> <span class="p">[</span><span class="m">1</span><span class="p">]*</span><span class="n">num_seg_b</span>
+
+    <span class="p">#</span> <span class="n">Ki</span><span class="err">ể</span><span class="n">m</span> <span class="n">tra</span> <span class="err">độ</span> <span class="n">d</span><span class="err">à</span><span class="n">i</span> <span class="n">segment_ids</span> <span class="n">ph</span><span class="err">ả</span><span class="n">i</span> <span class="n">b</span><span class="err">ằ</span><span class="n">ng</span> <span class="n">input_ids</span>
+    <span class="nb">assert</span> <span class="n">len</span><span class="p">(</span><span class="n">segment_ids</span><span class="p">)</span> <span class="p">==</span> <span class="n">len</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="p">========</span> <span class="n">Evaluate</span> <span class="p">========</span>
+    <span class="p">#</span> <span class="n">D</span><span class="err">ự</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">ph</span><span class="err">â</span><span class="n">n</span> <span class="n">ph</span><span class="err">ố</span><span class="n">i</span> <span class="n">x</span><span class="err">á</span><span class="n">c</span> <span class="n">su</span><span class="err">ấ</span><span class="n">t</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">v</span><span class="err">ị</span> <span class="n">tr</span><span class="err">í</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">t</span><span class="err">ừ</span> <span class="n">start</span> <span class="n">v</span><span class="err">à</span> <span class="n">t</span><span class="err">ừ</span> <span class="k">end</span> <span class="n">trong</span> <span class="n">chu</span><span class="err">ỗ</span><span class="n">i</span> <span class="n">concatenate</span> <span class="p">&lt;</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">&gt;</span> <span class="n">m</span><span class="err">à</span> <span class="n">ch</span><span class="err">ứ</span><span class="n">a</span> <span class="n">k</span><span class="err">ế</span><span class="n">t</span> <span class="n">qu</span><span class="err">ả</span> <span class="n">cho</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">tr</span><span class="err">ả</span> <span class="n">l</span><span class="err">ờ</span><span class="n">i</span><span class="p">.</span>
+    <span class="n">start_scores</span><span class="p">,</span> <span class="n">end_scores</span> <span class="p">=</span> <span class="k">model</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">input_ids</span><span class="p">]),</span> <span class="p">#</span> <span class="n">chu</span><span class="err">ỗ</span><span class="n">i</span> <span class="n">index</span> <span class="n">bi</span><span class="err">ể</span><span class="n">u</span> <span class="n">th</span><span class="err">ị</span> <span class="n">cho</span> <span class="n">inputs</span><span class="p">.</span>
+                                    <span class="n">token_type_ids</span><span class="p">=</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segment_ids</span><span class="p">]))</span> <span class="p">#</span> <span class="n">chu</span><span class="err">ỗ</span><span class="n">i</span> <span class="n">index</span> <span class="n">th</span><span class="err">à</span><span class="n">nh</span> <span class="n">ph</span><span class="err">ầ</span><span class="n">n</span> <span class="n">segment</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="err">để</span> <span class="n">ph</span><span class="err">â</span><span class="n">n</span> <span class="n">bi</span><span class="err">ệ</span><span class="n">t</span> <span class="n">gi</span><span class="err">ữ</span><span class="n">a</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">question</span> <span class="n">v</span><span class="err">à</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">answer_text</span>
+
+    <span class="p">#</span> <span class="p">========</span> <span class="n">Reconstruct</span> <span class="n">Answer</span> <span class="p">========</span>
+    <span class="p">#</span> <span class="n">T</span><span class="err">ì</span><span class="n">m</span> <span class="n">ra</span> <span class="n">v</span><span class="err">ị</span> <span class="n">tr</span><span class="err">í</span> <span class="n">start</span><span class="p">,</span> <span class="k">end</span> <span class="n">v</span><span class="err">ớ</span><span class="n">i</span> <span class="n">score</span> <span class="n">l</span><span class="err">à</span> <span class="n">cao</span> <span class="n">nh</span><span class="err">ấ</span><span class="n">t</span>
+    <span class="n">answer_start</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">start_scores</span><span class="p">)</span>
+    <span class="n">answer_end</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">end_scores</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">Chuy</span><span class="err">ể</span><span class="n">n</span> <span class="n">ng</span><span class="err">ượ</span><span class="n">c</span> <span class="n">t</span><span class="err">ừ</span> <span class="n">input_ids</span> <span class="n">sang</span> <span class="k">list</span> <span class="n">tokens</span>
+    <span class="n">tokens</span> <span class="p">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">convert_ids_to_tokens</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">Token</span> <span class="err">đầ</span><span class="n">u</span> <span class="n">ti</span><span class="err">ê</span><span class="n">n</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">tr</span><span class="err">ả</span> <span class="n">l</span><span class="err">ờ</span><span class="n">i</span>
+    <span class="n">answer</span> <span class="p">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">answer_start</span><span class="p">]</span>
+
+    <span class="p">#</span> <span class="n">L</span><span class="err">ự</span><span class="n">a</span> <span class="n">ch</span><span class="err">ọ</span><span class="n">n</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">th</span><span class="err">à</span><span class="n">nh</span> <span class="n">ph</span><span class="err">ầ</span><span class="n">n</span> <span class="n">c</span><span class="err">ò</span><span class="n">n</span> <span class="n">l</span><span class="err">ạ</span><span class="n">i</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">c</span><span class="err">â</span><span class="n">u</span> <span class="n">tr</span><span class="err">ả</span> <span class="n">l</span><span class="err">ờ</span><span class="n">i</span> <span class="n">v</span><span class="err">à</span> <span class="n">join</span> <span class="n">ch</span><span class="err">ú</span><span class="n">ng</span> <span class="n">v</span><span class="err">ớ</span><span class="n">i</span> <span class="n">whitespace</span><span class="p">.</span>
+    <span class="n">for</span> <span class="n">i</span> <span class="k">in</span> <span class="k">range</span><span class="p">(</span><span class="n">answer_start</span> <span class="p">+</span> <span class="m">1</span><span class="p">,</span> <span class="n">answer_end</span> <span class="p">+</span> <span class="m">1</span><span class="p">):</span>
+        
+        <span class="p">#</span> <span class="n">N</span><span class="err">ế</span><span class="n">u</span> <span class="n">token</span> <span class="n">l</span><span class="err">à</span> <span class="n">m</span><span class="err">ộ</span><span class="n">t</span> <span class="n">subword</span> <span class="n">token</span> <span class="p">(</span><span class="n">c</span><span class="err">ó</span> <span class="n">d</span><span class="err">ấ</span><span class="n">u</span> <span class="p">##</span> <span class="err">ở</span> <span class="err">đầ</span><span class="n">u</span><span class="p">)</span> <span class="n">th</span><span class="err">ì</span> <span class="n">combine</span> <span class="n">v</span><span class="err">à</span><span class="n">o</span> <span class="n">answer</span> <span class="n">b</span><span class="err">ằ</span><span class="n">ng</span> <span class="n">token</span> <span class="n">g</span><span class="err">ố</span><span class="n">c</span> <span class="p">(</span><span class="n">lo</span><span class="err">ạ</span><span class="n">i</span> <span class="n">b</span><span class="err">ỏ</span> <span class="n">d</span><span class="err">ấ</span><span class="n">u</span> <span class="p">##).</span>
+        <span class="k">if</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="m">0</span><span class="p">:</span><span class="m">2</span><span class="p">]</span> <span class="p">==</span> <span class="s1">'##'</span><span class="p">:</span>
+            <span class="n">answer</span> <span class="p">+=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="m">2</span><span class="p">:]</span>
+        
+        <span class="p">#</span> <span class="n">N</span><span class="err">ế</span><span class="n">u</span> <span class="n">tr</span><span class="err">á</span><span class="n">i</span> <span class="n">l</span><span class="err">ạ</span><span class="n">i</span> <span class="n">th</span><span class="err">ì</span> <span class="n">combine</span> <span class="n">tr</span><span class="err">ự</span><span class="n">c</span> <span class="n">ti</span><span class="err">ế</span><span class="n">p</span> <span class="n">v</span><span class="err">à</span><span class="n">o</span> <span class="n">answer</span><span class="p">.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">answer</span> <span class="p">+=</span> <span class="s1">' '</span> <span class="p">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">print</span><span class="p">(</span><span class="s1">'Question: "'</span> <span class="p">+</span> <span class="n">question</span> <span class="p">+</span> <span class="s1">'"'</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s1">'Answer: "'</span> <span class="p">+</span> <span class="n">answer</span> <span class="p">+</span> <span class="s1">'"'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Thử nghiệm kết quả của mô hình trên một vài cặp câu <code class="highlighter-rouge">&lt;Question, Paragraph&gt;</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>question = "what is my dog name?"
+paragraph = "I have a dog. It's name is Ricky. I get it at my 15th birthday, when it was a puppy."
+
+answer_question(question, paragraph)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Question: "what is my dog name?"
+Answer: "ricky"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Thử nghiệm một văn bản khác dài hơn. Tôi sẽ lấy một đoạn văn mô tả tiểu sử của ông vua toán học <code class="highlighter-rouge">Euler</code> và hỏi thuật toán ngày sinh của ông ấy. Các bạn hãy xem kết quả nhé.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>question = "when Leonhard Euler was born?"
+paragraph = "Leonhard Euler: 15 April 1707 – 18 September 1783 was a Swiss mathematician, \
+physicist, astronomer, geographer, logician and engineer who made important and influential discoveries in many branches of mathematics, \
+such as infinitesimal calculus and graph theory, \
+while also making pioneering contributions to several branches such as topology and analytic number theory. \
+He also introduced much of the modern mathematical terminology and notation, \
+particularly for mathematical analysis, such as the notion of a mathematical function.[4] He is also known for his work in mechanics, fluid dynamics, optics, astronomy and music theory"
+
+answer_question(question, paragraph)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Question: "when Leonhard Euler was born?"
+Answer: "15 april 1707"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta có thể thấy kết quả là chính xác.</p>
+
+<p>Việc áp dụng pretrain model sẵn có trên package transformer cho tác vụ <code class="highlighter-rouge">Question and Answering</code> là khá dễ dàng. Chúng ta cũng có thể fine-tuning lại các kiến trúc model question and answering cho dữ liệu Tiếng Việt để tạo ra các ứng dụng hỏi đáp cho riêng mình. Để thực hiện được điều đó đòi hỏi phải nắm vững kiến trúc của model BERT được trình bày trong bài viết này. Có lẽ ở một bài sau tôi sẽ hướng dẫn các bạn thực hành điều này.</p>
+
+<h1 id="5-tổng-kết">5. Tổng kết</h1>
+
+<p>Như vậy qua bài này tôi đã hướng dẫn các bạn kiến trúc tổng quát của model BERT và cách thức áp dụng model BERT vào trong các tác vụ down stream task trong NLP như Masked ML, Next Sentence Prediction và thực hành xây dựng một ứng dụng Question and Answering ngay trên pretrain model của transformer package.</p>
+
+<p>Các kiến trúc biến thể mới của BERT hiện tại vẫn đang được nghiên cứu và tiếp tục phát triển như <a href="https://huggingface.co/transformers/model_doc/roberta.html">ROBERTA</a>, <a href="https://huggingface.co/transformers/model_doc/albert.html">ALBERT</a>, <a href="https://huggingface.co/transformers/model_doc/camembert.html">CAMEBERT</a>, <a href="https://huggingface.co/transformers/model_doc/xlmroberta.html">XLMROBERTA</a>, …</p>
+
+<p>Ngày càng có nhiều các pretrain model trên BERT áp dụng cho nhiều ngôn ngữ khác nhau trên toàn thế giới và tạo ra một sự đột phá trong NLP. Ngôn ngữ Tiếng Việt của chúng ta cũng đã được VinAI nghiên cứu và huấn luyện pretrain model thành công. Bạn đọc muốn sử dụng pretrain model này trong các tác vụ NLP có thể tham khảo thêm tại <a href="https://github.com/VinAIResearch/PhoBERT">PhoBERT</a>.</p>
+
+<h1 id="6-tài-liệu">6. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://towardsdatascience.com/from-word-embeddings-to-pretrained-language-models-a-new-age-in-nlp-part-2-e9af9a0bdcd9">From word embeddings to Pretrained Language models</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270">BERT explained state of the art language model for NLP</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/huggingface/transformers/">huggingface - transformer github package</a></p>
+  </li>
+  <li>
+    <p><a href="https://mccormickml.com/2020/03/10/question-answering-with-a-fine-tuned-BERT">question answering with a fine tuned BERT</a></p>
+  </li>
+  <li>
+    <p><a href="https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb">BERT fine-tuning with cloud</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></p>
+  </li>
+  <li>
+    <p><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI GPT - paper</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/abs/1801.06146">ULMFit paper</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
@@ -366,13 +368,13 @@ body {
 
 <p>Khi sử dụng siam network chúng ta sẽ không cần phải lo lắng về vấn đề output shape thay đổi vì base network đã được loại bỏ layer cuối.</p>
 
-<p>Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên nhất thiết phải lựa chọn hàm loss function là hàm <code class="highlighter-rouge">binary cross entropy</code> như các bài toán phân loại. Trên thực tế lựa chọn loss function là <code class="highlighter-rouge">binary cross entropy</code> vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng:</p>
+<p>Mục tiêu chính của siam network đó là tìm ra biểu diễn của ảnh trong không gian $n$ chiều nên không nhất thiết phải lựa chọn hàm loss function là hàm <code class="highlighter-rouge">binary cross entropy</code> như các bài toán phân loại nhị phân. Trên thực tế lựa chọn loss function là <code class="highlighter-rouge">binary cross entropy</code> vẫn tìm ra được biểu diễn tốt cho ảnh. Ngoài ra còn một số các biến thể khác của loss function như sử dụng khoảng cách norm chuẩn $l_2$ đã chuẩn hóa theo phân phối $\chi^2$ dạng:</p>
 
 <script type="math/tex; mode=display">\frac{||f(\mathbf{x_1}) - f(\mathbf{x_2})||_2^{2}}{||f(\mathbf{x_1}) + f(\mathbf{x_2})||_2}</script>
 
 <p>hoặc sử dụng norm chuẩn $l_1$.</p>
 
-<p>Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với bài toán này. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet.</p>
+<p>Việc lựa chọn hàm loss function sẽ có tác động rất lớn tới độ chính xác của biểu diễn ảnh. Ngoài các hàm loss function nêu trên, còn một hàm loss function có hiệu quả rất lớn đối với việc biểu diễn véc tơ cho face. Đó là hàm gì? Chúng ta sẽ tìm hiểu ở thuật toán facenet.</p>
 
 <h1 id="4-thuật-toán-facenet">4. Thuật toán facenet</h1>
 
@@ -384,30 +386,27 @@ body {
 
 <ul>
   <li>
-    <p>Tuy nhiên hạn chế của các thuật toán đó là số lượng chiều embedding tương đối lớn (thường &gt;= 1000) và ảnh hưởng tới performance của thuật toán. Thường chúng ta phải áp dụng thêm thuật toán PCA để giảm chiều dữ liệu.</p>
+    <p>Tuy nhiên hạn chế của các thuật toán này đó là số lượng chiều embedding tương đối lớn (thường &gt;= 1000) và ảnh hưởng tới tốc độ của thuật toán. Thường chúng ta phải áp dụng thêm thuật toán PCA để giảm chiều dữ liệu để giảm tốc độ tính toán.</p>
   </li>
   <li>
-    <p>Hàm loss function chỉ đo lường khoảng cách giữa 2 bức ảnh. Như vậy trong một đầu vào huấn luyện chỉ học được một trong 2 khả năng là sự giống nhau nếu chúng cùng 1 class hoặc sự khác nhau nếu chúng khác class giữa 2 bức ảnh.</p>
+    <p>Hàm loss function chỉ đo lường khoảng cách giữa 2 bức ảnh. Như vậy trong một đầu vào huấn luyện chỉ học được <strong>một trong hai</strong> khả năng là sự giống nhau nếu chúng cùng 1 class hoặc sự khác nhau nếu chúng khác class mà không học được cùng lúc sự giống nhau và khác nhau trên cùng một lượt huấn luyện.</p>
   </li>
 </ul>
 
-<p>Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả rất lớn:</p>
+<p>Facenet đã giải quyết cả 2 vấn đề trên bằng các hiệu chỉnh nhỏ nhưng mang lại hiệu quả lớn:</p>
 
 <ul>
   <li>
-    <p>Base network áp dụng một mạng convolutional neural network và giảm chiều dữ liệu xuống chỉ còn 128 chiều. Do đó thuật toán classification ở những layer sau hoạt động nhanh hơn và đồng thời độ chính xác vẫn được đảm bảo.</p>
+    <p>Base network áp dụng một mạng convolutional neural network và giảm chiều dữ liệu xuống chỉ còn 128 chiều. Do đó quá trình suy diễn và dự báo nhanh hơn và đồng thời độ chính xác vẫn được đảm bảo.</p>
   </li>
   <li>
-    <p>Sử dụng một hàm loss function đặc biệt có khả năng đánh mức độ khác biệt giữa các bức ảnh sao cho giá trị loss function của chúng càng lớn, sự khác biệt giữa chúng càng cao. Đó chính là triplot loss function.</p>
-  </li>
-  <li>
-    <p>Hàm triplot loss có khả năng học được đồng thời sự giống nhau giữa 2 bức ảnh cùng nhóm và tìm cách phân biệt các bức ảnh nếu chúng không cùng nhóm. Do đó hiệu quả hơn rất nhiều so với các phương phát trước đây.</p>
+    <p>Sử dụng loss function là hàm triplot loss có khả năng học được <strong>đồng thời</strong> sự giống nhau giữa 2 bức ảnh cùng nhóm và phân biệt các bức ảnh không cùng nhóm. Do đó hiệu quả hơn rất nhiều so với các phương pháp trước đây.</p>
   </li>
 </ul>
 
-<h2 id="41-triple-loss">4.1. Triple loss</h2>
+<h2 id="42-triple-loss">4.2. Triple loss</h2>
 
-<p>Trong facenet, quá trình encoding của mạng convolutional neural network đã giúp ta mã hóa bức ảnh về 128 chiều. Sau đó những véc tơ này sẽ làm đầu vào cho hàm loss function mà có tác dụng phân biệt tốt các véc tơ giống hoặc khác nhau. Đó chính là hàm loss function.</p>
+<p>Trong facenet, quá trình encoding của mạng convolutional neural network đã giúp ta mã hóa bức ảnh về 128 chiều. Sau đó những véc tơ này sẽ làm đầu vào cho hàm loss function đánh giá khoảng cách giữa các véc tơ.</p>
 
 <p>Để áp dụng triple loss, chúng ta cần lấy ra 3 bức ảnh trong đó có một bức ảnh là anchor. Chắc bạn còn nhớ khái niệm về anchor box đã được trình bày tại <a href="https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html#5-anchor-box">Bài 25 - YOLO You Only Look Once</a> chứ. Anchor image cũng có tác dụng gần như vậy. Trong 3 ảnh thì ảnh anchor được cố định trước. Chúng ta sẽ lựa chọn 2 ảnh còn lại sao cho một ảnh là negative (của một người khác với anchor) và một ảnh là positive (cùng một người với anchor).</p>
 
@@ -415,11 +414,11 @@ body {
 
 <p>Kí hiệu ảnh Anchor, Positive, Negative lần lượt là $\mathbf{A}, \mathbf{P}, \mathbf{N}$.</p>
 
-<p>Mục tiêu của hàm loss function là tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là negative và tối đa hóa khoảng cách khi chúng là positive. Như vậy chúng ta kì vọng rằng:</p>
+<p>Mục tiêu của hàm loss function là <strong>tối thiểu hóa khoảng cách giữa 2 ảnh khi chúng là negative</strong> và <strong>tối đa hóa khoảng cách khi chúng là positive</strong>. Như vậy chúng ta cần lựa chọn các bộ 3 ảnh sao cho:</p>
 
 <ul>
-  <li>Ảnh Anchor và Positive giống nhau: khoảng cách $d(\mathbf{A}, \mathbf{P})$ sẽ nhỏ.</li>
-  <li>Ảnh Anchor và Negative khác nhau: khoảng cách $d(\mathbf{A}, \mathbf{N})$ sẽ lớn.</li>
+  <li>Ảnh Anchor và Positive khác nhau nhất: cần lựa chọn để khoảng cách $d(\mathbf{A}, \mathbf{P})$ lớn. Điều này cũng tương tự như bạn lựa chọn một ảnh của mình hồi nhỏ so với hiện tại để thuật toán học khó hơn. Nhưng nếu nhận biết được thì nó sẽ thông minh hơn.</li>
+  <li>Ảnh Anchor và Negative giống nhau nhất: cần lựa chọn để khoảng cách $d(\mathbf{A}, \mathbf{N})$ nhỏ. Điều này tương tự như việc thuật toán phân biệt được ảnh của một người anh em giống bạn với bạn.</li>
 </ul>
 
 <p>Triplot loss function luôn lấy 3 bức ảnh làm input và trong mọi trường hợp ta kì vọng:</p>
@@ -441,7 +440,7 @@ d(\mathbf{A}, \mathbf{P}) < d(\mathbf{A}, \mathbf{N}) \tag{1} %]]></script>
 
 <p>Trong đó $n$ là số lượng các bộ 3 hình ảnh được đưa vào huấn luyện.</p>
 
-<p>Mục tiêu của chúng ta là giảm thiểu các trường hợp hợp mô hình nhận diện sai ảnh Negative thành Postive nhất có thể. Do đó để loại bỏ ảnh hưởng của các trường hợp nhận diện đúng Negative và Positive. Ta sẽ điều chỉnh giá trị đóng góp của nó vào hàm loss function về 0.</p>
+<p>Sẽ không ảnh hưởng gì nếu ta nhận diện đúng ảnh Negative và Positive là cùng cặp hay khác cặp với Anchor. Mục tiêu của chúng ta là giảm thiểu các trường hợp hợp mô hình nhận diện sai ảnh Negative thành Postive nhất có thể. Do đó để loại bỏ ảnh hưởng của các trường hợp nhận diện đúng Negative và Positive lên hàm loss function. Ta sẽ điều chỉnh giá trị đóng góp của nó vào hàm loss function về 0.</p>
 
 <p>Tức là nếu:</p>
 
@@ -451,30 +450,31 @@ d(\mathbf{A}, \mathbf{P}) < d(\mathbf{A}, \mathbf{N}) \tag{1} %]]></script>
 
 <script type="math/tex; mode=display">\mathcal{L}(\mathbf{A, P, N}) = \sum_{i=0}^{n}\max(||f(\mathbf{A}_i)-f(\mathbf{P}_i)||_2^{2} - ||f(\mathbf{A}_i)-f(\mathbf{N_i})||_2^{2}+ \alpha, 0)</script>
 
-<p>Như vậy chúng ta có thể áp dụng Triple loss vào các mô hình convolutional neural network để tạo ra những thuật toán có tác dụng phát hiện ra những ảnh thuộc về cùng một người trong bộ 3 các ảnh đầu vào trong quá trình huấn luyện mô hình. Khi đó tại layer gần cuối cùng của siam network ta sẽ thu được những véc tơ biểu diễn ảnh tốt nhất cho một hình ảnh.</p>
+<p>Như vậy khi áp dụng Triple loss vào các mô hình convolutional neural network chúng ta có thể tạo ra các biểu diễn véc tơ tốt nhất cho mỗi một bức ảnh. Những biểu diễn véc tơ này sẽ phân biệt tốt các ảnh Negative rất giống ảnh Positive. Và đồng thời các bức ảnh thuộc cùng một label sẽ trở nên gần nhau hơn trong không gian chiếu euclidean.</p>
 
-<p>Một chú ý quan trọng khi huấn luyện mô hình siam network với triplot function đó là chúng ta luôn phải xác định trước cặp ảnh $(\mathbf{A}, \mathbf{P})$ thuộc về cùng một người. Ảnh $\mathbf{N}$ sẽ được lựa chọn ngẫu nhiên từ các bức ảnh thuộc các nhãn còn lại.</p>
-
-<p>Do đó cần thu thập ít nhất 2 bức ảnh/1 người để có thể chuẩn bị được dữ liệu huấn luyện.</p>
+<p>Một chú ý quan trọng khi huấn luyện mô hình siam network với triplot function đó là chúng ta luôn phải xác định trước cặp ảnh $(\mathbf{A}, \mathbf{P})$ thuộc về cùng một người. Ảnh $\mathbf{N}$ sẽ được lựa chọn ngẫu nhiên từ các bức ảnh thuộc các nhãn còn lại. Do đó cần thu thập ít nhất 2 bức ảnh/1 người để có thể chuẩn bị được dữ liệu huấn luyện.</p>
 
 <h2 id="42-lựa-chọn-triple-images-input">4.2. Lựa chọn triple images input</h2>
 
-<p>Nếu lựa chọn triple input một cách ngẫu nhiên có thể ảnh khiến cho bất đẳng thức $(1)$ dễ dàng xảy ra vì trong các ảnh ngẫu nhiên, khả năng giống nhau giữa 2 ảnh là rất khó. Hầu hết các trường hợp đều thỏa mãn bất đẳng thức $(1)$ và không gây ảnh hưởng đến giá trị của loss function do giá trị của chúng được set về 0. Như vật việc học những bức ảnh Negative quá khác biệt với Anchor sẽ không có nhiều ý nghĩa.</p>
+<p>Nếu lựa chọn triple input một cách ngẫu nhiên có thể ảnh khiến cho bất đẳng thức $(1)$ dễ dàng xảy ra vì trong các ảnh ngẫu nhiên, khả năng giống nhau giữa 2 ảnh là rất khó. Hầu hết các trường hợp đều thỏa mãn bất đẳng thức $(1)$ và không gây ảnh hưởng đến giá trị của loss function do giá trị của chúng được set về 0. Như vậy việc học những bức ảnh Negative quá khác biệt với Anchor sẽ không có nhiều ý nghĩa.</p>
 
-<p>Để mô hình khó học hơn và đồng thời cũng giúp mô hình phân biệt chuẩn xác hơn mức độ giống và khác nhau giữa các khuôn mặt, chúng ta cần lựa chọn các input theo các bộ 3 khó học (hard triplets).</p>
+<p>Để mô hình khó học hơn và đồng thời cũng giúp mô hình phân biệt chuẩn xác hơn mức độ giống và khác nhau giữa các khuôn mặt, chúng ta cần lựa chọn các input theo bộ 3 khó học (hard triplets).</p>
 
 <p>Ý tưởng là chúng ta cần tìm ra bộ ba $(\mathbf{A}, \mathbf{N}, \mathbf{P})$ sao cho $(1)$ là gần đạt được đẳng thức (xảy ra dấu =) nhất. Tức là $d(\mathbf{A}, \mathbf{P})$ lớn nhất và $d(\mathbf{A}, \mathbf{N})$ nhỏ nhất. Hay nói cách khác với mỗi Anchor $\mathbf{A}$ cần xác định:</p>
+
 <ul>
   <li><strong>Hard Positive:</strong> Bức ảnh Positive có khoảng cách xa nhất với Anchor tương ứng với nghiệm:</li>
 </ul>
 
-<script type="math/tex; mode=display">\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}, \mathbf{P}_i))</script>
+<script type="math/tex; mode=display">\text{argmax}_{\mathbf{P}_i}(d(\mathbf{A}_i, \mathbf{P}_i))</script>
 
 <ul>
   <li><strong>Hard Negative:</strong> Bức ảnh Negative có khoảng cách gần nhất với Anchor tương ứng với nghiệm:</li>
 </ul>
 
-<script type="math/tex; mode=display">\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}, \mathbf{N}_j))</script>
+<script type="math/tex; mode=display">\text{argmin}_{\mathbf{N}_j}(d(\mathbf{A}_i, \mathbf{N}_j))</script>
+
+<p>Với $i, j$ là nhãn của người trong ảnh.</p>
 
 <p>Việc tính toán các trường hợp <code class="highlighter-rouge">Hard Positive</code> và <code class="highlighter-rouge">Hard Negative</code> có thể được thực hiện offline và lưu vào checkpoint hoặc có thể tính toán online trên mỗi mini-batch.</p>
 
