@@ -299,40 +299,6 @@ Output: Câu trả lời được trích suất từ Paragraph.
 !pip install transformers
 ```
 
-    Collecting transformers
-    [?25l  Downloading https://files.pythonhosted.org/packages/12/b5/ac41e3e95205ebf53439e4dd087c58e9fd371fd8e3724f2b9b4cdb8282e5/transformers-2.10.0-py3-none-any.whl (660kB)
-    [K     |████████████████████████████████| 665kB 2.8MB/s 
-    [?25hRequirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.6/dist-packages (from transformers) (2019.12.20)
-    Collecting tokenizers==0.7.0
-    [?25l  Downloading https://files.pythonhosted.org/packages/14/e5/a26eb4716523808bb0a799fcfdceb6ebf77a18169d9591b2f46a9adb87d9/tokenizers-0.7.0-cp36-cp36m-manylinux1_x86_64.whl (3.8MB)
-    [K     |████████████████████████████████| 3.8MB 14.6MB/s 
-    [?25hRequirement already satisfied: dataclasses; python_version < "3.7" in /usr/local/lib/python3.6/dist-packages (from transformers) (0.7)
-    Requirement already satisfied: tqdm>=4.27 in /usr/local/lib/python3.6/dist-packages (from transformers) (4.41.1)
-    Collecting sacremoses
-    [?25l  Downloading https://files.pythonhosted.org/packages/7d/34/09d19aff26edcc8eb2a01bed8e98f13a1537005d31e95233fd48216eed10/sacremoses-0.0.43.tar.gz (883kB)
-    [K     |████████████████████████████████| 890kB 28.9MB/s 
-    [?25hRequirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from transformers) (2.23.0)
-    Collecting sentencepiece
-    [?25l  Downloading https://files.pythonhosted.org/packages/d4/a4/d0a884c4300004a78cca907a6ff9a5e9fe4f090f5d95ab341c53d28cbc58/sentencepiece-0.1.91-cp36-cp36m-manylinux1_x86_64.whl (1.1MB)
-    [K     |████████████████████████████████| 1.1MB 44.5MB/s 
-    [?25hRequirement already satisfied: numpy in /usr/local/lib/python3.6/dist-packages (from transformers) (1.18.4)
-    Requirement already satisfied: filelock in /usr/local/lib/python3.6/dist-packages (from transformers) (3.0.12)
-    Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from sacremoses->transformers) (1.12.0)
-    Requirement already satisfied: click in /usr/local/lib/python3.6/dist-packages (from sacremoses->transformers) (7.1.2)
-    Requirement already satisfied: joblib in /usr/local/lib/python3.6/dist-packages (from sacremoses->transformers) (0.15.1)
-    Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests->transformers) (1.24.3)
-    Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.6/dist-packages (from requests->transformers) (2.9)
-    Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests->transformers) (2020.4.5.1)
-    Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests->transformers) (3.0.4)
-    Building wheels for collected packages: sacremoses
-      Building wheel for sacremoses (setup.py) ... [?25l[?25hdone
-      Created wheel for sacremoses: filename=sacremoses-0.0.43-cp36-none-any.whl size=893260 sha256=6a91001f4e422c7561a79667a70494bc9d94fdf57f29570ca9ac2f2f582a21ec
-      Stored in directory: /root/.cache/pip/wheels/29/3c/fd/7ce5c3f0666dab31a50123635e6fb5e19ceb42ce38d4e58f45
-    Successfully built sacremoses
-    Installing collected packages: tokenizers, sacremoses, sentencepiece, transformers
-    Successfully installed sacremoses-0.0.43 sentencepiece-0.1.91 tokenizers-0.7.0 transformers-2.10.0
-    
-
 ## 4.2. Xây dựng một ứng dụng Question and Answering
 
 Các bước dữ liệu:
