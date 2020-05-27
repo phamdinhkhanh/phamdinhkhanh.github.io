@@ -1,0 +1,3022 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 37 - Transformer thêm dấu Tiếng Việt</p></h2> 
+<strong>28 May 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-dữ-liệu">1. Dữ liệu</h1>
+
+<p>Nếu bạn đọc không quan tâm đến chuẩn bị dữ liệu có thể download <a href="https://drive.google.com/file/d/1-7lERkqCoID1691yCXLAOyZoJqYPqhGq/view?usp=sharing">train_tieng_viet.txt</a> và chuyển sang mục 2 xây dựng mô hình.</p>
+
+<p>Ý tưởng lấy dữ liệu từ wikipedia cho Tiếng Việt được mình tham khảo từ bài viết của <a href="https://viblo.asia/p/ung-dung-machine-translation-vao-bai-toan-them-dau-cho-tieng-viet-khong-dau-aivivn-challenge-3-3P0lP4a8lox">Ứng dụng ML translation vào bài toán thêm dấu cho Tiếng Việt aivivn - QuangPham</a></p>
+
+<p><strong>Download dữ liệu viwikipedia</strong></p>
+
+<p>Đầu tiên các bạn cần tải file <code class="highlighter-rouge">viwiki-20200501-pages-articles.xml.bz2</code> tại <a href="https://dumps.wikimedia.org/viwiki/20200501/">wikipedia</a>.</p>
+
+<p>Chúng ta cũng có thể download file bằng lệnh wget bên dưới:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
+
+drive.mount('/content/gdrive')
+path = '/content/gdrive/My Drive/Colab Notebooks/BERT/themdau_tv'
+%cd {path}
+!ls
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>!wget https://dumps.wikimedia.org/viwiki/20200501/viwiki-20200501-pages-articles.xml.bz2
+!bzip2 -d viwiki-20200501-pages-articles.xml.bz2
+!ls
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo ta sử dụng wikiextractor để giải nén dữ liệu từ file <code class="highlighter-rouge">viwiki-20200501-pages-articles.xml.bz2</code> vừa mới download.</p>
+
+<p>Quá trình giải nén mất khá nhiều thời gian. Bạn đọc có thể download dữ liệu có sẵn tại <a href="https://drive.google.com/drive/folders/11mkQBCUNuKxyLZEyfGe61INU0WY-SrR0?usp=sharing">viwiki-20200501-pages-articles-output</a>. Để giải nén file chúng ta sẽ sử dụng package <a href="https://github.com/attardi/wikiextractor">wikiextractor</a>. Một package chuyên dùng cho khai thác dữ liệu trên wiki.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!git clone https://github.com/attardi/wikiextractor.git
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!python wikiextractor/WikiExtractor.py viwiki-20200501-pages-articles.xml.bz2 --processes 4 -o ./output/ --json
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Các bạn xem thêm cách sử dụng lệnh giải nén bằng file <a href="https://github.com/attardi/wikiextractor">WikiExtractor.py</a> tại mục <strong>Usage</strong> của README.</p>
+
+<p>Câu lệnh trên sẽ giải nén file và lưu vào folder <code class="highlighter-rouge">/output/</code> dưới định dạng json. Mỗi file sẽ bao gồm các dòng đại diện cho một văn bản tiếng Việt được giải nén từ wikipedia có định dạng như sau:</p>
+
+<p><code class="highlighter-rouge">{"id": "", "revid": "", "url":"", "title": "", "text": "..."}</code></p>
+
+<p>Trong đó:</p>
+
+<ul>
+  <li>id: Mã của bài viết.</li>
+  <li>revid: Mã của bài viết.</li>
+  <li>url: Link url của bài viết.</li>
+  <li>title: Tiêu đề bài viết.</li>
+  <li>text: Nội dung của bài viết.</li>
+</ul>
+
+<p><strong>Chọn câu hợp lệ</strong></p>
+
+<p>Trong tập hợp các câu sẽ có một số câu không đạt tiêu chuẩn vì chứa các ký tự Tiếng Trung, Hàn,…. Vì vậy chúng ta sẽ lọc bỏ những câu này bằng cách tạo ra một hàm kiểm tra tính hợp lệ của câu. Một câu được coi là hợp lệ nếu chỉ chứa các ký tự tiếng việt được list trong <code class="highlighter-rouge">accept_strings</code> bên dưới.</p>
+
+<p>Xây dựng hàm <code class="highlighter-rouge">_check_tieng_viet()</code> để kiểm tra tính hợp lệ của câu:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>import string
+import re
+# https://realpython.com/python-encodings-guide/
+# List các ký tự hợp lệ trong tiếng Việt
+intab_l = "ạảãàáâậầấẩẫăắằặẳẵóòọõỏôộổỗồốơờớợởỡéèẻẹẽêếềệểễúùụủũưựữửừứíìịỉĩýỳỷỵỹđ"
+ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'
+digits = '0123456789'
+punctuation = r"""!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~"""
+whitespace = ' '
+accept_strings =  intab_l + ascii_lowercase + digits + punctuation + whitespace
+r = re.compile('^[' + accept_strings + ']+$')
+
+
+# Một câu sẽ được coi là hợp lệ nếu có các ký tự nằm trong accept_strings
+def _check_tieng_viet(seq):
+  if re.match(r, seq.lower()):
+    return True
+  else:
+    return False
+
+_check_tieng_viet('tiếng việt là ngôn ngữ của tôi')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>True
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Lưu file huấn luyện</strong></p>
+
+<p>Tiếp theo ta sẽ tạo vòng lặp đi qua toàn bộ các file trong <code class="highlighter-rouge">/output</code> folder. Kiểm tra câu có thỏa mãn tiêu chuẩn Tiếng Việt không, đánh index cho câu và lưu đồng thời index và câu có dấu vào file <code class="highlighter-rouge">train_tieng_viet.txt</code>. Thời gian trích suất sẽ mất vài tiếng trên máy của mình. Vì vậy các bạn có thể download dữ liệu tại <a href="https://drive.google.com/file/d/1-7lERkqCoID1691yCXLAOyZoJqYPqhGq/view?usp=sharing">train_tieng_viet.txt</a> và bỏ qua đoạn code bên dưới.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>import pickle
+import json
+from tqdm import tqdm
+import glob2
+idx = 0
+
+for path in tqdm(glob2.glob('output/*/*')):
+  # Đọc nội dung của các văn bản từ folder output. Content sẽ chứa nhiều row, mỗi row là một json data
+  with open(path, 'r', encoding='utf8') as f:
+    content = f.readlines()
+    for row in content:
+      # Convert row sang json
+      art_json = json.loads(row)
+      # Lấy nội dung văn bản
+      art_cont = art_json['text']
+      art_cont = re.sub("(\s)+", r"\1", art_cont)
+      # Chia văn bản thành các câu tại vị trí xuống dòng
+      art_seqs = art_cont.split("\n")
+      # Lưu các dòng là tiếng việt vào file 'train_tieng_viet.txt'.
+      # Mỗi dòng có định dạng: index{10digits} sequence
+      for seq in art_seqs:
+        if _check_tieng_viet(seq):
+          idx_str = str(idx).zfill(10)
+          with open('train_tieng_viet.txt', 'a') as f:
+            f.writelines([idx_str+'\t', seq+'\n'])
+          idx += 1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Chuẩn bị dữ liệu train/val/test</strong></p>
+
+<p>Sau khi đã lưu file huấn luyện <code class="highlighter-rouge">train_tieng_viet.txt</code>, chúng ta sẽ load dữ liệu, loại bỏ dấu ở từng câu để tạo dữ liệu input. Dữ liệu output sẽ chính là câu Tiếng Việt có dấu.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>with open('train_tieng_viet.txt', 'r', encoding='utf-8') as f:
+  train_output = f.readlines()
+
+print('Number of sequences: ', len(train_output))
+print('First sequence: ', train_output[0])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Number of sequences:  3624432
+First sequence:  0000000000	Trang Chính
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta thấy tổng số câu của chúng ta lên tới 3.6 triệu câu. Đối với cấu hình máy của google colab thì đay có thể coi là một lượng dữ liệu siêu to khổng lồ. Do đó mình sẽ chỉ lọc ra 500 nghìn câu đầu tiên làm tập huấn luyện (train dataset), 50 nghìn câu tiếp theo làm tập thẩm định (validation dataset) và 50 nghìn câu tiếp theo làm tập kiểm tra (test dataset).</p>
+
+<p><strong>Tạo hàm remove dấu</strong></p>
+
+<p>Hàm <code class="highlighter-rouge">remove_tone_line()</code> sẽ giúp bạn thực hiện điều này. Đây là hàm tiện ích được lấy từ cuộc thi thêm dấu Tiếng Việt cho từ không dấu aivivn.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre># encoding=utf8
+import codecs
+import csv
+import re
+import sys
+
+def remove_tone_line(utf8_str):
+    intab_l = "ạảãàáâậầấẩẫăắằặẳẵóòọõỏôộổỗồốơờớợởỡéèẻẹẽêếềệểễúùụủũưựữửừứíìịỉĩýỳỷỵỹđ"
+    intab_u = "ẠẢÃÀÁÂẬẦẤẨẪĂẮẰẶẲẴÓÒỌÕỎÔỘỔỖỒỐƠỜỚỢỞỠÉÈẺẸẼÊẾỀỆỂỄÚÙỤỦŨƯỰỮỬỪỨÍÌỊỈĨÝỲỶỴỸĐ"
+    intab = list(intab_l+intab_u)
+
+    outtab_l = "a"*17 + "o"*17 + "e"*11 + "u"*11 + "i"*5 + "y"*5 + "d"
+    outtab_u = "A"*17 + "O"*17 + "E"*11 + "U"*11 + "I"*5 + "Y"*5 + "D"
+    outtab = outtab_l + outtab_u
+    # Khởi tạo regex tìm kiếm các vị trí nguyên âm có dấu 'ạ|ả|ã|...'
+    r = re.compile("|".join(intab))
+
+    # Dictionary có key-value là từ có dấu-từ không dấu. VD: {'â' : 'a'}
+    replaces_dict = dict(zip(intab, outtab))
+    # Thay thế các từ có dấu xuất hiện trong tìm kiếm của regex bằng từ không dấu tương ứng
+    non_dia_str = r.sub(lambda m: replaces_dict[m.group(0)], utf8_str)
+    return non_dia_str
+  
+remove_tone_line('Đi một ngày đàng học 1 sàng khôn')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>'Di mot ngay dang hoc 1 sang khon'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau đó chúng ta sẽ phân chia tập train/val/test</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>from tqdm import tqdm
+train_idx_500k = []
+train_opt_500k = []
+train_ipt_500k = []
+val_idx_50k = []
+val_opt_50k = []
+val_ipt_50k = []
+test_idx_50k = []
+test_opt_50k = []
+test_ipt_50k = []
+
+for i in tqdm(range(600000)):
+  [idx, origin_seq] = train_output[i].split('\t')
+  try:
+    non_acc_seq = remove_tone_line(origin_seq)
+  except:
+    print('error remove tone line at sequence {}', str(i))
+    next
+  if i &lt; 500000:
+    train_idx_500k.append(idx)
+    train_opt_500k.append(origin_seq)
+    train_ipt_500k.append(non_acc_seq)
+  elif i &lt; 550000:
+    val_idx_50k.append(idx)
+    val_opt_50k.append(origin_seq)
+    val_ipt_50k.append(non_acc_seq)
+  else:
+    test_idx_50k.append(idx)
+    test_opt_50k.append(origin_seq)
+    test_ipt_50k.append(non_acc_seq)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>100%|██████████| 600000/600000 [00:31&lt;00:00, 19184.82it/s]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>print(train_ipt_500k[10])
+print(train_opt_500k[10])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Tieng Viet la ngon ngu co nguon goc ban dia, xuat than tu nen van minh nong nghiep, tai noi ma ngay nay la khu vuc phia bac luu vuc song Hong va song Ma cua Viet Nam.
+
+Tiếng Việt là ngôn ngữ có nguồn gốc bản địa, xuất thân từ nền văn minh nông nghiệp, tại nơi mà ngày nay là khu vực phía bắc lưu vực sông Hồng và sông Mã của Việt Nam.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau khi đã có dữ liệu huấn luyện, thẩm định và kiểm tra. Chúng ta nên lưu lại để tái sử dụng cho những lượt cải thiện mô hình sau. Nếu bạn không lưu lại dữ liệu, bạn sẽ không có căn cứ để đánh giá và so sánh giữa các mô hình. Để không tốn dung lượng thì mình chỉ lưu lại index. Từ index có thể truy suất ra câu cần lấy. Mình sử dụng google drive nên tài nguyên chỉ có 15GB thôi. Đó là lý do tại sao mình đánh index để tiết kiệm tài nguyên.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>import pickle
+
+def _save_pickle(filename, obj):
+  with open(filename, 'wb') as f:
+    pickle.dump(obj, f)
+
+_save_pickle('train_tv_idx_500k.pkl', train_idx_500k)
+_save_pickle('val_tv_idx_50k.pkl', val_idx_50k)
+_save_pickle('test_tv_idx_50k.pkl', test_idx_50k)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="2-xây-dựng-model-transformer">2. Xây dựng model Transformer</h1>
+
+<p>Hướng dẫn này sẽ huấn luyện model transformer để tiến hành dịch câu Tiếng Việt không dấu sang có dấu. Mã nguồn tham khảo tại <a href="https://www.tensorflow.org/tutorials/text/transformer">Transformer model for language understanding</a> ứng dụng trên thuật toán dịch máy. Có rất nhiều mã nguồn khác nhau về transformer. Nhưng mình chọn mã nguồn này là bởi tác giả giải thích các step rất chi tiết, dễ hiểu ở từng bước xử lý. Bạn đọc sẽ hiểu được transformer sẽ được tiến hành ra sao, các kiến trúc cụ thể như thế nào thông qua tutorial này. Trước khi bắt tay vào xây dựng mô hình, tôi khuyên bạn đọc qua trước <a href="https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html">Bài 4 - Attention is all you need</a> để hiểu về kiến trúc transformer và bài <a href="https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html">Bài 36 - BERT model</a> trình bày về mô hình BERT áp dụng kiến trúc transformer trong các tác vụ NLP.</p>
+
+<p>Điểm cải tiến của transformer so với RNN đó là kỹ thuật attention giúp cho học được từ toàn bộ các vị trí khác nhau trong câu input để tính toán ra biểu diễn output của câu. transformer tạo ra một chuỗi stack các block sub-layer và áp dụng các biến đổi <code class="highlighter-rouge">Scale dot Product attention</code> và <code class="highlighter-rouge">Multi-head attention</code> sẽ được giải thích ở bên dưới.</p>
+
+<p>Một mô hình transformer sẽ kiểm soát kích thước biến của input sử dụng stacks của các self-attention layers thay vì RNNs, CNNs. Kiến trúc tổng quát này có những điểm lợi thế sau:</p>
+
+<ul>
+  <li>
+    <p>Không phụ thuộc vào giả thiết quan hệ thời gian trong toàn bộ dữ liệu.</p>
+  </li>
+  <li>
+    <p>Output có thể được tính toán song song thay vì theo chuỗi như RNN.</p>
+  </li>
+  <li>
+    <p>Các từ ở xa có thể ảnh hưởng tới những output của những từ khác mà không truyền qua nhiều RNN steps.</p>
+  </li>
+  <li>
+    <p>Nó có thể học được sự phụ thuộc dài hạn. Sự phụ thuộc dài hạn là một thách thức của rất nhiều các tác vụ seq2seq.</p>
+  </li>
+</ul>
+
+<p>Hạn chế của transformer:</p>
+
+<ul>
+  <li>
+    <p>Output của tranformer được tính toán từ toàn bộ lịch sử thay vì chỉ input và hidden-state hiên tại. Đây có thể là một nhược điểm vì khoảng cách xa có thể không liên quan.</p>
+  </li>
+  <li>
+    <p>Input không có sự phụ thuộc thời gian, do đó position encoding cần được thêm vào để mã hóa sự tương quan về mặt thời gian.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>import tensorflow_datasets as tfds
+import tensorflow as tf
+
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># train_examples = tf.data.Dataset.from_tensor_slices((train_ipt_100k, train_opt_100k))
+train_examples = tf.data.Dataset.from_tensor_slices((train_ipt_500k, train_opt_500k))
+val_examples = tf.data.Dataset.from_tensor_slices((val_ipt_50k, val_opt_50k))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Khởi tạo tokenize cho tập train input và output</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>tokenizer_ipt = tfds.features.text.SubwordTextEncoder.build_from_corpus(
+    (ipt.numpy() for (ipt, opt) in train_examples), target_vocab_size=2**13)
+
+tokenizer_opt = tfds.features.text.SubwordTextEncoder.build_from_corpus(
+    (opt.numpy() for (ipt, opt) in train_examples), target_vocab_size=2**13)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>sample_string = 'Tiếng Việt là ngôn ngữ trong sáng nhất thế giới'
+
+tokenized_string = tokenizer_opt.encode(sample_string)
+print ('Tokenized string is {}'.format(tokenized_string))
+
+original_string = tokenizer_opt.decode(tokenized_string)
+print ('The original string: {}'.format(original_string))
+
+assert original_string == sample_string
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Tokenized string is [2270, 65, 5, 695, 527, 10, 451, 60, 56, 573]
+The original string: Tiếng Việt là ngôn ngữ trong sáng nhất thế giới
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lưu lại Tokenizer và kích thước vocabulary size của nó:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>import pickle
+
+def _save_pickle(path, obj):
+  with open(path, 'wb') as f:
+    pickle.dump(obj, f)
+
+def _load_pickle(path):
+  with open(path, 'rb') as f:
+    obj = pickle.load(f)
+  return obj
+
+_save_pickle('tokenizer/tokenizer_ipt.pkl', tokenizer_ipt)
+_save_pickle('tokenizer/tokenizer_opt.pkl', tokenizer_opt)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tokenizer sẽ encoding chuỗi string bằng cách chi nhỏ nó thành những subwords nếu từ không xuất hiện trong từ điển của nó.</p>
+
+<p><strong>Khái niệm subwords</strong>: Thuật toán transfomer sẽ hiệu quả hơn nếu ta chia các từ theo subwords. subword là một chuỗi các ký tự xuất hiện trong token mà thường được lặp đi lặp lại. Chẳng hạn như từ <code class="highlighter-rouge">chính tả</code> thì cụm ký tự như <code class="highlighter-rouge">ính</code> sẽ dễ dàng được sử dụng lặp lại ở những từ khác. Do đó nó có thể là một subword. Bạn đọc có thể tham khảo thêm về subwords tại <a href="https://medium.com/@makcedward/how-subword-helps-on-your-nlp-model-83dd1b836f46">How subword helps on your nlp model</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>for ts in tokenized_string:
+  print ('{} ----&gt; {}'.format(ts, tokenizer_opt.decode([ts])))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>2270 ----&gt; Tiếng 
+65 ----&gt; Việt 
+5 ----&gt; là 
+695 ----&gt; ngôn 
+527 ----&gt; ngữ 
+10 ----&gt; trong 
+451 ----&gt; sáng 
+60 ----&gt; nhất 
+56 ----&gt; thế 
+573 ----&gt; giới
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>BUFFER_SIZE = 20000
+BATCH_SIZE = 64
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo chúng ta sẽ thêm token <code class="highlighter-rouge">start</code> và <code class="highlighter-rouge">end</code> vào câu input và câu target</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def encode(ipt, opt):
+  ipt = [tokenizer_ipt.vocab_size] + tokenizer_ipt.encode(
+      ipt.numpy()) + [tokenizer_ipt.vocab_size+1]
+
+  opt = [tokenizer_opt.vocab_size] + tokenizer_opt.encode(
+      opt.numpy()) + [tokenizer_opt.vocab_size+1]
+  
+  return ipt, opt
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># encode(ipt = 'tieng viet la ngon ngu trong sang', opt = 'tiếng việt là ngôn ngữ trong sáng')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Nếu bạn muốn sử dụng <code class="highlighter-rouge">Dataset.map</code> để áp dụng hàm số này cho mỗi phần tử của dataset. <code class="highlighter-rouge">Dataset.map</code> sẽ chạy trên graph mode.</p>
+
+<ul>
+  <li>Graph tensors không có dữ liệu.</li>
+  <li>Trong graph model bạn chỉ có thể sử dụng Tensorflow Ops và functions.</li>
+</ul>
+
+<p>Do đó bạn không thể <code class="highlighter-rouge">.map</code> các hàm số này trực tiếp: Bạn cần wrap nó trong một hàm số gọi là <code class="highlighter-rouge">tf.py_function</code>. Hàm số này sẽ truyền các tensors thông thường (với một giá trị và một phương thức <code class="highlighter-rouge">.numpy()</code> để truy cập nó), để wrapped hàm số trong python.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>def tf_encode(ipt, opt):
+  result_ipt, result_opt = tf.py_function(encode, [ipt, opt], [tf.int64, tf.int64])
+  result_ipt.set_shape([None])
+  result_opt.set_shape([None])
+  return result_ipt, result_opt
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note: Để dữ cho bộ dữ liệu nhỏ và huấn luyện nhanh hơn, chúng ta sẽ loại bỏ những mẫu kích thước lớn hơn 40 tokens.</p>
+
+<p>Khởi tạo tensorflow Dataset cho train và validation.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>next(iter(train_examples))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>(&lt;tf.Tensor: shape=(), dtype=string, numpy=b'Trang Chinh\n'&gt;,
+ &lt;tf.Tensor: shape=(), dtype=string, numpy=b'Trang Ch\xc3\xadnh\n'&gt;)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>MAX_LENGTH = 40
+
+def filter_max_length(x, y, max_length=MAX_LENGTH):
+  return tf.logical_and(tf.size(x) &lt;= max_length,
+                        tf.size(y) &lt;= max_length)
+  
+train_dataset = train_examples.map(tf_encode)
+train_dataset = train_dataset.filter(filter_max_length)
+# cache the dataset to memory to get a speedup while reading from it.
+train_dataset = train_dataset.cache()
+train_dataset = train_dataset.shuffle(BUFFER_SIZE).padded_batch(BATCH_SIZE)
+train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
+
+val_dataset = val_examples.map(tf_encode)
+val_dataset = val_dataset.filter(filter_max_length).padded_batch(BATCH_SIZE)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>print('tokenizer_ipt.vocab_size: ', tokenizer_ipt.vocab_size)
+x, y = next(iter(train_dataset))
+print('input shape: ', x.shape)
+print('output shape: ', y.shape)
+print('first row of input index: ', x[0, :])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>tokenizer_ipt.vocab_size:  8185
+input shape:  (64, 37)
+output shape:  (64, 40)
+first row of input index:  tf.Tensor(
+[8185 7759 7961 1302 7939 8186    0    0    0    0    0    0    0    0
+    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+    0    0    0    0    0    0    0    0    0], shape=(37,), dtype=int64)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="3-position-encoding">3. Position Encoding</h1>
+
+<p><strong>Chức năng của position Encoding</strong>: Tranformer sẽ không dự báo tuân theo time step như RNN. Toàn bộ các input sẽ được truyền vào mô hình <strong>cùng một thời điểm</strong>. Sẽ rất khó để nhận viết vị trí của các từ input trong câu ở những lớp mô hình không tuân theo time step. Do đó thêm position encoding sẽ cho mô hình thêm các thông tin về vị trí của từ.</p>
+
+<p>Position encoding véc tơ sẽ được cộng trực tiếp vào embedding véc tơ. Embeddings biểu diễn một token trong một không gian d chiều nơi mà các token có cùng ý nghĩa sẽ gần nhau hơn. Nhưng embedding vector không chứa thông tin vị trí của từ trong câu. Do đó sau khi thêm position encoding véc tơ, một từ sẽ gần với những từ khác hơn dựa trên ý nghĩa của chúng và khoảng cách vị trí của chúng trong câu trong không gian <code class="highlighter-rouge">d</code> chiều.</p>
+
+<p>Theo dõi note book về <a href="https://github.com/tensorflow/examples/blob/master/community/en/position_encoding.ipynb">position encoding</a> để hiểu rõ hơn về chức năng và tính chất của nó.</p>
+
+<p><strong>Công thức position Encoding:</strong></p>
+
+<script type="math/tex; mode=display">PE(pos, 2i) = sin(\frac{pos}{10000^\frac{2i}{d_{model}}})</script>
+
+<script type="math/tex; mode=display">PE(pos, 2i+1) = cos(\frac{pos}{10000^\frac{2i}{d_{model}}})</script>
+
+<p>Trong đó $pos$ là vị trí hiện tại của từ, $i$ chỉ số của phần tử nằm trong véc tơ encoding và $d_{model}$ là kích thước các véc tơ positional embedding.</p>
+
+<p>Gỉa sử $PE(pos)$ là véc tơ encoding tại vị trí <code class="highlighter-rouge">pos</code>. Véc tơ này có kích thước phải bằng với các véc tơ embedding từ để phép cộng thực hiện được và kích thước đó bằng $d_{model}$.</p>
+
+<p>Công thức $PE(pos, 2i), PE(pos, 2i+1)$ tính giá trị các phần tử véc tơ positional encoding tại lần lượt vị trí $2i$ và $2i+1$.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>def get_angles(pos, i, d_model):
+  angle_rates = 1 / np.power(10000, (2 * (i//2)) / np.float32(d_model))
+  return pos * angle_rates
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>def positional_encoding(position, d_model):
+  angle_rads = get_angles(np.arange(position)[:, np.newaxis],
+                          np.arange(d_model)[np.newaxis, :],
+                          d_model) # shape (position, d_model)
+  
+  # apply sin to even indices in the array; 2i
+  angle_rads[:, 0::2] = np.sin(angle_rads[:, 0::2])
+  
+  # apply cos to odd indices in the array; 2i+1
+  angle_rads[:, 1::2] = np.cos(angle_rads[:, 1::2])
+    
+  pos_encoding = angle_rads[np.newaxis, ...]
+    
+  return tf.cast(pos_encoding, dtype=tf.float32) # shape: (position, d_model)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hàm <code class="highlighter-rouge">positional_encoding()</code> sẽ tạo ra ma trận mà gồm các véc tơ dòng là những <code class="highlighter-rouge">positional encoding</code> véc tơ.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>pos_encoding = positional_encoding(50, 512)
+print (pos_encoding.shape)
+
+plt.pcolormesh(pos_encoding[0], cmap='RdBu')
+plt.xlabel('Depth')
+plt.xlim((0, 512))
+plt.ylabel('Position')
+plt.colorbar()
+plt.show()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(1, 50, 512)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200528_TransformerThemDauTV/TransformerThemDauTV_46_1.png" class="largepic" /></p>
+
+<h1 id="4-masking">4. Masking</h1>
+
+<p>Masking nhằm mục đích không đưa các vị trí padding trong câu vào như một input. Mask là ma trận có kích thước bằng với kích thước ma trận input và đánh dấu các vị trị padding (tương ứng với 0) bằng giá trị 1. Các giá trị còn lại bằng 0.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>def create_padding_mask(seq):
+  seq = tf.cast(tf.math.equal(seq, 0), tf.float32)
+  
+  # add extra dimensions to add the padding
+  # to the attention logits.
+  return seq[:, tf.newaxis, tf.newaxis, :]  # (batch_size, 1, 1, seq_len)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>x = tf.constant([[7, 6, 0, 0, 1], [1, 2, 3, 0, 0], [0, 0, 0, 4, 5]])
+create_padding_mask(x)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>&lt;tf.Tensor: shape=(3, 1, 1, 5), dtype=float32, numpy=
+array([[[[0., 0., 1., 1., 0.]]],
+
+
+       [[[0., 0., 0., 1., 1.]]],
+
+
+       [[[1., 1., 1., 0., 0.]]]], dtype=float32)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo để ngăn cản ảnh hưởng của các từ tương lai vào dự đoán từ hiện tại. Chúng ta sẽ tiếp tục mask các vị trí tương lai bằng 1.</p>
+
+<p>Như vậy tại vị trí cần dự báo từ thứ 3 thì chỉ từ thứ 1 và thứ 2 được đưa vào dự báo.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>def create_look_ahead_mask(size):
+  mask = 1 - tf.linalg.band_part(tf.ones((size, size)), -1, 0)
+  return mask  # (seq_len, seq_len)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>x = tf.random.uniform((1, 3))
+temp = create_look_ahead_mask(x.shape[1])
+temp
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>&lt;tf.Tensor: shape=(3, 3), dtype=float32, numpy=
+array([[0., 1., 1.],
+       [0., 0., 1.],
+       [0., 0., 0.]], dtype=float32)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="5-scale-dot-product-attention">5. Scale dot Product attention</h1>
+
+<p>Một attention sẽ sử dụng input là 3 ma trận: $\mathbf{Q}$ (query), $\mathbf{K}$ (key) và $\mathbf{V}$ (value). Theo sơ đồ như sau:</p>
+
+<p><img src="https://www.tensorflow.org/images/tutorials/transformer/scaled_attention.png" width="500" alt="scaled_dot_product_attention" /></p>
+
+<p>Output thu được là ma trận attention của các từ lẫn nhau trong câu.</p>
+
+<p>Diễn giải quá trình tính attention như sau:</p>
+
+<ul>
+  <li>
+    <p>Sau khi thực hiện <code class="highlighter-rouge">MatMul</code> giữa $\mathbf{Q}$ và $\mathbf{K}$ –&gt; thu được ma trận attention.</p>
+  </li>
+  <li>
+    <p>Scale ma trận attention với nghịch đảo số độ sâu (chính là kích thước véc tơ dòng) của ma trận $\mathbf{K}$ là $\frac{1}{\mathbf{\sqrt{d_k}}}$ để tránh cho giá trị phần tử của ma trận attention quá lớn trong khi gradient thì quá nhỏ –&gt; huấn luyện lâu.</p>
+  </li>
+  <li>
+    <p>Thực hiện Masking. Ma trận mask là ma trận để ngăn cho những vị trí padding tham gia vào quá trình attention. Ma trận masking được nhân với -1E9 (là một giá trị gần với âm vô cùng). Sở dĩ ta thực hiện như vậy vì sau đó ma trận attention sẽ cộng với ma trận mask. Tại những vị trí padding sẽ có giá trị gần như âm vô cùng và khi tính phân phối softmax theo dòng sẽ thu được output là 0. Một lát nữa chúng ta sẽ thực nghiệm điều này.</p>
+  </li>
+  <li>
+    <p>Sau khi tính phân phối softmax cho ma trận attention, chúng ta sẽ nhân ma trận attention với ma trận $\mathbf{V}$.</p>
+  </li>
+</ul>
+
+<p>Toàn bộ quá trình phức tạp trên được tổng hợp trong công thức Attention:</p>
+
+<script type="math/tex; mode=display">\Large{Attention(Q, K, V) = softmax_k(\frac{QK^T}{\sqrt{d_k}}) V}</script>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre>def scaled_dot_product_attention(q, k, v, mask):
+  """Calculate the attention weights.
+  q, k, v must have matching leading dimensions.
+  k, v must have matching penultimate dimension, i.e.: seq_len_k = seq_len_v.
+  The mask has different shapes depending on its type(padding or look ahead) 
+  but it must be broadcastable for addition.
+  
+  Args:
+    q: query shape == (..., seq_len_q, depth)
+    k: key shape == (..., seq_len_k, depth)
+    v: value shape == (..., seq_len_v, depth_v)
+    mask: Float tensor with shape broadcastable 
+          to (..., seq_len_q, seq_len_k). Defaults to None.
+    
+  Returns:
+    output, attention_weights
+  """
+
+  matmul_qk = tf.matmul(q, k, transpose_b=True)  # (..., seq_len_q, seq_len_k)
+  
+  # scale matmul_qk
+  dk = tf.cast(tf.shape(k)[-1], tf.float32) # depth
+  scaled_attention_logits = matmul_qk / tf.math.sqrt(dk)
+
+  # add the mask to the scaled tensor.
+  if mask is not None:
+    scaled_attention_logits += (mask * -1e9)  
+
+  # softmax is normalized on the last axis (seq_len_k) so that the scores
+  # add up to 1.
+  attention_weights = tf.nn.softmax(scaled_attention_logits, axis=-1)  # (..., seq_len_q, seq_len_k)
+
+  output = tf.matmul(attention_weights, v)  # (..., seq_len_q, depth_v)
+
+  return output, attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Mask sẽ ngăn cản các vị trí được padding. Bên dưới ta sẽ thực nghiệm quá trình masking và xem hệ số attention sau khi đi qua phân phối softmax.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre># with tf.Session() as sess:
+mask = tf.constant([[0, 1, 1],
+                    [0, 0, 1],
+                    [0, 0, 0]], dtype = tf.float64)
+
+scaled_attention_logit = tf.constant([[1, 3, 10],
+                [1, 2, 5],
+                [1, 1, 5]], dtype = tf.float64)
+
+scaled_attention_logit += (mask * -1e9)
+attention_weights = tf.nn.softmax(scaled_attention_logit, axis=-1)
+print('scaled_attention_logit: ', scaled_attention_logit)
+print('attention_weights: ', attention_weights)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>scaled_attention_logit:  tf.Tensor(
+[[ 1.00000000e+00 -9.99999997e+08 -9.99999990e+08]
+ [ 1.00000000e+00  2.00000000e+00 -9.99999995e+08]
+ [ 1.00000000e+00  1.00000000e+00  5.00000000e+00]], shape=(3, 3), dtype=float64)
+attention_weights:  tf.Tensor(
+[[1.         0.         0.        ]
+ [0.26894142 0.73105858 0.        ]
+ [0.01766842 0.01766842 0.96466316]], shape=(3, 3), dtype=float64)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta có thể thấy tại các vị trí padding được mask với giá trị bằng 1 thì attention_weights bằng 0.</p>
+
+<p>Kết quả sau cùng sẽ thu được là tích giữa ma trận attention_weights với ma trận $\mathbf{V}$. Kết quả này sẽ đảm bảo:</p>
+
+<ul>
+  <li>Phân bố attention giữa các véc tơ trong $\mathbf{V}$</li>
+  <li>Loại bỏ những từ không liên quan ra khỏi attention.</li>
+</ul>
+
+<p>Tiếp theo ta sẽ test hàm <code class="highlighter-rouge">scaled_dot_product_attention()</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>def print_out(q, k, v):
+  temp_out, temp_attn = scaled_dot_product_attention(
+      q, k, v, None)
+  print ('Attention weights are:')
+  print (temp_attn)
+  print ('Output is:')
+  print (temp_out)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>np.set_printoptions(suppress=True)
+
+temp_k = tf.constant([[10,0,0],
+                      [0,10,0],
+                      [0,0,10],
+                      [0,0,10]], dtype=tf.float32)  # (4, 3)
+
+temp_v = tf.constant([[   1,0],
+                      [  10,0],
+                      [ 100,5],
+                      [1000,6]], dtype=tf.float32)  # (4, 2)
+
+# This `query` aligns with the second `key`,
+# so the second `value` is returned.
+temp_q = tf.constant([[0, 10, 0]], dtype=tf.float32)  # (1, 3)
+print_out(temp_q, temp_k, temp_v)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>Attention weights are:
+tf.Tensor([[0. 1. 0. 0.]], shape=(1, 4), dtype=float32)
+Output is:
+tf.Tensor([[10.  0.]], shape=(1, 2), dtype=float32)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Véc tơ attention là [0, 1, 0, 0] chỉ tập trung vào vị trí thứ 2. Do đó kết quả trả về là dòng thứ 2 của ma trận $\mathbf{V}$.</p>
+
+<h1 id="6-multi-head-attention">6. Multi-head Attention</h1>
+
+<p><img src="https://www.tensorflow.org/images/tutorials/transformer/multi_head_attention.png" width="500" alt="multi-head attention" /></p>
+
+<p>Multi-head attention sẽ bao gồm 4 phần:</p>
+
+<ul>
+  <li>Các linear layers và phân chi thành các nhiều heads.</li>
+  <li>Scaled dot-product attention</li>
+  <li>Concatenate các heads</li>
+  <li>Linear layer cuối cùng.</li>
+</ul>
+
+<p>Mỗi một multi-head attention block nhận 3 đầu vào: là các ma trận $\mathbf{Q}$, $\mathbf{K}$, $\mathbf{V}$. Sau đó <code class="highlighter-rouge">scale_dot_product_attention()</code> sẽ được sử dụng để tính toán trên từng head. Attention output của mỗi layer sau đó được concatenate và truyền qua một Dens layer.</p>
+
+<p>Thay vì sử dụng một single head attention, chúng ta sử dụng nhiều multi-head attention là để mô hình có thể học được attention từ các vị trí trên những biểu diễn không gian khác nhau.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre></td><td class="rouge-code"><pre>class MultiHeadAttention(tf.keras.layers.Layer):
+  def __init__(self, d_model, num_heads):
+    super(MultiHeadAttention, self).__init__()
+    self.num_heads = num_heads
+    self.d_model = d_model
+    
+    assert d_model % self.num_heads == 0
+    
+    self.depth = d_model // self.num_heads
+    
+    self.wq = tf.keras.layers.Dense(d_model)
+    self.wk = tf.keras.layers.Dense(d_model)
+    self.wv = tf.keras.layers.Dense(d_model)
+    
+    self.dense = tf.keras.layers.Dense(d_model)
+        
+  def split_heads(self, x, batch_size):
+    """Split the last dimension into (num_heads, depth).
+    Transpose the result such that the shape is (batch_size, num_heads, seq_len, depth)
+    """
+    x = tf.reshape(x, (batch_size, -1, self.num_heads, self.depth))
+    return tf.transpose(x, perm=[0, 2, 1, 3])
+    
+  def call(self, v, k, q, mask):
+    batch_size = tf.shape(q)[0]
+    
+    q = self.wq(q)  # (batch_size, seq_len, d_model)
+    k = self.wk(k)  # (batch_size, seq_len, d_model)
+    v = self.wv(v)  # (batch_size, seq_len, d_model)
+    
+    q = self.split_heads(q, batch_size)  # (batch_size, num_heads, seq_len_q, depth)
+    k = self.split_heads(k, batch_size)  # (batch_size, num_heads, seq_len_k, depth)
+    v = self.split_heads(v, batch_size)  # (batch_size, num_heads, seq_len_v, depth)
+    
+    # scaled_attention.shape == (batch_size, num_heads, seq_len_q, depth)
+    # attention_weights.shape == (batch_size, num_heads, seq_len_q, seq_len_k)
+    scaled_attention, attention_weights = scaled_dot_product_attention(
+        q, k, v, mask)
+    
+    scaled_attention = tf.transpose(scaled_attention, perm=[0, 2, 1, 3])  # (batch_size, seq_len_q, num_heads, depth)
+
+    concat_attention = tf.reshape(scaled_attention, 
+                                  (batch_size, -1, self.d_model))  # (batch_size, seq_len_q, d_model)
+
+    output = self.dense(concat_attention)  # (batch_size, seq_len_q, d_model)
+        
+    return output, attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>temp_mha = MultiHeadAttention(d_model=512, num_heads=8)
+y = tf.random.uniform((1, 60, 512))  # (batch_size, encoder_sequence, d_model)
+out, attn = temp_mha(y, k=y, q=y, mask=None)
+out.shape, attn.shape
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(TensorShape([1, 60, 512]), TensorShape([1, 8, 60, 60]))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Như vậy shape của attention sẽ là <code class="highlighter-rouge">(batch_size, num_head, seq_len_q, seq_len_k)</code> và shape của output  sẽ là <code class="highlighter-rouge">(batch_size, seq_len_q, d_model)</code>.</p>
+
+<h1 id="7-point-wise-feed-forward-network">7. Point wise feed forward network</h1>
+
+<p>Point wise feed forward bao gồm 2 fully-connected layers với hàm ReLU activation.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>def point_wise_feed_forward_network(d_model, dff):
+  return tf.keras.Sequential([
+      tf.keras.layers.Dense(dff, activation='relu'),  # (batch_size, seq_len, dff)
+      tf.keras.layers.Dense(d_model)  # (batch_size, seq_len, d_model)
+  ])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="8-encoder-and-decoder">8. Encoder and Decoder</h1>
+
+<p>Toàn bộ kiến trúc của transformer sẽ bao gồm 2 nhánh Encoder và Decoder như bên dưới:</p>
+
+<p><img src="https://www.tensorflow.org/images/tutorials/transformer/transformer.png" width="600" alt="transformer" /></p>
+
+<ul>
+  <li>
+    <p>Câu input sẽ được embedding và truyền qua $N$ sub-layers block của encoder để sinh ra output cho mỗi từ trong câu.</p>
+  </li>
+  <li>
+    <p>Decoder áp dụng encoder-decoder attention giữa output của encoder và input của decoder để dự báo next word.</p>
+  </li>
+</ul>
+
+<h2 id="81-encoder-layer">8.1. Encoder layer</h2>
+
+<p>Mỗi một Encoder layer sẽ gồm 2 sublayers:</p>
+
+<ul>
+  <li>Multi-head Attention (với padding mask)</li>
+  <li>Point wise feed forward network.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>class EncoderLayer(tf.keras.layers.Layer):
+  def __init__(self, d_model, num_heads, dff, rate=0.1):
+    super(EncoderLayer, self).__init__()
+
+    self.mha = MultiHeadAttention(d_model, num_heads)
+    self.ffn = point_wise_feed_forward_network(d_model, dff)
+
+    self.layernorm1 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+    self.layernorm2 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+    
+    self.dropout1 = tf.keras.layers.Dropout(rate)
+    self.dropout2 = tf.keras.layers.Dropout(rate)
+    
+  def call(self, x, training, mask):
+
+    attn_output, _ = self.mha(x, x, x, mask)  # (batch_size, input_seq_len, d_model)
+    attn_output = self.dropout1(attn_output, training=training)
+    out1 = self.layernorm1(x + attn_output)  # (batch_size, input_seq_len, d_model)
+    
+    ffn_output = self.ffn(out1)  # (batch_size, input_seq_len, d_model)
+    ffn_output = self.dropout2(ffn_output, training=training)
+    out2 = self.layernorm2(out1 + ffn_output)  # (batch_size, input_seq_len, d_model)
+    
+    return out2
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>sample_encoder_layer = EncoderLayer(512, 8, 2048)
+
+sample_encoder_layer_output = sample_encoder_layer(
+    tf.random.uniform((64, 43, 512)), False, None)
+
+sample_encoder_layer_output.shape  # (batch_size, input_seq_len, d_model)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorShape([64, 43, 512])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Nếu bạn chạy ra shape của output Encoder là <code class="highlighter-rouge">(batch_size, input_seq_length, d_model)</code> là đúng.</p>
+
+<h2 id="82-decoder-layer">8.2. Decoder layer</h2>
+
+<p>Mỗi một layer của Decoder layer sẽ bao gồm 3 sublayers:</p>
+
+<ul>
+  <li>Masked multi-head attention (với look ahead mask và padding mask).</li>
+  <li>Multi-head attention (với padding mask). Ma trận $\mathbf{V}$, $\mathbf{K}$ cùng lấy output từ Encoder và ma trận $\mathbf{Q}$ nhận output từ <em>masked multi-head attention</em>.</li>
+  <li>Point wise feed forward network</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>class DecoderLayer(tf.keras.layers.Layer):
+  def __init__(self, d_model, num_heads, dff, rate=0.1):
+    super(DecoderLayer, self).__init__()
+
+    self.mha1 = MultiHeadAttention(d_model, num_heads)
+    self.mha2 = MultiHeadAttention(d_model, num_heads)
+
+    self.ffn = point_wise_feed_forward_network(d_model, dff)
+ 
+    self.layernorm1 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+    self.layernorm2 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+    self.layernorm3 = tf.keras.layers.LayerNormalization(epsilon=1e-6)
+    
+    self.dropout1 = tf.keras.layers.Dropout(rate)
+    self.dropout2 = tf.keras.layers.Dropout(rate)
+    self.dropout3 = tf.keras.layers.Dropout(rate)
+    
+    
+  def call(self, x, enc_output, training, 
+           look_ahead_mask, padding_mask):
+    # enc_output.shape == (batch_size, input_seq_len, d_model)
+
+    attn1, attn_weights_block1 = self.mha1(x, x, x, look_ahead_mask)  # (batch_size, target_seq_len, d_model)
+    attn1 = self.dropout1(attn1, training=training)
+    out1 = self.layernorm1(attn1 + x)
+    
+    attn2, attn_weights_block2 = self.mha2(
+        enc_output, enc_output, out1, padding_mask)  # (batch_size, target_seq_len, d_model)
+    attn2 = self.dropout2(attn2, training=training)
+    out2 = self.layernorm2(attn2 + out1)  # (batch_size, target_seq_len, d_model)
+    
+    ffn_output = self.ffn(out2)  # (batch_size, target_seq_len, d_model)
+    ffn_output = self.dropout3(ffn_output, training=training)
+    out3 = self.layernorm3(ffn_output + out2)  # (batch_size, target_seq_len, d_model)
+    
+    return out3, attn_weights_block1, attn_weights_block2
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>sample_decoder_layer = DecoderLayer(512, 8, 2048)
+
+sample_decoder_layer_output, _, _ = sample_decoder_layer(
+    tf.random.uniform((64, 50, 512)), sample_encoder_layer_output, 
+    False, None, None)
+
+sample_decoder_layer_output.shape  # (batch_size, target_seq_len, d_model)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorShape([64, 50, 512])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Output shape của Decoder sẽ là <code class="highlighter-rouge">(batch_size, target_seq_len, d_model)</code>.</p>
+
+<h2 id="83-encoder">8.3. Encoder</h2>
+
+<p>Toàn bộ Encoder sẽ bao gồm:</p>
+
+<ul>
+  <li>Input Embedding</li>
+  <li>Positional Encoding</li>
+  <li>N encoder layers</li>
+</ul>
+
+<p>Input sau khi được Embedding sẽ được cộng với Positional Encoding. Kết quả tổng thu được tiếp tục được truyền qua N encoder layers.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>class Encoder(tf.keras.layers.Layer):
+  def __init__(self, num_layers, d_model, num_heads, dff, input_vocab_size,
+               maximum_position_encoding, rate=0.1):
+    super(Encoder, self).__init__()
+
+    self.d_model = d_model
+    self.num_layers = num_layers
+    
+    self.embedding = tf.keras.layers.Embedding(input_vocab_size, d_model)
+    self.pos_encoding = positional_encoding(maximum_position_encoding, 
+                                            self.d_model)
+    
+    
+    self.enc_layers = [EncoderLayer(d_model, num_heads, dff, rate) 
+                       for _ in range(num_layers)]
+  
+    self.dropout = tf.keras.layers.Dropout(rate)
+        
+  def call(self, x, training, mask):
+
+    seq_len = tf.shape(x)[1]
+    
+    # adding embedding and position encoding.
+    x = self.embedding(x)  # (batch_size, input_seq_len, d_model)
+    x *= tf.math.sqrt(tf.cast(self.d_model, tf.float32))
+    x += self.pos_encoding[:, :seq_len, :]
+
+    x = self.dropout(x, training=training)
+    
+    for i in range(self.num_layers):
+      x = self.enc_layers[i](x, training, mask)
+    
+    return x  # (batch_size, input_seq_len, d_model)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>sample_encoder = Encoder(num_layers=2, d_model=512, num_heads=8, 
+                         dff=2048, input_vocab_size=8500,
+                         maximum_position_encoding=10000)
+
+# Init sample tensorflow with shape 64 x 62 and data type int.
+temp_input = tf.random.uniform((64, 62), dtype=tf.int64, minval=0, maxval=200)
+
+sample_encoder_output = sample_encoder(temp_input, training=False, mask=None)
+
+print (sample_encoder_output.shape)  # (batch_size, input_seq_len, d_model)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(64, 62, 512)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="84-decoder">8.4. Decoder</h2>
+
+<p>Decoder sẽ bao gồm:</p>
+
+<ul>
+  <li>Output Embedding</li>
+  <li>Positional Embedding</li>
+  <li>N encoder layers</li>
+</ul>
+
+<p>Giá trị target được truyền qua Output Embedding và cộng với Positional Encoding. Tổng sau đó tiếp tục được truyền qua N encoder layers (Đã tính attention với output của Encoder). Output của decoder là input của linear layer cuối cùng.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>class Decoder(tf.keras.layers.Layer):
+  def __init__(self, num_layers, d_model, num_heads, dff, target_vocab_size,
+               maximum_position_encoding, rate=0.1):
+    super(Decoder, self).__init__()
+
+    self.d_model = d_model
+    self.num_layers = num_layers
+    
+    self.embedding = tf.keras.layers.Embedding(target_vocab_size, d_model)
+    self.pos_encoding = positional_encoding(maximum_position_encoding, d_model)
+    
+    self.dec_layers = [DecoderLayer(d_model, num_heads, dff, rate) 
+                       for _ in range(num_layers)]
+    self.dropout = tf.keras.layers.Dropout(rate)
+    
+  def call(self, x, enc_output, training, 
+           look_ahead_mask, padding_mask):
+
+    seq_len = tf.shape(x)[1]
+    attention_weights = {}
+    
+    x = self.embedding(x)  # (batch_size, target_seq_len, d_model)
+    x *= tf.math.sqrt(tf.cast(self.d_model, tf.float32))
+    x += self.pos_encoding[:, :seq_len, :]
+    
+    x = self.dropout(x, training=training)
+
+    for i in range(self.num_layers):
+      x, block1, block2 = self.dec_layers[i](x, enc_output, training,
+                                             look_ahead_mask, padding_mask)
+      
+      attention_weights['decoder_layer{}_block1'.format(i+1)] = block1
+      attention_weights['decoder_layer{}_block2'.format(i+1)] = block2
+    
+    # x.shape == (batch_size, target_seq_len, d_model)
+    return x, attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>sample_decoder = Decoder(num_layers=2, d_model=512, num_heads=8, 
+                         dff=2048, target_vocab_size=8000,
+                         maximum_position_encoding=5000)
+temp_input = tf.random.uniform((64, 26), dtype=tf.int64, minval=0, maxval=200)
+
+output, attn = sample_decoder(temp_input, 
+                              enc_output=sample_encoder_output, 
+                              training=False,
+                              look_ahead_mask=None, 
+                              padding_mask=None)
+
+output.shape, attn['decoder_layer2_block2'].shape
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(TensorShape([64, 26, 512]), TensorShape([64, 8, 26, 62]))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="9-create-transformer">9. Create transformer</h1>
+
+<p>MÔ hình transformer sẽ hình thành từ Encoder, Decoder và linear layer cuối cùng. Kết quả sau cùng là output của linear layer cuối cùng.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>class Transformer(tf.keras.Model):
+  def __init__(self, num_layers, d_model, num_heads, dff, input_vocab_size, 
+               target_vocab_size, pe_input, pe_target, rate=0.1):
+    super(Transformer, self).__init__()
+
+    self.encoder = Encoder(num_layers, d_model, num_heads, dff, 
+                           input_vocab_size, pe_input, rate)
+
+    self.decoder = Decoder(num_layers, d_model, num_heads, dff, 
+                           target_vocab_size, pe_target, rate)
+
+    self.final_layer = tf.keras.layers.Dense(target_vocab_size)
+    
+  def call(self, inp, tar, training, enc_padding_mask, 
+           look_ahead_mask, dec_padding_mask):
+    # print('enc_padding_mask: ', enc_padding_mask)
+    enc_output = self.encoder(inp, training, enc_padding_mask)  # (batch_size, inp_seq_len, d_model)
+    
+    # dec_output.shape == (batch_size, tar_seq_len, d_model)
+    dec_output, attention_weights = self.decoder(
+        tar, enc_output, training, look_ahead_mask, dec_padding_mask)
+    
+    final_output = self.final_layer(dec_output)  # (batch_size, tar_seq_len, target_vocab_size)
+    
+    return final_output, attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>sample_transformer = Transformer(
+    num_layers=2, d_model=512, num_heads=8, dff=2048, 
+    input_vocab_size=8500, target_vocab_size=8000, 
+    pe_input=10000, pe_target=6000)
+
+temp_input = tf.random.uniform((64, 38), dtype=tf.int64, minval=0, maxval=200)
+temp_target = tf.random.uniform((64, 36), dtype=tf.int64, minval=0, maxval=200)
+
+fn_out, _ = sample_transformer(temp_input, temp_target, training=False, 
+                               enc_padding_mask=None, 
+                               look_ahead_mask=None,
+                               dec_padding_mask=None)
+
+fn_out.shape  # (batch_size, tar_seq_len, target_vocab_size)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorShape([64, 36, 8000])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="10-set-hyperparameters">10. Set hyperparameters</h1>
+
+<p>Chúng ta sẽ cần thiết lập các tham số cho mô hình bao gồm:</p>
+
+<ol>
+  <li>Các tham số kiến trúc mô hình:</li>
+</ol>
+
+<ul>
+  <li>num_layers: Số lượng Attention sub-layer blocks của encoder và decoder.</li>
+  <li>d_model: Kích thước của véc tơ embedding.</li>
+  <li>num_heads: Số lượng các head trong một attention layer.</li>
+  <li>dff: Số lượng token tối đa cho phép của văn bản đầu vào.</li>
+</ul>
+
+<ol>
+  <li>Các tham số huấn luyện:</li>
+</ol>
+
+<ul>
+  <li>dropout_rate: Tỷ lệ drop out ở output.</li>
+  <li>input_vocab_size: Số lượng từ vựng của input.</li>
+  <li>target_vocab_size: Số lượng từ vựng của target.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>num_layers = 4
+d_model = 128
+dff = 512
+num_heads = 8
+
+input_vocab_size = tokenizer_ipt.vocab_size + 2
+target_vocab_size = tokenizer_opt.vocab_size + 2
+dropout_rate = 0.1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>print('input_vocab_size: ',  input_vocab_size)
+print('target_vocab_size: ', target_vocab_size)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>input_vocab_size:  8197
+target_vocab_size:  8135
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="11-optimizer">11. Optimizer</h1>
+
+<p>Sử dụng Adam optimizer với Learning rate đã được scheduler theo công thức tại <a href="https://arxiv.org/abs/1706.03762">paper</a>.</p>
+
+<script type="math/tex; mode=display">\Large{lrate = d_{model}^{-0.5} * min(step{\_}num^{-0.5}, step{\_}num * warmup{\_}steps^{-1.5})}</script>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>class CustomSchedule(tf.keras.optimizers.schedules.LearningRateSchedule):
+  def __init__(self, d_model, warmup_steps=4000):
+    super(CustomSchedule, self).__init__()
+    
+    self.d_model = d_model
+    self.d_model = tf.cast(self.d_model, tf.float32)
+
+    self.warmup_steps = warmup_steps
+    
+  def __call__(self, step):
+    arg1 = tf.math.rsqrt(step)
+    arg2 = step * (self.warmup_steps ** -1.5)
+    
+    return tf.math.rsqrt(self.d_model) * tf.math.minimum(arg1, arg2)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>learning_rate = CustomSchedule(d_model)
+
+optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.98, 
+                                     epsilon=1e-9)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>temp_learning_rate_schedule = CustomSchedule(d_model)
+
+plt.plot(temp_learning_rate_schedule(tf.range(40000, dtype=tf.float32)))
+plt.ylabel("Learning Rate")
+plt.xlabel("Train Step")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200528_TransformerThemDauTV/TransformerThemDauTV_96_1.png" class="largepic" /></p>
+
+<h1 id="12-loss-and-metrics">12. Loss and Metrics</h1>
+
+<p>Bởi vì câu mục tiêu và được padded, do đó chúng ta cũng phải áp dụng padding mask khi tính toán loss function.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>loss_object = tf.keras.losses.SparseCategoricalCrossentropy(
+    from_logits=True, reduction='none')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def loss_function(real, pred):
+  mask = tf.math.logical_not(tf.math.equal(real, 0))
+  loss_ = loss_object(real, pred)
+
+  mask = tf.cast(mask, dtype=loss_.dtype)
+  loss_ *= mask
+  
+  return tf.reduce_sum(loss_)/tf.reduce_sum(mask)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>train_loss = tf.keras.metrics.Mean(name='train_loss')
+train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(
+    name='train_accuracy')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="13-training-and-checkpointing">13. Training and checkpointing</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>transformer = Transformer(num_layers=num_layers, d_model=d_model, num_heads=num_heads, dff=dff,
+                          input_vocab_size=input_vocab_size, target_vocab_size=target_vocab_size, 
+                          pe_input=input_vocab_size, 
+                          pe_target=target_vocab_size,
+                          rate=dropout_rate)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>def create_masks(inp, tar):
+  # Encoder padding mask
+  enc_padding_mask = create_padding_mask(inp)
+
+  # Used in the 2nd attention block in the decoder.
+  # This padding mask is used to mask the encoder outputs.
+  dec_padding_mask = create_padding_mask(inp)
+  
+  # Used in the 1st attention block in the decoder.
+  # It is used to pad and mask future tokens in the input received by 
+  # the decoder.
+  look_ahead_mask = create_look_ahead_mask(tf.shape(tar)[1])
+  dec_target_padding_mask = create_padding_mask(tar)
+  combined_mask = tf.maximum(dec_target_padding_mask, look_ahead_mask)
+  return enc_padding_mask, combined_mask, dec_padding_mask
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>x = tf.constant([[7, 6, 0, 0, 0], [1, 2, 3, 0, 0], [6, 0, 0, 0, 0]])
+y = tf.constant([[1, 4, 5, 0, 0], [1, 4, 3, 0, 0], [1, 2, 0, 0, 0]])
+enc_padding_mask, combined_mask, dec_padding_mask = create_masks(x, y)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>combined_mask
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>&lt;tf.Tensor: shape=(3, 1, 5, 5), dtype=float32, numpy=
+array([[[[0., 1., 1., 1., 1.],
+         [0., 0., 1., 1., 1.],
+         [0., 0., 0., 1., 1.],
+         [0., 0., 0., 1., 1.],
+         [0., 0., 0., 1., 1.]]],
+
+
+       [[[0., 1., 1., 1., 1.],
+         [0., 0., 1., 1., 1.],
+         [0., 0., 0., 1., 1.],
+         [0., 0., 0., 1., 1.],
+         [0., 0., 0., 1., 1.]]],
+
+
+       [[[0., 1., 1., 1., 1.],
+         [0., 0., 1., 1., 1.],
+         [0., 0., 1., 1., 1.],
+         [0., 0., 1., 1., 1.],
+         [0., 0., 1., 1., 1.]]]], dtype=float32)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Chúng ta sẽ tạo ra một checkpoint path và checkpoint manager để lưu checkpoints (là trạng thái của model, có thể load lại để huấn luyện lại) sau mỗi <code class="highlighter-rouge">n=5</code> epochs.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>checkpoint_path = "./checkpoints/train_500k"
+
+ckpt = tf.train.Checkpoint(transformer=transformer,
+                           optimizer=optimizer)
+
+ckpt_manager = tf.train.CheckpointManager(ckpt, checkpoint_path, max_to_keep=5)
+
+# if a checkpoint exists, restore the latest checkpoint.
+if ckpt_manager.latest_checkpoint:
+  ckpt.restore(ckpt_manager.latest_checkpoint)
+  print ('Latest checkpoint restored!!')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Note:</strong> Layer embedding của Encoder sẽ lưu <code class="highlighter-rouge">input_vocabulary_size</code> và <code class="highlighter-rouge">target_vocabulary_size</code> theo bộ dữ liệu. Do đó nếu huấn luyện trên bộ dữ liệu mới thì sẽ không thể load lại model từ checkpoints cũ. Chúng ta cần chuyển sang một bộ checkpoints mới.</p>
+
+<p>Target sẽ được phân thành <code class="highlighter-rouge">tar_inp</code> và <code class="highlighter-rouge">tar_real</code>. <code class="highlighter-rouge">tar_inp</code> được truyền vào như là một input cho decoder. <code class="highlighter-rouge">tar_real</code> tương tự như <code class="highlighter-rouge">tar_inp</code> nhưng được dịch chuyển 1 đơn vị: Tại mỗi vị trí trong <code class="highlighter-rouge">tar_inp</code> ta sẽ có 1 vị trí tương ứng trong <code class="highlighter-rouge">tar_real</code> là token tiếp theo nên được dự báo.</p>
+
+<p>Chẳng hạn trong câu sentence = <code class="highlighter-rouge">SOS một con sư tử đang ngủ say trong rừng SOS</code></p>
+
+<p><code class="highlighter-rouge">tar_inp</code> = <code class="highlighter-rouge">SOS một con sư tử đang ngủ say trong rừng</code></p>
+
+<p><code class="highlighter-rouge">tar_real</code> = <code class="highlighter-rouge">một con sư tử đang ngủ say trong rừng SOS</code></p>
+
+<p>transformer là một mô hình tự hồi qui (auto-regressive model, một dạng model trong chuỗi thời gian sử dụng chính giá trị quá khử của chuỗi để dự báo giá trị hiện tại của chuỗi): và tạo ra một dự báo tại mỗi một time step. Nó sử dụng output của nó từ trước đến hiện tại để quyết định xem từ tiếp theo là gì.</p>
+
+<p>Trong quá trình huấn luyện ví dụ này sử dụng kỹ thuật teacher-forcing. Teacher-forcing sẽ bỏ qua giá trị đúng ở output để tới time step tiếp theo mà không quan tâm tới mô hình dự báo ra là gì tại time step hiện tại.</p>
+
+<p>Khi transformer dự báo mỗi từ, <code class="highlighter-rouge">self-attention</code> cho phép nó nhìn vào các từ liền trước trong chuỗi input để dự báo tốt hơn từ tiếp theo.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>EPOCHS = 100
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre># The @tf.function trace-compiles train_step into a TF graph for faster
+# execution. The function specializes to the precise shape of the argument
+# tensors. To avoid re-tracing due to the variable sequence lengths or variable
+# batch sizes (the last batch is smaller), use input_signature to specify
+# more generic shapes.
+
+train_step_signature = [
+    tf.TensorSpec(shape=(None, None), dtype=tf.int64),
+    tf.TensorSpec(shape=(None, None), dtype=tf.int64),
+]
+
+@tf.function(input_signature=train_step_signature)
+def train_step(inp, tar):
+  tar_inp = tar[:, :-1]
+  tar_real = tar[:, 1:]
+  enc_padding_mask, combined_mask, dec_padding_mask = create_masks(inp, tar_inp)
+  with tf.GradientTape() as tape:
+    predictions, _ = transformer(inp, tar_inp, 
+                                 True, 
+                                 enc_padding_mask, 
+                                 combined_mask, 
+                                 dec_padding_mask)
+    
+    loss = loss_function(tar_real, predictions)
+
+  gradients = tape.gradient(loss, transformer.trainable_variables)    
+  optimizer.apply_gradients(zip(gradients, transformer.trainable_variables))
+  
+  train_loss(loss)
+  train_accuracy(tar_real, predictions)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>for epoch in range(EPOCHS):
+  start = time.time()
+  
+  train_loss.reset_states()
+  train_accuracy.reset_states()
+  
+  # inp -&gt; non_diacritic, tar -&gt; diacritic
+  for (batch, (inp, tar)) in enumerate(train_dataset):
+    train_step(inp, tar)
+    
+    if batch % 50 == 0:
+      print ('Epoch {} Batch {} Loss {:.4f} Accuracy {:.4f}'.format(
+          epoch + 1, batch, train_loss.result(), train_accuracy.result()))
+      
+  if (epoch + 1) % 5 == 0:
+    ckpt_save_path = ckpt_manager.save()
+    print ('Saving checkpoint for epoch {} at {}'.format(epoch+1,
+                                                         ckpt_save_path))
+    
+  print ('Epoch {} Loss {:.4f} Accuracy {:.4f}'.format(epoch + 1, 
+                                                train_loss.result(), 
+                                                train_accuracy.result()))
+
+  print ('Time taken for 1 epoch: {} secs\n'.format(time.time() - start))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+</pre></td><td class="rouge-code"><pre>Epoch 1 Batch 0 Loss 0.2649 Accuracy 0.4796
+Epoch 1 Batch 50 Loss 0.2963 Accuracy 0.4298
+Epoch 1 Batch 100 Loss 0.2766 Accuracy 0.4315
+Epoch 1 Batch 150 Loss 0.2642 Accuracy 0.4315
+Epoch 1 Batch 200 Loss 0.2577 Accuracy 0.4350
+Epoch 1 Batch 250 Loss 0.2498 Accuracy 0.4351
+Epoch 1 Batch 300 Loss 0.2453 Accuracy 0.4347
+Epoch 1 Batch 350 Loss 0.2435 Accuracy 0.4345
+
+
+
+---------------------------------------------------------------------------
+
+KeyboardInterrupt                         Traceback (most recent call last)
+
+&lt;ipython-input-127-b21c3715fca0&gt; in &lt;module&gt;()
+      7   # inp -&gt; non_diacritic, tar -&gt; diacritic
+      8   for (batch, (inp, tar)) in enumerate(train_dataset):
+----&gt; 9     train_step(inp, tar)
+     10 
+     11     if batch % 50 == 0:
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py in __call__(self, *args, **kwds)
+    578         xla_context.Exit()
+    579     else:
+--&gt; 580       result = self._call(*args, **kwds)
+    581 
+    582     if tracing_count == self._get_tracing_count():
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py in _call(self, *args, **kwds)
+    609       # In this case we have created variables on the first call, so we run the
+    610       # defunned version which is guaranteed to never create variables.
+--&gt; 611       return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
+    612     elif self._stateful_fn is not None:
+    613       # Release the lock early so that multiple threads can perform the call
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in __call__(self, *args, **kwargs)
+   2418     with self._lock:
+   2419       graph_function, args, kwargs = self._maybe_define_function(args, kwargs)
+-&gt; 2420     return graph_function._filtered_call(args, kwargs)  # pylint: disable=protected-access
+   2421 
+   2422   @property
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in _filtered_call(self, args, kwargs)
+   1663          if isinstance(t, (ops.Tensor,
+   1664                            resource_variable_ops.BaseResourceVariable))),
+-&gt; 1665         self.captured_inputs)
+   1666 
+   1667   def _call_flat(self, args, captured_inputs, cancellation_manager=None):
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in _call_flat(self, args, captured_inputs, cancellation_manager)
+   1744       # No tape is watching; skip to running the function.
+   1745       return self._build_call_outputs(self._inference_function.call(
+-&gt; 1746           ctx, args, cancellation_manager=cancellation_manager))
+   1747     forward_backward = self._select_forward_and_backward_functions(
+   1748         args,
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in call(self, ctx, args, cancellation_manager)
+    596               inputs=args,
+    597               attrs=attrs,
+--&gt; 598               ctx=ctx)
+    599         else:
+    600           outputs = execute.execute_with_cancellation(
+
+
+/usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/execute.py in quick_execute(op_name, num_outputs, inputs, attrs, ctx, name)
+     58     ctx.ensure_initialized()
+     59     tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+---&gt; 60                                         inputs, attrs, num_outputs)
+     61   except core._NotOkStatusException as e:
+     62     if name is not None:
+
+
+KeyboardInterrupt: 
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="14-evaluate">14. Evaluate</h1>
+
+<p>Các bước sau đây được sử dụng để đánh giá:</p>
+
+<ul>
+  <li>
+    <p>Mã hóa câu đầu vào bằng cách sử dụng tokenizer input (tokenizer_pt). Ngoài ra , thêm mã bắt đầu và kết thúc để đầu vào tương đương với những gì mô hình đã huấn luyện. Đây sẽ là đầu vào cho encoder.</p>
+  </li>
+  <li>
+    <p>Đầu vào cho decoder là start token có index bằng với tokenizer_en.vocab_size.</p>
+  </li>
+  <li>
+    <p>Tính toán các padding masks và look ahead masks.</p>
+  </li>
+  <li>
+    <p>decoder sau đó đưa ra các dự đoán dựa trên đầu ra của encoder và đầu ra của chính nó (self-attention).</p>
+  </li>
+  <li>
+    <p>Chọn từ cuối cùng và tính argmax của từ đó.</p>
+  </li>
+  <li>
+    <p>Nối từ dự đoán với đầu vào decoder input khi chuyển từ đó đến decoder.</p>
+  </li>
+  <li>
+    <p>Trong phương pháp này, decoder dự đoán từ tiếp theo dựa trên các từ trước đó mà nó dự đoán.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="rouge-code"><pre>MAX_LENGTH = 40
+
+def evaluate(inp_sentence):
+  start_token = [tokenizer_ipt.vocab_size]
+  end_token = [tokenizer_ipt.vocab_size + 1]
+  
+  # inp sentence is non_diacritic, hence adding the start and end token
+  inp_sentence = start_token + tokenizer_ipt.encode(inp_sentence) + end_token
+  encoder_input = tf.expand_dims(inp_sentence, 0)
+  
+  # as the target is exist diacritic, the first word to the transformer should be the
+  # english start token.
+  decoder_input = [tokenizer_opt.vocab_size]
+  output = tf.expand_dims(decoder_input, 0)
+    
+  for i in range(MAX_LENGTH):
+    enc_padding_mask, combined_mask, dec_padding_mask = create_masks(
+        encoder_input, output)
+  
+    # predictions.shape == (batch_size, seq_len, vocab_size)
+    predictions, attention_weights = transformer(encoder_input, 
+                                                 output,
+                                                 False,
+                                                 enc_padding_mask,
+                                                 combined_mask,
+                                                 dec_padding_mask)
+    
+    # select the last word from the seq_len dimension
+    predictions = predictions[: ,-1:, :]  # (batch_size, 1, vocab_size)
+
+    predicted_id = tf.cast(tf.argmax(predictions, axis=-1), tf.int32)
+    
+    # return the result if the predicted_id is equal to the end token
+    if predicted_id == tokenizer_opt.vocab_size+1:
+      return tf.squeeze(output, axis=0), attention_weights
+    
+    # concatentate the predicted_id to the output which is given to the decoder
+    # as its input.
+    output = tf.concat([output, predicted_id], axis=-1)
+
+  return tf.squeeze(output, axis=0), attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo ta sẽ xây dựng biểu đồ heatmap visualize attention weight giữa 2 từ bất kỳ được lấy từ câu input và câu target.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre>def plot_attention_weights(attention, sentence, result, layer):
+  fig = plt.figure(figsize=(16, 8))
+  
+  sentence = tokenizer_ipt.encode(sentence)
+  
+  attention = tf.squeeze(attention[layer], axis=0)
+  
+  for head in range(attention.shape[0]):
+    ax = fig.add_subplot(2, 4, head+1)
+    
+    # plot the attention weights
+    ax.matshow(attention[head][:-1, :], cmap='viridis')
+
+    fontdict = {'fontsize': 10}
+    
+    ax.set_xticks(range(len(sentence)+2))
+    ax.set_yticks(range(len(result)))
+    
+    ax.set_ylim(len(result)-1.5, -0.5)
+        
+    ax.set_xticklabels(
+        ['&lt;start&gt;']+[tokenizer_ipt.decode([i]) for i in sentence]+['&lt;end&gt;'], 
+        fontdict=fontdict, rotation=90)
+    
+    ax.set_yticklabels([tokenizer_opt.decode([i]) for i in result 
+                        if i &lt; tokenizer_opt.vocab_size], 
+                       fontdict=fontdict)
+    
+    ax.set_xlabel('Head {}'.format(head+1))
+  
+  plt.tight_layout()
+  plt.show()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hàm translate sẽ có tác dụng chuyển đánh giá câu input và trả ra câu dự báo bằng cách giải mã chuỗi indices token được dự báo từ mô hình.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>def translate(sentence, plot=''):
+  result, attention_weights = evaluate(sentence)
+  
+  predicted_sentence = tokenizer_opt.decode([i for i in result 
+                                            if i &lt; tokenizer_opt.vocab_size])  
+
+  print('Input: {}'.format(sentence))
+  print('Predicted translation: {}'.format(predicted_sentence))
+  
+  if plot:
+    plot_attention_weights(attention_weights, sentence, result, plot)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>translate("tieng Viet la ngon ngu trong sang nhat the gioi")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Input: tieng Viet la ngon ngu trong sang nhat the gioi
+Predicted translation: tiếng Việt là ngôn ngữ trong sáng nhất thế giới
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>translate("hom nay thoi tiet tai Ha Noi rat nong", plot='decoder_layer4_block2')
+print ("Real translation: hôm nay thời tiết tại Hà Nội rất nóng")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Input: hom nay thoi tiet tai Ha Noi rat nong
+Predicted translation: hôm nay thời tiết tại Hà Nội rất nóng
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200528_TransformerThemDauTV/TransformerThemDauTV_120_1.png" class="largepic" /></p>
+
+<p>Ta có thể thấy khi visualize <code class="highlighter-rouge">encoder-decoder attention</code> từ một block layer trong decoder cho từng head trong multi-heads thì các vị trí từ ở encoder cùng mà vị trí với từ ở decoder sẽ có attention weight cao hơn.</p>
+
+<h1 id="15-pretrain-model">15. Pretrain model</h1>
+
+<p>Nếu bạn không muốn huấn luyện model từ đầu, bạn có thể sử dụng pretrained model đã được tôi huấn luyện bằng cách download các thư mục:</p>
+
+<ul>
+  <li>
+    <p>tokenizer: là tokenizer cho các subwords dùng để chuyển sequence sang indice.</p>
+  </li>
+  <li>
+    <p>checkpoint: Là checkpint, nơi lưu trữ last pretrain model để bạn có thể load lại cho dự báo.</p>
+  </li>
+</ul>
+
+<p>Cả 2 đều được đặt trong folder <a href="https://drive.google.com/drive/folders/11KSVIIDWlNknVZmoL1ugW8fxHJyrNBCr?usp=sharing">themdau_tv</a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!ls tokenizer
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>input_vocab.txt   tokenizer_ipt.pkl	  tokenizer_opt.pkl
+output_vocab.txt  tokenizer_ipt.subwords  tokenizer_opt.subwords
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre>import tensorflow_datasets as tfds
+import tensorflow as tf
+
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load tokenizer
+import pickle
+
+def _save_pickle(path, obj):
+  with open(path, 'wb') as f:
+    pickle.dump(obj, f)
+
+def _load_pickle(path):
+  with open(path, 'rb') as f:
+    obj = pickle.load(f)
+  return obj
+
+tokenizer_ipt = _load_pickle('tokenizer/tokenizer_ipt.pkl')
+tokenizer_opt = _load_pickle('tokenizer/tokenizer_opt.pkl')
+
+# Khai báo tham số
+num_layers = 4
+d_model = 128
+dff = 512
+num_heads = 8
+
+input_vocab_size = tokenizer_ipt.vocab_size + 2
+target_vocab_size = tokenizer_opt.vocab_size + 2
+dropout_rate = 0.1
+learning_rate = 0.01
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Nếu các bạn bắt đầu từ mục 15 này ngay từ đầu. Trước khi load model thì các bạn cần chạy lại toàn bộ code cho layers và mô hình ở mục 8 và 9. Đây là hạn chế của notebook so với python file. Trên python file chúng ta có thể import class giữa các files với nhau khá dễ dàng.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre># Load model
+transformer = Transformer(num_layers=num_layers, d_model=d_model, num_heads=num_heads, dff=dff,
+                          input_vocab_size=input_vocab_size, target_vocab_size=target_vocab_size, 
+                          pe_input=input_vocab_size, 
+                          pe_target=target_vocab_size,
+                          rate=dropout_rate)
+
+checkpoint_path = "./checkpoints/train_500k"
+
+ckpt = tf.train.Checkpoint(transformer=transformer)
+
+ckpt_manager = tf.train.CheckpointManager(ckpt, checkpoint_path, max_to_keep=5)
+
+# if a checkpoint exists, restore the latest checkpoint.
+if ckpt_manager.latest_checkpoint:
+  ckpt.restore(ckpt_manager.latest_checkpoint)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre>def evaluate(inp_sentence):
+  start_token = [ipt_vocab_size]
+  end_token = [ipt_vocab_size+1]
+  
+  # inp sentence is non_diacritic, hence adding the start and end token
+  inp_sentence = start_token + tokenizer_ipt.encode(inp_sentence) + end_token
+  encoder_input = tf.expand_dims(inp_sentence, 0)
+  
+  # as the target is exist diacritic, the first word to the transformer should be the
+  # english start token.
+  decoder_input = [opt_vocab_size]
+  output = tf.expand_dims(decoder_input, 0)
+    
+  for i in range(MAX_LENGTH):
+    enc_padding_mask, combined_mask, dec_padding_mask = create_masks(
+        encoder_input, output)
+  
+    # predictions.shape == (batch_size, seq_len, vocab_size)
+    predictions, attention_weights = transformer(encoder_input, 
+                                                 output,
+                                                 False,
+                                                 enc_padding_mask,
+                                                 combined_mask,
+                                                 dec_padding_mask)
+    
+    # select the last word from the seq_len dimension
+    predictions = predictions[: ,-1:, :]  # (batch_size, 1, vocab_size)
+
+    predicted_id = tf.cast(tf.argmax(predictions, axis=-1), tf.int32)
+    
+    # return the result if the predicted_id is equal to the end token
+    if predicted_id == opt_vocab_size+1:
+      return tf.squeeze(output, axis=0), attention_weights
+    
+    # concatentate the predicted_id to the output which is given to the decoder
+    # as its input.
+    output = tf.concat([output, predicted_id], axis=-1)
+
+  return tf.squeeze(output, axis=0), attention_weights
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def add_diacritic(sentence, plot=''):
+  result, attention_weights = evaluate(sentence)
+  predicted_sentence = tokenizer_opt.decode([i for i in result 
+                                            if i &lt; opt_vocab_size])  
+  print('Input: {}'.format(sentence))
+  print('Predicted translation: {}'.format(predicted_sentence))
+  if plot:
+    plot_attention_weights(attention_weights, sentence, result, plot)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Bên dưới là kết quả của một vài câu thử nghiệm</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>add_diacritic("hom nay thoi tiet tai Ha Noi rat nong")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Input: hom nay thoi tiet tai Ha Noi rat nong
+Predicted translation: hôm nay thời tiết tại Hà Nội rất nóng
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>add_diacritic("toi la mot nguoi rat yeu thich AI")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Input: toi la mot nguoi rat yeu thich AI
+Predicted translation: tôi là một người rất yêu thích AI
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>add_diacritic("toi muon tro thanh mot AI researcher noi tieng tren the gioi")
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Input: toi muon tro thanh mot AI researcher noi tieng tren the gioi
+Predicted translation: tôi muốn trở thành một AI researcher nổi tiếng trên thế giới
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="16-tổng-kết">16. Tổng kết</h1>
+
+<p>Như vậy qua bài viết này chúng ta đã được hướng dẫn từ bước thu thập dữ liệu, xây dựng các layers của kiến trúc transformer, huấn luyện mô hình và dự báo từ pretrained model.</p>
+
+<p>Thông qua việc thực hành chúng ta sẽ hiểu rõ hơn cấu trúc từng layer và các xử lý attention, mask trong tác vụ seq2seq. Bản thân tôi cũng phải bỏ ra rất nhiều thời gian để nghiên cứu bài viết này và viết lại như một tài liệu tham khảo khi cần. Bài viết được lấy từ nhiều nguồn liệt kê bên dưới.</p>
+
+<h1 id="17-tài-liệu-tham-khảo">17. Tài liệu tham khảo</h1>
+
+<ol>
+  <li>
+    <p><a href="https://www.tensorflow.org/tutorials/text/transformer">Transformer model for language understanding</a></p>
+  </li>
+  <li>
+    <p><a href="https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html">Bài 4 - Attention is all you need - Khanh Blog</a></p>
+  </li>
+  <li>
+    <p><a href="https://phamdinhkhanh.github.io/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch Seq2seq model correct spelling - Khanh Blog</a></p>
+  </li>
+  <li>
+    <p><a href="https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html">Bài 36 - BERT model - Khanh Blog</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
