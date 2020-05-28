@@ -4,11 +4,11 @@ author: phamdinhkhanh
 title: Bài 37 - Transformer thêm dấu Tiếng Việt
 ---
 
-# 1. Dữ liệu 
+# 1. Dữ liệu
 
-Nếu bạn đọc không quan tâm đến chuẩn bị dữ liệu có thể download [train_tieng_viet.txt](https://drive.google.com/file/d/1-7lERkqCoID1691yCXLAOyZoJqYPqhGq/view?usp=sharing) và chuyển sang mục 2 xây dựng mô hình.
+Thêm dấu Tiếng Việt có lẽ đã không còn là một bài toán quá xa lạ đối với cộng đồng AI Việt Nam. Đây là bài toán có tính ứng dụng cao và nhiều doanh nghiệp rất cần. Bản thân công ty mình (Adayroi trước đây) cũng có một dự án như thế. Trước đó thì mình chỉ sử dụng thuật toán LSTM và kết quả trả ra không tốt đối với các câu dài vì hạn chế của các thuật toán có tính tự hồi qui (autoregressive) trong chuỗi thời gian đó là sự phụ thuộc dài hạn kém. Sau đó thì mình chuyển qua kết hợp giữa LSTM là attention và kết quả đã cải thiện hơn. Bạn đọc có thể tham khảo tại [Bài 7 - Seq2seq model correct spelling Pytorch](https://phamdinhkhanh.github.io/2019/08/19/CorrectSpellingVietnamseTonePrediction.html). Trong bài này mình sẽ bỏ qua kiến trúc lối mòn của các thuật toán một chiều (Uni-directional) và thay thế bằng kiến trúc hai chiều (Bi-directional) sử dụng kỹ thuật transformer mà mình đã trình bày ở [Bài 4 - Attention is all you need](https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html), [Bài 36 - BERT model](https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html). Ngoài ra bạn đọc cũng có thể tham khảo các ý tưởng được trình bày tại cuộc thi thêm dấu tiếng việt của [1st](https://forum.machinelearningcoban.com/t/aivivn-3-vietnamese-tone-prediction-1st-place-solution/5721), [2st](https://forum.machinelearningcoban.com/t/aivivn-3-vietnamese-tone-prediction-2nd-place-solution/5759). Có rất nhiều các ý tưởng hay được trình bày.
 
-Ý tưởng lấy dữ liệu từ wikipedia cho Tiếng Việt được mình tham khảo từ bài viết của [Ứng dụng ML translation vào bài toán thêm dấu cho Tiếng Việt aivivn - QuangPham](https://viblo.asia/p/ung-dung-machine-translation-vao-bai-toan-them-dau-cho-tieng-viet-khong-dau-aivivn-challenge-3-3P0lP4a8lox)
+Trở lại với bài hướng dẫn này, đầu tiên mình sẽ hướng dẫn các bạn cách lấy dữ liệu. Nếu bạn đọc không quan tâm đến chuẩn bị dữ liệu có thể download [train_tieng_viet.txt](https://drive.google.com/file/d/1-7lERkqCoID1691yCXLAOyZoJqYPqhGq/view?usp=sharing) và chuyển sang mục 2 xây dựng mô hình.
 
 **Download dữ liệu viwikipedia**
 
@@ -590,7 +590,7 @@ temp
 
 Một attention sẽ sử dụng input là 3 ma trận: $\mathbf{Q}$ (query), $\mathbf{K}$ (key) và $\mathbf{V}$ (value). Theo sơ đồ như sau:
 
-<img src="https://www.tensorflow.org/images/tutorials/transformer/scaled_attention.png" width="500" alt="scaled_dot_product_attention">
+<img src="https://www.tensorflow.org/images/tutorials/transformer/scaled_attention.png" class="largepic" />
 
 Output thu được là ma trận attention của các từ lẫn nhau trong câu.
 
@@ -727,8 +727,7 @@ Véc tơ attention là [0, 1, 0, 0] chỉ tập trung vào vị trí thứ 2. Do
 
 # 6. Multi-head Attention
 
-<img src="https://www.tensorflow.org/images/tutorials/transformer/multi_head_attention.png" width="500" alt="multi-head attention">
-
+<img src="https://www.tensorflow.org/images/tutorials/transformer/multi_head_attention.png" class="largepic" />
 
 Multi-head attention sẽ bao gồm 4 phần:
 
@@ -827,7 +826,8 @@ def point_wise_feed_forward_network(d_model, dff):
 
 Toàn bộ kiến trúc của transformer sẽ bao gồm 2 nhánh Encoder và Decoder như bên dưới:
 
-<img src="https://www.tensorflow.org/images/tutorials/transformer/transformer.png" width="600" alt="transformer">
+<img src="https://www.tensorflow.org/images/tutorials/transformer/transformer.png" class="largepic" />
+
 
 * Câu input sẽ được embedding và truyền qua $N$ sub-layers block của encoder để sinh ra output cho mỗi từ trong câu.
 
@@ -1434,88 +1434,9 @@ for epoch in range(EPOCHS):
 
   print ('Time taken for 1 epoch: {} secs\n'.format(time.time() - start))
 ```
-
-    Epoch 1 Batch 0 Loss 0.2649 Accuracy 0.4796
-    Epoch 1 Batch 50 Loss 0.2963 Accuracy 0.4298
-    Epoch 1 Batch 100 Loss 0.2766 Accuracy 0.4315
-    Epoch 1 Batch 150 Loss 0.2642 Accuracy 0.4315
-    Epoch 1 Batch 200 Loss 0.2577 Accuracy 0.4350
-    Epoch 1 Batch 250 Loss 0.2498 Accuracy 0.4351
-    Epoch 1 Batch 300 Loss 0.2453 Accuracy 0.4347
-    Epoch 1 Batch 350 Loss 0.2435 Accuracy 0.4345
+    Epoch 20 Batch 350 Loss 0.2435 Accuracy 0.4345
     
-
-
-    ---------------------------------------------------------------------------
-
-    KeyboardInterrupt                         Traceback (most recent call last)
-
-    <ipython-input-127-b21c3715fca0> in <module>()
-          7   # inp -> non_diacritic, tar -> diacritic
-          8   for (batch, (inp, tar)) in enumerate(train_dataset):
-    ----> 9     train_step(inp, tar)
-         10 
-         11     if batch % 50 == 0:
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py in __call__(self, *args, **kwds)
-        578         xla_context.Exit()
-        579     else:
-    --> 580       result = self._call(*args, **kwds)
-        581 
-        582     if tracing_count == self._get_tracing_count():
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/def_function.py in _call(self, *args, **kwds)
-        609       # In this case we have created variables on the first call, so we run the
-        610       # defunned version which is guaranteed to never create variables.
-    --> 611       return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
-        612     elif self._stateful_fn is not None:
-        613       # Release the lock early so that multiple threads can perform the call
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in __call__(self, *args, **kwargs)
-       2418     with self._lock:
-       2419       graph_function, args, kwargs = self._maybe_define_function(args, kwargs)
-    -> 2420     return graph_function._filtered_call(args, kwargs)  # pylint: disable=protected-access
-       2421 
-       2422   @property
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in _filtered_call(self, args, kwargs)
-       1663          if isinstance(t, (ops.Tensor,
-       1664                            resource_variable_ops.BaseResourceVariable))),
-    -> 1665         self.captured_inputs)
-       1666 
-       1667   def _call_flat(self, args, captured_inputs, cancellation_manager=None):
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in _call_flat(self, args, captured_inputs, cancellation_manager)
-       1744       # No tape is watching; skip to running the function.
-       1745       return self._build_call_outputs(self._inference_function.call(
-    -> 1746           ctx, args, cancellation_manager=cancellation_manager))
-       1747     forward_backward = self._select_forward_and_backward_functions(
-       1748         args,
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/function.py in call(self, ctx, args, cancellation_manager)
-        596               inputs=args,
-        597               attrs=attrs,
-    --> 598               ctx=ctx)
-        599         else:
-        600           outputs = execute.execute_with_cancellation(
-    
-
-    /usr/local/lib/python3.6/dist-packages/tensorflow/python/eager/execute.py in quick_execute(op_name, num_outputs, inputs, attrs, ctx, name)
-         58     ctx.ensure_initialized()
-         59     tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
-    ---> 60                                         inputs, attrs, num_outputs)
-         61   except core._NotOkStatusException as e:
-         62     if name is not None:
-    
-
-    KeyboardInterrupt: 
-
+Do quá trình huấn luyện khá lâu nên mình chỉ dừng lại ở epochs 20.
 
 # 14. Evaluate
 
