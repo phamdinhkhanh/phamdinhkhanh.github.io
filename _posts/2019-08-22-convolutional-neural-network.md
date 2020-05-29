@@ -21,7 +21,7 @@ Trong một mạng nơ ron tích chập, các tầng liền sau lấy đầu và
 
 Xét quá trình trượt trên chiều $W_1$ của ma trận đầu vào. 
 
-![](https://raw.githubusercontent.com/phamdinhkhanh/Tensorflow/master/ConvWidthStep.png)
+<img src="https://raw.githubusercontent.com/phamdinhkhanh/Tensorflow/master/ConvWidthStep.png" class="large"/>
 
 **Hình 1:** Quá trình trượt theo chiều rộng (W1)
 
@@ -32,7 +32,7 @@ $$W_2 = [\frac{W_1-F}{S}]+1$$
 
 Chúng ta luôn có thể tạo ra đẳng thức (1) nhờ thêm phần *đường viền* (padding) tại các cạnh của ảnh với độ rộng viền là $P$ sao cho phép chia cho $S$ là chia hết. Khi đó: $$W_2 = \frac{W_1+2P-F}{S}+1$$
 
-![](https://raw.githubusercontent.com/phamdinhkhanh/Tensorflow/master/WidthPadding.png)
+<img src="https://raw.githubusercontent.com/phamdinhkhanh/Tensorflow/master/WidthPadding.png" class="large"/>
 
 **Hình 2:** Thêm padding kích thước P vào 2 lề chiều rộng (W1)
 
@@ -161,8 +161,7 @@ Như vậy ta có thể thấy một mạng nơ ron tích chập về cơ bản 
 
 * Quá trình kết nối hoàn toàn (fully connected): Sau khi đã giảm kích thước đến một mức độ hợp lý, ma trận cần được làm dẹt (flatten) thành một vector và sử dụng các kết nối hoàn toàn giữa các tầng. Quá trình này sẽ diễn ra cuối mạng CNN và sử dụng hàm kích hoạt là relu. Tầng kết nối hoàn toàn cuối cùng (fully connected layer) sẽ có số lượng đơn vị bằng với số classes và áp dụng hàm kích hoạt là softmax nhằm mục đích tính phân phối xác xuất.
 
-
-![](https://cdn-images-1.medium.com/max/800/1*NQQiyYqJJj4PSYAeWvxutg.png)
+<img src="https://cdn-images-1.medium.com/max/800/1*NQQiyYqJJj4PSYAeWvxutg.png" class="large"/>
 
 **Hình 3:** Cấu trúc đại diện của một mạng nơ ron tích chập, source: [Mathworks.com]( Source: https://www.mathworks.com/videos/introduction-to-deep-learning-what-are-convolutional-neural-networks--1489512765771.html)
 
@@ -171,17 +170,17 @@ Như vậy ta có thể thấy một mạng nơ ron tích chập về cơ bản 
 
 **Tính kết nối trượt:** Khác với các mạng nơ ron thông thường, mạng nơ ron tích chập không kết nối tới toàn bộ hình ảnh mà chỉ kết nối tới từng *vùng địa phương* (local region) hoặc vùng nhận thức (receptive field) có kích thước bằng kích thước bộ lọc của hình ảnh đó. Các bộ lọc sẽ trượt theo chiều của ảnh từ trái qua phải và từ trên xuống dưới đồng thời tính toán các giá trị tích chập và điền vào *bản đồ kích hoạt* (activation map) hoặc bản đồ đặc trưng (feature map).
 
-![](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/vImage/Art/kernel_convolution.jpg)
+<img src="https://developer.apple.com/library/archive/documentation/Performance/Conceptual/vImage/Art/kernel_convolution.jpg" class="large"/>
 
-**Hình 4:** Tính tích chập trên bản đồ kích hoạt,  Source:}$ [developer.apple.com](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/vImage/Art/kernel_convolution.jpg)
+**Hình 4:** Tính tích chập trên bản đồ kích hoạt,  Source: [developer.apple.com](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/vImage/Art/kernel_convolution.jpg)
 
-![](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)
+<img src="https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif" class="large"/>
 
 **Hình 5:** Quá trình trượt và tính tích chập của một bộ lọc kích thước 3x3 trên ảnh và kết nối tới bản đồ kích hoạt,  Source: [github - iamaaditya](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)
 
 **Các khối nơ ron 3D:** Không giống như những mạng nơ ron thông thường khi cấu trúc ở mỗi tầng là một ma trận 2D (batch size x số đơn vị ở mỗi tầng). Các kết quả ở mỗi tầng của một mạng nơ ron là một khối 3D được sắp xếp một cách hợp lý theo 3 chiều `rộng (width), cao (height), sâu (depth)`. Trong đó các chiều rộng và cao được tính toán theo công thức tích chập mục 1.1. Giá trị rộng ( cao) của một tầng phụ thuộc vào kích thước của bộ lọc, chiều rộng (cao) của tầng trước, độ rộng viền (padding) và bước trượt bộ lọc (stride). Tuy nhiên chiều sâu lại hoàn toàn không phụ thuộc vào những tham số này mà nó bằng với số bộ lọc trong tầng đó. Quá trình tính bản đồ kích hoạt dựa trên một bộ lọc sẽ tạo ra một ma trận 2D. Như vậy khi áp dụng cho $d$ bộ lọc khác nhau, mỗi bộ lọc có tác dụng trích suất một dạng đặc trưng trên mạng nơ ron, ta sẽ thu được $d$ ma trận 2D có cùng kích thước mà mỗi ma trận là một bản đồ đặc trưng. Khi sắp xếp chồng chất các ma trận này theo chiều sâu kết quả đầu ra là một khối nơ ron 3D. Thông thường đối với xử lý ảnh thì tầng đầu vào có depth = 3 (số kênh) nếu các bức ảnh đang để ở dạng màu gồm 3 kênh RBG. Bên dưới là một cấu trúc mạng nơ ron điển hình có dạng khối.
 
-![](https://www.mdpi.com/remotesensing/remotesensing-09-00848/article_deploy/html/images/remotesensing-09-00848-g001.png)
+<img src="https://www.mdpi.com/remotesensing/remotesensing-09-00848/article_deploy/html/images/remotesensing-09-00848-g001.png" class="gigantic"/>
 
 **Hình 6:** Cấu trúc các khối nơ ron 3D mạng Alexnet,  Source: [mdpi.com](https://www.mdpi.com/remotesensing/remotesensing-09-00848/article_deploy/html/images/remotesensing-09-00848-g001.png)
 
@@ -189,8 +188,7 @@ Như vậy ta có thể thấy một mạng nơ ron tích chập về cơ bản 
 
 Mỗi bộ lọc sẽ có khả năng trích xuất một đặc trưng nào đó như đã giải thích ở chương 1. Do đó khi đi qua toàn bộ các vùng địa phương của khối nơ ron 3D, các đặc trưng được trích xuất sẽ hiển thị trên tầng mới.
 
-
-![](http://cs231n.github.io/assets/cnn/depthcol.jpeg)
+<img src="http://cs231n.github.io/assets/cnn/depthcol.jpeg" class="large"/>
 
 **Hình 7:** Kết nối cục bộ,  Source: [cs231n - stanford](http://cs231n.github.io/assets/cnn/depthcol.jpeg)
 
@@ -198,7 +196,7 @@ Mỗi bộ lọc sẽ có khả năng trích xuất một đặc trưng nào đ�
 
 **Tính tổng hợp:** Ở các tầng tích chập gần cuối số tham số sẽ cực kì lớn do sự gia tăng của chiều sâu và thông thường sẽ theo cấp số nhân. Như vậy nếu không có một cơ chế kiểm soát sự gia tăng tham số, chi phí tính toán sẽ cực kì lớn và vượt quá khả năng của một số máy tính cấu hình yếu. Một cách tự nhiên là chúng ta sẽ giảm kích thước các chiều rộng và cao (down sampling) mà vẫn giữ nguyên được các đặc trưng của khối. Chúng ta cũng sử dụng những bộ lọc di chuyển trên bản đồ đặc trưng và tính trung bình (average pooling) hoặc giá trị lớn nhất (max pooling) của các phần tử trong vùng nhận thức. Trước đây các tính trung bình được áp dụng nhiều nhưng các mô hình hiện đại đã thay thế bằng giá trị lơn nhất do tốc độ tính max nhanh hơn so với trung bình.
 
-![](http://cs231n.github.io/assets/cnn/pool.jpeg)
+<img src="http://cs231n.github.io/assets/cnn/pool.jpeg" class="large"/>
 
 **Hình 8:** Quá trình tổng hợp,  Source: [cs231n - stanford](http://cs231n.github.io/assets/cnn/depthcol.jpeg)
 
@@ -206,7 +204,7 @@ Mỗi bộ lọc sẽ có khả năng trích xuất một đặc trưng nào đ�
 
 **Độ phức tạp phát hiện hình ảnh tăng dần:** Ở tầng đầu tiên, hình ảnh mà chúng ta có chỉ là những giá trị pixels. Sau khi đi qua tầng thứ 2 máy tính sẽ nhận diện được các hình dạng cạnh, rìa và các đường nét đơn giản được gọi là đặc trưng bậc thấp (low level). Càng ở những tầng tích chập về sau càng có khả năng phát hiện các đường nét phức tạp, đã rõ ràng hình thù và thậm chí là cấu thành vật thể, đây được gọi là những đặc trưng bậc cao (high level). Máy tính sẽ học từ tầng cuối cùng để nhận diện nhãn của hình ảnh.
 
-![](https://i.stack.imgur.com/oGBRR.jpg)
+<img src="https://i.stack.imgur.com/oGBRR.jpg" class="large"/>
 
 **Hình 9:** Hình ảnh mô phỏng các phát hiện sau mỗi tầng
 
