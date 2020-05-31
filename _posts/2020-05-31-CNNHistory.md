@@ -114,7 +114,7 @@ Ngoài ra mạng còn cải tiến trong quá trình optimizer như:
 
 * Lần đầu tiên sử dụng activation là ReLU (Rectified Linear Unit) thay cho Sigmoid. ReLU là hàm có tốc độ tính toán rất nhanh nhờ đạo hàm chỉ có 2 giá trị {0, 1} và không có lũy thừa cơ số $e$ như hàm sigmoid nhưng vẫn tạo ra được tính phi tuyến (`non-linear`).
 
-<img src="https://michielstraat.com/talk/mastertalk/featured.png" class="small"/>
+<img src="https://michielstraat.com/talk/mastertalk/featured.png" class="smallpic"/>
 
 **Hình 6:** Hàm ReLU công thức $\theta(x) = \max{(0, x)}$.
 
