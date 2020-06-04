@@ -826,6 +826,7 @@ print('length of y: ', len(y))
 
 ### 8.4. Load model BERT
 
+Tiếp theo ta sẽ load pretrain model BERT từ file weight mà chúng ta đã download trước đó. Để tùy chỉnh mô hình cho phù hợp với tác vụ phân loại văn bản. Chúng ta sẽ thêm vào sau cùng pretrain model một head layer là linear projection có số units ở output bằng với số lượng classes cần phân loại và bằng 10 thông qua hàm `phoBERT_cls.register_classification_head('new_task', num_classes=10)`. Cụ thể như sau:
 
 ```
 # Load the model in fairseq
@@ -865,9 +866,7 @@ logprobs
 
 ### 8.5. Huấn luyện model
 
-
-
-Xây dựng hàm đánh giá mô hình theo 2 metric là `accuracy` và `f1_score`.
+Trước khi huấn luyện mô hình chúng ta sẽ xây dựng các hàm đánh giá mô hình theo 2 metric là `accuracy` và `f1_score`.
 
 
 ```
