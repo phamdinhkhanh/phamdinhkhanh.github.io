@@ -4,21 +4,26 @@ author: phamdinhkhanh
 title: Bài 39 - Thực hành ứng dụng BERT
 ---
 
-## 1. Lý do tại sao mình viết về BERT
+## 1. BERT trong Tiếng Việt
 
-Ở bài trước chúng ta đã tìm hiểu về model BERT. Kể từ khi model BERT được launching, các giới hạn trong NLP dường như được phá vỡ. Việc học chuyển giao trở nên khả thi hơn, các tác vụ down stream task lần lượt được cải thiện.
+Ở bài 36 chúng ta đã tìm hiểu về các kiến trúc của model BERT gồm BERT Base, BERT Large và những ứng dụng trong các tác vụ NLP của nó. Sự ra đời của model BERT là một cột mốc rất quan trọng của ngành NLP mà chúng ta có thể phân chia các giai đoạn phát triển thành trước BERT và sau BERT. Các kết quả ứng dụng BERT đã phá vỡ các giới hạn trong NLP khi các pretrain model của nó xác lập nhiều kết quả SOTA trong nhiều tác vụ. Để chứng minh cho những gì tôi nói là không nhảm nhí, bạn đọc có thể theo dõi tại [leader board GLUE benchmark](https://gluebenchmark.com/leaderboard). Bên cạnh đó BERT giúp cho quá trình học chuyển giao trở nên khả thi hơn khi có thể can thiệp và fine tuning kiến trúc mô hình nhiều tầng ở mức độ sâu thay vì học nông như các mô hình trước.
 
-Đối với Tiếng Việt thì [PhoBERT](https://github.com/VinAIResearch/PhoBERT) có thể coi là một trong những project đầu tiên của BERT dành cho Tiếng Việt được public. Cá nhân mình sử dụng PhoBERT thì thấy đây là một pretrained model với độ chính xác rất tốt. Bạn đọc cũng có thể tự cảm nhận qua các phần thực hành ở bài hướng dẫn này. 
+Kể từ khi google public mã nguồn mở của BERT, lần lượt các mô hình pretrain của BERT trên ngôn ngữ đơn và song ngữ ra đời và được chia sẻ rộng rãi. Đối với Tiếng Việt chúng ta có [PhoBERT](https://github.com/VinAIResearch/PhoBERT) là một trong những pretrain model tốt. Cá nhân mình sử dụng PhoBERT thì thấy các tác vụ NLP trong Tiếng Việt được cải thiện và đạt độ chính xác cao. Bạn đọc cũng có thể tự cảm nhận qua các phần thực hành ở bài hướng dẫn này. Trong Tiếng Việt thì chúng ta có thể ứng dụng BERT trong các tác vụ như:
 
-Mặc dù model BERT có rất nhiều các ứng dụng có thể fine tunning cho nhưng không thực sự nhiều bạn biết cách thực hiện. Gần đây mình cũng nhận được một vài Inbox hỏi về cách áp dụng BERT như thế nào. Đó chính là động lực để mình viết bài viết này nhằm mục đích tổng kết lại các ứng dụng của model BERT cho mọi người.
+* Tìm từ đồng nghĩa, trái nghĩa, cùng nhóm dựa trên khoảng cách của từ trong không gian biểu diễn đa chiều.
+* Xây dựng các véc tơ embedding cho các tác vụ NLP như sentiment analysis, phân loại văn bản, NER, POS, huấn luyện chatbot.
+* Gợi ý từ khóa tìm kiếm trong các hệ thống search.
+* Xây dựng các ứng dụng seq2seq như robot viết báo, tóm tắt văn bản, sinh câu ngẫu nhiên với ý nghĩa tương đồng.
+
+Và nhiều những ứng dụng khác mà mình chưa liệt kê hết. Mặc dù model BERT có rất nhiều các ứng dụng có thể fine tuning nhưng không thực sự nhiều bạn biết cách áp dụng. Một phần là bởi để fine tuning được BERT đòi hỏi bạn phải có kỹ năng lập trình với các deep learning framework như pytorch, tensorflow và thực sự hiểu sâu về kiến trúc và nguyên lý hoạt động của BERT. Gần đây mình cũng nhận được một vài inbox hỏi về cách áp dụng BERT như thế nào trong các tác vụ NLP. Mình cũng dành một thời gian để tìm hiểu và nghiên cứu sâu về mã nguồn và tham khảo các hướng dẫn. Chính vì vậy, bài viết này mình sẽ chia sẻ lại các ứng dụng của model BERT đối với Tiếng Việt mà mình đúc kết được. Nếu bạn đọc có thêm nhiều cách ứng dụng mới của BERT trong Tiếng Việt thì mình rất vui để đón nhận chia sẻ từ các bạn.
 
 Trước khi tìm hiểu bài này mình khuyến nghị các bạn nên đọc qua [Bài 36 - BERT model](https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html) để hiểu về model BERT là gì và nguyên lý hoạt động của model BERT.
 
 ## 2. Kiến trúc RoBERTa
 
-RoBERTa là một project của facebook implement lại model BERT trên pytorch. Đây là một project support khá tốt việc huấn luyện lại trên những bộ dữ liệu mới cho các nguôn ngữ khác ngoài các ngôn ngữ phổ biến như Tiếng Anh, Tiếng Pháp,....
+RoBERTa là một project của facebook kế thừa lại các kiến trúc và thuật toán của model BERT trên framework pytorch. Đây là một project support khá tốt việc huấn luyện lại trên những bộ dữ liệu mới cho các nguôn ngữ khác ngoài một số ngôn ngữ phổ biến. Đã có rất nhiều các mô hình pretrain cho những ngôn ngữ khác nhau được huấn luyện trên kiến trúc RoBERTa.
 
-RoBERTa lặp lại các thủ tục huấn luyện từ model BERT, nhưng có sự thay đổi đó là huấn luyện mô hình lâu hơn, với batch size lớn hơn và trên nhiều dữ liệu hơn. Ngoài ra để nâng cao độ chuẩn xác trong biểu diễn từ thì RoBERTa đã loại bỏ tác vụ dự đoán câu tiếp theo và huấn luyện trên các câu dài hơn. Đồng thời mô hình cũng thay đổi linh hoạt kiểu masking (tức ẩn đi một số từ ở câu output bằng token `<mask>`) áp dụng cho dữ liệu huấn luyện.
+Tuy RoBERTa lặp lại các thủ tục huấn luyện từ model BERT, nhưng có sự thay đổi đó là huấn luyện mô hình lâu hơn, với batch size lớn hơn và trên nhiều dữ liệu hơn. Ngoài ra để nâng cao độ chuẩn xác trong biểu diễn từ thì RoBERTa đã loại bỏ tác vụ dự đoán câu tiếp theo và huấn luyện trên các câu dài hơn. Đồng thời mô hình cũng thay đổi linh hoạt kiểu masking (tức ẩn đi một số từ ở câu output bằng token `<mask>`) áp dụng cho dữ liệu huấn luyện.
 
 Bạn đọc có thể tìm hiểu thêm về kiến trúc này qua bài báo về [RoBERTa](https://arxiv.org/abs/1907.11692).
 
@@ -27,7 +32,6 @@ Bạn đọc có thể tìm hiểu thêm về kiến trúc này qua bài báo v�
 Để bắt đầu bài thực hành, bạn đọc có thể mở file [PhoBERT - tutorial Khanh Blog](https://colab.research.google.com/drive/16a4XFPioXYzQwyTusmzi1IiGP8kCHT9t?usp=sharing) và bắt đầu từ đây.
 
 ## 3. Load model BERT
-
 
 ```
 from google.colab import drive
