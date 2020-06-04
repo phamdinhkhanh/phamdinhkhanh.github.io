@@ -6,32 +6,34 @@ title: Bài 39 - Thực hành ứng dụng BERT
 
 ## 1. BERT trong Tiếng Việt
 
-Ở bài 36 chúng ta đã tìm hiểu về các kiến trúc của model BERT gồm BERT Base, BERT Large và những ứng dụng trong các tác vụ NLP của nó. Sự ra đời của model BERT là một cột mốc rất quan trọng của ngành NLP mà chúng ta có thể phân chia các giai đoạn phát triển thành trước BERT và sau BERT. Các kết quả ứng dụng BERT đã phá vỡ các giới hạn trong NLP khi các pretrain model của nó xác lập nhiều kết quả SOTA trong nhiều tác vụ. Để chứng minh cho những gì tôi nói là không nhảm nhí, bạn đọc có thể theo dõi tại [leader board GLUE benchmark](https://gluebenchmark.com/leaderboard). Bên cạnh đó BERT giúp cho quá trình học chuyển giao trở nên khả thi hơn khi có thể can thiệp và fine tuning kiến trúc mô hình nhiều tầng ở mức độ sâu thay vì học nông như các mô hình trước.
+Ở bài 36 chúng ta đã tìm hiểu về các kiến trúc của model BERT gồm BERT Base, BERT Large và những ứng dụng trong các tác vụ NLP của nó. Sự ra đời của model BERT là một cột mốc rất quan trọng của ngành NLP mà có thể phân chia thành giai đoạn phát triển trước BERT và sau BERT. Các kết quả ứng dụng BERT đã phá vỡ các giới hạn trong NLP với rất nhiều các pretrain model xác lập kết quả SOTA trong các tác vụ. Để chứng minh cho những gì tôi nói là không nhảm nhí, bạn đọc có thể theo dõi tại [leader board GLUE benchmark](https://gluebenchmark.com/leaderboard). Bên cạnh đó BERT giúp cho quá trình học chuyển giao trở nên khả thi hơn khi có thể can thiệp và fine tuning mô hình học sâu nhiều tầng ở mức độ sâu thay vì can thiệp nông như các mô hình trước.
 
-Kể từ khi google public mã nguồn mở của BERT, lần lượt các mô hình pretrain của BERT trên ngôn ngữ đơn và song ngữ ra đời và được chia sẻ rộng rãi. Đối với Tiếng Việt chúng ta có [PhoBERT](https://github.com/VinAIResearch/PhoBERT) là một trong những pretrain model tốt. Cá nhân mình sử dụng PhoBERT thì thấy các tác vụ NLP trong Tiếng Việt được cải thiện và đạt độ chính xác cao. Bạn đọc cũng có thể tự cảm nhận qua các phần thực hành ở bài hướng dẫn này. Trong Tiếng Việt thì chúng ta có thể ứng dụng BERT trong các tác vụ như:
+Kể từ khi google public mã nguồn mở của BERT, đã có rất nhiều các dự án mã nguồn mở về BERT hỗ trợ huấn luyện và chia sẻ các mô hình pretrain BERT trên ngôn ngữ đơn phương và song ngữ. Đối với Tiếng Việt chúng ta có [PhoBERT](https://github.com/VinAIResearch/PhoBERT) . Cá nhân mình sử dụng PhoBERT thì thấy các tác vụ NLP trong Tiếng Việt được cải thiện và đạt độ chính xác cao. Bạn đọc cũng có thể tự cảm nhận qua các phần thực hành ở bài hướng dẫn này. Trong Tiếng Việt thì chúng ta có thể ứng dụng BERT trong một số tác vụ như:
 
 * Tìm từ đồng nghĩa, trái nghĩa, cùng nhóm dựa trên khoảng cách của từ trong không gian biểu diễn đa chiều.
 * Xây dựng các véc tơ embedding cho các tác vụ NLP như sentiment analysis, phân loại văn bản, NER, POS, huấn luyện chatbot.
 * Gợi ý từ khóa tìm kiếm trong các hệ thống search.
 * Xây dựng các ứng dụng seq2seq như robot viết báo, tóm tắt văn bản, sinh câu ngẫu nhiên với ý nghĩa tương đồng.
 
-Và nhiều những ứng dụng khác mà mình chưa liệt kê hết. Mặc dù model BERT có rất nhiều các ứng dụng có thể fine tuning nhưng không thực sự nhiều bạn biết cách áp dụng. Một phần là bởi để fine tuning được BERT đòi hỏi bạn phải có kỹ năng lập trình với các deep learning framework như pytorch, tensorflow và thực sự hiểu sâu về kiến trúc và nguyên lý hoạt động của BERT. Gần đây mình cũng nhận được một vài inbox hỏi về cách áp dụng BERT như thế nào trong các tác vụ NLP. Mình cũng dành một thời gian để tìm hiểu và nghiên cứu sâu về mã nguồn và tham khảo các hướng dẫn. Chính vì vậy, bài viết này mình sẽ chia sẻ lại các ứng dụng của model BERT đối với Tiếng Việt mà mình đúc kết được. Nếu bạn đọc có thêm nhiều cách ứng dụng mới của BERT trong Tiếng Việt thì mình rất vui để đón nhận chia sẻ từ các bạn.
+Và nhiều những ứng dụng khác mà mình có thể chưa liệt kê hết, rất mong bạn đọc bổ sung thêm. Mặc dù model BERT có rất nhiều các ứng dụng có thể fine tuning nhưng không thực sự nhiều bạn biết cách áp dụng. Một phần là bởi để fine tuning được BERT đòi hỏi bạn phải có kỹ năng lập trình với các deep learning framework như pytorch, tensorflow và thực sự hiểu sâu về kiến trúc và nguyên lý hoạt động của BERT. Gần đây mình nhận được một vài inbox hỏi về cách áp dụng BERT như thế nào trong các tác vụ NLP. Mình đã dành một thời gian để tìm hiểu và nghiên cứu sâu về mã nguồn và tham khảo các hướng dẫn. Chính vì vậy, bài viết này mình sẽ chia sẻ lại các ứng dụng của model BERT đối với Tiếng Việt mà mình đúc kết được. Nếu bạn đọc có thêm nhiều cách ứng dụng mới của BERT trong Tiếng Việt thì mình rất vui để đón nhận chia sẻ từ các bạn.
 
 Trước khi tìm hiểu bài này mình khuyến nghị các bạn nên đọc qua [Bài 36 - BERT model](https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html) để hiểu về model BERT là gì và nguyên lý hoạt động của model BERT.
 
 ## 2. Kiến trúc RoBERTa
 
-RoBERTa là một project của facebook kế thừa lại các kiến trúc và thuật toán của model BERT trên framework pytorch. Đây là một project support khá tốt việc huấn luyện lại trên những bộ dữ liệu mới cho các nguôn ngữ khác ngoài một số ngôn ngữ phổ biến. Đã có rất nhiều các mô hình pretrain cho những ngôn ngữ khác nhau được huấn luyện trên kiến trúc RoBERTa.
+RoBERTa là một project của facebook kế thừa lại các kiến trúc và thuật toán của model BERT trên framework pytorch (pytorch cũng là một framework do facebook phát triển, rất được ưa chuộng bởi cộng đồng AI). Đây là một project hỗ trợ việc huấn luyện lại các model BERT trên những bộ dữ liệu mới cho các nguôn ngữ khác ngoài một số ngôn ngữ phổ biến. Kể từ khi ra đời, đã có rất nhiều các mô hình pretrain cho những ngôn ngữ khác nhau được huấn luyện trên RoBERTa.
 
-Tuy RoBERTa lặp lại các thủ tục huấn luyện từ model BERT, nhưng có sự thay đổi đó là huấn luyện mô hình lâu hơn, với batch size lớn hơn và trên nhiều dữ liệu hơn. Ngoài ra để nâng cao độ chuẩn xác trong biểu diễn từ thì RoBERTa đã loại bỏ tác vụ dự đoán câu tiếp theo và huấn luyện trên các câu dài hơn. Đồng thời mô hình cũng thay đổi linh hoạt kiểu masking (tức ẩn đi một số từ ở câu output bằng token `<mask>`) áp dụng cho dữ liệu huấn luyện.
+Ở bài báo gốc cho biết mặc dù RoBERTa lặp lại các thủ tục huấn luyện từ model BERT, nhưng có một thay đổi đó là huấn luyện mô hình lâu hơn, với batch size lớn hơn và trên nhiều dữ liệu hơn. Ngoài ra để nâng cao độ chuẩn xác trong biểu diễn từ thì RoBERTa đã loại bỏ tác vụ dự đoán câu tiếp theo và huấn luyện trên các câu dài hơn. Đồng thời mô hình cũng thay đổi linh hoạt kiểu masking (tức ẩn đi một số từ ở câu output bằng token `<mask>`) áp dụng cho dữ liệu huấn luyện.
 
 Bạn đọc có thể tìm hiểu thêm về kiến trúc này qua bài báo về [RoBERTa](https://arxiv.org/abs/1907.11692).
 
-Ở các mục tiếp theo mình sẽ hướng dẫn các bạn khai thác các ứng dụng của model RoBERTa thông qua pretrain model PhoBERT cho Tiếng Việt.
+Ở các mục tiếp theo mình sẽ hướng dẫn các bạn triển khai áp dụng model RoBERTa thông qua pretrain model PhoBERT cho Tiếng Việt.
 
 Để bắt đầu bài thực hành, bạn đọc có thể mở file [PhoBERT - tutorial Khanh Blog](https://colab.research.google.com/drive/16a4XFPioXYzQwyTusmzi1IiGP8kCHT9t?usp=sharing) và bắt đầu từ đây.
 
 ## 3. Load model BERT
+
+Để áp dụng được model BERT thì trước tiên chúng ta cần phải load được model. Ví dụ này mình sẽ thực hành trên google colab. Bạn đọc cần mount google drive bằng câu lệnh bên dưới.
 
 ```
 from google.colab import drive
@@ -43,7 +45,7 @@ os.chdir(path)
 !ls
 ```
 
-Để load model BERT chúng ta sẽ cần cài đặt các packages sau đây:
+Chúng ta sẽ cần cài đặt các dependency packages sau đây:
 
 * [fairseq](https://github.com/pytorch/fairseq): Là project của facebook chuyên hỗ trợ các nghiên cứu và dự án liên quan đến model seq2seq.
 
@@ -61,24 +63,24 @@ os.chdir(path)
 !pip3 install transformers
 ```
 
-Tiếp theo chúng ta sẽ cần download các model pretrain từ [PhoBERT](https://github.com/VinAIResearch/PhoBERT).
+Tiếp theo là download các model pretrain từ list các pretrain models được liệt kê trong [PhoBERT](https://github.com/VinAIResearch/PhoBERT).
 
-Trong hướng dẫn này mình chỉ sử dụng pretrain model BERT base được huấn luyện từ package fairseq.
-
+Trong hướng dẫn này mình chỉ sử dụng pretrain model BERT base được huấn luyện từ package fairseq. Download và giải nén chúng bằng lần lượt các lệnh `wget` và `tar`.
 
 ```
 !wget https://public.vinai.io/PhoBERT_base_fairseq.tar.gz
 !tar -xzvf PhoBERT_base_fairseq.tar.gz
 ```
 
-Sau khi download và giải nén pretrain file chúng ta sẽ kiểm tra thấy bên trong folder sẽ bao gồm 3 files đó là `bpe.codes, dict.txt, model.pt` có tác dụng như sau:
+Sau khi download và giải nén pretrain model chúng ta sẽ kiểm tra thấy bên trong folder sẽ bao gồm 3 files đó là `bpe.codes, dict.txt, model.pt` có tác dụng như sau:
 
 * bpe.codes: Là BPE token mà mô hình đã áp dụng để mã hóa văn bản sang index.
 
-* dict.txt: Từ điển của bộ dữ liệu huấn luyện.
+* dict.txt: Từ điển subword của bộ dữ liệu huấn luyện.
 
 * model.pt: File lưu trữ của mô hình trên pytorch.
 
+Về BPE và subword là gì mình sẽ lý giải ở chương `4. Tìm hiểu về mã hóa BPE (Byte Pair Encoding)`.
 
 ```
 !ls PhoBERT_base_fairseq
@@ -147,11 +149,11 @@ phoBERT.eval()  # disable dropout (or leave in train mode to finetune
     )
 
 
-Ta có thể thấy kiến trúc RoBERTa đã giữa lại 12 block sub-layers là các multi-head attention ở phase Encoder và thêm một linear projection layer ở cuối để tạo ra một embedding cho từ hiện tại.
+Ta có thể thấy kiến trúc RoBERTa theo BERT base đã giữa lại 12 block sub-layers là các multi-head attention ở phase Encoder và thêm một linear projection layer ở cuối để tạo ra véc tơ embedding cho từ. Ở mỗi multi-head attention, các output self-attention được khởi tạo từ quá trình nhân kết hợp giữa các ma trận chiếu Key, Value và Query. Các bạn có thể tìm hiểu về quá trình này ở [Bài 4 - Attention is all you need](https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html) của block.
 
 ## 4. Tìm hiểu về mã hóa BPE (Byte Pair Encoding)
 
-Toknenize là quá trình mã hóa các văn bản thành các index dạng số mang thông tin của văn bản để máy tính có thể huấn luyện được. Khi đó mỗi một từ hoặc ký tự sẽ được đại diện bởi một index. 
+Toknenize là quá trình mã hóa các văn bản thành các index dạng số mang thông tin của văn bản để cho máy tính có thể huấn luyện được. Khi đó mỗi một từ hoặc ký tự sẽ được đại diện bởi một index. 
 
 Trong NLP có một số kiểu tokenize như sau:
 
@@ -193,8 +195,6 @@ Bạn sẽ dễ hình dung hơn qua ví dụ bên dưới:
 Gỉa sử từ điển của chúng ta gồm các từ với tần suất như sau: `vocab = {'l o w </w>': 5, 'l o w e r </w>': 2, 'n e w e s t </w>': 6, 'w i d e s t </w>': 3}`.
 
 Coi mỗi ký tự là một token. Khi đó thống kê tần suất xuất hiện của các cặp ký tự như sau:
-
-
 
 ```
 import collections
@@ -373,22 +373,22 @@ phoBERT.decode(tokens)  # 'Hello world!'
 
     'Tôn Ngộ Không phò Đường Tăng đi Tây Trúc thỉnh kinh'
 
-
+Số lượng các token là 13 lớn hơn số lượng các từ là 11 là vì BERT đã tự thêm các ký tự `<s>` và `</s>` đánh dầu từ bắt đầu và kết thúc câu.
 
 ## 5. Extract features từ RoBERTa
 
-Huấn luyện mô hình theo RoBERTa sẽ thu được các version:
+Có 2 versions chính trả về 2 kích thước embedding khác nhau khi huấn luyện theo RoBERTa đó là:
 
 * `BERT base`: 12 sub-layers, kích thước embedding 768, số lượng head attention là 12.
 * `BERT large`: 24 sub-layers, kích thước embedding 1024, số lượng head attention là 16.
 
-Chúng ta có thể trích xuất được các đặc trưng được tạo ra từ BERT tại phase Encoder tại layers cuối cùng hoặc toàn bộ các layers.
+Chúng ta có thể trích xuất được các đặc trưng được tạo ra từ BERT của phase Encoder tại layers cuối cùng hoặc toàn bộ các layers. Ngoài phương án trích suất véc tơ embedding tại layer cuối cùng, một số tác vụ classification trong NLP đã áp dụng trích suất đặc trưng từ từ những layers trước đó chẳng hạn như trong tác vụ [PhoBERT Sentiment Classification](https://github.com/suicao/PhoBert-Sentiment-Classification) tác giả đã trích suất đặc trưng từ 4 layers cuối cùng thay vì chỉ trích suất từ một layer cuối.
 
 <img src="https://phamdinhkhanh.github.io/assets/images/20190616_attention/EncoderInTransformer.png" class="largepic"/>
 
 **Hình 1:** Kiến trúc gồm nhiều layers tại encoder của model BERT. Mô hình huấn luyện từ RoBERTa cho phép ta trích suất các đặc trưng từ những layers của encoder. Có thể là layer cuối hoặc toàn bộ các layers.
 
-Kích thước output tại các layers sẽ là `batch_size x seq_len x d_model`. 
+Kích thước output của mỗi một layer sẽ là `batch_size x seq_len x d_model`. Phương pháp trích suất như sau:
 
 
 ```
@@ -418,7 +418,7 @@ print('Last layer features: ', all_layers[-1] == last_layer_features)
              [True, True, True,  ..., True, True, True]]])
     
 
-## 6. Filling mask
+## 6. Điền từ (Filling mask)
 
 Trong bài toán này chúng ta sẽ điền các từ hợp lý vào các vị trí còn trống của câu. Trên thực tế có rất nhiều ứng dụng của bài toàn filling mask như xây dựng hệ thống suggestion search, gợi ý gõ văn bản, tìm từ đồng nghĩa, tagging.
 
@@ -500,11 +500,13 @@ for i, output in enumerate(topk_filled_outputs):
     Tôn_Ngộ_Không , Đường Tăng đi thỉnh_kinh tại Tây_Trúc
     Tôn_Ngộ_Không tháp_tùng Đường Tăng đi thỉnh_kinh tại Tây_Trúc
     
+Ta thấy các từ ở vị trí `<mask>` tìm được khá tự nhiên và ngữ nghĩa của câu không khác mấy so với con người tạo ra. Sự chuẩn xác và tự nhiên có được dựa trên quá trình huấn luyện mô hình pretrain trên một bộ dữ liệu có kích thước rất lớn (khoảng 20GB).
 
-## 7. Extract feature cho các từ
+## 7. Trích suất đặc trưng (Extract feature) cho từ
 
-Chúng ta có thể tìm ra được các véc tơ embedding cho từng từ trong câu từ mô hình BERT như sau:
+Sau khi load được model BERT, chúng ta hoàn toàn có thể trích suất đặc trưng cho một từ bất kỳ từ pretrain model. Từ các véc tơ nhúng được trích suất cho một từ hoặc một câu, chúng ta có thể đo lường similarity để tìm ra các câu tương đồng về nội dung hoặc các từ đồng nghĩa. Một ứng dụng khác đó là chúng ta có thể tận dụng các biểu diễn ngữ nghĩa của từ thông qua véc tơ embedding được huấn luyện từ BERT để chuyển giao sang các tác vụ phân loại văn bản, phân tích cảm xúc bình luận. Phương pháp tiếp cận sẽ tương tự như áp dụng các model GloVe, word2vec, fasttext trong học nông (shallow learning).
 
+Các véc tơ embedding cho từng từ trong câu từ mô hình BERT được trích suất như sau:
 
 ```
 from fairseq.data.encoders.fastbpe import fastBPE
@@ -1129,17 +1131,19 @@ for fold, (train_idx, val_idx) in enumerate(splits):
     [TRAIN] epoch 4/20  observation 2700/4502 batch loss: 2.2600 (avg 2.2518),  avg acc: 0.1609, avg f1: 0.0730, (15.16 im/s)
     
 
-Thời gian huấn luyện sẽ khá lâu, các bạn nên kiên nhẫn chờ đợ. Mình chỉ dừng ở epochs số 4 cho mục đích demo. Ngoài cách fine tuning model từ fairseq như trên, các bạn có thể tham khảo thêm một cách khác của [PhoBERT-Sentiment-Classification Khoi Nguyen](https://github.com/suicao/PhoBert-Sentiment-Classification/) thực hiện fine tuning dựa trên pretrain model huấn luyện từ transformers.
+Thời gian huấn luyện sẽ khá lâu, các bạn nên kiên nhẫn chờ đợ. Mình chỉ dừng ở epochs số 4 cho mục đích demo. Mặc dù kết quả chỉ đạt 16% accuracy nhưng accuracy luôn tăng. Learning rate của mô hình cũng được thiết lập khá nhỏ để tránh nhảy khỏi điểm tối ưu toàn cục (global optimal value). Ngoài cách fine tuning model từ fairseq như trên, các bạn có thể tham khảo thêm một cách khác của [PhoBERT-Sentiment-Classification Khoi Nguyen](https://github.com/suicao/PhoBert-Sentiment-Classification/) thực hiện fine tuning dựa trên pretrain model huấn luyện từ transformers.
 
 ## 9. Huấn luyện RoBERTa trên dữ liệu của bạn
 
-Ngoài ra chúng ta có thể tự huấn luyện pretrain model BERT dựa trên kiến trúc RoBERTa theo hướng dẫn tại [roberta - README](https://github.com/pytorch/fairseq/blob/master/examples/roberta/README.pretraining.md). Việc thực hiện khá đơn giản, bài đã khá dài nên mình gửi link cho bạn đọc tự nghiên cứu.
+Ngoài ra chúng ta có thể tự huấn luyện pretrain model BERT dựa trên kiến trúc RoBERTa theo hướng dẫn tại [RoBERTa - README](https://github.com/pytorch/fairseq/blob/master/examples/roberta/README.pretraining.md). Việc thực hiện khá đơn giản, bài đã khá dài nên mình gửi link cho bạn đọc tự nghiên cứu.
 
 ## 10. Tổng kết
 
-Như vậy mình đã giới thiệu với các bạn rất nhiều các ứng dụng khác nhau trong việc áp dụng các model pretrain RoBERTa. Trong đó có các tác vụ như: Filling mask, Classification và tìm từ đồng nghĩa.
+Như vậy mình đã giới thiệu với các bạn rất nhiều các ứng dụng khác nhau trong việc áp dụng các model pretrain RoBERTa. Trong đó có các tác vụ chính như: điền từ (filling mask), suggest search, phân loại văn bản, phân loại cảm xúc và tìm từ đồng nghĩa, trái nghĩa.
 
-Qua bài viết này các bạn có thể nắm bắt được các phương tiện và công cụ mới trong việc tiếp cận các bài toán của NLP. Đừng quên like và share bài viết này nếu bạn cảm thấy kiến thức mình chia sẻ là hữu ích với bạn.
+Một số tác vụ khác của NLP có thể fine tuning được từ mô hình RoBERTa như ứng dụng hỏi đáp, sinh văn bản ngẫu nhiên, sinh văn bản có nội dung tương tự nhưng đòi hỏi phải có những bộ dữ liệu chuyên biệt cho các tác vụ này. Nhưng dữ liệu như vậy cho Tiếng Việt đang rất thiếu và hiếm. Bạn đọc cũng có thể thực hành trên các bộ dữ liệu của Tiếng Anh theo hướng dẫn tại [mục fine tuning - RoBERTa](https://github.com/pytorch/fairseq/tree/master/examples/roberta).
+
+Như vậy qua bài viết này các bạn đã nắm bắt được các phương tiện và công cụ mới trong việc tiếp cận các bài toán của NLP. Đây là những phương pháp rất mạnh và hứa hẹn sẽ mang lại nhiều cải thiện đáng kể cho các tác vụ NLP của bạn. Đừng quên like và share bài viết này nếu bạn cảm thấy kiến thức mình chia sẻ là hữu ích với bạn.
 
 ## 11. Tài liệu
 
