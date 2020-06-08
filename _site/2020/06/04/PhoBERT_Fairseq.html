@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 39 - Thực hành ứng dụng BERT</p></h2> 
+<strong>04 Jun 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h2 id="1-bert-trong-tiếng-việt">1. BERT trong Tiếng Việt</h2>
+
+<p>Ở bài 36 chúng ta đã tìm hiểu về các kiến trúc của model BERT gồm BERT Base, BERT Large và những ứng dụng trong các tác vụ NLP của nó. Sự ra đời của model BERT là một cột mốc rất quan trọng của ngành NLP mà có thể phân chia thành giai đoạn phát triển trước BERT và sau BERT. Các kết quả ứng dụng BERT đã phá vỡ các giới hạn trong NLP với rất nhiều các pretrain model xác lập kết quả SOTA trong các tác vụ. Để chứng minh cho những gì tôi nói là không nhảm nhí, bạn đọc có thể theo dõi tại <a href="https://gluebenchmark.com/leaderboard">leader board GLUE benchmark</a>. Bên cạnh đó BERT giúp cho quá trình học chuyển giao trở nên khả thi hơn khi có thể can thiệp và fine tuning mô hình học sâu nhiều tầng ở mức độ sâu thay vì can thiệp nông như các mô hình trước.</p>
+
+<p>Kể từ khi google public mã nguồn mở của BERT, đã có rất nhiều các dự án mã nguồn mở về BERT hỗ trợ huấn luyện và chia sẻ các mô hình pretrain BERT trên ngôn ngữ đơn phương và song ngữ. Đối với Tiếng Việt chúng ta có <a href="https://github.com/VinAIResearch/PhoBERT">PhoBERT</a> . Cá nhân mình sử dụng PhoBERT thì thấy các tác vụ NLP trong Tiếng Việt được cải thiện và đạt độ chính xác cao. Bạn đọc cũng có thể tự cảm nhận qua các phần thực hành ở bài hướng dẫn này. Trong Tiếng Việt thì chúng ta có thể ứng dụng BERT trong một số tác vụ như:</p>
+
+<ul>
+  <li>Tìm từ đồng nghĩa, trái nghĩa, cùng nhóm dựa trên khoảng cách của từ trong không gian biểu diễn đa chiều.</li>
+  <li>Xây dựng các véc tơ embedding cho các tác vụ NLP như sentiment analysis, phân loại văn bản, NER, POS, huấn luyện chatbot.</li>
+  <li>Gợi ý từ khóa tìm kiếm trong các hệ thống search.</li>
+  <li>Xây dựng các ứng dụng seq2seq như robot viết báo, tóm tắt văn bản, sinh câu ngẫu nhiên với ý nghĩa tương đồng.</li>
+</ul>
+
+<p>Và nhiều những ứng dụng khác mà mình có thể chưa liệt kê hết, rất mong bạn đọc bổ sung thêm. Mặc dù model BERT có rất nhiều các ứng dụng có thể fine tuning nhưng không thực sự nhiều bạn biết cách áp dụng. Một phần là bởi để fine tuning được BERT đòi hỏi bạn phải có kỹ năng lập trình với các deep learning framework như pytorch, tensorflow và thực sự hiểu sâu về kiến trúc và nguyên lý hoạt động của BERT. Gần đây mình nhận được một vài inbox hỏi về cách áp dụng BERT như thế nào trong các tác vụ NLP. Mình đã dành một thời gian để tìm hiểu và nghiên cứu sâu về mã nguồn và tham khảo các hướng dẫn. Chính vì vậy, bài viết này mình sẽ chia sẻ lại các ứng dụng của model BERT đối với Tiếng Việt mà mình đúc kết được. Nếu bạn đọc có thêm nhiều cách ứng dụng mới của BERT trong Tiếng Việt thì mình rất vui để đón nhận chia sẻ từ các bạn.</p>
+
+<p>Trước khi tìm hiểu bài này mình khuyến nghị các bạn nên đọc qua <a href="https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html">Bài 36 - BERT model</a> để hiểu về model BERT là gì và nguyên lý hoạt động của model BERT.</p>
+
+<h2 id="2-kiến-trúc-roberta">2. Kiến trúc RoBERTa</h2>
+
+<p>RoBERTa là một project của facebook kế thừa lại các kiến trúc và thuật toán của model BERT trên framework pytorch (pytorch cũng là một framework do facebook phát triển, rất được ưa chuộng bởi cộng đồng AI). Đây là một project hỗ trợ việc huấn luyện lại các model BERT trên những bộ dữ liệu mới cho các nguôn ngữ khác ngoài một số ngôn ngữ phổ biến. Kể từ khi ra đời, đã có rất nhiều các mô hình pretrain cho những ngôn ngữ khác nhau được huấn luyện trên RoBERTa.</p>
+
+<p>Ở bài báo gốc cho biết mặc dù RoBERTa lặp lại các thủ tục huấn luyện từ model BERT, nhưng có một thay đổi đó là huấn luyện mô hình lâu hơn, với batch size lớn hơn và trên nhiều dữ liệu hơn. Ngoài ra để nâng cao độ chuẩn xác trong biểu diễn từ thì RoBERTa đã loại bỏ tác vụ dự đoán câu tiếp theo và huấn luyện trên các câu dài hơn. Đồng thời mô hình cũng thay đổi linh hoạt kiểu masking (tức ẩn đi một số từ ở câu output bằng token <code class="highlighter-rouge">&lt;mask&gt;</code>) áp dụng cho dữ liệu huấn luyện.</p>
+
+<p>Bạn đọc có thể tìm hiểu thêm về kiến trúc này qua bài báo về <a href="https://arxiv.org/abs/1907.11692">RoBERTa</a>.</p>
+
+<p>Ở các mục tiếp theo mình sẽ hướng dẫn các bạn triển khai áp dụng model RoBERTa thông qua pretrain model PhoBERT cho Tiếng Việt.</p>
+
+<p>Để bắt đầu bài thực hành, bạn đọc có thể mở file <a href="https://colab.research.google.com/drive/16a4XFPioXYzQwyTusmzi1IiGP8kCHT9t?usp=sharing">PhoBERT - tutorial Khanh Blog</a> và bắt đầu từ đây.</p>
+
+<h2 id="3-load-model-bert">3. Load model BERT</h2>
+
+<p>Để áp dụng được model BERT thì trước tiên chúng ta cần phải load được model. Ví dụ này mình sẽ thực hành trên google colab. Bạn đọc cần mount google drive bằng câu lệnh bên dưới.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
+import os
+
+drive.mount('/content/gdrive')
+path = "/content/gdrive/My Drive/Colab Notebooks/BERT"
+os.chdir(path)
+!ls
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Chúng ta sẽ cần cài đặt các dependency packages sau đây:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/pytorch/fairseq">fairseq</a>: Là project của facebook chuyên hỗ trợ các nghiên cứu và dự án liên quan đến model seq2seq.</p>
+  </li>
+  <li>
+    <p>fastBPE: Là package hỗ trợ tokenize từ (word) thành các từ phụ (subwords) theo phương pháp mới nhất được áp dụng cho các pretrain model NLP hiện đại như BERT và các biến thể của BERT.</p>
+  </li>
+  <li>
+    <p>vncorenlp: Là một package NLP trong Tiếng Việt, hỗ trợ tokenize và các tác vụ NLP khác.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/huggingface/transformers">transformers</a>: Là một project của huggingface hỗ trợ huấn luyện các model dựa trên kiến trúc transformer như BERT, GPT-2, RoBERTa, XLM, DistilBert, XLNet, T5, CTRL,… phục vụ cho các tác vụ NLP trên cả nền tảng pytorch và tensorflow.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>!pip3 install fairseq
+!pip3 install fastbpe
+!pip3 install vncorenlp
+!pip3 install transformers
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo là download các model pretrain từ list các pretrain models được liệt kê trong <a href="https://github.com/VinAIResearch/PhoBERT">PhoBERT</a>.</p>
+
+<p>Trong hướng dẫn này mình chỉ sử dụng pretrain model BERT base được huấn luyện từ package fairseq. Download và giải nén chúng bằng lần lượt các lệnh <code class="highlighter-rouge">wget</code> và <code class="highlighter-rouge">tar</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>!wget https://public.vinai.io/PhoBERT_base_fairseq.tar.gz
+!tar -xzvf PhoBERT_base_fairseq.tar.gz
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau khi download và giải nén pretrain model chúng ta sẽ kiểm tra thấy bên trong folder sẽ bao gồm 3 files đó là <code class="highlighter-rouge">bpe.codes, dict.txt, model.pt</code> có tác dụng như sau:</p>
+
+<ul>
+  <li>
+    <p>bpe.codes: Là BPE token mà mô hình đã áp dụng để mã hóa văn bản sang index.</p>
+  </li>
+  <li>
+    <p>dict.txt: Từ điển subword của bộ dữ liệu huấn luyện.</p>
+  </li>
+  <li>
+    <p>model.pt: File lưu trữ của mô hình trên pytorch.</p>
+  </li>
+</ul>
+
+<p>Về BPE và subword là gì mình sẽ lý giải ở chương <code class="highlighter-rouge">4. Tìm hiểu về mã hóa BPE (Byte Pair Encoding)</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>!ls PhoBERT_base_fairseq
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>bpe.codes  dict.txt  model.pt
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Load model pretrain PhoBERT</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre># Load the model in fairseq
+from fairseq.models.roberta import RobertaModel
+phoBERT = RobertaModel.from_pretrained('PhoBERT_base_fairseq', checkpoint_file='model.pt')
+phoBERT.eval()  # disable dropout (or leave in train mode to finetune
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre>loading archive file PhoBERT_base_fairseq
+| dictionary: 64000 types
+
+
+
+RobertaHubInterface(
+  (model): RobertaModel(
+    (decoder): RobertaEncoder(
+      (sentence_encoder): TransformerSentenceEncoder(
+        (embed_tokens): Embedding(64001, 768, padding_idx=1)
+        (embed_positions): LearnedPositionalEmbedding(258, 768, padding_idx=1)
+        (layers): ModuleList(
+          (0): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          ...
+          (11): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+        )
+        (emb_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (lm_head): RobertaLMHead(
+        (dense): Linear(in_features=768, out_features=768, bias=True)
+        (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (classification_heads): ModuleDict()
+  )
+)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta có thể thấy kiến trúc RoBERTa theo BERT base đã giữa lại 12 block sub-layers là các multi-head attention ở phase Encoder và thêm một linear projection layer ở cuối để tạo ra véc tơ embedding cho từ. Ở mỗi multi-head attention, các output self-attention được khởi tạo từ quá trình nhân kết hợp giữa các ma trận chiếu Key, Value và Query. Các bạn có thể tìm hiểu về quá trình này ở <a href="https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html">Bài 4 - Attention is all you need</a> của block.</p>
+
+<h2 id="4-tìm-hiểu-về-mã-hóa-bpe-byte-pair-encoding">4. Tìm hiểu về mã hóa BPE (Byte Pair Encoding)</h2>
+
+<p>Toknenize là quá trình mã hóa các văn bản thành các index dạng số mang thông tin của văn bản để cho máy tính có thể huấn luyện được. Khi đó mỗi một từ hoặc ký tự sẽ được đại diện bởi một index.</p>
+
+<p>Trong NLP có một số kiểu tokenize như sau:</p>
+
+<p><strong>Tokenize theo word level</strong>: Chúng ta phân tách câu thành các token được ngăn cách bởi khoảng trắng hoặc dấu câu. Khi đó mỗi token là một từ đơn âm tiết. Đây là phương pháp token được sử dụng trong các thuật toán nhúng từ truyền thống như GloVe, word2vec.</p>
+
+<p><strong>Tokenize theo multi-word level</strong>: Tiếng Việt và một số ngôn ngữ khác tồn tại từ đơn âm tiết (từ đơn) và từ đa âm tiết (từ ghép). Do đó nếu token theo từ đơn âm tiết sẽ làm nghĩa của từ bị sai khác. Ví dụ cụm từ <code class="highlighter-rouge">vô xác định</code> nếu được chia thành <code class="highlighter-rouge">vô</code>, <code class="highlighter-rouge">xác</code> và <code class="highlighter-rouge">định</code> sẽ làm cho từ bị mất đi nghĩa phủ định của nó. Do đó để tạo ra được các từ với nghĩa chính xác thì chúng ta sẽ sử dụng thêm từ điển bao gồm cả từ đa âm tiết và đơn âm để tokenize câu. Trong Tiếng Việt có khá nhiều các module hỗ trợ tokenize dựa trên từ điển như VnCoreNLP, pyvivn, underthesea.</p>
+
+<p><strong>Tokenize theo character level</strong>: Việc tokenize theo word level thường sinh ra một từ điển với kích thước rất lớn, điều này làm gia chi phí tính toán. Hơn nữa nếu tokenize theo word level thì đòi hỏi từ điển phải rất lớn thì mới hạn chế được những trường hợp từ nằm ngoài từ điển. Tuy nhiên nếu phân tích ta sẽ thấy hầu hết các từ đều có thể biểu thị dưới một nhóm các ký tự là chữ cái, con số, dấu xác định. Như vậy chỉ cần sử dụng một lượng các ký tự rất nhỏ có thể biểu diễn được mọi từ. Từ được token dựa trên level ký tự sẽ có tác dụng giảm kích thước từ điển mà vẫn biểu diễn được các trường hợp từ nằm ngoài từ điển. Đây là phương pháp được áp dụng trong mô hình fasttext.</p>
+
+<p><strong>Phương pháp mới BPE (SOTA)</strong>: Nhược điểm của phương pháp tokenize theo character level đó là các token không có ý nghĩa nếu đứng độc lập. Do đó đối với các bài toán sentiment analysis, áp dụng tokenize theo character level sẽ mang lại kết quả kém hơn. Token theo word level cũng tồn tại hạn chế đó là không giải quyết được các trường hợp từ ngằm ngoài từ điển.</p>
+
+<p>Một phương pháp mới đã được đề xuất trong bài báo <a href="https://arxiv.org/pdf/1508.07909.pdf">Neural Machine Translation of Rare Words with Subword Units</a> vào năm 2016, có khả năng tách từ theo level nhỏ hơn từ và lớn hơn ký tự được gọi là subword. Phương pháp đó chính là BPE (byte pair encoding). Theo phương pháp mới này, hẫu hết các từ đều có thể biểu diễn bởi subword và chúng ta sẽ hạn chế được một số lượng đáng kể các token <code class="highlighter-rouge">&lt;unk&gt;</code> đại diện cho từ chưa từng xuất hiện trước đó. Rất nhanh chóng, Phương pháp mới đã được áp dụng ở hầu hết các phương pháp NLP hiện đại từ các lớp model BERT cho tới các biến thể của nó như OpenAI GPT, RoBERTa, DistilBERT, XLMNet. Kết quả áp dụng tokenize theo phương pháp mới đã cải thiện được độ chính xác trên nhiều tác vụ dịch máy, phân loại văn bản, dự báo câu tiếp theo, hỏi đáp, dự báo mối quan hệ văn bản.</p>
+
+<p><strong>Thuật toán BPE:</strong></p>
+
+<p>BPE (Byte Pair Encoding) là một kỹ thuật nén từ cơ bản giúp chúng ta index được toàn bộ các từ kể cả trường hợp từ mở (không xuất hiện trong từ điển) nhờ mã hóa các từ bằng chuỗi các từ phụ (subwords). Nguyên lý hoạt động của BPE dựa trên phân tích trực quan rằng hầu hết các từ đều có thể phân tích thành các thành phần con.</p>
+
+<p>Chẳng hạn như từ: <code class="highlighter-rouge">low</code>, <code class="highlighter-rouge">lower</code>, <code class="highlighter-rouge">lowest</code> đều là hợp thành bởi <code class="highlighter-rouge">low</code> và những đuôi phụ <code class="highlighter-rouge">er</code>, <code class="highlighter-rouge">est</code>. Những đuôi này rất thường xuyên xuất hiện ở các từ. Như vậy khi biểu diễn từ <code class="highlighter-rouge">lower</code> chúng ta có thể mã hóa chúng thành hai thành phần từ phụ (subwords) tách biệt là <code class="highlighter-rouge">low</code> và <code class="highlighter-rouge">er</code>. Theo cách biểu diễn này sẽ không phát sinh thêm một index mới cho từ <code class="highlighter-rouge">lower</code> và đồng thời tìm được mối liên hệ giữa <code class="highlighter-rouge">lower</code>, <code class="highlighter-rouge">lowest</code> và <code class="highlighter-rouge">low</code> nhờ có chung thành phần từ phụ là <code class="highlighter-rouge">low</code>.</p>
+
+<p>Phương pháp BPE sẽ thống kê tần suất xuất hiện của các từ phụ cùng nhau và tìm cách gộp chúng lại nếu tần suất xuất hiện của chúng là lớn nhất. Cứ tiếp tục quá trình gộp từ phụ cho tới khi không tồn tại các subword để gộp nữa, ta sẽ thu được tập subwords cho toàn bộ bộ văn bản mà mọi từ đều có thể biểu diễn được thông qua subwords.</p>
+
+<p>Code của thuật toán BPE đã được tác giả chia sẻ tại <a href="https://github.com/rsennrich/subword-nmt">subword-nmt</a>.</p>
+
+<p>Qúa trình này gồm các bước như sau:</p>
+
+<ul>
+  <li>
+    <p>Bước 1: Khởi tạo từ điển (vocabulary).</p>
+  </li>
+  <li>
+    <p>Bước 2: Biểu diễn mỗi từ trong bộ văn bản bằng kết hợp của các ký tự với token <code class="highlighter-rouge">&lt;\w&gt;</code> ở cuối cùng đánh dấu kết thúc một từ (lý do thêm token sẽ được giải thích bên dưới).</p>
+  </li>
+  <li>
+    <p>Bước 3: Thống kê tần suất xuất hiện theo cặp của toàn bộ token trong từ điển.</p>
+  </li>
+  <li>
+    <p>Bước 4: Gộp các cặp có tần suất xuất hiện lớn nhất để tạo thành một n-gram theo level character mới cho từ điển.</p>
+  </li>
+  <li>
+    <p>Bước 5: Lặp lại bước 3 và bước 4 cho tới khi số bước triển khai merge đạt đỉnh hoặc kích thước kỳ vọng của từ điển đạt được.</p>
+  </li>
+</ul>
+
+<p>Bạn sẽ dễ hình dung hơn qua ví dụ bên dưới:</p>
+
+<p>Gỉa sử từ điển của chúng ta gồm các từ với tần suất như sau: <code class="highlighter-rouge">vocab = {'l o w &lt;/w&gt;': 5, 'l o w e r &lt;/w&gt;': 2, 'n e w e s t &lt;/w&gt;': 6, 'w i d e s t &lt;/w&gt;': 3}</code>.</p>
+
+<p>Coi mỗi ký tự là một token. Khi đó thống kê tần suất xuất hiện của các cặp ký tự như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>import collections
+
+vocab = {'l o w &lt;/w&gt;': 5, 'l o w e r &lt;/w&gt;': 2, 'n e w e s t &lt;/w&gt;': 6, 'w i d e s t &lt;/w&gt;': 3}
+
+def get_stats(vocab):
+    pairs = collections.defaultdict(int)
+    for word, freq in vocab.items():
+        symbols = word.split()
+        for i in range(len(symbols)-1):
+            pairs[symbols[i],symbols[i+1]] += freq
+    return pairs
+
+get_stats(vocab)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>defaultdict(int,
+            {('d', 'e'): 3,
+             ('e', 'r'): 2,
+             ('e', 's'): 9,
+             ('e', 'w'): 6,
+             ('i', 'd'): 3,
+             ('l', 'o'): 7,
+             ('n', 'e'): 6,
+             ('o', 'w'): 7,
+             ('r', '&lt;/w&gt;'): 2,
+             ('s', 't'): 9,
+             ('t', '&lt;/w&gt;'): 9,
+             ('w', '&lt;/w&gt;'): 5,
+             ('w', 'e'): 8,
+             ('w', 'i'): 3})
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lựa chọn cặp từ phụ có tần suất xuất hiện nhỏ nhất và merge chúng thành một từ phụ mới.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>import re, collections
+
+pairs = get_stats(vocab)
+best = max(pairs, key=pairs.get)
+print('max pair frequency: ', best)
+
+# Hàm merge byte max frequency
+
+def merge_vocab(pair, v_in):
+    v_out = {}
+    bigram = re.escape(' '.join(pair))
+    # Tìm kiếm các vị trí xuất hiện pair bytes
+    p = re.compile(r'(?&lt;!\S)' + bigram + r'(?!\S)')
+    for word in v_in:
+        # Thay thế các cặp pair bytes bằng single byte gộp
+        w_out = p.sub(''.join(pair), word)
+        v_out[w_out] = v_in[word]
+    return v_out
+
+merge_vocab(best, vocab)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>max pair frequency:  ('e', 's')
+
+
+
+
+
+{'l o w &lt;/w&gt;': 5,
+ 'l o w e r &lt;/w&gt;': 2,
+ 'n e w es t &lt;/w&gt;': 6,
+ 'w i d es t &lt;/w&gt;': 3}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lặp lại quá trình thống kê tần suất cặp từ và gộp cặp từ với số lượt gộp là 1000</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>vocab = {'l o w &lt;/w&gt;': 5, 'l o w e r &lt;/w&gt;': 2, 'n e w e s t &lt;/w&gt;': 6, 'w i d e s t &lt;/w&gt;': 3}
+
+def get_tokens(vocab):
+    tokens = collections.defaultdict(int)
+    for word, freq in vocab.items():
+        word_tokens = word.split()
+        for token in word_tokens:
+            tokens[token] += freq
+    return tokens
+
+num_merges = 1000
+
+for i in range(num_merges):
+    pairs = get_stats(vocab)
+    # max_freq = max(pairs.values())
+    # if max_freq == 1:
+    #   break
+
+    if not pairs:
+      break
+    best = max(pairs, key=pairs.get)
+    # print('best', best)
+    vocab = merge_vocab(best, vocab)
+    print('Iter: {}'.format(i))
+    print('Best pair: {}'.format(best))
+    tokens = get_tokens(vocab)
+    print('Tokens: {}'.format(tokens))
+    print('Number of tokens: {}'.format(len(tokens)))
+    print('==========')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>Iter: 10
+Best pair: ('wi', 'd')
+Tokens: defaultdict(&lt;class 'int'&gt;, {'low&lt;/w&gt;': 5, 'low': 2, 'e': 2, 'r': 2, '&lt;/w&gt;': 2, 'newest&lt;/w&gt;': 6, 'wid': 3, 'est&lt;/w&gt;': 3})
+Number of tokens: 8
+==========
+Iter: 14
+Best pair: ('lower', '&lt;/w&gt;')
+Tokens: defaultdict(&lt;class 'int'&gt;, {'low&lt;/w&gt;': 5, 'lower&lt;/w&gt;': 2, 'newest&lt;/w&gt;': 6, 'widest&lt;/w&gt;': 3})
+Number of tokens: 4
+==========
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta nhận thấy qua các lượt merge từ phụ, độ dài của các từ phụ trong từ điển tăng dần. Thuật toán hội tụ trước 1000 vòng lặp vì toàn bộ các từ phụ đã được merge và đạt ngưỡng của từng từ đơn.</p>
+
+<p>Khi giới hạn kích thước của từ điển hoặc số lượng lượt merge ta sẽ thu được một từ điển từ phụ là thành phần của các từ trong từ điển. Khi đó mọi từ mới dường như sẽ có thể biểu diễn được theo từ phụ.</p>
+
+<p>Ví dụ: Khi dừng số lượt merge tại bước 10 ta thu được từ điển: <code class="highlighter-rouge">{'low&lt;/w&gt;': 5, 'low': 2, 'e': 2, 'r': 2, '&lt;/w&gt;': 2, 'newest&lt;/w&gt;': 6, 'wid': 3, 'est&lt;/w&gt;': 3}</code>.</p>
+
+<p>Khi đó ta có thể biểu diễn một token mới chưa từng xuất hiện trong từ điển là <code class="highlighter-rouge">wider</code> thành <code class="highlighter-rouge">wid e r</code>. Bạn đọc đã hình dung được tác dụng của từ phụ (subword) rồi chứ?</p>
+
+<p><strong>Tác dụng của token &lt;/w&gt;</strong></p>
+
+<p>Gỉa định khi tokenize câu <code class="highlighter-rouge">the highest mountain</code> theo từ phụ ta thu được biểu diễn <code class="highlighter-rouge">['the&lt;/w&gt;', 'high', 'est&lt;/w&gt;', 'moun', 'tain&lt;/w&gt;']</code>. Khi đó để khôi phục được thành câu gốc ta chỉ cần nối các token lại theo thứ tự thành <code class="highlighter-rouge">the&lt;/w&gt;highest&lt;/w&gt;mountain&lt;/w&gt;</code>. Chỉ cần thay <code class="highlighter-rouge">&lt;/w&gt;</code> bằng khoảng trắng ta sẽ khôi phục được câu gốc: <code class="highlighter-rouge">the highest mountain</code>.</p>
+
+<p>token <code class="highlighter-rouge">&lt;/w&gt;</code> được thêm vào cuối mỗi từ để phân biệt các từ phụ nằm ở vị trí cuối câu với các vị trí khác để giúp cho việc giải mã token khả thi hơn.</p>
+
+<p><strong>Áp dụng BPE tokenize trong BERT:</strong></p>
+
+<p>Hầu hết các mô hình NLP hiện đại nhất đều đã chuyển sang tokenize theo BPE. Để sử dụng BPE tokenize từ các model pretrain của BERT ta thực hiện như sau:</p>
+
+<p><strong>Load model pretrain <code class="highlighter-rouge">RoBERTa</code></strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre># Load the model in fairseq
+from fairseq.models.roberta import RobertaModel
+phoBERT = RobertaModel.from_pretrained('PhoBERT_base_fairseq', checkpoint_file='model.pt')
+phoBERT.eval()  # disable dropout (or leave in train mode to finetune
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Khai báo bpe tokenizer và thực hiện token.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>from fairseq.data.encoders.fastbpe import fastBPE
+
+# Khởi tạo Byte Pair Encoding cho PhoBERT
+class BPE():
+  bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+
+args = BPE()
+phoBERT.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+tokens = phoBERT.encode('Tôn Ngộ Không phò Đường Tăng đi Tây Trúc thỉnh kinh')
+print('tokens list : ', tokens)
+# Decode ngược lại thành câu từ chuỗi index token
+phoBERT.decode(tokens)  # 'Hello world!'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>tokens list :  tensor([    0, 11623, 31433,   453, 44334,  2080,  5922,    57,   934,  8181,
+        31686,  3078,     2])
+
+
+'Tôn Ngộ Không phò Đường Tăng đi Tây Trúc thỉnh kinh'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Số lượng các token là 13 lớn hơn số lượng các từ là 11 là vì BERT đã tự thêm các ký tự <code class="highlighter-rouge">&lt;s&gt;</code> và <code class="highlighter-rouge">&lt;/s&gt;</code> đánh dầu từ bắt đầu và kết thúc câu.</p>
+
+<h2 id="5-extract-features-từ-roberta">5. Extract features từ RoBERTa</h2>
+
+<p>Có 2 versions chính trả về 2 kích thước embedding khác nhau khi huấn luyện theo RoBERTa đó là:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">BERT base</code>: 12 sub-layers, kích thước embedding 768, số lượng head attention là 12.</li>
+  <li><code class="highlighter-rouge">BERT large</code>: 24 sub-layers, kích thước embedding 1024, số lượng head attention là 16.</li>
+</ul>
+
+<p>Chúng ta có thể trích xuất được các đặc trưng được tạo ra từ BERT của phase Encoder tại layers cuối cùng hoặc toàn bộ các layers. Ngoài phương án trích suất véc tơ embedding tại layer cuối cùng, một số tác vụ classification trong NLP đã áp dụng trích suất đặc trưng từ từ những layers trước đó chẳng hạn như trong tác vụ <a href="https://github.com/suicao/PhoBert-Sentiment-Classification">PhoBERT Sentiment Classification</a> tác giả đã trích suất đặc trưng từ 4 layers cuối cùng thay vì chỉ trích suất từ một layer cuối.</p>
+
+<p><img src="https://phamdinhkhanh.github.io/assets/images/20190616_attention/EncoderInTransformer.png" class="largepic" /></p>
+
+<p><strong>Hình 1:</strong> Kiến trúc gồm nhiều layers tại encoder của model BERT. Mô hình huấn luyện từ RoBERTa cho phép ta trích suất các đặc trưng từ những layers của encoder. Có thể là layer cuối hoặc toàn bộ các layers.</p>
+
+<p>Kích thước output của mỗi một layer sẽ là <code class="highlighter-rouge">batch_size x seq_len x d_model</code>. Phương pháp trích suất như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre># Extract the last layer's features
+last_layer_features = phoBERT.extract_features(tokens)
+# assert last_layer_features.size() == torch.Size([1, 5, 1024])
+print('token size: ', tokens.size())
+print('size of last layer: ', last_layer_features.size())
+
+# Extract all layer's features (layer 0 is the embedding layer)
+all_layers = phoBERT.extract_features(tokens, return_all_hiddens=True)
+print('number layer in all layers: ', len(all_layers))
+
+# last_layer_features must equal to last layer in all_layers:
+print('Last layer features: ', all_layers[-1] == last_layer_features)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>token size:  torch.Size([13])
+size of last layer:  torch.Size([1, 13, 768])
+number layer in all layers:  13
+Last layer features:  tensor([[[True, True, True,  ..., True, True, True],
+         [True, True, True,  ..., True, True, True],
+         [True, True, True,  ..., True, True, True],
+         ...,
+         [True, True, True,  ..., True, True, True],
+         [True, True, True,  ..., True, True, True],
+         [True, True, True,  ..., True, True, True]]])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="6-điền-từ-filling-mask">6. Điền từ (Filling mask)</h2>
+
+<p>Trong bài toán này chúng ta sẽ điền các từ hợp lý vào các vị trí còn trống của câu. Trên thực tế có rất nhiều ứng dụng của bài toàn filling mask như xây dựng hệ thống suggestion search, gợi ý gõ văn bản, tìm từ đồng nghĩa, tagging.</p>
+
+<p>Mô hình BERT tạo ra các biểu diễn từ từ quá trình ẩn các vị trí token một cách ngẫu nhiên trong câu input và dự báo chính chính từ đó ở output dựa trên bối cảnh là các từ xung quanh.</p>
+
+<p>Như vậy khi đã biết các từ xung quanh, chúng ta hoàn toàn có thể dự báo được từ phù hợp nhất với vị trí đã được masking.</p>
+
+<p>Down load package VnCoreNLP để tokenize các câu văn.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>Download VnCoreNLP-1.1.1.jar &amp; its word segmentation component (i.e. RDRSegmenter) 
+!mkdir -p vncorenlp/models/wordsegmenter
+!wget https://raw.githubusercontent.com/vncorenlp/VnCoreNLP/master/VnCoreNLP-1.1.1.jar
+!wget https://raw.githubusercontent.com/vncorenlp/VnCoreNLP/master/models/wordsegmenter/vi-vocab
+!wget https://raw.githubusercontent.com/vncorenlp/VnCoreNLP/master/models/wordsegmenter/wordsegmenter.rdr
+!mv VnCoreNLP-1.1.1.jar vncorenlp/ 
+!mv vi-vocab vncorenlp/models/wordsegmenter/
+!mv wordsegmenter.rdr vncorenlp/models/wordsegmenter/
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Gỉa sử chúng ta có câu gốc là <code class="highlighter-rouge">Tôn Ngộ Không phò Đường Tăng đi thỉnh kinh tại Tây Trúc</code>. Từ được ẩn đi trong câu là <code class="highlighter-rouge">phò</code> sẽ được thay thế bằng token <code class="highlighter-rouge">&lt;mask&gt;</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>from vncorenlp import VnCoreNLP
+rdrsegmenter = VnCoreNLP("vncorenlp/VnCoreNLP-1.1.1.jar", annotators="wseg", max_heap_size='-Xmx500m') 
+
+text = 'Tôn Ngộ Không phò Đường Tăng đi thỉnh kinh tại Tây Trúc'
+text_masked = 'Học sinh được  &lt;mask&gt; do dịch covid-19'
+# Tokenize câu gốc và thay từ phò bằng &lt;mask&gt;
+words = rdrsegmenter.tokenize(text)[0]
+for i, token in enumerate(words):
+  if token == 'phò':
+    words[i] = ' &lt;mask&gt;'
+text_masked_tok = ' '.join(words)
+print('text_masked_tok: \n', text_masked_tok)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>text_masked_tok: 
+ Tôn_Ngộ_Không  &lt;mask&gt; Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tìm ra top 10 từ thích hợp nhất cho vị trí <code class="highlighter-rouge">&lt;mask&gt;</code> tại câu trên.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>from fairseq.data.encoders.fastbpe import fastBPE  
+from fairseq import options  
+import numpy as np
+
+# Khởi tạo Byte Pair Encoding cho PhoBERT
+class BPE():
+  bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+args = BPE()
+phoBERT.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+
+# Filling marks  
+topk_filled_outputs = phoBERT.fill_mask(text_masked_tok, topk=10) 
+topk_probs = [item[1] for item in topk_filled_outputs]
+print('Total probability: ', np.sum(topk_probs))
+print('Input sequence: ', text_masked_tok)
+print('Top 10 in mask: ')
+for i, output in enumerate(topk_filled_outputs): 
+  print(output[0])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>Total probability:  0.8735223989933729
+Input sequence:  Tôn_Ngộ_Không  &lt;mask&gt; Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Top 10 in mask: 
+Tôn_Ngộ_Không và Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không đưa Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không cõng Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không hộ_tống Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không cùng Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không chở Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không theo Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không dẫn Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không , Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+Tôn_Ngộ_Không tháp_tùng Đường Tăng đi thỉnh_kinh tại Tây_Trúc
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ta thấy các từ ở vị trí <code class="highlighter-rouge">&lt;mask&gt;</code> tìm được khá tự nhiên và ngữ nghĩa của câu không khác mấy so với con người tạo ra. Sự chuẩn xác và tự nhiên có được dựa trên quá trình huấn luyện mô hình pretrain trên một bộ dữ liệu có kích thước rất lớn (khoảng 20GB).</p>
+
+<h2 id="7-trích-suất-đặc-trưng-extract-feature-cho-từ">7. Trích suất đặc trưng (Extract feature) cho từ</h2>
+
+<p>Sau khi load được model BERT, chúng ta hoàn toàn có thể trích suất đặc trưng cho một từ bất kỳ từ pretrain model. Từ các véc tơ nhúng được trích suất cho một từ hoặc một câu, chúng ta có thể đo lường similarity để tìm ra các câu tương đồng về nội dung hoặc các từ đồng nghĩa. Một ứng dụng khác đó là chúng ta có thể tận dụng các biểu diễn ngữ nghĩa của từ thông qua véc tơ embedding được huấn luyện từ BERT để chuyển giao sang các tác vụ phân loại văn bản, phân tích cảm xúc bình luận. Phương pháp tiếp cận sẽ tương tự như áp dụng các model GloVe, word2vec, fasttext trong học nông (shallow learning).</p>
+
+<p>Các véc tơ embedding cho từng từ trong câu từ mô hình BERT được trích suất như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>from fairseq.data.encoders.fastbpe import fastBPE
+
+# Khởi tạo Byte Pair Encoding cho PhoBERT
+class BPE():
+  bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+
+args = BPE()
+phoBERT.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+doc = phoBERT.extract_features_aligned_to_words('học_sinh cấp 3 được đến trường sau nghỉ dịch covid')
+
+for tok in doc:
+    print('{:10}{} (...) {}'.format(str(tok), tok.vector[:5], tok.vector.size()))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>&lt;s&gt;       tensor([ 0.0534,  0.1301, -0.0475, -0.8371,  0.3862], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+học_sinh  tensor([ 0.1764,  0.1603,  0.0792, -0.6043, -0.3138], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+cấp       tensor([ 0.0679,  0.0194,  0.3450, -0.4951, -0.6394], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+3         tensor([-0.0465, -0.3846,  0.1337, -1.1276,  0.1910], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+được      tensor([ 0.1920, -0.0146,  0.2933,  0.0086,  0.0690], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+đến       tensor([-0.0108, -0.6463, -0.2906, -0.0317,  0.0561], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+trường    tensor([-0.0270,  0.2676,  0.3856,  0.3514,  0.1169], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+sau       tensor([-0.1175,  0.4808,  0.0772, -0.2991,  0.0147], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+nghỉ      tensor([ 0.4385,  0.4162,  0.1529, -0.1419, -0.1928], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+dịch      tensor([ 0.2958, -0.0976,  0.2024, -0.9278,  0.0270], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+covid     tensor([ 0.1539,  0.2343,  0.4054, -1.6919, -0.7180], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+&lt;/s&gt;      tensor([ 0.0558,  0.0341, -0.0286, -0.6476,  0.4656], grad_fn=&lt;SliceBackward&gt;) (...) torch.Size([768])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Khi đó mỗi từ sẽ được biểu diễn bằng 768 chiều là số chiều của hidden véc tơ trong mô hình BERT base.</p>
+
+<h2 id="8-bài-toán-classification">8. Bài toán classification</h2>
+
+<h3 id="81-kiến-trúc-mô-hình">8.1. Kiến trúc mô hình</h3>
+
+<p>Ý tưởng fine-tuning được lấy từ bài báo <a href="https://arxiv.org/abs/1905.05583">How to Fine-Tune BERT for Text Classification?</a>.</p>
+
+<p>Model BERT base sẽ tạo ra một kiến trúc gồm 12 sub-layers ở encoder, 12 heads trong multi-head attention trên mỗi sub-layer. Output là tập hợp các véc tơ self-attention bằng chiều dài của input. Mỗi véc tơ có kích thước là 768.</p>
+
+<p>Để fine-tuning lại kiến trúc của BERT cho tác vụ phân loại văn bản (text classification). Chúng ta truncate decoder của BERT, giữa nguyên kiến trúc encoder của transformer và sau đó trích suất ra biểu diễn véc tơ của token <code class="highlighter-rouge">CLS</code> đánh dấu vị trí đầu tiên. Véc tơ  này sẽ được sử dụng làm đầu vào cho thuật toán classifier bằng cách thêm một linear projection layer (cũng chính là fully connected layer) ở cuối có kích thước bằng với số classes cần phân loại. Cụ thể hơn chúng ta cùng xem kiến trúc bên dưới.</p>
+
+<p><img src="https://imgur.com/oo4s0l4.png" class="largepic" /></p>
+
+<p><strong>Hình 1</strong>: Kiến trúc fine-tuning classifier của BERT trong classification. Biểu diễn self-attention của token tại vị trí <code class="highlighter-rouge">CLS</code> được sử dụng làm input cho thuật toán phân loại. Chúng ta thêm một linear projection layer ở cuối cùng để tính toán phân phối xác suất.</p>
+
+<p>Để lấy ví dụng cho quá trình fine-tuning lại PhoBERT cho tác vụ phân loại văn bản mình sẽ huấn luyện model phân loại topics báo chí. Chúng ta sẽ tìm hiểu về bộ dữ liệu cho mô hình.</p>
+
+<h3 id="82-dữ-liệu">8.2. Dữ liệu</h3>
+
+<p>Dữ liệu mà mình sử dụng là <a href="https://github.com/duyvuleo/VNTC.git">VNTC</a> với các bài báo đã được sắp xếp theo 10 topics. Bộ dữ liệu bao gồm 33 nghìn bài báo trên tập train và 50 nghìn bài báo trên tập test có phân bố số lượng theo topics như sau:</p>
+
+<p><img src="https://imgur.com/1lDTdC1.png" class="largepic" /></p>
+
+<p>Dữ liệu sau xử lý được mình chia sẻ. Nếu không muốn tìm hiểu quá trình tạo dữ liệu, bạn đọc có thể chuyển qua mục <code class="highlighter-rouge">Tokenize Input và output</code> và bỏ qua bước này.</p>
+
+<h4 id="821-đọc-và-lưu-dữ-liệu">8.2.1. Đọc và lưu dữ liệu</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>!git clone https://github.com/duyvuleo/VNTC.git
+!ls VNTC/Data/10Topics/Ver1.1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau khi đã download dữ liệu về, chúng ta sẽ đọc và lưu các bài báo vào những list chứa nội dung và nhãn tương ứng theo 2 folders train và test.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>import glob2
+from tqdm import tqdm
+
+train_path = 'Train_Full/*/*.txt'
+test_path = 'Test_Full/*/*.txt'
+
+# Hàm đọc file txt
+def read_txt(path):
+  with open(path, 'r', encoding='utf-16') as f:
+    data = f.read()
+  return data
+
+# Hàm tạo dữ liệu huấn luyện cho tập train và test
+def make_data(path):
+  texts = []
+  labels = []
+  for file_path in tqdm(glob2.glob(train_path)):
+    try:
+      content = read_txt(file_path)
+      label = file_path.split('/')[1]
+      texts.append(content)
+      labels.append(label)
+    except:
+      next
+  return texts, labels
+
+text_train, label_train = make_data(train_path)
+text_test, label_test = make_data(test_path)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Quá trình đọc files sẽ tốn khá nhiều thời gian. Do đó các bạn có thể tạo các hàm lưu trữ lại các list nội dung và nhãn và load lại cho lượt huấn luyện sau.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>import pickle
+
+def _save_pkl(path, obj):
+  with open(path, 'wb') as f:
+    pickle.dump(obj, f)
+
+def _load_pkl(path):
+  with open(path, 'rb') as f:
+    obj = pickle.load(f)
+  return obj
+
+# Lưu lại các files
+_save_pkl('text_train.pkl', text_train)
+_save_pkl('label_train.pkl', label_train)
+_save_pkl('text_test.pkl', text_test)
+_save_pkl('label_test.pkl', label_test)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>print('text content:\n', text_train[0])
+print('label:\n', label_train[0])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>text content:
+ Tấm hít nhỏ xinh
+Tủ lạnh hay phía tường trước bàn làm việc của bạn sẽ đẹp hơn nếu có những tấm hít nhỏ xinh để trang trí hoặc để dính những mảnh giấy ghi chú. Hãy bắt tay vào làm đi, không khó lắm đâu bạn ạ.
+Chuẩn bị: nam châm dày 3 mm; gỗ mỏng; sơn; keo dán gỗ; cọ, cưa.
+Thực hiện: 
+Bước 1: Cưa 3 mảnh gỗ vuông làm nền, diện tích 4 cm2. Bạn có thể thay đổi kích thước lớn hoặc nhỏ hơn tuỳ theo ý thích. Tiếp theo, cưa gỗ thành những mảnh hình tam giác, hình vuông hoặc chữ nhật nhỏ có kích thước bằng nhau. Dùng cọ sơn màu lên các thanh gỗ nhỏ theo sự sáng tạo của bạn.
+Bước 2: Dùng keo dán những mảnh gỗ nhỏ vào mảnh gỗ nền. Cần chú ý phối màu, tạo nên những hình ghép lạ mắt. Dán nam châm vào mặt sau. Dùng cọ vẽ thêm chi tiết, hoa văn lên các mảnh ghép.
+Chú ý: Chọn loại gỗ thật mỏng, nếu không sản phẩm trông rất thô. Không dán các tấm hít lên máy vi tính vì từ tính của nam châm sẽ ảnh hưởng đến nam châm trong máy.
+
+
+label:
+ Doi song
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="822-tokenize-nội-dung">8.2.2. Tokenize nội dung</h4>
+
+<p>Tiếp theo ta sẽ tokenize các câu văn sang chuỗi index và padding câu văn về cũng một độ dài.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>max_sequence_length = 500
+
+def convert_lines(lines, vocab, bpe):
+  '''
+  lines: list các văn bản input
+  vocab: từ điển dùng để encoding subwords
+  bpe: 
+  '''
+  # Khởi tạo ma trận output
+  outputs = np.zeros((len(lines), max_sequence_length)) # --&gt; shape (number_lines, max_seq_len)
+  # Index của các token cls (đầu câu), eos (cuối câu), padding (padding token)
+  cls_id = 0
+  eos_id = 2
+  pad_id = 1
+
+  for idx, row in tqdm(enumerate(lines), total=len(lines)): 
+    # Mã hóa subwords theo byte pair encoding(bpe)
+    subwords = bpe.encode('&lt;s&gt; '+ row +' &lt;/s&gt;')
+    input_ids = vocab.encode_line(subwords, append_eos=False, add_if_not_exist=False).long().tolist()
+    # Truncate input nếu độ dài vượt quá max_seq_len
+    if len(input_ids) &gt; max_sequence_length: 
+      input_ids = input_ids[:max_sequence_length] 
+      input_ids[-1] = eos_id
+    else:
+      # Padding nếu độ dài câu chưa bằng max_seq_len
+      input_ids = input_ids + [pad_id, ]*(max_sequence_length - len(input_ids))
+    
+    outputs[idx,:] = np.array(input_ids)
+  return outputs
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="83-tokenize-input-và-output">8.3. Tokenize Input và output</h3>
+
+<p>Các bạn có thể download lại dữ liệu $\mathbf{X, y}$ mà tôi đã chuẩn bị cho huấn luyện tại <a href="https://drive.google.com/drive/folders/1stRredI0fZ2vE5_SKGggrgDxnV1bxhr1?usp=sharing">Dữ liệu Tokenize</a> và bỏ qua bước này. Thực hiện luôn bước tiếp theo <code class="highlighter-rouge">Load model BERT</code>.</p>
+
+<ul>
+  <li>
+    <p>Chuẩn bị X input: Tokenize nội dung các văn bản sang chuỗi indices.</p>
+  </li>
+  <li>
+    <p>Chuẩn bị y output: Encoding các label output thành indices đánh dấu số thứ tự của văn bản.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre>from tqdm import tqdm
+import torch
+
+max_sequence_length = 256
+def convert_lines(lines, vocab, bpe):
+  '''
+  lines: list các văn bản input
+  vocab: từ điển dùng để encoding subwords
+  bpe: 
+  '''
+  # Khởi tạo ma trận output
+  outputs = np.zeros((len(lines), max_sequence_length), dtype=np.int32) # --&gt; shape (number_lines, max_seq_len)
+  # Index của các token cls (đầu câu), eos (cuối câu), padding (padding token)
+  cls_id = 0
+  eos_id = 2
+  pad_id = 1
+
+  for idx, row in tqdm(enumerate(lines), total=len(lines)): 
+    # Mã hóa subwords theo byte pair encoding(bpe)
+    subwords = bpe.encode('&lt;s&gt; '+ row +' &lt;/s&gt;')
+    input_ids = vocab.encode_line(subwords, append_eos=False, add_if_not_exist=False).long().tolist()
+    # Truncate input nếu độ dài vượt quá max_seq_len
+    if len(input_ids) &gt; max_sequence_length: 
+      input_ids = input_ids[:max_sequence_length] 
+      input_ids[-1] = eos_id
+    else:
+      # Padding nếu độ dài câu chưa bằng max_seq_len
+      input_ids = input_ids + [pad_id, ]*(max_sequence_length - len(input_ids))
+    
+    outputs[idx,:] = np.array(input_ids)
+  return outputs
+
+# Load the dictionary  
+vocab = Dictionary()
+vocab.add_from_file("PhoBERT_base_transformers/dict.txt")
+
+
+# Test encode lines
+lines = ['Học_sinh được nghỉ học bắt dầu từ tháng 3 để tránh dịch covid-19', 'số lượng ca nhiễm bệnh đã giảm bắt đầu từ tháng 5 nhờ biện pháp mạnh tay']
+[x1, x2] = convert_lines(lines, vocab, phoBERT.bpe)
+print('x1 tensor encode: {}, shape: {}'.format(x1[:10], x1.size))
+print('x1 tensor decode: ', phoBERT_cls.decode(torch.tensor(x1))[:103])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre>from tqdm import tqdm
+import torch
+
+max_sequence_length = 256
+def convert_lines(lines, vocab, bpe):
+  '''
+  lines: list các văn bản input
+  vocab: từ điển dùng để encoding subwords
+  bpe: 
+  '''
+  # Khởi tạo ma trận output
+  outputs = np.zeros((len(lines), max_sequence_length), dtype=np.int32) # --&gt; shape (number_lines, max_seq_len)
+  # Index của các token cls (đầu câu), eos (cuối câu), padding (padding token)
+  cls_id = 0
+  eos_id = 2
+  pad_id = 1
+
+  for idx, row in tqdm(enumerate(lines), total=len(lines)): 
+    # Mã hóa subwords theo byte pair encoding(bpe)
+    subwords = bpe.encode('&lt;s&gt; '+ row +' &lt;/s&gt;')
+    input_ids = vocab.encode_line(subwords, append_eos=False, add_if_not_exist=False).long().tolist()
+    # Truncate input nếu độ dài vượt quá max_seq_len
+    if len(input_ids) &gt; max_sequence_length: 
+      input_ids = input_ids[:max_sequence_length] 
+      input_ids[-1] = eos_id
+    else:
+      # Padding nếu độ dài câu chưa bằng max_seq_len
+      input_ids = input_ids + [pad_id, ]*(max_sequence_length - len(input_ids))
+    
+    outputs[idx,:] = np.array(input_ids)
+  return outputs
+
+# Load the dictionary  
+vocab = Dictionary()
+vocab.add_from_file("PhoBERT_base_transformers/dict.txt")
+
+
+# Test encode lines
+lines = ['Học_sinh được nghỉ học bắt dầu từ tháng 3 để tránh dịch covid-19', 'số lượng ca nhiễm bệnh đã giảm bắt đầu từ tháng 5 nhờ biện pháp mạnh tay']
+[x1, x2] = convert_lines(lines, vocab, phoBERT_cls.bpe)
+print('x1 tensor encode: {}, shape: {}'.format(x1[:10], x1.size))
+print('x1 tensor decode: ', phoBERT_cls.decode(torch.tensor(x1))[:103])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Như vậy ta thấy rằng các câu văn đã được encode về token index. Từ token index có thể decode ngược trở lại thành câu input sau khi đã thêm các token đặc biệt đánh dấu vị trí bắt dầu: <code class="highlighter-rouge">&lt;s&gt;</code>, kết thúc: <code class="highlighter-rouge">&lt;/s&gt;</code> câu và các vị trí nằm ngoài câu: <code class="highlighter-rouge">&lt;pad&gt;</code>. Ta sẽ token toàn bộ câu input sang index như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>X = convert_lines(text_train, vocab, phoBERT_cls.bpe)
+print('X shape: ', X.shape)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Sau cùng ta thu được các chuỗi index có kích thước là 256, bằng với kích thước của các câu sau khi đã padding. Tiếp theo ta tạo output <code class="highlighter-rouge">y</code> bằng index cho các nhãn của câu.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>from sklearn.preprocessing import LabelEncoder
+lb = LabelEncoder()
+lb.fit(label_train)
+y = lb.fit_transform(label_train)
+print(lb.classes_)
+print('Top 5 classes indices: ', y[:5])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lưu lại dữ liệu $\mathbf{X}$ và $\mathbf{y}$</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre># Save dữ liệu
+_save_pkl('PhoBERT_pretrain/X1.pkl', X)
+_save_pkl('PhoBERT_pretrain/y1.pkl', y)
+_save_pkl('PhoBERT_pretrain/labelEncoder1.pkl', lb)
+
+# Load lại dữ liệu
+X = _load_pkl('PhoBERT_pretrain/X1.pkl')
+y = _load_pkl('PhoBERT_pretrain/y1.pkl')
+
+print('length of X: ', len(X))
+print('length of y: ', len(y))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="84-load-model-bert">8.4. Load model BERT</h3>
+
+<p>Tiếp theo ta sẽ load pretrain model BERT từ file weight mà chúng ta đã download trước đó. Để tùy chỉnh mô hình cho phù hợp với tác vụ phân loại văn bản. Chúng ta sẽ thêm vào sau cùng pretrain model một head layer là linear projection có số units ở output bằng với số lượng classes cần phân loại và bằng 10 thông qua hàm <code class="highlighter-rouge">phoBERT_cls.register_classification_head('new_task', num_classes=10)</code>. Cụ thể như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre># Load the model in fairseq
+from fairseq.models.roberta import RobertaModel
+from fairseq.data.encoders.fastbpe import fastBPE
+from fairseq.data import Dictionary
+
+phoBERT_cls = RobertaModel.from_pretrained('PhoBERT_base_fairseq', checkpoint_file='model.pt')
+phoBERT_cls.eval()  # disable dropout (or leave in train mode to finetune
+
+# Load BPE
+class BPE():
+  bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+
+args = BPE()
+phoBERT_cls.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+
+# Add header cho classification với số lượng classes = 10
+phoBERT_cls.register_classification_head('new_task', num_classes=10)
+tokens = 'Học_sinh được nghỉ học bắt đầu từ tháng 3 do ảnh hưởng của dịch covid-19'
+token_idxs = phoBERT_cls.encode(tokens)
+logprobs = phoBERT_cls.predict('new_task', token_idxs)  # tensor([[-1.1050, -1.0672, -1.1245]], grad_fn=&lt;LogSoftmaxBackward&gt;)
+logprobs
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>loading archive file PhoBERT_base_fairseq
+| dictionary: 64000 types
+
+
+
+
+
+tensor([[-2.3722, -2.1128, -2.2945, -2.3484, -2.2294, -2.1600, -2.5104, -2.4261,
+         -2.4144, -2.2299]], grad_fn=&lt;LogSoftmaxBackward&gt;)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="85-huấn-luyện-model">8.5. Huấn luyện model</h3>
+
+<p>Trước khi huấn luyện mô hình chúng ta sẽ xây dựng các hàm đánh giá mô hình theo 2 metric là <code class="highlighter-rouge">accuracy</code> và <code class="highlighter-rouge">f1_score</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>import torch
+import numpy as np
+from sklearn.metrics import accuracy_score, f1_score
+
+def evaluate(logits, targets):
+    """
+    Đánh giá model sử dụng accuracy và f1 scores.
+    Args:
+        logits (B,C): torch.LongTensor. giá trị predicted logit cho class output.
+        targets (B): torch.LongTensor. actual target indices.
+    Returns:
+        acc (float): the accuracy score
+        f1 (float): the f1 score
+    """
+    # Tính accuracy score và f1_score
+    logits = logits.detach().cpu().numpy()    
+    y_pred = np.argmax(logits, axis = 1)
+    targets = targets.detach().cpu().numpy()
+    f1 = f1_score(targets, y_pred, average='weighted')
+    acc = accuracy_score(targets, y_pred)
+    return acc, f1
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+logits = torch.tensor([[0.1, 0.2, 0.7],
+                       [0.4, 0.1, 0.5],
+                       [0.1, 0.2, 0.7]]).to(device)
+targets = torch.tensor([1, 2, 2]).to(device)
+evaluate(logits, targets)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>(0.6666666666666666, 0.5333333333333333)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>def validate(valid_loader, model, device):
+    model.eval()
+    accs = []
+    f1s = []
+    with torch.no_grad():
+        for x_batch, y_batch in valid_loader:
+            x_batch = x_batch.to(device)
+            y_batch = y_batch.to(device)
+            outputs = model.predict('new_task', x_batch)
+            logits = torch.exp(outputs)
+            acc, f1 = evaluate(logits, y_batch)
+            accs.append(acc)
+            f1s.append(f1)
+    
+    mean_acc = np.mean(accs)
+    mean_f1 = np.mean(f1s)
+    return mean_acc, mean_f1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hàm huấn luyện mô hình trên từng epoch.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>def trainOnEpoch(train_loader, model, optimizer, epoch, num_epochs, criteria, device, log_aggr = 100):
+    model.train()
+    sum_epoch_loss = 0
+    sum_acc = 0
+    sum_f1 = 0
+    start = time.time()
+    for i, (x_batch, y_batch) in enumerate(train_loader):
+      x_batch = x_batch.to(device)
+      y_batch = y_batch.to(device)
+      optimizer.zero_grad()
+      y_pred = model.predict('new_task', x_batch)
+      logits = torch.exp(y_pred)
+      acc, f1 = evaluate(logits, y_batch)
+      loss = criteria(y_pred, y_batch)
+      loss.backward()
+      optimizer.step()
+
+      loss_val = loss.item()
+      sum_epoch_loss += loss_val
+      sum_acc += acc
+      sum_f1 += f1
+      iter_num = epoch * len(train_loader) + i + 1
+
+      if i % log_aggr == 0:
+            print('[TRAIN] epoch %d/%d  observation %d/%d batch loss: %.4f (avg %.4f),  avg acc: %.4f, avg f1: %.4f, (%.2f im/s)'
+                % (epoch + 1, num_epochs, i, len(train_loader), loss_val, sum_epoch_loss / (i + 1),  sum_acc/(i+1), sum_f1/(i+1),
+                  len(x_batch) / (time.time() - start)))
+      start = time.time()  
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Quá trình huấn luyện một model classification trên pytorch sẽ bao gồm những bước chính sau đây:</p>
+
+<ul>
+  <li>
+    <p>Khởi tạo DataLoader để quản lý dữ liệu đưa vào huấn luyện và thẩm định.</p>
+  </li>
+  <li>
+    <p>Thiết lập kiến trúc mô hình.</p>
+  </li>
+  <li>
+    <p>Khai báo hàm loss function.</p>
+  </li>
+  <li>
+    <p>Phương pháp optimization giúp tối ưu loss function.</p>
+  </li>
+  <li>
+    <p>Huấn luyện mô hình qua các epochs.</p>
+  </li>
+</ul>
+
+<p>Bên dưới chúng ta sẽ lần lượt thực hiện các bước trên.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+</pre></td><td class="rouge-code"><pre>import os
+import time
+import random
+import argparse
+import pickle
+import numpy as np
+from tqdm import tqdm
+from os.path import join
+
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+import torch.nn.functional as F
+import torch.optim as optim
+from torch.optim.lr_scheduler import StepLR
+from torch.autograd import Variable
+from torch.backends import cudnn
+from sklearn.model_selection import StratifiedKFold
+
+# Load the model in fairseq
+from fairseq.models.roberta import RobertaModel
+from fairseq.data.encoders.fastbpe import fastBPE
+from fairseq.data import Dictionary
+from transformers.modeling_utils import * 
+from transformers import *
+
+# Khởi tạo argument
+EPOCHS = 20
+BATCH_SIZE = 6
+ACCUMULATION_STEPS = 5
+FOLD = 4
+LR = 0.0001
+LR_DC_STEP = 80 
+LR_DC = 0.1
+CUR_DIR = os.path.dirname(os.getcwd())
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+FOLD = 4
+CKPT_PATH2 = 'model_ckpt2'
+
+if not os.path.exists(CKPT_PATH2):
+    os.mkdir(CKPT_PATH2)
+
+# Khởi tạo DataLoader
+splits = list(StratifiedKFold(n_splits=5, shuffle=True, random_state=123).split(X, y))
+
+for fold, (train_idx, val_idx) in enumerate(splits):
+    best_score = 0
+    if fold != FOLD:
+        continue
+    print("Training for fold {}".format(fold))
+    
+    # Create dataset
+    train_dataset = torch.utils.data.TensorDataset(torch.tensor(X[train_idx],dtype=torch.long), torch.tensor(y[train_idx],dtype=torch.long))
+    valid_dataset = torch.utils.data.TensorDataset(torch.tensor(X[val_idx],dtype=torch.long), torch.tensor(y[val_idx],dtype=torch.long))
+
+    # Create DataLoader
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
+
+    # Khởi tạo model:
+    MODEL_LAST_CKPT = os.path.join(CKPT_PATH2, 'latest_checkpoint.pth.tar')
+    if os.path.exists(MODEL_LAST_CKPT):
+      print('Load checkpoint model!')
+      phoBERT_cls = torch.load(MODEL_LAST_CKPT)
+    else:
+      print('Load model pretrained!')
+      # Load the model in fairseq
+      from fairseq.models.roberta import RobertaModel
+      from fairseq.data.encoders.fastbpe import fastBPE
+      from fairseq.data import Dictionary
+
+      phoBERT_cls = RobertaModel.from_pretrained('PhoBERT_base_fairseq', checkpoint_file='model.pt')
+      phoBERT_cls.eval()  # disable dropout (or leave in train mode to finetune
+
+      # # Load BPE
+      # class BPE():
+      #   bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+
+      # args = BPE()
+      # phoBERT_cls.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+
+      # Add header cho classification với số lượng classes = 10
+      phoBERT_cls.register_classification_head('new_task', num_classes=10)
+      
+    ## Load BPE
+    print('Load BPE')
+    class BPE():
+      bpe_codes = 'PhoBERT_base_fairseq/bpe.codes'
+
+    args = BPE()
+    phoBERT_cls.bpe = fastBPE(args) #Incorporate the BPE encoder into PhoBERT
+    phoBERT_cls.to(DEVICE)
+
+    # Khởi tạo optimizer và scheduler, criteria
+    print('Init Optimizer, scheduler, criteria')
+    param_optimizer = list(phoBERT_cls.named_parameters())
+    no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
+    optimizer_grouped_parameters = [
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
+    ]
+
+    num_train_optimization_steps = int(EPOCHS*len(train_dataset)/BATCH_SIZE/ACCUMULATION_STEPS)
+    optimizer = AdamW(optimizer_grouped_parameters, lr=LR, correct_bias=False)  # To reproduce BertAdam specific behavior set correct_bias=False
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=100, num_training_steps=num_train_optimization_steps)  # scheduler với linear warmup
+    scheduler0 = get_constant_schedule(optimizer)  # scheduler với hằng số
+    # optimizer = optim.Adam(phoBERT_cls.parameters(), LR)
+    criteria = nn.NLLLoss()
+    # scheduler = StepLR(optimizer, step_size = LR_DC_STEP, gamma = LR_DC)
+    avg_loss = 0.
+    avg_accuracy = 0.
+    frozen = True
+    for epoch in tqdm(range(EPOCHS)):
+        # warm up tại epoch đầu tiên, sau epoch đầu sẽ phá băng các layers
+        if epoch &gt; 0 and frozen:
+            for child in phoBERT_cls.children():
+                for param in child.parameters():
+                    param.requires_grad = True
+            frozen = False
+            del scheduler0
+            torch.cuda.empty_cache()
+        # Train model on EPOCH
+        print('Epoch: ', epoch)
+        trainOnEpoch(train_loader=train_loader, model=phoBERT_cls, optimizer=optimizer, epoch=epoch, num_epochs=EPOCHS, criteria=criteria, device=DEVICE, log_aggr=100)
+        # scheduler.step(epoch = epoch)
+        # Phá băng layers sau epoch đầu tiên
+        if not frozen:
+            scheduler.step()
+        else:
+            scheduler0.step()
+        optimizer.zero_grad()
+        # Validate on validation set
+        acc, f1 = validate(valid_loader, phoBERT_cls, device=DEVICE)
+        print('Epoch {} validation: acc: {:.4f}, f1: {:.4f} \n'.format(epoch, acc, f1))
+
+        # Store best model checkpoint
+        ckpt_dict = {
+            'epoch': epoch + 1,
+            'state_dict': phoBERT_cls.state_dict(),
+            'optimizer': optimizer.state_dict()
+        }
+        # Save model checkpoint into 'latest_checkpoint.pth.tar'
+        torch.save(ckpt_dict, MODEL_LAST_CKPT)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>  0%|          | 0/20 [00:00&lt;?, ?it/s][A
+
+Init Optimizer, scheduler, criteria
+...
+[TRAIN] epoch 4/20  observation 2700/4502 batch loss: 2.2600 (avg 2.2518),  avg acc: 0.1609, avg f1: 0.0730, (15.16 im/s)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Thời gian huấn luyện sẽ khá lâu, các bạn nên kiên nhẫn chờ đợ. Mình chỉ dừng ở epochs số 4 cho mục đích demo. Mặc dù kết quả chỉ đạt 16% accuracy nhưng accuracy luôn tăng. Learning rate của mô hình cũng được thiết lập khá nhỏ để tránh nhảy khỏi điểm tối ưu toàn cục (global optimal value). Ngoài cách fine tuning model từ fairseq như trên, các bạn có thể tham khảo thêm một cách khác của <a href="https://github.com/suicao/PhoBert-Sentiment-Classification/">PhoBERT-Sentiment-Classification Khoi Nguyen</a> thực hiện fine tuning dựa trên pretrain model huấn luyện từ transformers.</p>
+
+<h2 id="9-huấn-luyện-roberta-trên-dữ-liệu-của-bạn">9. Huấn luyện RoBERTa trên dữ liệu của bạn</h2>
+
+<p>Ngoài ra chúng ta có thể tự huấn luyện pretrain model BERT dựa trên kiến trúc RoBERTa theo hướng dẫn tại <a href="https://github.com/pytorch/fairseq/blob/master/examples/roberta/README.pretraining.md">RoBERTa - README</a>. Việc thực hiện khá đơn giản, bài đã khá dài nên mình gửi link cho bạn đọc tự nghiên cứu.</p>
+
+<h2 id="10-tổng-kết">10. Tổng kết</h2>
+
+<p>Như vậy mình đã giới thiệu với các bạn rất nhiều các ứng dụng khác nhau trong việc áp dụng các model pretrain RoBERTa. Trong đó có các tác vụ chính như: điền từ (filling mask), suggest search, phân loại văn bản, phân loại cảm xúc và tìm từ đồng nghĩa, trái nghĩa.</p>
+
+<p>Một số tác vụ khác của NLP có thể fine tuning được từ mô hình RoBERTa như ứng dụng hỏi đáp, sinh văn bản ngẫu nhiên, sinh văn bản có nội dung tương tự nhưng đòi hỏi phải có những bộ dữ liệu chuyên biệt cho các tác vụ này. Nhưng dữ liệu như vậy cho Tiếng Việt đang rất thiếu và hiếm. Bạn đọc cũng có thể thực hành trên các bộ dữ liệu của Tiếng Anh theo hướng dẫn tại <a href="https://github.com/pytorch/fairseq/tree/master/examples/roberta">mục fine tuning - RoBERTa</a>.</p>
+
+<p>Như vậy qua bài viết này các bạn đã nắm bắt được các phương tiện và công cụ mới trong việc tiếp cận các bài toán của NLP. Đây là những phương pháp rất mạnh và hứa hẹn sẽ mang lại nhiều cải thiện đáng kể cho các tác vụ NLP của bạn. Đừng quên like và share bài viết này nếu bạn cảm thấy kiến thức mình chia sẻ là hữu ích với bạn.</p>
+
+<h2 id="11-tài-liệu">11. Tài liệu</h2>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/pytorch/fairseq">faiseq</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/pytorch/fairseq/tree/master/examples/roberta">RoBERTa</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/huggingface/transformers">transformers</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/suicao/PhoBert-Sentiment-Classification/">PhoBERT-Sentiment-Classification</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/VinAIResearch/PhoBERT">PhoBERT</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
