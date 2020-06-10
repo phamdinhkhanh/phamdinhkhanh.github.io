@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
@@ -320,6 +322,8 @@ G_y = \begin{bmatrix} -1 & -2 & -1 \\
 0 & 0 & 0 \\
 1 & 2 & 1 \\ \end{bmatrix} * \mathbf{I} %]]></script>
 
+<p>Kí hiệu <code class="highlighter-rouge">*</code> tương tự như phép tích chập giữa bộ lọc bên trái và ảnh đầu vào bên phải.</p>
+
 <p>Gía trị độ lớn gradient (gradient magnitude) và phương gradient (gradient direction) có thể được tạo ra từ 2 đạo hàm $G_x$ và $G_y$ theo công thức bên dưới:</p>
 
 <ul>
@@ -488,7 +492,7 @@ theta format: (1120, 2016)
   <p><strong>Hình 2:</strong> Mapping độ lớn gradients với các bins.</p>
 </blockquote>
 
-<p>Trong trường hợp phương gradients không rơi vào các đầu mút (chẳng hạn 0, 20, 40,… là những số chia hết cho 20). Ta sẽ sử dụng linear interpolation để phân chia độ lớn gradient về 2 bins liền kề mà giá trị phương gradient rơi vào. Ví dụ: giá trị phương gradient bằng $x$ ghép cặp với độ lớn gradient bằng $y$. $x \in [x_0, x_1]$ tức là phương gradients rơi vào khoảng giữa bin thứ $(l-1)$ và bin thứ $l$: .  Khi đó tại 2 bins $(l-1)$ và $l$ được điền vào giá trị cường độ theo công thức interpolation:</p>
+<p>Đầu mút là các giá trị chia hết cho độ rộng của một bin (chẳng hạn 0, 20, 40,… là những đầu mút bin). Trong trường hợp độ lớn phương gradients không rơi vào các đầu mút,  ta sẽ sử dụng linear interpolation để phân chia độ lớn gradient về 2 bins liền kề mà giá trị phương gradient rơi vào. Ví dụ: giá trị phương gradient bằng $x$ ghép cặp với độ lớn gradient bằng $y$. $x \in [x_0, x_1]$ tức là phương gradients rơi vào khoảng giữa bin thứ $(l-1)$ và bin thứ $l$: .  Khi đó tại 2 bins $(l-1)$ và $l$ được điền vào giá trị cường độ theo công thức interpolation:</p>
 
 <ul>
   <li>Gía trị tại bins $l-1$:</li>
