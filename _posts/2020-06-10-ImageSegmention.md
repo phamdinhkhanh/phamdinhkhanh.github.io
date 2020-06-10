@@ -692,7 +692,7 @@ tf.keras.utils.plot_model(model)
 
 
 
-<img src="/assets/images/20200610_ImageSegmentation/ImageSegmention_39_0.png" class="largepic"/>
+<img src="/assets/images/20200610_ImageSegmentation/ImageSegmention_39_0.png" class="gigantic"/>
 
 
 # 12. FCN (2015)
