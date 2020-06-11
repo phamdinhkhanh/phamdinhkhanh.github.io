@@ -26,9 +26,7 @@ Dựa trên những hiểu biết còn hạn chế của mình thì các bạn �
 
 Mỗi một bài toán sẽ có một cách thức thiết kế mô hình và định dạng dữ liệu input/output chuyên biệt. Chẳng hạn như lớp bài toán phổ biến nhất trong computer vision là **Image Classification** [Bài 8 - Convolutional Neural Network](https://phamdinhkhanh.github.io/2019/08/22/convolutional-neural-network.html) và [Bài 38 - Các kiến trúc CNN hiện đại](https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html) sẽ chỉ cần ảnh và nhãn của ảnh. Tuy nhiên một số bức ảnh có nhiều vật thể xuất hiện thì chúng ta vừa phải tìm nhãn cho vật thể, vừa phải khoanh vùng vị trí của vật thể trên ảnh thông qua bounding box. Do đó lớp bài toán **Object Detection** ở [Bài 12 - Các thuật toán Object Detection](https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html), [bài 13 model SSD](https://phamdinhkhanh.github.io/2019/10/05/SSDModelObjectDetection.html), [bài 25 model YOLO](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html) thì ngoài nhãn còn cần thêm tọa độ bounding box.
 
-Đối với các bài toán cần phân chia ranh giới giữa các vật thể với nền và vật thể với nhau một cách rõ ràng thì Image Segmentation có sẽ sẽ phù hợp.
-
-Và ở bài này chúng ta sẽ tìm hiểu thêm một lớp các bài toán trong Computer vision nữa đó là Image Segmentation.
+Đối với các bài toán Image Segmentation thì mục tiêu của chúng ta là tìm ra vùng ảnh chứa vật thể nên chúng ta sẽ cần phải gãn nhãn cho từng pixel theo giá trị của chúng.
 
 
 ### 1.2. Bài toán Image Segmentation
@@ -61,18 +59,11 @@ Có 2 bài toán image segmentation chính:
 
 * Instance segmentation: Chúng ta phân đoạn các vùng ảnh chi tiết đến từng đối tượng trong mỗi nhãn. Ví dụ: ở hình ảnh bên phải đối với nhãn người sẽ được phân chia chi tiết tới từng người 1, 2, ... , 5.
 
-
-
-
-
-
-
-
 ## 3. Các ứng dụng của Image Segmentation
 
 Image Segmentation có rất nhiều các ứng dụng trong y học, xe tự hành, xử lý ảnh vệ tinh.
 
-* Y học: Tiềm năng ứng dụng của Image Segmentation trong y học là rất lớn. Thuật toán Image Segmentation có thể hỗ trợ bác sĩ chuẩn đoán khối u từ ảnh x-quang. Ưu điểm của Image Segmentation đó là không chỉ cho chúng ta biết vị trí của các khối u trong ảnh mà còn cho chúng ta biết được hình dạng của chúng.
+* Y học: Trong y học, thuật toán Image Segmentation có thể hỗ trợ bác sĩ chuẩn đoán khối u từ ảnh x-quang. Ưu điểm của Image Segmentation đó là không chỉ cho chúng ta biết vị trí của các khối u trong ảnh mà còn cho chúng ta biết được hình dạng của chúng.
 
 <img src="https://miro.medium.com/max/1134/1*bcOZoe2bvVadukqYw9SPHw.png" class="largepic"/>
 
@@ -86,9 +77,9 @@ Image Segmentation có rất nhiều các ứng dụng trong y học, xe tự h�
 
 * Ứng dụng trong nông nghiệp: Chúng ta có thể tiết kiệm được một lượng lớn thuốc trừ sâu trong nông nghiệp nhờ sử dụng hệ thống phun thuốc trừ sâu tự động có khả năng phân biệt được diện tích cỏ và cây trồng dựa trên thuật toán Image Segmentation. Khi diện tích cỏ lấn át so với cây trồng thì hệ thống sẽ tự động kích hoạt.
 
-* Cảnh báo cháy rừng: Những hệ thống kiểm soát cháy rừng có thể segment được chính xác vị trí phát sinh các đám cháy dựa trên ảnh chụp vệ tinh. Từ đó đưa ra cảnh báo về qui mô và mức độ lây lan của các đám cháy trên diện rộng.
+* Cảnh báo cháy rừng: Những hệ thống kiểm soát cháy rừng có thể segment được chính xác vị trí phát sinh các đám cháy từ ảnh chụp vệ tinh. Từ đó đưa ra cảnh báo về qui mô và mức độ lây lan của các đám cháy trên diện rộng.
 
-Và rất nhiều các tiềm năng ứng dụng của thuật toán Image Segmentation nữa đang được tiếp tục khám phá và khai thác.
+Trên đây là một vài ứng dụng tiêu biểu của Image Segmentation. Còn rất nhiều các ứng dụng tiềm năng khác của thuật toán Image Segmentation đang được khai thác.
 
 # 4. Thuật ngữ:
 
@@ -131,13 +122,13 @@ Mạng giải chập cũng thường được áp dụng trong các kiến trúc
 
 Giống như kiến trúc của một mô hình GAN thông thường, pix2pix cũng bao gồm 2 mô hình Generator và Discriminator. Mô hình Generator có tác dụng sinh ra ảnh fake gần giống với ảnh thật nhất, Discriminator sẽ làm nhiệm vụ phân loại ảnh fake và ảnh thật.
 
-Quan sát kỹ hơn ở mô hình Generator bạn sẽ thấy có 2 nhánh đối lập là Encoder và Decoder. Trong đó nhánh Encoder là một mạng CNN thông thường đóng vai trò tạo đặc trưng của ảnh input. Trên nhánh Encoder kích thước output giảm đần qua các layer. Nhánh Decoder đối xứng với Encoder có tác dụng mapping từ output của Encoder sang một ảnh mới có kích thước lớn hơn nó. 
+Quan sát kỹ hơn ở mô hình Generator bạn sẽ thấy có 2 nhánh đối lập là Encoder và Decoder. Trong đó nhánh Encoder là một mạng CNN thông thường đóng vai trò tạo đặc trưng cho ảnh input. Trên nhánh Encoder kích thước output giảm đần qua các layer. Nhánh Decoder đối xứng với Encoder có tác dụng mapping từ output của Encoder sang một ảnh mới có kích thước lớn hơn nó. 
 
 Vậy làm cách nào ta có thể biến đổi từ một khối output có kích thước nhỏ hơn sang một khối lớn hơn? Đó là nhờ các layer Upsampling mà chúng ta sẽ cùng tìm hiểu bên dưới.
 
 # 6. Upsampling 2D Layer
 
-Để dễ hình dung thì chức năng của Upsampling 2D layer cũng tương tự như hàm resize nhưng với kích thước lớn hơn trong opencv. Chúng ta sẽ giữ nguyên nội dung mà vẫn gia tăng được kích thước của input bằng cách copy các giá trị pixel liền kề theo các window size.
+Để dễ hình dung thì chức năng của Upsampling 2D layer cũng tương tự như hàm resize với kích thước lớn hơn ảnh input trong opencv bằng cách copy các giá trị pixel liền kề theo các window size.
 
 <img src="https://imgur.com/UhwUfj0.png" class="largepic"/>
 
@@ -185,11 +176,11 @@ print('y: \n', y)
        [4]]]], shape=(1, 4, 4, 1), dtype=int64)
     
 
-Ngoài phương pháp upsampling bằng copy giá trị của pixel còn có những phương pháp khác như Bilinear Interpolation, Max-Unpooling, Bed of Nails. Ý tưởng của các phương pháp này khá đơn giản và bạn đọc cũng không cần ứng dụng mà không cần phải nhớ chúng.
+Ngoài phương pháp upsampling bằng copy giá trị của pixel còn có những phương pháp khác như Bilinear Interpolation, Max-Unpooling, Bed of Nails. Ý tưởng của các phương pháp này khá đơn giản và bạn đọc cũng không cần phải nhớ chúng.
 
 # 7. Tích chập chuyển vị (Transposed Convolution)
 
-Ngoài gia tăng kích thước thông qua Upsampling, chúng ta có thể thực hiện theo cách phức tạp hơn thông qua tích chập chuyển vị (Transposed Convolution hoặc Conv2DTranspose). Vai trò của tích chập chuyển vị xuất phát từ nhu cầu biến đổi theo quá trình ngược lại của mạng tích chập thông thường hay còn gọi là giải chập (Deconvolutional Neural Network). Gỉa sử từ ma trận đầu vào có kích thước  $(w_1,h_1)$  sau khi áp dụng phép tích chập thông thường ta thu được kích thước $(w_2,h_2)$ . Tích chập chuyển vị sẽ biến đổi từ một ma trận có kích thước $(w_2,h_2)$  của output sang ma trận có kích thước  $(w_1,h_1)$  của input trong khi vẫn duy trì được các kiểu kết nối phù hợp với tích chập. Xin trích dẫn:
+Ngoài gia tăng kích thước thông qua Upsampling, chúng ta có thể thực hiện theo cách phức tạp hơn thông qua tích chập chuyển vị (Transposed Convolution hoặc Conv2DTranspose). Vai trò của tích chập chuyển vị xuất phát từ nhu cầu biến đổi theo quá trình ngược lại của mạng tích chập thông thường hay còn gọi là giải chập (Deconvolutional Neural Network). Gỉa sử từ ma trận đầu vào có kích thước  $(w_1,h_1)$  sau khi áp dụng phép tích chập thông thường ta thu được kích thước $(w_2,h_2)$ . Tích chập chuyển vị sẽ biến đổi từ một ma trận có kích thước $(w_2,h_2)$ của output sang ma trận có kích thước  $(w_1,h_1)$  của input trong khi vẫn duy trì được các kiểu kết nối phù hợp với tích chập. Xin trích dẫn:
 
 `The need for transposed convolutions generally arises from the desire to use a transformation going in the opposite direction of a normal convolution, i.e., from something that has the shape of the output of some convolution to something that has the shape of its input while maintaining a connectivity pattern that is compatible with said convolution`
 
@@ -207,8 +198,7 @@ Bạn đọc sẽ dễ dàng hình dung hơn về tích chập chuyển vị qua
 
 **Cách tính tích chập:**
 
-Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với 
-ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel, bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.
+Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel, bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.
 
 **Tính kích thước cho output:**
 
@@ -273,12 +263,7 @@ conv2D_y = tf.keras.layers.Conv2D(filters=1, kernel_size=F, strides=S)(y)
 conv2D_y.shape == x.shape
 ```
 
-
-
-
     True
-
-
 
 Đó là bởi kết quả của tích chập chuyển vị là quá trình biến đổi ngược lại của tích chập.
 
@@ -305,18 +290,16 @@ $$o_{ij} = \sum_{\text{sum element}}(\begin{bmatrix}
 
 Cách thực hiện tương tự như đối với phép tích chập CNN tại [Bài 8 - Convolutional Neural Network](https://phamdinhkhanh.github.io/2019/08/22/convolutional-neural-network.html). 
 
-
-
 # 9. Các thuật toán image segmentation
 
 
 ## 9.1. Các phương pháp cổ điển.
 
-Hầu hết các phương pháp image segmentation cổ điển đều là những phương pháp học không giám sát. Chúng ta không cần phải xác định trước nhãn cho từng pixel thuộc về đối tượng nào. Do đó dẫn tới hạn chế là các giá trị segment của ảnh khá ngẫu nhiên và không định nghĩa được các nhãn cần segment.
+Hầu hết các phương pháp image segmentation cổ điển đều là những phương pháp học không giám sát. Chúng ta không cần phải xác định trước nhãn cho từng pixel thuộc về đối tượng nào. Do đó dẫn tới hạn chế là các giá trị segment của ảnh khá ngẫu nhiên và không định nghĩa được các nhãn cần segment. Tiếp theo ta sẽ tiemf hiểu một số phương pháp segment ảnh theo phương pháp cổ điển.
 
 ### 9.1.1. Sử dụng bộ lọc binary threshold
 
-Các vùng ảnh sẽ được chuyển về dạng đen trắng dựa trên cường độ sáng của chúng lớn hoặc nhỏ hơn một ngưỡng cố định. Cách lọc này biến đổi theo cường độ của ngưỡng lọc và thường không chuẩn xác đối với ảnh không có phân vùng màu sắc rõ ràng. Bạn đọc có thể xem thêm [Opencv Image Thresholding](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html)
+Các vùng ảnh sẽ được chuyển về dạng đen trắng dựa trên cường độ sáng của chúng lớn hoặc nhỏ hơn một ngưỡng cố định. Phương pháp này cho kết quả biến đổi theo cường độ của ngưỡng lọc và thường không chuẩn xác đối với ảnh không có phân vùng màu sắc rõ ràng. Bạn đọc có thể xem thêm [Opencv Image Thresholding](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html)
 
 
 ```
@@ -363,9 +346,7 @@ Thuật toán k-mean clustering sẽ phân cụm cường độ của các pixel
 
 **Hình 7**: Các phân vùng của ảnh có ranh giới bị chồng lấn. Ví dụ như một phần rìa của gương mặt, vùng mắt và môi cũng bị lẫn sang màu đỏ của khăn. Nếu chúng ta muốn xác định vùng đối tượng cần segment là toàn bộ gương mặt không phân biệt mắt, môi và rìa thì thuật toán dường như không chuẩn xác.
 
-
 Chúng ta segmentation hình ảnh bằng thuật toán k-mean clustering trên sklearn như sau:
-
 
 ```
 import cv2
@@ -411,15 +392,13 @@ for i, image in enumerate([img, X_img]):
 
 <img src="/assets/images/20200610_ImageSegmentation/ImageSegmention_23_1.png" class="largepic"/>
 
-
 hạn chế của k-mean clustering là tốn kém chi phí tính toán vì khi huấn luyện cần tính khoảng cách từ centroids tới toàn bộ các pixels. Khía cạnh hạn chế khác là không rõ nên chọn bao nhiêu cluster là phù hợp.
 
 ### 9.1.3. Expectation Maximization Clustering
 
-Là phương pháp phát triển hơn của k-Mean clustering. Nó không chỉ là thuật toán clustering thông thường mà còn tìm ra `ước lượng hợp lý tối đa` (maximum likelihood estimator) trong các parametric models. Khi đó các clusters được biểu diễn bởi phân phối xác suất chứ không chỉ là trung bình.
+Là phương pháp phát triển hơn của k-Mean clustering. Nó không chỉ là thuật toán clustering thông thường mà còn tìm ra `ước lượng hợp lý tối đa` (maximum likelihood estimator) trong các parametric models. Khi đó các clusters được biểu diễn bởi phân phối xác suất thay cho trung bình.
 
 Chúng ta segmentation hình ảnh bằng thuật toán Expectation Maximization Clustering như sau:
-
 
 ```
 from sklearn.mixture import GaussianMixture
@@ -446,9 +425,9 @@ for i, image in enumerate([img, X_img]):
 
 ### 9.1.4. Mean shift Clustering
 
-k-means và Expectation Maximization yêu cầu chúng ta phải xác định trước số lượng các clusters. Sẽ rất khó xác định chính xác số lượng clusters vì nó biến động tùy theo mỗi bức ảnh hơn là một giá trị được xác định trước.
+k-means và Expectation Maximization yêu cầu chúng ta phải xác định trước số lượng các clusters. Sẽ rất khó xác định chính xác số lượng clusters vì nó biến động tùy theo ảnh đầu vào.
 
-Mean shift clustering khắc phục được nhược điểm này khi tự động tìm ra được số lượng các cluster là hợp lý nhất cho mỗi một bức ảnh.
+Mean shift clustering khắc phục được nhược điểm này khi tự động tìm ra được số lượng các clusters là hợp lý nhất cho mỗi một bức ảnh.
 
 Ý tưởng của Mean shift khá đơn giản và dựa trên phân phối histogram của bức ảnh. Nếu bạn đọc chưa biết về phân phối histogram của ảnh là gì vui lòng xem lại [Bài 17 - Thuật toán HOG](https://phamdinhkhanh.github.io/2019/11/22/HOG.html).
 
@@ -466,7 +445,7 @@ $$\hat{f}_K = \frac{1}{nh^d}\sum_{i=1}^{n}K(\frac{\mathbf{x}-\mathbf{x}_i}{h}) \
 
 $$K(\mathbf{x}) = c_k k (||\mathbf{x}||^2)$$
 
-với $c_k$ là hằng số chuẩn hóa và $||\mathbf{x}||$ là norm chuẩn bậc 2 có công thức như sau:
+với $c_k$ là hằng số chuẩn hóa và $\Vert \mathbf{x} \Vert$ là norm chuẩn bậc 2 có công thức như sau:
 
 $$||\mathbf{x}|| = \sqrt{x_1^2+x_2^2 \dots + x_d^2}$$
 
@@ -481,12 +460,12 @@ $$||\mathbf{x}|| = \sqrt{x_1^2+x_2^2 \dots + x_d^2}$$
 
 Để đơn giản hóa tính toán gradient descent, đặt 
 
-$$\mathbf{y} = ||\frac{\mathbf{x}-\mathbf{x}\_i}{h}||^{2}$$ 
+$$\mathbf{y} = ||\frac{\mathbf{x}-\mathbf{x}_i}{h}||^{2}$$ 
 
 và $g(x) = -k'(x)$. Khi đó:
 
 $$
-\nabla_{\mathbf{x}} \hat{f}(\mathbf{x}) = \frac{2c_{k, d}}{nh^{d+2}}[\sum_{i=1}^{n} g(\mathbf{y})\mathbf{x}_i - \sum_{i=1}^{n} g(\mathbf{y})\mathbf{x}] = \frac{2c_{k, d}}{nh^{d+2}}[\sum_{i=1}^{n} g(\mathbf{y})] \begin{bmatrix}\frac{\mathbf{x}\_i}{\sum_{i=1}^{n} g(\mathbf{y})} - \mathbf{x}
+\nabla_{\mathbf{x}} \hat{f}(\mathbf{x}) = \frac{2c_{k, d}}{nh^{d+2}}[\sum_{i=1}^{n} g(\mathbf{y})\mathbf{x}_i - \sum_{i=1}^{n} g(\mathbf{y})\mathbf{x}] = \frac{2c_{k, d}}{nh^{d+2}}[\sum_{i=1}^{n} g(\mathbf{y})] \begin{bmatrix}\frac{\mathbf{x}_i}{\sum_{i=1}^{n} g(\mathbf{y})} - \mathbf{x}
 \end{bmatrix}
 $$
 
