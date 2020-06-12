@@ -198,11 +198,11 @@ Xin trích dẫn:
 
 Bạn đọc sẽ dễ dàng hình dung hơn về tích chập chuyển vị qua ví dụ minh họa bên dưới:
 
-<img src="https://imgur.com/VxVTcZ0.png" class="gigantic"/>
+<img src="https://imgur.com/3fecoA3.png" class="gigantic"/>
 
 **Cách tính tích chập:**
 
-Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel, bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.
+Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel với bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.
 
 **Tính kích thước cho output:**
 
