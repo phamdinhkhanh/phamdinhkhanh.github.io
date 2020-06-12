@@ -26,7 +26,7 @@ Dựa trên những hiểu biết còn hạn chế của mình thì các bạn �
 
 Mỗi một bài toán sẽ có một cách thức thiết kế mô hình và định dạng dữ liệu input/output chuyên biệt. Chẳng hạn như lớp bài toán phổ biến nhất trong computer vision là **Image Classification** [Bài 8 - Convolutional Neural Network](https://phamdinhkhanh.github.io/2019/08/22/convolutional-neural-network.html) và [Bài 38 - Các kiến trúc CNN hiện đại](https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html) sẽ chỉ cần ảnh và nhãn của ảnh. Tuy nhiên một số bức ảnh có nhiều vật thể xuất hiện thì chúng ta vừa phải tìm nhãn cho vật thể, vừa phải khoanh vùng vị trí của vật thể trên ảnh thông qua bounding box. Do đó lớp bài toán **Object Detection** ở [Bài 12 - Các thuật toán Object Detection](https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html), [bài 13 model SSD](https://phamdinhkhanh.github.io/2019/10/05/SSDModelObjectDetection.html), [bài 25 model YOLO](https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html) thì ngoài nhãn còn cần thêm tọa độ bounding box.
 
-Đối với các bài toán Image Segmentation thì mục tiêu của chúng ta là tìm ra vùng ảnh chứa vật thể nên chúng ta sẽ cần phải gãn nhãn cho từng pixel theo giá trị của chúng.
+Đối với các bài toán Image Segmentation thì mục tiêu của chúng ta là tìm ra vùng ảnh chứa vật thể nên chúng ta sẽ cần phải gãn nhãn cho từng pixel.
 
 
 ### 1.2. Bài toán Image Segmentation
@@ -47,7 +47,7 @@ Image Segmentation nếu được huấn luyện theo bài toán học có giám
 
 **Hình 3:** Input (bên trái) và Output (bên phải) của mô hình Image Segmentation đối với bài toán một đối tượng. Mỗi một nhãn segment sẽ được thể hiện bởi một màu sắc khác nhau. Màu xám là nền, màu vàng là đường viền của ảnh và màu tím là nằm bên trong vật thể.
 
-
+_Note: Bổ sung cụ thể một số dạng (Input, Output) của Image Segmentation trong một số bộ dữ liệu phổ biến_
 
 ## 2. Các dạng image segmentation khác nhau
 
