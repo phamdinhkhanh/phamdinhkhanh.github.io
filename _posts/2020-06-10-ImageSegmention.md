@@ -93,7 +93,7 @@ Trước khi tìm hiểu về các kiến trúc Image Segmentation tiêu biểu,
 
 * **Vùng nhận thức** (Receptive Field): Là những vùng ảnh được áp dụng tích tập với bộ lọc để tạo ra các pixel ở output.
 
-* **Ma trận dãn nở** (Dilation Matrix): Là ma trận được tạo thành từ ma trận gốc bằng cách padding xen kẽ các dòng và cột bằng giá trị 0.
+* **Ma trận giãn nở** (Dilation Matrix): Là ma trận được tạo thành từ ma trận gốc bằng cách padding xen kẽ các dòng và cột bằng giá trị 0.
 
 
 # 5. Mạng giải chập (Deconvolutional Neural Network)
@@ -186,7 +186,11 @@ Ngoài gia tăng kích thước thông qua Upsampling, chúng ta có thể thự
 
 [A Guide To Convolution Arithmetic For Deep Learning, 2016](https://arxiv.org/abs/1603.07285).
 
-Trên thực tế thì có thể coi tích chập chuyển vị là một quá trình ngược của tích chập thông thường khi mỗi một pixel được mapping sang các đặc trưng ảnh thay vì ngược lại từ các đặc trưng sang pixel. Xin trích dẫn:
+Trên thực tế thì có thể coi tích chập chuyển vị là một quá trình ngược của tích chập thông thường khi mỗi một đặc trưng (feature) được mapping sang các pixels ảnh thay vì ngược lại từ các pixels sang đặc trưng (feature). 
+
+<img src="https://imgur.com/pOK3wRe.png" class="gigantic"/>
+
+Xin trích dẫn:
 
 `A deconvnet can be thought of as a convnet model that uses the same components (filtering, pooling) but in reverse, so instead of mapping pixels to features does the opposite.`
 
@@ -194,7 +198,7 @@ Trên thực tế thì có thể coi tích chập chuyển vị là một quá t
 
 Bạn đọc sẽ dễ dàng hình dung hơn về tích chập chuyển vị qua ví dụ minh họa bên dưới:
 
-<img src="https://imgur.com/VxVTcZ0.png" class="largepic"/>
+<img src="https://imgur.com/VxVTcZ0.png" class="gigantic"/>
 
 **Cách tính tích chập:**
 
@@ -267,9 +271,9 @@ conv2D_y.shape == x.shape
 
 Đó là bởi kết quả của tích chập chuyển vị là quá trình biến đổi ngược lại của tích chập.
 
-# 8. Tích chập dãn nở (Dilation Convolution)
+# 8. Tích chập giãn nở (Dilation Convolution)
 
-Tích chập dãn nở (Dilation Convolution) cũng là một phương pháp thường được áp dụng trong các mạng giải chập.
+Tích chập giãn nở (Dilation Convolution) cũng là một phương pháp thường được áp dụng trong các mạng giải chập.
 
 <img src="https://imgur.com/LMM70dw.png" class="largepic"/>
 
@@ -513,7 +517,7 @@ Tiếp theo chúng ta sẽ tìm hiểu tới những kiến trúc hiện đại 
 
 Như chúng ta đã tìm hiểu ở [Bài 12 - Các thuật toán Object Detection](https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html#43-faster-r-cnn-2016) thì Faster R-CNN là một trong những thuật toán thuộc họ R-CNN. Mình sẽ tóm tắt lại các bước của thuật toán này một cách ngắn gọn:
 
-<img src="https://imgur.com/3XooVMC.png" class="largepic"/>
+<img src="https://imgur.com/3XooVMC.png" class="gigantic"/>
 
 **Hình 9:** Kiến trúc của pipeline trong mạng Faster R-CNN. [Source Jonathan-Hui](https://medium.com/@jonathan_hui/image-segmentation-with-mask-r-cnn-ebe6d793272)
 
@@ -529,7 +533,7 @@ Từ hình vẽ các bạn hình dung ra toàn bộ các xử lý của Faster R
 
 Nguyên lý hoạt động khá đơn giản phải không các bạn? Mask R-CNN có kiến trúc kế thừa lại Faster R-CNN nhưng add thêm nhánh mask có nhiêm vụ dự báo nhãn trên từng pixel.
 
-<img src="https://miro.medium.com/max/2700/1*M_ZhHp8OXzWxEsfWu2e5EA.png" class="largepic"/>
+<img src="https://miro.medium.com/max/2700/1*M_ZhHp8OXzWxEsfWu2e5EA.png" class="gigantic"/>
 
 **Hình 10**: Kiến trúc Mask R-CNN. [Source Jonathan-Hui](https://medium.com/@jonathan_hui/image-segmentation-with-mask-r-cnn-ebe6d793272)
 
@@ -803,7 +807,7 @@ plot_model(model)
 
 ## 13. Tổng kết
 
-Image Segmentation là một trong những lớp bài toán có nhiều ứng dụng thực tiễn. Image Segmentation đòi hỏi mức độ chi tiết và chính xác hơn trong việc hiểu và biểu diễn nội dung của hình ảnh so với các thuật toán khác như Image Classification, Object Detection. Ở bài viết này chúng ta đã được tìm hiểu một số khái niệm mới như mạng giải chập và các tích chập đặc biệt có chức năng đặc biệt như tích chập chuyển vị, tích chập dãn nở.
+Image Segmentation là một trong những lớp bài toán có nhiều ứng dụng thực tiễn. Image Segmentation đòi hỏi mức độ chi tiết và chính xác hơn trong việc hiểu và biểu diễn nội dung của hình ảnh so với các thuật toán khác như Image Classification, Object Detection. Ở bài viết này chúng ta đã được tìm hiểu một số khái niệm mới như mạng giải chập và các tích chập đặc biệt có chức năng đặc biệt như tích chập chuyển vị, tích chập giãn nở.
 
 Đồng thời chúng ta cũng làm quen với lý thuyết thuật toán, kiến trúc mô hình và thực hành xây dựng mô hình trên tensorflow của một số kiến trúc Image Segmentation cơ bản như `Mask-CNN, Unet, FCN`. Các mô hình trong Image Segmentation vẫn còn tiếp tục phát triển và còn rất nhiều các mô hình mà mình sẽ đề cập ở những bài tiếp theo.
 
