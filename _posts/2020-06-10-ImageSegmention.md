@@ -435,7 +435,7 @@ Mean shift clustering khắc phục được nhược điểm này khi tự đ�
 
 Ý tưởng của Mean shift khá đơn giản và dựa trên phân phối histogram của bức ảnh. Nếu bạn đọc chưa biết về phân phối histogram của ảnh là gì vui lòng xem lại [Bài 17 - Thuật toán HOG](https://phamdinhkhanh.github.io/2019/11/22/HOG.html).
 
-Giải thích ngắn gọn thì phân phối histogram là một mã hóa phân phối historgram giữa độ lớn gradient theo phương gradient trên toàn bộ grid cells của ảnh. Mỗi một bức ảnh sẽ có một véc tơ historgram đặc trưng riêng.
+Giải thích ngắn gọn thì phân phối histogram là một mã hóa phân phối theo các bins giữa độ lớn gradient theo phương gradient trên toàn bộ grid cells của ảnh. Mỗi một bức ảnh sẽ có một véc tơ historgram đặc trưng riêng.
 
 **Thuật toán Mean Shift**:
 
