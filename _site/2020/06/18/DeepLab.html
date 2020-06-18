@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 41 - DeepLab Sentiment Segmentation</p></h2> 
+<strong>18 Jun 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
+
+<p>Ở <a href="https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a> chúng ta đã được tìm hiểu về một số thuật toán Image Segmentation. Thông qua đó, chúng ta đã nắm được cơ bản về input/output, kiến trúc của một mô hình Image Segmentation và một số lớp mô hình Image Segmentation phổ biến như Mask-CNN, U-Net, FCN.</p>
+
+<p>Ở bài này chúng ta sẽ tiếp tục tìm hiểu những kiến trúc Image Segmentation hiện đại hơn và hiện tại đang là những kiến trúc SOTA nhất. Hãy cùng khám phá DeepLab V1+V2 và DeepLab V3, đặc điểm kiến trúc mạng và những kỹ thuật được áp dụng bên trong nó nhé.</p>
+
+<h1 id="2-deeplabv1v2">2. DeepLabV1+V2</h1>
+
+<h2 id="21-kiến-trúc-chung-của-deeplab-model">2.1. Kiến trúc chung của DeepLab model</h2>
+
+<p>DeepLabV1 và V2 được nhóm tác giả <code class="highlighter-rouge">Liang-Chieh Chen, George Papandreou</code> là những nhà nghiên cứu lâu năm về Semantic Segmentation công bố lần đầu vào năm 2016 và lần thứ 2 vào năm 2017. Bản thảo lần 2 là bổ sung của lần 1 nên DeepLabV1 và V2 không có gì khác biệt nhiều. Ngay sau khi công bố, kiến trúc đã đạt được những kết quả ấn tượng trên tập dữ liệu thẩm định của Pascal VOC 2012. Đây là một kiến trúc áp dụng một cách rất linh hoạt tích chập Atrous thay vì các phương pháp trước đó là áp dụng Transposed Convolution. Bên cạnh đó tác giả cũng áp dụng phương pháp Conditional Random Field để tinh chỉnh kết quả dự báo chuẩn xác hơn.</p>
+
+<h2 id="22-kiến-trúc-chung-của-deeplabv1v2-model">2.2. Kiến trúc chung của DeepLabV1+V2 model</h2>
+
+<p><img src="/assets/images/20200618_DeepLab/pic1.png" class="largepic" /></p>
+
+<p><strong>Hình 1</strong>: Các thành phần của DeepLab model lần lượt theo hướng mũi tên từ trên xuống dưới và từ trái qua phải bao gồm: <code class="highlighter-rouge">Input -&gt; DCNN -&gt; Score Map -&gt; bilinear interpolation -&gt; Fully Connected CRF -&gt; mask output</code>. Source: <a href="https://arxiv.org/pdf/1606.00915.pdf">DeepLabV2</a></p>
+
+<p>Chúng ta sẽ cùng giải thích qua công dụng của từng phần trong mạng DeepLab:</p>
+
+<ul>
+  <li>
+    <p>Đầu tiên một ảnh đầu vào sẽ được truyền vào một mạng CNN học sâu nhiều tầng (DCNN - Deep Convolutional Neural Network). Nhiệm vụ chính của DCNN là tạo ra một feature map là một biểu diễn không gian các đặc trưng của ảnh đầu vào. Trong DCNN chúng ta sử dụng các tích chập Atrous để trích lọc đặc trưng thay vì các tích chập CNN thông thường. Tích chập Atrous sẽ có những tác dụng đặc biệt hơn so với tích chập CNN đó là tầm nhìn (<code class="highlighter-rouge">field of view</code>) được mở rộng hơn, không làm giảm chiều của feature map quá sâu mà vẫn giữ được số lượng tham số và chi phí tính toán tương đương với tích chập CNN. Lý do không nên giảm kích thước feature map ở các bài toàn Image Segmentation là bởi vì việc giảm kích thước feature map có thể dẫn tới mất mát các thông tin về không gian. Trong khi mục tiêu của lớp bài toán Image Segmentation là đồng thời <strong>định vị</strong> vị trí pixels và dự báo nhãn cho chúng. Sau cùng của mạng DCNN ta thu được một feature map là một bản đồ đặc trưng của ảnh đầu vào chính là <code class="highlighter-rouge">Aeroplane Coarse Score map</code> trong hình vẽ.</p>
+  </li>
+  <li>
+    <p>Score map có kích thước nhỏ hơn nhiều so với ảnh gốc. Chúng ta sử dụng Bi-linear Interpolation để resize lại score map về kích thước gốc. Bố cục của ảnh sau khi resize không khác so với ảnh gốc, chỉ thay đổi về kích thước.</p>
+  </li>
+  <li>
+    <p>Để tạo ra được feature map dự báo thì chúng ta áp dụng một layer kết nối toàn bộ (Fully Connected Layer) kết hợp với phương pháp Conditional Random Field, một phương pháp thuộc nhóm mô hình đồ thị xác suất (Probabilistic Graphical Model) để chuẩn hóa lại <strong>nhãn</strong> cho các pixels. Sau chuẩn hóa, từ score map chúng ta thu được final output có <strong>đường biên</strong> và <strong>vùng ảnh</strong> trở nhên rõ ràng hơn.</p>
+  </li>
+</ul>
+
+<p>Chúng ta có thể thấy tiến trình hoạt động của DeepLab version 1 và 2 rất đơn giản phải không nào.</p>
+
+<p>Như điểm mấu chốt ở các kiến trúc này đó là áp dụng <code class="highlighter-rouge">Atrous Convolution</code> và <code class="highlighter-rouge">Fully Connected CRF</code> để dự đoán ma trận mask cho ảnh chuẩn xác hơn.</p>
+
+<p>Để hình dung sâu hơn về những cơ chế này chúng ta sẽ tìm hiểu phần tiếp theo.</p>
+
+<h2 id="23-atrous-convolution">2.3. Atrous Convolution</h2>
+
+<p>Atrous có nghĩa là <code class="highlighter-rouge">à trous</code>là một từ tiếng Pháp tương ứng với từ <code class="highlighter-rouge">hole</code> trong tiếng anh ám chỉ rằng có một khoảng trống giữa các tích chập. Tích chập này thường được sử dụng trong <code class="highlighter-rouge">tín hiệu sóng</code>. Nội dung của nó cũng tương tự như <code class="highlighter-rouge">Dilation Convolution</code> nhưng trong các thuật toán Image Segmentation hiện đại thì đa phân sử dụng <code class="highlighter-rouge">Atrous Convolution</code> thay cho <code class="highlighter-rouge">Dilation Convolution</code>, trên thực tế thì hai khái niệm này tương đương. Ở bài trước mình đã trình bày <a href="https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html#8-t%C3%ADch-ch%E1%BA%ADp-gi%C3%A3n-n%E1%BB%9F-dilation-convolution">dilation convolution</a> trong trường hợp thêm xen kẽ dòng, cột 0 với kích thước bằng 1.</p>
+
+<p>Đây là một tích chập thường được sử dụng trong các bài toán image segmentation. Tích chập atrous cho phép chúng ta trích lọc được các đặc trưng ở mật đồ dày hơn khi thông tin được bảo toàn tốt hơn cho các đối tượng ở những kích thước khác nhau.</p>
+
+<p>Chúng ta có thể khái quát Atrous Convolution trong trường hợp tổng quát thông qua công thức:</p>
+
+<script type="math/tex; mode=display">y[i] = \sum_{i=1}^{K} x[i+r.k]w[k]</script>
+
+<p>Ý nghĩa của công thức trên là: Với mỗi một cell $i$ trên output $y$, tích chập atrous sẽ tính toán bằng cách nhân tích chập bộ lọc $w$ với feature map $x$. Ở đây atrous rate $r$ tương ứng với khoảng cách mà ta giãn cách giữa các dòng và cột bằng các giá trị 0, nếu atrous rate bằng $r$ thì giãn cách các dòng và cột liên tiếp là $r-1$ dòng, cột.</p>
+
+<p>Để hình dung rõ hơn các bạn theo dõi hình minh họa bên dưới.</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic2.png" class="gigantic" /></p>
+
+<p><strong>Hình 2</strong>: Tích chập thông thường (bên trên) và tích chập atrous (bên dưới) với cùng một bức ảnh 3 x 3. Các ô màu xám là ảnh gốc, màu trắng là padding và dòng, cột 0 được thêm vào và màu xanh nước biển là các vùng nhận thức (receptive field) khi nhân tích chập. Bên phải ngoài cùng là mô tả phép chiếu của lát cắt theo width quá trình thực hiện tích chập ở mỗi bước. Ta thấy đối với tích chập atrous thì các vị trí của receptive field giãn cách nhau một cell mặc dù về bản chất vẫn là tích chập với bộ lọc <code class="highlighter-rouge">3 x 3</code> nhưng được thực hiện trên một vùng rộng hơn là <code class="highlighter-rouge">5 x 5</code>. Tích chập thông thường thì kích thước receptive field bằng với kích thước bộ lọc và bằng <code class="highlighter-rouge">3 x 3</code>. Kết quả output cho thấy tích chập astrous đã tăng kích thước feature map từ <code class="highlighter-rouge">3x3</code> lên <code class="highlighter-rouge">5x5</code>.</p>
+
+<p>Để thực hiện tích chập atrous như hình minh họa đầu tiên chúng ta giãn cách các pixels trên ảnh gốc bằng cách thêm các dòng và cột 0 xen kẽ nhau. Sau đó ta thêm padding bằng 2 về cả 4 phía trái, phải, trên và dưới. Thực hiện di chuyển tích chập 1 cell theo chiều từ trái qua phải và từ trên xuống dưới trên các vùng receptive field kích thước <code class="highlighter-rouge">3 x 3</code> nhưng đã được giãn cách thành <code class="highlighter-rouge">5 x 5</code>. Cuối cùng ta thu được output có kích thước là <code class="highlighter-rouge">5 x 5</code>.</p>
+
+<p>Như vậy tích chập astrous có tác dụng:</p>
+
+<ul>
+  <li>Tăng kích thước output so với input.</li>
+  <li>Vùng nhận thức lớn hơn giúp mở rộng tầm nhìn của bộ lọc và phù hợp với các bối cảnh rộng hơn.</li>
+</ul>
+
+<p>Đây là một cơ chế cho phép kiểm soát tầm nhìn của vùng nhận thức và tìm ra sự đánh đổi hợp lý nhất giữa độ chính xác cục bộ (áp dụng với tầm nhìn hẹp) và sự đồng nhất bối cảnh (áp dụng với tầm nhìn rộng).</p>
+
+<p>Xin trích dẫn:</p>
+
+<p><code class="highlighter-rouge">It also allows us to effectively enlarge the field of view of filters to incorporate larger context without increasing the number of parameters or the amount of computation.</code></p>
+
+<p><a href="https://arxiv.org/pdf/1606.00915.pdf">Deeplab paper - phần abstract</a></p>
+
+<p>Đối với tích chập austrous ta quan tâm tới các chỉ số:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">rate</code>: Ký hiệu là $R$, là khoảng cách giữa các dòng hoặc cột liên tiếp nhau sau khi chèn thêm các dòng và cột 0. Nếu rate = $r$ thì cứ cách một dòng hoặc cột là $r-1$ dòng hoặc cột 0.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">kernel</code>: Ký hiệu $K$, kích thước bộ lọc.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">padding</code>: Ký hiệu $P$, kích thước zero padding bao ngoài ảnh.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">stride</code>: Ký hiệu $S$, số bước di chuyển của mỗi lượt tích chập.</p>
+  </li>
+</ul>
+
+<p><strong>Tính output shape cho Atrous Convolution</strong></p>
+
+<p>Gỉa sử áp dụng một tích chập Atrous Convolution (hoặc Dialition Convolution) với bộ lọc có kích thước $K$ lên một ảnh input với kích thước $W$ có padding $P$ đều 2 phía và khoảng cách giãn cách giữa các dòng hoặc cột (rate) là $R$ với bước di chuyển là $S$. Khi đó kích thước của output là:</p>
+
+<script type="math/tex; mode=display">W_{out} = \frac{(W-1)*R+1-(K-1)*R-1+2P}{S} + 1 = \frac{(W-K)*R+2P}{S} + 1</script>
+
+<p>Việc chứng minh xin dành cho bạn đọc.</p>
+
+<p>Theo công thức trên thì muốn tăng kích thước output ta có thể có 4 chiến lược là tăng $R$, tăng $P$, giảm $K$ hoặc giảm $S$.</p>
+
+<p>Ví dụ:
+Trong hình trên ở tích chập atrous với các thông số là $W=3, K=3, P=2, S=1, R=2$ ta tính được kích thước output là:</p>
+
+<script type="math/tex; mode=display">W_{out} = \frac{(W-K)*R+2P}{S}+1 = \frac{(3-3)*2+2*2}{1}+1 = 5</script>
+
+<p>muốn tăng kích thước lên $k$ lần thì ta cần áp dụng:</p>
+
+<script type="math/tex; mode=display">kW = \frac{(W-K)*R+2P}{S}+1 \leftrightarrow R= \frac{(kW-1)S-2P}{W-K}</script>
+
+<p>giả định $S=1$:</p>
+
+<script type="math/tex; mode=display">R = \frac{(kW-1)-2P}{W-K}</script>
+
+<p><strong>Tích chập atrous trên tensorflow</strong></p>
+
+<p>Trên tensorflow chúng ta có thể tính tích chập atrous theo hai cách. Cách thứ nhất là dựa trên hàm <a href="https://www.tensorflow.org/api_docs/python/tf/nn/atrous_conv2d">tf.nn.atrous_conv2d()</a> và cách thứ 2 là dựa trên hàm <a href="https://www.tensorflow.org/api_docs/python/tf/nn/conv2d">tf.nn.conv2d()</a>. Cả hai cách đều đưa ra cùng một kết quả. Để hiểu rõ hơn về cách tính những kết quả này, bạn đọc có thể xem thêm <a href="https://docs.google.com/spreadsheets/d/17UcX6woX7cYqyVcftnZ6LSwNg6wdUmzRFTALzFBhjRY/edit?usp=sharing">Atrous Convolution - Excel</a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>import numpy as np
+
+x = np.array([[1, 0, 1, 0, 1],
+              [0, 0, 0, 0, 0],
+              [1, 0, 1, 0, 1],
+              [0, 0, 0, 0, 0],
+              [1, 0, 1, 0, 1]], dtype=np.float32)
+x_pad = np.pad(x, pad_width=2)
+x_in = x_pad.reshape((1, 9, 9, 1))
+kernel = np.ones(shape=(3, 3, 1, 1), dtype=np.float32)
+output = tf.nn.atrous_conv2d(x_in, kernel, rate=2, padding='VALID')
+output
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>&lt;tf.Tensor: shape=(1, 5, 5, 1), dtype=float32, numpy=
+array([[[[4.],
+         [0.],
+         [6.],
+         [0.],
+         [4.]],
+
+        [[0.],
+         [0.],
+         [0.],
+         [0.],
+         [0.]],
+
+        [[6.],
+         [0.],
+         [9.],
+         [0.],
+         [6.]],
+
+        [[0.],
+         [0.],
+         [0.],
+         [0.],
+         [0.]],
+
+        [[4.],
+         [0.],
+         [6.],
+         [0.],
+         [4.]]]], dtype=float32)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Theo cách thứ nhất chúng ta sẽ khai báo <code class="highlighter-rouge">rate = 2</code>. Lưu ý đầu vào của hàm là ma trận sau khi đã được padding và dilate.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>x = np.array([[1, 0, 1, 0, 1],
+              [0, 0, 0, 0, 0],
+              [1, 0, 1, 0, 1],
+              [0, 0, 0, 0, 0],
+              [1, 0, 1, 0, 1]], dtype=np.float32)
+x_pad = np.pad(x, pad_width=2)
+x_in = x_pad.reshape((1, 9, 9, 1))
+kernel = np.ones(shape=(3, 3, 1, 1), dtype=np.float32)
+
+output = tf.nn.conv2d(x_in,
+                      kernel,
+                      strides=[1, 1],
+                      padding="VALID",
+                      dilations=[2, 2])
+output
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>&lt;tf.Tensor: shape=(1, 5, 5, 1), dtype=float32, numpy=
+array([[[[4.],
+         [0.],
+         [6.],
+         [0.],
+         [4.]],
+
+        [[0.],
+         [0.],
+         [0.],
+         [0.],
+         [0.]],
+
+        [[6.],
+         [0.],
+         [9.],
+         [0.],
+         [6.]],
+
+        [[0.],
+         [0.],
+         [0.],
+         [0.],
+         [0.]],
+
+        [[4.],
+         [0.],
+         [6.],
+         [0.],
+         [4.]]]], dtype=float32)&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Theo cách thứ 2 chúng ta cần khai báo <code class="highlighter-rouge">dilation = 2</code>. Đầu vào tương tự như cách 1.</p>
+
+<h2 id="24-atrous-spatial-pyramid-pooling-aspp">2.4. Atrous Spatial Pyramid Pooling (ASPP)</h2>
+
+<p>Trong DeepLabV1 và V2 để nhận diện được bối cảnh (context) của bức ảnh ở một vùng không gian rộng lớn hơn thì chúng ta phải điều chỉnh tăng <code class="highlighter-rouge">rate</code> của tích chập Atrous. Đồng thời giúp chúng ta có thể nhận diện các vật thể có thể xuất hiện trong ảnh với nhiều kích thước khác nhau.</p>
+
+<p>Ví dụ: Nếu bạn đang muốn segment các vật thể trong một ảnh tham gia giao thông. Cùng là một chiếc xe ô tô nhưng nếu ở gần thì sẽ có kích thước lớn hơn và ở xa thì kích thước nhỏ hơn. Như vậy mô hình của chúng ta cần có cơ chế nhận dạng được đa dạng bối cảnh và kích thước.</p>
+
+<p>ASPP (Atrous Spatial Pyramid Pooling) (Kim tự tháp bộ lọc atrous) là một cơ chế giúp ta thực hiện điều đó.</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic2.png" class="gigantic" /></p>
+
+<p><strong>Hình 3:</strong> Hình minh họa kiến trúc của một ASPP. ASPP là một tập hợp của nhiều bộ lọc atrous với kích thước khác nhau được thực hiện đồng thời trên cùng một vùng feature map (chính là <code class="highlighter-rouge">Input Feature Map</code> dòng dưới trong ảnh). Sự đa dạng về kích thước bộ lọc được xếp chồng lên nhau đã tạo thành một kim tự tháp bộ lọc atrous. Khi rate càng lớn, tầm nhìn của bộ lọc trên <code class="highlighter-rouge">Input Feature Map</code> càng lớn và giúp ta học được bối cảnh tổng quát (global context) tốt hơn. Với các bộ lọc kích thước nhỏ thì chúng ta sẽ học được bối cảnh cục bộ (local context) tốt hơn. Đồng thời ASPP cũng giúp phát hiện vật thể ở nhiều kích thước khác nhau. Sau cùng, các đặc trưng tổng quát và cục bộ được trộn lẫn với nhau để tạo thành Score map. Source: <a href="https://arxiv.org/pdf/1606.00915.pdf">DeepLabV2</a></p>
+
+<h2 id="25-layer-kết-nối-toàn-bộ-crf">2.5. Layer kết nối toàn bộ CRF</h2>
+
+<p>Layer kết nối toàn bộ CRF còn được gọi là Fully Connected CRF hoặc DenseCRF post-processing là một chu trình xử lý sau cùng để tính toán ra phân phối xác suất cho output. Layer kết nối toàn bộ CRF sẽ áp dụng kỹ thuật Conditional Random Field (viết tắt là CRF) để làm cho dự báo cho các pixel trở nên chuẩn xác hơn. Vậy CRF là gì?</p>
+
+<h3 id="251-tác-dụng-của-crf">2.5.1. Tác dụng của CRF</h3>
+
+<p>Chúng ta biết rằng không gian sẽ có tính liên kết. Dựa vào nội dung, bố cục, hình dạng và màu sắc của một vùng ảnh chúng ta có thể dự đoán được các vùng ảnh xung quanh. Ví dụ: bên cạnh một chiếc xe thường sẽ là những chiếc xe khác. Xét chi tiết hơn, nếu một pixel có nhãn và màu sắc xác định thì những pixels có khoảng cách <strong>càng gần</strong> với nó thì khả năng sẽ có <strong>cùng nhãn và màu sắc</strong>.</p>
+
+<p>Đó chính là ý tưởng để áp dụng Conditional Random Field vào bài toán Image Segmentation để dự báo nhãn cho từng pixels.</p>
+
+<p><strong>Tóm tắt pipeline áp dụng CRF:</strong></p>
+
+<p>Sau khi sử dụng ASPP ta thu được một feature map tổng hợp bối cảnh ở nhiều vùng không gian có kích thước khác nhau. Sau đó để trở lại kích thước input, Feature map được scale up bằng bilinear interpolation. Các đường biên được tinh chỉnh rõ nét và hình dạng vật thể sẽ được làm cho smoothing hơn thông qua Fully Connected Conditional Random Field. Để hiểu rõ hơn CRF đã giúp cho dự báo cải thiện như thế nào, cùng quan sát hình bên dưới:</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic4.png" class="gigantic" /></p>
+
+<p><strong>Hình 4:</strong> Score map (đầu vào trước khi áp dụng hàm softmax) và belief map (đầu ra sau khi áp dụng hàm softmax). Chúng ta thể hiện score map (Dòng 1) và belief map (dòng 2) sau mỗi một lượt lấy <code class="highlighter-rouge">mean field</code> của mỗi vòng lặp CRF. Đầu ra của DCNN được sử dụng như là đầu vào cho quá trình <code class="highlighter-rouge">mean field</code>. Note: Mean field là một phương pháp xấp xỉ áp dụng trên các phân phối xác suất. Đi sâu vào khái niệm này rất rộng nên bạn đọc chỉ cần hiểu đơn giản như vậy. Nếu muốn hiều về phương pháp này bạn đọc có thể tham khảo <a href="http://bjlkeng.github.io/posts/variational-bayes-and-the-mean-field-approximation/">mean field approximation</a>. Source: <a href="https://arxiv.org/pdf/1606.00915.pdf">DeepLabV2</a></p>
+
+<p>Như vậy ta thấy rằng sau các lượt áp dụng CRF liên tiếp thì hình ảnh dự báo đã trở nên smoothing hơn và đường biên rõ ràng hơn. Các vùng nhỏ có màu sắc khác nhau dần dần đã được làm mịn và đường biên không còn bị nhòe sáng. Bạn đọc đã hình dung ra tác dụng của CRF rồi chứ?</p>
+
+<h3 id="252-phương-pháp-crf">2.5.2. Phương pháp CRF</h3>
+
+<p>CRF là một phương pháp được sử dụng rộng rãi trong Image Segmentation nhằm kết hợp giữa điểm class được tính ra từ DCNN với thông tin bậc thấp (low-level feature) được ghi nhận bởi tương tác cục bộ giữa pixels với cạnh hoặc giữa các siêu pixels. Xin trích dẫn:</p>
+
+<p><code class="highlighter-rouge">CRFs have been broadly used in semantic segmentation to combine class scores computed by multi-way classifiers with the low-level information captured by the local interactions of pixels and edges [23], [24] or superpixels [25]</code></p>
+
+<p><a href="https://arxiv.org/pdf/1606.00915.pdf">Deeplab paper</a></p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic1.png" class="gigantic" /></p>
+
+<p><strong>Hình 5</strong>: Các layers của DeepLab model bao gồm: <code class="highlighter-rouge">input -&gt; DCNN -&gt; Score Map -&gt; bilinear interpolation -&gt; Fully Connected CRF -&gt; mask output</code>.</p>
+
+<p>Thuật toán CRF sẽ tìm cách chuẩn hóa lại điểm số cho mỗi điểm ảnh thông qua một hàm năng lượng (Energy score) như sau:</p>
+
+<script type="math/tex; mode=display">\text{E}(\mathbf{x}) = \sum_{i} \theta_i(x_i) + \sum_{ij} \theta_{ij}(x_i, x_j)</script>
+
+<p>Ở đây $\mathbf{x}$ là nhãn được gán cho các pixels. Thành phần thứ nhất $\theta_i(x_i) = -\log P(x_i)$ là đối logratith xác suất của nhãn được gán cho pixel $i$ và cũng chính là hàm <code class="highlighter-rouge">cross entropy</code> đánh giá chênh lệch giữa phân phối xác suất nhãn dự báo và thực tế.</p>
+
+<p>Thành phần thứ 2 đánh giá khả năng ghép cặp tiềm năng giữa 2 pixels bất kỳ trong ảnh.</p>
+
+<script type="math/tex; mode=display">\theta_{ij}(x_i, x_j) = \mu(x_i, x_j) \begin{bmatrix} w_1 \times \exp(-\frac{\Vert p_i - p_j \Vert^2}{2\sigma_{\alpha}^2} -\frac{\Vert I_i - I_j \Vert^2}{2\sigma_{\beta}^2}) + w_2 \times \exp(-\frac{\Vert p_i-p_j \Vert^2}{2\sigma_{\gamma}^2}) \end{bmatrix}</script>
+
+<p>Ở đây $\mu(x_i, x_j) = 1$ nếu $x_i \neq x_j$ và bằng 0 nếu ngược lại. Nghĩa là chỉ các pixels khác nhãn thì mới bị phạt. Hàm $\exp(x) = e^x$ là hàm số mũ với cơ số tự nhiên $e$.</p>
+
+<p>Bên trong ngoặc vuông là tổng có trọng số của 2 kernels trên 2 không gian khác nhau.</p>
+
+<ul>
+  <li>
+    <p>Kernel đầu tiên $\exp(-\frac{\Vert p_i - p_j \Vert^2}{2\sigma_{\alpha}^2} -\frac{\Vert I_i - I_j \Vert^2}{2\sigma_{\beta}^2})$ được gọi là <code class="highlighter-rouge">bilateral</code> kernel dựa trên chênh lệch về khoảng cách (kí hiệu là $p$) và chênh lệch về cường độ (ký hiệu là $I$). Kernel này buộc các pixels có cường độ và vị trí gần nhau thì sẽ có nhãn giống nhau và nó có mục đích chính là <strong>bảo tồn cạnh</strong> của vật thể.</p>
+  </li>
+  <li>
+    <p>Kernel thứ hai $\exp(-\frac{\Vert p_i-p_j \Vert^2}{2\sigma_{\gamma}^2})$ làm một <code class="highlighter-rouge">Gaussian Filter</code> chỉ dựa trên chênh lệch về khoảng cách. Cho phép xấp xỉ không gian và làm cho <strong>hình ảnh trở nên smoothing hơn</strong>. Nếu bạn đọc chưa biết về Gaussian Filter có thể xem lại <a href="https://phamdinhkhanh.github.io/2020/01/06/ImagePreprocessing.html#222-l%C3%A0m-m%E1%BB%9D-%E1%BA%A3nh-image-blurring">Image Blur</a>.</p>
+  </li>
+</ul>
+
+<p>Như vậy nhờ cơ thế bảo tồn cạnh và smoothing mà CRF đã cải thiện được kết quả dự báo.</p>
+
+<h2 id="26-thực-nghiệm-deeplab">2.6. Thực nghiệm DeepLab</h2>
+
+<p>Kiến trúc DeepLab sử dụng khá nhiều các điều chỉnh để tìm ra những điều chỉnh nào là tốt nhất theo phương pháp thử và học hỏi (<code class="highlighter-rouge">test and learn</code>).</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic5.png" class="largepic" /></p>
+
+<p>Kiến trúc DeepLab-LargeFOV (bên trái: chỉ sử dụng một bộ lọc atrous), DeepLab-ASPP (bên phải: sử dụng một ASPP nhiều bộ lọc).</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic6.png" class="largepic" /></p>
+
+<p>Bảng kết quả tương ứng với mỗi điều chỉnh dựa trên backbone là mạng ResNet-101 và trên bộ dữ liệu PASCAL VOC 2012 Validation set.</p>
+
+<ul>
+  <li>Đơn giản nhất sử dụng backbond ResNet-101: 68.72%</li>
+  <li>MSC (Multiple Scale Input): Sử dụng đầu vào với nhiều kích thước.</li>
+  <li>COCO (Models pretrained by COCO dataset): Sử dụng mô hình pretrained từ COCO dataset.</li>
+  <li>Aug: Data augmentation bằng ngẫu nhiên scaling hình ảnh đầu vào với kích thước biến động từ 0.5 tới 1.5.</li>
+  <li>LargeFOV: DeepLab sử dụng một bộ lọc Atrous duy nhất.</li>
+  <li>ASPP: DeepLab sử dụng tích chập Atrous song song.</li>
+  <li>CRF: Sử dụng Fully-connected CRF như là bước hậu xử lý sau cùng.</li>
+</ul>
+
+<p>Cuối cùng, nó đã nhận được 77,69%. Và có thể thấy rằng MSC, COCO và Aug đóng góp sự cải thiện từ 68,72% lên 74,87%, điều này rất cần thiết với LargeFOV, ASPP và CRF.</p>
+
+<h1 id="3-deeplabv3">3. DeepLabV3</h1>
+
+<p>Ở DeepLabV3 tác giả đưa vào 2 cải tiến chỉnh là:</p>
+
+<ul>
+  <li>
+    <p>Tiến hành tích chập song song ASPP tại nhiều scale khác nhau và đưa thêm batch normalization, kế thừa ý tưởng từ mạng <a href="https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html#45-googlenet---inception-v3-2015">Inception</a>.</p>
+  </li>
+  <li>
+    <p>Đặc biệt, bỏ Fully Connected CRF tại bước xử lý sau cùng giúp gia tăng tốc độ tính toán.</p>
+  </li>
+</ul>
+
+<p>Một trong những thách thức của segmentation sử dụng mạng học sâu nhiều tầng DCNN là feature map ngày càng nhỏ hơn sau mỗi layer tích chập. Giảm độ phân giải có thể sẽ dẫn tới mất mát thông tin về vị trí và độ chi tiết của các đối tượng dự báo.</p>
+
+<p>Chính vì vậy ở DeepLabV3 tác giả đã cố gắng điều chỉnh lại mức độ giảm độ phân giải ở các block trong mạng DCNN duy trì ở mức 16. Xin trích dẫn:</p>
+
+<p><code class="highlighter-rouge">However, we discover that the consecutive striding is harmful for semantic segmentation (see Tab. 1 in Sec. 4) since detail information is decimated, and thus we apply atrous convolution with rates determined by the desired output stride value, as shown in Fig. 3 (b) where output_stride = 16</code></p>
+
+<p>Source: <a href="https://arxiv.org/pdf/1706.05587.pdf">DeepLabV3 - Rethinking Atrous Convolution for Semantic Image Segmentation</a></p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic7.png" class="gigantic" /></p>
+
+<p><strong>Hình 6</strong>: Độ phân giải của các block qua từng layer trong trường hợp áp dụng tích chập atrous (dòng trên) và không áp dụng tích chập atrous (dòng dưới). Khái niệm <code class="highlighter-rouge">output stride</code> trong hình là tỷ lệ độ phân giải của input so với độ phân giải feature map ở output. output stride càng tăng thì mức độ thu nhỏ của feature map càng lớn. Output stride đánh giá mức độ suy giảm tín hiệu mà input phải chịu khi truyền qua mạng.</p>
+
+<p>Trong kiến trúc của DeepLabV3 tác giả áp dụng Atrous Convolution với đa dạng các kích thước như ở dòng dưới trong hình và tạo ra những cải thiện về <code class="highlighter-rouge">output stride</code>.</p>
+
+<ul>
+  <li>
+    <p><strong>Không áp dụng Atrous Convolution</strong>: Dòng đầu tiên, chúng ta chỉ áp dụng tích chập thông thường và max-pooling. Chúng ta thấy output stride gia tăng một cách đáng kể và khiến cho feature map nhỏ dần theo độ sâu của mô hình. Điều này gây hại cho segmentation bởi vì thông tin sẽ bị mất khi độ phân giải giảm tại những layers sâu hơn.</p>
+  </li>
+  <li>
+    <p><strong>Áp dụng Atrous Convolution</strong>: Dòng thứ 2, chúng ta có thể giữ cho độ phân giải của các block là ổn định và đồng thời gia tăng tầm nhìn (<code class="highlighter-rouge">field-of-view</code>) mà không cần gia tăng số lượng tham số và số lượng tính toán. Cuối cùng chúng ta thu được một feature map có kích thước lớn hơn và bảo toàn được thông tin về vị trí và không gian. Đây là một yếu tố có lợi cho segmentation.</p>
+  </li>
+</ul>
+
+<h2 id="31-multi-grid">3.1. Multi-Grid</h2>
+
+<p><img src="/assets/images/20200618_DeepLab/pic8.png" class="gigantic" /></p>
+
+<p><strong>Hình 7</strong>: Kiến trúc multi-grid bên dưới và kiến trúc CNN chuẩn bên trên. Thay vì mỗi một layer chỉ áp dụng một bộ lọc duy nhất. Trong một mạng Multi-Grid, mỗi một layer có thể được huấn luyện trên một tập hơn bộ lọc có kích thước khác nhau dưới dạng kim tự tháp (pyramid). Chúng ta cần lựa chọn kích thước nào tương ứng ở mỗi pyramid level. Source: <a href="https://arxiv.org/pdf/1611.07661.pdf">Multi-Grid Neural Network</a></p>
+
+<p>Trong DeepLabV3, tác giả đã kế thừa ý tưởng từ mạng đa lưới (Multi-Grid) sử dụng hệ thống phân cấp lưới (hierachy-grids) các tích chập với kích thước khác nhau. Tác giả định nghĩa Multi Grid = $(r_1, r_2, r_3)$ là những unit rates cho 3 layers tích chập atrous ở mỗi block từ 4 đến 7. Cuối cùng, atrous rate ở mỗi tích chập atrous bằng tích của unit rate với rate tương ứng ở mỗi block. Ví dụ tại block 4 có <code class="highlighter-rouge">rate = 2</code>, khi <code class="highlighter-rouge">out_stride = 16</code> và <code class="highlighter-rouge">Multi_Grid = (1, 2, 4)</code>, ba tích chập atrous sẽ có <code class="highlighter-rouge">rates = 2 x (1, 2, 4) = (2, 4, 8)</code>. Tóm lại <code class="highlighter-rouge">atrous rates</code> cần áp dụng ở mỗi block sẽ bằng rate tương ứng ở mỗi block (như trong hình 6) nhân với <code class="highlighter-rouge">unit rates</code> của <code class="highlighter-rouge">Multi_Grid</code>. Để lựa chọn một cấu hình cho <code class="highlighter-rouge">atrous rates</code> cho mỗi một block từ 4 đến 7 thì tác giả lựa chọn cấu hình rates của multi-grid.</p>
+
+<h2 id="32-atrous-spatial-pyramid-pooling">3.2. Atrous Spatial Pyramid Pooling</h2>
+
+<p>Tác giả cũng cải tiến ASPP bằng cách thêm batch normalization tại feature cuối cùng trước khi áp dụng Atrous Convolution. Sau đó kết quả được đưa qua một tích chập <code class="highlighter-rouge">1 x 1</code> với 256 bộ lọc. Sau cùng tác giả gia tăng độ phân giải thông qua Bilinear Upsampling để thu được kích thước mong muốn.</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic9.png" class="gigantic" /></p>
+
+<p><strong>Hình 8</strong>: Module tiến hành song song của các các tích chập atrous. Source: <a href="https://arxiv.org/abs/1706.05587">DeepLabV3</a></p>
+
+<p>Ví dụ trong hình 8 trả về cho chúng ta 2 outputs.</p>
+
+<p>Output (a) là tích chập 3 x 3 với <code class="highlighter-rouge">Multi_Grid rate = (6, 12, 18)</code>.</p>
+
+<p>Output (b) là đặc trưng ảnh. Sau đó các output này được concanate lại với nhau và truyền qua một tích chập kích thước <code class="highlighter-rouge">1 x 1</code>.</p>
+
+<ul>
+  <li>
+    <p>ASPP đã được giới thiệu trong DeepLabv2. Ở thời điểm này, batch normalization (BN) từ Inception-V2 được thêm vào ASPP. Tác dụng của batch normalization đó là giúp cho mô hình hội tụ nhanh hơn.</p>
+  </li>
+  <li>
+    <p>Lý do của việc sử dụng ASPP đó là thực tế cho thấy khi lấy mẫu rate lớn hơn, số lượng các bộ lọc hợp lệ giảm. Bộ lọc hợp lệ là bộ lọc có khả năng áp dụng cho các vùng feature hợp lệ, mà không phải padding thêm các giá trị 0. Sử dụng ASPP giúp làm đa dạng các bộ lọc với nhiều kích thước khác nhau và số lượng bộ lọc hợp lệ cũng nhiều hơn.</p>
+  </li>
+  <li>
+    <p>Áp dụng một tích chập <code class="highlighter-rouge">1 x 1</code> và 3 tích chập <code class="highlighter-rouge">3 x 3</code> với atrous rates = $(6, 12, 18)$ khi output stride = 16.</p>
+  </li>
+  <li>
+    <p><strong>Image pooling</strong> hoặc <strong>image-level feature</strong> cũng được thêm vào để ghi nhận bối cảnh toàn bộ (global context). Image pooling sẽ được tạo ra bằng cách global average pooling của toàn bộ layer trước đó. Global context đã được chứng minh là giúp làm rõ hơn sự nhầm lẫn cục bộ (<code class="highlighter-rouge">local confusion</code>). Đây là ý tưởng được kế thừa từ <a href="https://arxiv.org/abs/1506.04579">ParseNet</a>.</p>
+  </li>
+  <li>
+    <p>Ápp dụng 256 bộ lọc và batch normalization ở các nhánh của mỗi biến đổi trong ASPP tại các block từ 4 đến 7. Ý tưởng batch normalization kết thừa từ Inception.</p>
+  </li>
+  <li>
+    <p>Kết quả các đặc trưng từ toàn bộ các nhánh được concatenate và truyền qua một tích chập <code class="highlighter-rouge">1 x 1</code> trước khi áp dụng tích chập <code class="highlighter-rouge">1 x 1</code> một lần nữa để tạo ra các giá trị logits từ hàm activation sigmoid.</p>
+  </li>
+</ul>
+
+<h2 id="33-thực-nghiệm">3.3. Thực nghiệm</h2>
+
+<p>Để củng cố quan điểm của mình, tác giả đã so sánh giữa phương pháp xếp chồng (cascade) và Multi-Grid ResNets đối với ASPP. Kết quả cho thấy:</p>
+
+<ul>
+  <li>
+    <p><strong>Tỷ lệ độ phân giải output/input</strong> (Output Stride): Một độ phân giải lớn hơn, hoặc output stride nhỏ hơn, kết quả thể hiện là tốt hơn so với không áp dụng tích chập atrous hoặc output stride lớn hơn. Tác giả đồng thời cũng cho thấy rằng khi kiểm tra mạng trên tập validation của một output stride = 8 (độ phân giải cao hơn) thì kết quả tốt hơn so với một output stride = 16.</p>
+  </li>
+  <li>
+    <p><strong>Xếp chồng</strong> (Cascading): Kết quả cho thấy xếp chồng các tích chập atrous đã cải thiện so với tích chập thông thường. Tuy nhiên, tác giả cũng tìm thấy rằng càng nhiều block được thêm vào thì giá trị margin cải thiện càng nhỏ dần.</p>
+  </li>
+  <li>
+    <p><strong>Multi-grid</strong> (Mạng đa lưới): Kết quả của tác giả cho kiến trúc mạng đa lưới đã cải thiện tương đối so với một mạng <code class="highlighter-rouge">vanilla</code> và thể hiện kết quả tốt nhất khi $(r_1, r_2, r_3) = (1, 2, 1)$ tại block 7.</p>
+  </li>
+  <li>
+    <p><strong>ASPP + Multi-Grid + Image Pooling</strong>: Với Multi-grid rates tại $(r_1, r_2, r_3) = (1, 2, 4)$ tạo ra một ASPP(6, 8, 12). Mô hình đưa ra kết quả tốt nhất với 77.21% mIoU. Tại <code class="highlighter-rouge">output stride = 8</code> trên bộ dữ liệu COCO dataset với đa dạng kích thước đầu vào, model test với kết quả 82.70%, kết quả cải thiện lớn hơn so với sự thay đổi <code class="highlighter-rouge">output stride</code> từ 16 lên 8.</p>
+  </li>
+</ul>
+
+<h1 id="4-kết-luận">4. Kết luận</h1>
+
+<p>Như vậy ở bài này mình đã giới thiệu tới các bạn về nguyên lý hoạt động và kiến trúc của các mạng DeepLab ở các version 1, 2 và 3. Nhìn chung điểm mấu chốt trong kiến trúc của các mạng này vẫn là:</p>
+
+<ul>
+  <li>
+    <p>Sử dụng tích chập Atrous để thu được tầm nhìn rộng hơn, giúp bảo toàn thông tin về không gian và độ chi tiết của các vật thể.</p>
+  </li>
+  <li>
+    <p>Ở version 1 và 2, tác giả áp dụng CRF để tinh chỉnh nhãn đầu ra trên Score Map. Đây là một kỹ thuật dựa trên xác suất có điều kiện nhằm dự báo nhãn của pixels chuẩn xác hơn căn cứ vào khoảng cách vị trí giữa từng cặp pixels và cường độ pixels.</p>
+  </li>
+  <li>
+    <p>Áp dụng ASPP, một tập hợp kim tự tháp của các bộ lọc atrous với các rates khác nhau. Giúp nhận diện được vật thể với đa dạng kích thước và trích xuất bối cảnh ở các tầm nhìn (field-of-view) khác nhau.</p>
+  </li>
+  <li>
+    <p>Ở version 3 tác giả đã bỏ layer Fully Connected CRF ở cuối cùng ở bước hậu xử lý (post-processing) vì chi phí tính toán và thời gian dự báo của cao. Thay vào đó, tác giả đưa ra một kiến trúc Multi-Grid áp dụng nhiều bộ lọc atrous với rates khác nhau mà vẫn bảo toàn được độ phân giải thông qua kiểm soát output stride. Quá đó thông tin về không gian và độ chi tiết của ảnh đầu vào không bị mất đi. Kiến trúc xếp chồng (cascading) ở APSS cũng được thay thế bằng Multi-grid gồm các bộ lọc song song.</p>
+  </li>
+</ul>
+
+<p>Kỹ thuật xử lý của DeepLabV3 không quá phức tạp phải không nào? Thế nhưng kiến trúc này lại tạo ra được bất ngờ khi kết quả của nó khá tốt.</p>
+
+<p><img src="/assets/images/20200618_DeepLab/pic10.png" class="mediumpic" /></p>
+
+<p>Vì bài viết đã khá dài nên mình sẽ kết thúc tại đây. Ở bài sau mình sẽ hướng dẫn các bạn huấn luyện mô hình Image Segmentation trên DeepLabV3.</p>
+
+<h1 id="5-tài-liệu-tham-khảo">5. Tài liệu tham khảo</h1>
+
+<ol>
+  <li>
+    <p><a href="https://towardsdatascience.com/review-deeplabv1-deeplabv2-atrous-convolution-semantic-segmentation-b51c5fbde92d">review Deeplabv1, Deeplabv2</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/deeplabv3-c5c749322ffa">DeepLabV3 - Semantic Image Segmentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/review-deeplabv3-atrous-convolution-semantic-segmentation-6d818bfd1d74">DeepLabV3 - Atrous convolution Semantic Segmentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/pdf/1606.00915.pdf">DeepLab: Semantic Segmentation with
+DCNN, Atrous Convolution,
+and Fully Connected CRFs - Liang-Chieh Chen, George Papandreou,…</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/abs/1706.05587">Rethinking Atrous Convolution for Semantic Image Segmentation - Liang-Chieh Chen, George Papandreou, Florian Schroff, Hartwig Adam</a></p>
+  </li>
+  <li>
+    <p><a href="http://liangchiehchen.com/projects/DeepLab.html">Liang-Chieh Chen DeepLab Project</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
@@ -240,7 +242,7 @@ body {
 
 <p>Mỗi một bài toán sẽ có một cách thức thiết kế mô hình và định dạng dữ liệu input/output chuyên biệt. Chẳng hạn như lớp bài toán phổ biến nhất trong computer vision là <strong>Image Classification</strong> <a href="https://phamdinhkhanh.github.io/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a> và <a href="https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a> sẽ chỉ cần ảnh và nhãn của ảnh. Tuy nhiên một số bức ảnh có nhiều vật thể xuất hiện thì chúng ta vừa phải tìm nhãn cho vật thể, vừa phải khoanh vùng vị trí của vật thể trên ảnh thông qua bounding box. Do đó lớp bài toán <strong>Object Detection</strong> ở <a href="https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a>, <a href="https://phamdinhkhanh.github.io/2019/10/05/SSDModelObjectDetection.html">bài 13 model SSD</a>, <a href="https://phamdinhkhanh.github.io/2020/03/09/DarknetAlgorithm.html">bài 25 model YOLO</a> thì ngoài nhãn còn cần thêm tọa độ bounding box.</p>
 
-<p>Đối với các bài toán Image Segmentation thì mục tiêu của chúng ta là tìm ra vùng ảnh chứa vật thể nên chúng ta sẽ cần phải gãn nhãn cho từng pixel theo giá trị của chúng.</p>
+<p>Đối với các bài toán Image Segmentation thì mục tiêu của chúng ta là tìm ra vùng ảnh chứa vật thể nên chúng ta sẽ cần phải gãn nhãn cho từng pixel.</p>
 
 <h3 id="12-bài-toán-image-segmentation">1.2. Bài toán Image Segmentation</h3>
 
@@ -259,6 +261,8 @@ body {
 <p><img src="https://imgur.com/OD9uMOE.png" class="largepic" /></p>
 
 <p><strong>Hình 3:</strong> Input (bên trái) và Output (bên phải) của mô hình Image Segmentation đối với bài toán một đối tượng. Mỗi một nhãn segment sẽ được thể hiện bởi một màu sắc khác nhau. Màu xám là nền, màu vàng là đường viền của ảnh và màu tím là nằm bên trong vật thể.</p>
+
+<p><em>Note: Bổ sung cụ thể một số dạng (Input, Output) của Image Segmentation trong một số bộ dữ liệu phổ biến</em></p>
 
 <h2 id="2-các-dạng-image-segmentation-khác-nhau">2. Các dạng image segmentation khác nhau</h2>
 
@@ -326,7 +330,7 @@ body {
     <p><strong>Vùng nhận thức</strong> (Receptive Field): Là những vùng ảnh được áp dụng tích tập với bộ lọc để tạo ra các pixel ở output.</p>
   </li>
   <li>
-    <p><strong>Ma trận dãn nở</strong> (Dilation Matrix): Là ma trận được tạo thành từ ma trận gốc bằng cách padding xen kẽ các dòng và cột bằng giá trị 0.</p>
+    <p><strong>Ma trận giãn nở</strong> (Dilation Matrix): Là ma trận được tạo thành từ ma trận gốc bằng cách padding xen kẽ các dòng và cột bằng giá trị 0.</p>
   </li>
 </ul>
 
@@ -454,7 +458,11 @@ y:
 
 <p><a href="https://arxiv.org/abs/1603.07285">A Guide To Convolution Arithmetic For Deep Learning, 2016</a>.</p>
 
-<p>Trên thực tế thì có thể coi tích chập chuyển vị là một quá trình ngược của tích chập thông thường khi mỗi một pixel được mapping sang các đặc trưng ảnh thay vì ngược lại từ các đặc trưng sang pixel. Xin trích dẫn:</p>
+<p>Trên thực tế thì có thể coi tích chập chuyển vị là một quá trình ngược của tích chập thông thường khi mỗi một đặc trưng (feature) được mapping sang các pixels ảnh thay vì ngược lại từ các pixels sang đặc trưng (feature).</p>
+
+<p><img src="https://imgur.com/pOK3wRe.png" class="gigantic" /></p>
+
+<p>Xin trích dẫn:</p>
 
 <p><code class="highlighter-rouge">A deconvnet can be thought of as a convnet model that uses the same components (filtering, pooling) but in reverse, so instead of mapping pixels to features does the opposite.</code></p>
 
@@ -462,11 +470,11 @@ y:
 
 <p>Bạn đọc sẽ dễ dàng hình dung hơn về tích chập chuyển vị qua ví dụ minh họa bên dưới:</p>
 
-<p><img src="https://imgur.com/VxVTcZ0.png" class="largepic" /></p>
+<p><img src="https://imgur.com/3fecoA3.png" class="gigantic" /></p>
 
 <p><strong>Cách tính tích chập:</strong></p>
 
-<p>Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel, bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.</p>
+<p>Ta di chuyển các pixel của ma trận đầu vào từ trái qua phải và từ trên xuống dưới. Sau đó lấy giá trị của pixel nhân với ma trận bộ lọc sẽ thu được ma trận output có kích thước tương đương. Tùy vào stride qui định là bao nhiêu mà ta sẽ di chuyển kết quả của mỗi lần nhân pixel với bộ lọc sang bấy nhiêu đơn vị. Sau cùng ta tính tổng các vị trí tương ứng của các ma trận kết quả để thu được ma trận chuyển vị. Trong trường hợp stride không bằng kích thước kernel thì ma trận kết quả tích chập sẽ overlapping lên nhau. Khi đó ta sẽ cộng dồn chúng.</p>
 
 <p><strong>Tính kích thước cho output:</strong></p>
 
@@ -558,9 +566,9 @@ conv2D_y.shape == x.shape
 
 <p>Đó là bởi kết quả của tích chập chuyển vị là quá trình biến đổi ngược lại của tích chập.</p>
 
-<h1 id="8-tích-chập-dãn-nở-dilation-convolution">8. Tích chập dãn nở (Dilation Convolution)</h1>
+<h1 id="8-tích-chập-giãn-nở-dilation-convolution">8. Tích chập giãn nở (Dilation Convolution)</h1>
 
-<p>Tích chập dãn nở (Dilation Convolution) cũng là một phương pháp thường được áp dụng trong các mạng giải chập.</p>
+<p>Tích chập giãn nở (Dilation Convolution) cũng là một phương pháp thường được áp dụng trong các mạng giải chập.</p>
 
 <p><img src="https://imgur.com/LMM70dw.png" class="largepic" /></p>
 
@@ -795,7 +803,7 @@ for i, image in enumerate([img, X_img]):
 
 <p>Ý tưởng của Mean shift khá đơn giản và dựa trên phân phối histogram của bức ảnh. Nếu bạn đọc chưa biết về phân phối histogram của ảnh là gì vui lòng xem lại <a href="https://phamdinhkhanh.github.io/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG</a>.</p>
 
-<p>Giải thích ngắn gọn thì phân phối histogram là một mã hóa phân phối historgram giữa độ lớn gradient theo phương gradient trên toàn bộ grid cells của ảnh. Mỗi một bức ảnh sẽ có một véc tơ historgram đặc trưng riêng.</p>
+<p>Giải thích ngắn gọn thì phân phối histogram là một mã hóa phân phối theo các bins giữa độ lớn gradient theo phương gradient trên toàn bộ grid cells của ảnh. Mỗi một bức ảnh sẽ có một véc tơ historgram đặc trưng riêng.</p>
 
 <p><strong>Thuật toán Mean Shift</strong>:</p>
 
@@ -889,7 +897,7 @@ ax[1].set_title('Mean Shift clustering Image')
 
 <p>Như chúng ta đã tìm hiểu ở <a href="https://phamdinhkhanh.github.io/2019/09/29/OverviewObjectDetection.html#43-faster-r-cnn-2016">Bài 12 - Các thuật toán Object Detection</a> thì Faster R-CNN là một trong những thuật toán thuộc họ R-CNN. Mình sẽ tóm tắt lại các bước của thuật toán này một cách ngắn gọn:</p>
 
-<p><img src="https://imgur.com/3XooVMC.png" class="largepic" /></p>
+<p><img src="https://imgur.com/3XooVMC.png" class="gigantic" /></p>
 
 <p><strong>Hình 9:</strong> Kiến trúc của pipeline trong mạng Faster R-CNN. <a href="https://medium.com/@jonathan_hui/image-segmentation-with-mask-r-cnn-ebe6d793272">Source Jonathan-Hui</a></p>
 
@@ -912,7 +920,7 @@ ax[1].set_title('Mean Shift clustering Image')
 
 <p>Nguyên lý hoạt động khá đơn giản phải không các bạn? Mask R-CNN có kiến trúc kế thừa lại Faster R-CNN nhưng add thêm nhánh mask có nhiêm vụ dự báo nhãn trên từng pixel.</p>
 
-<p><img src="https://miro.medium.com/max/2700/1*M_ZhHp8OXzWxEsfWu2e5EA.png" class="largepic" /></p>
+<p><img src="https://miro.medium.com/max/2700/1*M_ZhHp8OXzWxEsfWu2e5EA.png" class="gigantic" /></p>
 
 <p><strong>Hình 10</strong>: Kiến trúc Mask R-CNN. <a href="https://medium.com/@jonathan_hui/image-segmentation-with-mask-r-cnn-ebe6d793272">Source Jonathan-Hui</a></p>
 
@@ -1277,7 +1285,7 @@ plot_model(model)
 
 <h2 id="13-tổng-kết">13. Tổng kết</h2>
 
-<p>Image Segmentation là một trong những lớp bài toán có nhiều ứng dụng thực tiễn. Image Segmentation đòi hỏi mức độ chi tiết và chính xác hơn trong việc hiểu và biểu diễn nội dung của hình ảnh so với các thuật toán khác như Image Classification, Object Detection. Ở bài viết này chúng ta đã được tìm hiểu một số khái niệm mới như mạng giải chập và các tích chập đặc biệt có chức năng đặc biệt như tích chập chuyển vị, tích chập dãn nở.</p>
+<p>Image Segmentation là một trong những lớp bài toán có nhiều ứng dụng thực tiễn. Image Segmentation đòi hỏi mức độ chi tiết và chính xác hơn trong việc hiểu và biểu diễn nội dung của hình ảnh so với các thuật toán khác như Image Classification, Object Detection. Ở bài viết này chúng ta đã được tìm hiểu một số khái niệm mới như mạng giải chập và các tích chập đặc biệt có chức năng đặc biệt như tích chập chuyển vị, tích chập giãn nở.</p>
 
 <p>Đồng thời chúng ta cũng làm quen với lý thuyết thuật toán, kiến trúc mô hình và thực hành xây dựng mô hình trên tensorflow của một số kiến trúc Image Segmentation cơ bản như <code class="highlighter-rouge">Mask-CNN, Unet, FCN</code>. Các mô hình trong Image Segmentation vẫn còn tiếp tục phát triển và còn rất nhiều các mô hình mà mình sẽ đề cập ở những bài tiếp theo.</p>
 
