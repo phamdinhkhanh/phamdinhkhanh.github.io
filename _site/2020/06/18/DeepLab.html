@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/20/Unet.html">Bài 42 - Thực hành Unet</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
@@ -229,7 +231,6 @@ body {
 <p>Ở bài này chúng ta sẽ tiếp tục tìm hiểu những kiến trúc Image Segmentation hiện đại hơn và hiện tại đang là những kiến trúc SOTA nhất. Hãy cùng khám phá DeepLab V1+V2 và DeepLab V3, đặc điểm kiến trúc mạng và những kỹ thuật được áp dụng bên trong nó nhé.</p>
 
 <h1 id="2-deeplabv1v2">2. DeepLabV1+V2</h1>
-
 <h2 id="21-kiến-trúc-chung-của-deeplab-model">2.1. Kiến trúc chung của DeepLab model</h2>
 
 <p>DeepLabV1 và V2 được nhóm tác giả <code class="highlighter-rouge">Liang-Chieh Chen, George Papandreou</code> là những nhà nghiên cứu lâu năm về Semantic Segmentation công bố lần đầu vào năm 2016 và lần thứ 2 vào năm 2017. Bản thảo lần 2 là bổ sung của lần 1 nên DeepLabV1 và V2 không có gì khác biệt nhiều. Ngay sau khi công bố, kiến trúc đã đạt được những kết quả ấn tượng trên tập dữ liệu thẩm định của Pascal VOC 2012. Đây là một kiến trúc áp dụng một cách rất linh hoạt tích chập Atrous thay vì các phương pháp trước đó là áp dụng Transposed Convolution. Bên cạnh đó tác giả cũng áp dụng phương pháp Conditional Random Field để tinh chỉnh kết quả dự báo chuẩn xác hơn.</p>
