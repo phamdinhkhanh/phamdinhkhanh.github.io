@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/13/GAN.html">Bài 43 - Model GAN</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/20/Unet.html">Bài 42 - Thực hành Unet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 43 - Model GAN</p></h2> 
+<strong>13 Jul 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
+
+<p>Một trong những xu hướng nghiên cứu thu hút được đông đảo các nhà khoa học, có tính ứng dụng cao và phát triển mạnh mẽ trong những năm gần đây trong Deep Learning có lẽ là GAN. Chính vì thế bài viết này mình sẽ giới thiệu về GAN, các ứng dụng, kiến trúc thuật toán và phương pháp huấn luyện theo hướng tiếp cận đơn giản nhất, dựa trên kiến trúc GAN đầu tiên được Ian GoodFellow giới thiệu vào năm 2014, để dễ hiểu hơn cho người bắt đầu. Các kiến trúc GAN nâng cao hơn sẽ được mình trình bày ở các bài sau. Những kiến trúc này vẫn dựa trên ý tưởng chủ đạo của model GAN đầu tiên nhưng có sự cải tiến đầu vào, phương pháp huấn luyện, hàm loss function một chút để kết quả học được tốt hơn.</p>
+
+<h2 id="11-gan-và-các-ứng-dụng">1.1. GAN và các ứng dụng</h2>
+
+<p>Về các ứng dụng của GAN các bạn có thể tham khảo ở rất nhiều trang khác nhau như <a href="https://machinelearningmastery.com/impressive-applications-of-generative-adversarial-networks/">18 ứng dụng của GAN - machine learning mastery</a>. Mình có thể liệt kê ra một số ứng dụng tiêu biểu:</p>
+<ol>
+  <li>Tạo ra khuôn mặt người:
+GAN có khả năng tạo ra những khuôn mặt nhân tạo mà <em>rất khó</em> phân biệt với người thật. Chất lượng của những model GAN áp dụng trên khuôn mặt ngày càng tốt hơn qua từng năm.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-the-Progression-in-the-Capabilities-of-GANs-from-2014-to-2017-1024x298.png" class="normalpic" />
+paper: <a href="https://arxiv.org/abs/1710.10196">Progressive Growing of GANs for Improved Quality, Stability, and Variation - Tero Karras, 2017</a>;
+code: <a href="https://github.com/tkarras/progressive_growing_of_gans">Progressive Growing of GAN</a></li>
+  <li>Thay đổi độ tuổi của khuôn mặt:
+Chắc hẳn các bạn đã không còn xa lạ với ứng dụng thay đổi tuổi của khuôn mặt. Dựa trên khuôn mặt của bạn hiện tại, GAN sẽ sinh ra các biến thể theo từng độ tuổi của bạn. Các bạn có thể thử ứng dụng này trên <a href="https://www.youtube.com/watch?v=fnzA_OUaCIw">install gram, tiktok</a>. Lời khuyên là đừng nên thử với độ tuổi cao quá nhé, mình không muốn làm bạn thất vọng.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-Photographs-of-Faces-Generated-with-a-GAN-with-Different-Apparent-Ages.png" class="largepic" />
+paper: <a href="https://ieeexplore.ieee.org/document/8296650">Face aging with conditional generative adversarial networks - Grigory Antipov, 2017</a>;
+code: <a href="https://github.com/dawei6875797/Face-Aging-with-Identity-Preserved-Conditional-Generative-Adversarial-Networks">Face Aging</a></li>
+  <li>Sinh ảnh các vật thể
+Tất nhiên những gì mà GAN đã thực hiện trên con người thì nó có thể ứng dụng được trên những loài động vật khác. Bên dưới là những bức ảnh mà GAN đã sinh ra cho các vật thể là động vật, đồ vật.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-Realistic-Synthetic-Photographs-Generated-with-BigGAN.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1809.11096">largepic Scale GAN Training for High Fidelity Natural Image Synthesis, Andrew Brock, 2018</a>;
+code: <a href="https://github.com/taki0112/BigGAN-Tensorflow">BigGAN - tensorflow</a></li>
+  <li>Tạo nhân vật hoạt hình
+Có lẽ ngành công nghiệp phim hoạt hình Nhật Bản là những người được hưởng lợi nhiều nhất từ ứng dụng này. Không cần phải tốn quá nhiều chi phí để thuê nghệ sĩ vẽ tranh. GAN có thể làm việc hiệu quả bằng vài trăm nghệ sĩ vẽ tranh trong lĩnh vực này.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-GAN-Generated-Anime-Character-Faces.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1708.05509">Towards the Automatic Anime Characters Creation with Generative Adversarial Networks, Yanghua Jin, 2017</a>;
+code: <a href="https://github.com/ctwxdd/Tensorflow-ACGAN-Anime-Generation">Tensorflow ACGAN Anime Generation</a></li>
+  <li>Image to Image Translation
+Cùng một bức ảnh chụp quang cảnh, GAN có thể tạo ra các bối cảnh khác nhau của nó như trời tối/trời sáng, ban ngày/ban đêm, thay đổi theo các mùa,…. Trước đây để thực hiện được điều này là một việc rất khó vì chúng ta phải thực hiện color transfering bằng các thuật toán cổ điển trong computer vision. Hạn chế của chúng đó là chỉ dựa trên các tinh chỉnh về màu sắc mà không tận dụng được các đặc trưng khái quát mà GAN học được từ dữ liệu lớn. Do đó ảnh sinh ra thường không tự nhiên và phải customize lại rất nhiều.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-Photographs-of-Daytime-Cityscapes-to-Nighttime-with-pix2pix.png" class="largepic" />
+website: <a href="https://junyanz.github.io/CycleGAN/">CycleGAN</a>;
+paper: <a href="https://arxiv.org/abs/1611.07004">Image-to-Image Translation with Conditional Adversarial Networks, Phillip Isola, 2016</a>;
+code: <a href="https://github.com/phillipi/pix2pix">pix2pix</a></li>
+  <li>Chuyển từ đoạn văn bản sang hình ảnh
+GAN có thể tạo ra các bức ảnh phù hợp với nội dung mà một câu văn mô tả.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-Textual-Descriptions-and-GAN-Generated-Photographs-of-Birds.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1612.03242">StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks, Han Zhang, 2016</a>;
+code: <a href="https://github.com/hanzhanggit/StackGAN">StackGAN</a></li>
+  <li>Chuyển từ ảnh Semantic sang ảnh thật
+Thuật toán <a href="https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html">Semantic Segmentation</a> sẽ chuyển từ ảnh thật sang các ảnh phân khúc. Thuật toán GAN có thể convert ngược lại từ ảnh phân khúc sang ảnh thật.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-Semantic-Image-and-GAN-Generated-Cityscape-Photograph.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1711.11585">High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs, Ting-Chun Wang, 2017</a>;
+code: <a href="https://github.com/NVIDIA/pix2pixHD">pix2pixHD</a></li>
+  <li>Khôi phục hình ảnh khuôn mặt phía trước từ ảnh chụp hai bên
+Bạn có muốn nhìn thấy nàng Mona Lisa khi nhìn chính diện sẽ trông như thế nào không? GAN có thể tạo ảnh khuôn mặt nhìn từ chính diện từ các ảnh nhìn từ hai bên.
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-GAN-based-Face-Frontal-View-Photo-Generation.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1704.04086">Beyond Face Rotation: Global and Local Perception GAN for Photorealistic and Identity Preserving Frontal View Synthesis, Rui Huang, 2017</a>;
+code: <a href="https://github.com/HRLTY/TP-GAN">TP-GAN</a></li>
+  <li>Tạo ảnh siêu phân giải
+Bạn có những bức ảnh khá mờ, GAN có thể khôi phục chất lượng ảnh bằng cách tạo ra một ảnh có độ phân giải cao hơn từ ảnh gốc:
+<img src="https://imgur.com/WUSW4N7.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1609.04802">Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network, Christian Ledig, 2017</a>;
+code: <a href="https://github.com/tensorlayer/srgan">SRGAN</a></li>
+  <li>Tạo tư thế người 
+Đây là ứng dụng thường được sử dụng trong lĩnh vực thời trang. Việc thuê người mẫu chụp ảnh với những bộ trang phục tốn khá nhiều thời gian và chi phí. Sử dụng GAN để tạo ra những bức ảnh với những tư thế và bộ trang phục khác nhau với chi phí tiết kiệm. 
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Example-of-GAN-Generated-Photographs-of-Human-Poses.png" class="largepic" />
+paper: <a href="https://arxiv.org/abs/1705.09368">Pose Guided Person Image Generation, Liquian Ma, 2017</a>;
+code: <a href="https://github.com/charliememory/Pose-Guided-Person-Image-Generation">Pose-Guided-Person-Image-Generation</a>
+Trên đây mới chỉ liệt kê những ứng dụng của GAN có liên quan tới hình ảnh. Ngoài ra còn vô số các ứng dụng khác liên quan đến âm thanh và văn bản mà mình vẫn chưa liệt kê ở đây. Các bạn có thể tìm được chúng dễ dàng bằng cách search <code class="highlighter-rouge">tên bài toán + GAN</code>.</li>
+</ol>
+
+<h2 id="12-các-thuật-ngữ">1.2. Các thuật ngữ</h2>
+
+<p>Để dễ hình dung hơn cho bạn đọc, trước khi bắt dầu mình sẽ giải thích trước các thuật ngữ được dùng trong bài:</p>
+
+<ul>
+  <li>
+    <p>GAN: Model GAN, là lớp mô hình có khả năng tạo ra những dữ liệu giống với thật nhất.</p>
+  </li>
+  <li>
+    <p>Discriminative: Mô hình phân biệt, có tác dụng phân loại.</p>
+  </li>
+  <li>
+    <p>Generative: Mô hình sinh, nhằm tạo ra mẫu dữ liệu dựa trên nhãn đã biết.</p>
+  </li>
+  <li>
+    <p>Explicit model: Mô hình hiện, một dạng của Generative model sử dụng các hàm phân phối xác suất lý thuyết để sinh mẫu dữ liệu.</p>
+  </li>
+  <li>
+    <p>Implicit model: Mô hình ẩn, một dạng khác của Generative model, không sử dụng phân phối xác suất lý thuyết mà thay vào đó, mẫu sinh được sinh ra từ mô hình. GAN là một lớp mô hình như vậy.</p>
+  </li>
+  <li>
+    <p>Zero-sum game: Một dạng trong lý thuyết trò chơi khi lợi ích giữa 2 người chơi là xung đột.</p>
+  </li>
+</ul>
+
+<p>Tiếp theo để làm quen với GAN model, chúng ta cần phải nắm vững hai lớp bài toán khác nhau trong Machine Learning đó là mô hình Generative và mô hình Descriminative như ở chương bên dưới. GAN sẽ được cấu tạo dựa trên hai lớp mô hình này.</p>
+
+<h2 id="13-phân-biệt-discriminative-và-generative-model">1.3. Phân biệt Discriminative và Generative model</h2>
+
+<p><img src="https://imgur.com/xjtCWqw.png" class="largepic" /></p>
+
+<p>Các mô hình Machine Learning có thể được phân chia thành lớp <code class="highlighter-rouge">mô hình phân biệt</code> (Discriminative) và <code class="highlighter-rouge">mô hình sinh</code> (Generative). Đây chỉ là một cách phân chia trong vô số các cách phân chia khác như: mô hình học có giám sát (<em>supervised learning</em>)/học không giám sát (<em>unsupervised learning</em>), mô hình tham số (<em>parametric</em>)/mô hình phi tham số (<em>non parametric</em>), mô hình đồ thị (<em>graphic</em>)/mô hình phi đồ thị (<em>non-graphic</em>),….</p>
+
+<p><code class="highlighter-rouge">Mô hình phân biệt</code> sẽ dựa trên những biến đầu vào $\mathbf{x}$ để dự báo nhãn hoặc giá trị $y$. Về bản chất đây chính là một mô hình classification hoặc prediction. Mô hình sẽ dự báo đầu ra dựa trên các dấu hiệu là đầu vào đã biết và giá trị dự báo là một xác suất có điều kiện: $P(y|\mathbf{x})$. Trong đó $y$ là mục tiêu cần dự báo và $\mathbf{x}$ được xem như điều kiện.</p>
+
+<p>Một lớp mô hình khác làm nhiệm vụ trái ngược lại so với <code class="highlighter-rouge">mô hình phân biệt</code> là <code class="highlighter-rouge">mô hình sinh</code>. Tức là chúng ta sẽ cố gắng dự báo $P(\mathbf{x}|y)$. Mô hình sẽ tập trung hơn vào việc tìm kiếm đặc trưng của dữ liệu như thế nào nếu như đã biết trước đầu ra của dữ liệu.</p>
+
+<p>Chúng ta sẽ dễ hình dung hơn thông qua một ví dụ dưới đây:</p>
+
+<p>Giả sử chúng ta có một bộ dữ liệu nợ xấu có biến đầu vào là $x_1, x_2$ và nhãn dự báo $y$ gồm hai trường hợp: $1$ đối với <code class="highlighter-rouge">Fraud</code> và $0$ đối với <code class="highlighter-rouge">Non-Fraud</code>.</p>
+
+<p><img src="https://imgur.com/dWC2zfO.png" class="largepic" /></p>
+
+<p><code class="highlighter-rouge">Mô hình phân biệt</code> (bên trái hình vẽ) sẽ tìm cách xác định một đường biên phân loại để phân chia tốt nhất hai nhóm <code class="highlighter-rouge">Fraud</code> và <code class="highlighter-rouge">Non-Fraud</code>.Trái lại ở <code class="highlighter-rouge">mô hình sinh</code> ta đã biết trước dữ liệu thuộc nhóm <code class="highlighter-rouge">Fraud</code> hay <code class="highlighter-rouge">Non Fraud</code>. Dựa vào phân phối của $x_1, x_2$ khi nó rơi vào các trường hợp <code class="highlighter-rouge">Fraud</code> và <code class="highlighter-rouge">Non Fraud</code>, ta sẽ sinh ra một mẫu mới sát với thực tế nhất như chấm hình vuông trên hình. Lưu ý là với mô hình sinh chúng ta phải đã <em>biết trước nhãn</em> của dữ liệu.</p>
+
+<h2 id="14-tính-xác-suất">1.4. Tính xác suất</h2>
+
+<p>Thông thường đối với Discriminative model để dự báo xác suất $p(y|\mathbf{x})$ ta sẽ dựa vào một hàm số như <em>sigmoid</em> trong trường hợp hai nhãn hoặc <em>softmax</em> trong trường hợp nhiều hơn 2 nhãn. Chẳng hạn xác suất trong trường hợp hai nhãn:</p>
+
+<script type="math/tex; mode=display">p(y|\mathbf{x}) = \frac{1}{1+e^{-\mathbf{w}^\intercal\mathbf{x}}}</script>
+
+<p>Nhưng đối với Generative model để dự báo được xác suất $p(y|\mathbf{x})$ ta phải dựa trên công thức bayes. Đây là công thức được sử dụng để tính xác suất có điều kiện mà mình đã nói qua tại <a href="https://phamdinhkhanh.github.io/2019/05/10/Hypothesis_Statistic.html#25-c%C3%B4ng-th%E1%BB%A9c-bayes">công thức bayes</a>. Bạn đọc sẽ dễ hình dung hơn qua ví dụ trực quan:</p>
+
+<p>Tính xác suất vỡ nợ (biến cố $y$) của một người có thu nhập dưới 10 triệu (biến cố $x$). Biết rằng:</p>
+
+<p>$p(y=1) = 0.01$</p>
+
+<p>$p(x|y=1) = 0.9$</p>
+
+<p>$p(x|y=0) = 0.05$</p>
+
+<p>Áp dụng công thức bayes để tính xác suất không quá khó:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray} p(y|x) & = &\frac{p(x, y)}{p(x)} \\ 
+						  & = & \frac{p(x|y)p(y)}{\sum_{y} p(x, y)}\\ 
+						  & = & \frac{p(x|y)p(y)}{\sum_{y}p(x|y)p(y)} \\
+              & = & \frac{0.9 \times 0.01}{0.9 \times 0.01 + 0.05 \times 0.99} \\
+							& = & 0.153846\end{eqnarray} %]]></script>
+
+<p>Ví dụ ở trên là trường hợp đơn giản dữ liệu đầu vào một chiều, trong trường hợp dữ liệu đầu vào có nhiều chiều thì ta sẽ cần giả định các chiều là độc lập và qui $p(y|\mathbf{x})$ về tích các xác suất của từng chiều $p(y|x)$.</p>
+
+<p>Như vậy ta có thể nhận thấy xác suất của lớp <code class="highlighter-rouge">mô hình sinh</code> hoàn toàn được suy ra từ các phân phối xác suất của các chiều mà không dựa trên công thức hồi qui theo $\mathbf{x}$ như <code class="highlighter-rouge">mô hình phân biệt</code>.</p>
+
+<h1 id="2-các-dạng-generative-model">2. Các dạng generative model</h1>
+
+<p>Có hai dạng chính của generative model đó là <code class="highlighter-rouge">mô hình hiện</code> (explicit model) và <code class="highlighter-rouge">mô hình ẩn</code> (implicit model). Chúng khác nhau ở những điểm sau:</p>
+
+<h2 id="21-mô-hình-hiện-explicit-model">2.1. Mô hình hiện (explicit model):</h2>
+
+<p>Có mục tiêu chính là <em>tìm ra phân phối xác suất</em> của $\mathbf{x}$ dựa trên một hàm phân phối xác suất được <em>giả định trước</em> của đầu vào. Phân phối xác suất đó có thể là gaussian, T-student, Chi-Square, Fisher, poisson, bernoulli, phân phối nhị phân,…. Model sẽ tìm kiếm <em>tham số phân phối</em> phù hợp nhất với bộ dữ liệu thông qua hàm <em>cực đại hợp lý</em> (maximize likelihood function). Để sinh ra một dữ liệu mới, chúng ta chỉ cần lấy mẫu ngẫu nhiên từ phân phối xác suất đã được ước lượng.</p>
+
+<p>Các mô hình generative model tiêu biểu thuộc lớp mô hình hiện là:</p>
+
+<p><strong>Phương pháp cực đại hợp lý (maximum likelihood)</strong>:</p>
+<ul>
+  <li>PPCA, Phân tích nhân tố (Factor analysis), Mô hình trộn lẫn (Mixture models).</li>
+  <li>PixelCNN/PixelRNN</li>
+  <li>Wavenet</li>
+  <li>Mô hình tự hồi qui ngôn ngữ (Autoregressive language models).</li>
+</ul>
+
+<p><strong>Phương pháp xấp xỉ cực đại hợp lý` (approximate maximum likelihood)</strong>:</p>
+<ul>
+  <li><code class="highlighter-rouge">Máy học Bolzmann</code> (Bolzmann machines).</li>
+  <li><code class="highlighter-rouge">Bộ mã hóa tự động biến đổi</code> (Variational Autoencoder)</li>
+</ul>
+
+<h2 id="22-mô-hình-ẩn-implicit-model">2.2. Mô hình ẩn (implicit model)</h2>
+
+<p>Chúng ta không cần sinh dữ liệu mới dựa trên giả định về <em>hàm phân phối</em> của dữ liệu. Thay vào đó, một <code class="highlighter-rouge">bộ mô phỏng</code> (simulator) hoặc chính xác là một <code class="highlighter-rouge">mô hình</code> có khả năng sinh ra dữ liệu giống với dữ liệu thật nhất thông qua quá trình huấn luyện hội tụ trên dữ liệu. Phương pháp này ước lượng tham số của phân phối xác suất tiền định và đồng thời cũng không sử dụng phương pháp <code class="highlighter-rouge">cực đại hàm ước lượng hợp lý</code> để mô phỏng phân phối. Dữ liệu sẽ được sinh ra trực tiếp từ mô hình. Tiêu biểu cho phương pháp này là:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Mạng khớp moment</code> (moment matching networks).</li>
+  <li>GAN mà chính ta sẽ tìm hiểu trong bài viết này.</li>
+</ul>
+
+<p><img src="https://imgur.com/MelJzGj.png" class="largepic" /></p>
+
+<blockquote>
+  <p>Mô tả sự khác biệt giữa <code class="highlighter-rouge">mô hình ẩn</code> (implicit model) bên trái và <code class="highlighter-rouge">mô hình hiện</code> (explicit model) bên phải. Dữ liệu của mô hình ẩn được sinh ra từ một mô hình mô phỏng. Trái lại dữ liệu từ mô hình hiện được rút ra từ phân phối xác suất mà phân phối xác suất này được học trên các điểm dữ liệu.</p>
+</blockquote>
+
+<h1 id="3-gan-model">3. GAN model</h1>
+
+<p>GAN là lớp mô hình có mục tiêu là tạo ra dữ liệu giả giống với thật. GAN được viết tắt từ cụm từ <em>Generative Adversarial Networks</em> tức là một mạng sinh đối nghịch (Generative tương ứng với sinh và Adversarial là đối nghịch). Sở dĩ GAN có tên gọi như vậy là vì kiến trúc của nó bao gồm hai mạng có mục tiêu đối nghịch nhau đó là Generator và Descriminator.</p>
+
+<h2 id="31-nguyên-lý-hoạt-động-của-gan">3.1. Nguyên lý hoạt động của GAN</h2>
+
+<p>Cũng giống như các lớp model Discriminative và Generative đã trình bày ở mục 1. Generator và Descriminator có chức năng như sau:</p>
+
+<p><img src="https://imgur.com/32vFL63.png" class="largepic" /></p>
+
+<ul>
+  <li>
+    <p><strong>Generator</strong>: Học cách sinh ra dữ liệu giả để lừa mô hình Discriminator. Để có thể đánh lừa được Discriminator thì đòi hỏi mô hình sinh ra output phải thực sự tốt. Do đó chất lượng ảnh phải càng như thật càng tốt.</p>
+  </li>
+  <li>
+    <p><strong>Discriminator</strong>: Học cách phân biệt giữa dữ liệu giả được sinh từ mô hình Generator với dữ liệu thật. Discriminator như một giáo viên chấm điểm cho Generator biết cách nó sinh dữ liệu đã đủ <em>tinh xảo</em> để qua mặt được Discriminator chưa và nếu chưa thì Generator cần tiếp tục phải học để tạo ra ảnh thật hơn. Đồng thời Discriminator cũng phải cải thiện khả năng phân biệt của mình vì chất lượng ảnh được tạo ra từ Generator càng ngày càng giống thật hơn. Thông qua quá trình huấn luyện thì cả Generator và Discriminator cùng cải thiện được khả năng của mình.</p>
+  </li>
+</ul>
+
+<p>Generator và Discriminator tương tự như hai người chơi trong bài toán <code class="highlighter-rouge">zero-sum game</code> trong lý thuyết trò chơi. Ở trò chơi này thì hai người chơi xung đột lợi ích. Hay nói cách khác, thiệt hại của người này chính là lợi ích của người kia. Mô hình Generator tạo ra dữ liệu giả tốt hơn sẽ làm cho Discriminator phân biệt khó hơn và khi Discriminator phân biệt tốt hơn thì Generator cần phải tạo ra ảnh giống thật hơn để qua mặt Discriminator. Trong zero-sum game, người chơi sẽ có chiến lược riêng của mình, đối với Generator thì đó là sinh ra ảnh giống thật và Discriminator là phân loại ảnh thật/giả. Sau các bước ra quyết định của mỗi người chơi thì zero-sum game sẽ đạt được cân bằng Nash tại <em>điểm cân bằng</em> (Equilibrium Point).</p>
+
+<p>Tiếp theo chúng ta sẽ tìm hiểu về kiến trúc của Generator và Discriminator trong GAN. Những kiến trúc được mô tả bên dưới được lấy từ bài báo gốc <a href="https://arxiv.org/abs/1406.2661">Generative Adversarial Networks, 2014</a> của Ian GoodFellow, một nhà khoa học máy tính trẻ xuất sắc và là học trò của Andrew Ng và Yoshua Bengio. Ông đồng thời cũng là tác giả của cuốn sách <code class="highlighter-rouge">Deep Learning</code> khá kinh điển mà mình tham gia dịch một số chương trong bản tiếng Việt của nó. Lan man thế là đủ rồi, chúng ta cùng tìm hiểu Generator và Discriminator nào.</p>
+
+<h2 id="32-generator">3.2. Generator</h2>
+
+<p><img src="https://imgur.com/a4p9G3d.png" class="largepic" /></p>
+
+<p>Sơ đồ kiến trúc của generator.</p>
+
+<p>Generator về bản chất là một mô hình sinh nhận đầu vào là một tập hợp các véc tơ nhiễu $\mathbf{z}$ được khởi tạo ngẫu nhiên theo phân phối Gaussian. Ở một số lớp mô hình GAN tiên tiến hơn, input có thể làm một dữ liệu chẳng hạn như bức ảnh, đoạn văn bản hoặc đoạn âm thanh. Nhưng ở đây với mục đích làm quen và tìm hiểu GAN đầu vào được giả sử là véc tơ nhiễu như trong bài báo gốc <a href="https://arxiv.org/pdf/1406.2661.pdf">Generative Adversarial Nets
+</a> của tác giả Ian J.Goodfellow.</p>
+
+<p>Từ tập véc tơ đầu vào $\mathbf{z}$ ngẫu nhiên, mô hình generator là một mạng học sâu có tác dụng biến đổi ra bức ảnh giả ở output. Bức ảnh giả này sẽ được sử dụng làm đầu vào cho kiến trúc Discriminator.</p>
+
+<h2 id="33-discriminator">3.3. Discriminator</h2>
+
+<p><img src="https://imgur.com/vGjX6DM.png" class="largepic" /></p>
+
+<p>Mô hình Discriminator sẽ có tác dụng phân biệt ảnh input là thật hay giả.  Nhãn của mô hình sẽ là <em>thật</em> nếu ảnh đầu vào của Discriminator được lấy tập mẫu huấn luyện và <em>giả</em> nếu được lấy từ output của mô hình Generator. Về bản chất đây là một bài toán phân loại nhị phân (binary classification) thông thường. Để tính phân phối xác suất cho output cho Discriminator chúng ta sử dụng hàm sigmoid.</p>
+
+<h2 id="34-hàm-loss-function">3.4. Hàm loss function</h2>
+
+<p>Hàm loss function của model gan là một hàm kết hợp đồng thời giữa mục tiêu của Discriminator và mục tiêu của Generator.</p>
+
+<script type="math/tex; mode=display">\min_{G} \max_{D} V(D, G) = \underbrace{\mathbb{E}_{x \sim p_{data}(x)} [\log D(x)]}_{\text{log-probability that D predict x is real}} + \underbrace{\mathbb{E}_{z \sim p_{z}(z)} [\log (1-D(G(z)))]}_{\text{log-probability D predicts G(z) is fake}} ~~~ (1)</script>
+
+<p>Có lẽ bạn đọc hơi choáng ngợp khi đọc hàm loss function này, đừng bỏ cuộc vì bên dưới mình sẽ giải thích cho bạn hiểu cơ chế gồm 2 phases của hàm loss function này:</p>
+
+<p><strong>Phase huấn luyện Descriminator:</strong> Mục tiêu của phase này là huấn luyện một mô hình Descriminator sao cho <em>khả năng phân loại là tốt nhất</em>. Ở phase này chúng ta hãy tạm thời coi $G$ <em>không đổi</em> và chỉ quan tâm đến vế $\max_{D} V(D, G)$. Đây là chính là nghịch đảo của hàm cross entropy đối với trường hợp phân loại nhị phân. Thật vậy, chắc hẳn bạn còn nhớ mục tiêu của logistic regression đối với bài toán phân loại nhị phân là <em>tối thiểu hóa</em> một hàm cross entropy như sau:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{w}; \mathbf{X}, \mathbf{y}) = - \frac{1}{N}\sum_{i=1}^{N}~~ [y_i\log p(y_i|\mathbf{x}_i) + (1-y_i)\log (1-p(y_i|\mathbf{x}_i))] ~~~ (2)</script>
+
+<p>Trong đó $p(y_i|\mathbf{x}_i)$ là xác suất dự báo nhãn $y_i$ từ mô hình logistic.</p>
+
+<p>Trong phương trình (1) thì $D(x)$ cũng như $p(y_i|\mathbf{x}_i)$. Hay nói cách khác $D(x)$ đóng vai trò dự báo xác suất cho dữ liệu đầu vào. Chúng ta có hai khả năng xảy ra:</p>
+
+<ul>
+  <li>
+    <p>Nếu đầu vào là ảnh thật thì $y_i = 1$ và $1-y_i = 0$ và do đó loss function tương ứng với $y_i \log p(y_i|\mathbf{x}_i) = \log p(y_i|\mathbf{x}_i)$ ở phương trình (2). Giá trị này được coi như là $\log D(x)$ ở phương trình (1). Kí hiệu $x \sim p_{data}(x)$ ở phương trình (1) là phân phối xác suất của các điểm dữ liệu đầu vào, trong trường hợp ở phương trình (2) thì các quan sát có vai trò như nhau nên chúng có chung giá trị phân phối là $\frac{1}{N}$.</p>
+  </li>
+  <li>
+    <p>Trường hợp ảnh đầu vào là giả thì $y_i = 0$ và $1-y_i = 1$. Khi đó đóng góp vào hàm loss function chỉ còn thành phần $(1-y_i)\log (1-p(y_i|\mathbf{x}_i)) = \log (1-p(y_i|\mathbf{x}_i))$ ở phương trình (2). Giá trị này được coi như là $\log (1-D(G(z)))$ ở phương trình (1).</p>
+  </li>
+</ul>
+
+<p>Đừng quên rằng chúng ta đảo dấu loss function để chuyến sang bài toán tìm <em>max</em> ở phương trình (1). Như vậy các bạn đã hiểu ý nghĩa của hàm phase tối ưu loss function cho Descriminator rồi chứ?</p>
+
+<p><strong>Phase huấn luyện Generator</strong>: Mục tiêu của phase này là củng cố khả năng tạo ảnh của Generator sao cho ảnh nó sinh ra là <em>giống với thật nhất</em>. Ở phase này ta coi như $D$ là <em>không đổi</em> và chỉ quan tâm đến $G(z)$ sao cho giá trị dự báo xác suất từ $D$ đối với nó gần bằng 1 nhất, tức là ảnh giả được sinh ra giống ảnh thật nhất (xác suất càng gần 1 thì khả năng giống ảnh thật càng lớn). Như vậy $D(G(z))$ sẽ càng lớn càng tốt. Đảo dấu của nó trong $\mathbb{E}_{z \sim p_{z}(z)} [\log (1-D(G(z)))]$ ta suy ra mục tiêu cần tối ưu là tối thiểu hóa $\min_{G} V(D, G)$.</p>
+
+<h1 id="4-quá-trình-huấn-luyện">4. Quá trình huấn luyện</h1>
+
+<p>Trong quá trình huấn luyện thì chúng ta sẽ kết hợp một cách xen kẽ giữa hai phase. $k$ batch đầu tiên chúng ta sẽ huấn luyện discriminator trước:</p>
+
+<ul>
+  <li>Huấn luyện discriminator: Lấy mẫu một mini-batch kích thước $m$ là các nhiễu ${z^{(1)}, z^{(2)}, \dots, z^{(m)} }$ và là đầu vào của Generator. Đồng thời lấy mẫu một mini-batch khác kích thước $m$ là những điểm dữ liệu thật ${x^{(1)}, x^{(2)}, \dots, x^{(m)} }$. Những dữ liệu này sẽ được sử dụng để cập nhật gradient descent theo phương pháp mini-batch gradient descent:</li>
+</ul>
+
+<script type="math/tex; mode=display">\frac{1}{m}\nabla_{\theta_{D}} \sum_{i=1}^{m} \log D(x^{(i)}) + \log (1-D(G(z^{(i)})))</script>
+
+<p>Do là huấn luyện trên mô hình Discriminator nên chỉ được cập nhật các hệ số trên mô hình Discrimator là $\theta_{D}$. Các hệ số của Generator được đóng băng.</p>
+
+<ul>
+  <li>Huấn luyện generator: Sau khi kết thúc $k$ batch huấn luyện trên discriminator chúng ta sẽ tiếp tục huấn luyện trên generator. một mini-batch kích thước $m$ được lựa chọn ra từ các nhiễu là ${z^{(1)}, z^{(2)}, \dots, z^{(m)} }$ được sử dụng như đầu vào huấn luyện. Gradient descent sẽ được tính trên $m$ dữ liệu này theo công thức:</li>
+</ul>
+
+<script type="math/tex; mode=display">\frac{1}{m}\nabla_{\theta_{G}} \sum_{i=1}^{m} \log (1-D(G(z^{(i)})))</script>
+
+<p>Lưu ý cập nhật gradient descent chỉ được áp dụng trên các hệ số của Generator là $\theta_{G}$.
+Tiếp tục quá trình này cho tới khi tổng số lượt huấn luyện là đủ lớn hoặc loss của mô hình tiệm cận về 0.
+Như vậy là các bạn đã biết được qui trình huấn luyện model GAN rồi chứ? Tiếp theo, để hiểu rõ hơn về ý tưởng mô hình và qui trình huấn luyện của thuật toán, chúng ta sẽ thực hành huấn luyện model GAN trên bộ dữ liệu mnist.</p>
+
+<h1 id="5-huấn-luyện-gan-trên-bộ-dữ-liệu-mnist">5. Huấn luyện GAN trên bộ dữ liệu mnist</h1>
+
+<p>Bạn đọc có thể tìm được vô số các open source code về huấn luyện GAN trên mnist. Mình sẽ làm một hướng dẫn theo cách giải thích chi tiết từng bước trong lý thuyết của GAN.</p>
+
+<p>Về dữ liệu mnist thì đã quá quen thuộc nên mình sẽ không giới thiệu thêm.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre># Load dữ liệu mnist
+from tensorflow.keras.datasets.mnist import load_data
+(trainX, trainy), (testX, testy) = load_data()
+print('Train', trainX.shape, trainy.shape)
+print('Test', testX.shape, testy.shape)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Train (60000, 28, 28) (60000,)
+Test (10000, 28, 28) (10000,)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hiển thị một số hình ảnh của mnist. Đây là một bước quan trọng để các bạn hình dung dữ liệu như thế nào? chất lượng dữ liệu ra sao. Đừng bao giờ xây dựng mô hinh luôn mà không nhìn vào dữ liệu nhé.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+
+# plot images from the training dataset
+def _plot(X):
+	for i in range(25):
+		# define subplot
+		plt.subplot(5, 5, 1 + i)
+		# turn off axis
+		plt.axis('off')
+		# plot raw pixel data
+		plt.imshow(X[i], cmap='gray_r')
+	plt.show()
+ 
+_plot(trainX[:25, :])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200713_GAN/GAN_18_0.png" class="largepic" /></p>
+
+<p>Như vậy dữ liệu của chúng ta là những chữ số viết tay có kích thước tương đổi nhỏ, nét chữ màu đen và background màu trắng. Các chữ số đã được tiền xử lý để xuất hiện ở ngay trung tâm của ảnh.</p>
+
+<h2 id="51-discriminator">5.1. Discriminator</h2>
+
+<p>Tiếp theo ta sẽ xác định descriminator model. Nhận xét đầu tiên đây sẽ là một mạng CNN nhận đầu vào là một bức ảnh có thể là real hoặc fake. Output sẽ gồm hai nhãn tương ứng với real và fake. Do đó chúng ta phải sử dụng activation là <code class="highlighter-rouge">sigmoid</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">LeakyReLU</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Reshape</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="k">Model</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span> <span class="n">import</span> <span class="n">Adam</span>
+<span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span> <span class="n">import</span> <span class="n">plot_model</span>
+
+<span class="n">def</span> <span class="n">_discriminator</span><span class="p">():</span>
+  <span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">c</span><span class="err">á</span><span class="n">c</span> <span class="n">layers</span>
+  <span class="n">inpt</span> <span class="p">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="p">=(</span><span class="m">28</span><span class="p">,</span> <span class="m">28</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+  <span class="n">conv1</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="n">strides</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">inpt</span><span class="p">)</span>
+  <span class="n">act_leak1</span> <span class="p">=</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.3</span><span class="p">)(</span><span class="n">conv1</span><span class="p">)</span>
+  <span class="n">dropout</span> <span class="p">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="m">0.4</span><span class="p">)(</span><span class="n">act_leak1</span><span class="p">)</span>
+  <span class="n">conv2</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="n">strides</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">dropout</span><span class="p">)</span>
+  <span class="n">act_leak2</span> <span class="p">=</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.3</span><span class="p">)(</span><span class="n">conv2</span><span class="p">)</span>
+  <span class="n">flat</span> <span class="p">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">act_leak2</span><span class="p">)</span>
+  <span class="n">den</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'sigmoid'</span><span class="p">)(</span><span class="n">flat</span><span class="p">)</span>
+  <span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="k">model</span>
+  <span class="k">model</span> <span class="p">=</span> <span class="k">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="p">=</span> <span class="p">[</span><span class="n">inpt</span><span class="p">],</span> <span class="n">outputs</span> <span class="p">=</span> <span class="p">[</span><span class="n">den</span><span class="p">])</span>
+  <span class="p">#</span> <span class="nf">Compile</span> <span class="n">v</span><span class="err">ớ</span><span class="n">i</span> <span class="n">optimizer</span>
+  <span class="n">opt</span> <span class="p">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="p">=</span><span class="m">0.0002</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">=</span><span class="m">0.5</span><span class="p">)</span>
+  <span class="k">model</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+  <span class="n">return</span> <span class="k">model</span>
+
+<span class="n">discriminator</span> <span class="p">=</span> <span class="n">_discriminator</span><span class="p">()</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">discriminator</span><span class="p">,</span> <span class="n">show_shapes</span><span class="p">=</span><span class="nb">True</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200713_GAN/GAN_21_0.png" class="normalpic" /></p>
+
+<h2 id="52-generator">5.2. Generator</h2>
+
+<p>Generator sẽ là một mô hình sinh ảnh từ nhiễu. Nhiễu đầu vào sẽ là một véc tơ phân phối gaussian với trung bình bằng 0 và phương sai bằng 1. Chúng ta sẽ reshape khối này về một tensor3D có kích thước là <code class="highlighter-rouge">7x7</code> và sử dụng <a href="https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html#5-m%E1%BA%A1ng-gi%E1%BA%A3i-ch%E1%BA%ADp-deconvolutional-neural-network">mạng giải chập</a> để giải chập về kích thước <code class="highlighter-rouge">28x28</code>. Mạng giải chập là một tiến trình ngược với tích chập và rất hiệu quả trong các bài toán sinh ảnh.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span> <span class="n">import</span> <span class="n">Conv2DTranspose</span>
+
+<span class="n">def</span> <span class="n">_generator</span><span class="p">(</span><span class="n">noise_size</span> <span class="p">=</span> <span class="m">100</span><span class="p">):</span>
+  <span class="n">n_units</span> <span class="p">=</span> <span class="m">64</span><span class="p">*</span><span class="m">7</span><span class="p">*</span><span class="m">7</span>
+  <span class="n">inpt</span> <span class="p">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="p">=(</span><span class="n">noise_size</span><span class="p">))</span>
+  <span class="n">den1</span> <span class="p">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">n_units</span><span class="p">)(</span><span class="n">inpt</span><span class="p">)</span>
+  <span class="n">act_leak1</span> <span class="p">=</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.3</span><span class="p">)(</span><span class="n">den1</span><span class="p">)</span>
+  <span class="n">reshape</span> <span class="p">=</span> <span class="n">Reshape</span><span class="p">((</span><span class="m">7</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">64</span><span class="p">))(</span><span class="n">act_leak1</span><span class="p">)</span>
+  <span class="n">con2DTran1</span> <span class="p">=</span> <span class="n">Conv2DTranspose</span><span class="p">(</span><span class="m">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="n">strides</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">reshape</span><span class="p">)</span>
+  <span class="n">act_leak2</span> <span class="p">=</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.3</span><span class="p">)(</span><span class="n">con2DTran1</span><span class="p">)</span>
+  <span class="n">con2DTran2</span> <span class="p">=</span> <span class="n">Conv2DTranspose</span><span class="p">(</span><span class="m">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="n">strides</span><span class="p">=(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">act_leak2</span><span class="p">)</span>
+  <span class="n">act_leak3</span> <span class="p">=</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">alpha</span><span class="p">=</span><span class="m">0.3</span><span class="p">)(</span><span class="n">con2DTran2</span><span class="p">)</span>
+  <span class="n">con</span> <span class="p">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="p">=</span><span class="m">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">=(</span><span class="m">28</span><span class="p">,</span> <span class="m">28</span><span class="p">),</span> <span class="n">activation</span><span class="p">=</span><span class="s1">'sigmoid'</span><span class="p">,</span> <span class="n">padding</span><span class="p">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">act_leak3</span><span class="p">)</span>
+
+  <span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="k">model</span>
+  <span class="k">model</span> <span class="p">=</span> <span class="k">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="p">=</span> <span class="p">[</span><span class="n">inpt</span><span class="p">],</span> <span class="n">outputs</span> <span class="p">=</span> <span class="p">[</span><span class="n">con</span><span class="p">])</span>
+  <span class="p">#</span> <span class="nf">Compile</span> <span class="n">v</span><span class="err">ớ</span><span class="n">i</span> <span class="n">optimizer</span>
+  <span class="n">opt</span> <span class="p">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="p">=</span><span class="m">0.0002</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">=</span><span class="m">0.5</span><span class="p">)</span>
+  <span class="k">model</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">metrics</span><span class="p">=[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+  <span class="n">return</span> <span class="k">model</span>
+
+<span class="n">generator</span> <span class="p">=</span> <span class="n">_generator</span><span class="p">(</span><span class="n">noise_size</span> <span class="p">=</span> <span class="m">100</span><span class="p">)</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="n">show_shapes</span><span class="p">=</span><span class="nb">True</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200713_GAN/GAN_23_0.png" class="normalpic" /></p>
+
+<p>Như vậy mạng CNN của Generator sẽ có các CNN layers theo thứ tự ngược lại so với Discriminator.</p>
+
+<h2 id="53-gan-model">5.3. GAN model</h2>
+
+<p>Tiếp theo ta sẽ khởi tạo model GAN là kết hợp giữa Discriminator và Generator</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="k">from</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span> <span class="n">import</span> <span class="n">Sequential</span>
+
+<span class="n">def</span> <span class="n">_gan</span><span class="p">(</span><span class="n">g_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">):</span>
+  <span class="p">#</span> <span class="err">Đó</span><span class="n">ng</span> <span class="n">b</span><span class="err">ă</span><span class="n">ng</span> <span class="n">weight</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">discriminator</span>
+	<span class="n">d_model</span><span class="p">.</span><span class="n">trainable</span> <span class="p">=</span> <span class="nb">False</span>
+	<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="k">model</span> <span class="n">GAN</span>
+	<span class="k">model</span> <span class="p">=</span> <span class="n">Sequential</span><span class="p">()</span>
+	<span class="k">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">g_model</span><span class="p">)</span>
+	<span class="k">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">d_model</span><span class="p">)</span>
+	<span class="p">#</span> <span class="nf">compile</span> <span class="k">model</span>
+	<span class="n">opt</span> <span class="p">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="p">=</span><span class="m">0.0002</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">=</span><span class="m">0.5</span><span class="p">)</span>
+	<span class="k">model</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">loss</span><span class="p">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">=</span><span class="n">opt</span><span class="p">)</span>
+	<span class="n">return</span> <span class="k">model</span>
+
+<span class="p">#</span> <span class="n">Khai</span> <span class="n">b</span><span class="err">á</span><span class="n">o</span> <span class="n">s</span><span class="err">ố</span> <span class="n">chi</span><span class="err">ề</span><span class="n">u</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">noise</span> <span class="n">v</span><span class="err">é</span><span class="n">c</span> <span class="n">t</span><span class="err">ơ</span> <span class="n">input</span> <span class="n">c</span><span class="err">ủ</span><span class="n">a</span> <span class="n">generator</span><span class="p">.</span>
+<span class="n">latent_dim</span> <span class="p">=</span> <span class="m">100</span>
+<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="n">discriminator</span> <span class="n">v</span><span class="err">à</span> <span class="n">generatator</span> <span class="k">model</span>
+<span class="n">d_model</span> <span class="p">=</span> <span class="n">_discriminator</span><span class="p">()</span>
+<span class="n">g_model</span> <span class="p">=</span> <span class="n">_generator</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">)</span>
+<span class="p">#</span> <span class="n">Kh</span><span class="err">ở</span><span class="n">i</span> <span class="n">t</span><span class="err">ạ</span><span class="n">o</span> <span class="n">GAN</span> <span class="k">model</span>
+<span class="n">gan_model</span> <span class="p">=</span> <span class="n">_gan</span><span class="p">(</span><span class="n">g_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">gan_model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="p">=</span><span class="nb">True</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200713_GAN/GAN_26_0.png" class="normalpic" /></p>
+
+<h2 id="54-chọn-mẫu-real-và-fake">5.4. Chọn mẫu real và fake</h2>
+
+<p>Để quá trình hội tụ nhanh hơn thì chúng ta sẽ chuẩn hóa các giá trị của input về [0, 1] bằng cách chia giá trị của mỗi pixel cho 255.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>def _normalize():
+	# load mnist dataset
+	(trainX, _), (_, _) = load_data()
+	X = np.expand_dims(trainX, axis=-1)
+	X = X.astype('float32')
+	X = X / 255.0
+	return X
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Dữ liệu fake sẽ được sinh một cách ngẫu nhiên từ một véc tơ có kích thước là <code class="highlighter-rouge">latent_dim</code>. Nhãn của dữ liệu fake sẽ được gán là 0.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>import numpy as np
+
+# Hàm sinh batch input là noise véc tơ cho generator
+def generate_latent_points(latent_dim, n_samples):
+	# khởi tạo input ngẫu nhiên
+	x_input = np.random.randn(latent_dim * n_samples)
+	# reshape về batch
+	x_input = x_input.reshape(n_samples, latent_dim)
+	return x_input
+ 
+
+# Hàm sinh batch cho fake sample, nhãn của fake sample là 0
+def generate_fake_samples(g_model, latent_dim, n_samples):
+	# sinh batch là các noise véc tơ
+	x_input = generate_latent_points(latent_dim, n_samples)
+	# dự báo outputs từ g_model
+	X = g_model.predict(x_input)
+	# khởi tạo y = 0 với nhãn fake
+	y = np.zeros((n_samples, 1))
+	return X, y
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Tiếp theo chúng ta sẽ tạo batch cho những ảnh real. Dữ liệu được lấy ngẫu nhiên từ tập dataset và nhãn của dữ liệu real là 1.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def generate_real_samples(dataset, n_samples):
+	# lựa chọn index ngẫu nhiên để lựa chọn batch
+	ix = np.random.randint(0, dataset.shape[0], n_samples)
+	# trích suất các ảnh từ dataset
+	X = dataset[ix]
+	# khởi tạo y = 1 với nhãn real
+	y = np.ones((n_samples, 1))
+	return X, y
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="55-huấn-luyện-model">5.5. Huấn luyện model</h2>
+
+<p>Tiếp theo chúng ta sẽ huấn luyện xen kẽ Discriminator và Generator:</p>
+
+<ul>
+  <li>
+    <p>Step 1: Huấn luyện Discriminator. Chúng ta sẽ tạo ra một batch sao cho một nửa là real nhãn 1 và một nửa là fake nhãn 0. Mô hình này sẽ được huấn luyện chỉ trên Discriminator và không quan tâm đến Generator.</p>
+  </li>
+  <li>
+    <p>Step 2: Huấn luyện Generator. Chúng ta sẽ khởi tạo dữ liệu input là những véc tơ noise. Vì mục tiêu của chúng ta là muốn Generator tạo ra ảnh giống với thật nhất nên chúng ta phải gán nhãn cho Generator là 1, nếu không nó sẽ học cách sinh ra dữ liệu giống như noise. Quá trình huấn luyện generator sẽ được cập nhật thông qua GAN model.</p>
+  </li>
+</ul>
+
+<p>Quá trình học sẽ được thực hiện xen kẽ, cứ $k$ steps huấn luyện trên generator thì sẽ có 1 step huấn luyện trên discriminator.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># đánh giá accuracy của discriminator trên cả tập real và tập fake
+def summarize_performance(epoch, gan_model, X_real, y_real, X_fake, y_fake):
+	_, acc_real = gan_model.layers[1].evaluate(X_real, y_real, verbose=0)
+	_, acc_fake = gan_model.layers[1].evaluate(X_fake, y_fake, verbose=0)
+	# thống kê discriminator performance
+	print('&gt;Accuracy real: %.0f%%, fake: %.0f%%' % (acc_real*100, acc_fake*100))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=256, k=2):
+  bat_per_epo = int(dataset.shape[0] / n_batch)
+  half_batch = int(n_batch / 2)
+  # Huấn luyện mô hình trên các epochs
+  for i in range(n_epochs):
+    for j in range(bat_per_epo):
+      if j % k == 0:
+        # Step 1: Huấn luyện trên discriminator
+        gan_model.layers[0].trainable = False
+        gan_model.layers[1].trainable = True
+        # Khởi tạo batch huấn luyện trong đó có 1/2 batch là real và 1/2 batch là fake
+        X_real, y_real = generate_real_samples(dataset, half_batch)
+        X_fake, y_fake = generate_fake_samples(gan_model.layers[0], latent_dim, half_batch)
+        X, y = np.vstack((X_real, X_fake)), np.vstack((y_real, y_fake))
+        d_loss, _ = gan_model.layers[1].train_on_batch(X, y)
+        print('&gt;%d, %d/%d, d=%.3f' % (i+1, j+1, bat_per_epo, d_loss))
+      
+      # Step 2: Huấn luyện trên generator
+      # Khởi tạo batch noise
+      X_gan = generate_latent_points(latent_dim, n_batch)
+      # Những dữ liệu noise này giả định là đã đánh lừa được discriminator nên được gán nhãn là 1
+      y_gan = np.ones((n_batch, 1))
+      # huấn luyện generator thông qua gan_model
+      gan_model.layers[0].trainable = True
+      gan_model.layers[1].trainable = False
+      g_loss = gan_model.train_on_batch(X_gan, y_gan)
+      # Loss function trên discriminator, generator
+      print('&gt;%d, %d/%d, d=%.3f, g=%.3f' % (i+1, j+1, bat_per_epo, d_loss, g_loss))
+      # Đánh giá mô hình:
+      summarize_performance(j, gan_model, X_real, y_real, X_fake, y_fake)  
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># train model
+dataset = _normalize()
+train(g_model, d_model, gan_model, dataset, latent_dim)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>&gt;100, 233/234, d=0.682, g=0.695
+&gt;Accuracy real: 70%, fake: 77%
+&gt;100, 234/234, d=0.682, g=0.690
+&gt;Accuracy real: 70%, fake: 77%
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>gan_model.save('gan_mnist.h5')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Vì đây là bài toán zero-sum game nên chúng ta không kỳ vọng rằng loss function của cả discriminator và generator sẽ cùng thấp. Trái lại khi loss discriminator giảm xuống, mô hình phân loại trở nên tinh vi hơn thì loss generator sẽ tăng lên do khó đánh lừa được discriminator. Ngược lại khi loss function của discriminator tăng lên, mô hình generator tạo ra dữ liệu giống thật hơn, loss function của generator sẽ giảm xuống.</p>
+
+<p>Nếu bạn nhìn thấy một trong hai loss function của descriminator hoặc generator tiệm cận 0 thì đó là một dấu hiệu của mô hình GAN không tốt.</p>
+
+<p>Giá trị loss function của generator và descriminator nên giao động quanh khoảng 0.7. Đây chính là giá trị hội tụ của GAN và bằng $\log(2)$. Do bài viết đã khá dài nên tôi không đưa thêm chứng minh này, xin dành cho bạn đọc như một bài tập nâng cao.</p>
+
+<h2 id="56-đánh-giá-mô-hình">5.6. Đánh giá mô hình</h2>
+
+<p>Để ý ở phần code huấn luyện mô hình ta thêm một đoạn code sau để đánh giá độ chính xác của mô hình trên từng batch real và fake.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre># đánh giá accuracy của discriminator trên cả tập real và tập fake
+def summarize_performance(epoch, gan_model, X_real, y_real, X_fake, y_fake):
+	_, acc_real = gan_model.layers[1].evaluate(X_real, y_real, verbose=0)
+	_, acc_fake = gan_model.layers[1].evaluate(X_fake, y_fake, verbose=0)
+	# thống kê discriminator performance
+	print('&gt;Accuracy real: %.0f%%, fake: %.0f%%' % (acc_real*100, acc_fake*100))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Chúng ta kỳ vọng rằng giá trị của accuracy trên cả real và fake giao động xung quanh giá trị 50%. Điều đó có nghĩa là gì? Chúng ta có khoảng 50% dữ liệu real được dự đoán nhầm thành fake và chúng ta có khoảng 50% dữ liệu fake được dự đoán thành real. Như vậy generator đã sinh ra ảnh fake khá giống thật và khiến cho đôi lúc discriminator phân biệt được giữa real và fake và đôi lúc không phân biệt được.</p>
+
+<p>Trái lại nếu giá trị accuracy của real quá cao hoặc accuracy của fake quá cao, điều đó chứng tỏ generator chưa đủ tốt để đánh lừa được discriminator. Chính vì vậy nếu bạn nhìn thấy accuracy của mô hình trên real hoặc fake là 100% thì không nên vui mừng nhé, đó là một kết quả khá kém của mô hình.</p>
+
+<h2 id="57-dự-báo">5.7. Dự báo</h2>
+
+<p>Sau khi huấn luyện mô hình chúng ta sẽ dự báo các mẫu được sinh ra:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>X_eval, y_eval = generate_fake_samples(g_model=gan_model.layers[0], latent_dim=100, n_samples=25)
+
+_plot(X_eval[:, :, :, 0])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/assets/images/20200713_GAN/GAN_43_0.png" class="normalpic" /></p>
+
+<p>Ta thấy dữ liệu sinh ra cũng khá giống chứ chưa hoàn toàn giống 100%. Kỹ thuật được sử dụng trong model GAN đầu tiên còn nhiều hạn chế nên ảnh sinh ra khá dễ phân biệt real và fake. Giai đoạn sau model GAN ngày càng được cải tiến đặc biệt là việc thay đổi input từ noise sang ảnh giúp generator học được các đặc trưng từ ảnh input ngay từ đầu và sinh ra ảnh tự nhiên hơn. Hơn nữa mô hình không bị giới hạn sinh ra ảnh là các nhãn trong tập huấn luyện mà còn sinh ra một ảnh bất kỳ dựa trên ảnh input.</p>
+
+<h1 id="6-tổng-kết">6. Tổng kết</h1>
+
+<p>Như vậy các bạn đã tìm hiểu xong lý thuyết của model GAN. Mình xin tổng kết lại một số điểm chính:</p>
+
+<ul>
+  <li>
+    <p>Ý tưởng của GAN dựa trên bài toán zero-sum game của lý thuyết trò chơi. Hai người chơi có lợi ích xung đột là Generator và Discriminator.</p>
+  </li>
+  <li>
+    <p>Generator có mục tiêu là sinh ra bức ảnh giống với ảnh thật nhất. Đầu vào của Generator (trong kiến trúc GAN đầu tiên năm 2014) là một nhiễu được khởi tạo ngẫu nhiên.</p>
+  </li>
+  <li>
+    <p>Discriminator có mục tiêu là phân biệt ảnh giả sinh ra từ Generator với ảnh thật.</p>
+  </li>
+  <li>
+    <p>Hàm loss function lồng ghép đồng thời loss function của Generator và Discriminator. Loss function về bản chất vẫn là một hàm cross entropy của bài toán phân loại nhị phân.</p>
+  </li>
+  <li>
+    <p>Quá trình huấn luyện GAN sẽ xen kẽ giữa Discriminator và Generator. Chúng ta sẽ huấn luyện trước Discriminator với $k$ steps và cố định hệ số mô hình của Generator. Sau đó chúng ta huấn luyện Generator và cố định Discriminator.</p>
+  </li>
+</ul>
+
+<p>Ngoài ra GAN còn rất nhiều các biến thể khác như Wasserstein GAN, StarGAN, StyleGAN, SRGAN, CycleGAN, Pix2pix, BigGAN,…. rất rất nhiều các mô hình GAN khác chưa được liệt kê hết và vẫn đang tiếp tục được phát triển. Mình sẽ hướng dẫn các bạn ở những bài sau.</p>
+
+<h1 id="7-tài-liệu">7. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://arxiv.org/abs/1406.2661">Generative Adversarial Networks, Ian J. Goodfellow</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/pdf/1701.07875.pdf">Wasserstein GAN, Martin Arjovsky</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=wFsI2WqUfdA&amp;list=PLqYmG7hTraZCDxZ44o4p3N5Anz3lLRVZF&amp;index=10&amp;t=0s">Deep Learning Lectures, Generative Adversarial Networks</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningmastery.com/what-are-generative-adversarial-networks-gans/">GAN model, machinelearningmastery</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningmastery.com/impressive-applications-of-generative-adversarial-networks/">impressive applications of GAN, machinelearningmastery</a></p>
+  </li>
+  <li>
+    <p><a href="https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-an-mnist-handwritten-digits-from-scratch-in-keras/">GAN model train on mnist, machinelearningmastery</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
