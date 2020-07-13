@@ -234,7 +234,7 @@ body {
 
 <ul>
   <li>Tính tích chập tại 1 điểm:
-Tại vị trí đầu tiên trên cùng của ma trận đầu vào ta sẽ lọc ra một ma trận con $\mathbf{X}<em>{sub} \in \mathbb{R}^{F \times F}$ có kích thước bằng với kích thước của bộ lọc. Giá trị $y</em>{11}$ tương ứng trên $\mathbf{Y}$ là tích chập của $\mathbf{X}_{sub}$ với $\mathbf{F}$ được tính như sau:
+Tại vị trí đầu tiên trên cùng của ma trận đầu vào ta sẽ lọc ra một ma trận con $\mathbf{X}_{sub} \in \mathbb{R}^{F \times F}$ có kích thước bằng với kích thước của bộ lọc. Giá trị $y_{11}$ tương ứng trên $\mathbf{Y}$ là tích chập của $\mathbf{X}_{sub}$ với $\mathbf{F}$ được tính như sau:
 <script type="math/tex">y_{11}= \sum_{i = 1}^{F}  \sum_{j = 1}^{F} x_{ij} f_{ij}</script></li>
   <li>Tiến hành trượt dọc theo ma trận theo chiều từ trái qua phải, từ trên xuống dưới theo <em>bước nhảy</em> (stride) $S$ ta sẽ tính được các giá trị $y_{ij}$ tiếp theo. Sau khi quá trình này kết thúc ta thu được trọn vẹn ma trận $\mathbf{Y}$.</li>
 </ul>

@@ -13,7 +13,7 @@ Tích chập là một khái niệm trong xử lý tín hiệu số nhằm biế
 Tích chập thông dụng nhất là tích chập 2 chiều được áp dụng trên ma trận đầu vào và ma trận bộ lọc 2 chiều. Phép tích chập của một ma trận $\mathbf{X} \in \mathbb{R}^{W_1 \times H_1}$ với một *bộ lọc* (receptive field) $\mathbf{F} \in \mathbb{R}^{F \times F}$ là một ma trận $\mathbf{Y} \in \mathbb{R}^{W_2 \times H_2}$ sẽ trả qua những bước sau:
 
 * Tính tích chập tại 1 điểm:
-Tại vị trí đầu tiên trên cùng của ma trận đầu vào ta sẽ lọc ra một ma trận con $\mathbf{X}_{sub} \in \mathbb{R}^{F \times F}$ có kích thước bằng với kích thước của bộ lọc. Giá trị $y_{11}$ tương ứng trên $\mathbf{Y}$ là tích chập của $\mathbf{X}_{sub}$ với $\mathbf{F}$ được tính như sau:
+Tại vị trí đầu tiên trên cùng của ma trận đầu vào ta sẽ lọc ra một ma trận con $\mathbf{X}\_{sub} \in \mathbb{R}^{F \times F}$ có kích thước bằng với kích thước của bộ lọc. Giá trị $y_{11}$ tương ứng trên $\mathbf{Y}$ là tích chập của $\mathbf{X}\_{sub}$ với $\mathbf{F}$ được tính như sau:
 $$y_{11}= \sum_{i = 1}^{F}  \sum_{j = 1}^{F} x_{ij} f_{ij}$$ 
 * Tiến hành trượt dọc theo ma trận theo chiều từ trái qua phải, từ trên xuống dưới theo *bước nhảy* (stride) $S$ ta sẽ tính được các giá trị $y_{ij}$ tiếp theo. Sau khi quá trình này kết thúc ta thu được trọn vẹn ma trận $\mathbf{Y}$.
 
