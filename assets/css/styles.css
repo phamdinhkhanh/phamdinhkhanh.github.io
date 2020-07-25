@@ -52,7 +52,28 @@ img.normalpic {
   height: auto;
 }
 
+
+img.normal {
+  display: block;
+  max-width:500px;
+  max-height:500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
 img.medianpic {
+  display: block;
+  max-width:400px;
+  max-height:400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
+img.median {
   display: block;
   max-width:400px;
   max-height:400px;
@@ -72,7 +93,27 @@ img.smallpic {
   height: auto;
 }
 
+img.small {
+  display: block;
+  max-width:300px;
+  max-height:300px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
 img.tinypic {
+  display: block;
+  max-width:200px;
+  max-height:200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
+img.tiny {
   display: block;
   max-width:200px;
   max-height:200px;

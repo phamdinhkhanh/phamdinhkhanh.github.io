@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wassteiner.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wasserstein.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/13/GAN.html">Bài 43 - Model GAN</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/20/Unet.html">Bài 42 - Thực hành Unet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 44 - Model Wasserstein GAN (WGAN)</p></h2> 
+<strong>25 Jul 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-giới-thiệu-chung">1. Giới thiệu chung</h1>
+
+<p>Huấn luyện model GAN là một việc không dễ dàng bởi trong quá trình huấn luyện model thường xuyên không thể hội tụ đến điểm cân bằng. Một trong những cách chúng ta có thể áp dụng để khắc phục sự không hội tụ đó là thay đổi hàm loss function. Trong bài viết này chúng ta sẽ cùng tìm hiểu phương pháp huấn luyện <a href="https://arxiv.org/abs/1701.07875">Wasserstein GAN</a> và phạt WGAN-Gradient. Nếu đọc bài báo gốc bạn sẽ thấy hàm loss function của Wasserstein GAN có một chút khó hiểu bởi các lý thuyết khá hàn lâm và không dễ tiếp cận với người bắt đầu, nhưng trên thực tế việc áp dụng phương pháp này lại khá đơn giản. Nhằm đưa ra một lời giải thích một cách dễ hiểu kèm theo code mẫu, bài viết này mình sẽ làm rõ hơn về phương pháp Wasserstein GAN thông qua cách tiếp cận nắm vững lý thuyết. Qua đó bạn đọc sẽ hiểu được đặc trưng của các dạng hàm loss function khác nhau, ưu nhược điểm và trường hợp sử dụng của chúng. Đây sẽ là những kiến thức cơ bản nhưng là tiền đề quan trọng để chúng ta đi xa hơn để hiểu những nghiên cứu của thuật toán GAN SOTA và thậm chí là những lớp mô hình deep learning khác.</p>
+
+<p>Nhưng trước khi bắt đầu bài viết này các bạn hãy ôn lại <a href="https://phamdinhkhanh.github.io/2020/07/13/GAN.html">Bài 43 - Model GAN</a> để hiểu rõ kiến trúc và nguyên lý hoạt động của GAN. Sau khi đã hiểu GAN hoạt động như thế nào? Cách thức xây dựng và huấn luyện một mô hình GAN ra sao thì chúng ta sẽ quay lại đọc tiếp bài này. WGAN sẽ tập trung vào việc thay đổi hàm loss function. Do đó, đầu tiên chúng ta sẽ cùng phân tích các dạng loss function được sử dụng chung trong các model GAN và đơn giản nhất là hàm cross entropy bên dưới.</p>
+
+<h1 id="2-cross-entropy">2. Cross Entropy</h1>
+
+<p>Chúng ta đã biết trong hồi qui logistic và softmax sử dụng loss function là hàm <em>cross entropy</em> để đo lường <strong>tương quan</strong> giữa 2 phân phối xác suất thực tế $\mathbf{p} = (p_1, \dots, p_C)$ và phân phối xác suất dự báo $\mathbf{q} = (q_1, \dots, q_C)$ như sau:</p>
+
+<script type="math/tex; mode=display">D_{CE}(\mathbf{p} \Vert \mathbf{q}) \triangleq \mathbf{H}(\mathbf{p}, \mathbf{q}) = -\sum_{i=1}^{C}p_i\log({q_i})</script>
+
+<p>Trong đó $\sum_{i=1}^{C} p_i = \sum_{i=1}^{C} q_i = 1$ và $C$ là số lượng classes. $\mathbf{H}(\mathbf{p}, \mathbf{q})$ chính là ký hiệu của hàm <em>cross entropy</em> của hai phân phối $\mathbf{p}$ và $\mathbf{q}$.</p>
+
+<p>Mục tiêu tối ưu hóa hàm loss function cũng đồng nghĩa với mục tiêu tìm ra mô hình dự báo phân phối $\mathbf{q}$ <strong>sát nhất</strong> với phân phối $\mathbf{p}$. Hai nói cách khác, khi phân phối $\mathbf{p}$ và $\mathbf{q}$ càng tương quan thì giá trị hàm <em>cross entropy</em> càng nhỏ và mô hình dự báo càng chuẩn xác. Trái lại khi $\mathbf{p}$ và $\mathbf{q}$ không tương quan thì giá trị của <em>cross entropy</em> càng lớn.</p>
+
+<p>Thật vậy, để dễ hình dung chúng ta lấy ví dụ trong trường hợp phân loại nhị phân, nhãn $p_i$ sẽ nhận một trong hai giá trị ${ 0, 1 }$. Ta có: $D_{CE}(\mathbf{p} \Vert \mathbf{q}) = -log({q_i})$ (trường hợp $p_i = 0$ thì đóng góp vào cross entropy bằng 0, trường hợp $p_i = 1$ ta thu được công thức như trên). Khi đó đồ thị của hàm <em>cross entropy</em> biểu diễn theo $q_i$ như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>import numpy as np
+import matplotlib.pyplot as plt
+
+q = np.linspace(0.05, 1, 200)
+d_ce = -np.log(q)
+
+plt.figure(figsize=(12, 8))
+plt.plot(q, d_ce)
+plt.ylabel('Cross Entropy', fontsize=12)
+plt.xlabel('qi', fontsize=12)
+plt.title('Cross entropy in binary classification', fontsize=20)
+plt.show()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="GAN_Wassteiner_files/GAN_Wassteiner_2_0.png" alt="png" /></p>
+
+<p>Ta có thể thấy gía trị nhỏ nhất của hàm <em>cross entropy</em> đạt được khi $q_i=1$. Tức là phân phối xác suất của $\mathbf{p}$ và $\mathbf{q}$ là trùng nhau. Trong trường hợp tổng quát cho nhiều nhãn ta cũng có thể chứng minh được sự <strong>tương quan</strong> giữa $\mathbf{p}$ và $\mathbf{q}$ tại điểm cực tiểu của <em>cross entropy</em>. Bài toán tối ưu <em>cross entropy</em> có dạng như sau:</p>
+
+<script type="math/tex; mode=display">(\mathbf{p}^*, \mathbf{q}^*) = \arg \min_{(\mathbf{p}, \mathbf{q})} \mathbf{H}(\mathbf{p}, \mathbf{q}) = \arg \min_{(\mathbf{p}, \mathbf{q})} -\sum_{i=1}^{C}p_i\log({q_i})</script>
+
+<p>Thỏa mãn ĐK: $\sum_{i=1}^{C} p_i = \sum_{i=1}^{C} q_i = 1$.</p>
+
+<p>Đây là bài toán tối ưu lồi với điều kiện ràng buộc tuyến tính nên các giải quen thuộc là thông qua tối ưu hàm lagrange:</p>
+
+<script type="math/tex; mode=display">\mathcal{L}(\mathbf{p}, \mathbf{q}, \lambda) = -\sum_{i=1}^{C}p_i\log({q_i}) + \lambda (\sum_{i=1}^{C} q_i - 1)</script>
+
+<p>Nếu coi phân phối $\mathbf{p}$ là cố định và tìm phân phối $\mathbf{q}$ theo $\mathbf{p}$ để tối thiểu hóa hàm lagranage. Các phương trình đạo hàm bậc nhất của hàm lagrange như sau:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\left\{
+\begin{matrix}
+    \nabla_{q_i} \mathcal{L}(\mathbf{p}, \mathbf{q}, \lambda) &=& - {\frac{p_i}{q_i}} + \lambda~~~ &, \forall i=\overline{1, C} ~~~ \\
+    \nabla_{\lambda} \mathcal{L}(\mathbf{p}, \mathbf{q}, \lambda) &=& \sum_{i=1}^{C} q_i - 1 & ~~~ 
+\end{matrix}
+\right. %]]></script>
+
+<p>Điều kiện cần để bài toán có cực trị đó là đạo hàm bậc nhất có nghiệm bằng 0. Tức là: $\frac{p_1}{q_1} = \frac{p_2}{q_2} = \dots = \frac{p_C}{q_C} = \lambda$. Suy ra cực trị đạt được khi $\mathbf{p}$ và $\mathbf{q}$ có cùng phân phối xác suất.</p>
+
+<p>Mặc khác <script type="math/tex">\nabla_{q_i}^2 \mathcal{L}(\mathbf{p}, \mathbf{q}, \lambda) = \frac{p_i}{q_i^2} \geq 0, \forall i=\overline{1, C}</script>
+nên hàm mục tiêu là một hàm lồi. Do đó đây chính là điều kiện đủ để cực trị $(\mathbf{p}^<em>, \mathbf{q}^</em>)$ đạt được chính là điểm cực tiểu.</p>
+
+<p>Chứng minh bài toán không quá khó phải không nào?</p>
+
+<p>Như vậy tìm cực tiểu của <em>cross entropy</em> chính là tìm các giá trị để phân phối dự báo sát với phân phối thực tế nhất. Đó cũng là lý do <em>cross entropy</em> thường được lựa chọn làm hàm mục tiêu trong các bài toán liên quan tới dự báo phân phối xác suất.</p>
+
+<h1 id="3-kullback-leibler-divergence">3. Kullback Leibler divergence</h1>
+
+<p><em>cross entropy</em> là một độ đo được sử dụng phổ biến trong các bài toán phân loại thuộc lớp các bài toán học có giám sát. Tuy nhiên <em>cross entropy</em> có một số hạn chế đó là giá trị của nó có thể lớn tùy ý. Chẳng hạn như khi $p_i = q_i = \frac{1}{n}, i \in \forall \bar{1,n}$. Khi $n \rightarrow +\infty$ thì giá trị của <em>cross entropy</em> sẽ là :</p>
+
+<script type="math/tex; mode=display">\lim_{n \rightarrow +\infty} D_{CE}(\mathbf{p} \Vert \mathbf{q}) = \lim_{n \rightarrow +\infty}-\sum_{i=1}^{n}\frac{1}{n}\log(\frac{1}{n}) = \lim_{n \rightarrow \infty} log({n}) = +\infty</script>
+
+<p>Do đó giá trị của <em>cross entropy</em> có thể đưa ra giá trị <em>tương quan</em> giữa hai phân phối $\mathbf{p}$ và $\mathbf{q}$ là một số rất lớn mặc dù chúng thể hiện cùng một phân phối xác suất. Tồn tại một thước đo khác giúp tìm ra khác biệt giữa hai phân phối xác suất $P(x), Q(x)$ và trả về giá trị là $0$ trong trường hợp hai phân phối này là trùng nhau. Đó chính là độ đo <em>Kullback leiber divergence</em> như sau:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin {eqnarray}D_{KL}(P \Vert Q) & = & \sum_{i=1}^{n}P(x)\log({\frac{P(x)}{Q(x)}}) \\
+& = & \sum_{i=1}^{n}P(x)[\log(P(x)) - \log(Q(x))]  \tag{1}
+\end {eqnarray} %]]></script>
+
+<p>Công thức trên là xét với trường hợp phân phối của $x$ rời rạc. Nếu phân phối của $x$ liên tục thì tổng sẽ được chuyển sang tích phân:</p>
+
+<script type="math/tex; mode=display">D_{KL}(p \Vert q) = \int_{\chi} p(x)\log({\frac{p(x)}{q(x)}}) dx</script>
+
+<p>Với $\chi$ là miền xác định của $x$. Các ký hiệu chữ thường $p, q$ đại diện cho <em>hàm mật độ xác suất (pdf)</em> của biến liên tục $x$. Nếu bạn vẫn chưa biết <em>hàm mật độ xác suất</em> là gì hãy xem lại <a href="https://phamdinhkhanh.github.io/2019/05/10/Hypothesis_Statistic.html#21-kh%C3%A1i-ni%E1%BB%87m-bi%E1%BA%BFn-ng%E1%BA%ABu-nhi%C3%AAn">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a>.</p>
+
+<p>Hàm $D_{KL}(p \Vert q)$ rõ ràng không xác định tại một số trường hợp đặc biệt khi $p(x) = 0$ hoặc $q(x) = 0$. Khi đó chúng ta phải qui ước giá trị của nó tại những điểm đặc biệt này. Cụ thể:</p>
+
+<p>Tại $p(x) = 0$ thì $p(x)\log(p(x)) = 0$, nó không có đóng góp gì vào độ lớn của hàm số $D_{KL}(p \Vert q)$.</p>
+
+<p>Trường hợp $q(x)=0$, $p(x)$ hữu hạn thì ta coi $\log(q(x)) \rightarrow -\infty$, suy ra:
+<script type="math/tex">D_{KL}(p \Vert q) = +\infty \tag{2}</script>
+Ngoài ra ta nhận thấy một tính chất đặc biệt đó là phương trình (1) tương đương với:</p>
+
+<script type="math/tex; mode=display">D_{KL}(P \Vert Q) = \mathbf{H}(P, Q)-\mathbf{H}(P)</script>
+
+<p>Trong đó $\mathbf{H}(P) = -P(x) \log P(x)$ chính là hàm <em>entropy</em> đo lường giá trị trung bình của $\log(P(x))$ theo phân phối $P(x)$. Đây là hàm số thường được sử dụng để đánh giá mức độ tinh khiết của chỉ một phân phối xác suất (tinh khiết được hiểu là output trả ra chỉ thuộc về một nhóm) và thường được dùng trong các thuật toán về decision tree.</p>
+
+<p>Hàm <em>cross entropy</em> $\mathbf{H}(P, Q)$ đo lường giá trị trung bình của $\log(Q(x))$ theo phân phối $P(x)$.</p>
+
+<p>Như vậy, khoảng cách $D_{KL}(P \Vert Q)$ là một thước đo giá trị khác biệt giữa hai phân phối $P(x)$ và $Q(x)$. Giá trị của $D_{KL}$ sẽ bằng 0 khi $P(x)$ và $Q(x)$ có phân phối trùng nhau. Ta chứng minh điều này như sau:</p>
+
+<p><strong>Tìm cực trị của $D_{KL}(P \Vert Q)$</strong></p>
+
+<p>Giả sử giá trị của hai phân phối là: $P = (p_1, \dots, p_C)$ và $Q = (q_1, \dots, q_C)$.</p>
+
+<p>Trong trường hợp tồn tại $q_j=0$ thì theo như qui ước ở $(2)$ ta có $D_{KL}(p \Vert q) = +\infty$.</p>
+
+<p>Xét hàm số:
+<script type="math/tex">f(x) = -\log(x)</script></p>
+
+<p>Trên miền xác định $x &gt; 0$. Ta có :
+<script type="math/tex">% <![CDATA[
+\left\{
+\begin{matrix}
+    \nabla_x{f(x)} & = & \frac{-1}{x}\\
+    \nabla_x^2{f(x)} & = & \frac{1}{x^2} > 0 & ~~~ 
+\end{matrix}
+\right. %]]></script></p>
+
+<p>Như vậy $f(x)$ là một hàm lồi ngặt trên toàn miền $x \in (0, 1]$. Do đó nó thỏa mãn bất đẳng thức <a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality">Jensen</a> đối với hàm lồi:
+<script type="math/tex">\lambda f(x_1) + (1-\lambda) f(x_2) \geq f(\lambda x_1 + (1-\lambda) x_2)</script> 
+với mọi $\lambda \in (0, 1]$</p>
+
+<p>Trong trường hợp tổng quát ta có:</p>
+
+<script type="math/tex; mode=display">\sum_{i=1}^{n}\lambda_i f(x_i) \geq f(\sum_{i=1}^{n}\lambda_i x_i)</script>
+
+<p>Với $\sum_{i=1}^{n} \lambda_i = 1$ và $\lambda_i \in (0, 1] ~~~, \forall i= \overline{1, n}$</p>
+
+<p>Áp dụng bất đẳng thức đối với hàm lồi ta có :</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin {eqnarray} D_{KL}(P \Vert Q) & = & - \sum_{i=1}^{C} p_i \log(\frac{q_i}{p_i}) \\
+& = & \sum_{i=1}^{C} p_if(\frac{q_i}{p_i}) \geq f(\sum_{i=1}^{C}p_i\frac{q_i}{p_i}) \\
+& = & \log(\sum_{i=1}^{C}q_i)=\log(1) = 0 \end{eqnarray} %]]></script>
+
+<p>Như vậy giá trị của $D_{KL}(P \Vert Q)$ nhỏ nhất bằng 0 trên toàn miền $(0, 1]$. Kết hợp với trường hợp tồn tại $q_i = 0$ thì $D_{KL}(p \Vert q) = +\infty$ ta suy ra giá trị nhỏ nhất là 0 đại được trên toàn miền $[0, 1]$. Vì $f(x)$ là một hàm lồi ngặt (<em>strictly convex</em>) nên đẳng thức đạt được khi:</p>
+
+<script type="math/tex; mode=display">\frac{q_1}{p_1} = \frac{q_2}{p_2} = \dots = \frac{q_C}{p_C} = \lambda</script>
+
+<p>Tức là phân phối $P$ và $Q$ là đồng nhất.</p>
+
+<p>Như vậy <em>Kullback Leibler divergence</em> là một hàm số sát hơn đo lường khoảng giữa hai phân phối. So với cross entropy thì giá trị của nó nhỏ hơn và đặc biệt khi hai phân phối trùng nhau thì khoảng cách <em>Kullback Leibler divergence</em> đạt giá trị cực tiểu và bằng 0.</p>
+
+<h2 id="31-ví-dụ-về-độ-đo-kullback-leibler-divergence">3.1. Ví dụ về độ đo Kullback Leibler divergence</h2>
+
+<p>Để hiểu rõ hơn về đặc tính đo lường sự khác biệt giữa hai phân phối xác suất của <em>Kullback Leibler divergence</em> chúng ta cùng lấy ví dụ về ba phân phối xác suất $p$, $q$ và $y$ cùng được tạo ra từ phân phối chuẩn theo công thức:</p>
+
+<script type="math/tex; mode=display">\text{pdf}(x) = \frac{\exp {\frac{-(x-\mu)^2}{2\sigma^2}}}{\sqrt{2\pi \sigma^2}}</script>
+
+<p>Trong đó phân phối của $y \sim \mathbf{N}(0, 1)$, $p \sim \mathbf{N}(0.1, 1)$ và $q \sim \mathbf{N}(2, 1)$.</p>
+
+<p>Ta nhận thấy cả ba phân phối này có cùng phương sai, tuy nhiên tâm của phân phối chính là giá trị kỳ vọng của các phân phối của $p$ lại gần với $y$ hơn so với $q$ nên khả năng cao phân phối $p$ sẽ giống $y$ hơn phân phối $q$. Chúng ta cùng kiểm chứng thông qua mô phỏng các phân phối này:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>import numpy as np
+import matplotlib.pyplot as plt
+
+y = np.random.uniform(0, 1, 200)
+p = np.random.uniform(0.1, 1, 200)
+q = np.random.uniform(2, 1, 200)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>import seaborn as sns
+sns.distplot(y, 
+             hist = False, 
+             kde = True,
+             color = 'darkblue', 
+             kde_kws={'linewidth':1},
+             label = 'dist y'
+             )
+
+sns.distplot(p, 
+             hist = False, 
+             kde = True,
+             color = 'black', 
+             kde_kws={'linewidth':1},
+             label = 'dist p'
+             )
+
+sns.distplot(q, 
+             hist = False, 
+             kde = True,
+             color = 'green', 
+             kde_kws={'linewidth':1},
+             label = 'dist q'
+             )
+
+plt.show()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>/usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+  import pandas.util.testing as tm
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="GAN_Wassteiner_files/GAN_Wassteiner_7_1.png" alt="png" /></p>
+
+<p>Đồng thời áp dụng công thức (1) để tính khoảng cách giữa các phân phối theo độ đo Kullback Leibler ta có:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>def kl(p, q):
+  return np.sum(p*np.log(p/q))
+
+kl_py = kl(p, y)
+kl_qy = kl(q, y)
+
+print('Kullback leibler (p, y): ', kl_py)
+print('Kullback leibler (q, y): ', kl_qy)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Kullback leibler (p, y):  69.72425099387095
+Kullback leibler (q, y):  459.4113963613252
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Kết quả cho thấy khoảng cách $D_{KL}(p \Vert y) \leq D_{KL}(q \Vert y)$. Kết quả này cho thấy nhận định về độ đo <em>Kullback Leibler</em> đo lường khoảng cách giữa 2 phân phối là hoàn toàn phù hợp.</p>
+
+<p>Mặc dù <em>Kullback Leibler</em> trông có vẻ khá hoàn hảo nhưng nó cũng tồn tại những hạn chế khiến cho nó không phù hợp với một phép đo khoảng cách đó là không có tính chất đối xứng và giá trị không bị chặn khiến cho chúng ta phải tìm đến một độ đo mới khắc phục được cả hai nhược điểm này. Đó chính là Jensen-Shannon.</p>
+
+<h1 id="4-jensen-shannon">4. Jensen-Shannon</h1>
+
+<p>Jensen-Shannon là độ đo được xây dựng dựa trên Kullback Leibler</p>
+
+<script type="math/tex; mode=display">D_{JS}(P \Vert Q) = D_{KL}(P \Vert \frac{P+Q}{2}) + D_{KL}(Q \Vert \frac{P+Q}{2})</script>
+
+<p>Độ đo Jensen-Shannon thay vì đo khoảng cách trực tiếp giữa $P$ và $Q$ thì nó đo khoảng cách này thông qua $P$ với $\frac{P+Q}{2}$ và $Q$ với $\frac{P+Q}{2}$. Ở đây $\frac{P+Q}{2}$ là phân phối trung bình của hai phân phối $P$ và $Q$. Nếu $P$ và $Q$ càng giống nhau thì khoảng cách của nó tới phân phối trung bình càng nhỏ.</p>
+
+<p>Một tính chất quan trọng của Jensen-Shannon so với Kullback Leibler đó là nó có tính chất đối xứng. Nghĩa là : $D_{JS}(P \Vert Q) = D_{JS}(Q \Vert P)$. Ngoài ra, khai triển Jensen-Shannon ta có:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin {eqnarray}D_{JS}(P \Vert Q) & = & \sum_{i=1}^{C} P(x) \log(P(x)) - \sum_{i=1}^{C} P(x) \log(\frac{P(x)+Q(x)}{2}) \\
+& + & \sum_{i=1}^{C} Q(x) \log(Q(x)) - \sum_{i=1}^{C} Q(x) \log(\frac{P(x)+Q(x)}{2}) \\
+& = & - \sum_{i=1}^{C} (P(x)+Q(X)) \log(\frac{P(x)+Q(x)}{2}) + \sum_{i=1}^{C} P(x) \log(P(x)) + \sum_{i=1}^{C} Q(x) \log(Q(x))\\
+& = & 2.\mathbf{H}(\frac{P+Q}{2}) - \mathbf{H}(P) - \mathbf{H}(Q) \\
+\end {eqnarray} %]]></script>
+
+<p>Jensen-Shannon sẽ bằng hiệu giữa <em>entropy</em> của phân phối trung bình $\frac{P+Q}{2}$ với các <em>entropy</em> của $P$ và $Q$.</p>
+
+<p>Ta nhận thấy độ đo Kullback-Leiber sẽ rất lớn tại những điểm $x$ mà giá trị của $Q(x)$ rất nhỏ và giá trị của $P(x)$ khác 0. Bởi vì khi đó $\log(\frac{P(x)}{Q(x)}) \rightarrow +\infty$. Do đó hàm loss function sẽ thường không hội tụ nếu xuất hiện những điểm $x$ mà phân phối của $Q(x) \rightarrow 0^+$.</p>
+
+<p><img src="https://imgur.com/IDrIpcZ.png" alt="" /></p>
+
+<p><strong>Hình 1:</strong> Giá trị của Kullback-Leibler tại những điểm có $Q(x) \rightarrow 0^+$ sẽ khiến cho $D_{KL}(P \Vert Q) \rightarrow +\infty$.</p>
+
+<p>Độ đo Jensen-Shannon sẽ khắc phục được những hiện tượng này vì giá trị của $\log(\frac{P(x)}{P(x)+Q(x)})$ luôn giao động trong khoảng:</p>
+
+<script type="math/tex; mode=display">\log(\frac{P(x)}{P(x)+1}) \leq \log(\frac{P(x)}{P(x)+Q(x)}) \leq 1</script>
+
+<p>Do đó</p>
+
+<script type="math/tex; mode=display">D_{KL}(P \Vert \frac{P+Q}{2}) = P(x)\log(\frac{P(x)}{P(x)+Q(x)}) \leq P(x)</script>
+
+<p>Điều đó đảm bảo đóng góp vào khoảng cách $D_{JS}(P \Vert Q)$ tại mọi điểm $x$ luôn không bị giới hạn trên và không làm giá trị khoảng cách trở nên quá lớn. Đây chính là ưu điểm chính của độ đo Jensen-Shannon so với Kullback-Leibler.</p>
+
+<h2 id="41-hội-tụ-của-gan-và-khoảng-cách-jensen-shannon">4.1. Hội tụ của GAN và khoảng cách Jensen-Shannon</h2>
+
+<p>Ta sẽ chứng minh rằng hội tụ của GAN sẽ chính là hội khoảng cách Jensen-Shannon. Ở <a href="https://phamdinhkhanh.github.io/2020/07/13/GAN.html">bài 43</a> ta đã biết hàm loss function của GAN là kết hợp giữa generator và discriminator có dạng như sau :</p>
+
+<script type="math/tex; mode=display">\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_r(x)} [\log (D(x))] +  \mathbb{E}_{z \sim p_z(z)} [\log(1-D(G(z)))]</script>
+
+<p>Ở đây $x \sim p_r(x)$ là phân phối của dữ liệu thật và $z \sim p_z(z)$ là phân phối của dữ liệu sinh.</p>
+
+<p>Khi mô hình GAN hội tụ thì $G(z) \rightarrow x$, tức là dữ liệu sinh ra giống với dữ liệu thật nhất. Như vậy tại điểm hội tụ của mô hình generator $G^*$ ta có thể thay thế  $G(z)$ bằng hội tụ $x$ của nó. Khi đó giá trị hội tụ của loss function sẽ là:</p>
+
+<script type="math/tex; mode=display">\max_{D} V(D, G^*) = \mathbb{E}_{x \sim p_r(x)} [\log (D(x))] +  \mathbb{E}_{x \sim p_g(x)} [\log(1-D(x))]</script>
+
+<p>$x \sim p_g(x)$ là phân phối của dữ liệu từ mô hình generator. Mặt khác ta có tính chất :</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{x \sim p(x)} f(x) = \int_x p(x)f(x)dx</script>
+
+<p>Do đó:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray}
+\max_{D} V(D, G^*) & = & \mathbb{E}_{x \sim p_r(x)} [\log (D(x))] +  \mathbb{E}_{x \sim p_g(x)} [\log(1-D(x))] \\
+& = & \int_x p_r(x)\log (D(x))dx + \int_x p_g(x)\log (1-D(x))dx \\
+& = & \int_x p_r(x)\log (D(x)) + p_g(x)\log (1-D(x)) dx
+\end{eqnarray} %]]></script>
+
+<p>Mục tiêu của chúng ta là tìm kiếm discriminator để tối đa hóa giá trị của hàm loss function nên $D(x)$ được xem như biến của bài toán cực trị. Đặt $D(x) = y$.</p>
+
+<p>Xét hàm <script type="math/tex">v(y) = p_r(x)\log (y) + p_g(x)\log (1-y)</script></p>
+
+<p>Hàm số trên có đạo hàm bậc nhất và bậc 2 :</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\left\{
+\begin{matrix}
+    \nabla_y{} v(y) & = & \frac{p_r(x)}{y}-\frac{p_g(x)}{1-y}\\
+    \nabla_y^2{f(x)} & = & -\frac{p_r(x)}{y^2} - \frac{p_g(x)}{(1-y)^2} < 0 & ~~~ 
+\end{matrix}
+\right. %]]></script>
+
+<p>Như vậy $v(y)$ là một hàm lõm. Do đó giá trị cực đại của nó chính là nghiệm của phương trình đạo hàm bậc nhất :</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray}\frac{p_r(x)}{y^*}-\frac{p_g(x)}{1-y^*} & = & 0 \\ 
+\Leftrightarrow y^* & = & \frac{p_r(x)}{p_r(x) + p_g(x)}
+\end{eqnarray} %]]></script>
+
+<p>Do đó :</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray}
+\int_x p_r(x)\log (D(x)) + p_g(x)\log (1-D(x)) dx & \leq & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx\\
+\end{eqnarray} %]]></script>
+
+<p>Suy ra giá trị hội tụ:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray}
+\max_{D} V(D, G^*) & = & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx \\
+& = & \int_x p_r(x) \log \bigg( \frac{2~p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{2~p_g(x)}{p_r(x) + p_g(x)} \bigg) dx \\
+& - & \log(2) \int_x p_r(x) - \log(2) \int_x p_g(x) dx \\
+& = & D_{KL}(p_r(x) \Vert \frac{p_g(x)+p_r(x)}{2}) + D_{KL}(p_g(x) \Vert \frac{p_g(x)+p_r(x)}{2}) - 2\log(2) \\
+& = & D_{JS}(p_r(x) \Vert p_g(x)) - 2\log(2)
+\end{eqnarray} %]]></script>
+
+<p>Như vậy tại điểm hội tụ, hàm loss function của GAN bằng giá trị khoảng cách Jensen-Shannon giữa phân phối của dữ liệu thật $p_r(x)$ và dữ liệu sinh $p_g(x)$ trừ đi $2\log(2)$.</p>
+
+<p>Mặt khác khi ảnh thật và sinh rất giống nhau thì $D_{JS}(p_r(x) \Vert p_g(x))  = 0$ và giá trị loss function của GAN hội tụ về $-2\log(2)$. Và đồng thời nghiệm hội tụ của hai phân phối $p_r, p_g$ của GAN trùng với Jensen-Shannon.</p>
+
+<h1 id="5-độ-đo-earth-mover-em-hoặc-wasserstein">5. Độ đo Earth-Mover (EM) hoặc Wasserstein</h1>
+
+<p>Giả sử $\mathbf{p}<em>r$ là phân phối thực tế của dữ liệu gốc được gọi tắt là _phân phối thực</em> và $\mathbf{p}<em>g$ là _phân phối sinh</em>, tức là phân phối của dữ liệu được sinh ra từ model GAN. Wasserstein hoặc EM là giá trị <em>cận dưới nhỏ nhất</em> (infimum) khoảng cách nhỏ nhất của phép dịch chuyển $\mathbf{p}_r$ sang $\mathbf{p}_g$ có công thức như sau:</p>
+
+<script type="math/tex; mode=display">W(\mathbf{p}_r, \mathbf{p}_g) = \inf_{\gamma \in \prod(\mathbf{p}_r, \mathbf{p}_g)} ~ \mathbf{E}_{(x, y)\sim \gamma}[ ~ \Vert x-y \Vert ~]</script>
+
+<p>Giải thích một chút về công thức trên:</p>
+
+<p>$\prod(\mathbf{p}<em>r, \mathbf{p}_g)$ là _phân phối đồng thời</em> (join distribution) của hai phân phối $\mathbf{p}<em>r$ và $\mathbf{p}_g$. Trong đó mỗi một phân phối $\mathbf{p}_r$ và $\mathbf{p}_g$ được coi như là _phân phối biên</em> (margin distribution). Bạn đọc có thể xem thêm về phân phối đồng thời và phân phối biên tại <a href="https://phamdinhkhanh.github.io/2019/05/10/Hypothesis_Statistic.html#22-ph%C3%A2n-ph%E1%BB%91i-x%C3%A1c-su%E1%BA%A5t-%C4%91%E1%BB%93ng-th%E1%BB%9Di">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a>. $\gamma(x, y)$ chính là giá trị phân phối đồng thời của $(x, y)$. Khoảng cách <em>wasserstein</em> là cận dưới lớn nhất của kỳ vọng khoảng cách giữa các điểm $(x, y)$ theo phân phối chung $\gamma$. Khoảng cách được đo lường theo độ đo $\Vert x-y \Vert$.</p>
+
+<p>Để dễ hình dung hơn về Wasserstein chúng ta tìm hiểu ví dụ bên dưới:</p>
+
+<h2 id="51-ví-dụ-về-wasserstein">5.1. Ví dụ về Wasserstein</h2>
+
+<p>Giả sử dữ liệu gốc của chúng ta gồm các giá trị ${1, 2, 3, 4, 5, 6}$ có phân phối nằm trên 3 cột $1, 2, 3$. Từ dữ liệu gốc chúng ta có các phương án dịch chuyển các giá trị này sang một phân phối mới nằm trên 4 cột $7, 8, 9, 10$ và thu được bảng giá trị phân phối xác suất đồng thời như bảng $\gamma_1$ hình bên dưới:</p>
+
+<p><img src="https://miro.medium.com/max/875/1*Tq09Bk_P4hcOe3FirBjAFA.jpeg" alt="" /></p>
+
+<p><strong>Hình 2</strong>: Ví dụ về độ đo Wasserstein biến đổi từ phân phối thật $\mathbf{p}_r$ bên trái sang phân phối sinh từ mô hình $\mathbf{p}_g$ bên phải. Source <a href="https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490">WGAN - jonathan hui</a>.</p>
+
+<p>Xét phép biến đổi $\gamma_1$ ta thấy ô có giá trị 1 ở đã được dịch chuyển từ cột 1 sang cột 7. Do đó khoảng cách $\Vert x - y \Vert = 7-1 =6$. Tương tự ô giá trị 4 được dịch chuyển từ cột 2 sang 8 nên có giá khoảng cách là 6. Với khoảng dịch chuyển từ cột 1 sang cột 10 tương ứng với 2 ô giá trị 3 và 2 nên trên bảng phân phối xác suất đồng thời giá trị tương ứng với dòng 1, cột 10 được điền là 2. Khoảng cách Wasserstein giữa hai phân phối sẽ bằng tổng các khoảng cách cần dịch chuyển để biến đổi phân phối thật và phân phối sinh nhân với giá trị <em>phân phối xác suất đồng thời</em> tương ứng. Kết quả ta thu được: $(6+6+6+6+2 \times 9) = 42$.</p>
+
+<p>Khi hai phân phối thật và phân phối sinh trùng nhau thì khoảng cách này bằng 0. Khoảng cách càng nhỏ thì 2 phân phối càng gần nhau và dữ liệu được sinh ra càng giống với dữ liệu thật.</p>
+
+<h1 id="6-hạn-chế-của-gan">6. Hạn chế của GAN</h1>
+
+<p>Trong một bài báo vào năm 2017, Arjovsky đã chỉ ra nhược điểm của GAN như sau:</p>
+
+<ul>
+  <li>Quá trình huấn luyện discriminator sẽ tạo ra những thông tin tốt để cải thiện generator nhưng generator lại không thực hiện tốt vai trò của mình khiến cho giá trị gradient descent của nó thường bị triệt tiêu và generator không học được gì.</li>
+</ul>
+
+<script type="math/tex; mode=display">-\nabla_{\theta_g}\log(1-D(G(z^{(i)})) \rightarrow 0</script>
+
+<ul>
+  <li>Một hàm loss function mới được Arjovsky đề xuất để thay thế hàm loss function cũ của generator nhằm giải quyết tình trạng triệt tiêu đạo hàm là :</li>
+</ul>
+
+<script type="math/tex; mode=display">\nabla_{\theta_g}\log(D(G(z^{(i)}))</script>
+
+<p>$~~~~~$ Tuy nhiên đạo hàm này sẽ có một số giá trị rất lớn và dẫn tới mô hình hoạt động không ổn định.</p>
+
+<p>Arjovsky đề xuất một phương pháp mới sẽ add thêm noise vào hình ảnh thật trước khi đưa vào huấn luyện discriminator. Do ảnh hưởng của noise nên discriminator sẽ hoạt động không tốt quá và cũng không kém quá. Với các ảnh noise ít mô hình có thể dự báo tốt và noise nhiều thì mô hình dự báo kém. Do đó huẩn luyện mô hình generator sẽ trở nên ổn định hơn. Tuy nhiên generator sẽ học cách sinh ra ảnh giả giống như ảnh thật có nhiễu và không thực sự thật.</p>
+
+<p><img src="https://miro.medium.com/max/700/1*6P6T5itldfYNk-gUcS1Zmw.jpeg" alt="" /></p>
+
+<p>Những điểm này có thể được khắc phục trong mô hình Wasserstein GAN.</p>
+
+<h1 id="7-wasserstein-gan">7. Wasserstein GAN</h1>
+
+<h2 id="71-khái-niệm-liên-tục-lipchitz-lipschitz-continuity">7.1. Khái niệm liên tục Lipchitz (Lipschitz continuity)</h2>
+
+<p>Một khái niệm khá quan trọng ám chỉ các hàm số liên tục, khả vi và có độ lớn (về giá trị tuyệt đối) đạo hàm bị giới hạn đó là liên tục lipschitz. Giả sử $f: \mathbb{R} \rightarrow \mathbb{R}$. Khi đó :</p>
+
+<script type="math/tex; mode=display">|\frac{f(x_1)-f(x_2)}{x_1-x_2}| \leq K, \forall x_1, x_2 \in \mathbb{R}</script>
+
+<p>Với $K$ là một giá trị hằng số  thì hàm $f$ được gọi là <em>liên tục K-lipchitz</em>. Ví dụ về một hàm <em>liên tục lipchitz</em> phổ biến đó chính là hàm $\sin(x)$ vì giá trị <em>độ lớn</em> đạo hàm của nó bị chặn trên bởi 1. Hàm $x^2$ không phải là hàm <em>liên tục lipchitz</em> vì đạo hàm của nó là $2x$ không bị chặn trên. Tương tự như vậy $\log(x)$ cũng không <em>liên tục lipchitz</em> vì đạo hàm của nó là $\frac{1}{x}$ không bị chặn tại $x=0$.</p>
+
+<p>Do tính chất đạo hàm bị chặn nên khi sử dụng loss function là hàm <em>liên tục K-lipchitz</em> có thể khắc phục được hiện tượng thiếu ổn định trong huấn luyện do đạo hàm bùng nổ (explosion). Cụ thể hơn chúng ta cùng tìm hiểu qua Wasserstein GAN.</p>
+
+<h2 id="72-wasserstein-gan">7.2. Wasserstein GAN</h2>
+<p>Model Wasserstein GAN sẽ áp dụng khoảng cách wasserstein để  tìm ra phân phối gần nhất giữa 2 phân phối thật và giả. Việc giải trực tiếp bài toán khoảng cách Wasserstein là khá khó. Do đó áp dụng đối ngẫu Kantorovic-rubinstein chúng ta chuyển về bài toán đối ngẫu:</p>
+
+<script type="math/tex; mode=display">W(p_r, p_\theta) = \sup_{\Vert f \Vert_L \leq 1} \mathbf{E}_{x \sim p_r}[f(x)]-\mathbf{E}_{x \sim p_{\theta}}[f(x)]</script>
+
+<p>Trong đó $\Vert f \Vert_L$ là một hàm <em>liên tục 1-lipchitz</em> có độ lớn của đạo hàm bị chặn trên bởi 1. 
+Khoảng cách wasserstein chính là <em>supremum</em> (cận trên nhỏ nhất) của chênh lệch kỳ vọng giữa phân phối của dữ liệu thật và dữ liệu sinh được đo lường thông qua hàm $f(x)$ là một hàm <em>liên tục 1-lipchitz</em> thỏa mãn :</p>
+
+<script type="math/tex; mode=display">| f(x_1) - f(x_2) | \leq |x_1 - x_2|, \forall x_1, x_2 \in \mathbb{R}</script>
+
+<p>Để hiểu hơn về phát biểu của bài toán đối ngẫu của khoảng cách Wassertein các bạn xem thêm qua <a href="https://vincentherrmann.github.io/blog/wasserstein/">wasserstein duality</a>. Tuy nhiên tôi không khuyến khích các bạn có nền tảng toán học yếu tìm hiểu sâu về mảng này mà chúng ta nên công nhận những gì đã được chứng mình.</p>
+
+<p>Như vậy để áp dụng Wasserstein GAN, chúng ta chỉ cần tìm hàm <em>liên tục 1-lipschitz</em>. Kiến trúc mạng của discriminator sẽ được giữ nguyên và chúng ta chỉ bỏ qua hàm sigmoid ở cuối. Như vậy hàm dự báo output chính là một linear projection và đó là một hàm <em>liên tục 1-lipchitz</em>. Kết quả dự báo sau cùng sẽ đưa ra một điểm số là một scalar thay vì xác suất. Điểm này có thể được hiểu là điểm đánh giá chất lượng hình ảnh được sinh ra theo mức độ giống với ảnh thật. Tính chất của discriminator đã thay đổi từ phân loại ảnh reak/fake sang chấm điểm chất lượng ảnh nên để phù hợp với mục tiêu thì chúng ta thay đổi tên của discriminator thành critic.</p>
+
+<p>Để hiểu rõ hơn sự khác biệt giữa kiến trúc GAN và WGAN chúng ta cùng theo dõi hình bên dưới:</p>
+
+<p><strong>Kiến trúc GAN</strong>
+<img src="https://miro.medium.com/max/700/1*M_YipQF_oC6owsU1VVrfhg.jpeg" alt="" /></p>
+
+<p><strong>Kiến trúc WGAN</strong>
+<img src="https://miro.medium.com/max/700/1*Yfa9bZL0d4NHaU1mHbGzjw.jpeg" alt="" /></p>
+
+<p>Tổng kết lại ta có sự khác biệt giữa GAN và WGAN đó là :</p>
+
+<ol>
+  <li>Bỏ hàm sigmoid ở critic model và thay vào đó là linear projection.</li>
+  <li>Ở model GAN sẽ thay đổi từ mô hình phân loại sang mô hình đánh giá. Do đó xác suất được chuyển sang điểm số có tác dụng đánh giá chất lượng ảnh tạo ra thay cho xác suất. Điểm này càng lớn thì ảnh càng giống với thật và điểm này càng nhỏ thì ảnh sẽ khác với thật. Nhãn của mô hình cũng được thay đổi từ $0, 1$ sang $-1, 1$ để phù hợp hơn với mục tiêu là chấm điểm.</li>
+  <li>critic sẽ được huấn luyện nhiều lượt hơn so với generator và quá trình huấn luyện sẽ được thực hiện xen kẽ giữa critic và generator.</li>
+  <li>Qúa trình cập nhật gradient descent sẽ được thực hiện theo phương pháp RMSProp.</li>
+  <li>Ràng buộc độ lớn của trọng số mô hình về một khoảng giới hạn sau mỗi mini-batch.</li>
+  <li>Sử dụng RMSProp để cập nhật gradient descent với momentum = 0.</li>
+</ol>
+
+<p>Qúa trình huấn luyện GAN sẽ thực hiện xen kẽ những bước như sau:</p>
+
+<p><img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Algorithm-for-the-Wasserstein-Generative-Adversarial-Networks-1.png" alt="" /></p>
+
+<h1 id="8-thực-hành-wasserstein-gan">8. Thực hành Wasserstein GAN</h1>
+
+<p>Chúng ta sẽ cùng thực hành Wasserstein GAN trên bộ dữ liệu MNIST. Code mẫu của bài này được tham khảo từ <a href="https://keras.io/examples/generative/wgan_gp/">keras - wgan</a> và được mình điều chỉnh lại một chút. Mình sẽ giải thích chi tiết các bước huấn luyện và xử lý dữ liệu của model Wasserstein GAN.</p>
+
+<h2 id="81-load-dữ-liệu">8.1. Load dữ liệu</h2>
+
+<p>Dữ liệu trong bài được lấy từ bộ dữ liệu MNIST bao gồm 60.000 ảnh huấn luyện và 10.000 ảnh test. Để quá trình hội tụ nhanh hơn thì giá trị cường độ pixels của ảnh được resize về khoảng [-1, 1] như sau:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre># Load dữ liệu mnist
+from tensorflow.keras.datasets.mnist import load_data
+import numpy as np
+
+(trainX, trainy), (testX, testy) = load_data()
+# Chuẩn hóa dữ liệu về khoảng [-1, 1]
+trainX = (trainX - 127.5)/127.5
+testX = (testX - 127.5)/127.5
+trainX = np.expand_dims(trainX, axis = -1)
+testX = np.expand_dims(testX, axis = -1)
+print('Train', trainX.shape, trainy.shape)
+print('Test', testX.shape, testy.shape)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
+11493376/11490434 [==============================] - 0s 0us/step
+Train (60000, 28, 28, 1) (60000,)
+Test (10000, 28, 28, 1) (10000,)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+
+# plot images from the training dataset
+def _plot(X):
+	for i in range(25):
+		# define subplot
+		plt.subplot(5, 5, 1 + i)
+		# turn off axis
+		plt.axis('off')
+		# plot raw pixel data
+		plt.imshow(X[i].reshape(28, 28), cmap='gray_r')
+	plt.show()
+ 
+_plot(trainX[:25, :])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="GAN_Wassteiner_files/GAN_Wassteiner_22_0.png" alt="png" /></p>
+
+<h2 id="82-discriminator">8.2. Discriminator</h2>
+
+<p>Chúng ta sẽ thiết kế Discriminator là một mạng CNN với layer Conv2D kết hợp xen kẽ với layer BatchNormalization. Stride và padding được kết hợp sao cho kích thước output shape của các layers thay đổi như sau: <code class="highlighter-rouge">(32, 32) -&gt; Conv_s2 -&gt; (16, 16) -&gt; Conv_s2 -&gt; (8, 8) -&gt; Conv_s2 -&gt;(4, 4) -&gt; Conv_s2 -&gt;(2, 2)</code>. Để hạn chế overfitting thì layer Dropout được áp dụng cuối mỗi block CNN. Một chú ý quan trọng đó là chúng ta bỏ <code class="highlighter-rouge">sigmoid activation</code> ở cuối cùng mà thay vào đó sử dụng <code class="highlighter-rouge">linear activation</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.layers import Conv2D, BatchNormalization, Dropout, LeakyReLU, \
+Input, ZeroPadding2D, Flatten, Dense, \
+UpSampling2D, Reshape, Cropping2D, Activation
+
+def conv_block(
+    x,
+    filters,
+    activation,
+    kernel_size=(3, 3),
+    strides=(1, 1),
+    padding="same",
+    use_bias=True,
+    use_bn=False,
+    use_dropout=False,
+    drop_value=0.5
+):
+    x = Conv2D(
+        filters, kernel_size, strides=strides, padding=padding, use_bias=use_bias
+    )(x)
+    if use_bn:
+        x = BatchNormalization()(x)
+    x = activation(x)
+    if use_dropout:
+        x = Dropout(drop_value)(x)
+    return x
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.models import Model
+
+def get_discriminator_model():
+    img_input = Input(shape=IMG_SHAPE)
+    # Zero pad input để chuyển về kích thước (32, 32, 1).
+    x = ZeroPadding2D((2, 2))(img_input) # --&gt; (32, 32)
+    x = conv_block(
+        x,
+        64,
+        kernel_size=(5, 5),
+        strides=(2, 2),
+        use_bn=False,
+        use_bias=True,
+        activation=LeakyReLU(0.2),
+        use_dropout=False,
+        drop_value=0.3,
+    ) # --&gt; (16, 16)
+    x = conv_block(
+        x,
+        128,
+        kernel_size=(5, 5),
+        strides=(2, 2),
+        use_bn=False,
+        activation=LeakyReLU(0.2),
+        use_bias=True,
+        use_dropout=True,
+        drop_value=0.3,
+    ) # --&gt; (8, 8)
+    x = conv_block(
+        x,
+        256,
+        kernel_size=(5, 5),
+        strides=(2, 2),
+        use_bn=False,
+        activation=LeakyReLU(0.2),
+        use_bias=True,
+        use_dropout=True,
+        drop_value=0.3,
+    )  # --&gt; (4, 4)
+    x = conv_block(
+        x,
+        512,
+        kernel_size=(5, 5),
+        strides=(2, 2),
+        use_bn=False,
+        activation=LeakyReLU(0.2),
+        use_bias=True,
+        use_dropout=False,
+        drop_value=0.3,
+    )  # --&gt; (2, 2)
+
+    x = Flatten()(x)
+    x = Dropout(0.2)(x)
+    # Bỏ sigmoid activation function và thay bằng linear activation
+    x = Dense(1, activation='linear')(x)
+
+    d_model = Model(img_input, x, name="discriminator")
+    return d_model
+
+
+IMG_SHAPE = (28, 28, 1)
+d_model = get_discriminator_model()
+d_model.summary()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>Model: "discriminator"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 28, 28, 1)]       0         
+_________________________________________________________________
+zero_padding2d (ZeroPadding2 (None, 32, 32, 1)         0         
+_________________________________________________________________
+conv2d (Conv2D)              (None, 16, 16, 64)        1664      
+_________________________________________________________________
+leaky_re_lu (LeakyReLU)      (None, 16, 16, 64)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 8, 8, 128)         204928    
+_________________________________________________________________
+leaky_re_lu_1 (LeakyReLU)    (None, 8, 8, 128)         0         
+_________________________________________________________________
+dropout (Dropout)            (None, 8, 8, 128)         0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 4, 4, 256)         819456    
+_________________________________________________________________
+leaky_re_lu_2 (LeakyReLU)    (None, 4, 4, 256)         0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 4, 4, 256)         0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 2, 2, 512)         3277312   
+_________________________________________________________________
+leaky_re_lu_3 (LeakyReLU)    (None, 2, 2, 512)         0         
+_________________________________________________________________
+flatten (Flatten)            (None, 2048)              0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 2048)              0         
+_________________________________________________________________
+dense (Dense)                (None, 1)                 2049      
+=================================================================
+Total params: 4,305,409
+Trainable params: 4,305,409
+Non-trainable params: 0
+_________________________________________________________________
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="83-generator">8.3. Generator</h2>
+
+<p>Đầu vào của Generator là một véc tơ noise ngẫu nhiên có kích thước là 128. Sau đó đi qua các fully connected layer (hay còn gọi là dense layer) để tăng chiều dữ liệu và reshape về kích thước tensor3D với shape là (4, 4). Sử dụng layer Upsampling2D để tăng kích thước ảnh lên gấp đôi sau mỗi layer. Ngoài sử dụng Upsampling2D, chúng ta cũng có thể sử dụng tích chập chuyển vị <a href="https://phamdinhkhanh.github.io/2020/06/10/ImageSegmention.html#7-t%C3%ADch-ch%E1%BA%ADp-chuy%E1%BB%83n-v%E1%BB%8B-transposed-convolution">Conv2DTranspose</a> cũng có tác dụng tăng kích thước layers. Chuỗi kích thước layers của chúng ta sẽ theo thứ tự: <code class="highlighter-rouge">(4, 4) -&gt; Upsampling_s2 -&gt; (8, 8) -&gt; Upsampling_s2 -&gt; (16, 16) -&gt; Upsampling_s2 -&gt;(32, 32)</code>. Output shape cuối cùng sẽ bằng với kích thước của ảnh gốc.</p>
+
+<p>Ngoài ra hàm activation là hàm <code class="highlighter-rouge">tanh</code> được áp dụng phía sau layer cuối cùng để chuẩn hóa giá trị output về khoảng $[-1, 1]$.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.layers import Conv2D, BatchNormalization, Dropout, LeakyReLU, Input, ZeroPadding2D, Flatten, Dense, UpSampling2D, Reshape, Cropping2D, Activation
+def upsample_block(
+    x,
+    filters,
+    activation,
+    kernel_size=(3, 3),
+    strides=(1, 1),
+    up_size=(2, 2),
+    padding="same",
+    use_bn=False,
+    use_bias=True,
+    use_dropout=False,
+    drop_value=0.3,
+):
+    x = UpSampling2D(up_size)(x)
+    x = Conv2D(
+        filters, kernel_size, strides=strides, padding=padding, use_bias=use_bias
+    )(x)
+
+    if use_bn:
+        x = BatchNormalization()(x)
+
+    if activation:
+        x = activation(x)
+    if use_dropout:
+        x = Dropout(drop_value)(x)
+    return x
+
+def get_generator_model():
+    noise = Input(shape=(noise_dim,))
+    x = Dense(4 * 4 * 256, use_bias=False)(noise)
+    x = BatchNormalization()(x)
+    x = LeakyReLU(0.2)(x)
+
+    x = Reshape((4, 4, 256))(x)
+    x = upsample_block(
+        x,
+        128,
+        LeakyReLU(0.2),
+        strides=(1, 1),
+        use_bias=False,
+        use_bn=True,
+        padding="same",
+        use_dropout=False,
+    )
+    x = upsample_block(
+        x,
+        64,
+        LeakyReLU(0.2),
+        strides=(1, 1),
+        use_bias=False,
+        use_bn=True,
+        padding="same",
+        use_dropout=False,
+    )
+    x = upsample_block(
+        x, 1, Activation("tanh"), strides=(1, 1), use_bias=False, use_bn=True
+    )
+    # Crop ảnh về kích thước (28, 28, 1)
+    x = Cropping2D((2, 2))(x)
+
+    g_model = Model(noise, x, name="generator")
+    return g_model
+
+noise_dim = 128
+g_model = get_generator_model()
+g_model.summary()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="rouge-code"><pre>Model: "generator"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_2 (InputLayer)         [(None, 128)]             0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 4096)              524288    
+_________________________________________________________________
+batch_normalization (BatchNo (None, 4096)              16384     
+_________________________________________________________________
+leaky_re_lu_4 (LeakyReLU)    (None, 4096)              0         
+_________________________________________________________________
+reshape (Reshape)            (None, 4, 4, 256)         0         
+_________________________________________________________________
+up_sampling2d (UpSampling2D) (None, 8, 8, 256)         0         
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 8, 8, 128)         294912    
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 8, 8, 128)         512       
+_________________________________________________________________
+leaky_re_lu_5 (LeakyReLU)    (None, 8, 8, 128)         0         
+_________________________________________________________________
+up_sampling2d_1 (UpSampling2 (None, 16, 16, 128)       0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 16, 16, 64)        73728     
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 16, 16, 64)        256       
+_________________________________________________________________
+leaky_re_lu_6 (LeakyReLU)    (None, 16, 16, 64)        0         
+_________________________________________________________________
+up_sampling2d_2 (UpSampling2 (None, 32, 32, 64)        0         
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 32, 32, 1)         576       
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 32, 32, 1)         4         
+_________________________________________________________________
+activation (Activation)      (None, 32, 32, 1)         0         
+_________________________________________________________________
+cropping2d (Cropping2D)      (None, 28, 28, 1)         0         
+=================================================================
+Total params: 910,660
+Trainable params: 902,082
+Non-trainable params: 8,578
+_________________________________________________________________
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="84-wgan-gp-model">8.4. WGAN-GP model</h2>
+
+<p>Ở bước này chúng ta sẽ khởi tạo mô hình WGAN-GP. Để huấn luyện mô hình WGAN-GP thì chúng ta sẽ cần khai báo generator, discriminator và các hàm loss function của generator và discriminator. Hàm quan trọng nhất của WGAN-GP là hàm <code class="highlighter-rouge">train_step()</code> sẽ có tác dụng huấn luyện trên từng batch. Ở hàm này chúng ta sẽ thực hiện các bước:</p>
+
+<ol>
+  <li>Lấy mẫu ngẫu nhiên ảnh real và ảnh fake. Trong đó ảnh real được lựa chọn từ mô hình và ảnh fake được tạo ra từ generator từ một véc tơ ngẫu nhiên.</li>
+  <li>Tính toán phạt cho gradient dựa trên chênh lệch giữa ảnh real và ảnh fake. Gradient được lấy trong bối cảnh của hàm <code class="highlighter-rouge">tf.GradientTape()</code>.</li>
+  <li>Nhân phạt của gradient với một giá trị hệ số alpha.</li>
+  <li>Tính loss function cho discirminator</li>
+  <li>Thêm phạt gradient vào loss function của discriminator</li>
+  <li>Cập nhật gradient theo loss function của discriminator và generator thông qua hàm <code class="highlighter-rouge">tape.apply_gradients()</code></li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+</pre></td><td class="rouge-code"><pre>import tensorflow as tf
+
+class WGAN(Model):
+    def __init__(
+        self,
+        discriminator,
+        generator,
+        latent_dim,
+        discriminator_extra_steps=3,
+        gp_weight=10.0,
+    ):
+        super(WGAN, self).__init__()
+        self.discriminator = discriminator
+        self.generator = generator
+        self.latent_dim = latent_dim
+        self.d_steps = discriminator_extra_steps
+        self.gp_weight = gp_weight
+
+    def compile(self, d_optimizer, g_optimizer, d_loss_fn, g_loss_fn):
+        super(WGAN, self).compile()
+        self.d_optimizer = d_optimizer
+        self.g_optimizer = g_optimizer
+        self.d_loss_fn = d_loss_fn
+        self.g_loss_fn = g_loss_fn
+
+    def gradient_penalty(self, batch_size, real_images, fake_images):
+        """
+        Tính toán phạt cho gradient
+        hàm loss này được tính toán trên ảnh interpolated và được thêm vào discriminator loss
+        """
+        # tạo interplated image
+        alpha = tf.random.normal([batch_size, 1, 1, 1], 0.0, 1.0)
+        diff = fake_images - real_images
+        interpolated = real_images + alpha * diff
+
+        with tf.GradientTape() as gp_tape:
+            gp_tape.watch(interpolated)
+            # 1. dự đoán discriminator output cho interpolated image.
+            pred = self.discriminator(interpolated, training=True)
+
+        # 2. Tính gradients cho interpolated image.
+        grads = gp_tape.gradient(pred, [interpolated])[0]
+        # 3. Tính norm của gradients
+        norm = tf.sqrt(tf.reduce_sum(tf.square(grads), axis=[1, 2, 3]))
+        gp = tf.reduce_mean((norm - 1.0) ** 2)
+        return gp
+
+    def train_step(self, real_images):
+        if isinstance(real_images, tuple):
+            real_images = real_images[0]
+        batch_size = tf.shape(real_images)[0]
+
+        # Với mỗi một batch chúng ta sẽ thực hiện những bước sau
+        # following steps as laid out in the original paper.
+        # 1. Lấy mẫu ngẫu nhiên ảnh real và ảnh fake. Trong đó ảnh real được lựa chọn từ mô hình và ảnh fake được tạo ra từ generator từ một véc tơ ngẫu nhiên.
+        # 2. Tính toán phạt cho gradient dựa trên chênh lệch giữa ảnh real và ảnh fake. Gradient được lấy trong bối cảnh của hàm `tf.GradientTape()`.
+        # 3. Nhân phạt của gradient với một giá trị hệ số alpha.
+        # 4. Tính loss function cho discirminator
+        # 5. Thêm phạt gradient vào loss function của discriminator
+        # 6. Cập nhật gradient theo loss function của discriminator và generator thông qua hàm `tape.apply_gradients()`
+        # Chúng ta sẽ huấn luyện discrimnator với d_steps trước. và sau đó chúng ta mới huấn luyện generator. 
+        # Như vậy cùng một batch thì discriminator được huấn luyện gấp d_steps lần so với generator.
+        
+        for i in range(self.d_steps):
+            # Khởi tạo latent vector
+            random_latent_vectors = tf.random.normal(
+                shape=(batch_size, self.latent_dim)
+            )
+
+            # Chúng ta phải thực thi trong tf.GradientTap() để lấy được giá trị gradient.
+            with tf.GradientTape() as tape:
+                # Tạo ảnh fake từ latent vector
+                fake_images = self.generator(random_latent_vectors, training=True)
+                # Dự báo điểm cho ảnh fake
+                fake_logits = self.discriminator(fake_images, training=True)
+                # Dự báo điểm cho ảnh real
+                real_logits = self.discriminator(real_images, training=True)
+
+                # Tính discriminator loss từ ảnh real và ảnh fake
+                d_cost = self.d_loss_fn(real_img=real_logits, fake_img=fake_logits)
+                # Tính phạt gradient
+                gp = self.gradient_penalty(batch_size, real_images, fake_images)
+                # Thêm phạt gradient cho discriminator loss ban đầu
+                d_loss = d_cost + gp * self.gp_weight
+
+            # Lấy gradient của discriminator loss
+            d_gradient = tape.gradient(d_loss, self.discriminator.trainable_variables)
+            
+            # Cập nhật weights của discriminator sử dụng discriminator optimizer
+            self.d_optimizer.apply_gradients(
+                zip(d_gradient, self.discriminator.trainable_variables)
+            )
+
+        # Huấn luyện generator
+        # Khởi tạo véc tơ latent
+        random_latent_vectors = tf.random.normal(shape=(batch_size, self.latent_dim))
+        with tf.GradientTape() as tape:
+            # Tạo ảnh fake từ generator
+            generated_images = self.generator(random_latent_vectors, training=True)
+            # Get the discriminator logits for fake images
+            # Dự báo điểm cho ảnh fake từ discriminator
+            gen_img_logits = self.discriminator(generated_images, training=True)
+            # Tính generator loss
+            g_loss = self.g_loss_fn(gen_img_logits)
+
+        # Lấy gradient cho generator loss
+        gen_gradient = tape.gradient(g_loss, self.generator.trainable_variables)
+        # Cập nhật hệ số của generator sử dụng generator optimizer
+        self.g_optimizer.apply_gradients(
+            zip(gen_gradient, self.generator.trainable_variables)
+        )
+        return {"d_loss": d_loss, "g_loss": g_loss}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="85-gan-monitoring">8.5. GAN monitoring</h2>
+
+<p>GANMonitoring là một Callback được gọi mỗi khi kết thúc một epoch để  kiểm tra kết quả dự báo của một số ảnh sau mỗi epoch huấn luyện của mô hình.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.callbacks import Callback
+class GANMonitor(Callback):
+    def __init__(self, num_img=6, latent_dim=128):
+        self.num_img = num_img
+        self.latent_dim = latent_dim
+
+    def on_epoch_end(self, epoch, logs=None):
+        random_latent_vectors = tf.random.normal(shape=(self.num_img, self.latent_dim))
+        generated_images = self.model.generator(random_latent_vectors)
+        generated_images = (generated_images * 127.5) + 127.5
+
+        for i in range(self.num_img):
+            img = generated_images[i].numpy()
+            img = tf.keras.preprocessing.image.array_to_img(img)
+            img.save("generated_img_{i}_{epoch}.png".format(i=i, epoch=epoch))
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="86-huấn-luyện">8.6. Huấn luyện</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre>from tensorflow.keras.optimizers import Adam
+# Khởi tạo optimizer
+# learning_rate=0.0002, beta_1=0.5 được khuyến nghị
+generator_optimizer = Adam(
+    learning_rate=0.0002, beta_1=0.5, beta_2=0.9
+)
+discriminator_optimizer = Adam(
+    learning_rate=0.0002, beta_1=0.5, beta_2=0.9
+)
+
+# Define the loss functions to be used for discrimiator
+# This should be (fake_loss - real_loss)
+# We will add the gradient penalty later to this loss function
+
+# Xác định loss functions được sử dụng cho discriminator. = (fake_loss - real_loss).
+# Ở hàm train_step của WGAN chúng ta phải thêm phạt gradient penalty cho hàm này.
+def discriminator_loss(real_img, fake_img):
+    real_loss = tf.reduce_mean(real_img)
+    fake_loss = tf.reduce_mean(fake_img)
+    return fake_loss - real_loss
+
+
+# Xác định loss function cho generator.
+def generator_loss(fake_img):
+    return -tf.reduce_mean(fake_img)
+
+
+# Khởi thạo tham số và mô hình
+
+epochs = 20
+
+# Callbacks
+cbk = GANMonitor(num_img=3, latent_dim=noise_dim)
+
+# wgan model
+wgan = WGAN(
+    discriminator=d_model,
+    generator=g_model,
+    latent_dim=noise_dim,
+    discriminator_extra_steps=3,
+)
+
+# Compile model
+wgan.compile(
+    d_optimizer=discriminator_optimizer,
+    g_optimizer=generator_optimizer,
+    g_loss_fn=generator_loss,
+    d_loss_fn=discriminator_loss,
+)
+
+BATCH_SIZE = 512
+# Huấn luyện
+wgan.fit(trainX, batch_size=BATCH_SIZE, epochs=epochs, callbacks=[cbk])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>Epoch 1/20
+118/118 [==============================] - 452s 4s/step - d_loss: -16.4176 - g_loss: -18.2579
+Epoch 2/20
+118/118 [==============================] - 451s 4s/step - d_loss: -14.8740 - g_loss: -10.5063
+Epoch 3/20
+118/118 [==============================] - 451s 4s/step - d_loss: -13.6230 - g_loss: -7.1806
+Epoch 4/20
+118/118 [==============================] - 451s 4s/step - d_loss: -12.4002 - g_loss: -6.0320
+Epoch 5/20
+118/118 [==============================] - 451s 4s/step - d_loss: -11.3737 - g_loss: -4.8758
+Epoch 6/20
+118/118 [==============================] - 450s 4s/step - d_loss: -10.3618 - g_loss: -2.2818
+Epoch 7/20
+118/118 [==============================] - 451s 4s/step - d_loss: -9.5416 - g_loss: 1.5632
+Epoch 8/20
+118/118 [==============================] - 451s 4s/step - d_loss: -8.7864 - g_loss: 3.9821
+Epoch 9/20
+118/118 [==============================] - 450s 4s/step - d_loss: -8.1304 - g_loss: 5.6272
+Epoch 10/20
+118/118 [==============================] - 450s 4s/step - d_loss: -7.5198 - g_loss: 5.6931
+Epoch 11/20
+118/118 [==============================] - 451s 4s/step - d_loss: -6.8973 - g_loss: 7.6021
+Epoch 12/20
+118/118 [==============================] - 451s 4s/step - d_loss: -6.4291 - g_loss: 7.4462
+Epoch 13/20
+118/118 [==============================] - 451s 4s/step - d_loss: -5.9529 - g_loss: 8.5198
+Epoch 14/20
+118/118 [==============================] - 453s 4s/step - d_loss: -5.4752 - g_loss: 10.0275
+Epoch 15/20
+118/118 [==============================] - 455s 4s/step - d_loss: -5.1657 - g_loss: 9.3482
+Epoch 16/20
+118/118 [==============================] - 454s 4s/step - d_loss: -4.7628 - g_loss: 7.9165
+Epoch 17/20
+118/118 [==============================] - 451s 4s/step - d_loss: -4.4965 - g_loss: 7.5131
+Epoch 18/20
+118/118 [==============================] - 454s 4s/step - d_loss: -4.1650 - g_loss: 7.2050
+Epoch 19/20
+118/118 [==============================] - 455s 4s/step - d_loss: -3.8866 - g_loss: 7.2451
+Epoch 20/20
+118/118 [==============================] - 455s 4s/step - d_loss: -3.5191 - g_loss: 6.5974
+
+
+
+
+
+&lt;tensorflow.python.keras.callbacks.History at 0x7fe1d0241048&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>from google.colab import drive
+import os
+
+drive.mount('/content/gdrive/')
+os.chdir('gdrive/My Drive/Colab Notebooks/GAN')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>!mkdir wgan
+g_model.save('wgan/generator.h5')
+d_model.save('wgan/discriminator.h5')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>import matplotlib.pyplot as plt
+
+images = ["wgan/generated_img_0_15.png", "wgan/generated_img_1_15.png", "wgan/generated_img_2_15.png"]
+fg, ax = plt.subplots(1, 3, figsize=(15, 5))
+fg.suptitle('Images change after each epoch', fontsize=15)
+
+for i in np.arange(3):
+  X = plt.imread(images[i])
+  ax[i].imshow(X)
+  ax[i].set_xlabel(images[i], fontsize=12)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="GAN_Wassteiner_files/GAN_Wassteiner_36_0.png" alt="png" /></p>
+
+<h1 id="9-tài-liệu">9. Tài liệu</h1>
+
+<ol>
+  <li><a href="https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490">GAN wasserstein and GAN wasserstein GP - jonathan_hui</a></li>
+  <li><a href="https://medium.com/@jonathan_hui/gan-spectral-normalization-893b6a4e8f53">GAN spectral normalization - jonathan_hui</a></li>
+  <li><a href="https://vincentherrmann.github.io/blog/wasserstein/">wasserstein GAN - vincentherrmann</a></li>
+  <li><a href="https://machinelearningmastery.com/how-to-implement-wasserstein-loss-for-generative-adversarial-networks/">How to implement wasserstein loss for GAN - machinelearningmastery</a></li>
+  <li><a href="https://machinelearningmastery.com/how-to-code-a-wasserstein-generative-adversarial-network-wgan-from-scratch/">How to code a wasserstein GAN from scratch - machinelearningmastery</a></li>
+</ol>
+
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
