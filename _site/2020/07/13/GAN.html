@@ -98,8 +98,6 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
-					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wassteiner.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
-					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wasserstein.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/07/13/GAN.html">Bài 43 - Model GAN</a></li>
@@ -453,7 +451,7 @@ Trên đây mới chỉ liệt kê những ứng dụng của GAN có liên quan
 
 <p>Có lẽ bạn đọc hơi choáng ngợp khi đọc hàm loss function này, đừng bỏ cuộc vì bên dưới mình sẽ giải thích cho bạn hiểu cơ chế gồm 2 phases của hàm loss function này:</p>
 
-<p><strong>Phase huấn luyện Descriminator:</strong> Mục tiêu của phase này là huấn luyện một mô hình Descriminator sao cho <em>khả năng phân loại là tốt nhất</em>. Ở phase này chúng ta hãy tạm thời coi $G$ <em>không đổi</em> và chỉ quan tâm đến vế $\max_{D} V(D, G)$. Đây là chính là nghịch đảo của hàm cross entropy đối với trường hợp phân loại nhị phân. Thật vậy, chắc hẳn bạn còn nhớ mục tiêu của logistic regression đối với bài toán phân loại nhị phân là <em>tối thiểu hóa</em> một hàm cross entropy như sau:</p>
+<p><strong>Phase huấn luyện Descriminator:</strong> Mục tiêu của phase này là huấn luyện một mô hình Descriminator sao cho <em>khả năng phân loại là tốt nhất</em>. Ở phase này chúng ta hãy tạm thời coi $G$ <em>không đổi</em> và chỉ quan tâm đến vế $\max_{D} V(D, G)$. Đây là chính là đối của hàm cross entropy đối với trường hợp phân loại nhị phân. Thật vậy, chắc hẳn bạn còn nhớ mục tiêu của logistic regression đối với bài toán phân loại nhị phân là <em>tối thiểu hóa</em> một hàm cross entropy như sau:</p>
 
 <script type="math/tex; mode=display">\mathcal{L}(\mathbf{w}; \mathbf{X}, \mathbf{y}) = - \frac{1}{N}\sum_{i=1}^{N}~~ [y_i\log p(y_i|\mathbf{x}_i) + (1-y_i)\log (1-p(y_i|\mathbf{x}_i))] ~~~ (2)</script>
 

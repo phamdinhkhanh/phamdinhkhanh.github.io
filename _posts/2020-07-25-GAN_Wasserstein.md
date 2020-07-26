@@ -19,7 +19,7 @@ $$D_{CE}(\mathbf{p} \Vert \mathbf{q}) \triangleq \mathbf{H}(\mathbf{p}, \mathbf{
 
 Trong đó $\sum_{i=1}^{C} p_i = \sum_{i=1}^{C} q_i = 1$ và $C$ là số lượng classes. $\mathbf{H}(\mathbf{p}, \mathbf{q})$ chính là ký hiệu của hàm _cross entropy_ của hai phân phối $\mathbf{p}$ và $\mathbf{q}$.
 
-Mục tiêu tối ưu hóa hàm loss function cũng đồng nghĩa với mục tiêu tìm ra mô hình dự báo phân phối $\mathbf{q}$ **sát nhất** với phân phối $\mathbf{p}$. Hai nói cách khác, khi phân phối $\mathbf{p}$ và $\mathbf{q}$ càng tương quan thì giá trị hàm _cross entropy_ càng nhỏ và mô hình dự báo càng chuẩn xác. Trái lại khi $\mathbf{p}$ và $\mathbf{q}$ không tương quan thì giá trị của _cross entropy_ càng lớn.
+Mục tiêu tối ưu hóa hàm loss function cũng đồng nghĩa với mục tiêu tìm ra mô hình dự báo phân phối $\mathbf{q}$ _sát nhất_ với phân phối $\mathbf{p}$. Hai nói cách khác, khi phân phối $\mathbf{p}$ và $\mathbf{q}$ càng tương quan thì giá trị hàm _cross entropy_ càng nhỏ và mô hình dự báo càng chuẩn xác. Trái lại khi $\mathbf{p}$ và $\mathbf{q}$ không tương quan thì giá trị của _cross entropy_ càng lớn.
 
 Thật vậy, để dễ hình dung chúng ta lấy ví dụ trong trường hợp phân loại nhị phân, nhãn $p_i$ sẽ nhận một trong hai giá trị $\{ 0, 1 \}$. Ta có: $D_{CE}(\mathbf{p} \Vert \mathbf{q}) = -log({q_i})$ (trường hợp $p_i = 0$ thì đóng góp vào cross entropy bằng 0, trường hợp $p_i = 1$ ta thu được công thức như trên). Khi đó đồ thị của hàm _cross entropy_ biểu diễn theo $q_i$ như sau:
 
@@ -40,8 +40,7 @@ plt.title('Cross entropy in binary classification', fontsize=20)
 plt.show()
 ```
 
-
-![png](GAN_Wassteiner_files/GAN_Wassteiner_2_0.png)
+<img src="/assets/images/20200726_GAN_Wasserstein/GAN_Wassteiner_2_0.png" class="small"/>
 
 
 Ta có thể thấy gía trị nhỏ nhất của hàm _cross entropy_ đạt được khi $q_i=1$. Tức là phân phối xác suất của $\mathbf{p}$ và $\mathbf{q}$ là trùng nhau. Trong trường hợp tổng quát cho nhiều nhãn ta cũng có thể chứng minh được sự **tương quan** giữa $\mathbf{p}$ và $\mathbf{q}$ tại điểm cực tiểu của _cross entropy_. Bài toán tối ưu _cross entropy_ có dạng như sau:
@@ -67,7 +66,7 @@ $$
 Điều kiện cần để bài toán có cực trị đó là đạo hàm bậc nhất có nghiệm bằng 0. Tức là: $\frac{p_1}{q_1} = \frac{p_2}{q_2} = \dots = \frac{p_C}{q_C} = \lambda$. Suy ra cực trị đạt được khi $\mathbf{p}$ và $\mathbf{q}$ có cùng phân phối xác suất.
 
 Mặc khác $$\nabla_{q_i}^2 \mathcal{L}(\mathbf{p}, \mathbf{q}, \lambda) = \frac{p_i}{q_i^2} \geq 0, \forall i=\overline{1, C}$$
-nên hàm mục tiêu là một hàm lồi. Do đó đây chính là điều kiện đủ để cực trị $(\mathbf{p}^*, \mathbf{q}^*)$ đạt được chính là điểm cực tiểu.
+nên hàm mục tiêu là một hàm lồi. Do đó đây chính là điều kiện đủ để cực trị $(\mathbf{p}^\*, \mathbf{q}^\*)$ đạt được chính là điểm cực tiểu.
 
 Chứng minh bài toán không quá khó phải không nào? 
 
@@ -75,7 +74,7 @@ Như vậy tìm cực tiểu của _cross entropy_ chính là tìm các giá tr�
 
 # 3. Kullback Leibler divergence
 
-_cross entropy_ là một độ đo được sử dụng phổ biến trong các bài toán phân loại thuộc lớp các bài toán học có giám sát. Tuy nhiên _cross entropy_ có một số hạn chế đó là giá trị của nó có thể lớn tùy ý. Chẳng hạn như khi $p_i = q_i = \frac{1}{n}, i \in \forall \bar{1,n}$. Khi $n \rightarrow +\infty$ thì giá trị của _cross entropy_ sẽ là :
+_cross entropy_ là một độ đo được sử dụng để đo lường tương quan giữa hai phân phối xác suất. Tuy nhiên _cross entropy_ có một số hạn chế đó là giá trị của nó có thể lớn tùy ý. Chẳng hạn như khi $p_i = q_i = \frac{1}{n}, i \in \forall \bar{1,n}$. Khi $n \rightarrow +\infty$ thì giá trị của _cross entropy_ sẽ là :
 
 $$\lim_{n \rightarrow +\infty} D_{CE}(\mathbf{p} \Vert \mathbf{q}) = \lim_{n \rightarrow +\infty}-\sum_{i=1}^{n}\frac{1}{n}\log(\frac{1}{n}) = \lim_{n \rightarrow \infty} log({n}) = +\infty$$
 
@@ -117,6 +116,7 @@ Xét hàm số:
 $$f(x) = -\log(x)$$
 
 Trên miền xác định $x > 0$. Ta có :
+
 $$
 \left\{
 \begin{matrix}
@@ -126,7 +126,9 @@ $$
 \right.$$
 
 Như vậy $f(x)$ là một hàm lồi ngặt trên toàn miền $x \in (0, 1]$. Do đó nó thỏa mãn bất đẳng thức [Jensen](https://en.wikipedia.org/wiki/Jensen%27s_inequality) đối với hàm lồi:
+
 $$\lambda f(x_1) + (1-\lambda) f(x_2) \geq f(\lambda x_1 + (1-\lambda) x_2)$$ 
+
 với mọi $\lambda \in (0, 1]$
 
 Trong trường hợp tổng quát ta có:
@@ -202,12 +204,7 @@ sns.distplot(q,
 plt.show()
 ```
 
-    /usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
-      import pandas.util.testing as tm
-    
-
-
-![png](GAN_Wassteiner_files/GAN_Wassteiner_7_1.png)
+<img src="/assets/images/20200726_GAN_Wasserstein/GAN_Wassteiner_7_1.png" class="normalpic"/>
 
 
 Đồng thời áp dụng công thức (1) để tính khoảng cách giữa các phân phối theo độ đo Kullback Leibler ta có:
@@ -239,25 +236,26 @@ Jensen-Shannon là độ đo được xây dựng dựa trên Kullback Leibler
 
 $$D_{JS}(P \Vert Q) = D_{KL}(P \Vert \frac{P+Q}{2}) + D_{KL}(Q \Vert \frac{P+Q}{2})$$
 
-Độ đo Jensen-Shannon thay vì đo khoảng cách trực tiếp giữa $P$ và $Q$ thì nó đo khoảng cách này thông qua $P$ với $\frac{P+Q}{2}$ và $Q$ với $\frac{P+Q}{2}$. Ở đây $\frac{P+Q}{2}$ là phân phối trung bình của hai phân phối $P$ và $Q$. Nếu $P$ và $Q$ càng giống nhau thì khoảng cách của nó tới phân phối trung bình càng nhỏ.
+Độ đo Jensen-Shannon thay vì đo khoảng cách trực tiếp giữa $P$ và $Q$ thì nó đo khoảng cách này thông qua khoảng cách giữa $P$ với $\frac{P+Q}{2}$ và giữa $Q$ với $\frac{P+Q}{2}$. Ở đây $\frac{P+Q}{2}$ là phân phối trung bình của hai phân phối $P$ và $Q$. Nếu $P$ và $Q$ càng giống nhau thì khoảng cách của nó tới phân phối trung bình càng nhỏ và khi chúng trùng nhau thì khoảng cách này bằng 0.
 
-Một tính chất quan trọng của Jensen-Shannon so với Kullback Leibler đó là nó có tính chất đối xứng. Nghĩa là : $D_{JS}(P \Vert Q) = D_{JS}(Q \Vert P)$. Ngoài ra, khai triển Jensen-Shannon ta có:
+Một tính chất quan trọng của Jensen-Shannon so với Kullback Leibler đó là nó có tính chất đối xứng. Nghĩa là : $D_{JS}(P \Vert Q) = D_{JS}(Q \Vert P)$. Thật vậy, khai triển Jensen-Shannon ta có:
 
-$$\begin {eqnarray}D_{JS}(P \Vert Q) & = & \sum_{i=1}^{C} P(x) \log(P(x)) - \sum_{i=1}^{C} P(x) \log(\frac{P(x)+Q(x)}{2}) \\
-& + & \sum_{i=1}^{C} Q(x) \log(Q(x)) - \sum_{i=1}^{C} Q(x) \log(\frac{P(x)+Q(x)}{2}) \\
+$$\begin {eqnarray}D_{JS}(P \Vert Q) & = & D_{KL}(P \Vert \frac{P+Q}{2}) + D_{KL}(Q \Vert \frac{P+Q}{2}) \\
+& = & \sum_{i=1}^{C} P(x) \log(P(x)) - \sum_{i=1}^{C} P(x) \log(\frac{P(x)+Q(x)}{2}) + \\
+\sum_{i=1}^{C} Q(x) \log(Q(x)) - \sum_{i=1}^{C} Q(x) \log(\frac{P(x)+Q(x)}{2}) \\
 & = & - \sum_{i=1}^{C} (P(x)+Q(X)) \log(\frac{P(x)+Q(x)}{2}) + \sum_{i=1}^{C} P(x) \log(P(x)) + \sum_{i=1}^{C} Q(x) \log(Q(x))\\
 & = & 2.\mathbf{H}(\frac{P+Q}{2}) - \mathbf{H}(P) - \mathbf{H}(Q) \\
 \end {eqnarray}$$
 
-Jensen-Shannon sẽ bằng hiệu giữa _entropy_ của phân phối trung bình $\frac{P+Q}{2}$ với các _entropy_ của $P$ và $Q$.
+Jensen-Shannon sẽ bằng hiệu giữa _entropy_ của phân phối $\frac{P+Q}{2}$ với các _entropy_ của $P$ và $Q$. Do đó nó có tính chất đối xứng và độ đo bằng 0 khi $P = Q$.
 
-Ta nhận thấy độ đo Kullback-Leiber sẽ rất lớn tại những điểm $x$ mà giá trị của $Q(x)$ rất nhỏ và giá trị của $P(x)$ khác 0. Bởi vì khi đó $\log(\frac{P(x)}{Q(x)}) \rightarrow +\infty$. Do đó hàm loss function sẽ thường không hội tụ nếu xuất hiện những điểm $x$ mà phân phối của $Q(x) \rightarrow 0^+$.
+Từ công thức $(1)$ ta nhận thấy độ đo Kullback-Leiber sẽ rất lớn tại những điểm $x$ mà giá trị của $Q(x)$ rất nhỏ và giá trị của $P(x)$ khác 0. Bởi vì khi đó $P(x)[\log(P(x)) - \log(Q(x))] \rightarrow +\infty$. Do đó hàm loss function sẽ thường không hội tụ nếu xuất hiện những điểm $x$ mà phân phối của $Q(x) \rightarrow 0^+$.
 
-![](https://imgur.com/IDrIpcZ.png)
+<img src="/assets/images/20200726_GAN_Wasserstein/pic1.jpg" class="normalpic"/>
 
 **Hình 1:** Giá trị của Kullback-Leibler tại những điểm có $Q(x) \rightarrow 0^+$ sẽ khiến cho $D_{KL}(P \Vert Q) \rightarrow +\infty$.
 
-Độ đo Jensen-Shannon sẽ khắc phục được những hiện tượng này vì giá trị của $\log(\frac{P(x)}{P(x)+Q(x)})$ luôn giao động trong khoảng:
+Độ đo Jensen-Shannon sẽ khắc phục được hạn chế này vì giá trị của $\log(\frac{P(x)}{P(x)+Q(x)})$ luôn giao động trong khoảng:
 
 $$\log(\frac{P(x)}{P(x)+1}) \leq \log(\frac{P(x)}{P(x)+Q(x)}) \leq 1$$
 
@@ -266,9 +264,9 @@ Do đó
 $$D_{KL}(P \Vert \frac{P+Q}{2}) = P(x)\log(\frac{P(x)}{P(x)+Q(x)}) \leq P(x)$$
 
 
-Điều đó đảm bảo đóng góp vào khoảng cách $D_{JS}(P \Vert Q)$ tại mọi điểm $x$ luôn không bị giới hạn trên và không làm giá trị khoảng cách trở nên quá lớn. Đây chính là ưu điểm chính của độ đo Jensen-Shannon so với Kullback-Leibler.
+Điều đó đảm bảo đóng góp vào khoảng cách $D_{JS}(P \Vert Q)$ tại mọi điểm $x$ luôn bị giới hạn trên và không làm giá trị khoảng cách trở nên quá lớn. 
 
-
+Như vậy ưu điểm chính của độ đo Jensen-Shannon so với Kullback-Leibler đó là có tính chất đối xứng và có giá trị hữu hạn. Do đó nó phù hợp để trở thành một độ đo thay thế cho Kullback-Leibler trong việc tìm khoảng cách giữa hai phân phối xác suất.
 
 ## 4.1. Hội tụ của GAN và khoảng cách Jensen-Shannon
 
@@ -278,11 +276,11 @@ $$\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_r(x)} [\log (D(x))] +  \mathb
 
 Ở đây $x \sim p_r(x)$ là phân phối của dữ liệu thật và $z \sim p_z(z)$ là phân phối của dữ liệu sinh.
 
-Khi mô hình GAN hội tụ thì $G(z) \rightarrow x$, tức là dữ liệu sinh ra giống với dữ liệu thật nhất. Như vậy tại điểm hội tụ của mô hình generator $G^*$ ta có thể thay thế  $G(z)$ bằng hội tụ $x$ của nó. Khi đó giá trị hội tụ của loss function sẽ là:
+Khi mô hình GAN hội tụ thì dữ liệu sinh ra giống với dữ liệu thật nhất. Giả sử nghiệm hội tụ generator của GAN là hàm $G^{\*}$. Khi đó $G^{\*}(z) \rightarrow x$ và giá trị hội tụ của loss function sẽ là:
 
 $$\max_{D} V(D, G^*) = \mathbb{E}_{x \sim p_r(x)} [\log (D(x))] +  \mathbb{E}_{x \sim p_g(x)} [\log(1-D(x))]$$
 
-$x \sim p_g(x)$ là phân phối của dữ liệu từ mô hình generator. Mặt khác ta có tính chất :
+Ở đây, $x \sim p_g(x)$ là phân phối của dữ liệu từ mô hình generator. Đầu vào của generator là một véc tơ noise ngẫu nhiên nên có thể coi giá trị của nó là một hàm liên tục. Mặt khác khi $x$ liên tục ta có tính chất :
 
 $$\mathbb{E}_{x \sim p(x)} f(x) = \int_x p(x)f(x)dx$$
 
@@ -296,53 +294,54 @@ $$\begin{eqnarray}
 
 Mục tiêu của chúng ta là tìm kiếm discriminator để tối đa hóa giá trị của hàm loss function nên $D(x)$ được xem như biến của bài toán cực trị. Đặt $D(x) = y$.
 
-Xét hàm $$v(y) = p_r(x)\log (y) + p_g(x)\log (1-y)$$
+Xét hàm $$V(y) = p_r(x)\log (y) + p_g(x)\log (1-y)$$
 
 Hàm số trên có đạo hàm bậc nhất và bậc 2 :
 
 $$
 \left\{
 \begin{matrix}
-    \nabla_y{} v(y) & = & \frac{p_r(x)}{y}-\frac{p_g(x)}{1-y}\\
-    \nabla_y^2{f(x)} & = & -\frac{p_r(x)}{y^2} - \frac{p_g(x)}{(1-y)^2} < 0 & ~~~ 
+    \nabla_y{} V(y) & = & \frac{p_r(x)}{y}-\frac{p_g(x)}{1-y}\\
+    \nabla_y^2{V(y)} & = & -\frac{p_r(x)}{y^2} - \frac{p_g(x)}{(1-y)^2} < 0 & ~~~ 
 \end{matrix}
 \right.$$
 
-Như vậy $v(y)$ là một hàm lõm. Do đó giá trị cực đại của nó chính là nghiệm của phương trình đạo hàm bậc nhất :
+Như vậy $V(y)$ là một hàm lõm. Do đó giá trị cực đại của nó chính là nghiệm của phương trình đạo hàm bậc nhất :
 
 $$\begin{eqnarray}\frac{p_r(x)}{y^*}-\frac{p_g(x)}{1-y^*} & = & 0 \\ 
 \Leftrightarrow y^* & = & \frac{p_r(x)}{p_r(x) + p_g(x)}
 \end{eqnarray}$$
 
-Do đó :
+Ta có :
 
 $$\begin{eqnarray}
-\int_x p_r(x)\log (D(x)) + p_g(x)\log (1-D(x)) dx & \leq & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx\\
+V(y) & \leq & V(y^*) \\
+\Leftrightarrow \int_x p_r(x)\log (D(x)) + p_g(x)\log (1-D(x)) dx & \leq & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx\\
 \end{eqnarray}$$
 
 Suy ra giá trị hội tụ:
 
 $$\begin{eqnarray}
-\max_{D} V(D, G^*) & = & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx \\
+V(D^*, G^*) & = & \int_x p_r(x) \log \bigg( \frac{p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{p_g(x)}{p_r(x) + p_g(x)} \bigg) dx \\
 & = & \int_x p_r(x) \log \bigg( \frac{2~p_r(x)}{p_r(x) + p_g(x)} \bigg) + p_g(x) \log \bigg( \frac{2~p_g(x)}{p_r(x) + p_g(x)} \bigg) dx \\
 & - & \log(2) \int_x p_r(x) - \log(2) \int_x p_g(x) dx \\
 & = & D_{KL}(p_r(x) \Vert \frac{p_g(x)+p_r(x)}{2}) + D_{KL}(p_g(x) \Vert \frac{p_g(x)+p_r(x)}{2}) - 2\log(2) \\
 & = & D_{JS}(p_r(x) \Vert p_g(x)) - 2\log(2)
 \end{eqnarray}$$
 
-Như vậy tại điểm hội tụ, hàm loss function của GAN bằng giá trị khoảng cách Jensen-Shannon giữa phân phối của dữ liệu thật $p_r(x)$ và dữ liệu sinh $p_g(x)$ trừ đi $2\log(2)$.
+Tại điểm hội tụ, hàm loss function của GAN bằng giá trị khoảng cách Jensen-Shannon giữa phân phối của dữ liệu thật $p_r(x)$ và dữ liệu sinh $p_g(x)$ trừ đi $2\log(2)$.
 
 Mặt khác khi ảnh thật và sinh rất giống nhau thì $D_{JS}(p_r(x) \Vert p_g(x))  = 0$ và giá trị loss function của GAN hội tụ về $-2\log(2)$. Và đồng thời nghiệm hội tụ của hai phân phối $p_r, p_g$ của GAN trùng với Jensen-Shannon.
 
 # 5. Độ đo Earth-Mover (EM) hoặc Wasserstein
 
-Giả sử $\mathbf{p}_r$ là phân phối thực tế của dữ liệu gốc được gọi tắt là _phân phối thực_ và $\mathbf{p}_g$ là _phân phối sinh_, tức là phân phối của dữ liệu được sinh ra từ model GAN. Wasserstein hoặc EM là giá trị _cận dưới nhỏ nhất_ (infimum) khoảng cách nhỏ nhất của phép dịch chuyển $\mathbf{p}_r$ sang $\mathbf{p}_g$ có công thức như sau:
+Giả sử $\mathbf{p}\_r$ là phân phối thực tế của dữ liệu gốc được gọi tắt là _phân phối thực_ và $\mathbf{p}\_g$ là _phân phối sinh_, tức là phân phối của dữ liệu được sinh ra từ model GAN. Wasserstein hoặc EM là giá trị _cận dưới nhỏ nhất_ (infimum) của khoảng cách giữa phép dịch chuyển $\mathbf{p}\_r$ sang $\mathbf{p}\_g$ theo công thức:
 
 $$W(\mathbf{p}_r, \mathbf{p}_g) = \inf_{\gamma \in \prod(\mathbf{p}_r, \mathbf{p}_g)} ~ \mathbf{E}_{(x, y)\sim \gamma}[ ~ \Vert x-y \Vert ~]$$
 
 Giải thích một chút về công thức trên:
 
-$\prod(\mathbf{p}_r, \mathbf{p}_g)$ là _phân phối đồng thời_ (join distribution) của hai phân phối $\mathbf{p}_r$ và $\mathbf{p}_g$. Trong đó mỗi một phân phối $\mathbf{p}_r$ và $\mathbf{p}_g$ được coi như là _phân phối biên_ (margin distribution). Bạn đọc có thể xem thêm về phân phối đồng thời và phân phối biên tại [Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê](https://phamdinhkhanh.github.io/2019/05/10/Hypothesis_Statistic.html#22-ph%C3%A2n-ph%E1%BB%91i-x%C3%A1c-su%E1%BA%A5t-%C4%91%E1%BB%93ng-th%E1%BB%9Di). $\gamma(x, y)$ chính là giá trị phân phối đồng thời của $(x, y)$. Khoảng cách _wasserstein_ là cận dưới lớn nhất của kỳ vọng khoảng cách giữa các điểm $(x, y)$ theo phân phối chung $\gamma$. Khoảng cách được đo lường theo độ đo $\Vert x-y \Vert$.
+$\prod(\mathbf{p}\_r, \mathbf{p}\_g)$ là _phân phối đồng thời_ (join distribution) của hai phân phối $\mathbf{p}\_r$ và $\mathbf{p}\_g$ và mỗi một phân phối $\mathbf{p}\_r$ và $\mathbf{p}\_g$ được coi như là _phân phối biên_ (margin distribution). Bạn đọc có thể tìm hiểu thêm về phân phối đồng thời và phân phối biên tại [Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê](https://phamdinhkhanh.github.io/2019/05/10/Hypothesis_Statistic.html#22-ph%C3%A2n-ph%E1%BB%91i-x%C3%A1c-su%E1%BA%A5t-%C4%91%E1%BB%93ng-th%E1%BB%9Di). $\gamma(x, y)$ chính là giá trị của phân phối đồng thời của $(x, y)$. Khoảng cách _wasserstein_ là cận dưới lớn nhất của kỳ vọng khoảng cách giữa các điểm $(x, y)$ theo phân phối chung $\gamma$. Khoảng cách được đo lường theo độ đo $\Vert x-y \Vert$.
 
 Để dễ hình dung hơn về Wasserstein chúng ta tìm hiểu ví dụ bên dưới:
 
@@ -352,20 +351,25 @@ $\prod(\mathbf{p}_r, \mathbf{p}_g)$ là _phân phối đồng thời_ (join dist
 
 Giả sử dữ liệu gốc của chúng ta gồm các giá trị $\{1, 2, 3, 4, 5, 6\}$ có phân phối nằm trên 3 cột $1, 2, 3$. Từ dữ liệu gốc chúng ta có các phương án dịch chuyển các giá trị này sang một phân phối mới nằm trên 4 cột $7, 8, 9, 10$ và thu được bảng giá trị phân phối xác suất đồng thời như bảng $\gamma_1$ hình bên dưới:
 
-![](https://miro.medium.com/max/875/1*Tq09Bk_P4hcOe3FirBjAFA.jpeg)
+<img src="https://miro.medium.com/max/875/1*Tq09Bk_P4hcOe3FirBjAFA.jpeg" class="normalpic"/>
 
-**Hình 2**: Ví dụ về độ đo Wasserstein biến đổi từ phân phối thật $\mathbf{p}_r$ bên trái sang phân phối sinh từ mô hình $\mathbf{p}_g$ bên phải. Source [WGAN - jonathan hui](https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490).
+**Hình 2**: Ví dụ về độ đo Wasserstein biến đổi từ phân phối thật $\mathbf{p}_r$ (cột 1, 2, 3) bên trái sang phân phối sinh $\mathbf{p}_g$ (cột 7, 8, 9, 10) ở giữa. Bên phải là bảng giá trị của phân phối đồng thời.Source [WGAN - jonathan hui](https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490).
 
-Xét phép biến đổi $\gamma_1$ ta thấy ô có giá trị 1 ở đã được dịch chuyển từ cột 1 sang cột 7. Do đó khoảng cách $\Vert x - y \Vert = 7-1 =6$. Tương tự ô giá trị 4 được dịch chuyển từ cột 2 sang 8 nên có giá khoảng cách là 6. Với khoảng dịch chuyển từ cột 1 sang cột 10 tương ứng với 2 ô giá trị 3 và 2 nên trên bảng phân phối xác suất đồng thời giá trị tương ứng với dòng 1, cột 10 được điền là 2. Khoảng cách Wasserstein giữa hai phân phối sẽ bằng tổng các khoảng cách cần dịch chuyển để biến đổi phân phối thật và phân phối sinh nhân với giá trị _phân phối xác suất đồng thời_ tương ứng. Kết quả ta thu được: $(6+6+6+6+2 \times 9) = 42$.
+Xét phép biến đổi $\gamma_1$ ta thấy ô có giá trị 1 ở đã được dịch chuyển từ cột 1 của phân phối thật sang cột 7 của phân phối sinh. Do đó khoảng cách $\gamma(x, y) = \Vert x - y \Vert = 7-1 =6$. Tương tự ô giá trị 4 được dịch chuyển từ cột 2 sang 8 nên có giá khoảng cách là 6. Phương án dịch chuyển từ cột 1 sang cột 10 tương ứng với 2 ô giá trị 3 và 2 nên trên bảng phân phối xác suất đồng thời giá trị tương ứng với dòng 1, cột 10 được điền là 2. Khoảng cách Wasserstein bằng các khoảng cách cần dịch chuyển để biến đổi phân phối thật thành phân phối sinh nhân với giá trị _phân phối xác suất đồng thời_. Kết quả ta thu được: $(6+6+6+6+2 \times 9) = 42$.
 
 Khi hai phân phối thật và phân phối sinh trùng nhau thì khoảng cách này bằng 0. Khoảng cách càng nhỏ thì 2 phân phối càng gần nhau và dữ liệu được sinh ra càng giống với dữ liệu thật. 
 
+# 6. Hạn chế của DCGAN
 
+**Phân biệt giữ GAN và DCGAN**
 
+Mô hình GAN là tên gọi chung cho những mô hỉnh sử dụng generator model để sinh ra dữ liệu giả và discriminator để phân biệt giữa dữ liệu thật và giả. Ở kiến trúc cơ bản đầu tiên của GAN chỉ sử dụng những fully connected layer đơn thuần.
 
-# 6. Hạn chế của GAN
+DCGAN là _Deep Convolution GAN_, một kiến trúc cũng tương tự như GAN nhưng tập trung vào các mạng học sâu trong xử lý ảnh. Ngoài các fully conected layer của GAN thì trong kiến trúc này chúng ta sử dụng thêm các layer tích chập (convolutional layer) để trích lọc đặc trưng của ảnh. DCGAN có lẽ phù hợp hơn với dữ liệu đầu vào là hình ảnh/video, trong khi đó mô hình GAN tổng quát có thể áp dụng ở domain rộng hơn.
 
-Trong một bài báo vào năm 2017, Arjovsky đã chỉ ra nhược điểm của GAN như sau:
+**Hạn chế của DCGAN**
+
+Trong một bài báo vào năm 2017, Arjovsky đã chỉ ra nhược điểm của DCGAN như sau:
 
 * Quá trình huấn luyện discriminator sẽ tạo ra những thông tin tốt để cải thiện generator nhưng generator lại không thực hiện tốt vai trò của mình khiến cho giá trị gradient descent của nó thường bị triệt tiêu và generator không học được gì. 
 
@@ -377,18 +381,13 @@ $$\nabla_{\theta_g}\log(D(G(z^{(i)}))$$
   
 $~~~~~$ Tuy nhiên đạo hàm này sẽ có một số giá trị rất lớn và dẫn tới mô hình hoạt động không ổn định.
 
-Arjovsky đề xuất một phương pháp mới sẽ add thêm noise vào hình ảnh thật trước khi đưa vào huấn luyện discriminator. Do ảnh hưởng của noise nên discriminator sẽ hoạt động không tốt quá và cũng không kém quá. Với các ảnh noise ít mô hình có thể dự báo tốt và noise nhiều thì mô hình dự báo kém. Do đó huẩn luyện mô hình generator sẽ trở nên ổn định hơn. Tuy nhiên generator sẽ học cách sinh ra ảnh giả giống như ảnh thật có nhiễu và không thực sự thật.
+Arjovsky đề xuất một phương pháp mới sẽ add thêm noise vào hình ảnh thật trước khi đưa vào huấn luyện discriminator. Tại sao lại cần add thêm noise? Đó là bởi do ảnh hưởng của noise nên discriminator sẽ hoạt động không tốt quá và cũng không kém quá dẫn tới $D(G(z^{(i)})$ không hội tụ về 0. Do đó huẩn luyện mô hình generator sẽ trở nên ổn định hơn. Tuy nhiên generator sẽ học cách sinh ra ảnh giả giống như ảnh thật + noise. Để ảnh giống thật hơn thì ta cần điều chỉnh giá trị noise nhỏ hơn.
 
-![](https://miro.medium.com/max/700/1*6P6T5itldfYNk-gUcS1Zmw.jpeg)
+<img src="https://miro.medium.com/max/700/1*6P6T5itldfYNk-gUcS1Zmw.jpeg" class="largepic"/>
 
 Những điểm này có thể được khắc phục trong mô hình Wasserstein GAN.
 
 # 7. Wasserstein GAN
-
-
-
-
-
 
 ## 7.1. Khái niệm liên tục Lipchitz (Lipschitz continuity)
 
@@ -398,7 +397,7 @@ $$|\frac{f(x_1)-f(x_2)}{x_1-x_2}| \leq K, \forall x_1, x_2 \in \mathbb{R}$$
 
 Với $K$ là một giá trị hằng số  thì hàm $f$ được gọi là _liên tục K-lipchitz_. Ví dụ về một hàm _liên tục lipchitz_ phổ biến đó chính là hàm $\sin(x)$ vì giá trị _độ lớn_ đạo hàm của nó bị chặn trên bởi 1. Hàm $x^2$ không phải là hàm _liên tục lipchitz_ vì đạo hàm của nó là $2x$ không bị chặn trên. Tương tự như vậy $\log(x)$ cũng không _liên tục lipchitz_ vì đạo hàm của nó là $\frac{1}{x}$ không bị chặn tại $x=0$.
 
-Do tính chất đạo hàm bị chặn nên khi sử dụng loss function là hàm _liên tục K-lipchitz_ có thể khắc phục được hiện tượng thiếu ổn định trong huấn luyện do đạo hàm bùng nổ (explosion). Cụ thể hơn chúng ta cùng tìm hiểu qua Wasserstein GAN.
+Do tính chất đạo hàm bị chặn nên khi sử dụng loss function là hàm _liên tục K-lipchitz_ có thể khắc phục được hiện tượng đạo hàm bùng nổ (explosion) dẫn tới thiếu ổn định trong huấn luyện. Cụ thể hơn chúng ta cùng tìm hiểu qua Wasserstein GAN.
 
 ## 7.2. Wasserstein GAN
 Model Wasserstein GAN sẽ áp dụng khoảng cách wasserstein để  tìm ra phân phối gần nhất giữa 2 phân phối thật và giả. Việc giải trực tiếp bài toán khoảng cách Wasserstein là khá khó. Do đó áp dụng đối ngẫu Kantorovic-rubinstein chúng ta chuyển về bài toán đối ngẫu:
@@ -412,15 +411,15 @@ $$| f(x_1) - f(x_2) | \leq |x_1 - x_2|, \forall x_1, x_2 \in \mathbb{R}$$
 
 Để hiểu hơn về phát biểu của bài toán đối ngẫu của khoảng cách Wassertein các bạn xem thêm qua [wasserstein duality](https://vincentherrmann.github.io/blog/wasserstein/). Tuy nhiên tôi không khuyến khích các bạn có nền tảng toán học yếu tìm hiểu sâu về mảng này mà chúng ta nên công nhận những gì đã được chứng mình.
 
-Như vậy để áp dụng Wasserstein GAN, chúng ta chỉ cần tìm hàm _liên tục 1-lipschitz_. Kiến trúc mạng của discriminator sẽ được giữ nguyên và chúng ta chỉ bỏ qua hàm sigmoid ở cuối. Như vậy hàm dự báo output chính là một linear projection và đó là một hàm _liên tục 1-lipchitz_. Kết quả dự báo sau cùng sẽ đưa ra một điểm số là một scalar thay vì xác suất. Điểm này có thể được hiểu là điểm đánh giá chất lượng hình ảnh được sinh ra theo mức độ giống với ảnh thật. Tính chất của discriminator đã thay đổi từ phân loại ảnh reak/fake sang chấm điểm chất lượng ảnh nên để phù hợp với mục tiêu thì chúng ta thay đổi tên của discriminator thành critic.
+Như vậy để áp dụng Wasserstein GAN, chúng ta chỉ cần tìm hàm _liên tục 1-lipschitz_. Kiến trúc mạng của discriminator sẽ được giữ nguyên và chúng ta chỉ bỏ qua hàm sigmoid ở cuối. Như vậy hàm dự báo output chính là một linear projection và đó là một hàm _liên tục 1-lipchitz_. Kết quả dự báo sau cùng sẽ đưa ra một điểm số scalar thay vì xác suất. Điểm này có thể được hiểu là điểm đánh giá chất lượng hình ảnh được sinh ra theo mức độ giống với ảnh thật. Tính chất của discriminator đã thay đổi từ phân loại ảnh reak/fake sang chấm điểm chất lượng ảnh nên để phù hợp với mục tiêu thì chúng ta thay đổi tên của discriminator thành critic.
 
 Để hiểu rõ hơn sự khác biệt giữa kiến trúc GAN và WGAN chúng ta cùng theo dõi hình bên dưới:
 
 **Kiến trúc GAN**
-![](https://miro.medium.com/max/700/1*M_YipQF_oC6owsU1VVrfhg.jpeg)
+<img src="https://miro.medium.com/max/700/1*M_YipQF_oC6owsU1VVrfhg.jpeg" class="largepic"/>
 
 **Kiến trúc WGAN**
-![](https://miro.medium.com/max/700/1*Yfa9bZL0d4NHaU1mHbGzjw.jpeg)
+<img src="https://miro.medium.com/max/700/1*Yfa9bZL0d4NHaU1mHbGzjw.jpeg" class="largepic"/>
 
 
 Tổng kết lại ta có sự khác biệt giữa GAN và WGAN đó là :
@@ -429,15 +428,12 @@ Tổng kết lại ta có sự khác biệt giữa GAN và WGAN đó là :
 2. Ở model GAN sẽ thay đổi từ mô hình phân loại sang mô hình đánh giá. Do đó xác suất được chuyển sang điểm số có tác dụng đánh giá chất lượng ảnh tạo ra thay cho xác suất. Điểm này càng lớn thì ảnh càng giống với thật và điểm này càng nhỏ thì ảnh sẽ khác với thật. Nhãn của mô hình cũng được thay đổi từ $0, 1$ sang $-1, 1$ để phù hợp hơn với mục tiêu là chấm điểm.
 3. critic sẽ được huấn luyện nhiều lượt hơn so với generator và quá trình huấn luyện sẽ được thực hiện xen kẽ giữa critic và generator.
 4. Qúa trình cập nhật gradient descent sẽ được thực hiện theo phương pháp RMSProp.
-5. Ràng buộc độ lớn của trọng số mô hình về một khoảng giới hạn sau mỗi mini-batch.
+5. Ràng buộc độ lớn weights của mô hình về một khoảng giới hạn sau mỗi mini-batch.
 6. Sử dụng RMSProp để cập nhật gradient descent với momentum = 0.
-
-
 
 Qúa trình huấn luyện GAN sẽ thực hiện xen kẽ những bước như sau:
 
-![](https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Algorithm-for-the-Wasserstein-Generative-Adversarial-Networks-1.png)
-
+<img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Algorithm-for-the-Wasserstein-Generative-Adversarial-Networks-1.png" class="largepic"/>
 
 # 8. Thực hành Wasserstein GAN
 
@@ -487,9 +483,7 @@ def _plot(X):
 _plot(trainX[:25, :])
 ```
 
-
-![png](GAN_Wassteiner_files/GAN_Wassteiner_22_0.png)
-
+<img src="/assets/images/20200726_GAN_Wasserstein/GAN_Wassteiner_22_0.png" class="normalpic"/>
 
 ## 8.2. Discriminator
 
@@ -597,31 +591,7 @@ d_model.summary()
     =================================================================
     input_1 (InputLayer)         [(None, 28, 28, 1)]       0         
     _________________________________________________________________
-    zero_padding2d (ZeroPadding2 (None, 32, 32, 1)         0         
-    _________________________________________________________________
-    conv2d (Conv2D)              (None, 16, 16, 64)        1664      
-    _________________________________________________________________
-    leaky_re_lu (LeakyReLU)      (None, 16, 16, 64)        0         
-    _________________________________________________________________
-    conv2d_1 (Conv2D)            (None, 8, 8, 128)         204928    
-    _________________________________________________________________
-    leaky_re_lu_1 (LeakyReLU)    (None, 8, 8, 128)         0         
-    _________________________________________________________________
-    dropout (Dropout)            (None, 8, 8, 128)         0         
-    _________________________________________________________________
-    conv2d_2 (Conv2D)            (None, 4, 4, 256)         819456    
-    _________________________________________________________________
-    leaky_re_lu_2 (LeakyReLU)    (None, 4, 4, 256)         0         
-    _________________________________________________________________
-    dropout_1 (Dropout)          (None, 4, 4, 256)         0         
-    _________________________________________________________________
-    conv2d_3 (Conv2D)            (None, 2, 2, 512)         3277312   
-    _________________________________________________________________
-    leaky_re_lu_3 (LeakyReLU)    (None, 2, 2, 512)         0         
-    _________________________________________________________________
-    flatten (Flatten)            (None, 2048)              0         
-    _________________________________________________________________
-    dropout_2 (Dropout)          (None, 2048)              0         
+    ...
     _________________________________________________________________
     dense (Dense)                (None, 1)                 2049      
     =================================================================
@@ -715,37 +685,7 @@ g_model.summary()
     =================================================================
     input_2 (InputLayer)         [(None, 128)]             0         
     _________________________________________________________________
-    dense_1 (Dense)              (None, 4096)              524288    
-    _________________________________________________________________
-    batch_normalization (BatchNo (None, 4096)              16384     
-    _________________________________________________________________
-    leaky_re_lu_4 (LeakyReLU)    (None, 4096)              0         
-    _________________________________________________________________
-    reshape (Reshape)            (None, 4, 4, 256)         0         
-    _________________________________________________________________
-    up_sampling2d (UpSampling2D) (None, 8, 8, 256)         0         
-    _________________________________________________________________
-    conv2d_4 (Conv2D)            (None, 8, 8, 128)         294912    
-    _________________________________________________________________
-    batch_normalization_1 (Batch (None, 8, 8, 128)         512       
-    _________________________________________________________________
-    leaky_re_lu_5 (LeakyReLU)    (None, 8, 8, 128)         0         
-    _________________________________________________________________
-    up_sampling2d_1 (UpSampling2 (None, 16, 16, 128)       0         
-    _________________________________________________________________
-    conv2d_5 (Conv2D)            (None, 16, 16, 64)        73728     
-    _________________________________________________________________
-    batch_normalization_2 (Batch (None, 16, 16, 64)        256       
-    _________________________________________________________________
-    leaky_re_lu_6 (LeakyReLU)    (None, 16, 16, 64)        0         
-    _________________________________________________________________
-    up_sampling2d_2 (UpSampling2 (None, 32, 32, 64)        0         
-    _________________________________________________________________
-    conv2d_6 (Conv2D)            (None, 32, 32, 1)         576       
-    _________________________________________________________________
-    batch_normalization_3 (Batch (None, 32, 32, 1)         4         
-    _________________________________________________________________
-    activation (Activation)      (None, 32, 32, 1)         0         
+    ... 
     _________________________________________________________________
     cropping2d (Cropping2D)      (None, 28, 28, 1)         0         
     =================================================================
@@ -973,56 +913,10 @@ BATCH_SIZE = 512
 # Huấn luyện
 wgan.fit(trainX, batch_size=BATCH_SIZE, epochs=epochs, callbacks=[cbk])
 ```
-
-    Epoch 1/20
-    118/118 [==============================] - 452s 4s/step - d_loss: -16.4176 - g_loss: -18.2579
-    Epoch 2/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -14.8740 - g_loss: -10.5063
-    Epoch 3/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -13.6230 - g_loss: -7.1806
-    Epoch 4/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -12.4002 - g_loss: -6.0320
-    Epoch 5/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -11.3737 - g_loss: -4.8758
-    Epoch 6/20
-    118/118 [==============================] - 450s 4s/step - d_loss: -10.3618 - g_loss: -2.2818
-    Epoch 7/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -9.5416 - g_loss: 1.5632
-    Epoch 8/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -8.7864 - g_loss: 3.9821
-    Epoch 9/20
-    118/118 [==============================] - 450s 4s/step - d_loss: -8.1304 - g_loss: 5.6272
-    Epoch 10/20
-    118/118 [==============================] - 450s 4s/step - d_loss: -7.5198 - g_loss: 5.6931
-    Epoch 11/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -6.8973 - g_loss: 7.6021
-    Epoch 12/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -6.4291 - g_loss: 7.4462
-    Epoch 13/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -5.9529 - g_loss: 8.5198
-    Epoch 14/20
-    118/118 [==============================] - 453s 4s/step - d_loss: -5.4752 - g_loss: 10.0275
-    Epoch 15/20
-    118/118 [==============================] - 455s 4s/step - d_loss: -5.1657 - g_loss: 9.3482
-    Epoch 16/20
-    118/118 [==============================] - 454s 4s/step - d_loss: -4.7628 - g_loss: 7.9165
-    Epoch 17/20
-    118/118 [==============================] - 451s 4s/step - d_loss: -4.4965 - g_loss: 7.5131
-    Epoch 18/20
-    118/118 [==============================] - 454s 4s/step - d_loss: -4.1650 - g_loss: 7.2050
-    Epoch 19/20
-    118/118 [==============================] - 455s 4s/step - d_loss: -3.8866 - g_loss: 7.2451
     Epoch 20/20
     118/118 [==============================] - 455s 4s/step - d_loss: -3.5191 - g_loss: 6.5974
-    
 
-
-
-
-    <tensorflow.python.keras.callbacks.History at 0x7fe1d0241048>
-
-
-
+Lưu lại mô hình discriminator và generator.
 
 ```
 from google.colab import drive
@@ -1039,6 +933,7 @@ g_model.save('wgan/generator.h5')
 d_model.save('wgan/discriminator.h5')
 ```
 
+Tiếp theo ta sẽ đọc một vài kết quả huấn luyện từ epoch 0, 1 và 2. 
 
 ```
 import matplotlib.pyplot as plt
@@ -1053,11 +948,15 @@ for i in np.arange(3):
   ax[i].set_xlabel(images[i], fontsize=12)
 ```
 
+<img src="/assets/images/20200726_GAN_Wasserstein/GAN_Wassteiner_36_0.png" class="smallpic"/>
 
-![png](GAN_Wassteiner_files/GAN_Wassteiner_36_0.png)
+# 9. Tổng kết
 
+Như vậy qua bài này chúng ta đã biết được các kiến thức rất cơ bản và quan trọng về tiêu chuẩn đo lường khoảng cách chính giữa hai phân phối xác suất đó là các độ đo: Kullback Leibler, Jensen-Shannon kèm theo ưu, nhược điểm của chúng. Đồng thời chúng ta cũng biết được rằng giá trị hội tụ GAN chính là một hàm của khoảng cách Jensen-Shannon. Ý tưởng về việc áp dụng một hàm loss function liên tục _1-Lipschitz_ có đạo hàm bị chặn trong WGAN để tạo ra một mô hình huấn luyện ổn định hơn và việc chuyển mô hình từ phân loại sang chấm điểm chất lượng ảnh kèm theo code hướng dẫn.
 
-# 9. Tài liệu
+Mặc dù chỉ thay đổi về hàm loss function và dường như là giữ nguyên kiến trúc nhưng WGAN đã tạo ra một lớp mô hình huấn luyện ổn định, hiệu quả và đưa ra chất lượng ảnh tốt hơn so với các mô hình được huấn luyện theo DCGAN. 
+
+# 10. Tài liệu
 
 1. [GAN wasserstein and GAN wasserstein GP - jonathan_hui](https://medium.com/@jonathan_hui/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490)
 2. [GAN spectral normalization - jonathan_hui](https://medium.com/@jonathan_hui/gan-spectral-normalization-893b6a4e8f53)
