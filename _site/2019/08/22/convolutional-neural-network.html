@@ -304,8 +304,8 @@ Khi vị trí cuối cùng không trùng với $W_1$ thì số bước $W_2$ s�
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Image shape: </span><span class="si">%</span><span class="s">s'</span><span class="o">%</span><span class="nb">str</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="c1"># Convert to grey
-</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">([</span><span class="mf">0.299</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span> <span class="mf">0.114</span><span class="p">])</span>
+<span class="c"># Convert to grey</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">([</span><span class="mf">0.299</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span> <span class="mf">0.114</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Image shape: </span><span class="si">%</span><span class="s">s'</span><span class="o">%</span><span class="nb">str</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -337,12 +337,12 @@ Khi vị trí cuối cùng không trùng với $W_1$ thì số bước $W_2$ s�
 25
 26
 27
-</pre></td><td class="rouge-code"><pre><span class="c1">#Tạo bộ lọc ngang F1
-</span><span class="n">F1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#Tạo bộ lọc ngang F1</span>
+<span class="n">F1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="c1">#Tính tích chập 2 chiều.
-</span><span class="k">def</span> <span class="nf">conv2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="c">#Tính tích chập 2 chiều.</span>
+<span class="k">def</span> <span class="nf">conv2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="s">"""
     X: Ma trận đầu vào
     F: Ma trận bộ lọc
@@ -374,8 +374,8 @@ Khi vị trí cuối cùng không trùng với $W_1$ thì số bước $W_2$ s�
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1">#Tạo bộ lọc dọc F2
-</span><span class="n">F2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#Tạo bộ lọc dọc F2</span>
+<span class="n">F2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">Y2</span> <span class="o">=</span> <span class="n">conv2d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">F2</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -602,48 +602,48 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
 
 <span class="k">def</span> <span class="nf">cnn_model_fn</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
     <span class="s">"""Model function for CNN"""</span>
-    <span class="c1">#Input layer
-</span>    <span class="n">input_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s">'x'</span><span class="p">],</span> <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="c">#Input layer</span>
+    <span class="n">input_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s">'x'</span><span class="p">],</span> <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
     
-    <span class="c1">#Convolution layer 1
-</span>    <span class="n">conv1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span>
+    <span class="c">#Convolution layer 1</span>
+    <span class="n">conv1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">input_layer</span><span class="p">,</span>
         <span class="n">filters</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
         <span class="n">kernel_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
         <span class="n">padding</span> <span class="o">=</span> <span class="s">'same'</span><span class="p">,</span>
         <span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
-    <span class="c1">#Apply formula:N1 = (N+2P-f)/S + 1
-</span>    <span class="c1">#in which: N is input image size, P is padding size, f is filter size and S is step
-</span>    <span class="c1">#Output tensor shape: N1 = (28-5)/1+1 = 24 =&gt; shape = [-1, 24, 24, 1]
-</span>    <span class="c1">#But we at parameter we set padding = 'same' in order to keep output shape unchange to input shape 
-</span>    <span class="c1">#Thus output shape is [-1, 28, 28, 1]
-</span>    
-    <span class="c1">#Max pooling layer 1
-</span>    <span class="n">pool1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span>
+    <span class="c">#Apply formula:N1 = (N+2P-f)/S + 1</span>
+    <span class="c">#in which: N is input image size, P is padding size, f is filter size and S is step</span>
+    <span class="c">#Output tensor shape: N1 = (28-5)/1+1 = 24 =&gt; shape = [-1, 24, 24, 1]</span>
+    <span class="c">#But we at parameter we set padding = 'same' in order to keep output shape unchange to input shape </span>
+    <span class="c">#Thus output shape is [-1, 28, 28, 1]</span>
+    
+    <span class="c">#Max pooling layer 1</span>
+    <span class="n">pool1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">conv1</span><span class="p">,</span> 
         <span class="n">pool_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
         <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="c1">#Output tensor shape: N2 = (28-2)/2+1 = 14 =&gt; shape = [-1, 14, 14, 1]
-</span>    
-    <span class="c1">#Convolution layer 2
-</span>    <span class="n">conv2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span>
+    <span class="c">#Output tensor shape: N2 = (28-2)/2+1 = 14 =&gt; shape = [-1, 14, 14, 1]</span>
+    
+    <span class="c">#Convolution layer 2</span>
+    <span class="n">conv2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">pool1</span><span class="p">,</span>
         <span class="n">filters</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
         <span class="n">kernel_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
         <span class="n">padding</span> <span class="o">=</span> <span class="s">'same'</span><span class="p">,</span>
         <span class="n">activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
-    <span class="c1">#Output tensor shape: N3 = (14-5)/1+1 = 10 =&gt; shape = [-1, 10, 10, 1]
-</span>    <span class="c1">#But padding = 'same' so output shape is [-1, 14, 14, 1]
-</span>    
-    <span class="c1">#Max pooling layer 2
-</span>    <span class="n">pool2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span>
+    <span class="c">#Output tensor shape: N3 = (14-5)/1+1 = 10 =&gt; shape = [-1, 10, 10, 1]</span>
+    <span class="c">#But padding = 'same' so output shape is [-1, 14, 14, 1]</span>
+    
+    <span class="c">#Max pooling layer 2</span>
+    <span class="n">pool2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">conv2</span><span class="p">,</span>
         <span class="n">pool_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
         <span class="n">strides</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="c1">#Output tensor shape: N4 = (14-2)/2+1 = 7 =&gt; shape = [-1, 7, 7, 1]
-</span>    
-    <span class="c1">#Dense layer
-</span>    <span class="n">flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">pool2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">64</span><span class="p">])</span>
+    <span class="c">#Output tensor shape: N4 = (14-2)/2+1 = 7 =&gt; shape = [-1, 7, 7, 1]</span>
+    
+    <span class="c">#Dense layer</span>
+    <span class="n">flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">pool2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">64</span><span class="p">])</span>
     <span class="n">dense</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">flat</span><span class="p">,</span> 
         <span class="n">units</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
@@ -654,8 +654,8 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
         <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span>
         <span class="n">training</span> <span class="o">=</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">ModeKeys</span><span class="o">.</span><span class="n">TRAIN</span><span class="p">)</span>
     
-    <span class="c1">#Logits layer
-</span>    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c">#Logits layer</span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
     
     <span class="n">predictions</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">'classes'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="nb">input</span> <span class="o">=</span> <span class="n">logits</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'class_tensor'</span><span class="p">),</span>
@@ -758,11 +758,11 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1">#Create the Estimator
-</span><span class="n">mnist_classifier</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">Estimator</span><span class="p">(</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#Create the Estimator</span>
+<span class="n">mnist_classifier</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">Estimator</span><span class="p">(</span>
     <span class="n">model_fn</span> <span class="o">=</span> <span class="n">cnn_model_fn</span><span class="p">,</span> 
-    <span class="n">model_dir</span> <span class="o">=</span> <span class="s">'./tmp/conv2_checkpoints'</span> <span class="c1">#temporary file to save model
-</span><span class="p">)</span>
+    <span class="n">model_dir</span> <span class="o">=</span> <span class="s">'./tmp/conv2_checkpoints'</span> <span class="c">#temporary file to save model</span>
+<span class="p">)</span>
 
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -776,8 +776,8 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="c1">#Training model
-</span><span class="n">train_input_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span><span class="p">(</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#Training model</span>
+<span class="n">train_input_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span><span class="p">(</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s">'x'</span><span class="p">:</span> <span class="n">train_data</span><span class="p">},</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">,</span> 
     <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -798,8 +798,8 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
 </pre></td><td class="rouge-code"><pre><span class="n">mnist_classifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
     <span class="n">input_fn</span> <span class="o">=</span> <span class="n">train_input_fn</span><span class="p">,</span>
     <span class="n">steps</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="c1">#     hooks = [logging_hook]
-</span><span class="p">)</span>
+<span class="c">#     hooks = [logging_hook]</span>
+<span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đánh giá mô hình trên tập test</p>
@@ -813,8 +813,8 @@ Kí hiệu -&gt; đại diện cho các tầng liền kề nhau mà tầng đứ
 7
 8
 9
-</pre></td><td class="rouge-code"><pre><span class="c1">#Validation on test
-</span><span class="n">eval_input_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span><span class="p">(</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#Validation on test</span>
+<span class="n">eval_input_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span><span class="p">(</span>
       <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s">"x"</span><span class="p">:</span> <span class="n">test_data</span><span class="p">},</span>
       <span class="n">y</span> <span class="o">=</span> <span class="n">test_labels</span><span class="p">,</span>
       <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>

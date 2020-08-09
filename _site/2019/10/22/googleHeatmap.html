@@ -319,10 +319,10 @@ body {
 <span class="nb">long</span> <span class="o">=</span> <span class="mf">105.8</span>
 <span class="n">zoom</span> <span class="o">=</span> <span class="mi">12</span>
 
-<span class="c1"># Khởi tạo một googleMapPlotter
-</span><span class="n">gmap1</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
-<span class="c1"># Lưu google map vào một html file
-</span><span class="n">gmap1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">'initialGmplot.html'</span><span class="p">)</span>
+<span class="c"># Khởi tạo một googleMapPlotter</span>
+<span class="n">gmap1</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+<span class="c"># Lưu google map vào một html file</span>
+<span class="n">gmap1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">'initialGmplot.html'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Hiện tại google đã thu phí đối với các API của google map service nên nếu không sử dụng google map key bạn sẽ chỉ có thể xem ở chế độ development mode. Bạn có thể tạo một key của <a href="https://developers.google.com/maps/documentation/embed/get-api-key">google map api</a>, sau khi đã tạo được key thì cần phải enable dịch vụ <a href="https://developers.google.com/maps/documentation/javascript/tutorial">Map API javascript</a> để sử dụng được chế độ tương tác trên javascript. Thủ tục này khá mất công. Sau khi đã gen key, chúng ta cần add key vào bản đồ như bên dưới:</p>
@@ -345,12 +345,12 @@ body {
 <span class="nb">long</span> <span class="o">=</span> <span class="mf">105.8</span>
 <span class="n">zoom</span> <span class="o">=</span> <span class="mi">12</span>
 
-<span class="c1"># Khởi tạo một googleMapPlotter
-</span><span class="n">gmap1</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
-<span class="c1"># Thêm key cho API bằng cách thay thế key vào `your_key`
-</span><span class="n">gmap1</span><span class="o">.</span><span class="n">apikey</span> <span class="o">=</span> <span class="s">"your_key"</span>
-<span class="c1"># Lưu google map vào một html file
-</span><span class="n">gmap1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">'initialGmplot.html'</span><span class="p">)</span>
+<span class="c"># Khởi tạo một googleMapPlotter</span>
+<span class="n">gmap1</span> <span class="o">=</span> <span class="n">gmplot</span><span class="o">.</span><span class="n">GoogleMapPlotter</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+<span class="c"># Thêm key cho API bằng cách thay thế key vào `your_key`</span>
+<span class="n">gmap1</span><span class="o">.</span><span class="n">apikey</span> <span class="o">=</span> <span class="s">"your_key"</span>
+<span class="c"># Lưu google map vào một html file</span>
+<span class="n">gmap1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">'initialGmplot.html'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Theo cách trên bạn sẽ mất phí vì phải sử dụng các google services. Một giải pháp khác đó là package folium. Biểu đồ của folium không đòi hỏi API key, được kế thừa từ thư viện <code class="highlighter-rouge">leaflet.js</code> bên javascript nên trông đẹp mắt và đa dạng hơn.</p>
@@ -410,10 +410,10 @@ body {
 <span class="n">name</span> <span class="o">=</span> <span class="s">"Nhà của Khánh"</span>
 <span class="n">color</span><span class="o">=</span><span class="s">"red"</span>
 
-<span class="c1"># Khởi tạo base map
-</span><span class="n">gmap2</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">),</span> <span class="n">zoom_start</span><span class="o">=</span><span class="n">zoom</span><span class="p">)</span>
-<span class="c1"># Thêm một marker vào base map
-</span><span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">),</span> <span class="n">popup</span><span class="o">=</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">gmap2</span><span class="p">)</span>
+<span class="c"># Khởi tạo base map</span>
+<span class="n">gmap2</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">),</span> <span class="n">zoom_start</span><span class="o">=</span><span class="n">zoom</span><span class="p">)</span>
+<span class="c"># Thêm một marker vào base map</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">),</span> <span class="n">popup</span><span class="o">=</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">gmap2</span><span class="p">)</span>
 <span class="n">gmap2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"foliumMarker.html"</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -516,9 +516,9 @@ Khoảng cách được xây dựng dựa trên công thức tính khoảng các
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="mi">6371</span> <span class="c1"># Bán kính trái đất (km)
-</span>    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span> <span class="c1"># giá trị pi/180
-</span>    <span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">cos</span><span class="p">((</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cos</span><span class="p">((</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mi">6371</span> <span class="c"># Bán kính trái đất (km)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span> <span class="c"># giá trị pi/180</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">cos</span><span class="p">((</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cos</span><span class="p">((</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">asin</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> 
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -533,14 +533,14 @@ Khoảng cách được xây dựng dựa trên công thức tính khoảng các
 7
 8
 9
-</pre></td><td class="rouge-code"><pre><span class="c1"># Tọa độ Vĩnh Long
-</span><span class="n">lat1</span> <span class="o">=</span> <span class="mf">10.250815</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Tọa độ Vĩnh Long</span>
+<span class="n">lat1</span> <span class="o">=</span> <span class="mf">10.250815</span>
 <span class="n">lon1</span> <span class="o">=</span> <span class="mf">106.002399</span>
-<span class="c1"># Tọa độ thành phố Hồ Chí Minh
-</span><span class="n">lat2</span> <span class="o">=</span> <span class="mf">10.678836</span>
+<span class="c"># Tọa độ thành phố Hồ Chí Minh</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="mf">10.678836</span>
 <span class="n">lon2</span> <span class="o">=</span> <span class="mf">106.601911</span>
-<span class="c1"># Tính khoảng cách
-</span>
+<span class="c"># Tính khoảng cách</span>
+
 <span class="n">distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -713,10 +713,10 @@ Khoảng cách được xây dựng dựa trên công thức tính khoảng các
 
 <span class="n">_addHeatMap</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">gmap2</span><span class="p">)</span>
 <span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">ClickForMarker</span><span class="p">(</span><span class="n">popup</span><span class="o">=</span><span class="s">'Chi nhánh tiềm năng'</span><span class="p">))</span>
-<span class="c1"># Thêm circle có bán kính 15000
-</span><span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
-<span class="c1"># Thêm text chú thích cho circle
-</span><span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+<span class="c"># Thêm circle có bán kính 15000</span>
+<span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
+<span class="c"># Thêm text chú thích cho circle</span>
+<span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
     <span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span>
     <span class="n">icon</span><span class="o">=</span><span class="n">DivIcon</span><span class="p">(</span>
         <span class="n">icon_size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">36</span><span class="p">),</span>
@@ -786,8 +786,8 @@ Khoảng cách được xây dựng dựa trên công thức tính khoảng các
     <span class="n">heatMap</span> <span class="o">=</span> <span class="n">HeatMap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_loc_val</span><span class="p">,</span> 
             <span class="n">min_opacity</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
             <span class="n">blur</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
-            <span class="c1"># Thay đổi màu sắc bằng gradient
-</span>            <span class="n">gradient</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.2</span><span class="p">:</span> <span class="s">'blue'</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">:</span> <span class="s">'lime'</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">:</span> <span class="s">'orange'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'red'</span><span class="p">},</span>
+            <span class="c"># Thay đổi màu sắc bằng gradient</span>
+            <span class="n">gradient</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.2</span><span class="p">:</span> <span class="s">'blue'</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">:</span> <span class="s">'lime'</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">:</span> <span class="s">'orange'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'red'</span><span class="p">},</span>
             <span class="n">max_val</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">,</span>
             <span class="n">radius</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> 
             <span class="n">overlay</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
@@ -795,10 +795,10 @@ Khoảng cách được xây dựng dựa trên công thức tính khoảng các
 
 <span class="n">_addHeatMap</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">gmap2</span><span class="p">)</span>
 <span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">ClickForMarker</span><span class="p">(</span><span class="n">popup</span><span class="o">=</span><span class="s">'Chi nhánh tiềm năng'</span><span class="p">))</span>
-<span class="c1"># Thêm circle có bán kính 15000
-</span><span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
-<span class="c1"># Thêm text chú thích cho circle
-</span><span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+<span class="c"># Thêm circle có bán kính 15000</span>
+<span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">True</span><span class="p">))</span>
+<span class="c"># Thêm text chú thích cho circle</span>
+<span class="n">gmap2</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
     <span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span>
     <span class="n">icon</span><span class="o">=</span><span class="n">DivIcon</span><span class="p">(</span>
         <span class="n">icon_size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">36</span><span class="p">),</span>
@@ -897,7 +897,7 @@ memory usage: 66.8+ MB
 9
 10
 </pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">_extract_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s">'month'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s">'week'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">week</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s">'day'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pickup_datetime</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
@@ -965,8 +965,8 @@ memory usage: 66.8+ MB
 <span class="n">zoom</span> <span class="o">=</span> <span class="mi">12</span>
 
 <span class="n">gmapNYTaxi</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="nb">long</span><span class="p">],</span> <span class="n">zoom_start</span> <span class="o">=</span> <span class="n">zoom</span><span class="p">)</span>
-<span class="c1"># gmapNYTaxi.save('foliumNYTaxi.html')
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="c"># gmapNYTaxi.save('foliumNYTaxi.html')</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Thêm heatmap layer khởi tạo vào bản đồ.</p>
 

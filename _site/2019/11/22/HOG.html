@@ -393,17 +393,17 @@ gray shape:  (1120, 2016)
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Calculate gradient gx, gy
-</span><span class="n">gx</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Calculate gradient gx, gy</span>
+<span class="n">gx</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">gy</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'gray shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'gx shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gx</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'gy shape: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">gy</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'gray shape: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'gx shape: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gx</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'gy shape: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gy</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -418,8 +418,8 @@ gy shape: (1120, 2016)
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="n">g</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cartToPolar</span><span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">angleInDegrees</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
-<span class="k">print</span><span class="p">(</span><span class="s">'gradient format: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'theta format: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'gradient format: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'theta format: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -620,35 +620,35 @@ theta format: (1120, 2016)
 37
 </pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'Kích thước ảnh gốc: '</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="c1"># 1. Khai báo các tham số
-</span><span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># h x w in pixels
-</span><span class="n">block_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># h x w in cells
-</span><span class="n">nbins</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1"># number of orientation bins
-</span>
-<span class="c1"># 2. Tính toán các tham số truyền vào HOGDescriptor
-# winSize: Kích thước của bức ảnh được crop để chia hết cho cell size.
-</span><span class="n">winSize</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="c1"># blockSize: Kích thước của 1 block
-</span><span class="n">blockSize</span> <span class="o">=</span> <span class="p">(</span><span class="n">block_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">block_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="c1"># blockStride: Số bước di chuyển của block khi thực hiện chuẩn hóa histogram bước 3
-</span><span class="n">blockStride</span> <span class="o">=</span> <span class="p">(</span><span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c"># 1. Khai báo các tham số</span>
+<span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c"># h x w in pixels</span>
+<span class="n">block_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c"># h x w in cells</span>
+<span class="n">nbins</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c"># number of orientation bins</span>
+
+<span class="c"># 2. Tính toán các tham số truyền vào HOGDescriptor</span>
+<span class="c"># winSize: Kích thước của bức ảnh được crop để chia hết cho cell size.</span>
+<span class="n">winSize</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c"># blockSize: Kích thước của 1 block</span>
+<span class="n">blockSize</span> <span class="o">=</span> <span class="p">(</span><span class="n">block_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">block_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c"># blockStride: Số bước di chuyển của block khi thực hiện chuẩn hóa histogram bước 3</span>
+<span class="n">blockStride</span> <span class="o">=</span> <span class="p">(</span><span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước bức ảnh crop theo winSize (pixel): '</span><span class="p">,</span> <span class="n">winSize</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước của 1 block (pixel): '</span><span class="p">,</span> <span class="n">blockSize</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước của block stride (pixel): '</span><span class="p">,</span> <span class="n">blockStride</span><span class="p">)</span>
 
-<span class="c1"># 3. Compute HOG descriptor
-</span><span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">(</span><span class="n">_winSize</span><span class="o">=</span><span class="n">winSize</span><span class="p">,</span>
+<span class="c"># 3. Compute HOG descriptor</span>
+<span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">(</span><span class="n">_winSize</span><span class="o">=</span><span class="n">winSize</span><span class="p">,</span>
                         <span class="n">_blockSize</span><span class="o">=</span><span class="n">blockSize</span><span class="p">,</span>
                         <span class="n">_blockStride</span><span class="o">=</span><span class="n">blockStride</span><span class="p">,</span>
                         <span class="n">_cellSize</span><span class="o">=</span><span class="n">cell_size</span><span class="p">,</span>
                         <span class="n">_nbins</span><span class="o">=</span><span class="n">nbins</span><span class="p">)</span>
 
-<span class="c1"># Kích thước của lưới ô vuông.
-</span><span class="n">n_cells</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c"># Kích thước của lưới ô vuông.</span>
+<span class="n">n_cells</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">cell_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Kích thước lưới ô vuông (ô vuông): '</span><span class="p">,</span> <span class="n">n_cells</span><span class="p">)</span>
 
-<span class="c1"># Reshape hog feature
-</span><span class="n">hog_feats</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>\
+<span class="c"># Reshape hog feature</span>
+<span class="n">hog_feats</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>\
                <span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
                         <span class="n">n_cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
                         <span class="n">block_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">block_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nbins</span><span class="p">)</span> \
@@ -763,8 +763,8 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
 <span class="kn">import</span> <span class="nn">cv2</span>
 
  
-<span class="c1"># Khởi tạo một bộ mô tả đặc trưng HOG
-</span><span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">()</span>
+<span class="c"># Khởi tạo một bộ mô tả đặc trưng HOG</span>
+<span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">()</span>
 <span class="n">hog</span><span class="o">.</span><span class="n">setSVMDetector</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor_getDefaultPeopleDetector</span><span class="p">())</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -839,50 +839,50 @@ Kích thước hog feature (h, w, block_size_h, block_size_w, nbins):  (139, 251
         <span class="n">orig</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-        <span class="c1"># 1. Bounding box với ảnh gốc
-</span>        <span class="c1"># Khởi tạo plot
-</span>        <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c"># 1. Bounding box với ảnh gốc</span>
+        <span class="c"># Khởi tạo plot</span>
+        <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         
-        <span class="c1"># Phát hiện người trong ảnh
-</span>        <span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">,</span> <span class="n">winStride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="c"># Phát hiện người trong ảnh</span>
+        <span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="p">,</span> <span class="n">winStride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
                                                <span class="n">padding</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">scale</span> <span class="o">=</span> <span class="mf">1.05</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'weights: '</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
-        <span class="c1"># Vẽ các bounding box xung quanh ảnh gốc
-</span>        <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
-            <span class="c1"># cv2.rectangle(orig, (x, y), (x+w, y+h), (0, 0, 255), 2)
-</span>            <span class="n">rectFig</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">)</span>
+        <span class="c"># Vẽ các bounding box xung quanh ảnh gốc</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+            <span class="c"># cv2.rectangle(orig, (x, y), (x+w, y+h), (0, 0, 255), 2)</span>
+            <span class="n">rectFig</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">)</span>
             <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
             <span class="n">ax1</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rectFig</span><span class="p">)</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Ảnh trước non max suppression'</span><span class="p">)</span>
 
         <span class="n">rects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">])</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'rects: '</span><span class="p">,</span> <span class="n">rects</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-        <span class="c1"># Sử dụng non max suppression để lấy ra bounding box cuối cùng với ngưỡng threshold = 0.65
-</span>        <span class="n">pick</span> <span class="o">=</span> <span class="n">non_max_suppression</span><span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">overlapThresh</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+        <span class="c"># Sử dụng non max suppression để lấy ra bounding box cuối cùng với ngưỡng threshold = 0.65</span>
+        <span class="n">pick</span> <span class="o">=</span> <span class="n">non_max_suppression</span><span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">overlapThresh</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
         
-        <span class="c1"># 2. Bounding box với ảnh suppression
-</span>        <span class="c1"># Khởi tạo plot
-</span>        <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="c1"># Vẽ bounding box cuối cùng trên ảnh
-</span>        <span class="k">for</span> <span class="p">(</span><span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">,</span> <span class="n">xB</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pick</span><span class="p">:</span>
+        <span class="c"># 2. Bounding box với ảnh suppression</span>
+        <span class="c"># Khởi tạo plot</span>
+        <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c"># Vẽ bounding box cuối cùng trên ảnh</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">,</span> <span class="n">xB</span><span class="p">,</span> <span class="n">yB</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pick</span><span class="p">:</span>
             <span class="n">w</span> <span class="o">=</span> <span class="n">xB</span><span class="o">-</span><span class="n">xA</span>
             <span class="n">h</span> <span class="o">=</span> <span class="n">yB</span><span class="o">-</span><span class="n">yA</span>
-            <span class="c1"># cv2.rectangle(image, (xA, yA), (xB, yB), (0, 255, 0), 2)
-</span>            <span class="c1"># Hiển thị hình ảnh
-</span>            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+            <span class="c"># cv2.rectangle(image, (xA, yA), (xB, yB), (0, 255, 0), 2)</span>
+            <span class="c"># Hiển thị hình ảnh</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Ảnh sau non max suppression'</span><span class="p">)</span>
             <span class="n">rectFig</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">xA</span><span class="p">,</span> <span class="n">yA</span><span class="p">),</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">)</span>
             <span class="n">ax2</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rectFig</span><span class="p">)</span>
             
-        <span class="c1"># Lấy thông tin ảnh
-</span>        <span class="n">filename</span> <span class="o">=</span> <span class="n">imagePath</span><span class="p">[</span><span class="n">imagePath</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">"</span><span class="se">\\</span><span class="s">"</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"[INFO] {}: {} original boxes, {} after suppression"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span>
+        <span class="c"># Lấy thông tin ảnh</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">imagePath</span><span class="p">[</span><span class="n">imagePath</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s">"</span><span class="se">\\</span><span class="s">"</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"[INFO] {}: {} original boxes, {} after suppression"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">filename</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rects</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">pick</span><span class="p">)))</span>
 
-        <span class="c1"># cv2.imshow("Before NMS", orig)
-</span>        <span class="c1"># cv2.imshow("After NMS", image)
-</span>        <span class="c1"># cv2.waitKey(0)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+        <span class="c"># cv2.imshow("Before NMS", orig)</span>
+        <span class="c"># cv2.imshow("After NMS", image)</span>
+        <span class="c"># cv2.waitKey(0)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -1027,23 +1027,23 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
         <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
         <span class="n">edeged</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">auto_canny</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
 
-        <span class="c1"># Tìm contours trong edge map, chỉ giữ lại contours lớn nhất, được giả định là chứa logo xe.
-</span>        <span class="n">cnts</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">edged</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span>
+        <span class="c"># Tìm contours trong edge map, chỉ giữ lại contours lớn nhất, được giả định là chứa logo xe.</span>
+        <span class="n">cnts</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">edged</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span>
                                <span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
         <span class="n">cnts</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">grab_contours</span><span class="p">(</span><span class="n">cnts</span><span class="p">)</span>
         <span class="n">c</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cnts</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">)</span>
 
-        <span class="c1"># Trích xuất logo của xe và resize lại kích thước ảnh logo về 200x200
-</span>        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="c"># Trích xuất logo của xe và resize lại kích thước ảnh logo về 200x200</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
         <span class="n">logo</span> <span class="o">=</span> <span class="n">gray</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
         <span class="n">logo</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">logo</span><span class="p">,</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
 
-        <span class="c1"># Khởi tạo HOG descriptor
-</span>        <span class="n">H</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">hog</span><span class="p">(</span><span class="n">logo</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pixels_per_cell</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="c"># Khởi tạo HOG descriptor</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">hog</span><span class="p">(</span><span class="n">logo</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pixels_per_cell</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
             <span class="n">cells_per_block</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">transform_sqrt</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">block_norm</span><span class="o">=</span><span class="s">"L1"</span><span class="p">)</span>
 
-        <span class="c1"># update the data and labels
-</span>        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+        <span class="c"># update the data and labels</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
         <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">brand</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span>
 
@@ -1064,15 +1064,15 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fn</span><span class="p">:</span>
         <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
         
-<span class="c1"># _save('X_train.pkl', data)
-# _save('y_train.pkl', labels)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="c"># _save('X_train.pkl', data)</span>
+<span class="c"># _save('y_train.pkl', labels)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># _save('X_test.pkl', dataTest)
-# _save('y_test.pkl', labelsTest)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td><td class="rouge-code"><pre><span class="c"># _save('X_test.pkl', dataTest)</span>
+<span class="c"># _save('y_test.pkl', labelsTest)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -1091,10 +1091,10 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 
 <span class="k">def</span> <span class="nf">_transform_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-    <span class="c1"># Tạo input array X
-</span>    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="c1"># Tạo output array y
-</span>    <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="c"># Tạo input array X</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="c"># Tạo output array y</span>
+    <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
     <span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
     <span class="n">y_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
@@ -1132,8 +1132,8 @@ Chúng ta cần truyền vào hàm này các tham số:</p>
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
-</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Kiểm tra độ chính xác của mô hình trên train</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="n">uniq_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">y_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">uniq_labels</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -1175,8 +1175,8 @@ weighted avg       1.00      1.00      1.00      1000
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác trên tập test
-</span><span class="n">dataTest</span><span class="p">,</span> <span class="n">labelsTest</span> <span class="o">=</span> <span class="n">_preprocessing</span><span class="p">(</span><span class="s">'TestData/**/*.jpg'</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Kiểm tra độ chính xác trên tập test</span>
+<span class="n">dataTest</span><span class="p">,</span> <span class="n">labelsTest</span> <span class="o">=</span> <span class="n">_preprocessing</span><span class="p">(</span><span class="s">'TestData/**/*.jpg'</span><span class="p">)</span>
 <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_dict</span><span class="p">,</span> <span class="n">le</span> <span class="o">=</span> <span class="n">_transform_data</span><span class="p">(</span><span class="n">dataTest</span><span class="p">,</span> <span class="n">labelsTest</span><span class="p">)</span> 
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -1188,8 +1188,8 @@ weighted avg       1.00      1.00      1.00      1000
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Kiểm tra độ chính xác của mô hình trên train
-</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Kiểm tra độ chính xác của mô hình trên train</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="n">uniq_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">y_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predTest</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">uniq_labels</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -1250,8 +1250,8 @@ weighted avg       0.86      0.82      0.82       500
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="c1"># loading all images
-</span><span class="n">path</span> <span class="o">=</span> <span class="s">"TrainData/"</span>
+<span class="c"># loading all images</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">"TrainData/"</span>
 <span class="n">imgs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">labels</span><span class="o">=</span> <span class="p">[]</span>
 <span class="n">brands</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -1262,8 +1262,8 @@ weighted avg       0.86      0.82      0.82       500
         <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idcar</span><span class="p">)</span>
 <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">brands</span><span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="s">'/'</span><span class="o">+</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s">"RGB"</span><span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">imgs</span><span class="p">)],</span> <span class="n">order</span><span class="o">=</span><span class="s">'F'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'uint8'</span><span class="p">)</span>
-<span class="c1"># Mỗi ảnh có kích thước 70x70 = 2500 pixel và 3 kênh màu = 14700 pixel
-</span><span class="k">print</span><span class="p">(</span><span class="s">'total images: '</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c"># Mỗi ảnh có kích thước 70x70 = 2500 pixel và 3 kênh màu = 14700 pixel</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'total images: '</span><span class="p">,</span> <span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1284,14 +1284,14 @@ total images:  (1000, 14700)
 10
 11
 12
-</pre></td><td class="rouge-code"><pre><span class="c1"># reshape anh ngược trở về kích thước 70x70x3
-</span><span class="n">img_x</span> <span class="o">=</span> <span class="n">img_y</span> <span class="o">=</span> <span class="mi">70</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># reshape anh ngược trở về kích thước 70x70x3</span>
+<span class="n">img_x</span> <span class="o">=</span> <span class="n">img_y</span> <span class="o">=</span> <span class="mi">70</span>
 
 <span class="k">def</span> <span class="nf">ImageConvert</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
     <span class="n">im_ex</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">img_x</span><span class="p">,</span> <span class="n">img_y</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">im_ex</span> <span class="o">=</span> <span class="n">im_ex</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
-    <span class="c1"># Chuẩn hóa cường độ ảnh về khoảng (-1, 1)
-</span>    <span class="n">im_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">im_ex</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="c"># Chuẩn hóa cường độ ảnh về khoảng (-1, 1)</span>
+    <span class="n">im_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">im_ex</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="n">im_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">im_ex</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">im_ex</span>
 
@@ -1422,18 +1422,18 @@ total images:  (1000, 14700)
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">bias_initializer</span><span class="o">=</span><span class="s">'glorot_uniform'</span><span class="p">))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
     
-    <span class="c1"># final activation is softmax, tuned to the number of classes/labels possible
-</span>    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">brands</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+    <span class="c"># final activation is softmax, tuned to the number of classes/labels possible</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">brands</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
     
-    <span class="c1"># optimizer will be a stochastic gradient descent, learning rate set at 0.005
-</span>    <span class="n">sgd</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># optimizer will be a stochastic gradient descent, learning rate set at 0.005</span>
+    <span class="n">sgd</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">adam</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'sparse_categorical_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'categorical_accuracy'</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">model</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">contruction</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1"># Let's look at the summary
-</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="c"># Let's look at the summary</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1

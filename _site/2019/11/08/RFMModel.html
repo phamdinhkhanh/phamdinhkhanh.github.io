@@ -392,9 +392,9 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 13
 14
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="c1"># 1. Calculate Recency
-# 1.1. Find the most recent orderDate.
-</span>
+<span class="c"># 1. Calculate Recency</span>
+<span class="c"># 1.1. Find the most recent orderDate.</span>
+
 <span class="n">dfRecentOrder</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
                <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s">'CustomerID'</span><span class="p">],</span>
                <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s">'OrderDate'</span><span class="p">],</span>
@@ -411,8 +411,8 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># Đổi dấu recency
-</span><span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Đổi dấu recency</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s">'Recency'</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tiếp theo ta sẽ tính tần suất của khách hàng mua hàng trong toàn bộ thời gian nghiên cứu.</p>
@@ -421,8 +421,8 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># 2. Calculate Frequency
-</span><span class="n">dfFrequency</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">OrderID</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># 2. Calculate Frequency</span>
+<span class="n">dfFrequency</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">OrderID</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">dfFrequency</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Frequency'</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfFrequency</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'CustomerID'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -433,8 +433,8 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># 3. Calculate Monetary
-</span><span class="n">dfMonetary</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># 3. Calculate Monetary</span>
+<span class="n">dfMonetary</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'CustomerID'</span><span class="p">)</span><span class="o">.</span><span class="n">Amount</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">dfMonetary</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Monetary'</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfMonetary</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span> <span class="o">=</span> <span class="s">'CustomerID'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -482,9 +482,9 @@ Dữ liệu được tôi sử dụng cho bài viết này được lấy từ m
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1"># help(pd.qcut)
-# df['rank'].min()
-</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># help(pd.qcut)</span>
+<span class="c"># df['rank'].min()</span>
+
 <span class="n">df</span><span class="p">[</span><span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Low'</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">),</span> <span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Normal'</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'rank'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">,</span> <span class="s">'Segment'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'VIP'</span>

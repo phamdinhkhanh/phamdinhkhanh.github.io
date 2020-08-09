@@ -230,7 +230,27 @@ body {
 <div id="toc"></div>
 <h1 id="1-giới-thiệu-về-chuỗi-thời-gian">1. Giới thiệu về chuỗi thời gian</h1>
 
-<p>Dự báo chuỗi thời gian là một trong những mảng đề tài lớn của thống kê, kinh tế lượng và machine learning. Các dự báo chuỗi thời gian được sử dụng rộng khắp các lĩnh vực từ sản xuất kinh doanh, cho đến tài chính ngân hàng, chứng khoán, bảo hiểm, thương mại điện tử, nghiên cứu thị trường, nghiên cứu chính sách quốc gia. Chúng ta có thể kể đến vô số các ứng dụng của dự báo chuỗi thời gian như:</p>
+<p>Dự báo chuỗi thời gian là một lớp mô hình quan trọng trong thống kê, kinh tế lượng và machine learning. Sở dĩ chúng ta gọi lớp mô hình này là chuỗi thời gian (<em>time series</em>) là vì mô hình được áp dụng trên các chuỗi đặc thù có yếu tố thời gian. Một mô hình chuỗi thời gian thường dự báo dựa trên giả định rằng các qui luật trong quá khứ sẽ lặp lại ở tương lai. Do đó xây dựng mô hình chuỗi thời gian là chúng ta đang mô hình hóa mối quan hệ trong quá khứ giữa biến độc lập (biến đầu vào) và biến phụ thuộc (biến mục tiêu). Dựa vào mối quan hệ này để dự đoán giá trị trong tương lai của biến phụ thuộc.</p>
+
+<p>Do là dữ liệu chịu ảnh hưởng bởi tính chất thời gian nên chuỗi thời gian thường xuất hiện những qui luật đặc trưng như : yếu tố chu kỳ, mùa vụ và yếu tố xu hướng. Đây là những đặc trưng thường thấy và xuất hiện ở hầu hết các chuỗi thời gian.</p>
+
+<ul>
+  <li>Yếu tố chu kỳ, mùa vụ là những đặc tính lặp lại theo chu kỳ. Ví dụ như nhiệt độ trung bình các tháng trong năm sẽ chịu ảnh hưởng bởi các mùa xuân, hạ, thu, đông. Hay xuất nhập khẩu của một quốc gia thường có chu kỳ theo các quí.</li>
+</ul>
+
+<p><img src="https://blogs.sas.com/content/iml/files/2012/04/UdoSSA.png" alt="" /></p>
+
+<p><strong>Hình 1:</strong> Đồ thị về chuỗi nhiệt độ trung bình theo tháng thể hiện yếu tố mùa vụ.</p>
+
+<ul>
+  <li>Yếu tố xu hướng (<em>trend</em>) thể hiện đà tăng hoặc giảm của chuỗi trong tương lai. Chẳng hạn như lạm phát là xu hướng chung của các nền kinh tế, do đó giá cả trung bình của giỏ hàng hóa cơ sở hay còn gọi là chỉ số CPI luôn có xu hướng tăng và xu hướng tăng này đại diện cho sự mất giá của đồng tiền.</li>
+</ul>
+
+<p><img src="https://www.aptech.com/wp-content/uploads/2019/09/ts-pp-trending-data.jpg" alt="" /></p>
+
+<p><strong>Hình 2:</strong> Đồ thị về yếu tố xu hướng trong chuỗi thời gian của chuỗi giá.</p>
+
+<p>Các dự báo chuỗi thời gian có tính ứng dụng cao và được sử dụng rất nhiều lĩnh vực như tài chính ngân hàng, chứng khoán, bảo hiểm, thương mại điện tử, marketing, quản lý chính sách. Bên dưới là một số ứng dụng của dự báo chuỗi thời gian:</p>
 
 <ul>
   <li>Dự báo nhu cầu thị trường để lập kết hoạch sản xuất kinh doanh cho hãng.</li>
@@ -241,10 +261,10 @@ body {
   <li>Dự báo tác động của các nhân tố vĩ mô như lãi suất, cung tiền, đầu tư trực tiếp nước ngoài, chi tiêu chính phủ, lạm phát,… tác động lên tăng trưởng GDP để điều hành nền kinh tế.</li>
 </ul>
 
-<p>…</p>
+<p>Vai trò của chuỗi thời gian rất quan trọng đối với nền kinh tế và hoạt động của doanh nghiệp nên trong machine learning và thống kê có những ngành học nghiên cứu chuyên sâu về chuỗi thời gian như kinh tế lượng, định giá tài sản tài chính.</p>
 
-<p>Và vô số các ứng dụng mà chúng ta, trong bất kì lĩnh vực nào đều có thể áp dụng dự báo chuỗi thời gian. Vai trò của dự báo chuỗi thời gian rất lớn, vì vậy một ngành học mới ra đời tách khỏi thống kê, chuyên biệt nghiên cứu các mô hình chuỗi thời gian, đó chính là kinh tế lượng (econometric).
-Khác với các mô hình dự báo trong machine learning, các mô hình trong dự báo chuỗi thời gian trong kinh tế lượng có những đặc trưng rất riêng. Đòi hỏi phải tuân thủ nghiêm ngặt các điều kiện về chuỗi dừng, nhiễu trắng và tự tương quan. Và đặc biệt mô hình được xây dựng dựa trên nguyên lý qui luật trong quá khứ lặp lại ở tương lai, sử dụng dữ liệu quá khứ để giải thích hiện tại. Có rất nhiều các lớp mô hình chuỗi thời gian khác nhau và mỗi một lớp mô hình sẽ có một tiêu chuẩn áp dụng cụ thể. Chúng ta có thể liệt kê một số mô hình phổ biến:</p>
+<p>Khác với các mô hình dự báo thông thường trong machine learning, các mô hình trong dự báo chuỗi thời gian trong kinh tế lượng có những đặc trưng rất riêng. Đòi hỏi phải tuân thủ nghiêm ngặt các điều kiện về chuỗi dừng, nhiễu trắng và tự tương quan. Có rất nhiều lớp mô hình chuỗi thời gian khác nhau và mỗi một lớp mô hình sẽ có một tiêu chuẩn áp dụng cụ thể. Chúng ta có thể liệt kê một số mô hình phổ biến:</p>
+
 <ul>
   <li><strong>Mô hình ARIMA</strong>: Dựa trên giả thuyết chuỗi dừng và phương sai sai số không đổi. Mô hình sử dụng đầu vào chính là những tín hiệu quá khứ của chuỗi được dự báo để dự báo nó. Các tín hiệu đó bao gồm: chuỗi tự hồi qui AR (auto regression) và chuỗi trung bình trượt MA (moving average). Hầu hết các chuỗi thời gian sẽ có xu hướng tăng hoặc giảm theo thời gian, do đó yếu tố chuỗi dừng thường không đạt được. Trong trường hợp chuỗi không dừng thì ta sẽ cần biến đổi sang chuỗi dừng bằng sai phân. Khi đó tham số đặc trưng của mô hình sẽ có thêm thành phần bậc của sai phân d và mô hình được đặc tả bởi 3 tham số ARIMA(p, d, q).</li>
   <li><strong>Mô hình SARIMA</strong>: Về bản chất đây là mô hình ARIMA nhưng được điều chỉnh đặc biệt để áp dụng cho những chuỗi thời gian có yếu tố mùa vụ. Như chúng ta đã biết về bản chất ARIMA chính là mô hình hồi qui tuyến tính nhưng mối quan hệ tuyến tính thường không giải thích tốt chuỗi trong trường hợp chuỗi xuất hiện yếu tố mùa vụ. Chính vì thế, bằng cách tìm ra chu kì của qui luật mùa vụ và loại bỏ nó khỏi chuỗi ta sẽ dễ dàng hồi qui mô hình theo phương pháp ARIMA.</li>
@@ -296,12 +316,18 @@ Chúng ta biết rằng hầu hết các chuỗi thời gian đều có sự tư
 <p>Như vậy bạn đọc đã hình dung ra moving average là gì rồi chứ? Về mặt ý tưởng thì đó chính là quá trình hồi qui tuyến tính của giá trị hiện tại theo các giá trị hiện tại và quá khứ của sai số nhiễu trắng (white noise error term) đại diện cho các yếu tố shock ngẫu nhiên, những sự thay đổi không lường trước và giải thích bởi mô hình.</p>
 
 <ul>
-  <li><strong>Intergrated</strong>: Là quá trình đồng tích hợp hoặc lấy sai phân. Yêu cầu chung của các thuật toán trong time series là chuỗi phải đảm bảo tính dừng. Hầu hết các chuỗi đều tăng hoặc giảm theo thời gian. Do đó yếu tố tương quan giữa chúng chưa chắc là thực sự mà là do chúng cùng tương quan theo thời gian. Khi biến đổi sang chuỗi dừng, các nhân tố ảnh hưởng thời gian được loại bỏ và chuỗi sẽ dễ dự báo hơn. Để tạo thành chuỗi dừng, một phương pháp đơn giản nhất là chúng ta sẽ lấy sai phân. Một số chuỗi tài chính còn qui đổi sang logarit hoặc lợi suất. Bậc của sai phân để tạo thành chuỗi dừng còn gọi là bậc của quá trình đồng tích hợp (order of intergration). Qúa trình sai phân bậc $d$ của chuỗi được thực hiện như sau:
+  <li>
+    <p><strong>Intergrated</strong>: Là quá trình đồng tích hợp hoặc lấy sai phân. Yêu cầu chung của các thuật toán trong time series là chuỗi phải đảm bảo tính dừng. Hầu hết các chuỗi đều tăng hoặc giảm theo thời gian. Do đó yếu tố tương quan giữa chúng chưa chắc là thực sự mà là do chúng cùng tương quan theo thời gian. Khi biến đổi sang chuỗi dừng, các nhân tố ảnh hưởng thời gian được loại bỏ và chuỗi sẽ dễ dự báo hơn. Để tạo thành chuỗi dừng, một phương pháp đơn giản nhất là chúng ta sẽ lấy sai phân. Một số chuỗi tài chính còn qui đổi sang logarit hoặc lợi suất. Bậc của sai phân để tạo thành chuỗi dừng còn gọi là bậc của quá trình đồng tích hợp (order of intergration). Qúa trình sai phân bậc $d$ của chuỗi được thực hiện như sau:</p>
+
     <ul>
-      <li>Sai phân bậc 1:
-<script type="math/tex">\text{I}(1) = \Delta(x_t) = x_{t} - x_{t-1}</script></li>
-      <li>Sai phân bậc d:
-<script type="math/tex">\text{I}(d) = \Delta^{d}(x_t) = \underbrace{\Delta(\Delta(\dots \Delta(x_t)))}_{\text{d times}}</script></li>
+      <li>
+        <p>Sai phân bậc 1:
+<script type="math/tex">\text{I}(1) = \Delta(x_t) = x_{t} - x_{t-1}</script></p>
+      </li>
+      <li>
+        <p>Sai phân bậc d:
+<script type="math/tex">\text{I}(d) = \Delta^{d}(x_t) = \underbrace{\Delta(\Delta(\dots \Delta(x_t)))}_{\text{d times}}</script></p>
+      </li>
     </ul>
   </li>
 </ul>
@@ -616,11 +642,15 @@ plt.ylabel('frequency')
 <ul>
   <li>Biểu đồ Quantile-Quantile plot:
 Là một trong những phương pháp kiểm định non-parametric trong thống kê để kiểm định một đại lượng có tuân theo một phân phối nào đó dựa trên so sánh các hình dạng của 2 phân phối xác suất thực nghiệm (emperical) và lý thuyết (theoretical). 
-Ví dụ: Ta giả định rằng $r_t$ là một chuỗi phân phối chuẩn. Chuỗi $r_t$ khi đó được gọi là chuỗi thực nghiệm. Từ các tham số của chuỗi như trung bình $\mu$ và phương sai $\sigma^2$ ta sẽ xác định được một phân phối chuẩn $N(\mu, \sigma^2)$, đây chính là phân phối xác suất lý thuyết. Đầu tiên chuỗi $r_t$ sẽ được sắp xếp theo thứ tự tăng dần. Sau đó ứng với mỗi một điểm dữ liệu ta sẽ xác định xem nó thuộc khoảng ngũ phân vị nào của phân phối xác suất lý thuyết. Gía trị điểm phân chia xác suất của các khoảng ngũ phân vị lần lượt là $[0.2, 0.4, 0.6, 0.8]$. Như vậy nếu một điểm dữ liệu $r_i$ thỏa mãn: <script type="math/tex">% <![CDATA[
-P(r_t < r_i| r_t \sim N(\mu, \sigma^2)) = 0.25 %]]></script> thì nó sẽ nằm trong khoảng ngũ phân vị thứ 2. Biểu đồ qqplot sẽ biểu diễn các điểm có tọa độ $(x, y)$ sao cho giá trị $x$ chính là khoảng ngũ phân vị theo phân phối chuẩn và giá trị $y$ chính là giá trị thực nghiệm.
-Từ biểu đồ ta kết luận 2 chuỗi có phân phối tương tự nhau nếu như các điểm trên đồ thì nằm trên một đường thẳng. Khi đó $r_t$ có thể được coi như là một phân phối chuẩn. Cách kiểm định phân phối chuẩn dựa trên biểu đồ qqplot được sử dụng khá phổ biến nhưng nó có một nhược điểm là không cung cấp một tiêu chuẩn xác định của việc chấp nhận/bác bỏ giả thuyết.
-Để vẽ biểu đồ qqplot ta có thể làm theo 2 cách khác nhau.</li>
+Ví dụ: Ta giả định rằng $r_t$ là một chuỗi phân phối chuẩn. Chuỗi $r_t$ khi đó được gọi là chuỗi thực nghiệm. Từ các tham số của chuỗi như trung bình $\mu$ và phương sai $\sigma^2$ ta sẽ xác định được một phân phối chuẩn $N(\mu, \sigma^2)$, đây chính là phân phối xác suất lý thuyết. Đầu tiên chuỗi $r_t$ sẽ được sắp xếp theo thứ tự tăng dần. Sau đó ứng với mỗi một điểm dữ liệu ta sẽ xác định xem nó thuộc khoảng ngũ phân vị nào của phân phối xác suất lý thuyết. Gía trị điểm phân chia xác suất của các khoảng ngũ phân vị lần lượt là $[0.2, 0.4, 0.6, 0.8]$. Như vậy nếu một điểm dữ liệu $r_i$ thỏa mãn:</li>
 </ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+P(r_t < r_i| r_t \sim N(\mu, \sigma^2)) = 0.25 %]]></script>
+
+<p>thì nó sẽ nằm trong khoảng ngũ phân vị thứ 2. Biểu đồ qqplot sẽ biểu diễn các điểm có tọa độ $(x, y)$ sao cho giá trị $x$ chính là khoảng ngũ phân vị theo phân phối chuẩn và giá trị $y$ chính là giá trị thực nghiệm.
+Từ biểu đồ ta kết luận 2 chuỗi có phân phối tương tự nhau nếu như các điểm trên đồ thì nằm trên một đường thẳng. Khi đó $r_t$ có thể được coi như là một phân phối chuẩn. Cách kiểm định phân phối chuẩn dựa trên biểu đồ qqplot được sử dụng khá phổ biến nhưng nó có một nhược điểm là không cung cấp một tiêu chuẩn xác định của việc chấp nhận/bác bỏ giả thuyết.
+Để vẽ biểu đồ qqplot ta có thể làm theo 2 cách khác nhau.</p>
 
 <p>Cách 1: Sử dụng trực tiếp hàm <code class="highlighter-rouge">sm.qqplot()</code>.</p>
 
@@ -653,8 +683,22 @@ plt.show()
 
 <p>Một trong những điều kiện tiền đề khi hồi qui các mô hình chuỗi thời gian đó là chuỗi phải dừng. Để kiểm định tính dừng chúng ta có thể sử dụng kiểm định Argument Dickey Fuller hay còn gọi là kiểm định nghiệm đơn vị.
 Giả sử ta có một quá trình tự hồi qui $\text{AR}(1)$ đối với chuỗi $y_t$ được xác định như sau:
-<script type="math/tex">y_t = \phi y_{t-1} + \epsilon_t</script>
-Với $\epsilon_t \sim WN(0, \sigma^2)$ là một chuỗi sai số phân phối nhiễu trắng.
+<script type="math/tex">y_t = \alpha + \phi y_{t-1} + \epsilon_t</script></p>
+
+<p>Phương trình trên tương ứng với trường hợp chuỗi $y_t$ có hệ số chặn và có xu hướng (tổng quát nhất).</p>
+
+<ul>
+  <li>
+    <p>Trường hợp chuỗi không có hệ số chặn và có xu hướng:
+<script type="math/tex">y_t = \phi y_{t-1} + \epsilon_t</script></p>
+  </li>
+  <li>
+    <p>Trường hợp chuỗi có hệ số chặn và không có xu hướng:
+<script type="math/tex">y_t = \alpha + \epsilon_t</script></p>
+  </li>
+</ul>
+
+<p>Với $\epsilon_t \sim WN(0, \sigma^2)$ là một chuỗi sai số phân phối nhiễu trắng.
 Khi khai triển $y_t$ một cách liên tục theo giá trị trễ ta có:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
@@ -694,7 +738,7 @@ Dấu bằng thứ 2 xảy ra là do $\text{E}(\epsilon_t)=0,\forall t\in N$ M�
     <p>Gỉa thuyết null (null hypothesis), còn được gọi là <code class="highlighter-rouge">giả thuyết không có</code>, kí hiệu là $H_0$. Đây là giả thuyết bị nghi ngờ xảy ra và được sử dụng để kiểm chứng những tính chất liên quan đến mẫu mà chúng ta chưa biết rằng mẫu sở hữu trên thực tế. Lấy ví dụ, một giáo viên nói rằng các học sinh của trường thi đạt học đạt điểm toán trung bình là 7. Tuy nhiên đây mới chỉ là một giả thuyết cần kiểm chứng. Chúng ta có thể kiểm tra bằng cách thu thập 30 mẫu các học sinh của trường và kiểm chứng giả thuyết của cô giáo bằng cách kiểm định xem trung bình điểm thi toán của 30 học sinh trên có bằng 7 hay không?</p>
   </li>
   <li>
-    <p>Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H1$. Là <code class="highlighter-rouge">giả thuyết thay thế</code> hoặc <code class="highlighter-rouge">giả thuyết đối</code> có ý nghĩa trái ngược với khẳng định ở giả thuyết null.</p>
+    <p>Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H_1$. Là <code class="highlighter-rouge">giả thuyết thay thế</code> hoặc <code class="highlighter-rouge">giả thuyết đối</code> có ý nghĩa trái ngược với khẳng định ở giả thuyết null.</p>
   </li>
 </ul>
 
@@ -703,8 +747,8 @@ Dấu bằng thứ 2 xảy ra là do $\text{E}(\epsilon_t)=0,\forall t\in N$ M�
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{equation} 
 \begin{cases} 
-H_0: \phi = 1, \Rightarrow \text{unit root} \\
-H1: |\phi| < 1, \Rightarrow \text{non-unit root} 
+H_0: \phi = 1, \Rightarrow \text{unit root, non-stationary} \\
+H_1: |\phi| < 1, \Rightarrow \text{non-unit root, stationary} 
 \end{cases} 
 \end{equation} %]]></script>
 

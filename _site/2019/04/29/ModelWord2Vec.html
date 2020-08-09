@@ -278,11 +278,11 @@ Giả sử chúng ta có từ điển là tợp hợp gồm $n$ từ vựng <cod
 <span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Class of words: '</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
-<span class="c1"># Biến đổi sang dạng số
-</span><span class="n">x</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="c"># Biến đổi sang dạng số</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Convert to number: '</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="c1"># Biến đổi lại sang class
-</span><span class="k">print</span><span class="p">(</span><span class="s">'Invert into classes: '</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="c"># Biến đổi lại sang class</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Invert into classes: '</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -317,8 +317,8 @@ Invert into classes:  ['anh' 'em' 'gia đình' 'bạn bè' 'anh' 'em']
 <span class="k">print</span><span class="p">(</span><span class="s">'Classes_indices: '</span><span class="p">,</span> <span class="n">classes_indices</span><span class="p">)</span>
 <span class="n">oh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">classes_indices</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'One-hot categories and indices:'</span><span class="p">,</span> <span class="n">oh</span><span class="o">.</span><span class="n">categories_</span><span class="p">)</span>
-<span class="c1"># Biến đổi list words sang dạng one-hot
-</span><span class="n">words_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="c"># Biến đổi list words sang dạng one-hot</span>
+<span class="n">words_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Words and corresponding indices: '</span><span class="p">,</span> <span class="n">words_indices</span><span class="p">)</span>
 <span class="n">one_hot</span> <span class="o">=</span> <span class="n">oh</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">words_indices</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Transform words into one-hot matrices: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">one_hot</span><span class="p">)</span>
@@ -421,8 +421,8 @@ Inverse transform to categories from one-hot matrices:
 
 <span class="n">sentence</span> <span class="o">=</span> <span class="s">'Khoa học dữ liệu là một lĩnh vực đòi hỏi kiến thức về toán và lập trình. Tôi rất yêu thích Khoa học dữ liệu.'</span>
 <span class="n">token</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
-<span class="c1"># Tokenize câu search
-</span><span class="k">print</span><span class="p">(</span><span class="s">'tokenization of sentences: '</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+<span class="c"># Tokenize câu search</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'tokenization of sentences: '</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -438,8 +438,8 @@ Inverse transform to categories from one-hot matrices:
 7
 8
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span>
-<span class="c1"># Tạo ma trận coherence dưới dạng sparse thông qua khai báo vị trí khác 0 của trục x và y
-</span><span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="c"># Tạo ma trận coherence dưới dạng sparse thông qua khai báo vị trí khác 0 của trục x và y</span>
+<span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
 <span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span>      <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
@@ -484,8 +484,8 @@ Inverse transform to categories from one-hot matrices:
 3
 4
 5
-</pre></td><td class="rouge-code"><pre><span class="c1"># Thực hiện phân tích suy biến:
-</span><span class="n">U</span><span class="p">,</span> <span class="n">S_diag</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Thực hiện phân tích suy biến:</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S_diag</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of U: '</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Length of diagonal: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">S_diag</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Shape of V: '</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -727,12 +727,12 @@ Embedding_matrix:
 <span class="k">def</span> <span class="nf">cosine</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">cos_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">cos_sim</span>
-<span class="c1"># Véc tơ biểu diễn từ khoa học
-</span><span class="n">e0</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="c1"># Véc tơ biểu diễn từ dữ liệu
-</span><span class="n">e1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="c1"># Quan hệ tương quan ngữ nghĩa giữa từ khoa học và dữ liệu
-</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
+<span class="c"># Véc tơ biểu diễn từ khoa học</span>
+<span class="n">e0</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="c"># Véc tơ biểu diễn từ dữ liệu</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c"># Quan hệ tương quan ngữ nghĩa giữa từ khoa học và dữ liệu</span>
+<span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -745,8 +745,8 @@ Embedding_matrix:
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Từ có khoảng cách lớn nhất với từ khoa học theo thứ tự
-</span><span class="n">cosines</span> <span class="o">=</span> <span class="p">[</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Từ có khoảng cách lớn nhất với từ khoa học theo thứ tự</span>
+<span class="n">cosines</span> <span class="o">=</span> <span class="p">[</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'cosines: '</span><span class="p">,</span> <span class="n">cosines</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">([</span><span class="n">cosine</span><span class="p">(</span><span class="n">e0</span><span class="p">,</span> <span class="n">embedding_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -918,8 +918,8 @@ Giả sử chúng ta có một câu văn như sau: <code class="highlighter-roug
 <span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">norm_bible</span><span class="p">)</span>
 <span class="n">word2id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span>
 
-<span class="c1"># build vocabulary of unique words
-</span><span class="n">word2id</span><span class="p">[</span><span class="s">'PAD'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c"># build vocabulary of unique words</span>
+<span class="n">word2id</span><span class="p">[</span><span class="s">'PAD'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">id2word</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">word2id</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2id</span><span class="p">)</span>
 
@@ -1002,31 +1002,31 @@ Vocabulary Sample: [('the', 1), ('and', 2), ('of', 3), ('to', 4), ('that', 5), (
     <span class="n">context_length</span> <span class="o">=</span> <span class="n">window_size</span><span class="o">*</span><span class="mi">2</span>
     <span class="k">for</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
         <span class="n">sentence_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-        <span class="c1"># print('words: ', words)
-</span>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+        <span class="c"># print('words: ', words)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
             <span class="n">context_words</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">label_word</span>   <span class="o">=</span> <span class="p">[]</span> 
-            <span class="c1"># Start index of context
-</span>            <span class="n">start</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="n">window_size</span>
-            <span class="c1"># End index of context
-</span>            <span class="n">end</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="c1"># List of context_words
-</span>            <span class="n">context_words</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sentence_length</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">index</span><span class="p">])</span>
-            <span class="c1"># List of label_word (also is target word).
-</span>            <span class="c1"># print('context words {}: {}'.format(context_words, index))
-</span>            <span class="n">label_word</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-            <span class="c1"># Padding the input 0 in the left in case it does not satisfy number of context_words = 2*window_size.
-</span>            <span class="n">x</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">context_words</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">context_length</span><span class="p">)</span>
-            <span class="c1"># print('context words padded: ', x)
-</span>            <span class="c1"># Convert label_word into one-hot vector corresponding with its index
-</span>            <span class="n">y</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">label_word</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+            <span class="c"># Start index of context</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="n">window_size</span>
+            <span class="c"># End index of context</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c"># List of context_words</span>
+            <span class="n">context_words</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sentence_length</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">index</span><span class="p">])</span>
+            <span class="c"># List of label_word (also is target word).</span>
+            <span class="c"># print('context words {}: {}'.format(context_words, index))</span>
+            <span class="n">label_word</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="c"># Padding the input 0 in the left in case it does not satisfy number of context_words = 2*window_size.</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">context_words</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="n">context_length</span><span class="p">)</span>
+            <span class="c"># print('context words padded: ', x)</span>
+            <span class="c"># Convert label_word into one-hot vector corresponding with its index</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">label_word</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
             <span class="k">yield</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             
             
-<span class="c1"># Test this out for some samples
-</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">window_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># context window size
-</span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">generate_context_word_pairs</span><span class="p">(</span><span class="n">corpus</span><span class="o">=</span><span class="n">wids</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">):</span>
+<span class="c"># Test this out for some samples</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="c"># context window size</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">generate_context_word_pairs</span><span class="p">(</span><span class="n">corpus</span><span class="o">=</span><span class="n">wids</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">):</span>
     <span class="k">if</span> <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Context (X):'</span><span class="p">,</span> <span class="p">[</span><span class="n">id2word</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="s">'-&gt; Target (Y):'</span><span class="p">,</span> <span class="n">id2word</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
     
@@ -1085,15 +1085,15 @@ Context (X): ['the', 'beginning', 'created', 'the'] -&gt; Target (Y): god
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Lambda</span>
 <span class="n">embed_size</span> <span class="o">=</span> <span class="mi">100</span>
 
-<span class="c1"># build CBOW architecture
-</span><span class="n">cbow</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="c"># build CBOW architecture</span>
+<span class="n">cbow</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">embed_size</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="n">window_size</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,)))</span>
 <span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
 <span class="n">cbow</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">'categorical_crossentropy'</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s">'rmsprop'</span><span class="p">)</span>
 
-<span class="c1"># view model summary
-</span><span class="k">print</span><span class="p">(</span><span class="n">cbow</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="c"># view model summary</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cbow</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1160,7 +1160,7 @@ Chúng ta sẽ huấn luyện mô hình dựa trên 100 câu văn đầu tiên v
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">loss</span> <span class="o">+=</span> <span class="n">cbow</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">'Processed {} (context, word) pairs'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Processed {} (context, word) pairs'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
     <span class="k">print</span><span class="p">(</span><span class="s">'Epoch:'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s">'</span><span class="se">\t</span><span class="s">Loss:'</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -1420,12 +1420,12 @@ Epoch: 5 	Loss: 16937.563758765813
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1"># visualize model structure
-</span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># visualize model structure</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
 <span class="kn">from</span> <span class="nn">keras.utils.vis_utils</span> <span class="kn">import</span> <span class="n">model_to_dot</span>
 
 <span class="n">SVG</span><span class="p">(</span><span class="n">model_to_dot</span><span class="p">(</span><span class="n">cbow</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_layer_names</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
-                 <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
+                 <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190429_word2vec/output_32_0.svg" width="300px" height="300px" style="display:block; margin-left:auto; margin-right:auto" /></p>
@@ -1448,13 +1448,13 @@ Epoch: 5 	Loss: 16937.563758765813
 12
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">skipgrams</span>
 
-<span class="c1"># generate skip-grams
-</span><span class="n">skip_grams</span> <span class="o">=</span> <span class="p">[</span><span class="n">skipgrams</span><span class="p">(</span><span class="n">wid</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span> <span class="k">for</span> <span class="n">wid</span> <span class="ow">in</span> <span class="n">wids</span><span class="p">[:</span><span class="mi">100</span><span class="p">]]</span>
+<span class="c"># generate skip-grams</span>
+<span class="n">skip_grams</span> <span class="o">=</span> <span class="p">[</span><span class="n">skipgrams</span><span class="p">(</span><span class="n">wid</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span> <span class="k">for</span> <span class="n">wid</span> <span class="ow">in</span> <span class="n">wids</span><span class="p">[:</span><span class="mi">100</span><span class="p">]]</span>
 
-<span class="c1"># view sample skip-grams
-</span><span class="n">pairs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">skip_grams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_grams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="c"># view sample skip-grams</span>
+<span class="n">pairs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">skip_grams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_grams</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"({:s} ({:d}), {:s} ({:d})) -&gt; {:d}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"({:s} ({:d}), {:s} ({:d})) -&gt; {:d}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
           <span class="n">id2word</span><span class="p">[</span><span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> 
           <span class="n">id2word</span><span class="p">[</span><span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> 
           <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
@@ -1515,13 +1515,13 @@ Epoch: 5 	Loss: 16937.563758765813
 29
 30
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">concatenate</span>
-<span class="c1"># from keras.engine.input_layer import Input
-</span><span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Reshape</span>
+<span class="c"># from keras.engine.input_layer import Input</span>
+<span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Reshape</span>
 <span class="kn">from</span> <span class="nn">keras.layers.embeddings</span> <span class="kn">import</span> <span class="n">Embedding</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Input</span>
 
-<span class="c1"># build skip-gram architecture
-</span><span class="n">word_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+<span class="c"># build skip-gram architecture</span>
+<span class="n">word_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
 <span class="n">word_embed</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span>
                          <span class="n">embeddings_initializer</span><span class="o">=</span><span class="s">"glorot_uniform"</span><span class="p">,</span>
                          <span class="n">input_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'word_embedding'</span><span class="p">)(</span><span class="n">word_input</span><span class="p">)</span>
@@ -1542,8 +1542,8 @@ Epoch: 5 	Loss: 16937.563758765813
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">word_input</span><span class="p">,</span> <span class="n">context_input</span><span class="p">],</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">dense</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">"mean_squared_error"</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s">"rmsprop"</span><span class="p">)</span>
 
-<span class="c1"># view model summary
-</span><span class="k">print</span><span class="p">(</span><span class="s">'model merge word and context: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="c"># view model summary</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'model merge word and context: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1666,12 +1666,12 @@ Epoch: 5 	Loss: 16937.563758765813
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1"># visualize model structure
-</span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># visualize model structure</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
 <span class="kn">from</span> <span class="nn">keras.utils.vis_utils</span> <span class="kn">import</span> <span class="n">model_to_dot</span>
 
 <span class="n">SVG</span><span class="p">(</span><span class="n">model_to_dot</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">show_shapes</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">show_layer_names</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
-                 <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
+                 <span class="n">rankdir</span><span class="o">=</span><span class="s">'TB'</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s">'dot'</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">'svg'</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="/assets/images/20190429_word2vec/output_37_0.svg" width="600px" height="600px" style="display:block; margin-left:auto; margin-right:auto" /></p>
@@ -1703,7 +1703,7 @@ Epoch: 5 	Loss: 16937.563758765813
         <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair_first_elem</span><span class="p">,</span> <span class="n">pair_second_elem</span><span class="p">]</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">labels</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">'Processed {} (skip_first, skip_second, relevance) pairs'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Processed {} (skip_first, skip_second, relevance) pairs'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="n">loss</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>  
 
     <span class="k">print</span><span class="p">(</span><span class="s">'Epoch:'</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s">'Loss:'</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
@@ -2021,8 +2021,8 @@ Epoch: 5 Loss: 12.227664299309254
 4
 5
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
-<span class="c1"># Training model với 1000 câu đầu tiên trong kinh thánh
-</span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">norm_bible</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]]</span>
+<span class="c"># Training model với 1000 câu đầu tiên trong kinh thánh</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">norm_bible</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]]</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">total_examples</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">corpus_count</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -2043,8 +2043,8 @@ Epoch: 5 Loss: 12.227664299309254
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Lấy véc tơ biểu diễn của từ king
-</span><span class="k">print</span><span class="p">(</span><span class="s">'embedding vector shape: '</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Lấy véc tơ biểu diễn của từ king</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'embedding vector shape: '</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -2118,8 +2118,8 @@ array([-0.00468112,  0.16854957,  0.01438654, -0.05265754,  0.14835362,
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># Lấy các từ có mối liên hệ gần nhất với 1 từ dựa trên khoảng cách
-</span><span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s">'king'</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Lấy các từ có mối liên hệ gần nhất với 1 từ dựa trên khoảng cách</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s">'king'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2

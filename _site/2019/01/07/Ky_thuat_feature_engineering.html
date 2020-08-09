@@ -320,22 +320,22 @@ Kĩ thuật trích lọc đặc trưng thông thường được áp dụng trê
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="c1"># Giả sử một texts có 3 câu văn là các phần tử trong list như bên dưới
-</span><span class="n">texts</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'i'</span><span class="p">,</span> <span class="s">'have'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">],</span> 
+<span class="c"># Giả sử một texts có 3 câu văn là các phần tử trong list như bên dưới</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'i'</span><span class="p">,</span> <span class="s">'have'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">],</span> 
         <span class="p">[</span><span class="s">'he'</span><span class="p">,</span> <span class="s">'have'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">],</span> 
         <span class="p">[</span><span class="s">'he'</span><span class="p">,</span> <span class="s">'and'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'have'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">,</span> <span class="s">'and'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">]]</span>
 
 <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">texts</span><span class="p">))))</span>
-<span class="c1"># Dictionary sẽ chứa toàn bộ các từ của texts.
-</span>
+<span class="c"># Dictionary sẽ chứa toàn bộ các từ của texts.</span>
+
 <span class="k">def</span> <span class="nf">bag_of_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
-    <span class="c1"># Khởi tạo một vector có độ dài bằng với từ điển.
-</span>    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">))</span>
-    <span class="c1"># Đếm các từ trong một câu xuất hiện trong từ điển.
-</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+    <span class="c"># Khởi tạo một vector có độ dài bằng với từ điển.</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">))</span>
+    <span class="c"># Đếm các từ trong một câu xuất hiện trong từ điển.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="c1"># Đếm số từ xuất hiện trong một câu.
-</span>        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+        <span class="c"># Đếm số từ xuất hiện trong một câu.</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="n">word</span><span class="p">:</span>
                 <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
@@ -485,15 +485,15 @@ X shape:  (5, 45)
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Cài đặt package pytesseract
-</span><span class="kn">import</span> <span class="nn">sys</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Cài đặt package pytesseract</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pytesseract</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># Cài đặt terract
-</span><span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">tesseract</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Cài đặt terract</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">tesseract</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -527,20 +527,20 @@ X shape:  (5, 45)
 
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="c1">##### Just a random picture from search
-</span><span class="n">img</span> <span class="o">=</span> <span class="s">'http://ohscurrent.org/wp-content/uploads/2015/09/domus-01-google.jpg'</span>
+<span class="c">##### Just a random picture from search</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s">'http://ohscurrent.org/wp-content/uploads/2015/09/domus-01-google.jpg'</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
 
-<span class="c1"># show image
-</span><span class="n">img_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="c"># show image</span>
+<span class="n">img_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_arr</span><span class="p">)</span>
 
-<span class="c1"># img = Image.open(BytesIO(img.content))
-# text = image_to_string(img)
-# text
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="c"># img = Image.open(BytesIO(img.content))</span>
+<span class="c"># text = image_to_string(img)</span>
+<span class="c"># text</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Đọc một hình ảnh thiết kế căn hộ thông qua link.</p>
 
@@ -562,8 +562,8 @@ X shape:  (5, 45)
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1"># install package reverse_geocoder
-</span><span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">reverse_geocoder</span>
+<span class="c"># install package reverse_geocoder</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">reverse_geocoder</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -592,18 +592,18 @@ X shape:  (5, 45)
 10
 11
 12
-</pre></td><td class="rouge-code"><pre><span class="c1"># dataset['created'].apply(lambda x: x.date().weekday())
-</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># dataset['created'].apply(lambda x: x.date().weekday())</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="k">def</span> <span class="nf">parser</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># Để biết được định dạng strftime của một chuỗi kí tự ta phải tra trong bàng string format time
-</span>    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
+    <span class="c"># Để biết được định dạng strftime của một chuỗi kí tự ta phải tra trong bàng string format time</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
 
 
 <span class="n">dataset</span><span class="p">[</span><span class="s">'created'</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">'created'</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">parser</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="c1">#Kiểm tra định dạng time
-</span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dtypes</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'{}: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+<span class="c">#Kiểm tra định dạng time</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dtypes</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'{}: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Như vậy biến created đã được chuyển về dạng datetime. Chúng ta có thể tạo ra một one-hot coding dựa vào hàm weekday().</p>
@@ -639,8 +639,8 @@ X shape:  (5, 45)
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># Download package user_agents
-</span><span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">user_agents</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Download package user_agents</span>
+<span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">user_agents</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -657,12 +657,12 @@ X shape:  (5, 45)
 12
 13
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">user_agents</span>
-<span class="c1"># Giả định có một user agent như bên dưới
-</span><span class="n">ua</span> <span class="o">=</span> <span class="s">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36'</span>
-<span class="c1"># Parser thông tin user agent
-</span><span class="n">ua</span> <span class="o">=</span> <span class="n">user_agents</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">ua</span><span class="p">)</span>
-<span class="c1"># Khai thác các thuộc tính của user
-</span><span class="k">print</span><span class="p">(</span><span class="s">'Is a bot? '</span><span class="p">,</span> <span class="n">ua</span><span class="o">.</span><span class="n">is_bot</span><span class="p">)</span>
+<span class="c"># Giả định có một user agent như bên dưới</span>
+<span class="n">ua</span> <span class="o">=</span> <span class="s">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/56.0.2924.76 Chrome/56.0.2924.76 Safari/537.36'</span>
+<span class="c"># Parser thông tin user agent</span>
+<span class="n">ua</span> <span class="o">=</span> <span class="n">user_agents</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">ua</span><span class="p">)</span>
+<span class="c"># Khai thác các thuộc tính của user</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Is a bot? '</span><span class="p">,</span> <span class="n">ua</span><span class="o">.</span><span class="n">is_bot</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Is mobile? '</span><span class="p">,</span> <span class="n">ua</span><span class="o">.</span><span class="n">is_mobile</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Is PC? '</span><span class="p">,</span><span class="n">ua</span><span class="o">.</span><span class="n">is_pc</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'OS Family: '</span><span class="p">,</span><span class="n">ua</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">family</span><span class="p">)</span>
@@ -725,22 +725,22 @@ X shape:  (5, 45)
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="n">sm</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="c1"># Tạo ra một chuỗi phân phối beta
-</span><span class="n">data</span> <span class="o">=</span> <span class="n">beta</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c"># Tạo ra một chuỗi phân phối beta</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">beta</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'data shape:</span><span class="si">%</span><span class="s">s'</span><span class="o">%</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-<span class="c1"># Sử dụng kiểm định shapiro để kiểm tra tính phân phối chuẩn.
-</span><span class="n">shapiro</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c"># Sử dụng kiểm định shapiro để kiểm tra tính phân phối chuẩn.</span>
+<span class="n">shapiro</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Giá trị tới hạn và p-value
-</span><span class="n">shapiro</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Giá trị tới hạn và p-value</span>
+<span class="n">shapiro</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
-<span class="c1"># Giá trị tới hạn &gt; p-value chúng ta sẽ bác bỏ giả thuyết về phân phối chuẩn.
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="c"># Giá trị tới hạn &gt; p-value chúng ta sẽ bác bỏ giả thuyết về phân phối chuẩn.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Scale theo phân phối chuẩn đối với biến prices trong bộ dữ liệu dataset.</p>
 
@@ -749,8 +749,8 @@ X shape:  (5, 45)
 3
 4
 5
-</pre></td><td class="rouge-code"><pre><span class="c1"># biến đổi dữ liệu theo phân phối chuẩn:
-</span><span class="n">price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># biến đổi dữ liệu theo phân phối chuẩn:</span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Head 5 of original prices:'</span><span class="p">,</span> <span class="n">price</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 <span class="n">price_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">price</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Head 5 of standard scaling prices:</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">price_std</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -759,8 +759,8 @@ X shape:  (5, 45)
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Biến đổi trên tương đương với công thức sau:
-</span><span class="n">price_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">price</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">price</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Biến đổi trên tương đương với công thức sau:</span>
+<span class="n">price_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">price</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">price</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Head 5 of standard scaling prices:</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">price_std</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -779,8 +779,8 @@ X shape:  (5, 45)
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="c1"># Hoặc đơn giản hơn là
-</span><span class="n">price_mm</span> <span class="o">=</span> <span class="p">(</span><span class="n">price</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">price</span><span class="o">.</span><span class="nb">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Hoặc đơn giản hơn là</span>
+<span class="n">price_mm</span> <span class="o">=</span> <span class="p">(</span><span class="n">price</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">price</span><span class="o">.</span><span class="nb">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">price</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Head of min max scaling price:</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">price_mm</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -790,10 +790,10 @@ X shape:  (5, 45)
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Tạo biến log price
-</span><span class="n">price_log</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
-<span class="c1"># Kiểm tra tính phân phối của các biến price, price_std, price_mm, price_log dựa trên biểu đồ Q-Q plot
-</span><span class="n">sm</span><span class="o">.</span><span class="n">qqplot</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Tạo biến log price</span>
+<span class="n">price_log</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="c"># Kiểm tra tính phân phối của các biến price, price_std, price_mm, price_log dựa trên biểu đồ Q-Q plot</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">qqplot</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -846,8 +846,8 @@ X shape:  (5, 45)
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">VarianceThreshold</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
 
-<span class="c1"># Lấy dữ liệu example từ package sklearn
-</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">()</span>
+<span class="c"># Lấy dữ liệu example từ package sklearn</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'X: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'y: </span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -858,7 +858,7 @@ X shape:  (5, 45)
 <p>Nếu coi 0.5 là ngưỡng threshold của phương sai.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">VarianceThreshold</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></td><td class="rouge-code"><pre><span class="n">VarianceThreshold</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Tập dữ liệu vẫn còn nguyên các biến do toàn bộ các phương sai đều &gt; 0.5. Nếu ta nâng ngưỡng này lên 0.9.</p>
@@ -903,16 +903,16 @@ X shape:  (5, 45)
 12
 13
 14
-</pre></td><td class="rouge-code"><pre><span class="c1"># Hồi qui logistic
-</span><span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s">'lbfgs'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Hồi qui logistic</span>
+<span class="n">logit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s">'lbfgs'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Cross validation cho:
-# 1.dữ liệu gốc
-</span><span class="n">acc_org</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1"># 2. Áp dụng phương sai
-</span><span class="n">acc_var</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X_kvar</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1"># 3. Áp dụng phương pháp thống kê
-</span><span class="n">acc_stat</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X_kbest</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># Cross validation cho:</span>
+<span class="c"># 1.dữ liệu gốc</span>
+<span class="n">acc_org</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># 2. Áp dụng phương sai</span>
+<span class="n">acc_var</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X_kvar</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># 3. Áp dụng phương pháp thống kê</span>
+<span class="n">acc_stat</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X_kbest</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Accuracy trên dữ liệu gốc:'</span><span class="p">,</span> <span class="n">acc_org</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Accuracy áp dụng phướng sai:'</span><span class="p">,</span> <span class="n">acc_var</span><span class="p">)</span>
@@ -959,23 +959,23 @@ X shape:  (5, 45)
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
 
-<span class="c1"># Hồi qui theo RandomForest
-</span><span class="n">rdFrt</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># Hồi qui theo LinearSVC
-</span><span class="n">lnSVC</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">"l1"</span><span class="p">,</span> <span class="n">dual</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="c1"># Tạo một pipeline thực hiện lựa chọn biến từ RandomForest model và hồi qui theo logit
-</span><span class="n">pipe1</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">rdFrt</span><span class="p">),</span> <span class="n">logit</span><span class="p">)</span>
-<span class="c1"># Tạo một pipeline thực hiện lựa chọn biến từ Linear SVC model và hồi qui theo logit
-</span><span class="n">pipe2</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">lnSVC</span><span class="p">),</span> <span class="n">logit</span><span class="p">)</span>
-<span class="c1"># Cross validate đối với 
-# 1. Mô hình logit
-</span><span class="n">acc_log</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1"># 2. Mô hình RandomForest
-</span><span class="n">acc_rdf</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rdFrt</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1"># 3. Mô hình pipe1
-</span><span class="n">acc_pip1</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe1</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1"># 3. Mô hình pipe2
-</span><span class="n">acc_pip2</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe2</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># Hồi qui theo RandomForest</span>
+<span class="n">rdFrt</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c"># Hồi qui theo LinearSVC</span>
+<span class="n">lnSVC</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">"l1"</span><span class="p">,</span> <span class="n">dual</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c"># Tạo một pipeline thực hiện lựa chọn biến từ RandomForest model và hồi qui theo logit</span>
+<span class="n">pipe1</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">rdFrt</span><span class="p">),</span> <span class="n">logit</span><span class="p">)</span>
+<span class="c"># Tạo một pipeline thực hiện lựa chọn biến từ Linear SVC model và hồi qui theo logit</span>
+<span class="n">pipe2</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">lnSVC</span><span class="p">),</span> <span class="n">logit</span><span class="p">)</span>
+<span class="c"># Cross validate đối với </span>
+<span class="c"># 1. Mô hình logit</span>
+<span class="n">acc_log</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># 2. Mô hình RandomForest</span>
+<span class="n">acc_rdf</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rdFrt</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># 3. Mô hình pipe1</span>
+<span class="n">acc_pip1</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe1</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c"># 3. Mô hình pipe2</span>
+<span class="n">acc_pip2</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe2</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s">'accuracy'</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Accuracy theo logit:'</span><span class="p">,</span> <span class="n">acc_log</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Accuracy theo random forest:'</span><span class="p">,</span> <span class="n">acc_rdf</span><span class="p">)</span>

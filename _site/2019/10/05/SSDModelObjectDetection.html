@@ -1692,10 +1692,10 @@ normalize_coords = True
 30
 31
 32
-</pre></td><td class="rouge-code"><pre><span class="c1"># 1: Build Keras model.
-</span>
-<span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span> <span class="c1"># xóa các object tại session cũ.
-</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># 1: Build Keras model.</span>
+
+<span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span> <span class="c"># xóa các object tại session cũ.</span>
+
 <span class="n">model</span> <span class="o">=</span> <span class="n">ssd_300</span><span class="p">(</span><span class="n">image_size</span><span class="o">=</span><span class="p">(</span><span class="n">img_height</span><span class="p">,</span> <span class="n">img_width</span><span class="p">,</span> <span class="n">img_channels</span><span class="p">),</span>
                 <span class="n">n_classes</span><span class="o">=</span><span class="n">n_classes</span><span class="p">,</span>
                 <span class="n">mode</span><span class="o">=</span><span class="s">'training'</span><span class="p">,</span>
@@ -1711,14 +1711,14 @@ normalize_coords = True
                 <span class="n">subtract_mean</span><span class="o">=</span><span class="n">mean_color</span><span class="p">,</span>
                 <span class="n">swap_channels</span><span class="o">=</span><span class="n">swap_channels</span><span class="p">)</span>
 
-<span class="c1"># 2: Chúng ta có thể load trọng số của mô hình pretrain.
-</span>
+<span class="c"># 2: Chúng ta có thể load trọng số của mô hình pretrain.</span>
+
 <span class="n">weights_path</span> <span class="o">=</span> <span class="s">'pretrain_model/VGG_ILSVRC_16_layers_fc_reduced.h5'</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="n">weights_path</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="c1"># 3: Khởi tạo optimizer và compile vào model.
-</span>
+<span class="c"># 3: Khởi tạo optimizer và compile vào model.</span>
+
 <span class="n">sgd</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="n">ssd_loss</span> <span class="o">=</span> <span class="n">SSDLoss</span><span class="p">(</span><span class="n">neg_pos_ratio</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>

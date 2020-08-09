@@ -80,8 +80,10 @@ $$\text{MA}(q) = \mu+(1+\theta_1 B + \dots + \theta_q B^{q})\epsilon_{t}$$
 Như vậy bạn đọc đã hình dung ra moving average là gì rồi chứ? Về mặt ý tưởng thì đó chính là quá trình hồi qui tuyến tính của giá trị hiện tại theo các giá trị hiện tại và quá khứ của sai số nhiễu trắng (white noise error term) đại diện cho các yếu tố shock ngẫu nhiên, những sự thay đổi không lường trước và giải thích bởi mô hình.
 
 * **Intergrated**: Là quá trình đồng tích hợp hoặc lấy sai phân. Yêu cầu chung của các thuật toán trong time series là chuỗi phải đảm bảo tính dừng. Hầu hết các chuỗi đều tăng hoặc giảm theo thời gian. Do đó yếu tố tương quan giữa chúng chưa chắc là thực sự mà là do chúng cùng tương quan theo thời gian. Khi biến đổi sang chuỗi dừng, các nhân tố ảnh hưởng thời gian được loại bỏ và chuỗi sẽ dễ dự báo hơn. Để tạo thành chuỗi dừng, một phương pháp đơn giản nhất là chúng ta sẽ lấy sai phân. Một số chuỗi tài chính còn qui đổi sang logarit hoặc lợi suất. Bậc của sai phân để tạo thành chuỗi dừng còn gọi là bậc của quá trình đồng tích hợp (order of intergration). Qúa trình sai phân bậc $d$ của chuỗi được thực hiện như sau:
+
   * Sai phân bậc 1:
 $$\text{I}(1) = \Delta(x_t) = x_{t} - x_{t-1}$$
+
   * Sai phân bậc d:
 $$\text{I}(d) = \Delta^{d}(x_t) = \underbrace{\Delta(\Delta(\dots \Delta(x_t)))}_{\text{d times}}$$  
 
@@ -352,7 +354,11 @@ plt.ylabel('frequency')
 Từ biểu đồ phân phối lợi suất ta nhận thấy chuỗi phân phối lợi suất dường như có dạng phân phối chuẩn và có kì vọng bằng 0. Chúng ta có thể kiểm định phân phối chuẩn thông qua biểu đồ qqplot (quantiles quantiles plot).
 * Biểu đồ Quantile-Quantile plot:
 Là một trong những phương pháp kiểm định non-parametric trong thống kê để kiểm định một đại lượng có tuân theo một phân phối nào đó dựa trên so sánh các hình dạng của 2 phân phối xác suất thực nghiệm (emperical) và lý thuyết (theoretical). 
-Ví dụ: Ta giả định rằng $r_t$ là một chuỗi phân phối chuẩn. Chuỗi $r_t$ khi đó được gọi là chuỗi thực nghiệm. Từ các tham số của chuỗi như trung bình $\mu$ và phương sai $\sigma^2$ ta sẽ xác định được một phân phối chuẩn $N(\mu, \sigma^2)$, đây chính là phân phối xác suất lý thuyết. Đầu tiên chuỗi $r_t$ sẽ được sắp xếp theo thứ tự tăng dần. Sau đó ứng với mỗi một điểm dữ liệu ta sẽ xác định xem nó thuộc khoảng ngũ phân vị nào của phân phối xác suất lý thuyết. Gía trị điểm phân chia xác suất của các khoảng ngũ phân vị lần lượt là $[0.2, 0.4, 0.6, 0.8]$. Như vậy nếu một điểm dữ liệu $r_i$ thỏa mãn: $$P(r_t < r_i| r_t \sim N(\mu, \sigma^2)) = 0.25$$ thì nó sẽ nằm trong khoảng ngũ phân vị thứ 2. Biểu đồ qqplot sẽ biểu diễn các điểm có tọa độ $(x, y)$ sao cho giá trị $x$ chính là khoảng ngũ phân vị theo phân phối chuẩn và giá trị $y$ chính là giá trị thực nghiệm.
+Ví dụ: Ta giả định rằng $r_t$ là một chuỗi phân phối chuẩn. Chuỗi $r_t$ khi đó được gọi là chuỗi thực nghiệm. Từ các tham số của chuỗi như trung bình $\mu$ và phương sai $\sigma^2$ ta sẽ xác định được một phân phối chuẩn $N(\mu, \sigma^2)$, đây chính là phân phối xác suất lý thuyết. Đầu tiên chuỗi $r_t$ sẽ được sắp xếp theo thứ tự tăng dần. Sau đó ứng với mỗi một điểm dữ liệu ta sẽ xác định xem nó thuộc khoảng ngũ phân vị nào của phân phối xác suất lý thuyết. Gía trị điểm phân chia xác suất của các khoảng ngũ phân vị lần lượt là $[0.2, 0.4, 0.6, 0.8]$. Như vậy nếu một điểm dữ liệu $r_i$ thỏa mãn: 
+
+$$P(r_t < r_i| r_t \sim N(\mu, \sigma^2)) = 0.25$$ 
+
+thì nó sẽ nằm trong khoảng ngũ phân vị thứ 2. Biểu đồ qqplot sẽ biểu diễn các điểm có tọa độ $(x, y)$ sao cho giá trị $x$ chính là khoảng ngũ phân vị theo phân phối chuẩn và giá trị $y$ chính là giá trị thực nghiệm.
 Từ biểu đồ ta kết luận 2 chuỗi có phân phối tương tự nhau nếu như các điểm trên đồ thì nằm trên một đường thẳng. Khi đó $r_t$ có thể được coi như là một phân phối chuẩn. Cách kiểm định phân phối chuẩn dựa trên biểu đồ qqplot được sử dụng khá phổ biến nhưng nó có một nhược điểm là không cung cấp một tiêu chuẩn xác định của việc chấp nhận/bác bỏ giả thuyết.
 Để vẽ biểu đồ qqplot ta có thể làm theo 2 cách khác nhau.
 
@@ -382,7 +388,16 @@ Như vậy từ đồ thị ta có thể khẳng định chuỗi lợi suất c�
 
 Một trong những điều kiện tiền đề khi hồi qui các mô hình chuỗi thời gian đó là chuỗi phải dừng. Để kiểm định tính dừng chúng ta có thể sử dụng kiểm định Argument Dickey Fuller hay còn gọi là kiểm định nghiệm đơn vị.
 Giả sử ta có một quá trình tự hồi qui $\text{AR}(1)$ đối với chuỗi $y_t$ được xác định như sau:
+$$y_t = \alpha + \phi y_{t-1} + \epsilon_t$$
+
+Phương trình trên tương ứng với trường hợp chuỗi $y_t$ có hệ số chặn và có xu hướng (tổng quát nhất).
+
+* Trường hợp chuỗi không có hệ số chặn và có xu hướng:
 $$y_t = \phi y_{t-1} + \epsilon_t$$
+
+* Trường hợp chuỗi có hệ số chặn và không có xu hướng:
+$$y_t = \alpha + \epsilon_t$$
+
 Với $\epsilon_t \sim WN(0, \sigma^2)$ là một chuỗi sai số phân phối nhiễu trắng.
 Khi khai triển $y_t$ một cách liên tục theo giá trị trễ ta có:
 
@@ -416,14 +431,14 @@ Nhắc lại lý thuyết về kiểm định. Một kiểm định thống kê 
 
 * Gỉa thuyết null (null hypothesis), còn được gọi là `giả thuyết không có`, kí hiệu là $H_0$. Đây là giả thuyết bị nghi ngờ xảy ra và được sử dụng để kiểm chứng những tính chất liên quan đến mẫu mà chúng ta chưa biết rằng mẫu sở hữu trên thực tế. Lấy ví dụ, một giáo viên nói rằng các học sinh của trường thi đạt học đạt điểm toán trung bình là 7. Tuy nhiên đây mới chỉ là một giả thuyết cần kiểm chứng. Chúng ta có thể kiểm tra bằng cách thu thập 30 mẫu các học sinh của trường và kiểm chứng giả thuyết của cô giáo bằng cách kiểm định xem trung bình điểm thi toán của 30 học sinh trên có bằng 7 hay không?
 
-* Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H1$. Là `giả thuyết thay thế` hoặc `giả thuyết đối` có ý nghĩa trái ngược với khẳng định ở giả thuyết null. 
+* Gỉa thuyết alternative (alternative hypothesis), kí hiệu là $H_1$. Là `giả thuyết thay thế` hoặc `giả thuyết đối` có ý nghĩa trái ngược với khẳng định ở giả thuyết null. 
 
 Để kiếm tra phương trình đặc trưng của chuỗi có nghiệm đơn vị hay không chúng ta sử dụng kiểm định ADF. Giả thuyết null được đặt ra đó là phương trình đặc trưng có nghiệm đơn vị. Trong trường hợp p-value < 0.05 thì ta sẽ loại bỏ giả thuyết null, chấp nhận giả thuyết thay thế. Khi đó ta có thể khẳng định rằng chuỗi không có nghiệm đơn vị và có tính chất dừng.
 
 $$\begin{equation} 
 \begin{cases} 
-H_0: \phi = 1, \Rightarrow \text{unit root} \\
-H1: |\phi| < 1, \Rightarrow \text{non-unit root} 
+H_0: \phi = 1, \Rightarrow \text{unit root, non-stationary} \\
+H_1: |\phi| < 1, \Rightarrow \text{non-unit root, stationary} 
 \end{cases} 
 \end{equation}$$
 

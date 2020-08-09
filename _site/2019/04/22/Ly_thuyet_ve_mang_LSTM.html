@@ -443,16 +443,16 @@ Về mặt lý thuyết mạng RNN có thể giải quyết được những s�
 11
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">string</span>
 <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
-<span class="c1"># string.digits
-# string.punctuation
-</span><span class="n">chars_new</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s">'0'</span><span class="p">,</span> <span class="s">'.'</span><span class="p">,</span> <span class="s">','</span><span class="p">,</span> <span class="s">' '</span><span class="p">,</span> <span class="s">'!'</span><span class="p">,</span> <span class="s">'?'</span><span class="p">,</span> <span class="s">'unk'</span><span class="p">]</span>
+<span class="c"># string.digits</span>
+<span class="c"># string.punctuation</span>
+<span class="n">chars_new</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s">'0'</span><span class="p">,</span> <span class="s">'.'</span><span class="p">,</span> <span class="s">','</span><span class="p">,</span> <span class="s">' '</span><span class="p">,</span> <span class="s">'!'</span><span class="p">,</span> <span class="s">'?'</span><span class="p">,</span> <span class="s">'unk'</span><span class="p">]</span>
 <span class="n">chars_to_int</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chars_new</span><span class="p">))</span>
 <span class="n">int_to_chars</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chars_new</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'character to int:'</span><span class="p">,</span> <span class="n">chars_to_int</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'int to character:'</span><span class="p">,</span> <span class="n">int_to_chars</span><span class="p">)</span>
-<span class="c1"># def _clean_char(text):
-#     return 1
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="c"># def _clean_char(text):</span>
+<span class="c">#     return 1</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -549,15 +549,15 @@ Total Vocab:  33
 11
 12
 13
-</pre></td><td class="rouge-code"><pre><span class="c1"># prepare the dataset of input to output pairs encoded as integers
-</span><span class="n">seq_length</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># prepare the dataset of input to output pairs encoded as integers</span>
+<span class="n">seq_length</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">dataX</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">dataY</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_chars</span> <span class="o">-</span> <span class="n">seq_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="c1"># Lấy ra 100 kí tự liền trước
-</span>    <span class="n">seq_in</span> <span class="o">=</span> <span class="n">raw_text</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">seq_length</span><span class="p">]</span>
-    <span class="c1"># Lấy ra kí tự liền sau 100 kí tự đó
-</span>    <span class="n">seq_out</span> <span class="o">=</span> <span class="n">raw_text</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">seq_length</span><span class="p">]</span>
+    <span class="c"># Lấy ra 100 kí tự liền trước</span>
+    <span class="n">seq_in</span> <span class="o">=</span> <span class="n">raw_text</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">seq_length</span><span class="p">]</span>
+    <span class="c"># Lấy ra kí tự liền sau 100 kí tự đó</span>
+    <span class="n">seq_out</span> <span class="o">=</span> <span class="n">raw_text</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">seq_length</span><span class="p">]</span>
     <span class="n">dataX</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_encode_sen</span><span class="p">(</span><span class="n">seq_in</span><span class="p">))</span>
     <span class="n">dataY</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_encode_sen</span><span class="p">(</span><span class="n">seq_out</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">n_patterns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataX</span><span class="p">)</span>
@@ -590,12 +590,12 @@ Số lượng các chiều theo level kí tự thường ít hơn so với level
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="c1"># reshape X to be [samples, time steps, features]
-</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dataX</span><span class="p">,</span> <span class="p">(</span><span class="n">n_patterns</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c1"># normalize
-</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_vocab</span><span class="p">)</span>
-<span class="c1"># one hot encode the output variable
-</span><span class="n">y_train</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">dataY</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># reshape X to be [samples, time steps, features]</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dataX</span><span class="p">,</span> <span class="p">(</span><span class="n">n_patterns</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c"># normalize</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_vocab</span><span class="p">)</span>
+<span class="c"># one hot encode the output variable</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">dataY</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'X [samples, time steps, features] shape: '</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Y shape: '</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -827,13 +827,13 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 <span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span>
 <span class="kn">from</span> <span class="nn">keras.metrics</span> <span class="kn">import</span> <span class="n">categorical_accuracy</span>
 
-<span class="c1">#import spacy, and spacy english model
-# spacy is used to work on text
-</span><span class="kn">import</span> <span class="nn">spacy</span>
+<span class="c">#import spacy, and spacy english model</span>
+<span class="c"># spacy is used to work on text</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'en'</span><span class="p">)</span>
 
-<span class="c1">#import other libraries
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c">#import other libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -842,13 +842,13 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span>
 
-<span class="c1">#define parameters used in the tutorial
-</span><span class="n">data_dir</span> <span class="o">=</span> <span class="s">'../input'</span><span class="c1"># data directory containing raw texts
-# save_dir = 'save' # directory to store trained NN models
-</span><span class="n">file_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">'../input'</span><span class="p">)</span>
+<span class="c">#define parameters used in the tutorial</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s">'../input'</span><span class="c"># data directory containing raw texts</span>
+<span class="c"># save_dir = 'save' # directory to store trained NN models</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">'../input'</span><span class="p">)</span>
 <span class="n">vocab_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">"words_vocab.pkl"</span><span class="p">)</span>
-<span class="n">sequences_step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#step to create sequences
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<span class="n">sequences_step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c">#step to create sequences</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -880,12 +880,12 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 
 <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
     <span class="n">input_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
-    <span class="c1">#read data
-</span>    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="c">#read data</span>
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         
-    <span class="c1">#create sentences
-</span>    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="c">#create sentences</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">wl</span> <span class="o">=</span> <span class="n">create_wordlist</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
     <span class="n">wordlist</span> <span class="o">=</span> <span class="n">wordlist</span> <span class="o">+</span> <span class="n">wl</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -936,52 +936,52 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 44
 45
 46
-</pre></td><td class="rouge-code"><pre><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># minibatch size
-</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># number of epochs
-</span>
+</pre></td><td class="rouge-code"><pre><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c"># minibatch size</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c"># number of epochs</span>
+
 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">),</span>
            <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_gen_sentences.{epoch:02d}-{val_loss:.2f}.hdf5'</span><span class="p">,</span>\
                            <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
-<span class="c1">#fit the model
-</span><span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+<span class="c">#fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                  <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                  <span class="n">epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
                  <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
                  <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1">#save the model
-</span><span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># minibatch size
-</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># number of epochs
-</span>
+<span class="c">#save the model</span>
+<span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c"># minibatch size</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c"># number of epochs</span>
+
 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">),</span>
            <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_gen_sentences.{epoch:02d}-{val_loss:.2f}.hdf5'</span><span class="p">,</span>\
                            <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
-<span class="c1">#fit the model
-</span><span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+<span class="c">#fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                  <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                  <span class="n">epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
                  <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
                  <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1">#save the model
-</span><span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># minibatch size
-</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># number of epochs
-</span>
+<span class="c">#save the model</span>
+<span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c"># minibatch size</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c"># number of epochs</span>
+
 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">),</span>
            <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_gen_sentences.{epoch:02d}-{val_loss:.2f}.hdf5'</span><span class="p">,</span>\
                            <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
-<span class="c1">#fit the model
-</span><span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+<span class="c">#fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                  <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                  <span class="n">epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
                  <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
                  <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1">#save the model
-</span><span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="nb">len</span><span class="p">(</span><span class="n">wordlist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="c">#save the model</span>
+<span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span><span class="nb">len</span><span class="p">(</span><span class="n">wordlist</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1002,23 +1002,23 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 16
 17
 18
-</pre></td><td class="rouge-code"><pre><span class="c1"># count the number of words
-</span><span class="n">word_counts</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">wordlist</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># count the number of words</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">wordlist</span><span class="p">)</span>
 
-<span class="c1"># Mapping from index to word : that's the vocabulary
-</span><span class="n">vocabulary_inv</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="c"># Mapping from index to word : that's the vocabulary</span>
+<span class="n">vocabulary_inv</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
 <span class="n">vocabulary_inv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">vocabulary_inv</span><span class="p">))</span>
 
-<span class="c1"># Mapping from word to index
-</span><span class="n">vocab</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocabulary_inv</span><span class="p">)}</span>
+<span class="c"># Mapping from word to index</span>
+<span class="n">vocab</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocabulary_inv</span><span class="p">)}</span>
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
 
-<span class="c1">#size of the vocabulary
-</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="c">#size of the vocabulary</span>
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"vocab size: "</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
 
-<span class="c1">#save the words and vocabulary
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vocab_file</span><span class="p">),</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="c">#save the words and vocabulary</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vocab_file</span><span class="p">),</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">cPickle</span><span class="o">.</span><span class="n">dump</span><span class="p">((</span><span class="n">words</span><span class="p">,</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">vocabulary_inv</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -1030,8 +1030,8 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="c1">#create sequences
-</span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></td><td class="rouge-code"><pre><span class="c">#create sequences</span>
+<span class="n">sequences</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">next_words</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">wordlist</span><span class="p">)</span> <span class="o">-</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">sequences_step</span><span class="p">):</span>
     <span class="n">sequences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wordlist</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">seq_length</span><span class="p">])</span>
@@ -1094,10 +1094,10 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
     <span class="k">print</span><span class="p">(</span><span class="s">"model built!"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span>
 
-<span class="n">rnn_size</span> <span class="o">=</span> <span class="mi">256</span> <span class="c1"># size of RNN
-</span><span class="n">seq_length</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># sequence length
-</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1">#learning rate
-</span>
+<span class="n">rnn_size</span> <span class="o">=</span> <span class="mi">256</span> <span class="c"># size of RNN</span>
+<span class="n">seq_length</span> <span class="o">=</span> <span class="mi">100</span> <span class="c"># sequence length</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c">#learning rate</span>
+
 <span class="n">md</span> <span class="o">=</span> <span class="n">bidirectional_lstm_model</span><span class="p">(</span><span class="n">seq_length</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
 <span class="n">md</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
@@ -1118,22 +1118,22 @@ Epoch 00005: val_acc improved from 0.23499 to 0.24291, saving model to weights-i
 14
 15
 16
-</pre></td><td class="rouge-code"><pre><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># minibatch size
-</span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># number of epochs
-</span>
+</pre></td><td class="rouge-code"><pre><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="c"># minibatch size</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span> <span class="c"># number of epochs</span>
+
 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">),</span>
            <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_gen_sentences.{epoch:02d}-{val_loss:.2f}.hdf5'</span><span class="p">,</span>\
                            <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
-<span class="c1">#fit the model
-</span><span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+<span class="c">#fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                  <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                  <span class="n">epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
                  <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
                  <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1">#save the model
-</span><span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span>
+<span class="c">#save the model</span>
+<span class="n">md</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"/"</span> <span class="o">+</span> <span class="s">'my_model_generate_sentences.h5'</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h1 id="9-tài-liệu">9. Tài liệu</h1>

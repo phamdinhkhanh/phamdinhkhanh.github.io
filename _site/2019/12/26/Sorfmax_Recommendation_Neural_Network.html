@@ -1120,95 +1120,95 @@ model.embeddings['movie_id']
 87
 88
 89
-</pre></td><td class="rouge-code"><pre>import tensorflow as tf
-import matplotlib.pyplot as plt
-import collections
+</pre></td><td class="rouge-code"><pre><span class="n">import</span> <span class="n">tensorflow</span> <span class="n">as</span> <span class="n">tf</span>
+<span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">collections</span>
 
-# Khởi tạo class RecNeuralNet hỗ trợ huấn luyện mô hình
-class RecNeuralNet(object):
-  """Một class biểu diễn mô hình collaborative filtering model"""
-  def __init__(self, embedding_vars, loss, metrics=None):
-    """Khởi tạo RecNeuralNet.
-    Args:
-      embedding_vars: Từ điển của các biến đầu vào. Định dạng tf.Variable().
-      loss: Hàm loss function cần được tối ưu hóa. Định dạng float Tensor.
-      metrics: Một list các dictionaries của các tensors. Các metrics trong mỗi dictionary sẽ được visualize trên các biểu đồ khác nhau 
-      trong suốt quá trình huấn luyện.
-    """
-    self._embedding_vars = embedding_vars
-    self._loss = loss
-    self._metrics = metrics
-    # Khởi tạo none embeddings dictionary
-    self._embeddings = {k: None for k in embedding_vars}
-    self._session = None
+<span class="cp"># Khởi tạo class RecNeuralNet hỗ trợ huấn luyện mô hình
+</span><span class="n">class</span> <span class="n">RecNeuralNet</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="o">:</span>
+  <span class="s">"""Một class biểu diễn mô hình collaborative filtering model"""</span>
+  <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">embedding_vars</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">None</span><span class="p">)</span><span class="o">:</span>
+    <span class="s">"""Khởi tạo RecNeuralNet.</span><span class="err">
+</span><span class="s">    Args:</span><span class="err">
+</span><span class="s">      embedding_vars: Từ điển của các biến đầu vào. Định dạng tf.Variable().</span><span class="err">
+</span><span class="s">      loss: Hàm loss function cần được tối ưu hóa. Định dạng float Tensor.</span><span class="err">
+</span><span class="s">      metrics: Một list các dictionaries của các tensors. Các metrics trong mỗi dictionary sẽ được visualize trên các biểu đồ khác nhau </span><span class="err">
+</span><span class="s">      trong suốt quá trình huấn luyện.</span><span class="err">
+</span><span class="s">    """</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">_embedding_vars</span> <span class="o">=</span> <span class="n">embedding_vars</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">_loss</span> <span class="o">=</span> <span class="n">loss</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">_metrics</span> <span class="o">=</span> <span class="n">metrics</span>
+    <span class="cp"># Khởi tạo none embeddings dictionary
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">_embeddings</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">:</span> <span class="n">None</span> <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="n">embedding_vars</span><span class="p">}</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">None</span>
 
-  @property
-  def embeddings(self):
-    """trả về embeddings."""
-    return self._embeddings
+  <span class="k">@property</span>
+  <span class="n">def</span> <span class="n">embeddings</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+    <span class="s">"""trả về embeddings."""</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">_embeddings</span>
 
-  def train(self, num_iterations=100, learning_rate=1.0, plot_results=True,
-            optimizer=tf.train.GradientDescentOptimizer):
-    """Huấn luyện model.
-    Args:
-      iterations: số lượng iterations huấn luyện.
-      learning_rate: learning rate optimizer.
-      plot_results: có vẽ biểu đồ sau khi huấn luyện xong mô hình hay không?
-      optimizer: object optimizer được sử dụng để huấn luyện mô hình. Mặc định là GradientDescentOptimizer.
-    Returns:
-      Dictionary là các metrics được đánh giá tại vòng lặp cuối cùng.
-    """
-    # Khởi tạo các train_operation là quá trình tối thiểu hóa hàm loss function.
-    with self._loss.graph.as_default():
-      opt = optimizer(learning_rate)
-      train_op = opt.minimize(self._loss)
-      local_init_op = tf.group(
-          tf.variables_initializer(opt.variables()),
-          tf.local_variables_initializer())
-      if self._session is None:
-        self._session = tf.Session()
-        with self._session.as_default():
-          self._session.run(tf.global_variables_initializer())
-          self._session.run(tf.tables_initializer())
-          tf.train.start_queue_runners()
+  <span class="n">def</span> <span class="n">train</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">plot_results</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+            <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">GradientDescentOptimizer</span><span class="p">)</span><span class="o">:</span>
+    <span class="s">"""Huấn luyện model.</span><span class="err">
+</span><span class="s">    Args:</span><span class="err">
+</span><span class="s">      iterations: số lượng iterations huấn luyện.</span><span class="err">
+</span><span class="s">      learning_rate: learning rate optimizer.</span><span class="err">
+</span><span class="s">      plot_results: có vẽ biểu đồ sau khi huấn luyện xong mô hình hay không?</span><span class="err">
+</span><span class="s">      optimizer: object optimizer được sử dụng để huấn luyện mô hình. Mặc định là GradientDescentOptimizer.</span><span class="err">
+</span><span class="s">    Returns:</span><span class="err">
+</span><span class="s">      Dictionary là các metrics được đánh giá tại vòng lặp cuối cùng.</span><span class="err">
+</span><span class="s">    """</span>
+    <span class="cp"># Khởi tạo các train_operation là quá trình tối thiểu hóa hàm loss function.
+</span>    <span class="n">with</span> <span class="n">self</span><span class="p">.</span><span class="n">_loss</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">as_default</span><span class="p">()</span><span class="o">:</span>
+      <span class="n">opt</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span>
+      <span class="n">train_op</span> <span class="o">=</span> <span class="n">opt</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_loss</span><span class="p">)</span>
+      <span class="n">local_init_op</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">group</span><span class="p">(</span>
+          <span class="n">tf</span><span class="p">.</span><span class="n">variables_initializer</span><span class="p">(</span><span class="n">opt</span><span class="p">.</span><span class="n">variables</span><span class="p">()),</span>
+          <span class="n">tf</span><span class="p">.</span><span class="n">local_variables_initializer</span><span class="p">())</span>
+      <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">_session</span> <span class="n">is</span> <span class="n">None</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="n">with</span> <span class="n">self</span><span class="p">.</span><span class="n">_session</span><span class="p">.</span><span class="n">as_default</span><span class="p">()</span><span class="o">:</span>
+          <span class="n">self</span><span class="p">.</span><span class="n">_session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+          <span class="n">self</span><span class="p">.</span><span class="n">_session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">tables_initializer</span><span class="p">())</span>
+          <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">start_queue_runners</span><span class="p">()</span>
           
-    # Huấn luyện mô hình trong session
-    with self._session.as_default():
-      # Kích hoạt khởi tạo các biến local
-      local_init_op.run()
-      iterations = []
-      metrics = self._metrics or ({},)
-      metrics_vals = [collections.defaultdict(list) for _ in self._metrics]
+    <span class="cp"># Huấn luyện mô hình trong session
+</span>    <span class="n">with</span> <span class="n">self</span><span class="p">.</span><span class="n">_session</span><span class="p">.</span><span class="n">as_default</span><span class="p">()</span><span class="o">:</span>
+      <span class="cp"># Kích hoạt khởi tạo các biến local
+</span>      <span class="n">local_init_op</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+      <span class="n">iterations</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">metrics</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_metrics</span> <span class="n">or</span> <span class="p">({},)</span>
+      <span class="n">metrics_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">collections</span><span class="p">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="n">self</span><span class="p">.</span><span class="nf">_metrics</span><span class="p">]</span>
 
-      # Huấn luyện mô hình và append results
-      for i in range(num_iterations + 1):
-        _, results = self._session.run((train_op, metrics))
-        # In ra kết quả các metrics sau mỗi 10 vòng lặp.
-        if (i % 10 == 0) or i == num_iterations:
-          print("\r iteration %d: " % i + ", ".join(
-                ["%s=%f" % (k, v) for r in results for k, v in r.items()]),
-                end='')
-          iterations.append(i)
+      <span class="cp"># Huấn luyện mô hình và append results
+</span>      <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">range</span><span class="p">(</span><span class="n">num_iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">results</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_session</span><span class="p">.</span><span class="n">run</span><span class="p">((</span><span class="n">train_op</span><span class="p">,</span> <span class="n">metrics</span><span class="p">))</span>
+        <span class="cp"># In ra kết quả các metrics sau mỗi 10 vòng lặp.
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="n">or</span> <span class="n">i</span> <span class="o">==</span> <span class="n">num_iterations</span><span class="o">:</span>
+          <span class="n">print</span><span class="p">(</span><span class="s">"</span><span class="se">\r</span><span class="s"> iteration %d: "</span> <span class="o">%</span> <span class="n">i</span> <span class="o">+</span> <span class="s">", "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="s">"%s=%f"</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="k">in</span> <span class="n">results</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="n">r</span><span class="p">.</span><span class="n">items</span><span class="p">()]),</span>
+                <span class="n">end</span><span class="o">=</span><span class="err">''</span><span class="p">)</span>
+          <span class="n">iterations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-          for metric_val, result in zip(metrics_vals, results):
-            for k, v in result.items():
-              metric_val[k].append(v)
+          <span class="k">for</span> <span class="n">metric_val</span><span class="p">,</span> <span class="n">result</span> <span class="k">in</span> <span class="n">zip</span><span class="p">(</span><span class="n">metrics_vals</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span><span class="o">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="n">result</span><span class="p">.</span><span class="n">items</span><span class="p">()</span><span class="o">:</span>
+              <span class="n">metric_val</span><span class="p">[</span><span class="nf">k</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
-      # Lưu các giá trị user_embedding, movie_embedding vào embedding dictionary
-      for k, v in self._embedding_vars.items():
-        self._embeddings[k] = v.eval()
-      # Vẽ biểu đồ các metrics được đo lường.
-      if plot_results:
-        num_subplots = len(metrics)+1
-        fig = plt.figure()
-        fig.set_size_inches(num_subplots*10, 8)
-        for i, metric_vals in enumerate(metrics_vals):
-          ax = fig.add_subplot(1, num_subplots, i+1)
-          for k, v in metric_vals.items():
-            ax.plot(iterations, v, label=k)
-          ax.set_xlim([1, num_iterations])
-          ax.legend()
-      return results
+      <span class="cp"># Lưu các giá trị user_embedding, movie_embedding vào embedding dictionary
+</span>      <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="n">self</span><span class="p">.</span><span class="n">_embedding_vars</span><span class="p">.</span><span class="n">items</span><span class="p">()</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_embeddings</span><span class="p">[</span><span class="nf">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">eval</span><span class="p">()</span>
+      <span class="cp"># Vẽ biểu đồ các metrics được đo lường.
+</span>      <span class="k">if</span> <span class="n">plot_results</span><span class="o">:</span>
+        <span class="n">num_subplots</span> <span class="o">=</span> <span class="n">len</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">fig</span><span class="p">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="n">num_subplots</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">metric_vals</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">metrics_vals</span><span class="p">)</span><span class="o">:</span>
+          <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_subplots</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="n">metric_vals</span><span class="p">.</span><span class="n">items</span><span class="p">()</span><span class="o">:</span>
+            <span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+          <span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="nf">num_iterations</span><span class="p">])</span>
+          <span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+      <span class="k">return</span> <span class="n">results</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="45-xây-dựng-softmax-recommendation-neural-network-model">4.5. Xây dựng softmax recommendation neural network model</h2>

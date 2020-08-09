@@ -290,17 +290,17 @@ body {
 11
 12
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span>
-<span class="c1"># Stop spark if it existed.
-</span><span class="k">try</span><span class="p">:</span>
+<span class="c"># Stop spark if it existed.</span>
+<span class="k">try</span><span class="p">:</span>
     <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'sc have not yet created!'</span><span class="p">)</span>
     
 <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">master</span> <span class="o">=</span> <span class="s">"local"</span><span class="p">,</span> <span class="n">appName</span> <span class="o">=</span> <span class="s">"First app"</span><span class="p">)</span>
-<span class="c1"># Check spark context
-</span><span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
-<span class="c1"># Check spark context version
-</span><span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="c"># Check spark context</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+<span class="c"># Check spark context version</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -331,8 +331,8 @@ body {
 4
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="n">my_spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-<span class="c1"># Print my_spark session
-</span><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="p">)</span>
+<span class="c"># Print my_spark session</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -345,8 +345,8 @@ body {
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># List all table exist in spark sesion
-</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># List all table exist in spark sesion</span>
+<span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -360,8 +360,8 @@ Dữ liệu file csv các bạn có thể download từ link sau <a href="https:
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="n">flights</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">'flights.csv'</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="c1"># show fligths top 5
-</span><span class="n">flights</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c"># show fligths top 5</span>
+<span class="n">flights</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -468,8 +468,8 @@ only showing top 5 rows
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># list all table exist in spark session
-</span><span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">())</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># list all table exist in spark session</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">())</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -507,10 +507,10 @@ only showing top 5 rows
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="c1"># Create a temporary table on catalog of local data frame flights as new temporary table flights_temp on catalog
-</span><span class="n">flights</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s">'flights_temp'</span><span class="p">)</span>
-<span class="c1"># check list all table available on catalog
-</span><span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Create a temporary table on catalog of local data frame flights as new temporary table flights_temp on catalog</span>
+<span class="n">flights</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s">'flights_temp'</span><span class="p">)</span>
+<span class="c"># check list all table available on catalog</span>
+<span class="n">my_spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1003,9 +1003,9 @@ only showing top 5 rows
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'Shape of previous data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+</pre></td><td class="rouge-code"><pre><span class="k">print</span><span class="p">(</span><span class="s">'Shape of previous data: ({}, {})'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 <span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">my_spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">"select ARRIVAL_DELAY, ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK, DESTINATION_AIRPORT, AIRLINE from flights_temp where ORIGIN_AIRPORT = 'SEA' and AIRLINE in ('DL', 'AA') "</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Shape of flights_SEA data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Shape of flights_SEA data: ({}, {})'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">flights_SEA</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1028,12 +1028,12 @@ Shape of flights_SEA data: (19956, 7)
 12
 13
 14
-</pre></td><td class="rouge-code"><pre><span class="c1"># Create boolean variable IS_DELAY variable as Target
-</span><span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"IS_DELAY"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">ARRIVAL_DELAY</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># Now Convert Boolean variable into integer
-</span><span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"label"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">IS_DELAY</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
-<span class="c1"># Remove missing value
-</span><span class="n">model_data</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"ARRIVAL_DELAY is not null </span><span class="se">\
+</pre></td><td class="rouge-code"><pre><span class="c"># Create boolean variable IS_DELAY variable as Target</span>
+<span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"IS_DELAY"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">ARRIVAL_DELAY</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c"># Now Convert Boolean variable into integer</span>
+<span class="n">flights_SEA</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"label"</span><span class="p">,</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="n">IS_DELAY</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
+<span class="c"># Remove missing value</span>
+<span class="n">model_data</span> <span class="o">=</span> <span class="n">flights_SEA</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"ARRIVAL_DELAY is not null </span><span class="se">\
 </span><span class="s">                                and ARRIVAL_TIME is not null </span><span class="se">\
 </span><span class="s">                                and MONTH is not null </span><span class="se">\
 </span><span class="s">                                and YEAR is not null  </span><span class="se">\
@@ -1041,7 +1041,7 @@ Shape of flights_SEA data: (19956, 7)
 </span><span class="s">                                and DESTINATION_AIRPORT is not null </span><span class="se">\
 </span><span class="s">                                and AIRLINE is not null"</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">'Shape of model_data data: ({}, {})'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Shape of model_data data: ({}, {})'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -1058,8 +1058,8 @@ Shape of flights_SEA data: (19956, 7)
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1"># ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK
-</span><span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"ARRIVAL_TIME"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">ARRIVAL_TIME</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># ARRIVAL_TIME, MONTH, YEAR, DAY_OF_WEEK</span>
+<span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"ARRIVAL_TIME"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">ARRIVAL_TIME</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"MONTH"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">MONTH</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"YEAR"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">YEAR</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
 <span class="n">model_data</span> <span class="o">=</span> <span class="n">model_data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"DAY_OF_WEEK"</span><span class="p">,</span> <span class="n">model_data</span><span class="o">.</span><span class="n">DAY_OF_WEEK</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s">"integer"</span><span class="p">))</span>
@@ -1109,22 +1109,22 @@ Shape of flights_SEA data: (19956, 7)
 17
 18
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="c1"># I. With DESTINATION_AIRPORT
-# Create StringIndexer
-</span><span class="n">dest_indexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> \
+<span class="c"># I. With DESTINATION_AIRPORT</span>
+<span class="c"># Create StringIndexer</span>
+<span class="n">dest_indexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_AIRPORT"</span><span class="p">,</span> \
                              <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_INDEX"</span><span class="p">)</span>
 
-<span class="c1"># Create OneHotEncoder
-</span><span class="n">dest_onehot</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_INDEX"</span><span class="p">,</span> \
+<span class="c"># Create OneHotEncoder</span>
+<span class="n">dest_onehot</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_INDEX"</span><span class="p">,</span> \
                             <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"DESTINATION_FACT"</span><span class="p">)</span>
 
-<span class="c1"># II. With AIRLINE
-# Create StringIndexer
-</span><span class="n">airline_indexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"AIRLINE"</span><span class="p">,</span> \
+<span class="c"># II. With AIRLINE</span>
+<span class="c"># Create StringIndexer</span>
+<span class="n">airline_indexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"AIRLINE"</span><span class="p">,</span> \
                                 <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_INDEX"</span><span class="p">)</span>
 
-<span class="c1"># Create OneHotEncoder
-</span><span class="n">airline_onehot</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_INDEX"</span><span class="p">,</span> \
+<span class="c"># Create OneHotEncoder</span>
+<span class="n">airline_onehot</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_INDEX"</span><span class="p">,</span> \
                                <span class="n">outputCol</span> <span class="o">=</span> <span class="s">"AIRLINE_FACT"</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -1138,8 +1138,8 @@ Shape of flights_SEA data: (19956, 7)
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="c1"># Make a VectorAssembler
-</span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">VectorAssembler</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Make a VectorAssembler</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">VectorAssembler</span>
 <span class="n">vec_assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span> <span class="o">=</span> <span class="p">[</span><span class="s">"ARRIVAL_TIME"</span><span class="p">,</span> <span class="s">"MONTH"</span><span class="p">,</span> <span class="s">"YEAR"</span><span class="p">,</span> \
                                              <span class="s">"DAY_OF_WEEK"</span><span class="p">,</span> <span class="s">"DESTINATION_FACT"</span><span class="p">,</span>\
                                              <span class="s">"AIRLINE_FACT"</span><span class="p">],</span> 
@@ -1157,8 +1157,8 @@ Shape of flights_SEA data: (19956, 7)
 5
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="c1"># Make a pipeline
-</span><span class="n">flights_sea_pipe</span>  <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">dest_indexer</span><span class="p">,</span> <span class="n">dest_onehot</span><span class="p">,</span> <span class="n">airline_indexer</span><span class="p">,</span> \
+<span class="c"># Make a pipeline</span>
+<span class="n">flights_sea_pipe</span>  <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">dest_indexer</span><span class="p">,</span> <span class="n">dest_onehot</span><span class="p">,</span> <span class="n">airline_indexer</span><span class="p">,</span> \
                                        <span class="n">airline_onehot</span><span class="p">,</span> <span class="n">vec_assembler</span><span class="p">])</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -1172,14 +1172,14 @@ Shape of flights_SEA data: (19956, 7)
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># create pipe_data from pipeline
-</span><span class="n">pipe_data</span> <span class="o">=</span> <span class="n">flights_sea_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># create pipe_data from pipeline</span>
+<span class="n">pipe_data</span> <span class="o">=</span> <span class="n">flights_sea_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="c1"># Split train/test data
-</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">pipe_data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Split train/test data</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">pipe_data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="322-huấn-luyện-và-đánh-giá-model">3.2.2. Huấn luyện và đánh giá model.</h3>
@@ -1192,8 +1192,8 @@ Shape of flights_SEA data: (19956, 7)
 4
 </pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
-<span class="c1"># Create logistic regression
-</span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="c"># Create logistic regression</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Để đánh giá model chúng ta cần sử dụng các metric như <code class="highlighter-rouge">ROC, Accuracy, F1, precision hoặc recal</code>. Do dữ liệu không có hiện tượng mất cân bằng giữa 2 lớp nên ta sẽ sử dụng ROC làm metric đánh giá model. Trong trường hợp mẫu mất cân bằng thì các chỉ số <code class="highlighter-rouge">F1, precision hoặc recal</code> nên được sử dụng thay thế vì trong tình huống này ROC, Accuracy thường mặc định là rất cao. Chúng ta sử dụng class <code class="highlighter-rouge">BinaryClassificationEvaluator</code> trong <code class="highlighter-rouge">pyspark.ml.evaluation</code> module để tính toán các metrics đánh giá model.</p>
@@ -1203,11 +1203,11 @@ Shape of flights_SEA data: (19956, 7)
 3
 4
 5
-</pre></td><td class="rouge-code"><pre><span class="c1"># Import the evaluation submodule
-</span><span class="kn">import</span> <span class="nn">pyspark.ml.evaluation</span> <span class="k">as</span> <span class="n">evals</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Import the evaluation submodule</span>
+<span class="kn">import</span> <span class="nn">pyspark.ml.evaluation</span> <span class="k">as</span> <span class="n">evals</span>
 
-<span class="c1"># Create a BinaryClassificationEvaluator
-</span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">evals</span><span class="o">.</span><span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">metricName</span> <span class="o">=</span> <span class="s">"areaUnderROC"</span><span class="p">)</span>
+<span class="c"># Create a BinaryClassificationEvaluator</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">evals</span><span class="o">.</span><span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">metricName</span> <span class="o">=</span> <span class="s">"areaUnderROC"</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="323-tuning-model-thông-qua-param-gridsearch">3.2.3. Tuning model thông qua param gridSearch.</h3>
@@ -1226,18 +1226,18 @@ Shape of flights_SEA data: (19956, 7)
 10
 11
 12
-</pre></td><td class="rouge-code"><pre><span class="c1"># Import the tuning submodule
-</span><span class="kn">import</span> <span class="nn">pyspark.ml.tuning</span> <span class="k">as</span> <span class="n">tune</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Import the tuning submodule</span>
+<span class="kn">import</span> <span class="nn">pyspark.ml.tuning</span> <span class="k">as</span> <span class="n">tune</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="c1"># Create the parameter grid
-</span><span class="n">grid</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">ParamGridBuilder</span><span class="p">()</span>
+<span class="c"># Create the parameter grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">ParamGridBuilder</span><span class="p">()</span>
 
-<span class="c1"># Add the hyperparameter, we can add more than one hyperparameter
-</span><span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">addGrid</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">regParam</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+<span class="c"># Add the hyperparameter, we can add more than one hyperparameter</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">addGrid</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">regParam</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
 
-<span class="c1"># Build the grid
-</span><span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="c"># Build the grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Sau khi build xong gridSearch chúng ta cần Cross Validate toàn bộ các model trên tập các tham số khởi tạo ở <code class="highlighter-rouge">grid</code>. Nếu bạn đọc chưa nắm rõ về Cross Validate là gì xin mời đọc bài viết <a href="http://rpubs.com/phamdinhkhanh/383309">Cross validation tuning threshold</a> của mình. Chúng ta cần khởi tạo một cross validator từ class CrossValidator của pyspark.ml.tuning.</p>
@@ -1250,14 +1250,14 @@ Shape of flights_SEA data: (19956, 7)
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="c1"># Create the CrossValidator
-</span><span class="n">cv</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">CrossValidator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Create the CrossValidator</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">CrossValidator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
                <span class="n">estimatorParamMaps</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
                <span class="n">evaluator</span><span class="o">=</span><span class="n">evaluator</span>
                <span class="p">)</span>
 
-<span class="c1"># Fit cross validation on models
-</span><span class="n">models</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+<span class="c"># Fit cross validation on models</span>
+<span class="n">models</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mình sẽ không chạy lệnh này do máy cấu hình yếu. Sau khi tuning xong chúng ta sẽ thu được model tốt nhất thông qua hàm:</p>
@@ -1285,11 +1285,11 @@ Shape of flights_SEA data: (19956, 7)
 3
 4
 5
-</pre></td><td class="rouge-code"><pre><span class="c1"># Use the model to predict the test set
-</span><span class="n">test_results</span> <span class="o">=</span> <span class="n">best_lr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="c"># Use the model to predict the test set</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="n">best_lr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 
-<span class="c1"># Evaluate the predictions
-</span><span class="k">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_results</span><span class="p">))</span>
+<span class="c"># Evaluate the predictions</span>
+<span class="k">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_results</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
