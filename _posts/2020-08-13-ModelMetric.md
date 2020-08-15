@@ -145,13 +145,21 @@ Có một học viên thắc mắc mình rằng tại sao $F_1$ score không đ�
 Nhìn vào biểu đồ trade off giữa precision và recall thì đây có thể được xem như một mô hình thiết lập threshold thấp. 
 Nó tương đương với việc dự đoán ngẫu nhiên toàn bộ là positive. Do đó không thể xem đó là một mô hình tốt. 
 
-Nếu sử dụng công thức trung bình thì $\text{F}_1 = \frac{\text{precision+recall}}{2} = 0.5005$ cho thấy đây là một mô hình ở mức trung bình. Trong khi sử dụng công thức trung bình điều hòa thì $\text{F}_1 = \frac{2~\text{precision}\times\text{recall}}{\text{precision}+\text{recall}} \approx 0$ và giúp đánh giá được mô hình không tốt.
+Nếu sử dụng công thức trung bình thì 
 
-Tóm lại sử dụng trung bình điều hòa sẽ đánh giá tốt hơn trong trường hợp mô hình có precision cao, recall thấp hoặc precision thấp, recall cao.
+$$\text{F}_1 = \frac{\text{precision+recall}}{2} = 0.5005$$ 
+
+giá trị này cho thấy đây là một mô hình ở mức trung bình. Trong khi sử dụng công thức trung bình điều hòa thì 
+
+$$\text{F}_1 = \frac{2~\text{precision}\times\text{recall}}{\text{precision}+\text{recall}} \approx 0$$ 
+
+giá trị này giúp nhận diện được mô hình không tốt.
+
+Tóm lại sử dụng trung bình điều hòa sẽ phạt nặng hơn những trường hợp mô hình có precision thấp, recall cao hoặc precision cao, recall thấp. Đây là những trường hợp tương đương với dự báo thiên về một nhóm là positive hoặc negative nên không phải là mô hình tốt. Điểm số từ trung bình điều hòa sẽ giúp ta nhận biết được những trường hợp không tốt như vậy.
 
 # 9. Accuracy và F1 score
 
-Accuracy và F1 score đều được sử dụng để đánh giá hiệu suất của mô hình trong việc phân loại. Vậy trong tình huống nào chúng ta nên sử dụng chỉ số nào là phù hợp ? Điều đó phụ thuộc vào bộ dữ liệu của bạn có xảy ra hiện tượng mất cân bằng hay không ? Hãy cùng quay trở lại phân tích bảng kết quả đầu tiên. Ta gọi trường hợp này là dự báo theo _mô hình_ :
+Accuracy và F1 score đều được sử dụng để đánh giá hiệu suất của mô hình phân loại. Vậy trong tình huống nào chúng ta nên sử dụng chỉ số nào là phù hợp ? Điều đó phụ thuộc vào bộ dữ liệu của bạn có xảy ra hiện tượng mất cân bằng hay không ? Hãy cùng quay trở lại phân tích bảng kết quả đầu tiên. Ta gọi trường hợp này là dự báo theo _mô hình_ :
 
 <img src="/assets/images/20200813_ModelMetric/pic4.png" class="largepic"/>
 
@@ -159,7 +167,7 @@ Khi dự báo theo _mô hình_ dễ dàng tính được accuracy=90.5%, đây l
 
 Tuy nhiên xét tình huống chúng ta dự báo _ngẫu nhiên_ toàn bộ mẫu là các hồ sơ GOOD. Như vậy độ chính xác đạt được thậm chí đã lên tới 90%. Lúc này chúng ta nghi ngờ sự phù hợp của accuracy trong việc đánh giá mô hình vì không cần tới mô hình cũng tạo ra một kết quả gần như tương đương với có mô hình.
 
-Mặt khác, khi sử dụng $F_1$ score làm chỉ số đánh giá ta thu được điểm số khi dự báo _ngẫu nhiên_ là 0% và khi dự báo theo _mô hình_ là 69%. Các bạn đã thấy sự chênh lệch điểm số $F_1$ score giữa hai mô hình chưa ? Đồng thời $F_1$ score cũng không khiến chúng ta lạc quan vào những mô hình có chất lượng thấp nhưng do sử dụng accuracy nên chúng có kết qủa đánh giá cao. Ngoài ra $F_1$ score chỉ tính toán độ chính xác trên nhóm mẫu thiểu (positive) là nhóm mà chúng ta mong muốn đánh giá hơn trong trường hợp mất cân bằng nên nó sẽ phù hợp hơn accuracy được tính toán trên cả mẫu positive và negative.
+Mặt khác, khi sử dụng $F_1$ score làm chỉ số đánh giá ta thu được điểm số khi dự báo _ngẫu nhiên_ là 0% và khi dự báo theo _mô hình_ là 69% (bạn đọc hãy tự tính). Các bạn đã thấy sự chênh lệch điểm số $F_1$ score giữa hai mô hình chưa ? Đồng thời $F_1$ score cũng không khiến chúng ta lạc quan vào những mô hình có chất lượng thấp nhưng do sử dụng accuracy nên chúng có kết qủa đánh giá cao. Ngoài ra $F_1$ score chỉ tính toán độ chính xác trên nhóm mẫu thiểu (positive) là nhóm mà chúng ta mong muốn đánh giá hơn trong trường hợp mất cân bằng nên nó sẽ phù hợp hơn accuracy được tính toán trên cả mẫu positive và negative.
 
 # 10. AUC
 
@@ -312,7 +320,9 @@ plt.legend(loc = 'lower right', fontsize = 16)
 
 Hệ số gini thể hiện mức độ cải thiện của mô hình trong khả năng phân loại GOOD và BAD so với mô hình ngẫu nhiên. Giá trị của hệ số gini được tính bằng diện tích :
 
-$$\text{gini} = \frac{B}{A+B} = 2B$$ do diện tích $A+B = 0.5$
+$$\text{gini} = \frac{B}{A+B} = 2B$$ 
+
+khai triển đẳng thức sau cùng được suy ra từ  diện tích $A+B = 0.5$
 
 **Mối liên hệ giữa gini và AUC**
 
@@ -329,7 +339,9 @@ $$\text{gini} = 2*B$$
 
 $$\text{AUC} = B+0.5$$
 
-Do đó $$\text{gini} = 2\times \text{AUC}-1$$
+Do đó 
+
+$$\text{gini} = 2\times \text{AUC}-1$$
 
 # 13. Tổng kết 
 
