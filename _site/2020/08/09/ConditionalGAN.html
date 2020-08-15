@@ -98,6 +98,8 @@ body {
 				<nav>
 					<div class="header">Latest</div>
 					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/08/13/ModelMetric.html">Bài 46 - Đánh giá mô hình phân loại trong ML</a></li>
+					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/08/09/ConditionalGAN.html">Bài 45 - Conditional GAN (CGAN)</a></li>
 					
 					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wasserstein.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
@@ -413,7 +415,7 @@ for i, idx in enumerate(np.random.choice(idxs, 10)):
 plt.show()
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p><img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_14_0.png" class="l" /></p>
+<p><img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_14_0.png" class="large" /></p>
 
 <p>Ta nhận thấy các bức ảnh đều có độ phân giải thấp để giảm thiểu khối lượng tính toán cho demo. Phông nền của hình ảnh là màu đen tương ứng với các điểm ảnh có giá trị cường độ là 0. Phần trung tâm của bức ảnh là các bộ quần áo, giày có giá trị cường độ lớn hơn 0.</p>
 
@@ -601,7 +603,7 @@ plot_model(discriminator)
 <span class="n">plot_model</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p><img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_23_0.png" class="lpic" /></p>
+<p><img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_23_0.png" class="largepic" /></p>
 
 <h3 id="323-cgan-model">3.2.3. CGAN model</h3>
 
@@ -869,7 +871,7 @@ _train(g_model, d_model, cgan_model, dataset, latent_dim)
 </pre></td><td class="rouge-code"><pre>&gt;100, 468/468, d1=0.672, d2=0.673 g=0.768
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<h1 id="4-kết-luậnarge">4. Kết luậnarge</h1>
+<h1 id="4-kết-luận">4. Kết luận</h1>
 
 <p>Như vậy với model CGAN, chúng ta đã kiểm soát được những bức ảnh được tạo ra theo ý muốn. Đây có thể được xem như một bước đột phát của GAN vì trên thực tế có rất nhiều những bức ảnh mà ta sẽ phải định hướng kết quả về hình dạng, format. CGAN cũng tạo ra những đột phá mới về chất lượng hình ảnh và sự ổn định trong quá trình huấn luyện. Qua bài viết này các bạn đã nắm được kiến trúc của một model CGAN và quá trình để huấn luyện một model CGAN điển hình trên bộ dữ liệu fashion-mnist. Đây sẽ là tiền đề để chúng ta vận dụng model CGAN trên những bộ dữ liệu khác.</p>
 

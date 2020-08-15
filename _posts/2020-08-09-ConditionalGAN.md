@@ -146,7 +146,7 @@ for i, idx in enumerate(np.random.choice(idxs, 10)):
 plt.show()
 ```
 
-<img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_14_0.png" class="l"/>
+<img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_14_0.png" class="large"/>
 
 
 Ta nhận thấy các bức ảnh đều có độ phân giải thấp để giảm thiểu khối lượng tính toán cho demo. Phông nền của hình ảnh là màu đen tương ứng với các điểm ảnh có giá trị cường độ là 0. Phần trung tâm của bức ảnh là các bộ quần áo, giày có giá trị cường độ lớn hơn 0.
@@ -272,7 +272,7 @@ plot_model(generator)
 ```
 
 
-<img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_23_0.png" class="lpic"/>
+<img src="/assets/images/20200809_ConditionalGAN/ConditionalGAN_23_0.png" class="largepic"/>
 
 
 
@@ -440,7 +440,7 @@ _train(g_model, d_model, cgan_model, dataset, latent_dim)
     >100, 468/468, d1=0.672, d2=0.673 g=0.768
 
 
-# 4. Kết luậnarge
+# 4. Kết luận
 
 Như vậy với model CGAN, chúng ta đã kiểm soát được những bức ảnh được tạo ra theo ý muốn. Đây có thể được xem như một bước đột phát của GAN vì trên thực tế có rất nhiều những bức ảnh mà ta sẽ phải định hướng kết quả về hình dạng, format. CGAN cũng tạo ra những đột phá mới về chất lượng hình ảnh và sự ổn định trong quá trình huấn luyện. Qua bài viết này các bạn đã nắm được kiến trúc của một model CGAN và quá trình để huấn luyện một model CGAN điển hình trên bộ dữ liệu fashion-mnist. Đây sẽ là tiền đề để chúng ta vận dụng model CGAN trên những bộ dữ liệu khác.
 
