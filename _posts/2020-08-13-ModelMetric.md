@@ -36,24 +36,12 @@ Các chỉ số TP, FP, TN, FN lần lượt có ý nghĩa là :
 * FN (False Negative): Tổng số trường hợp dự báo các quan sát thuộc nhãn Positive thành Negative.
 
 Những chỉ số trên sẽ là cơ sở để tính toán những metric như accuracy, precision, recall, f1 score mà ta sẽ tìm hiểu bên dưới.
-Để tính toán FPR và TPR trên sklearn chúng ta sẽ dựa trên ground truth `y_label` và xác suất dự  báo`y_prob`:
-
-```
-from sklearn.metrics import roc_curve
-# Tính fpr, tpr và threshold 
-fpr, tpr, thres = roc_curve(y_label, y_prob, pos_label=1)
-# Lưu ý để không nhầm lẫn giữa positive và negative, chúng ta phải định nghĩa nhãn positive thông qua tham số pos_label. Trong TH này thì pos_label = 1
-```
 
 # 3. Độ chính xác (accuracy)
 
-Khi xây dựng mô hình phân loại chúng ta sẽ muốn biết một cách khái quát tỷ lệ các trường hợp được dự báo đúng trên tổng số các trường hợp là bao nhiêu. Tỷ lệ đó được gọi là độ chính xác. Độ chính xác giúp ta đánh giá hiệu quả dự báo của mô hình trên một bộ dữ liệu. Độ chính xác càng cao thì mô hình của chúng ta càng chuẩn xác. Khi một ai đó nói mô hình của họ dự báo chính xác 95% thì chúng ta hiểu rằng họ đang đề cập tới độ chính xác và được tính toán như sau:
+Khi xây dựng mô hình phân loại chúng ta sẽ muốn biết một cách khái quát tỷ lệ các trường hợp được dự báo đúng trên tổng số các trường hợp là bao nhiêu. Tỷ lệ đó được gọi là độ chính xác. Độ chính xác giúp ta đánh giá hiệu quả dự báo của mô hình trên một bộ dữ liệu. Độ chính xác càng cao thì mô hình của chúng ta càng chuẩn xác. Khi một ai đó nói mô hình của họ dự báo chính xác 90.5% thì chúng ta hiểu rằng họ đang đề cập tới độ chính xác được tính theo công thức :
 
 $$\text{Accuracy} = \frac{TP+TN}{\text{total sample}} = \frac{55+850}{1000} = 90.5 \%$$
-
-Trong các metrics đánh giá mô hình phân loại thì độ chính xác là metric khá được ưa chuộng vì nó có công thức tường minh và dễ diễn giải ý nghĩa. Tuy nhiên hạn chế của nó là đo lường trên _tất cả_ các nhãn mà không quan tâm đến độ chính xác trên từng nhãn. Do đó nó không phù hợp để đánh giá những tác vụ mà _tầm quan trọng_ của việc dự báo các nhãn không còn như nhau. Hay nói cách khác, như trong ví dụ phân loại nợ xấu, việc chúng ta phát hiện đúng một hồ sơ nợ xấu quan trọng hơn việc chúng ta phát hiện đúng một hồ sơ thông thường.
-
-Khi đó chúng ta sẽ quan tâm hơn tới độ chính xác được đo lường chỉ **trên nhãn BAD** hơn và sẽ cần những metrics như precision, recall đánh giá chuyên biệt trên nhóm này. Cùng tìm hiểu về các metrics này bên dưới.
 
 Tính toán accuracy trên sklearn :
 
@@ -62,13 +50,18 @@ from sklearn.metrics import accuracy_score
 accuracy_score(y_true, y_pred)
 ```
 Trong đó y_label là nhãn của dữ liệu và y_pred là nhãn dự báo. 
+
+Trong các metrics đánh giá mô hình phân loại thì độ chính xác là metric khá được ưa chuộng vì nó có công thức tường minh và dễ diễn giải ý nghĩa. Tuy nhiên hạn chế của nó là đo lường trên _tất cả_ các nhãn mà không quan tâm đến độ chính xác trên từng nhãn. Do đó nó không phù hợp để đánh giá những tác vụ mà _tầm quan trọng_ của việc dự báo các nhãn không còn như nhau. Hay nói cách khác, như trong ví dụ phân loại nợ xấu, việc chúng ta phát hiện đúng một hồ sơ nợ xấu quan trọng hơn việc chúng ta phát hiện đúng một hồ sơ thông thường.
+
+Khi đó chúng ta sẽ quan tâm hơn tới độ chính xác được đo lường chỉ **trên nhãn BAD** hơn và sẽ cần những metrics như precision, recall đánh giá chuyên biệt trên nhóm này. Cùng tìm hiểu về các metrics này bên dưới.
+
 # 4. Precision
 
 Precision trả lời cho câu hỏi trong các trường hợp được dự báo là positive thì có bao nhiêu trường hợp là đúng ? Và tất nhiên precision càng cao thì mô hình của chúng ta càng tốt trong việc phân loại hồ sơ BAD. Công thức của precision như sau:
 
 $$\text{Precision} = \frac{TP}{\text{total predicted positive}} = \frac{TP}{TP+FP} = \frac{55}{55+50} = 52.4 \%$$
 
-Precision sẽ cho chúng ta biết mức độ tin cậy mà mô hình đưa ra dự đoán trên hồ sơ BAD. Ví dụ khi precision = 52.4%, chúng ta tin rằng phép đo được tiến hành trên toàn bộ các trường hợp BAD thì xác suất phân loại đúng hồ sơ BAD là 52.4%.
+Precision sẽ cho chúng ta biết mức độ chuẩn xác mà mô hình dự đoán trên nhóm hồ sơ BAD. Ví dụ khi precision = 52.4%, chúng ta tin rằng có 52.4% tỷ lệ các hồ sơ BAD được phân loại đúng.
 
 Cũng có ý nghĩa gần tương tự như precision và giúp đo lường hiệu suất dự báo trên positive, đó là recall.
 
@@ -89,7 +82,7 @@ prec, rec, thres = precision_recall_curve(y_label, y_prob)
 
 # 6. Trade off giữa precision và recall
 
-Thông thường các model sẽ lựa chọn một ngưỡng mặc định là 0.5 để quyết định nhãn. Tức là nếu ta có một mô hình phân loại $f_{\theta}()$ thì kết quả nhãn dự báo sẽ dựa trên độ lớn của xác suất dự báo như sau:
+Thông thường các model sẽ lựa chọn một ngưỡng mặc định là 0.5 để quyết định nhãn. Tức là nếu ta có một hàm phân loại $f_{\theta}()$ thì nhãn dự báo sẽ dựa trên độ lớn của xác suất dự báo như sau:
 
 $$
 \begin{equation}
@@ -111,13 +104,15 @@ Thậm chí bằng một chút suy luận logic, ta còn có thể chứng minh 
 
 * Trong trường hợp chúng ta muốn nới lỏng kết quả phân loại hồ sơ BAD một chút bằng cách giảm threshold và chấp nhận một số hợp đồng bị dự báo sai từ GOOD sang BAD. Khi đó số lượng hồ sơ được dự báo là BAD tăng lên trong khi số lượng hồ sơ BAD được dự báo đúng tăng không đáng kể. Điều đó dẫn tới precision giảm và recall tăng.
 
-Sự đánh đổi giữa precision và recall khiến cho kết quả của mô hình thường dẫn tới precision cao, recall thấp hoặc precision thấp, recall cao. Khi đó rất khó để lựa chọn đâu là một mô hình tốt vì không biết rằng đánh giá trên precision hay recall sẽ phù hợp hơn. Chính vì vậy chúng ta sẽ tìm cách kết hợp cả precision và recall trong một chỉ số mới, đó chính là f1 score.
+Sự đánh đổi giữa precision và recall khiến cho kết quả của mô hình thường l : precision cao, recall thấp hoặc precision thấp, recall cao. Khi đó rất khó để lựa chọn đâu là một mô hình tốt vì không biết rằng đánh giá trên precision hay recall sẽ phù hợp hơn. Chính vì vậy chúng ta sẽ tìm cách kết hợp cả precision và recall trong một chỉ số mới, đó chính là f1 score.
 
 # 7. F1 Score
 
 $F_1$ Score là trung bình điều hòa giữa precision và recall. Do đó nó đại diện hơn trong việc đánh gía độ chính xác trên đồng thời precision và recall.
 
 $$\text{F}_1 = \frac{2}{\text{precision}^{-1}+\text{recall}^{-1}} = \frac{2}{0.524^{-1} + 0.55^{-1}} = 53.7 \%$$
+
+Trong trường hợp $\text{precision}=0$ hoặc $\text{recall}=0$ ta qui ước $\text{F}_1 = 0$.
 
 Ta chứng minh được rằng giá trị của $F_1$ score luôn nằm trong khoảng của precision và recall. Thật vậy :
 
@@ -156,15 +151,15 @@ Tóm lại sử dụng trung bình điều hòa sẽ đánh giá tốt hơn tron
 
 # 9. Accuracy và F1 score
 
-Accuracy và F1 score đều được sử dụng để đánh giá hiệu suất của mô hình trong việc phân loại. Vậy trong tình huống nào chúng ta nên sử dụng chỉ số nào là phù hợp ? Điều đó phụ thuộc vào bộ dữ liệu của bạn có xảy ra hiện tượng mất cân bằng hay không ? Hãy cùng quay trở lại phân tích bảng kết quả đầu tiên :
+Accuracy và F1 score đều được sử dụng để đánh giá hiệu suất của mô hình trong việc phân loại. Vậy trong tình huống nào chúng ta nên sử dụng chỉ số nào là phù hợp ? Điều đó phụ thuộc vào bộ dữ liệu của bạn có xảy ra hiện tượng mất cân bằng hay không ? Hãy cùng quay trở lại phân tích bảng kết quả đầu tiên. Ta gọi trường hợp này là dự báo theo _mô hình_ :
 
 <img src="/assets/images/20200813_ModelMetric/pic4.png" class="largepic"/>
 
-Trong trường hợp này ta dễ dàng tính được accuracy=90.5% đây là một kết quả cũng khá cao và chúng ta nhận định rằng mô hình phân loại tốt.
+Khi dự báo theo _mô hình_ dễ dàng tính được accuracy=90.5%, đây là một kết quả cũng khá cao và chúng ta nhận định rằng mô hình phân loại tốt.
 
-Tuy nhiên xét tình huống chúng ta dự báo toàn bộ mẫu là các hồ sơ GOOD. Như vậy độ chính xác đạt được thậm chí đã lên tới 90%. Lúc này chúng ta nghi ngờ sự phù hợp của accuracy trong việc đánh giá mô hình vì không cần tới mô hình cũng tạo ra một kết quả gần như tương đương với có mô hình.
+Tuy nhiên xét tình huống chúng ta dự báo _ngẫu nhiên_ toàn bộ mẫu là các hồ sơ GOOD. Như vậy độ chính xác đạt được thậm chí đã lên tới 90%. Lúc này chúng ta nghi ngờ sự phù hợp của accuracy trong việc đánh giá mô hình vì không cần tới mô hình cũng tạo ra một kết quả gần như tương đương với có mô hình.
 
-Khi mất cân bằng dữ liệu, accuracy thường có kết quả cao và dẫn tới quá lạc quan khi đánh giá mô hình. Do đó nó không phù hợp để đánh giá các dữ liệu mất cân bằng. Trong trường hợp dữ liệu mất cân bằng, chúng ta sẽ quan tâm hơn tới độ chính xác trên nhóm thiểu số và $F_1$ score là một chỉ số  đánh giá lý tưởng hơn.
+Mặt khác, khi sử dụng $F_1$ score làm chỉ số đánh giá ta thu được điểm số khi dự báo _ngẫu nhiên_ là 0% và khi dự báo theo _mô hình_ là 69%. Các bạn đã thấy sự chênh lệch điểm số $F_1$ score giữa hai mô hình chưa ? Đồng thời $F_1$ score cũng không khiến chúng ta lạc quan vào những mô hình có chất lượng thấp nhưng do sử dụng accuracy nên chúng có kết qủa đánh giá cao. Ngoài ra $F_1$ score chỉ tính toán độ chính xác trên nhóm mẫu thiểu (positive) là nhóm mà chúng ta mong muốn đánh giá hơn trong trường hợp mất cân bằng nên nó sẽ phù hợp hơn accuracy được tính toán trên cả mẫu positive và negative.
 
 # 10. AUC
 
