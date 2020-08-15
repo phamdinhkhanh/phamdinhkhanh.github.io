@@ -49,7 +49,7 @@ Tính toán accuracy trên sklearn :
 from sklearn.metrics import accuracy_score
 accuracy_score(y_true, y_pred)
 ```
-Trong đó y_label là nhãn của dữ liệu và y_pred là nhãn dự báo. 
+Trong đó `y_label` là nhãn của dữ liệu và `y_pred` là nhãn dự báo. 
 
 Trong các metrics đánh giá mô hình phân loại thì độ chính xác là metric khá được ưa chuộng vì nó có công thức tường minh và dễ diễn giải ý nghĩa. Tuy nhiên hạn chế của nó là đo lường trên _tất cả_ các nhãn mà không quan tâm đến độ chính xác trên từng nhãn. Do đó nó không phù hợp để đánh giá những tác vụ mà _tầm quan trọng_ của việc dự báo các nhãn không còn như nhau. Hay nói cách khác, như trong ví dụ phân loại nợ xấu, việc chúng ta phát hiện đúng một hồ sơ nợ xấu quan trọng hơn việc chúng ta phát hiện đúng một hồ sơ thông thường.
 
@@ -57,13 +57,13 @@ Khi đó chúng ta sẽ quan tâm hơn tới độ chính xác được đo lư�
 
 # 4. Precision
 
-Precision trả lời cho câu hỏi trong các trường hợp được dự báo là positive thì có bao nhiêu trường hợp là đúng ? Và tất nhiên precision càng cao thì mô hình của chúng ta càng tốt trong việc phân loại hồ sơ BAD. Công thức của precision như sau:
+Precision trả lời cho câu hỏi trong các trường hợp được dự báo là positive thì có bao nhiêu trường hợp là đúng ? Và tất nhiên precision càng cao thì mô hình của chúng ta càng tốt trong việc phân loại hồ sơ BAD (BAD chính là nhóm positive). Công thức của precision như sau:
 
 $$\text{Precision} = \frac{TP}{\text{total predicted positive}} = \frac{TP}{TP+FP} = \frac{55}{55+50} = 52.4 \%$$
 
-Precision sẽ cho chúng ta biết mức độ chuẩn xác mà mô hình dự đoán trên nhóm hồ sơ BAD. Ví dụ khi precision = 52.4%, chúng ta tin rằng có 52.4% tỷ lệ các hồ sơ BAD được phân loại đúng.
+Precision sẽ cho chúng ta biết mức độ chuẩn xác của mô hình đối với các hồ sơ được dự báo là BAD. Ví dụ khi precision = 52.4%, chúng ta tin rằng trong các hồ sơ được dự báo là BAD thì có 52.4% tỷ lệ các hồ sơ được phân loại đúng.
 
-Cũng có ý nghĩa gần tương tự như precision và giúp đo lường hiệu suất dự báo trên positive, đó là recall.
+Cũng có ý nghĩa gần tương tự như precision, có cùng tử số nhưng có một chút khác biệt về mẫu số trong công thức tính toán, và cũng là một chỉ số giúp đo lường hiệu suất dự báo trên nhóm positive, đó là recall.
 
 # 5. Recall
 
@@ -71,7 +71,7 @@ Recall đo lường tỷ lệ dự báo chính xác các trường hợp positiv
 
 $$\text{Recall} = \frac{TP}{\text{total actual positive}} = \frac{TP}{TP+FN} = \frac{55}{55+45}=55 \%$$
 
-Recall thường được dùng để đánh gía trên tập train và validation vì chúng ta đã biết trước nhãn. Trên tập test khi dữ liệu được coi như mới hoàn toàn và chưa biết nhãn thì chúng ta sẽ sử dụng precision.
+Để tính được recall thì chúng ta phải biết trước nhãn của dữ liệu. Do đó recall có thể được dùng để đánh gía trên tập train và validation vì chúng ta đã biết trước nhãn. Trên tập test khi dữ liệu được coi như mới hoàn toàn và **chưa biết nhãn** thì chúng ta sẽ sử dụng precision.
 
 Tính toán precision và recall trên sklearn chúng ta sẽ dựa trên ground truth `y_label` và xác suất dự  báo`y_prob`:
 
