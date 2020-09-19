@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8" />
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<title>Khoa học dữ liệu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Style for main home page -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles_toc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="canonical" href="https://phamdinhkhanh.github.io"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Phạm Đình Khánh" />
+<meta property="og:title" content="" />
+<meta property="og:site_name" content="Khanh's blog" />
+<meta property="og:url" content="https://phamdinhkhanh.github.io" />
+<meta property="og:description" content="" />
+
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="" />
+
+
+<meta property="article:author" content="Khanh" />
+<meta property="article:section" content="" />
+
+<link rel="alternate" type="application/atom+xml" title="Khanh's blog - Atom feed" href="/feed.xml" />
+<style>
+	
+</style>
+<!-- -- Import latext  -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+	inlineMath: [['$','$']]
+  }
+});
+</script>
+
+<!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89509207-1', 'auto');
+// ga('send', 'pageview');
+ga('send', 'pageview', {
+'page': '/',
+'title': ''
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTCD8BX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<style>
+body {
+  padding: 0 7.5%;
+}
+</style>
+
+<body>
+	<div id="fb-root"></div>
+	<!-- <script>(function(d, s, id) { -->
+	  <!-- var js, fjs = d.getElementsByTagName(s)[0]; -->
+	  <!-- if (d.getElementById(id)) return; -->
+	  <!-- js = d.createElement(s); js.id = id; -->
+	  <!-- js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9"; -->
+	  <!-- fjs.parentNode.insertBefore(js, fjs); -->
+	<!-- }(document, 'script', 'facebook-jssdk'));</script> -->
+	<br>
+	<div content = "container">
+		<div class="row">
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/img.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Latest</div>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/09/19/MobileNet.html">Bài 48 - Mobilenet model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/08/23/FocalLoss.html">Bài 47 - Focal Loss trong RetinaNet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/08/13/ModelMetric.html">Bài 46 - Đánh giá mô hình phân loại trong ML</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/08/09/ConditionalGAN.html">Bài 45 - Conditional GAN (CGAN)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/25/GAN_Wasserstein.html">Bài 44 - Model Wasserstein GAN (WGAN)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/07/13/GAN.html">Bài 43 - Model GAN</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/20/Unet.html">Bài 42 - Thực hành Unet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/18/DeepLab.html">Bài 41 - DeepLab Sentiment Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/10/ImageSegmention.html">Bài 40 - Image Segmentation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/06/04/PhoBERT_Fairseq.html">Bài 39 - Thực hành ứng dụng BERT</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/31/CNNHistory.html">Bài 38 - Các kiến trúc CNN hiện đại</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/28/TransformerThemDauTV.html">Bài 37 - Transformer thêm dấu Tiếng Việt</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/23/BERTModel.html">Bài 36 - BERT model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/05/05/MultitaskLearning_MultiBranch.html">Bài 35 - Multitask Learning - Multi Branch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/22/MultitaskLearning.html">Bài 34 - Multitask Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/15/TransferLearning.html">Bài 33 - Phương pháp Transfer Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/09/TensorflowDataset.html">Bài 32 - Kĩ thuật tensorflow Dataset</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/04/03/AWS.html">Bài 31 - Amazon Virtual Machine Deep Learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/28/deployTensorflowJS.html">Bài 30 - Xây dựng Web AI trên tensorflow js</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/23/FlaskRestAPI.html">Bài 29 - Xây dựng Flask API cho mô hình deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/21/faceNet.html">Bài 28 - Thực hành training Facenet</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/12/faceNetAlgorithm.html">Bài 27 - Mô hình Facenet trong face recognition</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/10/DarknetGoogleColab.html">Bài 26 - Huấn luyện YOLO darknet trên google colab</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/03/09/DarknetAlgorithm.html">Bài 25 - YOLO You Only Look Once</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/17/ImbalancedData.html">Bài 24 - Mất cân bằng dữ liệu (imbalanced dataset)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/02/11/NARSyscom2015.html">Bài 23 - Neural Attentive Session-Based Recommendation</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/17/ScoreCard.html">Bài 22 - Scorecard model</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2020/01/06/ImagePreprocessing.html">Bài 21 - Tiền xử lý ảnh OpenCV</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/26/Sorfmax_Recommendation_Neural_Network.html">Bài 20 - Recommendation Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/12/ARIMAmodel.html">Bài 19 - Mô hình ARIMA trong time series</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/12/02/DeepLearningLayer.html">Bài 18 - Các layers quan trọng trong deep learning</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/22/HOG.html">Bài 17 - Thuật toán HOG (Histrogram of oriented gradient)</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/08/RFMModel.html">Bài 16 - Model RFM phân khúc khách hàng</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/11/04/Recommendation_Compound_Part1.html">Bài 15 - collaborative và content-based filtering</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/22/googleHeatmap.html">Bài 14 - Biểu đồ trên Google Map</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/10/05/SSDModelObjectDetection.html">Bài 13 - Model SSD trong Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/29/OverviewObjectDetection.html">Bài 12 - Các thuật toán Object Detection</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/16/VisualizationPython.html">Bài 11 - Visualization trong python</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/09/08/LDATopicModel.html">Bài 10 - Thuật toán LDA - Xác định Topic</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/25/PyTorch_Torchtext_Tutorial.html">Bài 9 - Pytorch - Buổi 3 - torchtext module NLP</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/22/convolutional-neural-network.html">Bài 8 - Convolutional Neural Network</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/19/CorrectSpellingVietnamseTonePrediction.html">Bài 7 - Pytorch - Buổi 2 - Seq2seq model correct spelling</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/08/10/PytorchTurtorial1.html">Bài 6 - Pytorch - Buổi 1 - Làm quen với pytorch</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/07/15/PySparkSQL.html">Bài 5 - Model Pipeline - SparkSQL</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/06/18/AttentionLayer.html">Bài 4 -  Attention is all you need</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/05/10/Hypothesis_Statistic.html">Apenddix 1 - Lý thuyết phân phối và kiểm định thống kê</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/29/ModelWord2Vec.html">Bài 3 - Mô hình Word2Vec</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/04/22/Ly_thuyet_ve_mang_LSTM.html">Bài 2 - Lý thuyết về mạng LSTM part 2</a></li>
+					
+					<li><a style="text-align: left; color: #074B80"  href="/2019/01/07/Ky_thuat_feature_engineering.html">Bài 1 - Kĩ thuật feature engineering</a></li>
+					
+				</nav>
+			</div>
+			<div class="col-md-8 col-xs-12" style="z-index:1">
+				<nav class="navbar navbar-inverse" style="background-color: #046897">
+					<div class = "container-fluid">
+						<div class = "navbar-header>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<span style="color:#FFF">Khoa học dữ liệu - Khanh's blog</span>
+							</a>
+						</div>
+						<br>
+						<br>
+						<div class="collapse navbar-collapse navbar-right" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="/home"><span style="color: #fff"> Home</span></a></li>
+								<li><a href="/about"><span style="color: #fff"> About</span></a></li>
+								<!-- <li><a href="/da"><span style="color: #fff">Data Analytics</span></a></li> -->
+								<!-- <li><a href="/cv"><span style="color: #fff">Computer Vision</span></a></li> -->
+								<!-- <li><a href="/nlp"><span style="color: #fff">NLP</span></a></li> -->
+								<!-- <li><a href="/code"><span style="color: #fff">Code</span></a></li> -->
+								<li><a href="/book"><span style="color: #fff">Book</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="PageNavigation">
+				</div>
+				<h1 itemprop="name" class="post-title"></h1>
+				<div id="bootstrap-overrides">
+					<div>
+<h2><p class="post-link" style="text-align: left; color: #204081; font-weight: bold">Bài 48 - Mobilenet model</p></h2> 
+<strong>19 Sep 2020 - phamdinhkhanh</strong>
+</div>
+<br/>
+<div id="toc"></div>
+<h1 id="1-nhu-cầu-về-lightweight-model">1. Nhu cầu về lightweight model</h1>
+
+<p>Sự phát triển về mặt học thuật của thị giác máy tính đã tạo ra rất nhiều các models khác nhau với độ chính xác được đo lường trên bộ dữ liệu ImageNet ngày càng được cải thiện. Tuy nhiên không phải toàn bộ trong số chúng đều có thể sử dụng được trên các thiết bị gặp hạn chế về tài nguyên tính toán. Để phát triển được những ứng dụng AI trên các thiết bị như mobile, IoT thì chúng ta cần hiểu về tài nguyên của những thiết bị này để lựa chọn model phù hợp cho chúng. Những mô hình ưa chuộng được sử dụng thường là những model có số lượng tính toán ít và độ chính xác cao. MobileNet là một trong những lớp mô hình như vậy và trong bài viết này chúng ta cùng tìm hiểu về kiến trúc đặc biệt ẩn đằng sau họ các lớp mô hình MobileNet.</p>
+
+<h1 id="2-các-dạng-tích-chập">2. Các dạng tích chập.</h1>
+
+<h2 id="21-tích-chập-2-chiều-thông-thường">2.1. Tích chập 2 chiều thông thường.</h2>
+
+<p>Như chúng ta đã biết tích chập 2 chiều thông thường sẽ được tính toán trên toàn bộ chiều sâu (channel). Do đó số lượng tham số của mô hình sẽ gia tăng đáng kể phụ thuộc vào độ sâu của layer trước đó.</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic1.png" class="largepic" /></p>
+
+<p>Để thống nhất, ký hiệu shape của các tensor3D theo thứ tự các chiều (height, width, channel).</p>
+
+<p>Chẳng hạn ở trên chúng ta có một đầu vào kích thước $h \times w \times c$, tích chập thông thường sẽ cần $k \times k \times c$ tham số để thực hiện tích chập trên toàn bộ độ sâu của layers. Mỗi một bộ lọc sẽ tạo ra một ma trận output kích thước $h’ \times w’ \times 1$. Áp dụng $c’$ bộ lọc khác nhau ta sẽ tạo ra đầu ra có kích thước $h’ \times w’ \times c’$ (các ma trận output khi áp dụng tích chập trên từng bộ lọc sẽ được concatenate theo chiều sâu). Khi đó số lượng tham số cần sử dụng cho một tích chập thông thường sẽ là: $c’ \times k \times k \times c$.</p>
+
+<p>Số lượng tham số sẽ không đáng kể nếu độ sâu của input channel $c$ là nhỏ, thường là ở các layers ở vị trí đầu tiên. Tuy nhiên khi độ sâu tăng tiến dần về những layers cuối cùng của mạng CNN thì số lượng tham số của mô hình sẽ là một con số không hề nhỏ. Sự gia tăng tham số này tạo ra những mô hình cồng kềnh làm chiếm dụng bộ nhớ và ảnh hưởng tới tốc độ tính toán. Alexnet và VGGNet là những mô hình điển hình có số lượng tham số rất lớn do chỉ áp dụng những tích chập 2 chiều thông thường.</p>
+
+<p>Nếu bạn theo dõi <a href="https://paperswithcode.com/sota/image-classification-on-imagenet">ImageNet Leader Board</a> sẽ thấy rằng những mô hình thuộc họ MobileNet chỉ có vài triệu tham số nhưng độ chính xác tốt hơn AlexNet vài chục triệu tham số. Điểm mấu chốt tạo nên sự khác biệt này đó là MobileNet lần đầu tiên áp dụng kiến trúc tích chập tách biệt chiều sâu. Chúng ta sẽ cùng tìm hiểu về kiến trúc này ở phần tiếp theo.</p>
+
+<h2 id="22-tích-chập-tách-biệt-chiều-sâu-depthwise-separable-convolution">2.2. Tích chập tách biệt chiều sâu (Depthwise Separable Convolution).</h2>
+
+<p>Chúng ta nhận định rằng độ sâu là một trong những nguyên nhân chính dẫn tới sự gia tăng số lượng tham số của mô hình. Tích chập tách biệt chiều sâu sẽ tìm cách loại bỏ sự phụ thuộc vào độ sâu khi tích chập mà vẫn tạo ra được một output shape có kích thước tương đương so với tích chập thông thường. Cụ thể quá trình sẽ được chia thành hai bước tuần tự:</p>
+
+<ul>
+  <li><strong>Tích chập chiều sâu (Depthwise Convolution)</strong>: Chúng ta sẽ chia khối input tensor3D thành những lát cắt ma trận theo độ sâu. Thực hiện tích chập trên từng lát cắt như hình minh họa bên dưới.</li>
+</ul>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic2.png" class="largepic" /></p>
+
+<p>Mỗi một channel sẽ áp dụng một bộ lọc khác nhau và hoàn toàn không chia sẻ tham số. Điều này có ba tác dụng chính cho mô hình:</p>
+
+<ul>
+  <li>
+    <p>Nhận diện đặc trưng: Quá trình học và nhận diện đặc trưng sẽ được tách biệt theo từng bộ lọc. Nếu đặc trưng trên các channels là khác xa nhau thì sử dụng các bộ lọc riêng cho channel sẽ chuyên biệt hơn trong việc phát hiện các đặc trưng. Chẳng hạn như đầu vào là ba kênh RGB thì mỗi kênh áp dụng một bộ lọc khác nhau chuyên biệt.</p>
+  </li>
+  <li>
+    <p>Giảm thiểu khối lượng tính toán: Để tạo ra một điểm pixel trên output thì tích chập thông thường cần sử dụng $k \times k \times c$ phép tính trong khi tích chập chiều sâu tách biệt chỉ cần $k \times k$ phép tính.</p>
+  </li>
+  <li>
+    <p>Giảm thiếu số lượng tham số : Ở tích chập chiều sâu cần sử dụng $c \times k \times k$ tham số. Số lượng này ít hơn gấp $c’$ lần so với tích chập chiều sâu thông thường.</p>
+  </li>
+</ul>
+
+<p>Kết quả sau tích chập được concatenate lại theo độ sâu. Như vậy output thu được là một khối tensor3D có kích thước $h’ \times w’ \times c$.</p>
+
+<ul>
+  <li><strong>Tích chập điểm (Pointwise Convolution)</strong>: Có tác dụng thay đổi độ sâu của output bước trên từ $c$ sang $c’$. Chúng ta sẽ áp dụng $c’$ bộ lọc kích thước $1 \times 1 \times c$. Như vậy kích thước width và height không thay đổi mà chỉ độ sâu thay đổi.</li>
+</ul>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic3.png" class="largepic" /></p>
+
+<p>Kết quả sau cùng chúng ta thu được là một output có kích thước $h’ \times w’ \times c’$. Số lượng tham số cần áp dụng ở trường hợp này là $c’ \times c$.</p>
+
+<h2 id="23-so-sánh-tích-chập-tách-biệt-chiều-sâu-và-tích-chập-thông-thường">2.3. So sánh tích chập tách biệt chiều sâu và tích chập thông thường</h2>
+
+<h3 id="231-số-lượng-tham-số">2.3.1. Số lượng tham số</h3>
+<p>Như chúng ta đã biết, để tạo thành một shape có kích thước $h’ \times w’ \times c’$ thì số lượng tham số sử dụng ở tích chập thông thường là: 
+<script type="math/tex">c' \times k \times k \times c</script>
+Trong khi đó số lượng tham số sử dụng ở <em>tích chập chiều tách biệt chiều sâu</em>:
+<script type="math/tex">k \times k \times c + c' \times c</script>
+Thông thường $c’$ sẽ lớn hơn $c$ vì càng ở các layer sau thì độ sâu càng lớn. Do đó tỷ lệ:
+<script type="math/tex">\frac{c' \times k \times k \times c}{k \times k \times c + c' \times c} = \frac{c' \times k \times k}{k \times k + c'}</script>
+Tỷ lệ này sẽ gần bằng $k \times k$ nếu $c’ » k \times k$. Đây là một mức giảm khá đáng kể về kích thước mô hình. Bạn đọc đã hiểu lý do vì sao mà MobileNet lại có kích thước nhỏ gấp vài chục lần so với Alexnet rồi chứ ?</p>
+
+<h3 id="232-số-lượng-phép-toán-cần-thực-hiện">2.3.2. Số lượng phép toán cần thực hiện</h3>
+<p>Để cùng tạo ra một output shape có kích thước $h’ \times w’ \times c’$ thì tích chập thông thường cần thực hiện: 
+<script type="math/tex">(h' \times w' \times c') \times (k \times k \times c)</script>
+Trong đó $h’ \times w’ \times c’$ là số lượng pixels cần tính và $k \times k \times c$ là số phép nhân để tạo ra một pixel.</p>
+
+<p>Tích chập tách biệt chiều sâu chỉ phải thực hiện lần lượt trên:</p>
+<ul>
+  <li>Tích chập chiều sâu: $(h’ \times w’ \times c) \times (k \times k)$ phép nhân.</li>
+  <li>Tích chập điểm: $(h’ \times w’ \times c) \times (h’ \times w’)$ phép nhân.
+Tỷ lệ các phép tính giữa tích chập thông thường và tích chập chiều sâu:</li>
+</ul>
+
+<script type="math/tex; mode=display">\frac{h' \times w' \times c' \times k \times k \times c}{h' \times w' \times c \times k \times k + h' \times w' \times c \times h' \times w'} = \frac{c' \times k \times k}{k \times k + h' \times w'}</script>
+
+<p>Đây là một tỷ lệ khá lớn cho thấy tích chập chiều sâu tách biệt có chi phí tính toán thấp hơn rất nhiều so với tích chập thông thường. Do đó nó phù hợp để áp dụng trên các thiết bị cấu hình yếu.</p>
+
+<h2 id="24-ví-dụ-về-tích-chập-chiều-sâu">2.4. Ví dụ về tích chập chiều sâu.</h2>
+
+<p>Bên dưới chúng ta sẽ lấy ví dụ về phương pháp sử dụng tích chập chiều sâu trên cả pytorch và tensorflow.</p>
+
+<p><strong>tensorflow:</strong> Trên tensorflow chúng ta có thể thực hiện tích chập chiều sâu tách biệt theo hai bước tuần tự là:</p>
+
+<ul>
+  <li>
+    <p><em>tích chập chiều sâu</em>: Sử dụng hàm <code class="highlighter-rouge">tf.keras.layers.DepthwiseConv2D()</code> với <em>depth_multiplier = 1</em> đại diện cho độ sâu được tích chập.</p>
+  </li>
+  <li>
+    <p><em>tích chập điểm</em>: Sử dụng hàm <code class="highlighter-rouge">tf.keras.layers.Conv2D()</code> với kích thước <em>kernel_size = 1</em>.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>import tensorflow as tf
+import numpy as np
+x = np.random.randn(10, 15, 15, 20) # Batch_size, W, H, C
+x = x.astype('float32')
+def depthwise_separable_conv_tf(x):
+  dw2d = tf.keras.layers.DepthwiseConv2D(
+      kernel_size=3, strides=1, padding='same', depth_multiplier=1
+  )
+  pw2d = tf.keras.layers.Conv2D(
+      filters=50, kernel_size=1, strides=1
+  )
+  y = dw2d(x)
+  y = pw2d(y)
+  return y
+y = depthwise_separable_conv_tf(x)  
+y.shape # Batch_size, W, H, C
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorShape([10, 15, 15, 50])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>pytorch:</strong></p>
+
+<p>Một ưu điểm mà mình nghĩ pytorch đang tốt hơn so với tensorflow đó là thiết kế của tích chập 2 chiều là module <code class="highlighter-rouge">torch.nn.Conv2d()</code> cho phép cấu hình độ sâu của tích chập thông qua tham số <em>groups</em>. Kích thước của độ sâu sẽ bằng <em>input channels/groups</em>. Mặc định của tham số này là <em>groups = 1</em>. Khi đó toàn bộ độ sâu sẽ là một nhóm và tích chập được tính trên toàn bộ độ sâu. Nếu muốn sử dụng tích chập theo chiều sâu thì thiết lập <em>groups = input channels</em>. Khi đó độ sâu sẽ được chia thành <em>input channels</em> nhóm, mỗi nhóm có kích thước là 1.</p>
+
+<p>Bạn đọc có thể tham khảo thêm tại <a href="https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html">torch.nn.Conv2D()</a>.</p>
+
+<p>Bên dưới là code:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>from torch import nn
+
+class DepthwiseSeparableConv(nn.Module):
+    def __init__(self, nin, nout):
+        super(Depthwise_separable_conv, self).__init__()
+        self.depthwise = nn.Conv2d(nin, nin, kernel_size=3, padding=1, groups=nin)
+        self.pointwise = nn.Conv2d(nin, nout, kernel_size=1)
+
+    def forward(self, x):
+        out = self.depthwise(x)
+        out = self.pointwise(out)
+        return out
+
+
+x = torch.randn(10, 20, 15, 15) # Batch_size, C, W, H
+y = DepthwiseSeparableConv(nin=20, nout=50)(x)
+y.size()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>torch.Size([10, 50, 15, 15])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="3-mobilenetv2">3. MobileNetV2</h1>
+
+<p>Kể từ khi ra đời, MobileNetV2 là một trong những kiến trúc được ưa chuộng nhất khi phát triển các ứng dụng AI trong computer vision. Rất nhiều các kiến trúc sử dụng backbone là MobileNetV2 như <a href="https://phamdinhkhanh.github.io/2019/10/05/SSDModelObjectDetection.html">SSDLite</a> trong object detection và <a href="https://phamdinhkhanh.github.io/2020/06/18/DeepLab.html">DeepLabV3</a> trong image segmentation.</p>
+
+<p>MobileNetV2 có một số điểm cải tiến so với MobileNetV1 giúp cho nó có độ chính xác cao hơn, số lượng tham số và số lượng các phép tính ít hơn mà chúng ta sẽ tìm hiểu ngay sau đây.</p>
+
+<h2 id="31-inverted-residual-block">3.1. Inverted Residual Block</h2>
+
+<p>MobileNetV2 cũng sử dụng những kết nối tắt như ở mạng <a href="https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html#46-resnet-50-2015">ResNet</a>. Các khối ở layer trước được cộng trực tiếp vào layer liền sau. Nếu coi layer liền trước là $\mathbf{x}$, sau khi đi qua các xử lý tích chập hai chiều ta thu được kết quả $\mathcal{F}(\mathbf{x})$ thì output cuối cùng là một residual block có giá trị $\mathbf{x} + \mathcal{F}(x)$.</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic4.jpeg" class="largepic" /></p>
+
+<p>Tuy nhiên kết nối tắt ở MobileNetV2 được điều chỉnh sao cho số kênh (hoặc chiều sâu) ở input và output của mỗi block residual được thắt hẹp lại. Chính vì thế nó được gọi là các bottleneck layers (bottleneck là một thuật ngữ thường được sử dụng trong deep learning để ám chỉ các kiến trúc thu hẹp kích thước theo một chiều nào đó).</p>
+
+<p>Xin trích dẫn:</p>
+
+<p><code class="highlighter-rouge">The MobileNetV2 architecture is based on an inverted residual structure where the input and output of the residual block are thin bottleneck layers opposite to traditional residual models which use expanded representations in the input an MobileNetV2 uses lightweight depthwise convolutions to filter features in the intermediate expansion layer.</code></p>
+
+<p>Source <a href="https://arxiv.org/abs/1801.04381">MobileNetV2 - Mark Sandler, etc</a>.</p>
+
+<p>Cụ thể hơn chúng ta theo dõi hình minh họa bên dưới:</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic4.png" class="largepic" />
+Source: <a href="https://ai.googleblog.com/2018/04/mobilenetv2-next-generation-of-on.html">AI google blog</a></p>
+
+<p>Kiến trúc residual này ngược lại so với các kiến trúc residual truyền thống vì kiến trúc residual truyền thống có số lượng kênh ở input và output của một block lớn hơn so với các layer trung gian. Chính vì vậy nó còn được gọi là kiến trúc <em>inverted residual block</em>.</p>
+
+<p>Tác giá cho rằng các layer trung gian trong một block sẽ làm nhiệm vụ biến đổi phi tuyến nên cần dày hơn để tạo ra nhiều phép biến đổi hơn. Kết nối tắt giữa các block được thực hiện trên những bottleneck input và output chứ không thực hiện trên các layer trung gian. Do đó các layer bottleneck input và output chỉ cần ghi nhận kết quả và không cần thực hiện biến đổi phi tuyến.</p>
+
+<p>Ở giữa các layer trong một block <em>inverted residual block</em> chúng ta cũng sử dụng những biến đổi <em>tích chập tách biệt chiều sâu</em> để giảm thiểu số lượng tham số của mô hình. Đây cũng chính là bí quyết giúp họ các model MobileNet có kích thước giảm nhẹ.</p>
+
+<h2 id="32-loại-bỏ-non-linear">3.2. Loại bỏ non-linear</h2>
+
+<p>Một trong những thực nghiệm được tác giả ghi nhận đó là việc sử dụng các biến đổi phi tuyến (như biến đổi qua ReLu hoặc sigmoid) tại input và output của các <em>residual block</em> sẽ làm cho thông tin bị mất mát. Cụ thể cùng xem kết quả thực nghiệm bên dưới:</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic5.png" class="largepic" /></p>
+
+<p>Source <a href="https://arxiv.org/pdf/1801.04381.pdf">MobileNetV2 - Figure 6a</a></p>
+
+<p>Chính vì thế trong kiến trúc của <em>residual block</em> tác giả đã loại bỏ hàm phi tuyến tại layer input và output và thay bằng các phép chiếu tuyến tính.</p>
+
+<h2 id="33-khởi-tạo-inverted-residual-block">3.3. Khởi tạo Inverted Residual Block</h2>
+
+<p><strong>Tensorflow</strong>: Chúng ta có thể thực hiện khởi tạo <em>Inverted Residual Block</em> trên tensorflow như sau :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>import tensorflow as tf
+import numpy as np
+
+x = np.random.randn(10, 64, 64, 16)
+x = x.astype('float32')
+
+def inverted_linear_residual_block(x, expand=64, squeeze=16):
+  '''
+  expand: số lượng channel của layer trung gian
+  squeeze: số lượng channel của layer bottleneck input và output
+  '''
+  # Depthwise convolution
+  m = tf.keras.layers.Conv2D(expand, (1,1), padding='SAME', activation='relu')(x)
+  m = tf.keras.layers.DepthwiseConv2D((3,3), padding='SAME', activation='relu')(m)
+  # Pointwise convolution + Linear projection
+  m = tf.keras.layers.Conv2D(squeeze, (1,1), padding='SAME', activation='linear')(m)
+  opt = tf.keras.layers.Add()([m, x])
+  return opt
+
+y = inverted_linear_residual_block(x, expand=64, squeeze=16)
+y.shape
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>TensorShape([10, 64, 64, 16])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Trong kiến trúc này chúng ta sử dụng lần lượt:</p>
+
+<ul>
+  <li>Tích chập 2 chiều với kernel=(1, 1), số kênh của output được mở rộng để tạo thành layer trung gian.</li>
+  <li>Tích chập chiều sâu (<code class="highlighter-rouge">DepthwiseConv2D</code>) với kernel=(3, 3) có tác dụng trích lọc đặc trưng. Lưu ý ở <code class="highlighter-rouge">DepthwiseConv2D</code> chúng ta sẽ không khai báo số kênh vì tích chập chiều sâu trả ra số kênh bằng với input trước đó.</li>
+  <li>Tích chập 2 chiều với kernel=(1, 1) có số kênh giảm xuống để tạo thành output cho block residual.</li>
+</ul>
+
+<p><strong>Pytorch</strong>: Code trên pytorch như sau.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>import torch
+from torch import nn
+
+class InvertedLinearResidualBlock(nn.Module):
+    def __init__(self, expand=64, squeeze=16):
+        '''
+        expand: số lượng channel của layer trung gian
+        squeeze: số lượng channel của layer bottleneck input và output
+        '''
+        super(InvertedLinearResidualBlock, self).__init__()
+        self.conv = nn.Sequential(
+            # Depthwise Convolution
+            nn.Conv2d(squeeze, expand, kernel_size=3, stride=1, padding=1, groups=squeeze, bias=False),
+            nn.ReLU6(inplace=True),
+            # Pointwise Convolution + Linear projection
+            nn.Conv2d(expand, squeeze, kernel_size=1, stride=1, padding=0, bias=False),
+        )
+
+    def forward(self, x):
+        return x + self.conv(x)
+        
+x = torch.randn(10, 16, 64, 64) # Batch_size, C, W, H
+y = InvertedLinearResidualBlock(expand=64, squeeze=16)(x)
+y.size()
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>torch.Size([10, 16, 64, 64])
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Trên pytorch thì tích chập chiều sâu tách biệt có thể được thực hiện ngay trên chính một layer <code class="highlighter-rouge">Conv2d</code> thông qua cấu hình tham số groups như đã giải thích ở mục 2.4 phần code pytorch. Mình nghĩ đây là một điểm tốt hơn trong thiết kế của pytorch.</p>
+
+<p>Ngoài ra chúng ta lưu ý các thay đổi so với MobilenetV1 đó là: biến đổi tại layer output đã được thay bằng linear projection và độ sâu của các layer trung gian sâu hơn so với layer input và output.</p>
+
+<h1 id="4-mobilenetv3">4. MobileNetV3</h1>
+
+<p>Thêm Squeeze and Excitation (SE) vào block Residual để tạo thành một kiến trúc có độ chính xác cao hơn. Chúng ta cùng phân tích hình minh họa bên dưới để thấy sự khác biệt giữa kiến trúc Residual của mạng ResNet thông thường và SE-ResNet (áp dụng thêm Squeeze and Excitation).</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic6.png" class="largepic" /></p>
+
+<p>SE-Resnet block. Source: <a href="https://arxiv.org/pdf/1709.01507.pdf">Fig. 3: Squeeze-and-Excitation Networks</a></p>
+
+<p>SE-ResNet áp dụng thêm một nhánh Global pooling có tác dụng ghi nhận bối cảnh của toàn bộ layer trước đó. Kết quả sau cùng ở nhánh này ta thu được một véc tơ global context được dùng để scale đầu vào X.</p>
+
+<p>Tương tự như vậy SE được tích hợp vào kiến trúc của một residual block trong mobilenetV3 như sau:</p>
+
+<p><img src="/assets/images/20200914_Mobilenet/pic7.png" class="largepic" /></p>
+
+<p>Residual block MobilenetV2 + Squeeze and Excitation. Source: <a href="https://arxiv.org/pdf/1905.02244.pdf">Fig 4: MobilenetV3</a></p>
+
+<p>Để ý bạn sẽ thấy tại layer thứ 3 có một nhánh Squeeze and Excitation có kích thước (width x height) bằng <code class="highlighter-rouge">1 x 1</code> có tác dụng tổng hợp global context. Nhánh này lần lượt đi qua các biến đổi <code class="highlighter-rouge">FC -&gt; Relu -&gt; FC -&gt; hard sigmoid</code> (FC là fully connected layer). Cuối cùng được nhân trực tiếp vào nhánh input để scale input theo global context. Các kiến trúc còn lại hoàn toàn giữ nguyên như MobileNetV2.</p>
+
+<p>Để khởi tạo một inverted residual block trong mobilenetv3 chúng ta sẽ sử dụng lại code của MobileNetV2 và thêm vào một nhánh SE. Phần này mình sẽ không code mà xin dành cho bạn đọc như một bài tập tham khảo. Các bạn có thể đặt câu hỏi thảo luận tại <a href="https://www.facebook.com/groups/3235479620010379">AICode</a>.</p>
+
+<h1 id="5-kết-luận">5. Kết luận</h1>
+
+<p>MobileNet là một trong những kiến trúc được ưa chuộng và sử dụng phổ biến bởi độ chính xác và hiệu năng tính toán. Qua bài này mình đã phân tích cho các bạn đặc điểm kiến trúc của một block layer MobileNet. Điểm mấu chốt giúp cho các mô hình MobileNet giảm thiểu số lượng tính toán đó là áp dụng tích chập tách biệt chiều sâu. Đồng thời qua thời gian, nhóm tác giả MobileNet đã lồng ghép các ưu điểm từ những kiến trúc CNN khác vào mô hình của mình để ngày càng cải thiện hơn về độ chính xác và hiệu năng. Xin cảm ơn các bạn đã theo dõi bài viết. Bên dưới là các phần tài liệu tham khảo.</p>
+
+<h1 id="6-tài-liệu">6. Tài liệu</h1>
+
+<ol>
+  <li>
+    <p><a href="https://ai.googleblog.com/2018/04/mobilenetv2-next-generation-of-on.html">Mobilenetv2 next generation of On-Device computer vision networks - googleblog</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/mobilenetv2-inverted-residuals-and-linear-bottlenecks-8a4362f4ffd5">Mobilenetv2 inverted residuals and linear bottlenecks - </a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/review-squeezenet-image-classification-e7414825581a">Squeezenet image classification</a></p>
+  </li>
+  <li>
+    <p><a href="https://towardsdatascience.com/review-senet-squeeze-and-excitation-network-winner-of-ilsvrc-2017-image-classification-a887b98b2883">Review squeeze and excitation network</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/abs/1801.04381">MobileNetV2: Inverted Residuals and Linear Bottlenecks - Mark Sandler, Andrew Howard</a></p>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/pdf/1905.02244">MobilenetV3 - Andrew Howard, Mark Sandler</a></p>
+  </li>
+</ol>
+
+<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script src="/js/toc.js"></script>
+<script src="/js/btnTop.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>
+				</div>
+			</div>
+			<div class="col-md-2 hidden-xs hidden-sm">
+				<a  href="/">
+					<img width="100%" style="padding-bottom: 3mm;" src="/assets/images/logo.jpg" /> </a>
+				<br>
+				<nav>
+					<div class="header">Khanh's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/TowardDataScience">phamdinhkhanh blog</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/3235479620010379/">phamdinhkhanh AICode forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://kaggle.com/phamdinhkhanh">phamdinhkhanh kaggle</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://rpubs.com/phamdinhkhanh">phamdinhkhanh rpub</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://github.com/phamdinhkhanh">phamdinhkhanh github</a></li>
+					<br>
+					<div class="header">other's site</div>
+					<li><a style="text-align: left; color: #074B80"  href="https://www.facebook.com/groups/machinelearningcoban/">machine learning cơ bản facebook</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://forum.machinelearningcoban.com/">machine learning cơ bản forum</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://machinelearningmastery.com">machine learning mastery</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://viblo.asia">viblosia</a></li>
+					<br>
+					<div class="header">Khóa học</div>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs109/">Xác suất thống kê(Probability): CS109</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs246/">Bigdata: CS246</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://cs231n.stanford.edu/">Computer vision cơ bản: CS231N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224n/">Natural Language Processing: CS224N</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="http://web.stanford.edu/class/cs224w/">Khoá phân tích mạng lưới (analysis of network): CS224W</a></li>
+					<li><a style="text-align: left; color: #074B80"  href="https://web.stanford.edu/class/cs20si/">Khóa học Tensorflow: CS20SI</a></li>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
