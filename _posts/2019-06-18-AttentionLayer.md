@@ -157,13 +157,13 @@ Quá trình decoder cũng hoàn toàn tương tự như encoder ngoại trừ l�
 
 > **Hình 11:** Quá trình biến đổi giá trị input thành các giá trị output.
 
-Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLUE score (tôi sẽ giải thích chỉ số này ở mục 4) thì tác giả trong bài báo gốc có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như `I study at school` có thể dịch nhiều nghĩa như `tôi học ở trường` hoặc `tôi nghiên cứu ở trường`.
+Như hình 11 chúng ta thấy ở mỗi bước thời gian $t$ decoder sẽ nhận giá trị đầu vào là final-output từ encoder, input của từ ở vị trí thứ $t-1$ ở decoder (đây là giá trị được dự báo ở bước thời gian thứ $t-1$ của model). Sau khi đi qua 6 block layers của decoder model sẽ trả ra một vector đại diện cho từ được dự báo. Hàm linear kết hợp với softmax được sử dụng để tính ra giá trị phân phối xác xuất của từ mục tiêu. Để nâng cao accuracy và BLEU score (tôi sẽ giải thích chỉ số này ở mục 4) thì tác giả trong bài báo gốc có nói sử dụng kĩ thuật label smoothing tại ngưỡng label $\epsilon_{ls} = 0.1$ nhằm giảm các label tại vị trí mục tiêu xuống nhỏ hơn 1 và các vị trí khác lớn hơn 0. Việc này gây ảnh hưởng tới sự không chắc chắn của model nhưng có tác dụng trong gia tăng accuracy bởi trên thực tế 1 câu có thể có nhiều cách dịch khác nhau. Chẳng hạn như `I study at school` có thể dịch nhiều nghĩa như `tôi học ở trường` hoặc `tôi nghiên cứu ở trường`.
 
-# 4. BLUE score
+# 4. BLEU score
 
-Mục này tôi chỉ giới thiệu về chỉ số BLUE score đánh giá các thuật toán dịch máy. Đối với các bạn chỉ quan tâm đến attention có thể bỏ qua.
+Mục này tôi chỉ giới thiệu về chỉ số BLEU score một metric chuyên biệt đánh giá các thuật toán dịch máy. BLUE là viết tắt của cụm từ `Bilingual Evaluation Understudy` có ý nghĩa là chỉ số giá hệ thống song ngữ. Lý do tại sao chúng ta lại lựa chọn chúng?
 
-Để đo lường các tác vụ dịch máy hoàn toàn không đơn giản như các bài toán phân loại khác bởi ở các bài toán phân loại chúng ta đã có sẵn ground truth cho một quan sát đầu ra và ground truth này là duy nhất và cố định. Tuy nhiên đối với dịch máy, một câu input có thể có nhiều bản dịch khác nhau. Do đó không thể sử dụng nhãn duy nhất để so khớp như precision hoặc recall được. Xin phép được lấy ví dụ từ wiki về [BLUE score](https://en.wikipedia.org/wiki/BLEU).
+Để đo lường các tác vụ dịch máy hoàn toàn không đơn giản như các bài toán phân loại khác bởi ở các bài toán phân loại chúng ta đã có sẵn ground truth cho một quan sát đầu ra và ground truth này là duy nhất và cố định. Tuy nhiên đối với dịch máy, một câu input có thể có nhiều bản dịch khác nhau. Do đó không thể sử dụng nhãn duy nhất để so khớp như precision hoặc recall được. Xin phép được lấy ví dụ từ wiki về [BLEU score](https://en.wikipedia.org/wiki/BLEU).
 
 * Giả sử chúng ta có câu input từ tiếng Pháp là: `Le chat est sur le tapis`.
 
@@ -230,13 +230,13 @@ $$P_n = \frac{\sum_{i=1}^{C} \text{count_clip}(ngram_i)}{\sum_{i=1}^{C}\text{cou
 
 Trong đó C là kích thước của các ngram thu được từ bản dịch MT, $ngram_i$ là một phần tử thuộc bộ ngram. Cách tính $\text{count}$ và $\text{count_clip}$ như thống kê trong bảng 1.
 
-**Vậy BLUE score (bilingual evaluation understudy) được tính như thế nào?**
+**Vậy BLEU score (bilingual evaluation understudy) được tính như thế nào?**
 
-BLUE score theo như giới thiệu sẽ có tác dụng đánh giá điểm số càng cao nếu kết quả của MT là sát nghĩa với kết quả của người dịch. BLUE score sẽ được tính toán dựa trên $P_1, P_2, P_3, P_4$ theo lũy thừa cơ số tự nhiên $e$:
+BLEU score theo như giới thiệu sẽ có tác dụng đánh giá điểm số càng cao nếu kết quả của MT là sát nghĩa với kết quả của người dịch. BLEU score sẽ được tính toán dựa trên $P_1, P_2, P_3, P_4$ theo lũy thừa cơ số tự nhiên $e$:
 
-$$BLUE = \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
+$$BLEU = \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
 
-Tuy nhiên chúng ta thấy một điểm hạn chế của BLUE score đó là đối với các câu càng ngắn thì xu hướng BLUE score sẽ càng cao. Điều này dễ hiểu vì khi câu càng ngắn thì số lượng các n_gram càng ít và đồng thời khả năng xuất hiện của chúng trong các bản dịch cũng cao hơn. Chính vì vậy chúng ta cần một chỉ số phạt độ ngắn gọi là Brevity Penalty (kí hiệu là BP).
+Tuy nhiên chúng ta thấy một điểm hạn chế của BLEU score đó là đối với các câu càng ngắn thì xu hướng BLEU score sẽ càng cao. Điều này dễ hiểu vì khi câu càng ngắn thì số lượng các n_gram càng ít và đồng thời khả năng xuất hiện của chúng trong các bản dịch cũng cao hơn. Chính vì vậy chúng ta cần một chỉ số phạt độ ngắn gọi là Brevity Penalty (kí hiệu là BP).
 
 $$\begin{equation}
             BP = \left\{
@@ -248,9 +248,9 @@ $$\begin{equation}
             
 Khi đó:
 
-$$BLUE = BP \times \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
+$$BLEU = BP \times \text{exp}(\frac{P_1 + P_2 + P_3 + P_4}{4})$$
 
-Hiện nay có nhiều package trên đa dạng các ngôn ngữ machine learning hỗ trợ tính BLUE score. Trên python chúng ta có thể sử dụng package `nltk` như sau:
+Hiện nay có nhiều package trên đa dạng các ngôn ngữ machine learning hỗ trợ tính BLEU score. Trên python chúng ta có thể sử dụng package `nltk` như sau:
 ```python
 from nltk.translate.bleu_score import sentence_bleu
 reference = [['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'lazy', 'dog']]
@@ -259,7 +259,7 @@ score = sentence_bleu(reference, MT_translation)
 print(score)
 ```
 
-Bạn đọc cũng có thể tự xây dựng cho mình hàm tính BLUE score theo công thức đã cung cấp.
+Bạn đọc cũng có thể tự xây dựng cho mình hàm tính BLEU score theo công thức đã cung cấp.
 
 # 5. Thực hành Attention Layer
 
@@ -476,7 +476,7 @@ Như vậy sau bài hướng dẫn này các bạn đã biết được:
 * Kiến trúc mạng của transformer.
 * Biến đổi scale dot production attention để tìm ra ma trận attention weight.
 * Phương pháp thực hiện multi-head attention layers dựa trên từng single-head.
-* Metric đo lường mức độ chính xác của model dịch máy thông qua BLUE score (bilanguage evaluation understudy).
+* Metric đo lường mức độ chính xác của model dịch máy thông qua BLEU score (bilanguage evaluation understudy).
 
 Đến đây tôi xin kết thúc phần lý giải về thuật toán transformer và attention ứng dụng trong dịch máy. Bài viết được thực hiện dựa trên rất nhiều các tài liệu tham khảo. Tôi xin gửi lời cảm ơn chân thành tới các tác giả bài viết gốc, các vlog trên mạng đã chia sẻ kiến thức và hiểu biết của mình về model này. Bài viết có thể còn nhiều hạn chế. Rất mong đóng góp từ phía độc giả.
 
@@ -486,7 +486,7 @@ Như vậy sau bài hướng dẫn này các bạn đã biết được:
 2. [Effective Approaches to Attention-based Neural Machine Translation - Nhóm tác giả Minh-Thang Luong, Hieu Pham, Christopher D. Manning](https://arxiv.org/pdf/1508.04025.pdf)
 3. [Tensorflow implementation of the Transformer: Attention Is All You Need - kyubyong](https://github.com/Kyubyong/transformer)
 4. [Tensor2tensor project](https://github.com/tensorflow/tensor2tensor)
-6. [BLUE score - machinelearningmastery](https://machinelearningmastery.com/calculate-bleu-score-for-text-python/)
+6. [BLEU score - machinelearningmastery](https://machinelearningmastery.com/calculate-bleu-score-for-text-python/)
 5. [Minsuk Heo - youtube chanel](https://www.youtube.com/watch?v=z1xs9jdZnuY&fbclid=IwAR0ILROn9IEiXO0IgNqLAdTDt7UoXa-s_gD7k9MfGMCFIAGfwKMDfFyA-a0)
 5. [What is tranformer? - Maxime Allard](https://medium.com/inside-machine-learning/what-is-a-transformer-d07dd1fbec04)
 6. [Deep learing for NLP - CS244d standford](https://cs224d.stanford.edu/lecture_notes/notes4.pdf)
