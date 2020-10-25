@@ -11,15 +11,13 @@
 <link rel="stylesheet" href="/assets/css/styles.css">
 <link rel="stylesheet" href="/assets/css/styles_toc.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script data-ad-client="ca-pub-4263248182804679" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-<link rel="icon" type="image/jpg" href="assets/images/logo.jpg" sizes="32x32">
+<link rel="icon" type="image/jpg" href="/assets/images/logo.jpg" sizes="32x32">
 <link rel="canonical" href="https://phamdinhkhanh.github.io"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="author" content="Phạm Đình Khánh" />
@@ -39,14 +37,19 @@
 <style>
 	
 </style>
-<!-- -- Import latext  -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-	skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-	inlineMath: [['$','$']]
-  }
-});
+<!-- Config MathJax  -->
+<script>
+window.MathJax = {
+	tex: {
+	  inlineMath: [['$', '$'], ['\\(', '\\)']]
+	},
+	skipHtmlTags: [
+        'script', 'noscript', 'style', 'textarea', 'pre'
+    ],
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
 <!-- Google Analytics -->
