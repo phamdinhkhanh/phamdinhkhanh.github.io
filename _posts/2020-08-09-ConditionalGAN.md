@@ -1,12 +1,12 @@
 ---
 layout: post
 author: phamdinhkhanh
-title: Bài 45 - Conditional GAN (CGAN)
+title: Bài 45 - Conditional GAN (cGAN)
 ---
 
 # 1. Giới thiệu chung
 
-Ở những bài trước chúng ta đã được tìm hiểu về model [GAN](https://phamdinhkhanh.github.io/2020/07/13/GAN.html) và huấn luyện model GAN theo phương pháp [Wasserstein](https://phamdinhkhanh.github.io/2020/07/25/GAN_Wasserstein.html). Những model này sẽ tìm ra mối liên hệ giữa không gian ẩn (_latent space_) với hình ảnh huấn luyện để biến đổi một véc tơ noise ngẫu nhiên trong không gian ẩn thành hình ảnh fake có chất lượng cao. Chúng ta cùng khái quát lại kiến trúc của model GAN qua hình minh họa và tóm lược bên dưới :
+Ở những bài trước chúng ta đã được tìm hiểu về model [GAN](https://phamdinhkhanh.github.io/2020/07/13/GAN.html) và huấn luyện model GAN theo phương pháp [Wasserstein](https://phamdinhkhanh.github.io/2020/07/25/GAN_Wasserstein.html). Những model này sẽ biến đổi noise vector ngẫu nhiên thành hình ảnh output dựa trên mạng generator. Chúng ta cùng khái quát lại kiến trúc của model GAN qua hình minh họa và tóm lược bên dưới :
 
 <img src="https://miro.medium.com/max/700/0*eHwnn-j4Wpkdh5F8.jpeg" class="normalpic"/>
 
@@ -18,75 +18,63 @@ title: Bài 45 - Conditional GAN (CGAN)
 
 $$\min_{G} \max_{D} V(D, G) = \underbrace{\mathbb{E}_{x \sim p_{data}(x)} [\log D(x)]}_{\text{log-probability that D predict x is real}} + \underbrace{\mathbb{E}_{z \sim p_{z}(z)} [\log (1-D(G(z)))]}_{\text{log-probability D predicts G(z) is fake}} ~~~ (1)$$
 
-* Trong đó mục tiêu huấn luyện của model G là nhằm tối thiểu hóa $\log(1-D(G(z))$ và mục tiêu huấn luyện của model D là tối đa hóa $\log D(x)$. 
+* Trong đó thành phần $\log(1-D(G(z))$ đại diện cho loss của generator và $\log D(x)$ là loss của discriminator. 
 
 * Qúa trình huấn luyện sẽ huấn luyện đồng thời G và D.
 
+DCGAN (deep convolutional GAN) là mô hình GAN áp dụng trong các tác vụ của xử lý ảnh. Bài viết này được viết cho computer vision nên chúng ta sẽ sử dụng tên DCGAN thay cho GAN. Nhược điểm của DCGAN là chúng ta không thể kiểm soát được bức ảnh được sinh ra thuộc class nào mà nó được tạo ra hoàn toàn ngẫu nhiên. Ví dụ ở bài trước khi bạn truyền vào mạng một véc tơ noise $\mathbf{z}$ ngẫu nhiên thì mỗi lần inference sẽ có thể tạo ra một chữ số khác nhau. Điều này làm chúng ta không biết trước được ảnh cần tạo thuộc về class nào và đây cũng là hạn chế của DCGAN.
 
+cGAN sẽ giúp chúng ta sinh ra được ảnh thuộc một class cụ thể theo ý muốn dựa trên một thông tin được bổ sung vào mô hình là nhãn $y$. $y$ được coi như điều kiện để sinh ảnh nên mô hình mới có tên gọi là conditional GAN.
 
-
-
-
-
-
-Mô hình GAN áp dụng các kiến trúc mạng tích chập học sâu còn được gọi là DCGAN (deep convolutional GAN). Do đó để thuận tiện, từ đây mình sẽ sử dụng tên gọi DCGAN thay cho GAN. Nhược điểm của mô hình DCGAN đó là chúng ta không thể kiểm soát được bức ảnh được sinh ra thuộc class nào. Định dạng ảnh hoàn toàn phụ thuộc vào mối quan hệ tiềm ẩn được định nghĩa trong phép ánh xạ từ véc tơ noise sang ảnh fake của generator. 
-
-Trên thực tế  việc kiểm soát định dạng của ảnh fake là một nhu cầu cần thiết để tạo ra những bức ảnh theo ý muốn. Do đó mô hình CGAN (conditional GAN) đã đưa thêm tham số điều kiện nhãn để kiểm soát và định hướng định dạng ảnh fake. Có nghĩa là khi chúng ta sử dụng model generator để sinh ảnh fake thì chúng ta có thể biết được trước nhãn, kiểu và định dạng của ảnh fake dựa trên tham số nhãn được đưa thêm vào mô hình. Xin trích dẫn :
+Xin trích dẫn :
 
 `Generative adversarial nets can be extended to a conditional model if both the generator and discriminator are conditioned on some extra information y. […] We can perform the conditioning by feeding y into the both the discriminator and generator as additional input layer.`
 
 [Conditional Generative Adversarial Nets, 2014](https://arxiv.org/abs/1411.1784)
 
-Cụ thể hơn về kiến trúc và phương pháp huấn luyện model CGAN chúng ta sẽ cùng tìm hiểu bên dưới.
+Cụ thể hơn về kiến trúc và phương pháp huấn luyện model cGAN chúng ta sẽ cùng tìm hiểu bên dưới.
 
-# 2. CGAN
+# 2. cGAN
 
 
-## 2.1. Kiến trúc model CGAN
+## 2.1. Kiến trúc model cGAN
 
-Model DCGAN có đầu vào chỉ là véc tơ noise ngẫu nhiên $z$ được khởi tạo theo phân phối chuẩn hóa. Tuy nhiên ở model CGAN thì ở đầu vào sẽ có thêm nhãn $y$ như một tham số bổ sung cho mô hình `generator`. Chúng ta kỳ vọng rằng các bức ảnh fake được tạo ra sẽ nằm trong nhãn $y$. Đồng thời chúng ta cũng bổ sung nhãn $y$ vào `discriminator` để phân biệt tốt hơn ảnh real và ảnh fake. Cụ thể về kiến trúc model CGAN chúng ta có thể theo dõi qua hình bên dưới.
+Kiến trúc của cGAN cũng bao gồm hai mạng generator và descriminator
 
-<img src="https://miro.medium.com/max/700/1*4MxI-OrQqVMCCLbZXBV3rg.jpeg" class="normalpic"/>
+### 2.1.1. generator
 
-**Hình 1:** Kiến trúc generator và discriminator của CGAN. Chúng ta thấy ở generator bên trái có đầu vào là véc tơ noise $z$ và nhãn $y$. Ảnh được sinh ra từ model generator là $G(z, y)$ sẽ giống với các ảnh thuộc class $y$ đầu vào. Đối với discriminator thì chúng ta cũng tiếp nhận đầu vào là ảnh $x$ và nhãn $y$. Ảnh $x$ có thể  là fake nếu được sinh ra từ mô hình generator hoặc là real nếu được lấy ra từ tập train. Discriminator sẽ nhằm mục tiêu dự đoán ảnh truyền vào là ảnh real hay ảnh fake. 
+<img src="/assets/images/20200809_ConditionalGAN/pic1.jpg" class="normalpic"/>
+
+Mô hình generator nhận đầu vào là véc tơ $\mathbf{z}$ ngẫu nhiên và nhãn $y$. Véc tơ $\mathbf{z}$ sau đó được truyền qua các layer fully connected và sau đó reshape thành output 3 chiều có kích thước $(7, 7, 128)$ như hình minh họa. Nhãn $y$ được biến đổi sang véc tơ one-hot và cũng được truyền qua các layer fully connected  và reshape về kích thước $(7, 7, 1)$.
+
+Để đưa thông tin nhãn $y$ và ảnh thì chúng ta concatenate hai nhánh với nhau theo channel để tạo ra output có kích thước $(7, 7, 129)$. Tiếp theo đó quá trình upsampling sẽ tăng kích thước dần dần từ `7x7 -> 14x14 -> 28x28`, sau cùng ta thu được ảnh có cùng nhãn với $y$.
+
+### 2.1.2. discriminator
+
+Mô hình discriminator là một mô hình binary classification làm nhiệm vụ phân loại ảnh real và fake. Ảnh real được lựa chọn từ tập ảnh huấn luyện và ảnh fake được sinh ra từ generator. Tỷ lệ lựa chọn ảnh real/fake của chúng ta để đưa vào huấn luyện disciminator thường là 50%:50% để không bị mất cân bằng mẫu. Lưu ý thông tin về nhãn $y$ cũng được đưa vào kết hợp với $x$ để huấn luyện mô hình.
 
 Sơ đồ quá trình kết hợp giữa `generator` và `discriminator` chúng ta có thể theo dõi qua hình bên dưới:
 
 <img src="https://miro.medium.com/max/700/1*FpiLozEcc6-8RyiSTHjjIw.png" class="normalpic"/>
 
-**Hình 2:** Kết hợp giữa generator và discriminator trong model CGAN. Đầu vào của discriminator là kết hợp giữa ảnh $x$ và nhãn $y$. $x$ có thể được lấy từ real image hoặc khởi tạo từ generator thông qua véc tơ $z$ nằm trong không gian ẩn (_latent space_).
+**Hình 2:** Kết hợp giữa generator và discriminator trong model cGAN. Đầu vào của discriminator là kết hợp giữa ảnh $x$ và nhãn $y$. $x$ có thể được lấy từ real image hoặc khởi tạo từ generator thông qua véc tơ $z$ nằm trong không gian ẩn (_latent space_).
 
 
+## 2.2. Loss function
 
-## 2.2. Vai trò của nhãn y
-
-Lý do để chúng ta sử dụng nhãn $y$ trong mô hình CGAN đó là những thông tin đầu vào liên quan đến hình ảnh như nhãn là một trong những yếu tố giúp cải thiện chất lượng của model GAN. Sự cải thiện thể hiện ở mô hình ổn định hơn, quá trình huấn luyện nhanh hơn và chất lượng hình ảnh sinh ra tốt hơn. Nhãn đồng thời cũng là một trong những tham số giúp định hướng kết quả được sinh ra ở mô hình đầu ra theo ý muốn.
-
-Trong trường hợp ảnh đưa vào mô hình là real như nhánh bên trái thì sẽ được gán nhãn 1 và nếu ảnh đưa vào mô hình là fake như nhánh bên phải thì sẽ được gán nhãn 0. Thông thường cũng giống như quá trình huấn luyện đối với model DCGAN thì tỷ lệ ảnh real/fake được truyền vào huấn luyện là 50:50. Chúng ta sẽ làm rõ hơn vấn đề phân chia tỷ lệ real/fake này ở phần thực hành.
-
-## 2.3. One-hot embedding cho véc tơ nhãn y
-
-Ngoài ra các bạn hẳn sẽ thắc mắc $y$ được concatenate với $x$ như thế nào để tạo thành đầu vào cho mô hình ?
-
-Đầu tiên nhãn $y$ sẽ được chuyển thành một véc tơ one-hot có $n$ chiều trong đó $n$ là số lượng nhãn. Trong véc tơ one-hot chỉ có duy nhất một phần tử có giá trị bằng 1 tại vị trí tương ứng với nhãn $y$. Các vị trí còn lại bằng 0. VD: Nếu $y = 3$ thì sẽ được mã hóa thành véc tơ $(0, 0, 0, 1, 0, 0, 0, 0, 0, 0)$ mà ở đó vị trí thứ 4 có giá trị bằng 1. Lưu ý: 4 chính là vị trí của chữ số 3 trong các chữ số lần lượt từ $0-9$.
-
-Sau khi đã mã hóa nhãn $y$ chúng ta sẽ concatenate với véc tơ $x$ đại diện cho bức ảnh có thể là real hoặc fake tùy ý. Véc tơ sau khi concatenate sẽ được sử dụng làm đầu vào cho discriminator.
-
-## 2.4. Loss function
-
-Model CGAN cũng có loss function tương tự như model GAN. Loss function là kết hợp giữa loss function của model discriminator với model generator.
+Model cGAN cũng có loss function tương tự như model DCGAN bao gồm loss function của model discriminator và loss function của model generator.
 
 $$\min_{G} \max_{D} V(D, G) = \underbrace{\mathbb{E}_{x \sim p_{data}(x)} [\log D(x)]}_{\text{log-probability that D predict x is real}} + \underbrace{\mathbb{E}_{z \sim p_{z}(z)} [\log (1-D(G(z)))]}_{\text{log-probability D predicts G(z) is fake}} ~~~ (1)$$
 
 Để hiểu rõ hơn về các thành phần của loss function và tại sao loss function lại có tác dụng trong việc cải thiện đồng thời generator và discriminator, các bạn có thể xem lại [DCGAN loss function](https://phamdinhkhanh.github.io/2020/07/13/GAN.html#34-h%C3%A0m-loss-function).
 
-Tiếp theo chúng ta sẽ cùng thực hành huấn luyện mô hình CGAN đối với các bức ảnh thời trang.
+Tiếp theo chúng ta sẽ cùng thực hành huấn luyện mô hình cGAN đối với các bức ảnh thời trang.
 
 # 3. Thực hành
 
 ## 3.1. Dữ liệu
 
-Dữ liệu mà chúng ta sẽ sử dụng để minh họa cho CGAN là bộ dữ liệu fashion-mnist, đây là bộ dữ liệu gồm 60000 bức ảnh trong đó tập train chiếm 50000 bức và tập test chiếm 10000 bức. Bộ dữ liệu được chia đều về 10 nhãn là các loại quần áo đặc trưng, kích thước của ảnh là `28 x 28` và ở định dạng ảnh một kênh màu. Bộ dữ liệu này được thay thế cho mnist để tăng thêm tính đa dạng và tránh sự lặp lại nhàm chán. Cả hai tập dữ liệu fashion-mnist và mnist là hai bộ dữ liệu thường được sử dụng để demo các thuật toán trong giảng dạy và học tập. Do đó chúng đã được tích hợp sẵn trong các framework phổ biến như tensorflow, pytorch.
+Dữ liệu mà chúng ta sẽ sử dụng để minh họa cho cGAN là bộ dữ liệu fashion-mnist, đây là bộ dữ liệu gồm 60000 bức ảnh trong đó tập train chiếm 50000 bức và tập test chiếm 10000 bức. Bộ dữ liệu được chia đều về 10 nhãn là các loại quần áo đặc trưng, kích thước của ảnh là `28 x 28` và ở định dạng ảnh một kênh màu. Bộ dữ liệu này được thay thế cho mnist để tăng thêm tính đa dạng và tránh sự lặp lại nhàm chán. Cả hai tập dữ liệu fashion-mnist và mnist là hai bộ dữ liệu thường được sử dụng để demo các thuật toán trong giảng dạy và học tập. Do đó chúng đã được tích hợp sẵn trong các framework phổ biến như tensorflow, pytorch.
 
 Để load dữ liệu train, test của fashion-mnist trên keras, chúng ta sẽ thực hiện như bên dưới :
 
@@ -157,7 +145,7 @@ Ta nhận thấy các bức ảnh đều có độ phân giải thấp để gi�
 
 ## 3.2. Kiến trúc mô hình
 
-Tương tự như các thuật toán GAN khác, kiến trúc của CGAN cũng bao gồm 2 phases là generator và discriminator. Trong đó generator có tác dụng sinh ảnh và discriminator sẽ phân biệt giữa ảnh real và ảnh fake. Tuy nhiên trong model CGAN thì chúng ta sẽ có thêm _điều kiện_ của ảnh output bằng cách thêm véc tơ one-hot encoding của nhãn bức ảnh mà chúng ta muốn tạo cho cả generator và discriminator.
+Tương tự như các thuật toán GAN khác, kiến trúc của cGAN cũng bao gồm 2 phases là generator và discriminator. Trong đó generator có tác dụng sinh ảnh và discriminator sẽ phân biệt giữa ảnh real và ảnh fake. Tuy nhiên trong model cGAN thì chúng ta sẽ có thêm _điều kiện_ của ảnh output bằng cách thêm véc tơ one-hot encoding của nhãn bức ảnh mà chúng ta muốn tạo cho cả generator và discriminator.
 
 
 
@@ -165,7 +153,7 @@ Tương tự như các thuật toán GAN khác, kiến trúc của CGAN cũng ba
 
 Đầu vào của discriminator sẽ là một véc tơ concatenate giữa véc tơ biểu diễn ảnh với véc tơ one-hot của nhãn bức ảnh. Véc tơ one-hot của nhãn sau đó sẽ chiếu lên một không gian mới 50 chiều thông qua một phép chiếu linear-projection.
 
-Backbone (tức là mạng CNN cơ sở) mà chúng ta sử dụng để huấn luyện model CGAN là một kiến trúc CNN thông thường làm nhiệm vụ trích suất các đặc trưng của ảnh. Bạn đọc có thể sử dụng thử bất kỳ một kiến trúc CNN model nào đã được trình bày tại [Bài 38 - Các kiến trúc CNN hiện đại](https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html). Hoặc có thể tự tạo cho mình một kiến trúc CNN tùy ý. Việc tạo kiến trúc CNN là không quá khó khăn, chúng ta có thể sử dụng các block CNN _[Conv + BatchNorm + Maxpooling]_ liên tiếp nhau để giảm chiều dữ liệu. Output của layer CNN cuối cùng sẽ được trải phẳng (flatten) thành một véc tơ và sử dụng các kết nối fully connected để thu được đầu ra với số lượng class mong muốn.
+Backbone (tức là mạng CNN cơ sở) mà chúng ta sử dụng để huấn luyện model cGAN là một kiến trúc CNN thông thường làm nhiệm vụ trích suất các đặc trưng của ảnh. Bạn đọc có thể sử dụng thử bất kỳ một kiến trúc CNN model nào đã được trình bày tại [Bài 38 - Các kiến trúc CNN hiện đại](https://phamdinhkhanh.github.io/2020/05/31/CNNHistory.html). Hoặc có thể tự tạo cho mình một kiến trúc CNN tùy ý. Việc tạo kiến trúc CNN là không quá khó khăn, chúng ta có thể sử dụng các block CNN _[Conv + BatchNorm + Maxpooling]_ liên tiếp nhau để giảm chiều dữ liệu. Output của layer CNN cuối cùng sẽ được trải phẳng (flatten) thành một véc tơ và sử dụng các kết nối fully connected để thu được đầu ra với số lượng class mong muốn.
 
 Bạn đọc sẽ hiểu rõ hơn qua phần thực hành bên dưới :
 
@@ -276,22 +264,22 @@ plot_model(generator)
 
 
 
-### 3.2.3. CGAN model
+### 3.2.3. cGAN model
 
-Tiếp theo chúng ta sẽ cùng khởi tạo model CGAN từ hai model generator và discriminator. 
+Tiếp theo chúng ta sẽ cùng khởi tạo model cGAN từ hai model generator và discriminator. 
 
-* Đầu tiên dữ liệu sẽ được truyền qua generator model để thu được đầu ra là một bức ảnh. Lưu ý input của generator trong CGAN ngoài véc tơ noise sẽ có thêm label so với model GAN.
+* Đầu tiên dữ liệu sẽ được truyền qua generator model để thu được đầu ra là một bức ảnh. Lưu ý input của generator trong cGAN ngoài véc tơ noise sẽ có thêm label so với model GAN.
 
 * Tiếp theo output của generator sẽ được truyền vào model discriminator để phân biệt ảnh real và ảnh fake. Input của discriminator cũng bao gồm ảnh được sinh ra từ generator và label.
 
-* CGAN model sẽ là một pipeline end2end kết hợp generator và discriminator. Chúng ta sẽ thông qua CGAN để huấn luyện generator. Do đó discriminator sẽ được đóng băng.
+* cGAN model sẽ là một pipeline end2end kết hợp generator và discriminator. Chúng ta sẽ thông qua cGAN để huấn luyện generator. Do đó discriminator sẽ được đóng băng.
 
-Hàm loss function của CGAN sẽ giống như DCGAN và là một hàm dạng `binary_crossentropy`.
+Hàm loss function của cGAN sẽ giống như DCGAN và là một hàm dạng `binary_crossentropy`.
 
 
 ```
-def _cgan(g_model, d_model):
-	# Do cgan được sử dụng để huấn luyện generator nên discriminator sẽ được đóng băng
+def _cGAN(g_model, d_model):
+	# Do cGAN được sử dụng để huấn luyện generator nên discriminator sẽ được đóng băng
 	d_model.trainable = False
 	# Lấy đầu vào của generator model bao gồm véc tơ noise và nhãn
 	gen_noise, gen_label = g_model.input
@@ -299,14 +287,14 @@ def _cgan(g_model, d_model):
 	gen_output = g_model.output
 	# Truyền output và nhãn của mô hình generator vào mô hình discriminator
 	gan_output = d_model([gen_output, gen_label])
-	# Khởi tạo mô hình CGAN
+	# Khởi tạo mô hình cGAN
 	model = Model([gen_noise, gen_label], gan_output)
 	opt = Adam(lr=0.0002, beta_1=0.5)
 	model.compile(loss='binary_crossentropy', optimizer=opt)
 	return model
 
-cgan_model = _cgan(generator, discriminator)
-plot_models(cgan_model)
+cGAN_model = _cGAN(generator, discriminator)
+plot_models(cGAN_model)
 ```
 
 ### 3.2.4. Huấn luyện model
@@ -370,18 +358,18 @@ def _generate_fake_samples(generator, latent_dim, n_samples):
 Tiếp theo chúng ta sẽ huấn luyện mô hình một cách xen kẽ giữa generator và discriminator. Quá trình huấn luyện trên mỗi batch như sau:
 
 * Huấn luyện mô hình trên discriminator trước. Trong đó 1/2 batch là ảnh real và 1/2 batch còn lại là ảnh fake.
-* Huấn luyện mô hình trên generator thông qua huấn luyện model CGAN trên 1 batch.
+* Huấn luyện mô hình trên generator thông qua huấn luyện model cGAN trên 1 batch.
 
-Sau mỗi mặc định 10 epochs thì model CGAN sẽ được lưu lại.
+Sau mỗi mặc định 10 epochs thì model cGAN sẽ được lưu lại.
 
 
 
 ```
-def _train(g_model, d_model, cgan_model, dataset, latent_dim, n_epochs=100, n_batch=128, save_every_epochs=10):
+def _train(g_model, d_model, cGAN_model, dataset, latent_dim, n_epochs=100, n_batch=128, save_every_epochs=10):
 	'''
 	g_model: generator model
 	d_model: discriminator model
-	cgan_model: gan_model
+	cGAN_model: gan_model
 	dataset: dữ liệu huấn luyện, bao gồm: (X_train, y_train)
 	latent_dim: Số chiều của latent space
 	n_epochs: Số lượng epochs
@@ -409,15 +397,15 @@ def _train(g_model, d_model, cgan_model, dataset, latent_dim, n_epochs=100, n_ba
 			[z_input, labels_input] = _generate_latent_points(latent_dim, n_batch)
 			# Khởi tạo nhãn discriminator cho các dữ liệu fake. Do chúng ta giả định là generator đánh lừa được discriminator nên nhãn của ảnh là 1.
 			y_gan = np.ones((n_batch, 1))
-			# Huấn luyện generator thông qua model CGAN
-			g_loss = cgan_model.train_on_batch([z_input, labels_input], y_gan)
+			# Huấn luyện generator thông qua model cGAN
+			g_loss = cGAN_model.train_on_batch([z_input, labels_input], y_gan)
 			# summarize loss on this batch
 			print('>%d, %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
 				(i+1, j+1, batch_per_epoch, d_loss1, d_loss2, g_loss))
 	if (i % save_every_epochs) & (i > 0):
-		g_model.save('cgan_generator_epoch{}.h5'.format(i))
+		g_model.save('cGAN_generator_epoch{}.h5'.format(i))
 	# save the generator model
-	g_model.save('cgan_generator.h5')
+	g_model.save('cGAN_generator.h5')
 ```
 
 Huấn luyện model.
@@ -430,21 +418,21 @@ latent_dim = 100
 d_model = _discriminator()
 # Khởi tạo generator
 g_model = _generator(latent_dim)
-# Khởi tạo cgan
-cgan_model = _cgan(g_model, d_model)
+# Khởi tạo cGAN
+cGAN_model = _cGAN(g_model, d_model)
 # load image data
 dataset = _standardize_data(X_train, y_train)
 # train model
-_train(g_model, d_model, cgan_model, dataset, latent_dim)
+_train(g_model, d_model, cGAN_model, dataset, latent_dim)
 ```
     >100, 468/468, d1=0.672, d2=0.673 g=0.768
 
 
 # 4. Kết luận
 
-Như vậy với model CGAN, chúng ta đã kiểm soát được những bức ảnh được tạo ra theo ý muốn. Đây có thể được xem như một bước đột phát của GAN vì trên thực tế có rất nhiều những bức ảnh mà ta sẽ phải định hướng kết quả về hình dạng, format. CGAN cũng tạo ra những đột phá mới về chất lượng hình ảnh và sự ổn định trong quá trình huấn luyện. Qua bài viết này các bạn đã nắm được kiến trúc của một model CGAN và quá trình để huấn luyện một model CGAN điển hình trên bộ dữ liệu fashion-mnist. Đây sẽ là tiền đề để chúng ta vận dụng model CGAN trên những bộ dữ liệu khác.
+Như vậy với model cGAN, chúng ta đã kiểm soát được những bức ảnh được tạo ra theo ý muốn. Đây có thể được xem như một bước đột phát của GAN vì trên thực tế có rất nhiều những bức ảnh mà ta sẽ phải định hướng kết quả về hình dạng, format. cGAN cũng tạo ra những đột phá mới về chất lượng hình ảnh và sự ổn định trong quá trình huấn luyện. Qua bài viết này các bạn đã nắm được kiến trúc của một model cGAN và quá trình để huấn luyện một model cGAN điển hình trên bộ dữ liệu fashion-mnist. Đây sẽ là tiền đề để chúng ta vận dụng model cGAN trên những bộ dữ liệu khác.
 
-Code mẫu của mô hình được cung cấp tại [CGAN model](https://github.com/phamdinhkhanh/CGAN).
+Code mẫu của mô hình được cung cấp tại [cGAN model](https://github.com/phamdinhkhanh/cGAN).
 
 
 # 5. Tham khảo
@@ -453,7 +441,7 @@ Code mẫu của mô hình được cung cấp tại [CGAN model](https://github
 
 2. [Wasserstein GAN](https://phamdinhkhanh.github.io/2020/07/25/GAN_Wasserstein.html)
 
-3. [GAN — CGAN & InfoGAN (using labels to improve GAN) - Jonathan Hui](https://medium.com/@jonathan_hui/gan-cgan-infogan-using-labels-to-improve-gan-8ba4de5f9c3d)
+3. [GAN — cGAN & InfoGAN (using labels to improve GAN) - Jonathan Hui](https://medium.com/@jonathan_hui/gan-cGAN-infogan-using-labels-to-improve-gan-8ba4de5f9c3d)
 
 4. [Conditional Generative Adversarial Nets - origin paper - Mehdi Mirza, Simon Osindero](https://arxiv.org/abs/1411.1784)
 
@@ -461,7 +449,7 @@ Code mẫu của mô hình được cung cấp tại [CGAN model](https://github
 
 6. [Conditional GAN - cs231 standford](http://cs231n.stanford.edu/reports/2015/pdfs/jgauthie_final_report.pdf)
 
-7. [Generative Adversarial Network (GAN) with Extra Conditional Inputs - Sik-Ho Tsang](https://medium.com/ai-in-plain-english/review-cgan-conditional-gan-gan-78dd42eee41)
+7. [Generative Adversarial Network (GAN) with Extra Conditional Inputs - Sik-Ho Tsang](https://medium.com/ai-in-plain-english/review-cGAN-conditional-gan-gan-78dd42eee41)
 
 8. [InfoMax-GAN: Improved Adversarial Image Generation via Information Maximization and Contrastive Learning - Kwot Sin Lee, Ngoc-Trung Tran, Ngai-Man Cheung](https://arxiv.org/abs/2007.04589)
 
