@@ -1,3 +1,11 @@
 .current {
   color: red;
 }
+@media (min-width: 768px) {
+  .navbar-header {
+      float: none;
+  }
+}
+img {
+  max-width: 100%;
+}
