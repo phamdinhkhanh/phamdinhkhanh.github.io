@@ -124,7 +124,7 @@ _binary_integer(19)
 
 Như vậy bạn đã nắm được ý tưởng biến đổi một số nguyên sang hệ nhị phân rồi chứ ? Tiếp theo chúng ta cùng phân tích biểu diễn của một số nguyên đối với định dạng float 32.
 
-Giả sử số đó là `1997`. Khi biểu diễn dưới dạng float 32 thì chúng ta sẽ đưa thêm phần thập phân vào sau nó.
+Giả sử số đó là `1993`. Khi biểu diễn dưới dạng float 32 thì chúng ta sẽ đưa thêm phần thập phân vào sau nó.
 
 
 ```
