@@ -78,7 +78,7 @@ Chúng ta có thể biểu diễn dễ dàng một số nguyên dưới dạng n
 
 $$x = \sum_{i=1}^{n} d_i(0, 1) \times 2^{i}$$
 
-Trong đó $d_i(0, 1) \in \{ 0, 1 \}$. Biểu diễn nhị phân của $x$ sẽ là chuỗi $d_n d_{n-1} \dots d_0$ mà mỗi vị trí $d_i$ nhận 2 giá trị $\{0, 1\}$. Ở cấp 2 chắc các bạn đã từng làm bài toán biến đổi số thập phân sang hệ nhị phân. Bạn còn nhớ chúng ta sẽ thực hiện liên tiếp các phép chia liên hoàn cho 2 cho đến khi không chia được nữa chứ ? Quá trình này lặp lại cho đến khi kết quả thu được sau cùng là 0. Khi đó phần dư ở các bước chia sẽ được lưu lại và cuối cùng nghịch đảo thứ tự của chuỗi phần dư ta thu được biểu diễn nhị phân của số thập phân. Cùng xem hình bên dưới.
+Trong đó $d_i(0, 1) \in \\{ 0, 1 \\}$. Biểu diễn nhị phân của $x$ sẽ là chuỗi $d_n d_{n-1} \dots d_0$ mà mỗi vị trí $d_i$ nhận 2 giá trị $\\{ 0, 1 \\}$. Ở cấp 2 chắc các bạn đã từng làm bài toán biến đổi số thập phân sang hệ nhị phân. Bạn còn nhớ chúng ta sẽ thực hiện liên tiếp các phép chia liên hoàn cho 2 cho đến khi không chia được nữa chứ ? Quá trình này lặp lại cho đến khi kết quả thu được sau cùng là 0. Khi đó phần dư ở các bước chia sẽ được lưu lại và cuối cùng nghịch đảo thứ tự của chuỗi phần dư ta thu được biểu diễn nhị phân của số thập phân. Cùng xem hình bên dưới.
 
 <img src="/assets/images/20201123_Quantization/pic2.jpeg" class="largepic"/>
 
@@ -136,7 +136,7 @@ print("Total Bits: ", len(_binary_integer(1993)))
     Total Bits:  11
 
 
-Phần nguyên chiếm 11 bits, như vậy 21 bits còn lại sẽ là các chữ số 0 ở phần thập phân và dấu phảy. Tuy nhiên khi chuyển sang định dạng float 16 thì ta chỉ cần 16 bits để lưu cùng số nguyên ở trên, trong đó 11 bits cho phần nguyên và 5 bits còn lại cho phần thập phân và dấu phảy. Số bits sử dụng sẽ giảm một nửa giúp cho mô hình giảm một nửa bộ nhớ lưu trữ.
+Phần nguyên chiếm 11 bits, như vậy 21 bits còn lại sẽ là các chữ số 0 ở phần dư và dấu phảy. Tuy nhiên khi chuyển sang định dạng float 16 thì ta chỉ cần 16 bits để lưu cùng số nguyên ở trên, trong đó 11 bits cho phần nguyên và 5 bits còn lại cho phần dư và dấu phảy. Số bits sử dụng sẽ giảm một nửa giúp cho mô hình giảm một nửa bộ nhớ lưu trữ.
 
 
 ## 1.3. Các dạng quantization
@@ -154,15 +154,15 @@ Trong bảng trên là 3 kiểu quantization cơ bản với các tính chất k
 
 * **Full Integer quantization**: Toàn bộ các hệ số sẽ được chuyển về kiểu số nguyên. Kích thước bộ nhớ giảm 4 lần, tăng 3 lần tốc độ trên CPU, TPU, Microcontrollers.
 
-* **Float16 quantization**: Tất nhiên là sẽ được chuyển về kiểu số nguyên và kích thước giảm 2 lần (từ 32 bits về 16 bits). Giúp tăng tốc tính toán trên GPU.
+* **Float16 quantization**: Tất nhiên là sẽ được chuyển về kiểu float và kích thước giảm 2 lần (từ 32 bits về 16 bits). Giúp tăng tốc tính toán trên GPU.
 
-Hiện nay hầu hết các framework deep learning đều hỗ trợ quantization. Trong khuôn khổ của blog này mình chỉ xin giới thiệu quantization trên framework tensorflow.
+Hiện nay hầu hết các framework deep learning đều hỗ trợ quantization. Trong khuôn khổ của blog này mình chỉ giới thiệu quantization trên framework tensorflow và pytorch.
 
 # 2. Quantization trên tensorflow
 
 Về Quantization trên tensorflow thì đã có hướng dẫn khá chi tiết cho 3 kiểu ở trên. Các bạn có thể xem tại [Post-training quantization](https://www.tensorflow.org/lite/performance/post_training_quantization).
 
-Trong bài viết này thì mình chỉ tổng hợp lại các ý chính bao gồm: 
+Mình xin tổng hợp lại các ý chính bao gồm: 
 
 * Cách convert model trên tflite.
 * Thực hiện quantization.
@@ -171,10 +171,6 @@ Trong bài viết này thì mình chỉ tổng hợp lại các ý chính bao g�
 Trên tensorflow chúng ta thường quantization mô hình trên tensorflow lite trước khi deploy trên các thiết bị di động. Nếu bạn chưa biết về tensorflow lite thì đây là một định dạng thuộc kiểu FlatBuffer, một cross platform hỗ trợ nhiều ngôn ngữ khác nhau như `C++, C#, C, Go, Java, Kotlin, JavaScript, Lobster, Lua, TypeScript, PHP, Python, Rust, Swift`. FlatBuffer cho phép serialization data nhanh hơn so với các kiểu dữ liệu khác như Protocol Buffer vì nó bỏ qua quá trình data parsing. Do đó quá trình load model sẽ nhanh hơn đáng kể.
 
 Tiếp theo chúng ta sẽ thực hành Quantization model trên định dạng `tflite`.
-
-
-
-
 
 ## 2.1. Convert một model tflite
 
