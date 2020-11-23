@@ -426,10 +426,10 @@ def _evaluate_model(model_file, model_type):
 _evaluate_model("/tmp/mobilenet_v2_quant.tflite", model_type="unit8"")
 ```
 
-    Float model accuracy is 98.8700% (Number of test samples=10000)
+    Float model accuracy is 98.8200% (Number of test samples=10000)
 
 
-Ta thấy sau khi quantization thì độ chính xác của mô hình giảm khoảng 0.5%. Đây là một mức giảm không đáng kể so với lợi ích đạt được từ việc giảm kích thước mô hình và tốc độ inference.
+Ta thấy sau khi quantization thì độ chính xác của mô hình giảm khoảng 0.05%. Đây là một mức giảm không đáng kể so với lợi ích đạt được từ việc giảm kích thước mô hình và tốc độ inference.
 
 ### 2.3.1. Convert model by commandline
 
@@ -568,13 +568,7 @@ Cảm ơn các bạn đã theo dõi blog, đừng ngại thử thách và học 
 3. [mxnet quantization](https://medium.com/apache-mxnet/model-quantization-for-production-level-neural-network-inference-f54462ebba05)
 4. [A Tale of Model Quantization in TF Lite](https://towardsdatascience.com/a-tale-of-model-quantization-in-tf-lite-aebe09f255ca)
 5. [How to accelerate and compress neural networks with quantization](https://towardsdatascience.com/how-to-accelerate-and-compress-neural-networks-with-quantization-edfbbabb6af7)
-
-6. https://arxiv.org/pdf/1710.09282.pdf
-
-7. https://arxiv.org/pdf/1510.00149.pdf
-
-8. https://arxiv.org/pdf/1510.00149.pdf
-
-9. https://arxiv.org/pdf/1506.02626.pdf
-
-10. https://arxiv.org/pdf/1602.01528.pdf
+6. [A Survey of Model Compression and Acceleration for Deep Neural Networks](https://arxiv.org/pdf/1710.09282.pdf)
+7. [Deep Compression: Compressing deep neural networks with pruning, trained quantization and huffman coding](https://arxiv.org/pdf/1510.00149.pdf)
+8. [Learning both Weights and Connections for Efficient Neural Networks](https://arxiv.org/pdf/1506.02626.pdf)
+9. [EIE: Efficient Inference Engine on Compressed Deep Neural Network](https://arxiv.org/pdf/1602.01528.pdf)
