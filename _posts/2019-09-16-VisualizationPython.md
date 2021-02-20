@@ -26,7 +26,7 @@ Biểu đồ line là biểu đồ biểu diễn các giá trị dưới dạng 
 **Lấy dữ liệu chứng khoán của apple**
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -296,7 +296,7 @@ for i in range(len(data_labels)): # your number of bars
 Chúng ta cũng có thể vẽ biểu đồ của 2 biến trở lên là các barchart liền kề nhau.
 
 
-```
+```python
 import numpy as np
 
 men_means, men_std = (20, 35, 30, 35, 27), (2, 3, 4, 1, 2)
@@ -392,7 +392,7 @@ Biểu đồ tròn được sử dụng để visualize tỷ lệ phần trăm c
 Để tạo biểu đồ tròn trong mathplotlib.
 
 
-```
+```python
 import numpy as np
 plt.pie(x = np.array([10, 20, 50]), # giá trị của các nhóm
         labels = ['Nhóm A', 'Nhóm B', 'Nhóm C'], # Nhãn của các nhóm
@@ -411,7 +411,7 @@ plt.title('Biểu đồ tròn tỷ lệ % của các nhóm')
 Biểu đồ boxplot sẽ cho ta biết đặc trưng về phân phối của 1 biến dựa trên các giá trị trung bình, min, max, các khoảng phân vị 25%, 50%, 75%. Đây là biểu đồ được sử dụng nhiều trong chứng khoán và thống kê học để so sánh các biến với nhau.
 
 
-```
+```python
 import numpy as np
 x = np.random.randn(100) + np.arange(0, 100) * 0.5
 y = np.random.randn(100) + np.arange(0, 100) * 1.0 + 10
@@ -436,7 +436,7 @@ plt.ylabel('Gía trị của x, y, z')
 Để tìm hiểu kĩ hơn về thống kê và vẽ biểu đồ trên dataframe các bạn có thể tham khảo bài [Giới thiệu pandas](https://www.kaggle.com/phamdinhkhanh/gi-i-thi-u-pandas).
 
 
-```
+```python
 import pandas as pd
 import datetime
 import pandas_datareader.data as web
@@ -774,7 +774,7 @@ im, cbar = heatmap(df_cor, row_labels = inds, col_labels = inds)
 Chúng ta sẽ thêm titles giá trị các biến nằm trong `df_cor` vào các ô giá trị tương ứng thông qua hàm số `annotate_heatmap()`
 
 
-```
+```python
 import matplotlib
 
 def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
@@ -853,7 +853,7 @@ plt.show()
 Hoặc ta có thể visualize biểu đồ heatmap thông qua package `seaborn`.
 
 
-```
+```python
 import seaborn as sns
 
 sns.heatmap(df_cor, annot=True)
@@ -869,7 +869,7 @@ sns.heatmap(df_cor, annot=True)
 Mỗi một bộ dữ liệu đều có một đặt trưng riêng của nó. Để mô hình hóa những đặc trưng này, thống kê học sử dụng thống kê mô tả như tính mean, max, median, standard deviation, percentile. Để tính thống kê mô tả cho một dataset dạng pandas dataframe trong python đơn giản ta sử dụng hàm `describe()`.
 
 
-```
+```python
 from sklearn import datasets
 iris = datasets.load_iris()
 
@@ -1016,7 +1016,7 @@ Bên dưới ta sẽ thực hành vẽ hàm mật độ xác suất của độ 
 
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -1058,7 +1058,7 @@ Bên dưới là biểu đồ histogram của độ rộng đài hoa visualize t
 Nếu không set style hiển thị mặc định là seaborn đồ thị sẽ là:
 
 
-```
+```python
 import matplotlib.pyplot as plt
 
 plt.hist(dataset['sepal length (cm)'], bins = 20)
@@ -1074,7 +1074,7 @@ plt.show()
 
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -1100,7 +1100,7 @@ Ta thấy theme của đồ thị được chuyển sang màu xám nhạt và gi
 Các bin edges được khai báo thông qua cũng cùng tham số `bins`, giá trị được truyền vào khi đó là 1 list các điểm đầu mút. Từ đó giúp đồ thị linh hoạt hơn khi có thể hiệu chỉnh độ dài các bins tùy thích.
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -1126,7 +1126,7 @@ Swarn plot là biểu đồ point biểu diễn các giá trị dưới dạng c
 Hãy hình dung qua ví dụ cụ thể khi visualization dữ liệu iris theo chiều dài, rộng cánh hoa và đài hoa.
 
 
-```
+```python
 import seaborn as sn
 import matplotlib.pyplot as plt
 
@@ -1143,7 +1143,7 @@ plt.show()
 Muốn thay nhãn của các x = [0, 1, 2] sang target_names = ['setosa', 'versicolor', 'virginica'] ta sử dụng hàm plt.xticks().
 
 
-```
+```python
 import seaborn as sn
 import matplotlib.pyplot as plt
 
@@ -1168,7 +1168,7 @@ Matplotlib cho phép chúng ta vẽ được nhiều biểu đồ trên cùng 1 
 Chẳng hạn bên dưới trên cùng 1 biểu đồ chúng ta biểu diễn độ rộng và dài của đài hoa.
 
 
-```
+```python
 import matplotlib.pyplot as plt
 fg, ax = plt.subplots(1, 2)
 
@@ -1189,7 +1189,7 @@ hàm `plt.subplots()` sẽ định hình hiển thị các biểu đồ con theo
 Chúng ta có thể sử dụng biểu đồ `plt.subplots()` để biểu diễn hình ảnh của các nhãn trong phân loại hình ảnh.
 
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -1218,7 +1218,7 @@ os.listdir()
 
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2

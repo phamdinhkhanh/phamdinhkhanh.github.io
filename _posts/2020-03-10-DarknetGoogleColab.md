@@ -151,7 +151,7 @@ Các bạn thực hiện tuần tự như sau:
 **Step 1**: Thay đổi đường dẫn tới folder mặc định là `My Drive`.
 
 
-```
+```python
 import os
 
 path = "/content/gdrive/My Drive"
@@ -260,7 +260,7 @@ file ảnh và annotation phải cùng tên để darknet có thể matching ch�
 Ở bước này ta sẽ tạo ra 2 file train.txt và valid.txt chứa dữ liệu đường dẫn tới các file hình ảnh nằm trong tập train và validation. Chúng ta sẽ sử dụng đoạn code bên dưới để lựa chọn ra ngẫu nhiên 20 files làm dữ liệu validation và các files còn lại làm dữ liệu train.
 
 
-```
+```python
 import glob2
 import numpy as np
 

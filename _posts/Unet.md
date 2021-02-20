@@ -90,7 +90,7 @@ Tiếp theo ta sẽ visualize các ảnh huấn luyện và nhãn tương ứng 
 
 
 
-```
+```python
 import glob2
 
 img_5_paths = sorted(glob2.glob('unet/data/membrane/train/image/*.png'))[:5]
@@ -137,7 +137,7 @@ Tiếp theo chúng ta cùng triển khai Unet version 1
 Tại layer cuối cùng của mạng chúng ta áp dụng `activation=sigmoid` để dự đoán xác suất nhãn.
 
 
-```
+```python
 import tensorflow as tf
 INPUT_SHAPE = 572
 OUTPUT_SHAPE = 386
@@ -171,7 +171,7 @@ def _upsample_cnn_block(block_input, block_counterpart, channel, is_last = False
 ```
 
 
-```
+```python
 from tensorflow.keras.optimizers import Adam
 
 def _create_model():
@@ -194,7 +194,7 @@ model = _create_model()
 Tiếp theo chúng ta sẽ phân chia tập train/validation
 
 
-```
+```python
 from sklearn.model_selection import train_test_split
 import glob2
 
@@ -215,7 +215,7 @@ train_img_paths, val_img_paths, train_label_paths, val_label_paths = train_test_
 Tập train được lấy ngẫu nhiên 72 ảnh và tập validation là 18 ảnh. Tỷ trệ train/validation là 80:20.
 
 
-```
+```python
 import cv2
 
 def _image_read_paths(train_img_paths, train_label_paths):
@@ -247,7 +247,7 @@ print(X_val.shape, Y_val.shape)
 Huấn luyện mô hình trên 100 epochs sử dụng EarlyStopping với khoảng cách tăng loss liên tiếp là 2 epochs thì dừng lại (patience=2). 
 
 
-```
+```python
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 
@@ -313,7 +313,7 @@ Mô hình đạt accuracy đâu đó gần 60% trên tập train và 70% trên t
 
 Để làm được như vậy, các layer mình sử dụng `padding = same`. Khi đó kích thước nhánh trái và nhánh phải là tương đương và chúng ta không cần phải crop block trước khi kết nối tắt.
 
-```
+```python
 import tensorflow as tf
 
 INPUT_SHAPE = 512
@@ -350,7 +350,7 @@ def _upsample_cnn_block(block_input, block_counterpart, channel, is_last = False
 
 Khởi tạo model2
 
-```
+```python
 from tensorflow.keras.optimizers import Adam
 
 def _create_model2():
@@ -372,7 +372,7 @@ model2 = _create_model2()
 
 Để công bằng trong 2 model Unet version 1 và Unet version 2 thì mình giữa nguyên tập huấn luyện và thẩm định như nhau ở 2 tập.
 
-```
+```python
 import cv2
 
 def _image_read_paths(train_img_paths, train_label_paths):
@@ -406,7 +406,7 @@ print(X_val.shape, Y_val.shape)
 
 Tiếp theo mô hình sẽ được huấn luyện với cầu hình `optimizer` và `EarlyStopping` tương tự như Unet version 1.
 
-```
+```python
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 
@@ -529,7 +529,7 @@ Tiếp theo chúng ta sẽ khởi tạo DataGenerator như ý tưởng mô tả 
 Ý tưởng cũng không có gì quá phức tạp:
 
 
-```
+```python
 import numpy as np
 from tensorflow.keras.utils import Sequence
 import cv2
@@ -779,7 +779,7 @@ Như vậy bổ sung data đã mang lại hiệu quả cao trong dự báo.
 Sau khi huấn luyện xong mô hình, chúng ta cùng kiểm tra kết quả dự báo của mô hình cho một bức ảnh cụ thể
 
 
-```
+```python
 import glob2
 
 test_paths = glob2.glob('unet/data/membrane/test/*.png')

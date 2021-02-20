@@ -28,7 +28,7 @@ Giả sử một người vay $n$ món nợ với cùng lãi suất là 1%/thán
 
 Note: Bạn đọc có thể mở google colab để cùng thực hành [tensorflow Dataset - khanh blog](https://colab.research.google.com/drive/1mVwq7Py4Rv2MCDp1lOD8mQ1FXQWJDLlp)
 
-```
+```python
 import numpy as np
 from datetime import datetime
 
@@ -127,7 +127,7 @@ os.listdir()
 
 
 
-```
+```python
 from tensorflow.keras.datasets import mnist
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
@@ -148,7 +148,7 @@ print(y_test.shape)
 Như vậy các dữ liệu train và test của bộ dữ liệu mnist đã được load vào bộ nhớ. Tiếp theo chúng ta sẽ khởi tạo Dataset cho những dữ liệu in memory này bằng hàm `tf.data.Dataset.from_tensor_slices()`. Hàm này sẽ khai báo dữ liệu đầu vào cho mô hình huấn luyện.
 
 
-```
+```python
 import tensorflow as tf
 train_dataset = tf.data.Dataset.from_tensor_slices((X_train, y_train))
 valid_dataset = tf.data.Dataset.from_tensor_slices((X_test, y_test))
@@ -159,7 +159,7 @@ Khi đó chúng ta đã có thể fit vào mô hình huấn luyện các dữ li
 Chúng ta cũng có thể áp dụng các phép biến đổi bằng các hàm như `Dataset.map()` hoặc `Dataset.batch()` để biến đổi dữ liệu trước khi fit vào model. Các bạn xem thêm tại [tf.Dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset). Chẳng hạn trước khi truyền batch vào huấn luyện tôi sẽ thực hiện chuẩn hóa batch theo phân phối chuẩn.
 
 
-```
+```python
 import numpy as np
 from tensorflow.keras.backend import std, mean
 from tensorflow.math import reduce_std, reduce_mean
@@ -193,7 +193,7 @@ valid_dataset = valid_dataset.batch(32).map(_normalize)
 Huấn luyện và kiểm định model
 
 
-```
+```python
 from tensorflow.keras.applications import MobileNet
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten
@@ -247,7 +247,7 @@ Theo cách khởi tạo từ generator chúng ta sẽ không phải ghi nhớ to
 Giả sử bên dưới chúng ta có tên các món ăn được chia thành hai nhóm thuộc các địa phương 'hà nội' và 'hồ chí minh'. Chúng ta sẽ khởi tạo data generator để sinh dữ liệu cho mô hình phân loại món ăn theo địa phương.
 
 
-```
+```python
 import pandas as pd
 
 hanoi = ['bún chả hà nội', 'chả cá lã vọng hà nội', 'cháo lòng hà nội', 'ô mai sấu hà nội', 'ô mai', 'chả cá', 'cháo lòng']
@@ -353,7 +353,7 @@ voc.dictionary
 Tiếp theo chúng ta sẽ khởi tạo một `random_generator` có tác dụng lựa chọn ngẫu nhiên một tên món ăn trong corpus và tokenize chúng.
 
 
-```
+```python
 import tensorflow as tf
 
 cat_indices = {
@@ -382,7 +382,7 @@ random_generator
 ```
 
 
-```
+```python
 import numpy as np
 
 random_generator_batch = random_generator.shuffle(20).padded_batch(20, padded_shapes=([None], []))
@@ -441,7 +441,7 @@ image_gen = tf.keras.preprocessing.image.ImageDataGenerator(
 Tiếp theo chúng ta sẽ truyền dữ liệu vào mô hình thông qua một hàm là `flow_from_directory()`.
 
 
-```
+```python
 import glob2
 
 root_folder = 'Dog-Cat-Classifier/Data/Train_Data/'
@@ -520,7 +520,7 @@ Cách thức customize như thế nào. Mình sẽ giới thiệu với các b�
 Tiếp theo ta sẽ khởi tạo một DataGenerator cho bộ dữ liệu ảnh kế thừa class Sequence của keras. Mình sẽ giải thích các phương thức trong DataGenerator này bên dưới.
 
 
-```
+```python
 import numpy as np
 from tensorflow.keras.utils import Sequence, to_categorical
 import cv2
@@ -630,7 +630,7 @@ $$\text{len} = \frac{\text{# Obs}}{\text{batch size}}$$
 * Hàm `__data_generation()`: Hàm này sẽ được gọi trong `__getitem__()`. `__data_generation()` sẽ trực tiếp biến đổi dữ liệu và quyết định các kết quả dữ liệu trả về cho người dùng. Tại hàm này ta có thể thực hiện các phép preprocessing image.
 
 
-```
+```python
 import cv2
 import glob2
 
@@ -672,7 +672,7 @@ Như vậy ta có thể thấy, tại mỗi lượt huấn luyện model lấy r
 Chúng ta sẽ thử nghiệm huấn luyện model với generator. Đầu tiên là khởi tạo model.
 
 
-```
+```python
 from tensorflow.keras.applications import MobileNet
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten

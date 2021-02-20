@@ -97,7 +97,7 @@ Bên dưới chúng ta sẽ lấy ví dụ về phương pháp sử dụng tích
 * _tích chập điểm_: Sử dụng hàm `tf.keras.layers.Conv2D()` với kích thước _kernel_size = 1_.
 
 
-```
+```python
 import tensorflow as tf
 import numpy as np
 x = np.random.randn(10, 15, 15, 20) # Batch_size, W, H, C
@@ -132,7 +132,7 @@ Bạn đọc có thể tham khảo thêm tại [torch.nn.Conv2D()](https://pytor
 Bên dưới là code:
 
 
-```
+```python
 from torch import nn
 
 class DepthwiseSeparableConv(nn.Module):
@@ -209,7 +209,7 @@ Chính vì thế trong kiến trúc của _residual block_ tác giả đã loạ
 **Tensorflow**: Chúng ta có thể thực hiện khởi tạo _Inverted Residual Block_ trên tensorflow như sau :
 
 
-```
+```python
 import tensorflow as tf
 import numpy as np
 
@@ -250,7 +250,7 @@ Trong kiến trúc này chúng ta sử dụng lần lượt:
 **Pytorch**: Code trên pytorch như sau.
 
 
-```
+```python
 import torch
 from torch import nn
 

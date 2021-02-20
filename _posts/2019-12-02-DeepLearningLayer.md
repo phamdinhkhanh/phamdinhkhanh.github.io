@@ -61,7 +61,7 @@ Tất cả các công việc này được thực hiện khá dễ dàng nhờ n
 
 - Đọc và khảo sát dữ liệu:
 
-```
+```python
 import pandas as pd
 dataset = pd.read_csv('spam.csv', header=0, sep=',',encoding='latin-1')
 dataset = dataset.iloc[:, :2]
@@ -132,7 +132,7 @@ dataset.groupby('Label').Email.count().plot.bar()
 
 - Làm sạch dữ liệu bằng cách chuẩn hóa các từ viết hoa thành viết thường, loại bỏ dấu câu, loại bỏ chữ số, tách số dính liền với từ và loại bỏ stop words,... thông qua package gensim.
 
-```
+```python
 import gensim
 from gensim.parsing.preprocessing import strip_non_alphanum, strip_multiple_whitespaces, preprocess_string, split_alphanum, strip_short, strip_numeric
 import re 
@@ -184,7 +184,7 @@ dataset['Content_Clean'] = docs
 Để chuyển các câu văn thành ma trận số, chúng ta cần tạo ra một từ điển mapping mỗi từ với index tương ứng của nó. module tokenizer dễ dàng giúp ta thực hiện việc này.
 
 
-```
+```python
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 
@@ -204,7 +204,7 @@ X_tok, X, tok = _tokenize_matrix(docs=dataset['Content_Clean'], max_words=1000, 
 Mã hóa nhãn spam/ham về biến one-hot.
 
 
-```
+```python
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 y = le.fit_transform(dataset['Label'])
@@ -217,7 +217,7 @@ Sau khi đã preprocessing dữ liệu, chúng ta thu được đầu vào là c
 - Khởi tạo model Dense Layer
 
 
-```
+```python
 from tensorflow.keras.layers import Input, Embedding, LSTM, Dense, Activation, Dropout, TimeDistributed, Flatten
 from tensorflow.keras.models import Model, Sequential
 from sklearn.preprocessing import LabelEncoder
@@ -426,7 +426,7 @@ print('y_val shape: {}'.format(y_val.shape))
 Bước tiếp theo tuy đơn giản nhưng vô cùng quan trọng. Rất nhiều beginer thường bỏ qua vì chưa có kinh nghiệm. Đó là kiểm tra phân phối số quan sát trên các nhóm.
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -481,7 +481,7 @@ LeNet là mạng CNN đơn giản được tạo ra vào 1998 bởi Yan LeCun kh
 
 Chúng ta khởi tạo model LeNet không có BatchNormalization.
 
-```
+```python
 from tensorflow.keras.layers import Flatten, Dense, Input, Activation, Conv2D, MaxPooling2D, Reshape, BatchNormalization
 from tensorflow.keras.optimizers import Adam, SGD
 from tensorflow.keras.models import Sequential, Model
@@ -566,7 +566,7 @@ lenet_no_batchnorm = _Lenet_No_BatchNorm()
 Huấn luyện model LeNet khi không có Batch Normalization
 
 
-```
+```python
 from tensorflow.keras.callbacks import EarlyStopping
 # Compile model
 optimizer = Adam(learning_rate=0.005, beta_1=0.9, beta_2=0.999, amsgrad=False)
@@ -597,7 +597,7 @@ lenet_no_batchnorm.fit(X_train, y_train,
     
 
 Khởi tạo model LeNet khi có BatchNormalization
-```
+```python
 from tensorflow.keras.layers import Flatten, Dense, Input, Activation, Conv2D, MaxPooling2D, Reshape, BatchNormalization
 from tensorflow.keras.optimizers import Adam, SGD
 from tensorflow.keras.models import Sequential, Model
@@ -689,7 +689,7 @@ lenet_batchnorm = _Lenet_BatchNorm()
 
 Huấn luyện model với Batch Normalization
 
-```
+```python
 from tensorflow.keras.callbacks import EarlyStopping
 # Compile model
 optimizer = Adam(learning_rate=0.005, beta_1=0.9, beta_2=0.999, amsgrad=False)
@@ -748,7 +748,7 @@ Do mức độ tập trung phụ thuộc vào vị trí của từ trong câu n�
 Sau đây ta sẽ áp dụng Attention Layer đằng sau LSTM model trong tác vụ phân loại mail spam và so sánh hiệu quả so với áp dụng các layer như TimeDistrubted Layer và Dense Layer.
 
 
-```
+```python
 from tensorflow.keras.layers import Layer, InputSpec
 from tensorflow.keras import initializers
 
@@ -780,7 +780,7 @@ class AttLayer(Layer):
 ```
 
 
-```
+```python
 from tensorflow.keras.layers import Input, Embedding, LSTM, Dense, Activation, Dropout, TimeDistributed, Flatten, Layer, Attention
 from tensorflow.keras.models import Model, Sequential
 from sklearn.preprocessing import LabelEncoder

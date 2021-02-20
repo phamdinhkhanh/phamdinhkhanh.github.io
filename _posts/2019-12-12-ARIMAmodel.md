@@ -102,7 +102,7 @@ Hiện tại package [vnquant](https://github.com/phamdinhkhanh/vnquant) đã ch
 
 Bây giờ chúng ta sẽ cùng lấy dữ liệu chỉ số VNINDEX 30 thông qua package vnquant nào.
 
-```
+```python
 from vnquant.DataLoader import DataLoader
 
 loader = DataLoader(symbols="VN30",
@@ -250,7 +250,7 @@ data.head()
 
 Sử dụng hàm visualization trên chính vnquant để visualize dữ liệu lịch sử giá và khối lượng giao dịch.
 
-```
+```python
 from vnquant import Plot
 Plot._vnquant_candle_stick(data = data,
                       title='VNIndex 30 from 2019-01-02 to 2019-12-09',
@@ -272,7 +272,7 @@ Mục tiêu của mô hình sẽ là dự báo chuỗi $r_t$. Từ chuỗi $r_t$
 Hàm `data.shift(1)` sẽ giúp ta lấy trễ bậc 1 của chuỗi giá close. Công thức tính toán lợi suất như sau:
 
 
-```
+```python
 import numpy as np
 # Tính chuỗi return
 r_t = np.log(data['close']/data['close'].shift(1)).values[:, 0]
@@ -301,7 +301,7 @@ r_t[:5]
 Để hiểu rõ hơn về xu hướng, biến động, ta hãy cùng vẽ biểu đồ chuỗi lợi suất $r_t$.
 
 
-```
+```python
 import matplotlib.pyplot as plt
 plt.figure(figsize=(16, 4))
 plt.plot(np.arange(r_t.shape[0]), r_t, '-o')
@@ -321,7 +321,7 @@ Nhận xét: Biểu đồ chuỗi lợi suất cho thấy nó là một biến �
 
 Ta có thể vẽ biểu đồ biểu diễn chuỗi $r_t$ dựa trên chuỗi $r_{t-1}$ để xem chúng có quan hệ tuyến tính hay ngẫu nhiên.
 
-```
+```python
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 8))
 plt.scatter(x=r_t[1:], y=r_t[:-1])
@@ -338,7 +338,7 @@ plt.show()
 
 Ta hãy cũng khảo sát qua biểu đồ phân phối xác suất của chuỗi lợi suất.
 
-```
+```python
 import seaborn as sns
 
 plt.figure(figsize = (8, 6))
@@ -364,7 +364,7 @@ Từ biểu đồ ta kết luận 2 chuỗi có phân phối tương tự nhau n
 
 Cách 1: Sử dụng trực tiếp hàm `sm.qqplot()`.
 
-```
+```python
 import statsmodels.api as sm
 sm.qqplot(r_t)
 plt.show()
@@ -374,7 +374,7 @@ plt.show()
 Cách 2: Tính ra chuỗi lý thuyết và vẽ đồ thị
 Chúng ta cũng có thể vẽ biểu đồ qqplot bằng cách tính ra trực tiếp giá trị phân phối thực nhiệm (Theoretical Quantiles) và vẽ biểu đồ lợi suất thực tế đã được sắp xếp theo thứ tự tăng dần (Sample Quantiles).
 
-```
+```python
 from scipy import stats
 tq = stats.probplot(r_t)
 plt.scatter(x=tq[0][0], y = tq[0][1])
@@ -447,7 +447,7 @@ Giá trị ngưỡng kiểm định:
 $$DF = \frac{\hat\phi - 1}{SE(\hat\phi)}$$
 Chúng ta sẽ so sánh giá trị ngưỡng kiểm định này với giá trị tới hạn của phân phối Dickey - Fuller để đưa ra kết luận về chấp nhận hoặc bác bỏ giả thuyết $H_0$. Trên python đã hỗ trợ kiểm định ADF thông qua package `statsmodels`. Ta sẽ kiểm định ADF cho chuỗi lợi suất.
 
-```
+```python
 from statsmodels.tsa.stattools import adfuller
 result = adfuller(r_t)
 print('ADF Statistic: %f' % result[0])
@@ -481,7 +481,7 @@ $$\rho(s,t) = \frac{cov(x_s,x_t)}{\sqrt{\sigma_s\sigma_t}}$$
 
 giá trị $\rho(s,t)$ đo lường khả năng dự báo của biến $x_t$ nếu chỉ sử dụng biến $x_s$. Trong trường hợp 2 đại lượng có tương quan hoàn hảo tức $\rho(s,t)=±1$ ta có thể biểu diễn $x_t=\beta_0+\beta_1 x_s$. Hệ số của $\beta_1$ sẽ ảnh hưởng lên chiều của hệ số tương quan. Theo đó $\rho(s, t)=1$ khi $\beta_1>0$ và $\rho(s,t)=−1$ khi $\beta_1<0$. Chúng ta có thể vẽ biểu đồ các hệ số tự tương quan ACF theo các bậc liên tiếp thông qua hàm plot_acf của `statsmodels` như bên dưới:
 
-```
+```python
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 plt.figure(figsize = (8, 6))
@@ -511,7 +511,7 @@ Trong đó $corr()$ là hàm tính hệ số tương quan.
 Đó là tất cả về PACF. Khá dễ hiểu phải không nào?
 PACF sẽ có tác dụng tìm ra hệ số bậc tự do $p$ của quá trình tự hồi qui $\text{AR}(p)$. Tương tự như ACF, thông qua một biểu đồ PACF về giá trị các hệ số tương quan riêng phần tương ứng với các độ trễ khác nhau, chúng ta sẽ tìm ra được các bậc tự do $p$ phù hợp. Đó chính là vị trí mà giá trị của hệ số tương quan riêng phần nằm ngoài ngưỡng tin cậy 95% của giả thuyết hệ số tương quan riêng phần bằng 0.
 
-```
+```python
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 plt.figure(figsize = (8, 6))
@@ -540,7 +540,7 @@ Tóm lại rằng giá trị của AIC càng nhỏ thì mô hình của chúng t
 
 Mô hình ARIMA có thể được xây dựng khá dễ dàng trên python thông qua package `statsmodels`. Điều mà chúng ta cần thực hiện chỉ là khai báo bậc của mô hình ARIMA. Giả sử cần xây dựng một mô hình ARIMA(2, 0, 0) ta thực hiện như sau: 
 
-```
+```python
 from statsmodels.tsa.arima_model import ARIMA
 
 model_arima = ARIMA(r_t, order = (2, 0, 2))
@@ -600,7 +600,7 @@ Như vậy xét trên khía cạnh mô hình thống kê thì tất cả các h�
 Trên đây là những điểm sơ đẳng nhất mà tôi rút ra từ kinh nghiệm của mình. Ngoài ra còn rất nhiều những sự khác biệt nữa giữa machine learning và thống kê, kinh tế lượng mà làm nhiều chúng ta sẽ tự đúc kết ra.
 Quay trở lại việc lựa chọn mô hình tốt nhất trong lớp các mô hình ARIMA, đơn giản chúng ta có thể căn cứ trên AIC như sau:
 
-```
+```python
 from statsmodels.tsa.arima_model import ARIMA
 
 def _arima_fit(orders, data):
@@ -634,7 +634,7 @@ pip install pyramid-arima
 
 Xây dựng phương trình hồi qui theo phương pháp Auto ARIMA
 
-```
+```python
 from pyramid.arima import auto_arima
 model = auto_arima(r_t, start_p=0, start_q=0,
                            max_p=5, max_q=5, m=12,
@@ -703,7 +703,7 @@ model.summary()
 ## 4.5. Kiếm tra yếu tố mùa vụ
 Trong một số chuỗi thời gian thường xuất hiện yếu tố mùa vụ. Việc tìm ra chu kì và qui luật mùa vụ sẽ giúp cho mô hình dự báo chuẩn xác hơn. Yếu tố mùa vụ cũng không phải là một trong những yếu tố quá khó nhận biết. Chúng ta có thể dễ dàng phát hiện ra chúng thông qua đồ thị của chuỗi. Chẳng hạn bên dưới là dữ liệu [sản xuất công nghiệp điện và khí đốt](https://fred.stlouisfed.org/series/IPG2211A2N) tại Hoa Kỳ từ năm 1985 đến năm 2019, với tần suất theo tháng. Chúng ta hãy cùng xem biểu diễn đồ thị của chuỗi.
 
-```
+```python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -718,7 +718,7 @@ df_season.plot(figsize=(16, 4))
 
 Ta nhận thấy chuỗi có chu kì là 1 năm. Nhu cầu tiêu thụ điện và gas tăng vào những tháng mùa đông do nhu cầu sưởi ấm tăng cao. Ngoài ra chúng ta có thể sử dụng một phép phân rã mùa vụ (seasonal decompose) để trích lọc ra các thành phần cấu thành nên chuỗi bao gồm: xu hướng (trend), mùa vụ (seasonal), phần dư (residual) như bên dưới:
 
-```
+```python
 from statsmodels.tsa.seasonal import seasonal_decompose
 result = seasonal_decompose(df_season, model='multiplicative')
 fig = result.plot()
@@ -745,7 +745,7 @@ print('test shape: ', test.shape)
     
 Chúng ta sẽ cùng kiểm tra xem các đặc tính tự tương quan và tương quan riêng phần của chuỗi tiêu thụ điện và gas ra sao. Từ đó quyết định xem quá trình tự hồi qui và trung bình trượt của mô hình ARIMA nên nằm trong khoảng giá trị bao nhiêu và sử dụng phương pháp stepwise để tìm kiếm mô hình phù hợp nhất.
 
-```
+```python
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import matplotlib.pyplot as plt
 
@@ -762,7 +762,7 @@ plot_acf(train)
 
 Như vậy từ biểu đồ ta có thể lựa chọn bậc tự tương quan riêng phần PACF và tự tương quan ACF là các giá trị nhỏ hơn hoặc bằng 5. Do chuỗi có trend nên chúng ta sẽ lấy sai phân bậc 1 để tạo chuỗi dừng, hay nói cách khác bậc của intergration $d=1$. Ngoài ra chúng ta cần phải xác định thêm các bậc $(P, D, Q)$ của yếu tố mùa vụ được trích xuất từ chuỗi ban đầu. Để mô hình hiểu được chúng ta đang hồi qui trên mô hình SARIMA thì cần thiết lập tham số `seasonal=True` và chu kì của mùa vụ `m=12`. Chiến lược stepwise sẽ tự động tìm cho ta một mô hình tốt nhất dựa trên tham số đã thiết lập.
 
-```
+```python
 from pyramid.arima import auto_arima
 model_sarima = auto_arima(train, start_p=0, start_q=0,
                            max_p=5, max_q=5, m=12,

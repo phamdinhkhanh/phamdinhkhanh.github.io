@@ -25,7 +25,7 @@ Thật vậy, để dễ hình dung chúng ta lấy ví dụ trong trường h�
 
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -165,7 +165,7 @@ Trong đó phân phối của $y \sim \mathbf{N}(0, 1)$, $p \sim \mathbf{N}(0.1,
 Ta nhận thấy cả ba phân phối này có cùng phương sai, tuy nhiên tâm của phân phối chính là giá trị kỳ vọng của các phân phối của $p$ lại gần với $y$ hơn so với $q$ nên khả năng cao phân phối $p$ sẽ giống $y$ hơn phân phối $q$. Chúng ta cùng kiểm chứng thông qua mô phỏng các phân phối này:
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -175,7 +175,7 @@ q = np.random.uniform(2, 1, 200)
 ```
 
 
-```
+```python
 import seaborn as sns
 sns.distplot(y, 
              hist = False, 
@@ -466,7 +466,7 @@ print('Test', testX.shape, testy.shape)
     
 
 
-```
+```python
 import matplotlib.pyplot as plt
 
 # plot images from the training dataset
@@ -490,7 +490,7 @@ _plot(trainX[:25, :])
 Chúng ta sẽ thiết kế Discriminator là một mạng CNN với layer Conv2D kết hợp xen kẽ với layer BatchNormalization. Stride và padding được kết hợp sao cho kích thước output shape của các layers thay đổi như sau: `(32, 32) -> Conv_s2 -> (16, 16) -> Conv_s2 -> (8, 8) -> Conv_s2 ->(4, 4) -> Conv_s2 ->(2, 2)`. Để hạn chế overfitting thì layer Dropout được áp dụng cuối mỗi block CNN. Một chú ý quan trọng đó là chúng ta bỏ `sigmoid activation` ở cuối cùng mà thay vào đó sử dụng `linear activation`.
 
 
-```
+```python
 from tensorflow.keras.layers import Conv2D, BatchNormalization, Dropout, LeakyReLU, \
 Input, ZeroPadding2D, Flatten, Dense, \
 UpSampling2D, Reshape, Cropping2D, Activation
@@ -519,7 +519,7 @@ def conv_block(
 ```
 
 
-```
+```python
 from tensorflow.keras.models import Model
 
 def get_discriminator_model():
@@ -609,7 +609,7 @@ Ngoài ra hàm activation là hàm `tanh` được áp dụng phía sau layer cu
 
 
 
-```
+```python
 from tensorflow.keras.layers import Conv2D, BatchNormalization, Dropout, LeakyReLU, Input, ZeroPadding2D, Flatten, Dense, UpSampling2D, Reshape, Cropping2D, Activation
 def upsample_block(
     x,
@@ -711,7 +711,7 @@ g_model.summary()
 
 
 
-```
+```python
 import tensorflow as tf
 
 class WGAN(Model):
@@ -831,7 +831,7 @@ class WGAN(Model):
 GANMonitoring là một Callback được gọi mỗi khi kết thúc một epoch để  kiểm tra kết quả dự báo của một số ảnh sau mỗi epoch huấn luyện của mô hình.
 
 
-```
+```python
 from tensorflow.keras.callbacks import Callback
 class GANMonitor(Callback):
     def __init__(self, num_img=6, latent_dim=128):
@@ -858,7 +858,7 @@ class GANMonitor(Callback):
 
 
 
-```
+```python
 from tensorflow.keras.optimizers import Adam
 # Khởi tạo optimizer
 # learning_rate=0.0002, beta_1=0.5 được khuyến nghị
@@ -918,7 +918,7 @@ wgan.fit(trainX, batch_size=BATCH_SIZE, epochs=epochs, callbacks=[cbk])
 
 Lưu lại mô hình discriminator và generator.
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -935,7 +935,7 @@ d_model.save('wgan/discriminator.h5')
 
 Tiếp theo ta sẽ đọc một vài kết quả huấn luyện từ epoch 0, 1 và 2. 
 
-```
+```python
 import matplotlib.pyplot as plt
 
 images = ["wgan/generated_img_0_15.png", "wgan/generated_img_1_15.png", "wgan/generated_img_2_15.png"]

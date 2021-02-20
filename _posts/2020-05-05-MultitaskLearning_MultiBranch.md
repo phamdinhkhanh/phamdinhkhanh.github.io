@@ -94,7 +94,7 @@ Mount google drive đến folder chứa colab notebook file.
 
 
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -115,7 +115,7 @@ Sau đó chúng ta giải nén `UTKface_crop_part1/crop_part1.tar.gz` bằng l�
 Tiếp theo chúng ta sẽ trích lọc các nhãn từ link ảnh bao gồm: `age, gender, race`.
 
 
-```
+```python
 import glob2
 imagePaths = glob2.glob('crop_part1/*')
 print('Number of images', len(imagePaths))
@@ -150,7 +150,7 @@ dict_labels = {'ages': ages,
 
 
 
-```
+```python
 import matplotlib.pyplot as plt
 
 X = plt.imread('crop_part1/27_1_3_20170104232751618.jpg.chip.jpg')
@@ -164,7 +164,7 @@ plt.imshow(X)
 Tiếp theo chúng ta sẽ kiểm tra phân phối giữa các nhóm trong cùng một biến nhằm phát hiện những bất thường về dữ liệu như hiện tượng mất cân đối nghiêm trọng giữa các nhóm.
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -344,7 +344,7 @@ Kiến trúc của các mô hình con đều rất đơn giản. Đó là các l
 Để huấn luyện mô hình mình sẽ sử dụng ImageGenerator, bạn đọc xem lại [Bài 32 - Kĩ thuật tensorflow Dataset](https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html#321-s%E1%BB%AD-d%E1%BB%A5ng-imagegenerator) để hiểu thêm về ImageGenerator.
 
 
-```
+```python
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 image_aug = ImageDataGenerator(rotation_range=25, 
@@ -393,7 +393,7 @@ Như thường lệ chúng ta sẽ phân chia tập train và validation theo t�
 
 
 
-```
+```python
 import cv2
 import numpy as np
 
@@ -446,7 +446,7 @@ image_val, label_val, age_val, gender_val, race_val = _image_path(index_val)
 Chúng ta sẽ huấn luyện mô hình qua 50 epochs. Sử dụng checkpoint để lưu model có loss function nhỏ nhất trên validation và đồng thời backup mô hình sau mỗi 20 epochs.
 
 
-```
+```python
 from tensorflow.keras.callbacks import ModelCheckpoint
 import os
 
@@ -479,7 +479,7 @@ history = model.fit(
 Quá trình huấn luyện sẽ khá tốn thời gian. Mình huấn luyện 4 epochs trên google colab hết khoảng 2 tiếng. Để huấn luyện lại mô hình từ checkpoint các bạn chỉ cần load lại model. Các trạng thái của optimizer như learning rate, gradient descent đã được lưu lại. Chúng ta sẽ chỉ cần retrain lại mô hình.
 
 
-```
+```python
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
 

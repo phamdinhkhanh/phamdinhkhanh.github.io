@@ -228,7 +228,7 @@ $$\begin{cases}
 
 Kết quả trả về là một tensor có shape là `(feature_width, feature_height, n_boxes, 8)`, trong đó chiếu cuối cùng = 8 tương ứng với 4 offsets của default bounding box và 4 variances đại diện cho các scales của default bounding box.
 
-```
+```python
 from __future__ import division
 import numpy as np
 import keras.backend as K
@@ -1028,7 +1028,7 @@ def ssd_300(image_size,
 
 
 
-```
+```python
 from keras.optimizers import Adam, SGD
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, TerminateOnNaN, CSVLogger
 from keras import backend as K

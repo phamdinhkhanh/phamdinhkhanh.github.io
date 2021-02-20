@@ -163,7 +163,7 @@ Trong phần thực hành chúng ta sẽ cùng xây dựng một mô hình Pix2P
 
 
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -180,7 +180,7 @@ os.chdir("gdrive/My Drive/Colab Notebooks/Pix2PixModel")
 Bộ dữ liệu của chúng ta sẽ bao gồm hai tập train và validation, trong đó mỗi tập đều có kích thước là 1096 ảnh.
 
 
-```
+```python
 import glob
 import numpy as np
 import matplotlib.pyplot as plt
@@ -201,7 +201,7 @@ for i in np.arange(2):
 Như vậy một bức ảnh bao gồm một cặp ảnh `<source, target>`. Trong đó ảnh source là những ảnh vệ tinh có màu và target là ảnh bản đồ tương ứng. Ảnh source chiếm 50% bức ảnh phía bên trái và ảnh target chiếm 50% ảnh phía bên phải. Mỗi bức ảnh có kích thước là `600 x 600`. Trong bài này chúng ta sẽ resize image về kích thước `256 x 256` nhằm phù hợp với mạng CNN. Nhiệm vụ của chúng ta là xây dựng một mô hình `Pix2Pix GAN` để translate ảnh `source` sang `target`. Tiếp theo chúng ta sẽ viết hàm trả ra cặp ảnh `<source, target>` từ đường link.
 
 
-```
+```python
 import cv2
 
 def _load_imgs(all_images):
@@ -231,7 +231,7 @@ print('val_src.shape: ', val_src.shape)
 Đầu vào của discriminator sẽ là một cặp ảnh `<source, target>` có cùng kích thước, ảnh source là ảnh màu chụp từ vệ tinh và ảnh target là ảnh google map.
 
 
-```
+```python
 from tensorflow.keras.layers import Input, Conv2D, Conv2DTranspose, Concatenate, LeakyReLU, BatchNormalization, Activation, Dropout
 from tensorflow.keras.initializers import RandomNormal
 from tensorflow.keras.models import Model

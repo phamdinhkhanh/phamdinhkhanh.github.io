@@ -17,7 +17,7 @@ Trở lại với bài hướng dẫn này, đầu tiên mình sẽ hướng d�
 Chúng ta cũng có thể download file bằng lệnh wget bên dưới:
 
 
-```
+```python
 from google.colab import drive
 
 drive.mount('/content/gdrive')
@@ -67,7 +67,7 @@ Trong tập hợp các câu sẽ có một số câu không đạt tiêu chuẩn
 
 Xây dựng hàm `_check_tieng_viet()` để kiểm tra tính hợp lệ của câu:
 
-```
+```python
 import string
 import re
 # https://realpython.com/python-encodings-guide/
@@ -102,7 +102,7 @@ _check_tieng_viet('tiếng việt là ngôn ngữ của tôi')
 Tiếp theo ta sẽ tạo vòng lặp đi qua toàn bộ các file trong `/output` folder. Kiểm tra câu có thỏa mãn tiêu chuẩn Tiếng Việt không, đánh index cho câu và lưu đồng thời index và câu có dấu vào file `train_tieng_viet.txt`. Thời gian trích suất sẽ mất vài tiếng trên máy của mình. Vì vậy các bạn có thể download dữ liệu tại [train_tieng_viet.txt](https://drive.google.com/file/d/1-7lERkqCoID1691yCXLAOyZoJqYPqhGq/view?usp=sharing) và bỏ qua đoạn code bên dưới.
 
 
-```
+```python
 import pickle
 import json
 from tqdm import tqdm
@@ -191,7 +191,7 @@ remove_tone_line('Đi một ngày đàng học 1 sàng khôn')
 
 Sau đó chúng ta sẽ phân chia tập train/val/test
 
-```
+```python
 from tqdm import tqdm
 train_idx_500k = []
 train_opt_500k = []
@@ -242,7 +242,7 @@ print(train_opt_500k[10])
 Sau khi đã có dữ liệu huấn luyện, thẩm định và kiểm tra. Chúng ta nên lưu lại để tái sử dụng cho những lượt cải thiện mô hình sau. Nếu bạn không lưu lại dữ liệu, bạn sẽ không có căn cứ để đánh giá và so sánh giữa các mô hình. Để không tốn dung lượng thì mình chỉ lưu lại index. Từ index có thể truy suất ra câu cần lấy. Mình sử dụng google drive nên tài nguyên chỉ có 15GB thôi. Đó là lý do tại sao mình đánh index để tiết kiệm tài nguyên.
 
 
-```
+```python
 import pickle
 
 def _save_pickle(filename, obj):
@@ -276,7 +276,7 @@ Hạn chế của transformer:
 
 * Input không có sự phụ thuộc thời gian, do đó position encoding cần được thêm vào để mã hóa sự tương quan về mặt thời gian.
 
-```
+```python
 import tensorflow_datasets as tfds
 import tensorflow as tf
 
@@ -323,7 +323,7 @@ assert original_string == sample_string
 Lưu lại Tokenizer và kích thước vocabulary size của nó:
 
 
-```
+```python
 import pickle
 
 def _save_pickle(path, obj):
@@ -1601,7 +1601,7 @@ Cả 2 đều được đặt trong folder [themdau_tv](https://drive.google.com
     
 
 
-```
+```python
 import tensorflow_datasets as tfds
 import tensorflow as tf
 
