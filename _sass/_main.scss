@@ -149,11 +149,15 @@ img.tiny {
     background-color: #555;
 }
 
+pre, code, table, .highlight {
+    background: transparent !important;
+}
+
 pre {
     margin: 0;
     background: 0;
     border: none;
-    color: #f8f8f2;
+    color: #000;
 }
 
 pre > code {
@@ -163,7 +167,7 @@ pre > code {
 }
 
 div.highlighter-rouge {
-    border: 1px solid #afafaf;
+    // border: 1px solid #afafaf;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1rem 0 0 0;
@@ -174,3 +178,15 @@ pre.background {
     padding: 0;
     margin: 0;
 }
+
+.highlighter-rouge {
+    background: url("/assets/images/code-bg.png");
+    background-size: contain;
+    background-repeat: repeat-y;
+    background-position: 0 10px;
+}
+
+.rouge-code {
+    padding-left: 1.5rem!important;
+}
+  
