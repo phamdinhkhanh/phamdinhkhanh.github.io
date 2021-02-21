@@ -79,7 +79,7 @@ Dữ liệu mà chúng ta sẽ sử dụng để minh họa cho cGAN là bộ d�
 Để load dữ liệu train, test của fashion-mnist trên keras, chúng ta sẽ thực hiện như bên dưới :
 
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -102,7 +102,7 @@ print('Test shape : ', X_test.shape, y_test.shape)
 Tiếp theo chúng ta sẽ khảo sát ngẫu nhiên 10 hình ảnh thuộc bộ dữ liệu này :
 
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -158,7 +158,7 @@ Backbone (tức là mạng CNN cơ sở) mà chúng ta sử dụng để huấn 
 Bạn đọc sẽ hiểu rõ hơn qua phần thực hành bên dưới :
 
 
-```
+```python
 from tensorflow.keras.layers import Input, Conv2D, Conv2DTranspose, Dense, LeakyReLU, Embedding, Concatenate, Reshape, Flatten, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
@@ -199,7 +199,7 @@ def _discriminator(input_shape=(28, 28, 1), n_classes = 10):
 
 Đồ thị của mô hình bên dưới cho chúng ta thấy rằng đầu vào của mô hình được concatenate từ hai nhánh. Một nhánh đọc dữ liệu từ các bức ảnh và một nhánh còn lại sẽ embedding nhãn thành một véc tơ 50 chiều. Sau khi concatenate dữ liệu thì chúng sẽ được truyền qua các CNN layer để trích lọc đặc trưng phục vụ cho mục đích phân loại ảnh real và fake. Đầu ra của mô hình discriminator chỉ bao gồm một unit dự báo xác suất thuộc về ảnh real hoặc fake.
 
-```
+```python
 from tensorflow.keras.utils import plot_model
 
 discriminator = _discriminator(input_shape=(28, 28, 1), n_classes=10)

@@ -45,7 +45,7 @@ $$\text{Accuracy} = \frac{TP+TN}{\text{total sample}} = \frac{55+850}{1000} = 90
 
 Tính toán accuracy trên sklearn :
 
-```
+```python
 from sklearn.metrics import accuracy_score
 accuracy_score(y_true, y_pred)
 ```
@@ -75,7 +75,7 @@ $$\text{Recall} = \frac{TP}{\text{total actual positive}} = \frac{TP}{TP+FN} = \
 
 Tính toán precision và recall trên sklearn chúng ta sẽ dựa trên ground truth `y_label` và xác suất dự  báo`y_prob`:
 
-```
+```python
 from sklearn.metrics import precision_recall_curve
 prec, rec, thres = precision_recall_curve(y_label, y_prob)
 ```
@@ -133,7 +133,7 @@ Do đó đối với những trường hợp mà precision và recall quá chên
 Nếu dựa trên precision thì giá trị precision=91.6% cho thấy đây là một model _khá tốt_. Tuy nhiên trong 100 trường hợp positive thì mô hình chỉ nhận diện được đúng 55 trường hợp nên xét theo recall=55% thì đây không phải là một mô hình tốt. Trong trường hợp này $F_1$ sẽ được sử dụng như một chỉ số đại diện cho cả precision và recall. Điểm $F_1$ bằng 69% cho thấy đây là một mô hình có sức mạnh ở mức trung bình và đánh giá của chúng ta sẽ xác thực hơn so với việc quá lạc quan vào mô hình khi chỉ nhìn vào precision và quá bi quan nếu chỉ dựa trên recall.
 
 Trên sklearn, f1 score được tính như sau :
-```
+```python
 from sklearn.metrics import f1_score
 f1_score(y_label, y_pred)
 ```
@@ -190,7 +190,7 @@ AUC là chỉ số được tính toán dựa trên đường cong ROC (receivin
 
 AUC được tính toán như sau:
 
-```
+```python
 from sklearn.metrics import auc, roc_curve
 fpr, tpr, thres = metrics.roc_curve(y_label, y_pred)
 # Tính toán auc

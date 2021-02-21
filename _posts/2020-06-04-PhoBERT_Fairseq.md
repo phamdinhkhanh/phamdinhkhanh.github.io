@@ -35,7 +35,7 @@ Bạn đọc có thể tìm hiểu thêm về kiến trúc này qua bài báo v�
 
 Để áp dụng được model BERT thì trước tiên chúng ta cần phải load được model. Ví dụ này mình sẽ thực hành trên google colab. Bạn đọc cần mount google drive bằng câu lệnh bên dưới.
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -196,7 +196,7 @@ Gỉa sử từ điển của chúng ta gồm các từ với tần suất như 
 
 Coi mỗi ký tự là một token. Khi đó thống kê tần suất xuất hiện của các cặp ký tự như sau:
 
-```
+```python
 import collections
 
 vocab = {'l o w </w>': 5, 'l o w e r </w>': 2, 'n e w e s t </w>': 6, 'w i d e s t </w>': 3}
@@ -236,7 +236,7 @@ get_stats(vocab)
 Lựa chọn cặp từ phụ có tần suất xuất hiện nhỏ nhất và merge chúng thành một từ phụ mới.
 
 
-```
+```python
 import re, collections
 
 pairs = get_stats(vocab)
@@ -352,7 +352,7 @@ phoBERT.eval()  # disable dropout (or leave in train mode to finetune
 Khai báo bpe tokenizer và thực hiện token.
 
 
-```
+```python
 from fairseq.data.encoders.fastbpe import fastBPE
 
 # Khởi tạo Byte Pair Encoding cho PhoBERT
@@ -443,7 +443,7 @@ Download VnCoreNLP-1.1.1.jar & its word segmentation component (i.e. RDRSegmente
 Gỉa sử chúng ta có câu gốc là `Tôn Ngộ Không phò Đường Tăng đi thỉnh kinh tại Tây Trúc`. Từ được ẩn đi trong câu là `phò` sẽ được thay thế bằng token `<mask>`.
 
 
-```
+```python
 from vncorenlp import VnCoreNLP
 rdrsegmenter = VnCoreNLP("vncorenlp/VnCoreNLP-1.1.1.jar", annotators="wseg", max_heap_size='-Xmx500m') 
 
@@ -465,7 +465,7 @@ print('text_masked_tok: \n', text_masked_tok)
 Tìm ra top 10 từ thích hợp nhất cho vị trí `<mask>` tại câu trên.
 
 
-```
+```python
 from fairseq.data.encoders.fastbpe import fastBPE  
 from fairseq import options  
 import numpy as np
@@ -508,7 +508,7 @@ Sau khi load được model BERT, chúng ta hoàn toàn có thể trích suất 
 
 Các véc tơ embedding cho từng từ trong câu từ mô hình BERT được trích suất như sau:
 
-```
+```python
 from fairseq.data.encoders.fastbpe import fastBPE
 
 # Khởi tạo Byte Pair Encoding cho PhoBERT
@@ -577,7 +577,7 @@ Dữ liệu sau xử lý được mình chia sẻ. Nếu không muốn tìm hi�
 Sau khi đã download dữ liệu về, chúng ta sẽ đọc và lưu các bài báo vào những list chứa nội dung và nhãn tương ứng theo 2 folders train và test.
 
 
-```
+```python
 import glob2
 from tqdm import tqdm
 
@@ -611,7 +611,7 @@ text_test, label_test = make_data(test_path)
 Quá trình đọc files sẽ tốn khá nhiều thời gian. Do đó các bạn có thể tạo các hàm lưu trữ lại các list nội dung và nhãn và load lại cho lượt huấn luyện sau.
 
 
-```
+```python
 import pickle
 
 def _save_pkl(path, obj):
@@ -696,7 +696,7 @@ Các bạn có thể download lại dữ liệu $\mathbf{X, y}$ mà tôi đã ch
 * Chuẩn bị y output: Encoding các label output thành indices đánh dấu số thứ tự của văn bản.
 
 
-```
+```python
 from tqdm import tqdm
 import torch
 
@@ -742,7 +742,7 @@ print('x1 tensor decode: ', phoBERT_cls.decode(torch.tensor(x1))[:103])
 ```
 
 
-```
+```python
 from tqdm import tqdm
 import torch
 
@@ -798,7 +798,7 @@ print('X shape: ', X.shape)
 Sau cùng ta thu được các chuỗi index có kích thước là 256, bằng với kích thước của các câu sau khi đã padding. Tiếp theo ta tạo output `y` bằng index cho các nhãn của câu.
 
 
-```
+```python
 from sklearn.preprocessing import LabelEncoder
 lb = LabelEncoder()
 lb.fit(label_train)
@@ -869,7 +869,7 @@ logprobs
 Trước khi huấn luyện mô hình chúng ta sẽ xây dựng các hàm đánh giá mô hình theo 2 metric là `accuracy` và `f1_score`.
 
 
-```
+```python
 import torch
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
@@ -977,7 +977,7 @@ Quá trình huấn luyện một model classification trên pytorch sẽ bao g�
 Bên dưới chúng ta sẽ lần lượt thực hiện các bước trên.
 
 
-```
+```python
 import os
 import time
 import random

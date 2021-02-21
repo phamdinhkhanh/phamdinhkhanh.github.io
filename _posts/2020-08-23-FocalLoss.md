@@ -130,7 +130,7 @@ Trường hợp $\gamma=0$ ta thấy hàm focal loss chính là balanced cross e
 Bên dưới chúng ta cùng visualize một số trường hợp của focal loss.
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -217,7 +217,7 @@ So sánh với các mô hình One-stage detector lúc bấy giờ thì RetinaNet
 
 
 
-```
+```python
 from tensorflow import keras
 
 

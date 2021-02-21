@@ -37,7 +37,7 @@ Giả sử  một hàm $f(x) = sin(x)$ là một hàm liên tục trong khoảng
 
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate
@@ -89,7 +89,7 @@ Chứng minh công thức này không khó, mình xin dành cho bạn đọc nh�
 Dựa trên ý tưởng trên, chúng ta có thể code hàm biến đổi số nguyên dương sang nhị phân một cách khá dễ dàng:
 
 
-```
+```python
 import numpy as np
 
 def _binary_integer(integer):
@@ -181,7 +181,7 @@ Tensorflow cung cấp một module là `tf.lite.TFLiteConverter` để convert d
 Để load một pretrain layer trên tensorflow hub thực hiện như sau:
 
 
-```
+```python
 import tensorflow as tf
 import tensorflow_hub as hub
 
@@ -258,7 +258,7 @@ mobilenet_v2.fit(
 Model của chúng ta được khởi tạo từ keras nên nó có định dạng `h5`. Chúng ta có thể convert model sang `.tflite`.
 
 
-```
+```python
 import pathlib
 
 converter = tf.lite.TFLiteConverter.from_keras_model(mobilenet_v2)
@@ -496,7 +496,7 @@ Mình sẽ hướng dẫn các bạn cách thực hiện quantization theo `Dyna
 
 Đầu tiên các bạn cần xây dựng một CNN network bao gồm các CNN layers và fully connected layers. Tiếp theo đó chúng ta sẽ sử dụng hàm `torch.quantization.quantize_dynamic()` cho tác vụ quantization.
 
-```
+```python
 import torch
 from torch import nn
 import torch.nn.functional as F

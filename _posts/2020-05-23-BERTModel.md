@@ -314,7 +314,7 @@ Các bước dữ liệu:
 Source code của mô hình được tham khảo tại [Question answering with fine tuned BERT](https://mccormickml.com/2020/03/10/question-answering-with-a-fine-tuned-BERT)
 
 
-```
+```python
 from transformers import BertTokenizer
 from transformers import BertForQuestionAnswering
 import torch

@@ -90,7 +90,7 @@ Bạn có thể hình dung những gì mình nói ở trên qua ví dụ đơn g
 
 
 
-```
+```python
 from flask import Flask, request
 
 # Khởi tạo flask app
@@ -109,7 +109,7 @@ Chỉ cần như thế là bạn đã khởi tạo được một app trên flas
 Trong code của project bạn mở file `serve.py` có nội dung như bên dưới:
 
 
-```
+```python
 from PIL import Image
 import numpy as np
 import hyper as hp
@@ -194,7 +194,7 @@ Design pattern là một kiến thức rất quan trọng của lập trình hư
 * Luôn để các hàm chức năng ở một file gọi là `utils.py`. Trong project này file `utils.py` như sau:
 
 
-```
+```python
 import hyper as hp
 from tensorflow.keras.applications import MobileNet, ResNet50
 from tensorflow.keras.preprocessing.image import img_to_array

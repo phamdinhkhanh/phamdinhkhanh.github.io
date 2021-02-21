@@ -225,7 +225,7 @@ Biến input của mô hình sẽ bao gồm:
 
 Bên dưới chúng ta sẽ cùng khảo sát dữ liệu theo vài chiều thông tin về người dùng, sản phẩm. Đầu tiên là đọc dữ liệu `users, movies, ratings`
 
-```
+```python
 import pandas as pd
 import numpy as np
 import os
@@ -288,7 +288,7 @@ movies = _read_movies()
 
 Phân phối điểm rating trung bình của mỗi bộ phim.
 
-```
+```python
 import seaborn as sns
 
 avg_movie_rate = ratings.groupby('movie_id').rating.mean()
@@ -419,7 +419,7 @@ user_rates.head()
 * sex: Giới tính của người xem.
 * occupation: Nghề nghiệp của người xem.
 
-```
+```python
 import tensorflow as tf
 
 # Dictionary của bộ phim và năm sản xuất
@@ -571,7 +571,7 @@ model.embeddings['movie_id']
 ```
 Bên dưới là class `RecNeuralNet()` hỗ trợ khởi tạo loss function và huấn luyện mô hình.
 
-```
+```python
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import collections
@@ -1049,7 +1049,7 @@ Ta nhận thấy toàn bộ các bộ phim liên quan nhất đều thuộc về
 
 Để nhận biết thuật toán recommendation có tính cá nhân hóa cao hay không, ta sẽ giảm chiều dữ liệu của những véc tơ nhúng xuống không gian 2 chiều và tìm cách biểu diễn chúng theo các nhóm thể loại phim. Nếu các points phân bố tập trung theo cụm tương ứng với từng thể loại thì chứng tỏ thuật toán giúp nhận biết khá tốt tính chất khác biệt giữa các bộ phim. Để giảm chiều dữ liệu từ 35 chiều xuống 2 chiều ta sử dụng thuật toán [TNSE](https://distill.pub/2016/misread-tsne/).
 
-```
+```python
 from sklearn.manifold import TSNE
 import time
 

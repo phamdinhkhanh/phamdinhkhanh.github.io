@@ -36,7 +36,7 @@ Trong ví dụ bên dưới chúng ta cùng xem các quá trình dữ liệu ho�
 
 Khai báo trường nhằm mục đích nói cho dữ liệu biết chúng ta có những trường gì và được tạo ra từ dữ liệu như thế nào. Để khai báo trường chúng ta sử dụng class Field của torchtext. Xem ví dụ sau:
 
-```
+```python
 from torchtext.data import Field
 
 tokenize = lambda x: x.split(' ')
@@ -53,7 +53,7 @@ Tiếp theo TEXT sẽ là đoạn mô tả của sản phẩm. Do chúng là câ
 
 Bên dưới ta sẽ đọc dữ liệu:
 Mount folder trên google colab
-```
+```python
 from google.colab import drive
 import os
 drive.mount('/content/gdrive')
@@ -61,7 +61,7 @@ path = os.path.join('gdrive/My Drive/your_folder_path')
 os.chdir(path)
 ```
 Đọc dữ liệu
-```
+```python
 import pandas as pd
 
 data = pd.read_csv('practical-torchtext/data/train.csv', header = 0, index_col = 0)
@@ -216,7 +216,7 @@ Các fields sẽ cho ta biết chúng ta cần làm gì để biến đổi dữ
 Có rất nhiều các dạng Dataset khác nhau trong torchtext được sử dụng tương thích với các định dạng dữ liệu khác nhau. Chẳng hạn tsv/txt/csv file sẽ tương thích với class TabularDataset. Bên dưới chúng ta sẽ đọc dữ liệu từ csv file sử dụng TabularDataset.
 
 
-```
+```python
 from torchtext.data import TabularDataset
 
 # Khai báo thông tin fields thông qua các cặp ("field name", Field)
@@ -316,7 +316,7 @@ Như chúng ta đã biết để truyền được các batch vào model chúng 
 Code bên dưới sẽ khởi tạo các `Iterators` cho dữ liệu train/test và validation.
 
 
-```
+```python
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
@@ -342,7 +342,7 @@ device = torch.device("cuda" if USE_CUDA else "cpu")
 ```
 
 
-```
+```python
 from torchtext.data import Iterator, BucketIterator
 
 train_iter, val_iter = BucketIterator.splits(
@@ -482,7 +482,7 @@ Trong module LSTM chúng ta cần xác định 3 tham số chính đó là:
 
 Để hiểu rõ hơn về kiến trúc của mạng LSTM và đầu ra của mạng LSTM lại có kích thước như trên các bạn có thể tham khảo [giới thiệu về mạng LSTM](https://phamdinhkhanh.github.io/2019/04/22/L%C3%BD_thuy%E1%BA%BFt_v%E1%BB%81_m%E1%BA%A1ng_LSTM.html).
 
-```
+```python
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
@@ -521,7 +521,7 @@ model = model.to(device)
 
 Bây h ta sẽ tạo một vòng lặp huấn luyện. Chúng ta có thể duyệt qua những Iterator được đóng gói và data sẽ được tự động truyền vào sau khi được đưa lên GPU và tham số hóa.
 
-```
+```python
 import tqdm
 
 opt = optim.Adam(model.parameters(), lr=1e-2)
@@ -580,7 +580,7 @@ for epoch in range(1, epochs + 1):
     
 Tiếp theo chúng ta sẽ đánh giá mô hình
 
-```
+```python
 import numpy as np
 
 test_preds = []
@@ -595,7 +595,7 @@ for x, y in tqdm.tqdm(test_dl):
 
 Kết quả dự báo
 
-```
+```python
 import pandas as pd
 df = pd.read_csv("practical-torchtext/data/test.csv")
 for i, col in enumerate(["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]):

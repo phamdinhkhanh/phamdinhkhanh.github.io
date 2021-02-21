@@ -140,7 +140,7 @@ Non-trainable params: 21,888
 
 Để không quá rối mắt, mình đã truncate một số layers trung gian. Bạn có thể simmulate lại kết quả trên tensorlfow:
 
-```
+```python
 from tensorflow.keras.applications import MobileNet
 
 model = MobileNet(weights=None)
@@ -166,7 +166,7 @@ Trước tiên chúng ta sẽ cần convert model tensorflow để sao cho nó c
 * Load và save pretrain model MobileNet
 
 
-```
+```python
 from tensorflow.keras.applications import MobileNet
 
 model = MobileNet(weights='imagenet')
@@ -177,7 +177,7 @@ model.save('mobilenet.h5')
 * Convert file `mobilenet.h5` về một folder của tensorflow js
 
 
-```
+```python
 import tensorflowjs as tfjs
 import os
 

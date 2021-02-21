@@ -135,7 +135,7 @@ Vậy làm cách nào ta có thể biến đổi từ một khối output có k�
 Trên tensorflow bạn đọc có thể áp dụng UpSampling 2D thông qua layer `UpSampling2D` như sau:
 
 
-```
+```python
 import tensorflow as tf
 import numpy as np
 
@@ -228,7 +228,7 @@ Trên tensorflow ta thực hiện tích chập chuyển vị như sau:
 
 
 
-```
+```python
 import tensorflow as tf
 import numpy as np
 
@@ -306,7 +306,7 @@ Hầu hết các phương pháp image segmentation cổ điển đều là nhữ
 Các vùng ảnh sẽ được chuyển về dạng đen trắng dựa trên cường độ sáng của chúng lớn hoặc nhỏ hơn một ngưỡng cố định. Phương pháp này cho kết quả biến đổi theo cường độ của ngưỡng lọc và thường không chuẩn xác đối với ảnh không có phân vùng màu sắc rõ ràng. Bạn đọc có thể xem thêm [Opencv Image Thresholding](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html)
 
 
-```
+```python
 import cv2
 import numpy as np
 from PIL import Image
@@ -352,7 +352,7 @@ Thuật toán k-mean clustering sẽ phân cụm cường độ của các pixel
 
 Chúng ta segmentation hình ảnh bằng thuật toán k-mean clustering trên sklearn như sau:
 
-```
+```python
 import cv2
 import numpy as np
 from PIL import Image
@@ -364,7 +364,7 @@ img = _downloadImage(url)
 ```
 
 
-```
+```python
 from sklearn.cluster import KMeans
 
 # Reshape X into tensor2D: (width x heigth, n_channels)
@@ -404,7 +404,7 @@ Là phương pháp phát triển hơn của k-Mean clustering. Nó không chỉ 
 
 Chúng ta segmentation hình ảnh bằng thuật toán Expectation Maximization Clustering như sau:
 
-```
+```python
 from sklearn.mixture import GaussianMixture
 
 em = GaussianMixture(n_components=3,
@@ -488,7 +488,7 @@ Qúa trình dịch chuyển tâm cụ thể như sau:
 Chúng ta segmentation theo thuật toán Mean shift sử dụng skimage như sau:
 
 
-```
+```python
 from skimage.segmentation import quickshift
 from skimage.segmentation import mark_boundaries
 
@@ -593,7 +593,7 @@ Chúng ta sẽ chia mạng Unet thành những block module CNN có tác dụng 
 **Hàm khởi tạo downsample cnn block**
 
 
-```
+```python
 import tensorflow as tf
 
 def _downsample_cnn_block(block_input, channel, is_first = False):
@@ -713,7 +713,7 @@ Toàn bộ quá trình này khá đơn giản.
 Load pretrain model VGG19 từ bộ dữ liệu imagenet.
 
 
-```
+```python
 import tensorflow as tf
 # Load pretrain model
 pretrain_net = tf.keras.applications.VGG19(include_top=True, weights="imagenet")
@@ -796,7 +796,7 @@ model.summary()
     
 
 
-```
+```python
 from tensorflow.keras.utils import plot_model
 plot_model(model)
 ```

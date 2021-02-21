@@ -55,7 +55,7 @@ Các tập dữ liệu sẽ được lựa chọn ngẫu nhiên và không trùn
 
 **Đọc dữ liệu:**
 
-```
+```python
 import os
 import pandas as pd
 
@@ -100,7 +100,7 @@ dataset.info()
 **Phân chia train/val/dev/test:**
 
 
-```
+```python
 import numpy as np
 
 model_features = list(set(dataset.columns).difference({"ID", "default_payment_next_month"}))
@@ -255,7 +255,7 @@ class_weight="balanced"_
 
 
 
-```
+```python
 import numpy as np
 from sklearn.calibration import calibration_curve, CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
@@ -417,7 +417,7 @@ Naive random Over sampling là phương pháp tái chọn mẫu dựa trên gi�
 
 Trong ví dụ này tôi sẽ lựa chọn Naive random over-sampling sao cho tỷ lệ mẫu giữa 2 nhóm là cân bằng. Giữ nguyên các mẫu thuộc nhóm đa số và tăng kích thước mẫu thuộc nhóm thiểu số sao cho bằng với nhóm đa số. Sau đó huấn luyện model trên tập mẫu đã được over sampling và kiểm tra kết quả trên tập test. So sánh với kết quả từ mô hình baseline để đánh giá mức độ cải thiện.
 
-```
+```python
 from collections import Counter
 
 import matplotlib.pyplot as plt
@@ -508,7 +508,7 @@ Chi tiết các thuật toán này tôi sẽ không trình bày tại đây. Cá
 Bên dưới ta sẽ cùng áp dụng phương pháp over-sampling từ SMOTE và ADASYN và kiểm tra kết quả dự báo của mô hình được huấn luyện trên mẫu over-sampling.
 
 
-```
+```python
 from imblearn.pipeline import make_pipeline
 from imblearn.over_sampling import ADASYN
 from imblearn.over_sampling import (SMOTE, BorderlineSMOTE, SVMSMOTE, SMOTENC)
@@ -663,7 +663,7 @@ Hãy cùng thử nghiệm huấn luyện một loạt các thuật toán trên t
 **Logistic Regression**
 
 
-```
+```python
 from sklearn.linear_model import LogisticRegression
 
 log_reg = LogisticRegression(C = 0.0001)
@@ -698,7 +698,7 @@ log_reg = _train_and_test(log_reg, algo = 'Logistic')
 **kNN**
 
 
-```
+```python
 from sklearn.neighbors import KNeighborsClassifier
 
 knn_classifier = KNeighborsClassifier(n_neighbors = 5, 
@@ -717,7 +717,7 @@ knn_classifier = _train_and_test(knn_classifier, algo = 'kNN')
 **SVM**
 
 
-```
+```python
 from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
 
@@ -740,7 +740,7 @@ svm_classifier = _train_and_test(svm_classifier, algo = 'SVM')
 **MLP**
 
 
-```
+```python
 from tensorflow.keras.layers import Dense, Input, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
@@ -837,7 +837,7 @@ print('{} f1 score on test: {}'.format('MLP', model_f1_score))
 **Light Gradient Boosting**
 
 
-```
+```python
 import lightgbm as lgb
 
 lgb_classifier = lgb.LGBMClassifier(n_estimator = 800, 

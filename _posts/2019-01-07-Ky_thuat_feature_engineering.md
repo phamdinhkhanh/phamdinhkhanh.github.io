@@ -138,7 +138,7 @@ Như vậy một từ càng phổ biến khi idf càng nhỏ và tfidf càng l�
 
 Để tính tfidf cho các từ trong văn bản ta có thể sử dụng package sklearn như sau:
 
-```
+```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 corpus = [
  	'tôi thích ăn bánh mì nhân thịt',

@@ -77,7 +77,7 @@ Okie, mình nghĩ lý thuyết như vậy là đủ rồi. Tiếp theo chúng ta
 Trên python3 để khởi tạo một thread thì chúng ta sử dụng module `_thread`, trên python2 là `thread`. Để start một method trên thread thì chúng ta chỉ cần truyền vào `_thread.start_new_thread()` tên method và các giá trị đối số của nó. Ví dụ bên dưới chúng ta sử dụng hàm `_counter()` để đếm lùi các số từ trên xuống dưới.
 
 
-```
+```python
 import _thread
 import time
 
@@ -127,7 +127,7 @@ Trong ví dụ trên thì các method trên hai threads `khanh` và `ai` khởi 
 Một cách khác để khởi tạo một thread đó là kế thừa lại Threading module. Kiểu kế thừa này khá phổ biến trong lập trình, chắc các bạn còn nhớ khi khởi tạo model trên pytorch chúng ta cũng kế thừa lại [nn.Module](https://phamdinhkhanh.github.io/2019/08/10/PytorchTurtorial1.html#31-ki%E1%BA%BFn-tr%C3%BAc-m%E1%BA%A1ng-cnn) chứ ? Khi đó chúng ta chỉ cần override lại các method cần điều chỉnh từ class cha.
 
 
-```
+```python
 import threading
 import time
 
@@ -175,7 +175,7 @@ thread2.start()
 Như đã giới thiệu chương trước, trong ví dụ ở trên các threads là bất đồng bộ (`asynchronous`). Hai threads chạy độc lập với nhau mà không theo thứ tự. Chúng ta có thể đồng bộ (synchronous) các thread. Tức là cho phép một thread chạy xong thì thread khác mới được phép chạy bằng cách sử dụng Thread Lock trong python.
 
 
-```
+```python
 import threading
 
 class FirstThread(threading.Thread):
@@ -232,7 +232,7 @@ Như chúng ta thấy, sau khi thread1 xử lý xong thì mới đến lượt t
 Để khởi tạo một `process` trong python chúng ta sử dụng class `Process` của thư viện `multiprocessing`. Chúng ta cũng truyền vào hàm và đối số như đã thực hiện với thread.
 
 
-```
+```python
 from multiprocessing import Process
 import time
 
@@ -272,7 +272,7 @@ Khi làm việc với multi-process, chúng ta luôn cần một lệnh `join()`
 Ta nhận thấy rằng các process được thực hiện một cách độc lập và bất đồng bộ. Để đồng bộ các process với nhau thì chúng ta đơn giản là `lock` chúng lại.
 
 
-```
+```python
 from multiprocessing import Process, Lock
 import time
 
@@ -314,7 +314,7 @@ Bạn thấy đó, chúng cũng khá na ná thread phải không nào ?
 Khi làm việc với các ứng dụng concurrent thì chúng ta nên hạn chế nhất có thể việc chia sẻ dữ liệu giữa các process để tránh xảy ra các lỗi phát sinh do concurency. Tuy nhiên python vẫn cung cấp một cơ chế giúp chia sẻ dữ liệu giữa các process, đó chính là các shared memory object trong multiprocessing như Value, Array. Thật vậy, giả sử ở ví dụ bên dưới chúng ta sử dụng 2 processes để thay đổi dấu các phần tử của một list các số nguyên.
 
 
-```
+```python
 from multiprocessing import Process, Lock
 import time
 
@@ -352,7 +352,7 @@ for exec in execs:
 Ta nhận thấy dữ liệu là không được chia sẻ giữa 2 processes vì process thứ hai đổi lại dấu của process thứ nhất sẽ khiến các phần tử của 2 processes này đảo dấu. Tiếp theo nếu chúng ta sử dụng Array trong multiprocessing thì sao ?
 
 
-```
+```python
 from multiprocessing import Process, Value, Array, Lock
 import time
 
@@ -396,7 +396,7 @@ Queue là một định dạng stack an toàn khi làm việc với multi thread
 Bên dưới chúng ta sẽ lấy ví dụ về việc sử dụng 2 process để đọc các dữ liệu trong một queue. Hai process này tới phiên của mình sẽ lấy ra các phần từ nằm trong queue theo kiểu FIFO (First Come First Out).
 
 
-```
+```python
 from multiprocessing import Process, Queue
 import time
 
@@ -449,7 +449,7 @@ Ví dụ bên dưới chúng ta sẽ sử dụng 5 workers để tính toán b�
 
 
 
-```
+```python
 import multiprocessing as mp
 import time
 
@@ -489,7 +489,7 @@ Trong python thì bắt đầu từ version 3.2 chúng ta có thể sử dụng 
 Để khởi tạo một Process Pool, chúng ta sử dụng `ProcessPoolExecutor` trong `concurrent.futures` module.
 
 
-```
+```python
 from concurrent.futures import ProcessPoolExecutor
 from time import sleep
 import timeit
@@ -544,7 +544,7 @@ Nhắc đến hàm map trong python, nếu bạn đã có kinh nghiệm thì s�
 Ví dụ: Để tính diện tích của các bounding box dựa trên tọa độ `(x1, x2, y1, y2)` thì chúng ta thực hiện hàm map trong process pool như sau:
 
 
-```
+```python
 from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import as_completed
 x1s = [5, 10, 20, 35]
@@ -576,7 +576,7 @@ for result in results:
 Thread pool cũng tương tự như Process Pool nhưng là tập hợp của các các threads thay vì processes. Các khởi tạo `ThreadPoolExecutor` trên `concurrent.futures` cũng hoàn toàn tương tự như `ProcessPoolExecutor`. Ta thực hiện như sau:
 
 
-```
+```python
 from concurrent.futures import ThreadPoolExecutor
 from time import sleep
 
@@ -615,7 +615,7 @@ _submit_thread()
 
 So sánh thời gian xử lý của process và thread. Để đo lường, các bạn cần cài package `cProfile`.
 
-```
+```python
 import cProfile
 cProfile.run('_submit_process()')
 cProfile.run('_submit_thread()')
@@ -653,7 +653,7 @@ Khi làm việc với Queue ban có thể truy xuất các phần tử bên tron
 Queue thường được sử dụng trong các tác vụ liên quan tới threads synchronous. Các thread sẽ sử dụng chung một dữ liệu và thay đổi các phần tử bên trong nó một cách tuần tự.
 
 
-```
+```python
 from concurrent.futures import ThreadPoolExecutor
 import queue
 

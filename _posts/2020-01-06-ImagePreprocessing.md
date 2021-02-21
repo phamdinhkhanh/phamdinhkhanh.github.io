@@ -73,7 +73,7 @@ a_2 y\end{bmatrix}$$
 
 Hàm `_downloadImage()` sẽ có tác dụng tải và convert ảnh sang numpy array từ đầu vào là link url của ảnh. Bạn đọc lưu ý, hàm này sẽ được sử dụng xuyên suốt bài hướng dẫn.
 
-```
+```python
 import cv2
 import numpy as np
 from PIL import Image
@@ -312,7 +312,7 @@ $$K = \frac{1}{25}
 
 Khi đó mỗi một vùng ảnh cục bộ (local region) kích thước 5x5 trên ảnh gốc, các pixels sẽ được lấy giá trị bằng nhau và bằng trung bình của toàn bộ các pixels trên vùng ảnh. Dịch chuyển bộ lọc $K$ trên toàn bộ các vùng ảnh gốc như một phép tích chập 2 chiều thông thường ta sẽ được ảnh smoothing. Cụ thể như code bên dưới.
 
-```
+```python
 import cv2
 import numpy as np
 
@@ -442,7 +442,7 @@ Như vậy các bạn đã hình dung được nguyên lý hoạt động của 
 
 Tất cả các bước trên được openCV gói gọn trong một hàm số là `cv2.Canny()`. Trong hàm số này chúng ta sẽ khai báo tham số đầu tiên là hình ảnh đầu vào, tham số thứ 2 và thứ 3 lần lượt là ngưỡng _minVal_ và _maxVal_. 
 
-```
+```python
 import cv2
 import numpy as np
 import requests
@@ -481,7 +481,7 @@ Contour được hiểu đơn giản là một đường cong liên kết toàn 
 
 Bây giờ ta sẽ cùng tìm các contours cho một ảnh nhị phân.
 
-```
+```python
 import cv2
 import numpy as np
 import requests
@@ -549,7 +549,7 @@ Các moments của hình ảnh sẽ giúp ta tính toán tâm của vật thể 
 
 Hàm `cv2.moments()` sẽ hỗ trợ ta thực hiện tính toán các moments. Kết quả trả về là một dictionary như sau:
 
-```
+```python
 import cv2
 import numpy as np
 
@@ -975,7 +975,7 @@ Như vậy hầu hết các chữ số đã được tìm ra bouding box mà kh�
 
 Ta nhận thấy có một số bounding box overlap nhau như các bounding box quanh số 0, 5, 9. Chúng ta có thể sử dụng hàm non-max suppression như bên dưới để triệt tiêu các bounding box overlap nhau và chỉ giữ lại các bounding box lớn nhất.
 
-```
+```python
 import numpy as np
 
 def non_max_suppression(boxes, overlapThresh):

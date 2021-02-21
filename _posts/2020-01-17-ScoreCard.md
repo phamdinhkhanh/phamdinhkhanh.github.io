@@ -192,7 +192,7 @@ Có tổng cộng 12 biến đầu vào bao gồm cả biến numeric và biến
 #### 2.4.1. Khảo sát dữ liệu.
 
 
-```
+```python
 import pandas as pd
 
 data = pd.read_csv('http://www.creditriskanalytics.net/uploads/1/9/5/1/19511601/hmeq.csv', header = 0, sep = ',')
@@ -210,7 +210,7 @@ data.describe()
 mean của BAD chính là tỷ lệ số hợp đồng nợ xấu và chiếm 19.95%. Ta sẽ visualize phân phối của các biến để tìm hiểu phân phối của chúng.
 
 
-```
+```python
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -292,7 +292,7 @@ data[columns_obj] = data[columns_obj].apply(lambda x: x.fillna('Missing'), axis=
 Hàm `_bin_table()` bên dưới sẽ có tác dụng phân chia các nhóm bins và thống kê số lượng các quan sát, số lượng good và bad ở mỗi nhóm.
 
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -526,7 +526,7 @@ y = data['BAD']
 Phân chia tập train/test có tỷ lệ kích thước mẫu là 80:20. Tỷ lệ của GOOD/BAD là cân bằng trên cả train và test.
 
 
-```
+```python
 from sklearn.model_selection import train_test_split
 
 ids = np.arange(X.shape[0])
@@ -547,7 +547,7 @@ print('y_test shape: ', y_test.shape)
 Xây dựng phương trình hồi qui logistic các biến đầu vào `WOE`.
 
 
-```
+```python
 from sklearn.linear_model import LogisticRegression
 
 logit_model = LogisticRegression(solver = 'lbfgs', max_iter=1000, fit_intercept=True, tol=0.0001, C=1, penalty='l2')
@@ -568,7 +568,7 @@ logit_model.fit(X_train, y_train)
 Dự báo và kiểm tra accuracy trên tập train/test
 
 
-```
+```python
 from sklearn.metrics import accuracy_score
 
 y_pred_train = logit_model.predict(X_train)
@@ -587,7 +587,7 @@ print('accuracy on test: ', acc_test)
 **Đường cong ROC trên tập test**
 
 
-```
+```python
 from sklearn.metrics import roc_curve, auc
 
 y_pred_prob_test = logit_model.predict_proba(X_test)[:, 1]
@@ -614,7 +614,7 @@ Chỉ số AUC (area under curve) đo lường phần diện tích nằm dưới
 **Đường cong precision và recall trên tập test**
 
 
-```
+```python
 from sklearn.metrics import precision_recall_curve
 precision, recall, thres = precision_recall_curve(y_test, y_pred_prob_test)
 
@@ -687,7 +687,7 @@ _plot_KM(cmd_BAD, cmd_GOOD, thresholds)
 Kiểm định Kolmogorov-Smirnov test:
 
 
-```
+```python
 from scipy import stats
 
 stats.ks_2samp(cmd_BAD, cmd_GOOD)
@@ -763,7 +763,7 @@ $$\text{Score} = (0.5\times0.15+\frac{1}{12}).\text{28.85}+\frac{\text{712.85}}{
 Ta có thể tạo ra hàm số tính điểm cho mỗi feature như sau:
 
 
-```
+```python
 import numpy as np
 
 def _CreditScore(beta, alpha, woe, n = 12, odds = 1/4, pdo = -50, thres_score = 600):

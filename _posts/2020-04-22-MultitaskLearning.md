@@ -124,7 +124,7 @@ Phần thực hành của bài viết trên google colab tại [Bài 35 - Multit
 
 Dữ liệu được sử dụng là bộ dữ liệu về fashion. Các bạn download dữ liệu theo link sau:
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -154,7 +154,7 @@ Như vậy bộ dữ liệu của chúng ta sẽ bao gồm 7 nhãn có cấu tr�
 Tiếp theo chúng ta sẽ cùng xem phân phối số quan sát giữa các classes. 
 
 
-```
+```python
 import glob2
 import pandas as pd
 
@@ -330,7 +330,7 @@ Với keras thì việc tạo những kiến trúc mạng là không quá khó k
 Để huấn luyện mô hình mình sẽ sử dụng ImageGenerator, bạn đọc xem lại [Bài 32 - Kĩ thuật tensorflow Dataset](https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html#321-s%E1%BB%AD-d%E1%BB%A5ng-imagegenerator) để hiểu thêm về ImageGenerator.
 
 
-```
+```python
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 image_aug = ImageDataGenerator(rotation_range=25, 
@@ -368,7 +368,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 Để quá trình huấn luyện được nhanh hơn thì chúng ta không nên sử dụng hàm `flow_from_directory()` của ImageGenerator mà thay vào đó save ảnh và đọc từ numpy. Quá trình huấn luyện sẽ nhanh hơn đáng kể. Tuy nhiên cách này sẽ không hợp lý nếu bộ dữ liệu của bạn lớn hơn nhiều kích thước của RAM. Xem lại [Bài 32 - Kĩ thuật tensorflow Dataset](https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html) để hiểu hơn về các phương pháp truyền dữ liệu vào huấn luyện mô hình.
 
 
-```
+```python
 import cv2
 import numpy as np
 
@@ -403,7 +403,7 @@ images = images/255.0
 Chúng ta lưu ý rằng mô hình Multitask learning sẽ xử lý nhiều tác vụ đồng thời. Mỗi tác vụ là một bài toán phân loại nhị phân có output là giá trị 0 hoặc 1 đánh dấu hai khả năng xảy ra hoặc không xảy ra của tác vụ. Do đó các label cần được chuyển hóa thành véc tơ binary (chỉ gồm hai giá trị 0 và 1). Trong đó 1 đại diện cho sự kiện tác vụ xảy ra và 0 đại diện cho sự kiện không xảy ra. Bạn có thể sử dụng [MultiLabelBinarizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html) của Sklearn để mã hóa nhị phân đa biến output (Multi Label Binary).
 
 
-```
+```python
 from tensorflow.keras.utils import to_categorical
 from sklearn.preprocessing import MultiLabelBinarizer
 import pickle
@@ -428,7 +428,7 @@ Như vậy các nhãn của chúng ta lần lượt là `['black' 'blue' 'dress'
 
 Tập train và validation được phân chia theo tỷ lệ `80/20` một cách ngẫu nhiên.
 
-```
+```python
 from sklearn.model_selection import train_test_split
 
 (X_train, X_val, y_train, y_val) = train_test_split(images, y, 
@@ -481,7 +481,7 @@ model.save('model_fashion_multitask_learning.h5')
 Cuối cùng không thể thiết là kiếm chứng lại kết quả dự báo mô hình bằng một vài hình ảnh trên mạng.
 
 
-```
+```python
 import requests
 
 def _downloadImage(url):

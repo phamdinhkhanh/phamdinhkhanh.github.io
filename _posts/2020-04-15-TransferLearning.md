@@ -24,7 +24,7 @@ Giả sử rằng chúng ta bỏ qua những vấn đề liên quan đến sự 
 
 
 
-```
+```python
 import tensorflow as tf
 
 def scheduler(epoch):
@@ -118,7 +118,7 @@ Bạn đọc có thể bắt đầu thực hành tại [Transfer Learning](https
 
 
 
-```
+```python
 from google.colab import drive
 import os
 
@@ -138,7 +138,7 @@ Chạy lệnh bên dưới để download dữ liệu và cd vào thư mục g�
 Nhớ thực hiện khảo sát dữ liệu trước khi huấn luyện model.
 
 
-```
+```python
 import pandas as pd
 import glob2
 import matplotlib.pyplot as plt
@@ -171,7 +171,7 @@ Một thủ tục không thể thiếu của quá trình huấn luyện model đ
 Sau đó chúng ta phân chia tập train/validation theo tỷ lệ 80/20. Để tỷ lệ class cân bằng giữa bộ dữ liệu train và test ta nên sử dụng hàm train_test_split của sklearn với `stratify=y`.
 
 
-```
+```python
 from sklearn.model_selection import train_test_split
 
 images_train, images_val, y_label_train, y_label_val = train_test_split(image_links, labels, stratify = labels)
@@ -191,7 +191,7 @@ print('images_train len: {}, image_test shape: {}'.format(len(images_train), len
 Nếu bạn đọc vẫn chưa quen với khái niệm ImageDataGenerator là gì, vui lòng xem lại [Bài 32 - Kĩ thuật tensorflow Dataset](https://phamdinhkhanh.github.io/2020/04/09/TensorflowDataset.html). Đây là kiến thức cơ bản mà bất kì một modeler nào cũng đều cần nắm vững và thực hiện khi huấn luyện mô hình.
 
 
-```
+```python
 import numpy as np
 from tensorflow.keras.utils import Sequence, to_categorical
 import cv2
@@ -415,7 +415,7 @@ print(y_batch.shape)
     
 Tiếp theo ta sẽ visualize các ảnh sau augumentation
 
-```
+```python
 import matplotlib.pyplot as plt
 
 # Khởi tạo subplot với 4 dòng 5 cột.
@@ -448,7 +448,7 @@ Tiếp theo chúng ta sẽ huấn luyện mô hình. Việc đầu tiên cần t
 Ta khởi tạo model như sau:
 
 
-```
+```python
 from tensorflow.keras.models import load_model, Sequential
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.applications import MobileNet
@@ -509,7 +509,7 @@ for layer in model.layers:
 Huấn luyện lại model trên 1 epoch
 
 
-```
+```python
 import tensorflow as tf
 
 model.fit(train_generator,
@@ -537,7 +537,7 @@ $$\mathcal{L}_{reg}(\mathbf{W};\mathbf{X}) = \mathcal{L}(\mathbf{W}; \mathbf{X})
 Trên tensorflow chúng ta có thể thêm thành phần hiệu chuẩn bằng cách khai báo trực tiếp vào tham số `kernel_regularizer` của keras layers:
 
 
-```
+```python
 from tensorflow.keras import regularizers
 your_model.add(Dense(64, input_dim=64,
                 kernel_regularizer=regularizers.l2(0.01),

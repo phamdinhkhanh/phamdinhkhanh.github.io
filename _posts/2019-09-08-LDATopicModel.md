@@ -379,7 +379,7 @@ Như vậy có 20 nhóm, mỗi nhóm có số lượng các posts trong khoảng
 
 Gensim hỗ trợ tiền xử lý dữ liệu khá tiện ích thông qua hàm `simple_preprocess()`. Để remove dấu câu ta đặt giá trị cho tham số `deacc = True`.
 
-```
+```python
 import gensim
 data = list(df['content'])
 
@@ -420,7 +420,7 @@ print(trigram_mod[bigram_mod[data_words[0]]])
 Tiếp theo chúng ta sẽ loại bỏ các từ stopwords và chỉ lọc ra các từ vựng là các từ có tag từ loại là ['NOUN', 'ADJ', 'VERB', 'ADV']. Từ stopwords đã được tích hợp sẵn trong package nltk cho tiếng anh.
 
 
-```
+```python
 import nltk
 nltk.download('stopwords')
 
@@ -450,7 +450,7 @@ def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
 Gọi các hàm trên để remove stopwords.
 
 
-```
+```python
 from gensim.utils import simple_preprocess
 import spacy
 
@@ -483,7 +483,7 @@ print(data_lemmatized[:1])
 Từ điển (dictionary) và bộ văn bản (corpus) là 2 input chính cho model LDA. Sử dụng package gensim để tạo chúng như sau:
 
 
-```
+```python
 import gensim.corpora as corpora
 
 # Create Dictionary
@@ -600,7 +600,7 @@ Sau khi huấn luyện xong model LDA ta có thể tìm ra phân phối của c�
 Bạn có thể tìm ra 10 từ vựng quan trọng nhất ở mỗi topics kèm theo trọng số phân phối của chúng.
 
 
-```
+```python
 from pprint import pprint
 
 # Print the Keyword in the 10 topics
@@ -697,7 +697,7 @@ doc_lda = lda_model[corpus]
 Chỉ số perplexity và coherence score cho là những chỉ số cho ta biết chất lượng của mô hình là tốt hay xấu. Nó còn được dùng trong tìm kiếm số lượng topics nào là phù hợp với bộ dữ liệu. Perplexity được xây dựng dựa trên logarit của hàm hợp lý tối đa (MLE) nên perplexity càng thấp thì chất lượng của model càng tốt. Trái lại Coherence score của mô hình càng cao thì mô hình sẽ càng tốt.
 
 
-```
+```python
 from gensim.models.coherencemodel import CoherenceModel
 
 # Compute Perplexity
