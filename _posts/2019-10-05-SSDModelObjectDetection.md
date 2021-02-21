@@ -538,7 +538,7 @@ Các bước thực hiện để khởi tạo cấu trúc của mạng ssd_300 b
 * **Bước 4**: Kết nối với output. Thêm layers softmax trước confidence của bounding box.
 
 
-```{python}
+```python
 from __future__ import division
 import numpy as np
 from keras.models import Model
