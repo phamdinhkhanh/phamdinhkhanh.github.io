@@ -171,19 +171,16 @@ div.highlighter-rouge {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1rem 0 0 0;
-    background-color: #233445;
+    background-color: #FFFFFF;
+    background-image: url("/assets/images/code-bg.png");
+    background-size: auto 3.60rem;
+    background-repeat: repeat-y;
+    background-position: 0 10px;
 }
 
 pre.background {
     padding: 0;
     margin: 0;
-}
-
-.highlighter-rouge {
-    background: url("/assets/images/code-bg.png");
-    background-size: contain;
-    background-repeat: repeat-y;
-    background-position: 0 10px;
 }
 
 .rouge-code {
