@@ -69,18 +69,13 @@ Ngoài ra còn có một số phương pháp nhận diện khuôn mặt như nh�
 
 Phương pháp kết hợp có thể sử dụng nhiều thông tin từ đồng thời land mark face, nhận diện 3D, nhận diện cảm biến da và mang lại độ chính xác cao hơn vì nó nhận diện tốt được trong các trường hợp khuôn mặt có các biểu cảm như cau mày, chớp mắt, co dãn khi cười, nói và ít nhạy cảm với chiếu sáng.
 
-
-
-
-
-
 # 2. Các bài toán khác nhau về face
 
 Có nhiều lớp bài toán khác nhau liên quan đến dữ liệu face. Một trong số 4 bài toán phổ biến nhất dựa trên nhu cầu thực tế cần áp dụng đó là:
 
-* Nhận diện khuôn mặt (face identification): Đây là bài toán match one-many. Bài toán này sẽ trả lời cho câu hỏi người ngày là ai bằng cách nhận input là ảnh khuôn mặt và output là nhãn tên người trong ảnh. Tác vụ này thường được áp dụng trong các hệ thống chấm công, hệ thống giám sát công dân, hệ thống cammera thông minh tại các đô thị.
+* Nhận diện khuôn mặt (face identification): Đây là bài toán match one-many. Bài toán này sẽ trả lời cho câu hỏi "người này là ai?" bằng cách nhận input là ảnh khuôn mặt và output là nhãn tên người trong ảnh. Tác vụ này thường được áp dụng trong các hệ thống chấm công, hệ thống giám sát công dân, hệ thống cammera thông minh tại các đô thị.
 
-* Xác thực khuôn mặt (face verification): Đây là bài toán match one-one. Bài toán này trả lời cho câu hỏi có phải 2 ảnh đầu vào là cùng một người hay không? Kết quả output sẽ là yes hoặc no. Bài toán thường được dùng trong các hệ thống bảo mật. Xác thực khuôn mặt trên điện thoại của bạn là một bài toán như vậy.
+* Xác thực khuôn mặt (face verification): Đây là bài toán match one-one. Bài toán này trả lời cho câu hỏi "có phải 2 ảnh đầu vào là cùng một người không?" Kết quả output sẽ là yes hoặc no. Bài toán thường được dùng trong các hệ thống bảo mật. Xác thực khuôn mặt trên điện thoại của bạn là một bài toán như vậy.
 
 Do có mối quan hệ khá gần nên face recognition là tên gọi chung cho cả hai thuật toán face identification và face verification.
 
