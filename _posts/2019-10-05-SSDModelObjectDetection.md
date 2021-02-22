@@ -26,7 +26,7 @@ Tóm gọn lại mô hình SSD sẽ là kết hợp của 2 bước:
 * Áp dụng convolutional filters (hoặc kernel filters) để phát hiện vật thể trên các feature map có độ phân giải (revolution) khác nhau.
 
 ## Một số định nghĩa
-* **scale**: Tỷ lệ chiều dài và chiều rộng so với khung hình gốc. VD: Nếu khung hình gốc có giá trị là $(w, h)$ thì sau scale khung hình mới có kích thước là $(sw, sh)$. Gía trị của $s$ thường nằm trong khoảng $s \in (0, 1]$. Scale sẽ kết hợp với aspect ratio để nhận được các khung hình có tỷ lệ cạnh $w/h$ khác nhau.
+* **scale**: Độ phóng đại so với khung hình gốc. VD: Nếu khung hình gốc có giá trị là $(w, h)$ thì sau scale khung hình mới có kích thước là $(sw, sh)$. Gía trị của $s$ thường nằm trong khoảng $s \in (0, 1]$. Scale sẽ kết hợp với aspect ratio để nhận được các khung hình có tỷ lệ cạnh $w/h$ khác nhau.
 * **aspect ratio**: Tỷ lệ cạnh, được đo bằng tỷ lệ giữa $w/h$ nhằm xác định hình dạng tương đối của khung hình bao chứa vật thể. Chẳng hạn nếu vật thể là người thường có aspect ratio = $1:3$ hoặc xe cộ nhìn từ phía trước là $1:1$.
 * **bounding box**: Khung hình bao chứa vật thể được xác định trong quá trình huấn luyện.
 * **ground truth box**: Khung hình được xác định trước từ bộ dữ liệu thông qua tọa độ $(c_x, c_y , w, h)$ giúp xác định vật thể.
