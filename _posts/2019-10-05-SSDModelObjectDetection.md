@@ -192,9 +192,8 @@ $$s_k' = \sqrt{s_ks_{k+1}}$$
 
 # 3. Code
 
-Thuật toán SDD là một thuật toán rất phức tạp, có nhiều layers và các phases xử lý khác nhau. Tất nhiên code bên dưới là tôi tham khảo từ những nhà nghiên cứu xuất sắc trên thế giới. Đối với các kiến thức tôi trình bày ở các bài viết của mình cũng như vậy. Tôi cũng không phủ nhận đó là những kiến thức tổng hợp từ nhiều nguồn bởi không ai có thể nghĩ ra tất cả. Và tôi cũng nhận được một số lời chỉ trích là [cop nhặt](https://www.facebook.com/groups/machinelearningcoban/?multi_permalinks=778367739287302). Nhưng điều đó không làm tôi dừng lại bởi tôi nghĩ rằng việc học một kiến thức mới và viết lại theo cách hiểu của mình là hữu ích để lưu lại kiến thức cho mình. Và sẽ hữu ích hơn khi chia sẻ những kiến thức, những giá trị mà thuộc về của chung ấy cho mọi người. Vừa tốt cho tôi vừa đóng góp cho cộng đồng. Tôi tin rằng những lời chỉ trích chỉ là số rất nhỏ trong những sự động viên ủng hộ và đó là động lực để tôi tiếp tục viết bài. Sau tất cả, trên hết tôi luôn tôn trọng bản quyền các bài viết gốc mà tôi đã đọc và để trích dẫn trong mục tham khảo.
-
-Xin lỗi các bạn vì hơi lan man chút. Quay trở lại phần code mình họa cho thuật toán SSD được lấy từ nguồn [SSD_keras - git repository](https://github.com/pierluigiferrari/ssd_keras). Trong git project tác giả cũng hướng dẫn khá chi tiết cách thức vận hành. Tôi có đọc tham khảo và trích dẫn một số phần xử lý minh họa cho thuật toán.
+Thuật toán SSD là một thuật toán rất phức tạp, có nhiều layers và các phases xử lý khác nhau. Vì vậy code này tôi không tự mình viết hết mà tham khảo từ [SSD keras](https://github.com/pierluigiferrari/ssd_keras
+). Trong code tôi có chỉnh sửa lại một số đoạn và kèm theo diễn giải về từng step xử lý như thế nào.
 
 ## 3.1. Keras Layers
 ## 3.1.2. Anchor Box
