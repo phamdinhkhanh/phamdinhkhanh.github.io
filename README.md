@@ -21,7 +21,8 @@ Actually, I am quite normal learner when i start writing my blog. The unique mot
 - It requires your time. You maybe trade-off between entertain or work. Entertainment is necesssary person's need, but if you start writing one topic a week, it consumes your time merely 5 hours and you still have time for entertainment.
 - You affraid that your knownledge is not good, you are not healthy, you don't have time for family, for girl friend or game .... You must define what are pivotal disciplines of your life? You can both balance your life and reserve your time to write blog.
 - You scare the naysayers. You own your life, so you shouldn't let naysayers saying affect to you.
-- You can build up a website, latex, .... I know it can be a truly interception. But in this topic, I will share you my tip how to build A blog on jekyl.
+- You can't build up a website, latex, .... I know it can be a truly interception. But in this topic, I will share you my tip how to build A blog on jekyl.
+- You can lost your rank when github stop free-domain service. I think is also a risk, you should buy a backup `.com` domain.
 
 At the begin, I have to face up with the above troubles like you face. But I motivate my-self to be positive thinking and focusing to the advantage instead of disavantage. That is the secrete help me win.
 
@@ -119,7 +120,7 @@ After accomplishment of your website, you need to release it out on public domai
 - your repo can rated many stars and clone that give you renown in return.
 
 **Disavantage**:
-- you can not setup advertisement.
+- you can not setup Google AdSense (I try and fail, if you are success, kindly let me know).
 - many people think it is not professional and valueable.
 - you want your repo must be private.
 
