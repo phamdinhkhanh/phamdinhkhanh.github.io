@@ -1,3 +1,9 @@
+---
+layout: post
+author: phamdinhkhanh
+title: Appendix 2 - How this blog is built
+---
+
 # 1. Why do i write this post?
 ## 1.1. Why write blog is good?
 
