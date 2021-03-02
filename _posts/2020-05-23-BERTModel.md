@@ -139,12 +139,12 @@ Khi học chuyển giao theo phương pháp học sâu chúng ta sẽ tận dụ
 
 
 
-## 2.1. Phương pháp transformer
+## 1.2. Phương pháp transformer
 
 
 
 
-### 2.1.1. Encoder và decoder trong BERT
+### 1.2.1. Encoder và decoder trong BERT
 
 Trước khi hiểu về BERT chúng ta cùng ôn lại về kỹ thuật transformer. Mình đã diễn giải kỹ thuật này tại [Bài 4 - Attention is all you need](https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html). Đây làm một lớp mô hình seq2seq gồm 2 phrase encoder và decoder. Mô hình hoàn toàn không sử dụng các kiến trúc Recurrent Neural Network của RNN mà chỉ sử dụng các layers attention để embedding các từ trong câu. Kiến trúc cụ thể của mô hình như sau:
 
@@ -159,7 +159,7 @@ Mô hình sẽ bao gồm 2 phase.
 
 * **Decoder**: Kiến trúc cũng bao gồm các layers liên tiếp nhau. Mỗi một layer của Decoder cũng có các sub-layers gần tương tự như layer của Encoder nhưng bổ sung thêm sub-layer đầu tiên là `Masked Multi-Head Attention` có tác dụng loại bỏ các từ trong tương lai khỏi quá trình attention.
 
-### 2.1.2. Các tiến trình self-attention và encoder-decoder attention
+### 1.2.2. Các tiến trình self-attention và encoder-decoder attention
 
 Trong kiến trúc transformer chúng ta áp dụng 2 dạng attention khác nhau tại từng bước huấn luyện.
 
