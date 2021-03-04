@@ -43,7 +43,7 @@ Hàm _balanced cross entropy_ là hàm số cân bằng được tỷ lệ phân
 
 # 4. Sự ra đời của focal loss
 
-Focal loss là hàm loss function lần đầu được giới thiệu trong RetinaNet. Hàm loss function này đã chứng minh được tính hiệu quả trong các bài toán object detection. Đây là lớp bài toán có sự mất cân bằng nghiêm trọng giữa hai class positive (các bounding box có chứa object) và negative (các bounding box chứa object). Thường thì _negative_ có số lượng lớn hơn _positive_ rất nhiều. Lấy ví dụ như hình bên dưới :
+Focal loss là hàm loss function lần đầu được giới thiệu trong RetinaNet. Hàm loss function này đã chứng minh được tính hiệu quả trong các bài toán object detection. Đây là lớp bài toán có sự mất cân bằng nghiêm trọng giữa hai class positive (các bounding box có chứa object) và negative (các bounding box không chứa object). Thường thì _negative_ có số lượng lớn hơn _positive_ rất nhiều. Lấy ví dụ như hình bên dưới :
 
 <img src="/assets/images/20200823_FocalLoss/pic1.png" class="largepic"/>
 
