@@ -8,7 +8,7 @@ title: Bài 56 - Knowledge Distillation
 
 Knowledge distillation được giới thiệu bởi [Geoffrey Hinton](https://arxiv.org/abs/1503.02531) vào năm 2015 là một trong những phương pháp thuộc họ transfer learning. Thuật toán lấy ý tưởng chính từ quá trình học tập ở người khi mà kiến thức được truyền đạt từ giảng viên có hiểu biết tốt hơn tới người học có hiểu biết kém hơn. Trong kỹ thuật knowledge distillation thì một model lớn hơn sẽ đóng vai trò là teacher nhằm chuyển giao kiến thức sang model nhỏ hơn đóng vai trò là student.
 
-<img src="/assets/images/20210313_KnowledgeDistillation/pic0.jpg" class="largepic"/>
+<img src="/assets/images/20210313_KnowledgeDistillation/pic0.png" class="largepic"/>
 
 Áp dụng knowledge distillation có thể tạo cải thiện đáng kể các tác vụ trên cả NLP và computer vision với cùng một lớp mô hình. Ngoài ra nó còn giúp tạo ra những mô hình nhỏ nhưng độ chính xác cao hơn ban đầu nhằm triển khai trên các thiết bị cấu hình yếu.
 
