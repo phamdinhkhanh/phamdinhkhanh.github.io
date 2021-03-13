@@ -188,7 +188,7 @@ Thông thường $\beta = 1-\alpha$, $\alpha$ sẽ được lựa chọn là m�
 
 Trong trường hợp được huấn luyện độc lập thì student loss sẽ chính là hàm cross-entropy không áp dụng temperature scale. Output của dự báo trong trường hợp này còn gọi là `hard prediction` (tức dự báo không áp dụng calibration theo temperature scale để làm mềm). Để hiểu hơn phương pháp huấn luyện distillation chúng ta cùng xem hình bên dưới.
 
-<img src="/assets/images/20210313_KnowledgeDistillation/pic3.png" class="largepic"/>
+<img src="/assets/images/20210313_KnowledgeDistillation/pic3.png" class="gigantic"/>
 
 **Hình 2**: [Source - knowledge distillation](https://intellabs.github.io/distiller/knowledge_distillation.html). Teacher và student sẽ được kết hợp trong distillation loss. Phân phối xác suất của hai models này sẽ được làm mềm theo cùng hệ số temperature scale $T=t$. Trong trường hợp chỉ huấn luyện student độc lập thì không làm mềm phân phối xác suất, đồng thời cross-entropy được tính dựa trên phân phối xác suất dự báo (`hard prediction`) và nhãn ground-truth.
 
