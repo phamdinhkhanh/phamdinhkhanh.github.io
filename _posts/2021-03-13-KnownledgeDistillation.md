@@ -151,7 +151,7 @@ $$
 
 Do $\sigma(x_i/T) \in (0, 1)$ và $x_i \geq 0$ nên 
 
-$$2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{{-x_i}}{T^2} \leq 0, ~ \forall x_i, i=\overline{1,C}$$
+$$2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{-x_i}{T^2} \leq 0, ~ \forall x_i, i=\overline{1,C}$$
 
 Tức là $$\frac{\delta f(\mathbf{x}, T)}{\delta \space T} \leq 0$$
 
