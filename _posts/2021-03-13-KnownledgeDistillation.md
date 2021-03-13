@@ -21,7 +21,7 @@ Quá trình distillation sẽ bao gồm các bước:
 
 * **Huấn luyện student**: Quá trình này sẽ sử dụng gợi ý từ teacher để cải thiện student. Nếu huấn luyện theo phương pháp thông thường thì student sẽ áp dụng hàm loss function dạng cross-entropy dạng như sau:
 
-$CE(\mathbf{q}, \mathbf{p}) \triangleq \mathbf{H}(\mathbf{q}, \mathbf{p}) = -\sum_{i=1}^{C} q_i \log(p_i)$$
+$$CE(\mathbf{q}, \mathbf{p}) \triangleq \mathbf{H}(\mathbf{q}, \mathbf{p}) = -\sum_{i=1}^{C} q_i \log(p_i)$$
 
 Ở đây $C$ là số lượng classes.
 
@@ -33,7 +33,7 @@ Như vậy `distillation` loss tại quan sát $\mathbf{x}_i$ sẽ có dạng:
 
 $$ \mathcal{L}_{\text{dl}}(\mathbf{x}_i; \mathbf{W}) = \mathbf{H}(\mathbf{q}_{it}, \mathbf{q}_{is}) $$
 
-Với $\mathbf{q}_{it}$ là phân phối xác suất của dự báo từ teacher và $\mathbf{q}_{is}$ là phân phối xác suất dự báo từ student tại quan sát thứ $i$.
+Với $\mathbf{q}\_{it}$ là phân phối xác suất của dự báo từ teacher và $\mathbf{q}\_{is}$ là phân phối xác suất dự báo từ student tại quan sát thứ $i$.
 
 Cách biến đổi này còn giúp cho việc học không bị _cứng nhắc_ vì giúp nhận thức được sự khác biệt giữa các bức ảnh thuộc về cùng một nhãn. Cụ thể, cùng là nhãn `dog` nhưng một số bức ảnh có thể giống `dog` hơn hoặc ít giống `dog` hơn (VD: những loài chó có lông xù giống mèo). Thay vì đều được gán nhãn là 1 thì bức giống hơn sẽ có xác suất cao hơn so với ảnh ít giống hơn.
 
@@ -144,8 +144,8 @@ $$
 \begin{eqnarray}
 \frac{\delta f(\mathbf{x}, T)}{\delta \space T} & = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta \space T} \\
 & = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta ~ \sigma(x_i/T)}~\frac{\delta ~ \sigma(x_i/T)}{\delta \space x_i/T}~\frac{{\delta \space x_i/T}}{\delta ~ T} \\
-& = & \sum_{i=1}^{C}2~\sigma(x_i/T)~\sigma(x_i/T)~(1-\sigma(x_i/T))~\frac{{\delta \space x_i/T}}{\delta ~ T} \\
-& = & \sum_{i=1}^{C}2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{{-x_i}}{T^2}
+& = & \sum_{i=1}^{C}2~\sigma(x_i/T)~\sigma(x_i/T)~(1-\sigma(x_i/T))~\frac{\delta \space x_i/T}{\delta ~ T} \\
+& = & \sum_{i=1}^{C}2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{-x_i}{T^2}
 \end{eqnarray}
 $$
 
@@ -165,7 +165,7 @@ Các bạn đã hiểu cách chứng minh trên của tôi rồi chứ? Bạn c�
 
 ## 2.2. Distillation loss
 
-Như vậy sau khi áp dụng phương pháp temperature scale thì phân phối xác suất của teacher và student sẽ thay đổi theo hướng mềm hơn. Chúng ta ký hiệu chúng lần lượt là $\mathbf{q}_{t}'$ và $\mathbf{q}_{s}'$. Distillation loss sẽ trở thành:
+Như vậy sau khi áp dụng phương pháp temperature scale thì phân phối xác suất của teacher và student sẽ thay đổi theo hướng mềm hơn. Chúng ta ký hiệu chúng lần lượt là $\mathbf{q}\_{t}'$ và $\mathbf{q}\_{s}'$. Distillation loss sẽ trở thành:
 
 $$
 \begin{eqnarray} \mathcal{L}_{\text{dl}}(\mathbf{x}_i; \mathbf{W}) & = & \mathbf{H}(\mathbf{q}'_{it}, \mathbf{q}'_{is}) \\
@@ -173,7 +173,7 @@ $$
 \end{eqnarray}
 $$
 
-Với $\sigma(\mathbf{z}_{i}; T=\tau)$ là ký hiệu của hàm phân phối softmax sau khi làm mềm với đầu vào $\mathbf{z}_{i}$ và hệ số temperature scale $T=\tau$. Index $it$ tương ứng với quan sát thứ $i$ của teacher, tương tự $is$ là quan sát thứ $i$ của student.
+Với $\sigma(\mathbf{z}\_{i}; T=\tau)$ là ký hiệu của hàm phân phối softmax sau khi làm mềm với đầu vào $\mathbf{z}\_{i}$ và hệ số temperature scale $T=\tau$. Index $it$ tương ứng với quan sát thứ $i$ của teacher, tương tự $is$ là quan sát thứ $i$ của student.
 
 Ngoài ra Geoffrey Hinton cũng thấy thông qua thực nghiệm rằng việc học sẽ hiệu quả hơn nếu có sự kết hợp giữa học từ nhãn groud-truth và học từ dự báo của teacher. Do đó ông đã thêm student loss là một hàm cross-entropy thông thường vào distillation loss.
 
