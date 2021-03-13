@@ -142,9 +142,9 @@ Như vậy:
 
 $$
 \begin{eqnarray}
-\frac{\delta f(\mathbf{x}, T)}{\delta \space T} & = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta \space T} \\
-& = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta ~ \sigma(x_i/T)}~\frac{\delta ~ \sigma(x_i/T)}{\delta \space x_i/T}~\frac{{\delta \space x_i/T}}{\delta ~ T} \\
-& = & \sum_{i=1}^{C}2~\sigma(x_i/T)~\sigma(x_i/T)~(1-\sigma(x_i/T))~\frac{\delta \space x_i/T}{\delta ~ T} \\
+\frac{\delta f(\mathbf{x}, T)}{\delta ~ T} & = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta ~ T} \\
+& = & \sum_{i=1}^{C}\frac{\delta ~ \sigma(x_i/T)^2}{\delta ~ \sigma(x_i/T)}~\frac{\delta ~ \sigma(x_i/T)}{\delta ~ x_i/T}~\frac{\delta ~ x_i/T}{\delta ~ T} \\
+& = & \sum_{i=1}^{C}2~\sigma(x_i/T)~\sigma(x_i/T)~(1-\sigma(x_i/T))~\frac{\delta ~ x_i/T}{\delta ~ T} \\
 & = & \sum_{i=1}^{C}2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{-x_i}{T^2}
 \end{eqnarray}
 $$
@@ -153,7 +153,7 @@ Do $\sigma(x_i/T) \in (0, 1)$ và $x_i \geq 0$ nên
 
 $$2~\sigma(x_i/T)^2~(1-\sigma(x_i/T))~\frac{-x_i}{T^2} \leq 0, ~ \forall x_i, i=\overline{1,C}$$
 
-Tức là $$\frac{\delta f(\mathbf{x}, T)}{\delta \space T} \leq 0$$
+Tức là $$\frac{\delta f(\mathbf{x}, T)}{\delta ~ T} \leq 0$$
 
 Suy là $f(\mathbf{x}, T)$ là một hàm nghịch biến. Do đó $f(\mathbf{x}, T) \leq f(\mathbf{x}, 1)$, suy ra $\mathbf{E}(\mathbf{e}^2) \geq \mathbf{E}(\mathbf{e'}^2)$ kéo theo $\text{Var}(\mathbf{e}) \geq \text{Var}{(\mathbf{e}')}$.
 
