@@ -15,7 +15,7 @@ Do thuộc lớp mô hình sinh nên kết quả phân cụm topics của mô h�
 ## 1.2. Các dạng mô hình tìm chủ đề.
 Trước đây phương pháp tf-idf được sử dụng khá phổ biến để mã hóa văn bản thành véc tơ. Chúng ta khởi tạo một tập hợp các từ (words hoặc terms) hay còn gọi là túi từ (bag of word), tập hợp những từ này đã loại bỏ stop words. tf-idf sẽ được tính toán bằng cách đo lường tần suất xuất hiện của từ trong văn bản chia cho tần suất văn bản mà có xuất hiện từ trên toàn bộ bộ văn bản (corpus).
 
-<img src="https://cdn-images-1.medium.com/max/720/1*jNnpbGPxkjehlvTCXq9B8g.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="/assets/images/20190908_LDA/pic1.png" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
 
 **Hình 1:** Công thức tính tf-idf dựa trên tần suất xuất hiện của từ trong văn bản và nghịch đảo tần suất văn bản xuất hiện từ trên với tổng số lượng văn bản.
 
@@ -40,7 +40,7 @@ Về cơ bản phép phân tích suy biến sẽ biến đổi ma trận gốc $
 
 $$\mathbf{A}_{mn} = \mathbf{U}_{mt}\mathbf{\Sigma}_{tt}\mathbf{V}_{nt}^\mathbf{T}$$
 
-<img src="https://cdn-images-1.medium.com/max/720/1*DOvWt8JH8_fXETb2hiO_LA.png" width="800px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="/assets/images/20190908_LDA/pic2.png" width="800px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
 
 **Hình 2:** Phép phân tích suy biến.
 
@@ -76,7 +76,7 @@ $$p(w, d) = \sum_{c} p(c)p(d|c)p(w|c) = p(d)\sum_{c}p(c|d)p(w|c)$$
 
 * Chúng ta có thể hình dung quá trình hồi qui pLSA như một quá trình sinh dựa trên một đồ thị. Bước đầu tiên của mô hình có thể xuất phát với topic hoặc văn bản. Nếu chúng ta bắt đầu với văn bản đầu tiên chúng ta tạo ra các phân phối của văn bản $p(d)$, sau đó sinh ra phân phối topic ngẫu nhiên $p(z\|d)$, và tiếp theo tạo ra phân phối của các từ $p(w\|z)$ dựa trên topic. Nếu bắt đầu bằng topic thì chúng ta sẽ sinh ra các topic ngẫu nhiên, tiếp theo là 2 quá trình đồng thời tạo ra văn bản và từ dựa trên topic. Cụ thể của quá trình này như bên dưới:
 
-<img src="https://cdn-images-1.medium.com/max/720/1*V-_VXpEXXOT-SaE-Vll3KQ.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="/assets/images/20190908_LDA/pic3.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
 
 **Hình 4:** Qúa trình sinh của model pLSA
 
@@ -173,7 +173,7 @@ Model LDA là lớp mô hình sinh (generative model) cho phép xác định m�
 
 Gỉa định rằng chúng ta có 1000 từ có tần suất xuất hiện nhiều nhất trong văn bản và chúng ta có 1000 văn bản. Gỉa sử mỗi văn bản có 500 từ xuất hiện bên trong chúng. Làm thế nào để chúng ta có thể hiểu được các văn bản này thuộc về những nhóm nào? Một cách đơn giản là kết nối mỗi văn bản với một từ bằng 1 thread dựa trên sự xuất hiện của từ đó trong văn bản như sơ đồ bên dưới.
 
-<img src="https://miro.medium.com/max/1009/1*QQTk2TGyzhakGh0lZ9P03w.jpeg" width="500px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="/assets/images/20190908_LDA/pic4.jpeg" width="500px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
 
 **Hình 5:** Sơ đồ kết nối văn bản với từ vựng.
 
@@ -185,7 +185,7 @@ Chúng ta có thể giải quyết vấn đề này bằng cách thêm một lay
 
 Nhưng vậy mỗi văn bản sẽ có khoảng 10 topics và mỗi topic sẽ có 500 từ. Số lượng threads lúc này sẽ là 20000 threads bao gồm 10000 threads kết nối giữa 1000 văn bản đến 10 topics và 10000 threads kết nối 10 topics đến 1000 từ vựng. Như chúng ta có thể hình dung ở hình dưới:
 
-<img src="https://miro.medium.com/max/1014/1*2uj6t3gNv76SpHrWf5-z-A.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
+<img src="/assets/images/20190908_LDA/pic5.jpeg" width="400px" height="300px" style="display:block; margin-left:auto; margin-right:auto">
 
 **Hình 6:** Sơ đồ kết nối văn bản tới các từ thông qua trung gian là các topics ẩn. Trong đó chúng ta giả định có 3 topics ẩn là ("Animals", "Sports", "Tech"). Trên thực tế chúng ta sẽ không có 3 topics này mà thay vào đó một phân phối của các từ chẳng hạn `(0.3*Cats,0.4*Dogs,0.2*Loyal, 0.1*Evil)` sẽ biểu diễn cho topic “Animals”. Mỗi topics sẽ là một biểu diễn phân phối của các từ mà nó thuộc về.
 
