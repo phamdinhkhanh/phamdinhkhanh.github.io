@@ -40,7 +40,9 @@ $$\text{cov(x, y) = cov(y, x)}$$
 * tính chất tuyến tính:
 $$\text{cov(ax, by) = ab.cov(x, y)}$$
 * Khai triển công thức hiệp phương sai ta có:
-$$\begin{eqnarray}\text{cov(x, y)} & = & \text{E(xy)}-\mu_\text{x}\text{E(y)}-\mu_\text{y}\text{E(x)} + \mu_\text{x}\mu_\text{y}\end{eqnarray}$$
+$$\begin{eqnarray}\text{cov(x, y)} & = & \text{E(xy)}-\mu_\text{x}\text{E(y)}-\mu_\text{y}\text{E(x)} + \mu_\text{x}\mu_\text{y} \\
+\text{E(xy)}-\mu_\text{x}\mu_\text{y}
+\end{eqnarray}$$
 
 Trong đó $\mu_\text{x}, \mu_\text{y}$ lần lượt là kì vọng của $\text{x, y}$. Chứng minh công thức trên không khó. Xin dành cho bạn đọc.
 
