@@ -15,10 +15,10 @@ Các kĩ thuật RNN đã trải qua rất nhiều những tiến bộ với nhi
 
 Mô hình seq2seq là mô hình chuỗi nên có thứ tự về thời gian. Trong một tác vụ dịch máy, các từ ở input sẽ có mối liên hệ lớn hơn đối với từ ở output cùng vị trí. Do đó attention hiểu một cách đơn giản sẽ giúp thuật toán điều chỉnh sự tập trung lớn hơn ở các cặp từ (input, output) nếu chúng có vị trí tương đương hoặc gần tương đương.
 
-<img src='https://cdn-images-1.medium.com/max/1600/1*SSlwwoeJsvKcJ2qdbSYurQ.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
+<img src='/assets/images/20190616_attention/pic1.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 > **Hình 1**:Mô hình seq2seq khi chưa có attention layer
 
-<img src='https://cdn-images-1.medium.com/max/1000/0*VrRTrruwf2BtW4t5.' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
+<img src='/assets/images/20190616_attention/pic2.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 > **Hình 2**:Mô hình seq2seq khi đã có attention layer
 
 Như trong hình 2, Từ 'I' trong tiếng anh tương ứng với 'Je' trong tiếng Pháp. Do đó attention layer điều chỉnh một trọng số $\alpha$ lớn hơn ở context vector so với các từ khác.
@@ -59,7 +59,7 @@ Language Understanding](https://arxiv.org/pdf/1810.04805.pdf)
 
 Vậy cụ thể Transformer là gì? Kiến trúc của Transformer ra sao chúng ta cùng tìm hiểu qua sơ đồ bên dưới:
 
-<img src='https://cdn-images-1.medium.com/max/1000/1*BHzGVskWGS_3jEcYYi6miQ.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
+<img src='/assets/images/20190616_attention/pic3.png' width="400px" style="display:block; margin-left:auto; margin-right:auto"/>
 
 > **Hình 3:** Kiến trúc transformer
 
